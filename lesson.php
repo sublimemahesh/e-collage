@@ -120,56 +120,18 @@ include_once(dirname(__FILE__) . '/auth.php');
                         <div class="col-md-4 col-md-push-4">
                             <div class="card">
                                 <div class="card-header"> 
-                                    <strong>Welcome to Self English Learning</strong> 
+                                    <strong>Introduction about System</strong> 
                                 </div>
                                 <div class="card-body">
-                                    <ul class="media-list">
-                                        <li class="media">
-                                            <div class="media-middle media-left">
-                                                <a href="#">
-                                                    <img class="img-circle" width="48" height="48" src="img/img-1.jpg" alt=" ">
-                                                </a>
-                                            </div>
-                                            <div class="media-middle media-body">
-                                                <h5 class="media-heading">
-                                                    <a class="link-muted" href="#"> Getting started</a><br> 
-                                                </h5>
-                                                Do you want to improve your English? Find out how to get the most out of our free website.
-                                            </div>
-                                        </li>
-                                        <hr id="hr-marging">
-                                        <li class="media">
-                                            <div class="media-middle media-left">
-                                                <a href="#">
-                                                    <img class="img-circle" width="48" height="48" src="img/img-3.jpg" alt="Sri Elephant T-shirt">
-                                                </a>
-                                            </div>
-                                            <div class="media-middle media-body">
-                                                <h5 class="media-heading">
-                                                    <a class="link-muted" href="#">Find out your English level</a>
-                                                </h5>
-                                                Take our free online English test and start learning now!
-                                            </div>
-                                        </li>
-                                       <hr id="hr-marging">
-                                        <li class="media">
-                                            <div class="media-middle media-left">
-                                                <a href="#">
-                                                    <img class="img-circle" width="48" height="48" src="img/img-2.png" alt="Tess Elephant T-shirt">
-                                                </a>
-                                            </div>
-                                            <div class="media-middle media-body">
-                                                <h5 class="media-heading">
-                                                    <a class="link-muted" href="#">The party</a>
-                                                </h5>
-                                                Have you ever had a party without telling your parents?
-                                            </div>
-                                        </li>
-                                       <hr id="hr-marging">
-                                    </ul>
+                                    <div class="card-body">
+                                        <div class="card-body">
+                                            <iframe width="350" height="200" src="https://www.youtube.com/embed/gPFFrA9CvwE" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
+                       
                         <div class="col-md-4 col-md-pull-8">
                             <div class="card">
                                 <div class="card-header"> 
