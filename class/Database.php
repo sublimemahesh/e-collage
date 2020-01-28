@@ -14,16 +14,16 @@
 class Database {
 
 
-  private $host = 'localhost';
-    private $name = 'islapiiu_self_english';
-    private $user = 'islapiiu_main';
-    private $password = 'Ue.t;FNgC?BG,Paf8V';
+//  private $host = 'localhost';
+//    private $name = 'islapiiu_self_english';
+//    private $user = 'islapiiu_main';
+//    private $password = 'Ue.t;FNgC?BG,Paf8V';
 
 
-    // private $host = 'localhost';
-    // private $name = 'self-english-learning';
-    // private $user = 'root';
-    // private $password = '';
+     private $host = 'localhost';
+     private $name = 'institute';
+     private $user = 'root';
+     private $password = '';
 
     public function __construct() {
 
