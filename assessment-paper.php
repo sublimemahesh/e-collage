@@ -34,7 +34,7 @@ include_once(dirname(__FILE__) . '/auth.php');
         <div class="layout-main">
 
             <!-- Navigation -->
-            <?php include './reading-navigation.php'; ?>
+            <?php include './navigation.php'; ?>
             <!--End Navigation -->
 
             <div class="layout-content">
