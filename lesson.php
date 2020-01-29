@@ -96,6 +96,11 @@ include_once(dirname(__FILE__) . '/auth.php');
                                                 <li><a href=".home-4" data-toggle="tab" class="tab-content-title">Speaking</a></li>
                                                 <li><a href=".home-5" data-toggle="tab" class="tab-content-title">Grammar & Vocabulary</a></li>
                                             </ul>
+                                            <a href="assesment.php">
+                                            <div class="form-group pull-right" style="margin-right: 40px;margin-top: 12%"  > 
+                                                 <button class=" btn btn-outline-primary btn-block btn-next" width="17%" type="button" id="create" >Assessment</button>
+                                            </div>
+                                            </a>
                                         </div>
                                     </div> 
                                 </div>
@@ -131,7 +136,7 @@ include_once(dirname(__FILE__) . '/auth.php');
                                 </div>
                             </div>
                         </div>
-                       
+
                         <div class="col-md-4 col-md-pull-8">
                             <div class="card">
                                 <div class="card-header"> 
@@ -159,8 +164,7 @@ include_once(dirname(__FILE__) . '/auth.php');
         <script src="js/vendor.min.js"></script>
         <script src="js/elephant.min.js"></script>
         <script src="js/application.min.js"></script>
-        <script src="js/sweetalert.min.js" type="text/javascript"></script>
-        <script src="ajax/js/check-login.js" type="text/javascript"></script>
+        <script src="js/sweetalert.min.js" type="text/javascript"></script> 
 
         <script>
             var tabChange = function () {

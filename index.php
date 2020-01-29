@@ -30,25 +30,83 @@ include_once(dirname(__FILE__) . '/auth.php');
         <?php include './top-header.php'; ?>
         <!--End Top header -->
 
-        <div class="layout-main">
+        <div class="layout-main parallax">
 
-            <!-- Navigation -->
             <?php include './disable-navigation.php'; ?>
-            <!--End Navigation -->
 
             <div class="layout-content">
-                <div class="layout-content-body">
-                    <div class="row gutter-xs panel"> 
-                        <div class="col-xs-12 col-md-12">
-                            <div class="card">
-                                <iframe id="existing-iframe-example" width="100%" height="610"  src="https://www.youtube.com/embed/OgVfft035Z8?enablejsapi=1"    frameborder="0" ></iframe>
-                            </div>
+                <div class="layout-content-body" style="margin-top: 4%; padding: 0px">
+                    <div class="row "> 
+
+                        <div class="col-xs-12 col-md-3">  
+
+                            <div class="card" style="margin-left: 8%">
+                                <div class="card-header">
+
+                                    <strong>Company Description</strong>
+                                </div>
+                                <div class="card-body">
+                                    <center>
+                                        <div class="col-md-12 m-y">
+                                            <p class="text-justify">
+                                                Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentiall
+                                            </p>
+                                            <p class="text-justify">
+                                                Lorem Ipsum is simply dummy text of  It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentiall
+                                            </p>
+                                            <ul class="list-group list-group-divided">
+
+                                                <li class="list-group-item" style=" ">
+                                                    Lorem Ipsum is simply dummy    
+                                                </li>
+                                                <li class="list-group-item">
+                                                    Lorem Ipsum is simply dummy    
+                                                </li>
+                                                <li class="list-group-item">
+                                                    Lorem Ipsum is simply dummy    
+                                                </li>
+
+                                            </ul>
+                                        </div>  
+                                    </center>
+
+                                </div>
+                            </div>  
+
+
+                        </div>
+
+                        <div class="col-xs-6 col-md-9"> 
+
+                            <iframe id="existing-iframe-example" width="92%" height="510"  src="https://www.youtube.com/embed/40wafTmaMro?enablejsapi=1"    frameborder="0" ></iframe>
+
                         </div>
                     </div>
                 </div> 
 
+                <div class="row" >
+                    <div class="col-xs-6 col-md-5"></div>
+                    <div class="col-xs-6 col-md-4" style="margin-top: 2%">
+                        <div class="">
+                            <div class="card-body">
+                                <center>
+                                    <div class="form-group "  style="margin-top: 4%;" id="btn-disply-none" > 
+                                        <button class=" btn btn-outline-primary btn-block btn-next "   type="button" id="create" style="width: 50%;" disabled="">Assessment</button>
+                                    </div>
+                                    <div class="form-group "  style="margin-top: 4%;display: none;" id="btn-disply" > 
+                                        <a href="lesson.php">  
+                                            <button class=" btn btn-outline-primary btn-block btn-next "   type="button" id="create" style="width: 50%;" >Assessment</button>
+                                        </a>
+                                    </div>
+                                </center>
 
-                <div class="layout-footer">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xs-6 col-md-3"></div>
+
+                </div>
+                <div class="layout-footer ">
                     <div class="layout-footer-body">
                         <small class="version">Version 1.4.0</small>
                         <small class="copyright"><?php echo date('Y') ?>&copy;  <a href="#">Synotect Private Limited.</a></small>
@@ -61,7 +119,7 @@ include_once(dirname(__FILE__) . '/auth.php');
             <script src="js/elephant.min.js"></script>
             <script src="js/application.min.js"></script>
             <script src="js/sweetalert.min.js" type="text/javascript"></script>
-            <script src="https://youtu.be/UTZjhCH80Zg/player_api"></script>
+
 
 
             <script type="text/javascript">
@@ -86,16 +144,9 @@ include_once(dirname(__FILE__) . '/auth.php');
 
                 function onPlayerStateChange(event) {
                     if (event.data === 0) {
-                        swal({
-                            title: "Congratulation.!",
-                            text: "Now you selected beginner level.",
-                            type: 'success',
-                            showCancelButton: false,
-                            confirmButtonColor: "rgb(240, 169, 0)",
-                            confirmButtonText: "Continue.",
-                        }, function () {
-                            window.location = "lesson.php";
-                        });
+                        $('#btn-disply-none').hide();
+                        $('#btn-disply').show();
+
                     }
                 }
 

@@ -1,5 +1,12 @@
 <?php
 $STUDENT = new Student($_SESSION['id']);
+$date = '';
+if (isset($_GET['date'])) {
+    $date = $_GET['date'];
+}
+
+date_default_timezone_set("Asia/Calcutta");
+$today = date('Y-m-d');
 ?>
 <div class="layout-header">
     <div class="navbar navbar-default">
@@ -161,263 +168,25 @@ $STUDENT = new Student($_SESSION['id']);
 
 
                 <div class="title-bar">
-                    <div class="row gutter-xs">
+                    <h1 class="title-bar-title">
                         <?php
-                        if ($STUDENT->level == 1) {
-                            ?> 
-
-                            <div class="col-md-4">
-                                <div class="card back-color"   >
-                                    <div class="card-body">
-                                        <div class="media">
-                                            <div class="media-middle media-left">
-                                                <div class="media-chart">
-                                                    <canvas data-chart="doughnut" data-animation="false" data-labels='["Resolved", "Unresolved"]' data-values='[{"backgroundColor": ["#f7a033", "#667589"], "data": [879, 377]}]' data-hide='["legend", "scalesX", "scalesY", "tooltips"]' height="50" width="50"></canvas>
-                                                </div>
-                                            </div>
-                                            <div class="media-middle media-body">
-                                                <h3 class="media-heading">
-                                                    <span class="fw-l black-color">BEGINNER</span>
-
-                                                    <span class="icon icon-unlock-alt pull-right black-color"></span>
-
-                                                </h3>
-                                                <small class="black-color">70% Completed</small>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-md-4 disabled">
-                                <div class="card">
-                                    <div class="card-body">
-                                        <div class="media">
-                                            <div class="media-middle media-left">
-                                                  <div class="media-chart">
-                                                    <canvas data-chart="doughnut" data-animation="false" data-labels='["Resolved", "Unresolved"]' data-values='[{"backgroundColor": ["#667589", "#f7a033"], "data": [879, 1]}]' data-hide='["legend", "scalesX", "scalesY", "tooltips"]' height="50" width="50"></canvas>
-                                                </div>
-                                            </div>
-                                            <div class="media-middle media-body">
-                                                <h3 class="media-heading">
-                                                    <span class="fw-l black-color">INTERMEDIATE</span>
-                                                    <span class="icon icon-lock pull-right black-color"></span>
-                                                </h3>
-                                                <small class="black-color">0% Completed</small>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-md-4 disabled">
-                                <div class="card">
-                                    <div class="card-body">
-                                        <div class="media">
-                                            <div class="media-middle media-left">
-                                                <div class="media-chart">
-                                                    <canvas data-chart="doughnut" data-animation="false" data-labels='["Resolved", "Unresolved"]' data-values='[{"backgroundColor": ["#667589", "#f7a033"], "data": [879, 1]}]' data-hide='["legend", "scalesX", "scalesY", "tooltips"]' height="50" width="50"></canvas>
-                                                </div>
-                                            </div>
-                                            <div class="media-middle media-body">
-                                                <h3 class="media-heading">
-                                                    <span class="fw-l black-color">ADVANCED</span>
-                                                    <span class="icon icon-lock pull-right black-color"></span>
-                                                </h3>
-                                                <small class="black-color">0% Completed</small>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        <?php } elseif ($STUDENT->level == 2) {
+                        if ($date == $today) {
                             ?>
-                            <div class="col-md-4">
-                                <div class="card "  >
-                                    <div class="card-body">
-                                        <div class="media">
-                                            <div class="media-middle media-left">
-                                                <div class="media-chart">
-                                                    <canvas data-chart="doughnut" data-animation="false" data-labels='["Resolved", "Unresolved"]' data-values='[{"backgroundColor": ["#f7a033", "#667589"], "data": [100, 1]}]' data-hide='["legend", "scalesX", "scalesY", "tooltips"]' height="50" width="50"></canvas>
-                                                </div>
-                                            </div>
-                                            <div class="media-middle media-body">
-                                                <h3 class="media-heading">
-                                                    <span class="fw-l black-color">BEGINNER</span>
-                                                    <span class="icon icon-unlock-alt pull-right black-color"></span>
-                                                </h3>
-                                                <small class="black-color">100% Completed</small>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-md-4" >
-                                <div class="card back-color " >
-                                    <div class="card-body">
-                                        <div class="media">
-                                            <div class="media-middle media-left">
-                                                <div class="media-chart">
-                                                    <canvas data-chart="doughnut" data-animation="false" data-labels='["Resolved", "Unresolved"]' data-values='[{"backgroundColor": ["#f7a033", "#667589"], "data": [60, 100]}]' data-hide='["legend", "scalesX", "scalesY", "tooltips"]' height="50" width="50"></canvas>
-                                                </div>
-                                            </div>
-                                            <div class="media-middle media-body">
-                                                <h3 class="media-heading">
-                                                    <span class="fw-l black-color">INTERMEDIATE</span>
-                                                    <span class="icon icon-unlock-alt pull-right black-color"></span>
-                                                </h3>
-                                                <small class="black-color">40% Completed</small>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-md-4 disabled">
-                                <div class="card">
-                                    <div class="card-body">
-                                        <div class="media">
-                                            <div class="media-middle media-left">
-                                                <div class="media-chart">
-                                                    <canvas data-chart="doughnut" data-animation="false" data-labels='["Resolved", "Unresolved"]' data-values='[{"backgroundColor": ["#667589", "#f7a033"], "data": [879, 1]}]' data-hide='["legend", "scalesX", "scalesY", "tooltips"]' height="50" width="50"></canvas>
-                                                </div>
-                                            </div>
-                                            <div class="media-middle media-body">
-                                                <h3 class="media-heading">
-                                                    <span class="fw-l black-color">ADVANCED</span>
-                                                    <span class="icon icon-lock pull-right black-color"></span>
-                                                </h3>
-                                                <small class="black-color">0% Completed</small>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <?php
-                        } elseif ($STUDENT->level == 3) {
-                            ?>
-                            <div class="col-md-4 ">
-                                <div class="card "   >
-                                    <div class="card-body">
-                                        <div class="media">
-                                            <div class="media-middle media-left">
-                                                <div class="media-chart">
-                                                    <canvas data-chart="doughnut" data-animation="false" data-labels='["Resolved", "Unresolved"]' data-values='[{"backgroundColor": ["#f7a033", "#667589"], "data": [879, 377]}]' data-hide='["legend", "scalesX", "scalesY", "tooltips"]' height="50" width="50"></canvas>
-                                                </div>
-                                            </div>
-                                            <div class="media-middle media-body">
-                                                <h3 class="media-heading">
-                                                    <span class="fw-l black-color">BEGINNER</span>
-                                                    <span class="icon icon-unlock-alt pull-right black-color"></span>
-                                                </h3>
-
-                                                <small class="black-color">100% Completed</small>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-md-4">
-                                <div class="card  ">
-                                    <div class="card-body">
-                                        <div class="media">
-                                            <div class="media-middle media-left">
-                                                <div class="media-chart">
-                                                    <canvas data-chart="doughnut" data-animation="false" data-labels='["Resolved", "Unresolved"]' data-values='[{"backgroundColor": ["#f7a033", "#667589"], "data": [879, 377]}]' data-hide='["legend", "scalesX", "scalesY", "tooltips"]' height="50" width="50"></canvas>
-                                                </div>
-                                            </div>
-                                            <div class="media-middle media-body">
-                                                <h3 class="media-heading">
-                                                    <span class="fw-l black-color">INTERMEDIATE</span>
-                                                    <span class="icon icon-unlock-alt pull-right black-color"></span>
-                                                </h3>
-                                                <small class="black-color">100% Completed</small>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-md-4">
-                                <div class="card back-color ">
-                                    <div class="card-body">
-                                        <div class="media">
-                                            <div class="media-middle media-left">
-                                                <div class="media-chart">
-                                                    <canvas data-chart="doughnut" data-animation="false" data-labels='["Resolved", "Unresolved"]' data-values='[{"backgroundColor": ["#667589", "#f7a033"], "data": [879, 377]}]' data-hide='["legend", "scalesX", "scalesY", "tooltips"]' height="50" width="50"></canvas>
-                                                </div>
-                                            </div>
-                                            <div class="media-middle media-body">
-                                                <h3 class="media-heading">
-                                                    <span class="fw-l black-color">ADVANCED</span>
-                                                    <span class="icon icon-unlock-alt pull-right black-color"></span>
-                                                </h3>
-                                                <small class="black-color">10% Completed</small>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>                                        
-                            </div>
+                            <span class="d-ib">Lesson on Today - <strong style=" color: #0f660c;"> <?php echo $date ?></strong></span>
+                        <?php } else if ($date > $today) { ?>
+                            <span class="d-ib">Lesson on  - <strong style=" color: #0f660c;"> <?php echo $date ?></strong></span>
                         <?php } else { ?>
-                            <div class="col-md-4 disabled">
-                                <div class="card "   >
-                                    <div class="card-body">
-                                        <div class="media">
-                                            <div class="media-middle media-left">
-                                                <div class="media-chart">
-                                                    <canvas data-chart="doughnut" data-animation="false" data-labels='["Resolved", "Unresolved"]' data-values='[{"backgroundColor": ["#f7a033", "#667589"], "data": [879, 377]}]' data-hide='["legend", "scalesX", "scalesY", "tooltips"]' height="50" width="50"></canvas>
-                                                </div>
-                                            </div>
-                                            <div class="media-middle media-body">
-                                                <h3 class="media-heading">
-                                                    <span class="fw-l black-color">BEGINNER</span>
-                                                    <span class="icon icon-unlock-alt pull-right black-color"></span>
-                                                </h3>
-
-                                                <small class="black-color">0% Completed</small>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-md-4 disabled">
-                                <div class="card">
-                                    <div class="card-body">
-                                        <div class="media">
-                                            <div class="media-middle media-left">
-                                                <div class="media-chart">
-                                                    <canvas data-chart="doughnut" data-animation="false" data-labels='["Resolved", "Unresolved"]' data-values='[{"backgroundColor": ["#f7a033", "#667589"], "data": [879, 377]}]' data-hide='["legend", "scalesX", "scalesY", "tooltips"]' height="50" width="50"></canvas>
-                                                </div>
-                                            </div>
-                                            <div class="media-middle media-body">
-                                                <h3 class="media-heading">
-                                                    <span class="fw-l black-color">INTERMEDIATE</span>
-                                                    <span class="icon icon-unlock-alt pull-right black-color"></span>
-                                                </h3>
-                                                <small class="black-color">0% Completed</small>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-md-4 disabled">
-                                <div class="card">
-                                    <div class="card-body">
-                                        <div class="media">
-                                            <div class="media-middle media-left">
-                                                <div class="media-chart">
-                                                    <canvas data-chart="doughnut" data-animation="false" data-labels='["Resolved", "Unresolved"]' data-values='[{"backgroundColor": ["#667589", "#f7a033"], "data": [879, 377]}]' data-hide='["legend", "scalesX", "scalesY", "tooltips"]' height="50" width="50"></canvas>
-                                                </div>
-                                            </div>
-                                            <div class="media-middle media-body">
-                                                <h3 class="media-heading">
-                                                    <span class="fw-l black-color">ADVANCED</span>
-                                                    <span class="icon icon-unlock-alt pull-right black-color"></span>
-                                                </h3>
-                                                <small class="black-color">0% Completed</small>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>                                        
-                            </div>
+                            <span class="d-ib"> Dashboard</span>
                         <?php } ?>
-                    </div>
+                        <span class="d-ib">
+                            <a class="title-bar-shortcut" href="#" title="Add to shortcut list" data-container="body" data-toggle-text="Remove from shortcut list" data-trigger="hover" data-placement="right" data-toggle="tooltip">
+                                <span class="sr-only">Add to shortcut list</span>
+                            </a>
+                        </span>
+                    </h1>
+                    <p class="title-bar-description">
+                        <small>You can personalize your dashboard by using <a href="widgets.html">widgets</a>.</small>
+                    </p>
                 </div>
             </nav>
         </div>
