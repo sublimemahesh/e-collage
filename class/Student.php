@@ -17,9 +17,12 @@ class Student {
     public $full_name;
     public $student_id;
     public $email;
-    public $batch;
-    public $birth_date;
+    public $nic_number;
+    public $gender;
     public $age;
+    public $phone_number;
+    public $address;
+    public $education_level;
     public $password;
     public $authToken;
     public $lastLogin;
@@ -40,9 +43,12 @@ class Student {
             $this->full_name = $result['full_name'];
             $this->student_id = $result['student_id'];
             $this->email = $result['email'];
-            $this->batch = $result['batch'];
-            $this->birth_date = $result['birth_date'];
+            $this->nic_number = $result['nic_number'];
+            $this->gender = $result['gender'];
             $this->age = $result['age'];
+            $this->phone_number = $result['phone_number'];
+            $this->address = $result['address'];
+            $this->education_level = $result['education_level'];
             $this->password = $result['password'];
             $this->authToken = $result['authToken'];
             $this->lastLogin = $result['lastLogin'];
@@ -55,10 +61,16 @@ class Student {
 
     public function create() {
 
-        $query = "INSERT INTO `student` (`full_name`, `student_id`, `email`,`password`) VALUES  ('"
+        $query = "INSERT INTO `student` (`full_name`, `student_id`, `email`,`nic_number`,`gender`,`age`,`phone_number`,`address`,`education_level`,`password`) VALUES  ('"
                 . $this->full_name . "','"
                 . $this->student_id . "', '"
                 . $this->email . "', '" 
+                . $this->nic_number . "', '" 
+                . $this->gender . "', '" 
+                . $this->age . "', '" 
+                . $this->phone_number . "', '" 
+                . $this->address . "', '" 
+                . $this->education_level . "', '" 
                 . $this->password . "')";
 
         $db = new Database();
@@ -78,7 +90,7 @@ class Student {
 
         $enPass = md5($password);
 
-        $query = "SELECT `id`,`full_name`,`student_id`,`email`, `batch`,`age` FROM `student` WHERE `student_id`= '" . $student_id . "' AND `password`= '" . $enPass . "'";
+        $query = "SELECT `id`,`full_name`,`student_id`,`email`, `nic_number`,`age` FROM `student` WHERE `student_id`= '" . $student_id . "' AND `password`= '" . $enPass . "'";
 
         $db = new Database();
 
@@ -179,7 +191,7 @@ class Student {
         unset($_SESSION["full_name"]);
         unset($_SESSION["email"]);
         unset($_SESSION["student_id"]);
-        unset($_SESSION["batch"]);
+        unset($_SESSION["nic_number"]);
         unset($_SESSION["authToken"]);
         unset($_SESSION["level"]);
 
@@ -247,7 +259,7 @@ class Student {
         $_SESSION["id"] = $student['id'];
         $_SESSION["student_id"] = $student['student_id'];
         $_SESSION["email"] = $student['email'];
-        $_SESSION["batch"] = $student['batch'];
+        $_SESSION["nic_number"] = $student['nic_number'];
         $_SESSION["full_name"] = $student['full_name'];
         $_SESSION["authToken"] = $student['authToken'];
         $_SESSION["lastLogin"] = $student['lastLogin'];

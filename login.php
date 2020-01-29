@@ -37,7 +37,7 @@
                             <div class="valid-message"></div>
                         </div> 
                         <div class="form-group">
-                            <div class="pull-left text-danger btn-padding font-size-new" id="message"></div>
+                            <div class="text-center text-danger btn-padding font-size-new" id="message"></div>
                         </div>
                         <button class="btn btn-primary btn-block" type="submit"  >Sign in</button>
                     </form>

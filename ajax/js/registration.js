@@ -11,6 +11,24 @@ $(document).ready(function () {
                     }
                 ]
             },
+            "nic_number": {
+                "required": true,
+                "tests": [
+                    {
+                        "type": "null",
+                        "message": "Please enter the nic number..!"
+                    }
+                ]
+            },
+            "gender": {
+                "required": true,
+                "tests": [
+                    {
+                        "type": "select",
+                        "message": "Please select the gender..!"
+                    }
+                ]
+            },
             "email": {
                 "required": true,
                 "tests": [
@@ -41,6 +59,15 @@ $(document).ready(function () {
                         "message": "Please enter your password..!"
                     }
                 ]
+            },
+            "com_password": {
+                "required": true,
+                "tests": [
+                    {
+                        "type": "null",
+                        "message": "Please enter your confirm password..!"
+                    }
+                ]
             }
         }
     });
@@ -61,7 +88,11 @@ $(document).ready(function () {
                 processData: false,
                 dataType: "JSON",
                 success: function (result) {
-                    window.location.replace("index.php");
+                    if (result.status == 'error') {
+                        $('#message').text(result.message);
+                    } else {
+                        window.location.replace("index.php");
+                    }
                 }
             });
         }
