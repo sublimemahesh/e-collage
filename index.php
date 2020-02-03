@@ -7,7 +7,7 @@ include_once(dirname(__FILE__) . '/auth.php');
     <head>
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <title>Self Learning English</title>
+        <title>Web Learning</title>
         <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no">
         <meta name="description" content="Elephant is an admin template that helps you build modern Admin Applications, professionally fast! Built on top of Bootstrap, it includes a large collection of HTML, CSS and JS components that are simple to use and easy to customize.">
         <meta property="og:url" content="http://demo.madebytilde.com/elephant">
@@ -35,7 +35,7 @@ include_once(dirname(__FILE__) . '/auth.php');
             <?php include './disable-navigation.php'; ?>
 
             <div class="layout-content">
-                <div class="layout-content-body" style="margin-top: 4%; padding: 0px">
+                <div class="layout-content-body" style="margin-top: 2%; padding: 0px">
                     <div class="row "> 
 
                         <div class="col-xs-12 col-md-3">  
@@ -77,8 +77,8 @@ include_once(dirname(__FILE__) . '/auth.php');
                         </div>
 
                         <div class="col-xs-6 col-md-9"> 
-
-                            <iframe id="existing-iframe-example" width="92%" height="510"  src="https://www.youtube.com/embed/40wafTmaMro?enablejsapi=1"    frameborder="0" ></iframe>
+                            <iframe id="existing-iframe-example" width="92%" height="510" src="https://www.youtube.com/embed/viHILXVY_eU?enablejsapi=1?controls=0&showinfo=0&rel=0&autoplay=1&loop=1&playlist=viHILXVY_eU" allow="autoplay" allowfullscreen></iframe>
+<!--                            <iframe id="existing-iframe-example" width="92%" height="510"  src="https://www.youtube.com/embed/40wafTmaMro?enablejsapi=1autoplay=1"    frameborder="0" ></iframe>-->
 
                         </div>
                     </div>
@@ -90,12 +90,12 @@ include_once(dirname(__FILE__) . '/auth.php');
                         <div class="">
                             <div class="card-body">
                                 <center>
-                                    <div class="form-group "  style="margin-top: 4%;" id="btn-disply-none" > 
-                                        <button class=" btn btn-outline-primary btn-block btn-next "   type="button" id="create" style="width: 50%;" disabled="">Assessment</button>
-                                    </div>
-                                    <div class="form-group "  style="margin-top: 4%;display: none;" id="btn-disply" > 
+                                    <!--                                    <div class="form-group "  style="margin-top: 4%;" id="btn-disply-none" > 
+                                                                            <button class=" btn btn-outline-primary btn-block btn-next "   type="button" id="create" style="width: 50%;" disabled="">Start Your Lessons</button>
+                                                                        </div>-->
+                                    <div class="form-group "  style="margin-top: 2%;" id="btn-disply" > 
                                         <a href="lesson.php">  
-                                            <button class=" btn btn-outline-primary btn-block btn-next "   type="button" id="create" style="width: 50%;" >Assessment</button>
+                                            <button class=" btn btn-outline-primary btn-block btn-next "   type="button" id="create" style="width: 80%;font-size: 16px" >Start Your Lessons</button>
                                         </a>
                                     </div>
                                 </center>
@@ -142,13 +142,13 @@ include_once(dirname(__FILE__) . '/auth.php');
                     document.getElementById('existing-iframe-example').style.borderColor = '#FF6D00';
                 }
 
-                function onPlayerStateChange(event) {
-                    if (event.data === 0) {
-                        $('#btn-disply-none').hide();
-                        $('#btn-disply').show();
-
-                    }
-                }
+//                function onPlayerStateChange(event) {
+//                    if (event.data === 0) {
+//                        $('#btn-disply-none').hide();
+//                        $('#btn-disply').show();
+//
+//                    }
+//                }
 
             </script>
 
