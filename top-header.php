@@ -3,6 +3,8 @@ $STUDENT = new Student($_SESSION['id']);
 $date = '';
 if (isset($_GET['date'])) {
     $date = $_GET['date'];
+} else {
+    $date = 'nu';
 }
 
 date_default_timezone_set("Asia/Calcutta");
@@ -173,20 +175,27 @@ $today = date('Y-m-d');
                         if ($date == $today) {
                             ?>
                             <span class="d-ib">Lesson on Today - <strong style=" color: #0f660c;"> <?php echo $date ?></strong></span>
-                        <?php } else if ($date > $today) { ?>
+                            <span class="d-ib">
+                                <a class="title-bar-shortcut" href="#" title="Add to shortcut list" data-container="body" data-toggle-text="Remove from shortcut list" data-trigger="hover" data-placement="right" data-toggle="tooltip">
+                                    <span class="sr-only">Add to shortcut list</span>
+                                </a>
+                            </span>
+                        <?php } else if ($date == 'nu') { ?>
+                            Welcome To Web Learning
+                        <?php } else {
+                            ?>
                             <span class="d-ib">Lesson on  - <strong style=" color: #0f660c;"> <?php echo $date ?></strong></span>
-                        <?php } else { ?>
-                            <span class="d-ib"> Dashboard</span>
-                        <?php } ?>
-                        <span class="d-ib">
-                            <a class="title-bar-shortcut" href="#" title="Add to shortcut list" data-container="body" data-toggle-text="Remove from shortcut list" data-trigger="hover" data-placement="right" data-toggle="tooltip">
-                                <span class="sr-only">Add to shortcut list</span>
-                            </a>
-                        </span>
+                            <span class="d-ib">
+                                <a class="title-bar-shortcut" href="#" title="Add to shortcut list" data-container="body" data-toggle-text="Remove from shortcut list" data-trigger="hover" data-placement="right" data-toggle="tooltip">
+                                    <span class="sr-only">Add to shortcut list</span>
+                                </a>
+                            </span>
+                        <?php }
+                        ?>
+
+
                     </h1>
-                    <p class="title-bar-description">
-                        <small>You can personalize your dashboard by using <a href="widgets.html">widgets</a>.</small>
-                    </p>
+
                 </div>
             </nav>
         </div>

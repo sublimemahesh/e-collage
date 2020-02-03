@@ -6,37 +6,41 @@
 
                 <?php
                 date_default_timezone_set("Asia/Calcutta");
-     
-                $today = date('Y-m-d');
-                $begin = new DateTime('2020-01-15');
-                $end = new DateTime('2020-02-10');
-                $interval = DateInterval::createFromDateString('1 day');
-                $period = new DatePeriod($begin, $interval, $end);
-                foreach ($period as $key => $date) {
-                    $key++;
 
-                    if (date('Y-m-d') == $date->format("Y-m-d")) {
+                // Start date
+                $date = date('Y-m-d');
+                // End date
+                $end_date = '2020-1-24';
+                $key = 1;
+
+                while (strtotime($date) >= strtotime($end_date)) {
+
+
+                    if (date('Y-m-d') == $date) {
                         ?>
 
                         <li class="sidenav-item has-subnav card"> 
-                            <a href="lesson.php?date=<?php echo $date->format("Y-m-d"); ?>" style="padding-left: 10px;color: #0f660c;font-weight: 600;font-size: 16px;">Lesson <?php echo $key ?>    <b style="padding-left: 8px;"><?php echo $date->format(" Y-m-d"); ?></b> </a>
+                            <a href="lesson.php?date=<?php echo $date ?>" style="padding-left: 10px;color: #0f660c;font-weight: 600;font-size: 16px;">Lesson <?php echo $key ?>    <b style="padding-left: 8px;"><?php echo $date; ?></b> </a>
                         </li> 
+
                         <?php
-                    } else if (date('Y-m-d') < $date->format("Y-m-d")) {
-                        ?>
-                        <li class="sidenav-item has-subnav card disabled"> 
-                            <a href="#" style="padding-left: 10px;">Lesson <?php echo $key ?>    <b style="padding-left: 8px;"><?php echo $date->format(" Y-m-d"); ?></b> </a>
-                        </li> 
-                        <?php
-                    } else {
+                    } else if (date('Y-m-d') > $date) {
                         ?>
                         <li class="sidenav-item has-subnav card"> 
-                            <a href="lesson.php?date=<?php echo $date->format("Y-m-d"); ?>" style="padding-left: 10px;">Lesson <?php echo $key ?>    <b style="padding-left: 8px;"><?php echo $date->format(" Y-m-d"); ?></b> </a>
+                            <a href="lesson.php?date=<?php echo $date ?>" style="padding-left: 10px;">Lesson <?php echo $key ?>    <b style="padding-left: 8px;"><?php echo $date; ?></b> </a>
                         </li> 
                         <?php
                     }
+
+                    $date = date("Y-m-d", strtotime("-1 day", strtotime($date)));
+                    $key++;
                 }
                 ?>
+
+
+
+
+
             </ul>        
         </div>
     </div>
