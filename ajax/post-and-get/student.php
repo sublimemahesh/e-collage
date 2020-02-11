@@ -15,7 +15,7 @@ if ($_POST['action'] == 'update') {
     $imgName = null;
 
     if ($handle->uploaded) {
-        
+
         if (empty($_POST["oldImageName"])) {
             $handle->image_resize = true;
             $handle->file_new_name_ext = 'jpg';
@@ -60,6 +60,33 @@ if ($_POST['action'] == 'update') {
 }
 
 
+if ($_POST['action'] == 'reset_password') {
+
+    $OldPassOk = student::checkOldPass($_POST["id"], $_POST["old_passsword"]);
+   
+    if ($_POST["new_password"] === $_POST["com_password"]) {
+        if ($OldPassOk) {
+            $result = student::changePassword($_POST["id"], $_POST["new_password"]);
+            if ($result == 'TRUE') {
+                $result = ["id" => $_POST['id'], "status" =>'true'];
+                echo json_encode($result);
+                exit();
+            } else {
+                $result = ["id" => $_POST['id'], "status" => 'error'];
+                echo json_encode($result);
+                exit();
+            }
+        } else {
+            $result = ["id" => $_POST['id'], "status" => 'old_passw_error'];
+            echo json_encode($result);
+            exit();
+        }
+    } else {
+        $result = ["id" => $_POST['id'], "status" => 'not_match'];
+        echo json_encode($result);
+        exit();
+    }
+}
 if ($_POST['action'] == 'UPDATESTUDENTLEVEL') {
 
     if (isset($_POST['que_1'])) {

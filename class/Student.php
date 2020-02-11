@@ -196,6 +196,7 @@ class Student {
         unset($_SESSION["nic_number"]);
         unset($_SESSION["authToken"]);
         unset($_SESSION["level"]);
+        unset($_SESSION["image_name"]);
 
         return TRUE;
     }
@@ -273,7 +274,7 @@ class Student {
         $_SESSION["authToken"] = $student['authToken'];
         $_SESSION["lastLogin"] = $student['lastLogin'];
         $_SESSION['login_time'] = time();
-        $_SESSION['level'] = $student['level'];
+        $_SESSION['image_name'] = $student['image_name'];
     }
 
     private function setAuthToken($id) {
