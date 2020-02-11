@@ -64,13 +64,13 @@ class Student {
         $query = "INSERT INTO `student` (`full_name`, `student_id`, `email`,`nic_number`,`gender`,`age`,`phone_number`,`address`,`education_level`,`password`) VALUES  ('"
                 . $this->full_name . "','"
                 . $this->student_id . "', '"
-                . $this->email . "', '" 
-                . $this->nic_number . "', '" 
-                . $this->gender . "', '" 
-                . $this->age . "', '" 
-                . $this->phone_number . "', '" 
-                . $this->address . "', '" 
-                . $this->education_level . "', '" 
+                . $this->email . "', '"
+                . $this->nic_number . "', '"
+                . $this->gender . "', '"
+                . $this->age . "', '"
+                . $this->phone_number . "', '"
+                . $this->address . "', '"
+                . $this->education_level . "', '"
                 . $this->password . "')";
 
         $db = new Database();
@@ -217,7 +217,7 @@ class Student {
                 . "`status` ='" . $this->status . "', "
                 . "`level` ='" . $this->level . "' "
                 . "WHERE `id` = '" . $this->id . "'";
-        
+
         $db = new Database();
 
         $result = $db->readQuery($query);
@@ -316,6 +316,14 @@ class Student {
 
             return $result;
         }
+    }
+
+    public function getLastStudentId() {
+        $query = " SELECT `id` FROM `student` ORDER BY `id` DESC LIMIT 1";
+        $db = new Database();
+        $result = mysql_fetch_assoc($db->readQuery($query));
+
+        return $result['id'];
     }
 
     public function GenarateCode($email) {

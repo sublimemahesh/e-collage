@@ -42,6 +42,7 @@ $(document).ready(function () {
                     }
                 ]
             },
+            
             "student_id": {
                 "required": true,
                 "tests": [

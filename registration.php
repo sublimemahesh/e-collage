@@ -1,4 +1,10 @@
-
+<?php
+include './class/include.php';
+$STUDENT = new Student(NULL);
+$LAST_ID = $STUDENT->getLastStudentId();
+$LAST_ID = $LAST_ID+1;
+ 
+?>
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -96,7 +102,7 @@
                             </div>
                             <div class="col-sm-6">
                                 <label class="custom-control custom-control-primary custom-radio">
-                                    <input class="custom-control-input" type="radio" name="education_level" value="o/l">
+                                    <input class="custom-control-input" type="radio" name="education_level" value="o/l"  >
                                     <span class="custom-control-indicator"></span>
                                     <span class="custom-control-label">Educational Level ( O / L )</span>
                                 </label>
@@ -121,7 +127,7 @@
                             <div class="col-sm-6">
                                 <div class="form-group">
                                     <label for="student_id">Student ID</label>
-                                    <input id="student_id" class="form-control" type="text" name="student_id"  data-field="student_id"  >
+                                    <input id="student_id" class="form-control" type="text" name="student_id"  data-field="student_id" value="<?php echo 'STU00'.$LAST_ID?>" readonly="">
                                     <div class="valid-message"></div>
                                 </div>
                             </div>
