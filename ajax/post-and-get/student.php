@@ -2,6 +2,64 @@
 
 include '../../class/include.php';
 
+
+//Update Student Details
+if ($_POST['action'] == 'update') {
+    $STUDENT = new Student($_POST['id']);
+
+    $dir_dest = '../../upload/student/profile/';
+
+
+    $handle = new Upload($_FILES['image']);
+
+    $imgName = null;
+
+    if ($handle->uploaded) {
+        
+        if (empty($_POST["oldImageName"])) {
+            $handle->image_resize = true;
+            $handle->file_new_name_ext = 'jpg';
+            $handle->image_ratio_crop = 'C';
+            $handle->file_new_name_body = Helper::randamId();
+        } else {
+            $handle->image_resize = true;
+            $handle->file_new_name_body = TRUE;
+            $handle->file_overwrite = TRUE;
+            $handle->file_new_name_ext = FALSE;
+            $handle->image_ratio_crop = 'C';
+            $handle->file_new_name_body = $_POST["oldImageName"];
+        }
+        $handle->image_x = 128;
+        $handle->image_y = 128;
+
+        $handle->Process($dir_dest);
+
+        if ($handle->processed) {
+            $info = getimagesize($handle->file_dst_pathname);
+            $imgName = $handle->file_dst_name;
+        }
+    }
+
+    $STUDENT->image_name = $imgName;
+
+
+    $STUDENT->full_name = $_POST['full_name'];
+    $STUDENT->nic_number = $_POST['nic_number'];
+    $STUDENT->gender = $_POST['gender'];
+    $STUDENT->age = $_POST['age'];
+    $STUDENT->phone_number = $_POST['phone_number'];
+    $STUDENT->address = $_POST['address'];
+    $STUDENT->education_level = $_POST['education_level'];
+    $STUDENT->email = $_POST['email'];
+    $STUDENT->update();
+
+
+    $result = ["id" => $_POST['id']];
+    echo json_encode($result);
+    exit();
+}
+
+
 if ($_POST['action'] == 'UPDATESTUDENTLEVEL') {
 
     if (isset($_POST['que_1'])) {
@@ -65,6 +123,7 @@ if ($_POST['action'] == 'UPDATESTUDENTLEVEL') {
     }
 }
 
+//Assessment Level
 if ($_POST['action'] == 'ASSESSMENT_LEVEL') {
 
     if (isset($_POST['que_1'])) {
@@ -86,7 +145,7 @@ if ($_POST['action'] == 'ASSESSMENT_LEVEL') {
 
 
     $cal = $que_1 + $que_2 + $que_3 + $que_4 + $que_5;
- 
+
 
     if ($cal <= 2) {
 

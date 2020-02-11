@@ -7,19 +7,14 @@ include_once(dirname(__FILE__) . '/auth.php');
     <head>
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <title>Profile &middot; Elephant Template &middot; The fastest way to build Modern Admin APPS for any platform, browser, or device.</title>
+        <title>Profile   </title>
         <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no">
-        <meta name="description" content="Elephant is an admin template that helps you build modern Admin Applications, professionally fast! Built on top of Bootstrap, it includes a large collection of HTML, CSS and JS components that are simple to use and easy to customize.">
         <meta property="og:url" content="http://demo.madebytilde.com/elephant">
         <meta property="og:type" content="website">
-        <meta property="og:title" content="The fastest way to build Modern Admin APPS for any platform, browser, or device.">
-        <meta property="og:description" content="Elephant is an admin template that helps you build modern Admin Applications, professionally fast! Built on top of Bootstrap, it includes a large collection of HTML, CSS and JS components that are simple to use and easy to customize.">
         <meta property="og:image" content="../../elephant.html">
         <meta name="twitter:card" content="summary_large_image">
         <meta name="twitter:site" content="@madebytilde">
         <meta name="twitter:creator" content="@madebytilde">
-        <meta name="twitter:title" content="The fastest way to build Modern Admin APPS for any platform, browser, or device.">
-        <meta name="twitter:description" content="Elephant is an admin template that helps you build modern Admin Applications, professionally fast! Built on top of Bootstrap, it includes a large collection of HTML, CSS and JS components that are simple to use and easy to customize.">
         <meta name="twitter:image" content="../../elephant.html">
         <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
         <link rel="icon" type="image/png" href="favicon-32x32.png" sizes="32x32">
@@ -32,6 +27,8 @@ include_once(dirname(__FILE__) . '/auth.php');
         <link rel="stylesheet" href="css/elephant.min.css">
         <link rel="stylesheet" href="css/application.min.css">
         <link rel="stylesheet" href="css/profile.min.css">
+        <link href="css/sweetalert.css" rel="stylesheet" type="text/css"/>
+
     </head>
     <body class="layout layout-header-fixed">
         <!--Top header -->
@@ -46,10 +43,17 @@ include_once(dirname(__FILE__) . '/auth.php');
                             <div class="profile-container">
                                 <div class="profile-card">
                                     <div class="profile-avetar">
-                                        <img class="profile-avetar-img" width="128" height="128" src="img/0180441436.jpg" alt="Teddy Wilson">
+                                        <?php if (isset($STUDENT->image_name)) { ?>
+                                            <img class="profile-avetar-img"  src="upload/student/profile/<?php echo $STUDENT->image_name ?>"  >
+                                        <?php } else { ?>
+                                            <img   width="128" height="128" src="img/0180441436.jpg"  >
+                                        <?php } ?>
+                                        
                                     </div>
                                     <div class="profile-overview">
                                         <h1 class="profile-name"><?php echo $STUDENT->full_name ?></h1>
+                                        <p style="margin: 0px 0 1px;">NIC Number : <?php echo $STUDENT->nic_number ?></p>
+                                        <p style="margin: 0px 0 1px;">Email : <?php echo $STUDENT->email ?></p>
                                     </div>
 
                                 </div> 
@@ -59,34 +63,45 @@ include_once(dirname(__FILE__) . '/auth.php');
                     <div class="row">
                         <div class="col-md-2"></div>
                         <div class="col-md-8"> 
-                            <div class="demo-form-wrapper card " style="padding: 50px">
-                              
-                                <form class="form form-horizontal">
+                            <form class="demo-form-wrapper card " style="padding: 50px" id="form-data">
+
+                                <div class="form form-horizontal">
                                     <div class="form-group">
-                                        <label class="col-sm-3 control-label" for="form-control-1">Student Name: </label>
+                                        <label class="col-sm-3 control-label" for="full_name">Student Name: </label>
                                         <div class="col-sm-9">
-                                            <input id="form-control-1" class="form-control" type="text"  value="<?php echo $STUDENT->full_name ?>">
+                                            <input id="full_name" name="full_name" class="form-control" type="text"  value="<?php echo $STUDENT->full_name ?>">
                                         </div>
                                     </div>
                                     <div class="form-group">
-                                        <label class="col-sm-3 control-label" for="form-control-1">Email: </label>
+                                        <label class="col-sm-3 control-label" for="email">Student Id: </label>
                                         <div class="col-sm-9">
-                                            <input id="form-control-1" class="form-control" type="text" value="<?php echo $STUDENT->email ?>">
+                                            <input  class="form-control" type="text" value="<?php echo $STUDENT->student_id ?>" readonly="">
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="col-sm-3 control-label" for="email">Email: </label>
+                                        <div class="col-sm-9">
+                                            <input id="email" name="email" class="form-control" type="text" value="<?php echo $STUDENT->email ?>">
                                         </div>
                                     </div>
                                     <div class="form-group">
                                         <label class="col-sm-3 control-label" for="form-control-1">Image: </label>
 
                                         <div class="col-sm-9">
-                                            <input id="form-control-1" class="form-control" type="file">
-                                            <img class=" " width="128" height="128" src="img/0180441436.jpg"  >
+                                            <input id="image" name="image" class="form-control" type="file">
+                                            <?php if (isset($STUDENT->image_name)) { ?>
+                                                <img  src="upload/student/profile/<?php echo $STUDENT->image_name ?>"  >
+                                            <?php } else { ?>
+                                                <img   width="128" height="128" src="img/0180441436.jpg"  >
+                                            <?php } ?>
+
                                         </div>
 
                                     </div>
                                     <div class="form-group">
-                                        <label class="col-sm-3 control-label" for="form-control-1">NIC Number: </label>
+                                        <label class="col-sm-3 control-label" for="nic_number">NIC Number: </label>
                                         <div class="col-sm-9">
-                                            <input id="form-control-1" class="form-control" type="text" value="<?php echo $STUDENT->nic_number ?>">
+                                            <input id="nic_number" name="nic_number" class="form-control" type="text" value="<?php echo $STUDENT->nic_number ?>">
                                         </div>
                                     </div>
                                     <div class="form-group">
@@ -107,53 +122,51 @@ include_once(dirname(__FILE__) . '/auth.php');
                                         </div>
                                     </div>
                                     <div class="form-group">
-                                        <label class="col-sm-3 control-label" for="form-control-1">Age: </label>
+                                        <label class="col-sm-3 control-label" for="age">Age: </label>
                                         <div class="col-sm-9">
-                                            <input id="form-control-1" class="form-control" type="text" value="<?php echo $STUDENT->age ?>">
+                                            <input id="age" name="age" class="form-control" type="text" value="<?php echo $STUDENT->age ?>">
                                         </div>
                                     </div>
                                     <div class="form-group">
-                                        <label class="col-sm-3 control-label" for="form-control-1">Phone Number: </label>
+                                        <label class="col-sm-3 control-label" for="phone_number">Phone Number: </label>
                                         <div class="col-sm-9">
-                                            <input id="form-control-1" class="form-control" type="text" value="<?php echo $STUDENT->phone_number ?>">
+                                            <input id="phone_number" name="phone_number" class="form-control" type="text" value="<?php echo $STUDENT->phone_number ?>">
                                         </div>
                                     </div>
                                     <div class="form-group">
-                                        <label class="col-sm-3 control-label" for="form-control-1">Address: </label>
+                                        <label class="col-sm-3 control-label" for="address">Address: </label>
                                         <div class="col-sm-9">
-                                            <input id="form-control-1" class="form-control" type="text" value="<?php echo $STUDENT->address ?>">
+                                            <input id="address" name="address" class="form-control" type="text" value="<?php echo $STUDENT->address ?>">
                                         </div>
                                     </div>
                                     <div class="form-group">
                                         <label class="col-sm-3 control-label" for="form-control-1">Education Level: </label>
                                         <div class="col-sm-9">
-                                            <div class="col-sm-9">
-                                                <?php
-                                                if ($STUDENT->education_level == 'o/l') {
-                                                    ?>
-                                                    <label class="custom-control custom-control-primary custom-radio">
-                                                        <input class="custom-control-input" type="radio" name="education_level" value="o/l" checked="" >
-                                                        <span class="custom-control-indicator"></span>
-                                                        <span class="custom-control-label">Educational Level ( O / L )</span>
-                                                    </label>
-                                                    <label class="custom-control custom-control-primary custom-radio">
-                                                        <input class="custom-control-input" type="radio" name="education_level" value="a/l">
-                                                        <span class="custom-control-indicator"></span>
-                                                        <span class="custom-control-label">Educational Level ( A / L )</span>
-                                                    </label>
-                                                <?php } else { ?>
-                                                    <label class="custom-control custom-control-primary custom-radio">
-                                                        <input class="custom-control-input" type="radio" name="education_level" value="o/l"  >
-                                                        <span class="custom-control-indicator"></span>
-                                                        <span class="custom-control-label">Educational Level ( O / L )</span>
-                                                    </label>
-                                                    <label class="custom-control custom-control-primary custom-radio">
-                                                        <input class="custom-control-input" type="radio" name="education_level" value="a/l" checked="">
-                                                        <span class="custom-control-indicator"></span>
-                                                        <span class="custom-control-label">Educational Level ( A / L )</span>
-                                                    </label>
-                                                <?php } ?>
-                                            </div>
+                                            <?php
+                                            if ($STUDENT->education_level == 'o/l') {
+                                                ?>
+                                                <label class="custom-control custom-control-primary custom-radio">
+                                                    <input class="custom-control-input" type="radio" name="education_level" value="o/l" checked="" >
+                                                    <span class="custom-control-indicator"></span>
+                                                    <span class="custom-control-label">Educational Level ( O / L )</span>
+                                                </label>
+                                                <label class="custom-control custom-control-primary custom-radio">
+                                                    <input class="custom-control-input" type="radio" name="education_level" value="a/l">
+                                                    <span class="custom-control-indicator"></span>
+                                                    <span class="custom-control-label">Educational Level ( A / L )</span>
+                                                </label>
+                                            <?php } else { ?>
+                                                <label class="custom-control custom-control-primary custom-radio">
+                                                    <input class="custom-control-input" type="radio" name="education_level" value="o/l"  >
+                                                    <span class="custom-control-indicator"></span>
+                                                    <span class="custom-control-label">Educational Level ( O / L )</span>
+                                                </label>
+                                                <label class="custom-control custom-control-primary custom-radio">
+                                                    <input class="custom-control-input" type="radio" name="education_level" value="a/l" checked="">
+                                                    <span class="custom-control-indicator"></span>
+                                                    <span class="custom-control-label">Educational Level ( A / L )</span>
+                                                </label>
+                                            <?php } ?>
                                         </div>
                                     </div>
                                     <div class="form-group">
@@ -161,21 +174,28 @@ include_once(dirname(__FILE__) . '/auth.php');
                                         <div class="col-md-3">  </div> 
                                         <div class="col-md-3">  </div> 
                                         <div class="col-md-3"> 
-                                            <button class="btn btn-primary btn-block" type="submit"  >Sign up</button>  
+                                            <input type="hidden"  name="id" value="<?php echo $STUDENT->id ?>">
+                                            <input type="hidden"  name="oldImageName" value="<?php echo $STUDENT->image_name ?>">
+                                            <input type="hidden"  name="action" value="update" >
+                                            <input type="submit" class="btn btn-primary btn-block" type="submit" id="update"   value="update" >
+
                                         </div>
                                     </div>
-                                </form>
-                            </div>
+                                </div>
+                            </form>>
                         </div>
                         <div class="col-md-2"></div>
                     </div>
                 </div>
             </div>
         </div>
+        <script src="js/jquery.min.js" type="text/javascript"></script>
+        <script src="ajax/js/student.js" type="text/javascript"></script>
         <script src="js/vendor.min.js"></script>
         <script src="js/elephant.min.js"></script>
         <script src="js/application.min.js"></script>
         <script src="js/profile.min.js"></script>
+        <script src="js/sweetalert.min.js" type="text/javascript"></script>
 
     </body>
 

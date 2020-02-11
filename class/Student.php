@@ -28,6 +28,7 @@ class Student {
     public $lastLogin;
     public $status;
     public $level;
+    public $image_name;
 
     public function __construct($id) {
 
@@ -54,6 +55,7 @@ class Student {
             $this->lastLogin = $result['lastLogin'];
             $this->status = $result['status'];
             $this->level = $result['level'];
+            $this->image_name = $result['image_name'];
 
             return $result;
         }
@@ -211,11 +213,18 @@ class Student {
         return $array_res;
     }
 
-    public function updateStatus() {
+    public function update() {
 
         $query = "UPDATE  `student` SET "
-                . "`status` ='" . $this->status . "', "
-                . "`level` ='" . $this->level . "' "
+                . "`full_name` ='" . $this->full_name . "', "
+                . "`nic_number` ='" . $this->nic_number . "', "
+                . "`gender` ='" . $this->gender . "', "
+                . "`age` ='" . $this->age . "', "
+                . "`phone_number` ='" . $this->phone_number . "', "
+                . "`address` ='" . $this->address . "', "
+                . "`education_level` ='" . $this->education_level . "', "
+                . "`image_name` ='" . $this->image_name . "', "
+                . "`email` ='" . $this->email . "' "
                 . "WHERE `id` = '" . $this->id . "'";
 
         $db = new Database();
