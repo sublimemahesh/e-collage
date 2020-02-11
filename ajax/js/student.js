@@ -80,6 +80,90 @@ $(document).ready(function () {
         }
     });
 
+//change Password
+    $("#reset_password").click(function (event) {
+        event.preventDefault();
+
+        if (!$('#old_passsword').val() || $('#old_passsword').val().length === 0) {
+            swal({
+                title: "Error!",
+                text: "Please enter old password..!",
+                type: 'error',
+                timer: 1500,
+                showConfirmButton: false
+            });
+        } else if (!$('#new_password').val() || $('#new_password').val().length === 0) {
+            swal({
+                title: "Error!",
+                text: "Please enter new password..!",
+                type: 'error',
+                timer: 1500,
+                showConfirmButton: false
+            });
+        } else if (!$('#com_password').val() || $('#com_password').val().length === 0) {
+            swal({
+                title: "Error!",
+                text: "Please enter confirm password..!",
+                type: 'error',
+                timer: 1500,
+                showConfirmButton: false
+            });
+        } else {
+            var formData = new FormData($('#form-data')[0]);
+            $.ajax({
+                url: "ajax/post-and-get/student.php",
+                type: "POST",
+                data: formData,
+                async: false,
+                dataType: 'json',
+                success: function (result) {
+                 
+                    if (result.status == 'old_passw_error') {
+                        swal({
+                            title: "Error!",
+                            text: "old password worng..!",
+                            type: 'error',
+                            timer: 1500,
+                            showConfirmButton: false
+                        });
+                    } else if (result.status == 'not_match') {
+                        swal({
+                            title: "Error!",
+                            text: "password does not match..!",
+                            type: 'error',
+                            timer: 1500,
+                            showConfirmButton: false
+                        });
+                    } else if (result.status == 'error') {
+                        swal({
+                            title: "Error!",
+                            text: "Something went worng..!",
+                            type: 'error',
+                            timer: 1500,
+                            showConfirmButton: false
+                        });
+                    } else {
+                        swal({
+                            title: "Success!",
+                            text: "Your data was saved successfully!.....",
+                            type: 'success',
+                            timer: 2000,
+                            showConfirmButton: false
+                        }, function () {
+                            setTimeout(function () {
+                                window.location.replace("log-out.php");
+                            }, 1500);
+                        });
+                    }
+
+                },
+                cache: false,
+                contentType: false,
+                processData: false
+            });
+        }
+    });
+
     $('#asseessment').click(function (event) {
         event.preventDefault();
 

@@ -151,6 +151,7 @@ $today = date('Y-m-d');
                         </button>
                         <ul class="dropdown-menu dropdown-menu-right">  
                             <li><a href="profile.php">Profile</a></li>
+                            <li><a href="change-password.php">Change Password</a></li>
                             <li><a href="log-out.php">Sign out</a></li>
                         </ul>
                     </li>

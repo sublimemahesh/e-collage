@@ -43,12 +43,14 @@ include_once(dirname(__FILE__) . '/auth.php');
                             <div class="profile-container">
                                 <div class="profile-card">
                                     <div class="profile-avetar">
-                                        <?php if (isset($STUDENT->image_name)) { ?>
-                                            <img class="profile-avetar-img"  src="upload/student/profile/<?php echo $STUDENT->image_name ?>"  >
-                                        <?php } else { ?>
+                                        <?php if (empty($STUDENT->image_name)) { ?>
                                             <img   width="128" height="128" src="img/0180441436.jpg"  >
+                                           
+                                        <?php } else { ?>
+                                            <img class="profile-avetar-img"  src="upload/student/profile/<?php echo $STUDENT->image_name ?>"  >
+
                                         <?php } ?>
-                                        
+
                                     </div>
                                     <div class="profile-overview">
                                         <h1 class="profile-name"><?php echo $STUDENT->full_name ?></h1>
@@ -64,7 +66,6 @@ include_once(dirname(__FILE__) . '/auth.php');
                         <div class="col-md-2"></div>
                         <div class="col-md-8"> 
                             <form class="demo-form-wrapper card " style="padding: 50px" id="form-data">
-
                                 <div class="form form-horizontal">
                                     <div class="form-group">
                                         <label class="col-sm-3 control-label" for="full_name">Student Name: </label>
@@ -89,10 +90,11 @@ include_once(dirname(__FILE__) . '/auth.php');
 
                                         <div class="col-sm-9">
                                             <input id="image" name="image" class="form-control" type="file">
-                                            <?php if (isset($STUDENT->image_name)) { ?>
-                                                <img  src="upload/student/profile/<?php echo $STUDENT->image_name ?>"  >
-                                            <?php } else { ?>
+                                            <?php if (empty($STUDENT->image_name)) { ?>
                                                 <img   width="128" height="128" src="img/0180441436.jpg"  >
+                                            <?php } else { ?>
+                                                <img  src="upload/student/profile/<?php echo $STUDENT->image_name ?>"  >
+
                                             <?php } ?>
 
                                         </div>
@@ -182,7 +184,7 @@ include_once(dirname(__FILE__) . '/auth.php');
                                         </div>
                                     </div>
                                 </div>
-                            </form>>
+                            </form>
                         </div>
                         <div class="col-md-2"></div>
                     </div>
