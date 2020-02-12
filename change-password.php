@@ -62,8 +62,10 @@ include_once(dirname(__FILE__) . '/auth.php');
                         </div>
                     </div>
                     <div class="row">
+
                         <div class="col-md-2"></div>
                         <div class="col-md-8"> 
+
                             <form class="demo-form-wrapper card " style="padding: 50px" id="form-data">
 
                                 <div class="form form-horizontal">

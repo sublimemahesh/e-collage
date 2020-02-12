@@ -28,7 +28,20 @@ include_once(dirname(__FILE__) . '/auth.php');
         <link rel="stylesheet" href="css/application.min.css">
         <link rel="stylesheet" href="css/profile.min.css">
         <link href="css/sweetalert.css" rel="stylesheet" type="text/css"/>
+        <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
+        <style>
+            .profile-pic {
+                position: relative;
+                display: inline-block;
+            }
 
+
+            .fa-color{ 
+
+                margin-top: -43px;
+            }
+
+        </style>
     </head>
     <body class="layout layout-header-fixed">
         <!--Top header -->
@@ -42,14 +55,18 @@ include_once(dirname(__FILE__) . '/auth.php');
                         <div class="profile-cover">
                             <div class="profile-container">
                                 <div class="profile-card">
-                                    <div class="profile-avetar">
-                                        <?php if (empty($STUDENT->image_name)) { ?>
-                                            <img   width="128" height="128" src="img/0180441436.jpg"  >
-                                           
-                                        <?php } else { ?>
-                                            <img class="profile-avetar-img"  src="upload/student/profile/<?php echo $STUDENT->image_name ?>"  >
+                                    <div class="profile-avetar ">
+<!--                                        <form class="demo-form-wrapper  " style="padding: 50px" id="form-data">-->
+                                            <!--                                            <a href="#" id="update">-->
+                                            <!--                                                <input type="file" >-->
+                                            <img   class="append_img profile-avetar-img " width="128" height="128" src="img/0180441436.jpg"  > <i class="fa fa-camera fa-lg fa-color "></i> 
 
-                                        <?php } ?>
+                                            </a>
+                                           
+<!--                                        </form>-->
+                                       <!--                                            <i class="fa fa-pencil fa-lg"></i>
+                                            <img   class="append_img profile-avetar-img" width="128" height="128" src="upload/student/profile/<?php echo $STUDENT->image_name ?>"  >  
+                                        -->
 
                                     </div>
                                     <div class="profile-overview">
@@ -62,7 +79,10 @@ include_once(dirname(__FILE__) . '/auth.php');
                             </div>
                         </div>
                     </div>
+                    <img id="loading" src="https://www.vedantalimited.com/SiteAssets/Images/loading.gif" style="display: none; position: absolute;margin-top: 20%;margin-left: 37%;z-index: 999;"/>
+
                     <div class="row">
+
                         <div class="col-md-2"></div>
                         <div class="col-md-8"> 
                             <form class="demo-form-wrapper card " style="padding: 50px" id="form-data">
@@ -85,21 +105,7 @@ include_once(dirname(__FILE__) . '/auth.php');
                                             <input id="email" name="email" class="form-control" type="text" value="<?php echo $STUDENT->email ?>">
                                         </div>
                                     </div>
-                                    <div class="form-group">
-                                        <label class="col-sm-3 control-label" for="form-control-1">Image: </label>
 
-                                        <div class="col-sm-9">
-                                            <input id="image" name="image" class="form-control" type="file">
-                                            <?php if (empty($STUDENT->image_name)) { ?>
-                                                <img   width="128" height="128" src="img/0180441436.jpg"  >
-                                            <?php } else { ?>
-                                                <img  src="upload/student/profile/<?php echo $STUDENT->image_name ?>"  >
-
-                                            <?php } ?>
-
-                                        </div>
-
-                                    </div>
                                     <div class="form-group">
                                         <label class="col-sm-3 control-label" for="nic_number">NIC Number: </label>
                                         <div class="col-sm-9">
@@ -112,7 +118,7 @@ include_once(dirname(__FILE__) . '/auth.php');
                                             <select id="form-control-21" class="custom-select" name="gender">
                                                 <option value="" selected="selected"> -- Select your Gender -- </option>
                                                 <?php
-                                                if ($STUDENT->gender == ['Male']) {
+                                                if ($STUDENT->gender == 'Male') {
                                                     ?>
                                                     <option value="Male" selected="">Male</option>
                                                     <option value="Female">Female</option>   
@@ -177,8 +183,8 @@ include_once(dirname(__FILE__) . '/auth.php');
                                         <div class="col-md-3">  </div> 
                                         <div class="col-md-3"> 
                                             <input type="hidden"  name="id" value="<?php echo $STUDENT->id ?>">
-                                            <input type="hidden"  name="oldImageName" value="<?php echo $STUDENT->image_name ?>">
-                                            <input type="hidden"  name="action" value="update" >
+
+                                            <input type="hidden"  name="action" value="update">                                     
                                             <input type="submit" class="btn btn-primary btn-block" type="submit" id="update"   value="update" >
 
                                         </div>

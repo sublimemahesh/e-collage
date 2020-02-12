@@ -3,7 +3,7 @@ $(document).ready(function () {
 //Update student 
     $("#update").click(function (event) {
         event.preventDefault();
-
+//        $('#loading').show();
         if (!$('#full_name').val() || $('#full_name').val().length === 0) {
             swal({
                 title: "Error!",
@@ -54,23 +54,22 @@ $(document).ready(function () {
             });
         } else {
             var formData = new FormData($('#form-data')[0]);
+
             $.ajax({
                 url: "ajax/post-and-get/student.php",
                 type: "POST",
                 data: formData,
                 async: false,
                 dataType: 'json',
-                success: function (result) {
+                success: function (result) {                    
+//                    $(".append_img").attr("src", "upload/student/profile/" + result.filename);
+//                    $('#loading').hide();
                     swal({
                         title: "Success!",
                         text: "Your data was saved successfully!.....",
                         type: 'success',
                         timer: 2000,
                         showConfirmButton: false
-                    }, function () {
-                        setTimeout(function () {
-                            window.location.replace("profile.php");
-                        }, 1500);
                     });
                 },
                 cache: false,
@@ -117,7 +116,7 @@ $(document).ready(function () {
                 async: false,
                 dataType: 'json',
                 success: function (result) {
-                 
+
                     if (result.status == 'old_passw_error') {
                         swal({
                             title: "Error!",
