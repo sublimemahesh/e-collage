@@ -149,6 +149,23 @@ class Student {
         }
     }
 
+    public function ChangeProPic($student, $file) {
+
+        $query = "UPDATE  `student` SET "
+                . "`image_name` ='" . $file . "' "
+                . "WHERE `id` = '" . $student . "'";
+
+        $db = new Database();
+
+        $result = $db->readQuery($query);
+
+        if ($result) {
+            return TRUE;
+        } else {
+            return FALSE;
+        }
+    }
+
     public function authenticate() {
 
         if (!isset($_SESSION)) {
@@ -223,11 +240,11 @@ class Student {
                 . "`age` ='" . $this->age . "', "
                 . "`phone_number` ='" . $this->phone_number . "', "
                 . "`address` ='" . $this->address . "', "
-                . "`education_level` ='" . $this->education_level . "', "
-                . "`image_name` ='" . $this->image_name . "', "
+                . "`education_level` ='" . $this->education_level . "', "               
                 . "`email` ='" . $this->email . "' "
                 . "WHERE `id` = '" . $this->id . "'";
-
+      
+        
         $db = new Database();
 
         $result = $db->readQuery($query);

@@ -7,41 +7,6 @@ include '../../class/include.php';
 if ($_POST['action'] == 'update') {
     $STUDENT = new Student($_POST['id']);
 
-    $dir_dest = '../../upload/student/profile/';
-
-
-    $handle = new Upload($_FILES['image']);
-
-    $imgName = null;
-
-    if ($handle->uploaded) {
-
-        if (empty($_POST["oldImageName"])) {
-            $handle->image_resize = true;
-            $handle->file_new_name_ext = 'jpg';
-            $handle->image_ratio_crop = 'C';
-            $handle->file_new_name_body = Helper::randamId();
-        } else {
-            $handle->image_resize = true;
-            $handle->file_new_name_body = TRUE;
-            $handle->file_overwrite = TRUE;
-            $handle->file_new_name_ext = FALSE;
-            $handle->image_ratio_crop = 'C';
-            $handle->file_new_name_body = $_POST["oldImageName"];
-        }
-        $handle->image_x = 128;
-        $handle->image_y = 128;
-
-        $handle->Process($dir_dest);
-
-        if ($handle->processed) {
-            $info = getimagesize($handle->file_dst_pathname);
-            $imgName = $handle->file_dst_name;
-        }
-    }
-
-    $STUDENT->image_name = $imgName;
-
 
     $STUDENT->full_name = $_POST['full_name'];
     $STUDENT->nic_number = $_POST['nic_number'];

@@ -140,11 +140,16 @@ $today = date('Y-m-d');
                     </li>
                     <li class="dropdown hidden-xs">
                         <button class="navbar-account-btn" data-toggle="dropdown" aria-haspopup="true">
-                            <?php if (isset($STUDENT->image_name)) { ?>
-                                <img class="circle"  width="36" height="36" src="upload/student/profile/<?php echo $STUDENT->image_name ?>"  >
+
+                            <?php
+                            if (empty($STUDENT->image_name)) {
+                                ?>
+                                <img class="circle append_img"  width="36" height="36"  src="img/0180441436.jpg"  >
+
                             <?php } else { ?>
-                                <img class="circle"  width="36" height="36" src="img/0180441436.jpg" alt=""> 
+                                <img   class="circle append_img  "  width="36" height="36"   src="upload/student/profile/<?php echo $STUDENT->image_name ?>"  >  
                             <?php } ?>
+                            
 
                             <?php echo $STUDENT->full_name ?>
                             <span class="caret"></span>
