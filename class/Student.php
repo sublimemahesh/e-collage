@@ -29,6 +29,10 @@ class Student {
     public $status;
     public $level;
     public $image_name;
+    public $nic_front;
+    public $nic_back;
+    public $resetcode;
+    public $queue;
 
     public function __construct($id) {
 
@@ -56,6 +60,10 @@ class Student {
             $this->status = $result['status'];
             $this->level = $result['level'];
             $this->image_name = $result['image_name'];
+            $this->nic_front = $result['nic_front'];
+            $this->nic_back = $result['nic_back'];
+            $this->resetcode = $result['resetcode'];
+            $this->queue = $result['queue'];
 
             return $result;
         }
@@ -86,6 +94,51 @@ class Student {
         } else {
             return FALSE;
         }
+    }
+
+    public function all() {
+
+        $query = "SELECT * FROM `student` ORDER BY queue ASC";
+        $db = new Database();
+
+        $result = $db->readQuery($query);
+        $array_res = array();
+
+        while ($row = mysql_fetch_array($result)) {
+            array_push($array_res, $row);
+        }
+
+        return $array_res;
+    }
+
+    public function getActiveStudent() {
+
+        $query = "SELECT * FROM `student` WHERE `status` = 1 ORDER BY queue ASC";
+        $db = new Database();
+
+        $result = $db->readQuery($query);
+        $array_res = array();
+
+        while ($row = mysql_fetch_array($result)) {
+            array_push($array_res, $row);
+        }
+
+        return $array_res;
+    }
+
+    public function getInActiveStudent() {
+
+        $query = "SELECT * FROM `student` WHERE `status` = 0 ORDER BY queue ASC";
+        $db = new Database();
+
+        $result = $db->readQuery($query);
+        $array_res = array();
+
+        while ($row = mysql_fetch_array($result)) {
+            array_push($array_res, $row);
+        }
+
+        return $array_res;
     }
 
     public function login($student_id, $password) {
@@ -166,6 +219,42 @@ class Student {
         }
     }
 
+    public function updateNicImagesBack($student, $nic_back) {
+
+        $query = "UPDATE  `student` SET "
+                . "`nic_back` ='" . $nic_back . "' "
+                . "WHERE `id` = '" . $student . "'";
+        
+       
+        $db = new Database();
+
+        $result = $db->readQuery($query);
+
+        if ($result) {
+            return TRUE;
+        } else {
+            return FALSE;
+        }
+    }
+
+    public function updateNicImagesFront($student, $nic_front) {
+
+        $query = "UPDATE  `student` SET "
+                . "`nic_front` ='" . $nic_front . "' "
+                . "WHERE `id` = '" . $student . "'";
+
+
+        $db = new Database();
+
+        $result = $db->readQuery($query);
+
+        if ($result) {
+            return TRUE;
+        } else {
+            return FALSE;
+        }
+    }
+
     public function authenticate() {
 
         if (!isset($_SESSION)) {
@@ -223,19 +312,11 @@ class Student {
         $query = "SELECT * FROM `student` WHERE `id` ='" . $id . "'  AND `status` = 0 ";
 
         $db = new Database();
-        $result = $db->readQuery($query);
-        $array_res = array();
-        while ($row = mysql_fetch_array($result)) {
-            array_push($array_res, $row);
-        }
-        return $array_res;
+        $result = mysql_fetch_array($db->readQuery($query));
+        return $result['id'];
     }
-    
-    
 
     public function update() {
-        
-        
 
         $query = "UPDATE  `student` SET "
                 . "`full_name` ='" . $this->full_name . "', "
@@ -244,11 +325,11 @@ class Student {
                 . "`age` ='" . $this->age . "', "
                 . "`phone_number` ='" . $this->phone_number . "', "
                 . "`address` ='" . $this->address . "', "
-                . "`education_level` ='" . $this->education_level . "', "               
+                . "`education_level` ='" . $this->education_level . "', "
                 . "`email` ='" . $this->email . "' "
                 . "WHERE `id` = '" . $this->id . "'";
-      
-        
+
+
         $db = new Database();
 
         $result = $db->readQuery($query);
@@ -262,11 +343,20 @@ class Student {
         }
     }
 
-    public function updateLevel() {
+    public function updateActiveStudent() {
 
         $query = "UPDATE  `student` SET "
-                . "`level` ='" . $this->level . "' "
+                . "`full_name` ='" . $this->full_name . "', "
+                . "`nic_number` ='" . $this->nic_number . "', "
+                . "`gender` ='" . $this->gender . "', "
+                . "`age` ='" . $this->age . "', "
+                . "`phone_number` ='" . $this->phone_number . "', "
+                . "`address` ='" . $this->address . "', "
+                . "`education_level` ='" . $this->education_level . "', "
+                . "`email` ='" . $this->email . "', "
+                . "`status` ='" . $this->status . "' "
                 . "WHERE `id` = '" . $this->id . "'";
+
 
         $db = new Database();
 
@@ -334,7 +424,7 @@ class Student {
 
     public function checkEmail($email) {
 
-        $query = "SELECT `email`,`username` FROM `user` WHERE `email`= '" . $email . "'";
+        $query = "SELECT `email`,`student_id` FROM `student` WHERE `email`= '" . $email . "'";
 
         $db = new Database();
 
@@ -361,7 +451,7 @@ class Student {
 
         $rand = rand(10000, 99999);
 
-        $query = "UPDATE  `user` SET "
+        $query = "UPDATE  `student` SET "
                 . "`resetcode` ='" . $rand . "' "
                 . "WHERE `email` = '" . $email . "'";
 
@@ -380,7 +470,7 @@ class Student {
 
         if ($email) {
 
-            $query = "SELECT `email`,`username`,`resetcode` FROM `user` WHERE `email`= '" . $email . "'";
+            $query = "SELECT `email`,`student_id`,`resetcode` FROM `student` WHERE `email`= '" . $email . "'";
 
             $db = new Database();
 
@@ -395,7 +485,7 @@ class Student {
 
     public function SelectResetCode($code) {
 
-        $query = "SELECT `id` FROM `user` WHERE `resetcode`= '" . $code . "'";
+        $query = "SELECT `id` FROM `student` WHERE `resetcode`= '" . $code . "'";
 
         $db = new Database();
 
@@ -412,7 +502,7 @@ class Student {
 
         $enPass = md5($password);
 
-        $query = "UPDATE  `user` SET "
+        $query = "UPDATE  `student` SET "
                 . "`password` ='" . $enPass . "' "
                 . "WHERE `resetcode` = '" . $code . "'";
 

@@ -69,13 +69,24 @@ include_once(dirname(__FILE__) . '/auth.php');
                     <div class="row"> 
                         <div class="col-md-2"></div>
                         <div class="col-md-8"> 
+                            <img id="loading" src="https://www.vedantalimited.com/SiteAssets/Images/loading.gif" style="display: none;position: absolute;margin-top: 20%;margin-left: 37%;z-index: 9999;"/>
+
                             <form class="demo-form-wrapper card " style="padding: 50px" id="form-data">
                                 <div class="form form-horizontal">
                                     <div class="form-group">
                                         <label class="col-sm-3 control-label" for="nic_front">NIC Front Image: </label>
                                         <div class="col-sm-9">
                                             <input id="nic_front" name="nic_front" class="form-control" type="file"   >
-                                            <img   class="  append_nic_front_img  "     src="upload/student/nic_card/front//thumb/<?php echo $STUDENT->nic_front ?>"  >  <i class="fa fa-camera fa-lg fa-color "></i> 
+                                            <?php
+                                            if (empty($STUDENT->nic_front)) {
+                                                ?>
+                                                <img    src="img/Nic_Front.jpg"  >  
+
+                                                <?php
+                                            } else {
+                                                ?>
+                                                <img   class="append_nic_front_img"     src="upload/student/nic_card/front/thumb/<?php echo $STUDENT->nic_front ?>" >
+                                            <?php } ?>
                                         </div>
 
                                     </div>
@@ -83,7 +94,17 @@ include_once(dirname(__FILE__) . '/auth.php');
                                         <label class="col-sm-3 control-label" for="nic_back">NIC Back Image: </label>
                                         <div class="col-sm-9">
                                             <input  class="form-control"  id="nic_back" name="nic_back" type="file" value="<?php echo $STUDENT->nic_back ?>">
-                                            <img   class="  append_nic_back_img  "     src="upload/student/nic_card/back/thumb/<?php echo $STUDENT->nic_back ?>"  >  <i class="fa fa-camera fa-lg fa-color "></i> 
+                                            <?php
+                                            if (empty($STUDENT->nic_back)) {
+                                                ?>
+                                                <img    src="img/Nic_Back.jpg"  >  
+
+                                                <?php
+                                            } else {
+                                                ?>
+                                                <img   class="append_nic_back_img"     src="upload/student/nic_card/back/thumb/<?php echo $STUDENT->nic_back ?>"  >  
+                                            <?php } ?>
+
                                         </div>
                                     </div>
 
@@ -93,7 +114,6 @@ include_once(dirname(__FILE__) . '/auth.php');
                                         <div class="col-md-3"></div> 
                                         <div class="col-md-3"> 
                                             <input type="hidden"  name="id" value="<?php echo $STUDENT->id ?>">
-                                             
                                             <input type="hidden"  name="action" value="UPDATENICCARD" >
                                             <input type="submit" class="btn btn-primary btn-block" type="submit" id="update_nic"   value="update" >
                                         </div>

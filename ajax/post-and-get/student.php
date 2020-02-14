@@ -4,7 +4,7 @@ include '../../class/include.php';
 
 
 //Update Student Details
-if ($_POST['action'] == 'update') {
+if ($_POST['action'] == 'UPDATE') {
     $STUDENT = new Student($_POST['id']);
 
 
@@ -24,16 +24,378 @@ if ($_POST['action'] == 'update') {
     exit();
 }
 
+//Verify Id Card
+if ($_POST['action'] == 'UPDATENICCARD') {
 
+    $STUDENT = new Student($_POST['id']);
+
+    $dir_dest = '../../upload/student/nic_card/front/';
+    $dir_dest_thumb = '../../upload/student/nic_card/front/thumb/';
+
+    $dir_dest_back = '../../upload/student/nic_card/back/';
+    $dir_dest_thumb_back = '../../upload/student/nic_card/back/thumb/';
+
+    $imgName = Helper::randamId();
+
+    $handle = new Upload($_FILES['nic_front']);
+    $handle_back = new Upload($_FILES['nic_back']);
+
+    if (empty($STUDENT->nic_front)) {
+
+        if ($handle->uploaded) {
+
+
+            $img_name = null;
+            $img = Helper::randamId();
+
+            $handle->image_resize = true;
+            $handle->file_new_name_body = TRUE;
+            $handle->file_overwrite = TRUE;
+            $handle->file_new_name_ext = 'jpg';
+            $handle->image_ratio_crop = 'C';
+            $handle->file_new_name_body = $img;
+            $image_dst_x = $handle->image_dst_x;
+            $image_dst_y = $handle->image_dst_y;
+            $newSize = Helper::calImgResize(1200, $image_dst_x, $image_dst_y);
+
+            $image_x = (int) $newSize[0];
+            $image_y = (int) $newSize[1];
+
+            $handle->image_x = $image_x;
+            $handle->image_y = $image_y;
+
+            $handle->Process($dir_dest);
+
+            $handle->image_resize = true;
+            $handle->file_new_name_ext = 'jpg';
+            $handle->image_ratio_crop = 'C';
+            $handle->file_new_name_body = $imgName;
+
+            $handle->image_x = 450;
+            $handle->image_y = 200;
+
+            $handle->Process($dir_dest_thumb);
+
+//NIC back
+            $img_name_back = null;
+            $img_back = Helper::randamId();
+
+            $handle_back->image_resize = true;
+            $handle_back->file_new_name_body = TRUE;
+            $handle_back->file_overwrite = TRUE;
+            $handle_back->file_new_name_ext = 'jpg';
+            $handle_back->image_ratio_crop = 'C';
+            $handle_back->file_new_name_body = $img_back;
+            $image_dst_x = $handle_back->image_dst_x;
+            $image_dst_y = $handle_back->image_dst_y;
+            $newSize = Helper::calImgResize(1200, $image_dst_x, $image_dst_y);
+
+            $image_x = (int) $newSize[0];
+            $image_y = (int) $newSize[1];
+
+            $handle_back->image_x = $image_x;
+            $handle_back->image_y = $image_y;
+
+            $handle_back->Process($dir_dest_back);
+
+
+            $handle_back->image_resize = true;
+            $handle_back->file_new_name_ext = 'jpg';
+            $handle_back->image_ratio_crop = 'C';
+            $handle_back->file_new_name_body = $img_back;
+
+            $handle_back->image_x = 450;
+            $handle_back->image_y = 200;
+
+            $handle_back->Process($dir_dest_thumb_back);
+
+
+
+            if ($handle->processed || $handle_back->processed) {
+
+                Student::updateNicImagesFront($_POST["id"], $handle->file_dst_name);
+                Student::updateNicImagesBack($_POST["id"], $handle_back->file_dst_name);
+
+
+                header('Content-Type: application/json');
+
+                $result = [
+                    "filename" => $handle->file_dst_name,
+                    "filename_2" => $handle_back->file_dst_name,
+                    "message" => 'success'
+                ];
+                echo json_encode($result);
+                exit();
+            }
+        } else {
+
+            header('Content-Type: application/json');
+
+            $result = [
+                "message" => 'error'
+            ];
+            echo json_encode($result);
+            exit();
+        }
+    } else {
+        
+        
+//        unlink("$dir_dest" . $STUDENT->nic_front);
+//        unlink("$dir_dest_thumb" . $STUDENT->nic_front);
+//        
+//        unlink("$dir_dest_back" . $STUDENT->nic_back);
+//        unlink("$dir_dest_thumb_back" . $STUDENT->nic_back);
+//
+//
+//        if ($handle->uploaded) {
+//
+//
+//
+//            $img_name = null;
+//            $img = Helper::randamId();
+//
+//            $handle->image_resize = true;
+//            $handle->file_new_name_body = TRUE;
+//            $handle->file_overwrite = TRUE;
+//            $handle->file_new_name_ext = 'jpg';
+//            $handle->image_ratio_crop = 'C';
+//            $handle->file_new_name_body = $img;
+//            $image_dst_x = $handle->image_dst_x;
+//            $image_dst_y = $handle->image_dst_y;
+//            $newSize = Helper::calImgResize(1200, $image_dst_x, $image_dst_y);
+//
+//            $image_x = (int) $newSize[0];
+//            $image_y = (int) $newSize[1];
+//
+//            $handle->image_x = $image_x;
+//            $handle->image_y = $image_y;
+//
+//            $handle->Process($dir_dest);
+//
+//            $handle->image_resize = true;
+//            $handle->file_new_name_ext = 'jpg';
+//            $handle->image_ratio_crop = 'C';
+//            $handle->file_new_name_body = $imgName;
+//
+//            $handle->image_x = 450;
+//            $handle->image_y = 200;
+//
+//            $handle->Process($dir_dest_thumb);
+//
+////NIC back
+//            $img_name_back = null;
+//            $img_back = Helper::randamId();
+//
+//            $handle_back->image_resize = true;
+//            $handle_back->file_new_name_body = TRUE;
+//            $handle_back->file_overwrite = TRUE;
+//            $handle_back->file_new_name_ext = 'jpg';
+//            $handle_back->image_ratio_crop = 'C';
+//            $handle_back->file_new_name_body = $img_back;
+//            $image_dst_x = $handle_back->image_dst_x;
+//            $image_dst_y = $handle_back->image_dst_y;
+//            $newSize = Helper::calImgResize(1200, $image_dst_x, $image_dst_y);
+//
+//            $image_x = (int) $newSize[0];
+//            $image_y = (int) $newSize[1];
+//
+//            $handle_back->image_x = $image_x;
+//            $handle_back->image_y = $image_y;
+//
+//            $handle_back->Process($dir_dest_back);
+//
+//
+//            $handle_back->image_resize = true;
+//            $handle_back->file_new_name_ext = 'jpg';
+//            $handle_back->image_ratio_crop = 'C';
+//            $handle_back->file_new_name_body = $img_back;
+//
+//            $handle_back->image_x = 450;
+//            $handle_back->image_y = 200;
+//
+//            $handle_back->Process($dir_dest_thumb_back);
+//
+//
+//
+//            if ($handle->processed || $handle_back->processed) {
+//
+//                Student::updateNicImagesFront($_POST["id"], $handle->file_dst_name);
+//                Student::updateNicImagesBack($_POST["id"], $handle_back->file_dst_name);
+//
+//
+//                header('Content-Type: application/json');
+//
+//                $result = [
+//                    "filename" => $handle->file_dst_name,
+//                    "filename_2" => $handle_back->file_dst_name,
+//                    "message" => 'success'
+//                ];
+//                echo json_encode($result);
+//                exit();
+//            }
+
+
+//
+//            $handle->image_resize = true;
+//            $handle->file_new_name_ext = 'jpg';
+//            $handle->image_ratio_crop = 'C';
+//            $handle->file_new_name_body = $imgName;
+//
+//            $handle->image_x = 128;
+//            $handle->image_y = 128;
+//
+//            $handle->Process($folder);
+//
+//            if ($handle->processed) {
+//
+//                Student::ChangeProPic($_POST["id"], $handle->file_dst_name);
+//
+//                header('Content-Type: application/json');
+//
+//                $result = [
+//                    "filename" => $handle->file_dst_name,
+//                    "message" => 'success'
+//                ];
+//                echo json_encode($result);
+//                exit();
+//            } else {
+//
+//                header('Content-Type: application/json');
+//
+//                $result = [
+//                    "message" => 'error'
+//                ];
+//                echo json_encode($result);
+//                exit();
+//            }
+//        } else {
+//
+//            header('Content-Type: application/json');
+//
+//            $result = [
+//                "message" => 'error'
+//            ];
+//            echo json_encode($result);
+//            exit();
+//        }
+    }
+}
+
+
+
+if ($_POST['action'] == 'CHANGEPROFILE') {
+
+    $STUDENT = new Student($_POST['id']);
+    $folder = '../../upload/student/profile/';
+
+    $imgName = Helper::randamId();
+
+    $handle = new Upload($_FILES['image_name']);
+
+    if (empty($STUDENT->image_name)) {
+        if ($handle->uploaded) {
+
+            $handle->image_resize = true;
+            $handle->file_new_name_ext = 'jpg';
+            $handle->image_ratio_crop = 'C';
+            $handle->file_new_name_body = $imgName;
+
+            $handle->image_x = 128;
+            $handle->image_y = 128;
+
+            $handle->Process($folder);
+
+            if ($handle->processed) {
+
+                Student::ChangeProPic($_POST["id"], $handle->file_dst_name);
+                header('Content-Type: application/json');
+                dd($handle->file_dst_name);
+                $result = [
+                    "filename" => $handle->file_dst_name,
+                    "message" => 'success'
+                ];
+                echo json_encode($result);
+                exit();
+            } else {
+
+                header('Content-Type: application/json');
+
+                $result = [
+                    "message" => 'error'
+                ];
+                echo json_encode($result);
+                exit();
+            }
+        } else {
+
+            header('Content-Type: application/json');
+
+            $result = [
+                "message" => 'error'
+            ];
+            echo json_encode($result);
+            exit();
+        }
+    } else {
+        unlink("$folder" . $STUDENT->image_name);
+        if ($handle->uploaded) {
+
+            $handle->image_resize = true;
+            $handle->file_new_name_ext = 'jpg';
+            $handle->image_ratio_crop = 'C';
+            $handle->file_new_name_body = $imgName;
+
+            $handle->image_x = 128;
+            $handle->image_y = 128;
+
+            $handle->Process($folder);
+
+            if ($handle->processed) {
+
+                Student::ChangeProPic($_POST["id"], $handle->file_dst_name);
+
+                header('Content-Type: application/json');
+
+                $result = [
+                    "filename" => $handle->file_dst_name,
+                    "message" => 'success'
+                ];
+                echo json_encode($result);
+                exit();
+            } else {
+
+                header('Content-Type: application/json');
+
+                $result = [
+                    "message" => 'error'
+                ];
+                echo json_encode($result);
+                exit();
+            }
+        } else {
+
+            header('Content-Type: application/json');
+
+            $result = [
+                "message" => 'error'
+            ];
+            echo json_encode($result);
+            exit();
+        }
+    }
+}
+
+
+//Password reset
 if ($_POST['action'] == 'reset_password') {
 
     $OldPassOk = student::checkOldPass($_POST["id"], $_POST["old_passsword"]);
-   
+
     if ($_POST["new_password"] === $_POST["com_password"]) {
         if ($OldPassOk) {
             $result = student::changePassword($_POST["id"], $_POST["new_password"]);
             if ($result == 'TRUE') {
-                $result = ["id" => $_POST['id'], "status" =>'true'];
+                $result = ["id" => $_POST['id'], "status" => 'true'];
                 echo json_encode($result);
                 exit();
             } else {
@@ -49,115 +411,6 @@ if ($_POST['action'] == 'reset_password') {
     } else {
         $result = ["id" => $_POST['id'], "status" => 'not_match'];
         echo json_encode($result);
-        exit();
-    }
-}
-if ($_POST['action'] == 'UPDATESTUDENTLEVEL') {
-
-    if (isset($_POST['que_1'])) {
-        $que_1 = $_POST['que_1'];
-    }
-
-    if (isset($_POST['que_2'])) {
-        $que_2 = $_POST['que_2'];
-    }
-    if (isset($_POST['que_3'])) {
-        $que_3 = $_POST['que_3'];
-    }
-    if (isset($_POST['que_4'])) {
-        $que_4 = $_POST['que_4'];
-    }
-    if (isset($_POST['que_5'])) {
-        $que_5 = $_POST['que_5'];
-    }
-
-
-    $cal = $que_1 + $que_2 + $que_3 + $que_4 + $que_5;
-
-    $STUDENT = new Student($_POST['id']);
-
-    if ($cal <= 2) {
-        $STUDENT->level = 1;
-        $STUDENT->status = 1;
-
-        $result = $STUDENT->updateStatus();
-
-        if ($result) {
-            $result['status'] = 'beginner';
-            echo json_encode($result);
-            header('Content-type: application/json');
-            exit();
-        }
-    } elseif ($cal <= 3) {
-
-        $STUDENT->level = 2;
-        $STUDENT->status = 1;
-        $result = $STUDENT->updateStatus();
-
-        if ($result) {
-            $result['status'] = 'intermediate';
-            echo json_encode($result);
-            header('Content-type: application/json');
-            exit();
-        }
-    } else if ($cal <= 5) {
-
-        $STUDENT->level = 3;
-        $STUDENT->status = 1;
-        $result = $STUDENT->updateStatus();
-
-        if ($result) {
-            $result['status'] = 'advance';
-            echo json_encode($result);
-            header('Content-type: application/json');
-            exit();
-        }
-    }
-}
-
-//Assessment Level
-if ($_POST['action'] == 'ASSESSMENT_LEVEL') {
-
-    if (isset($_POST['que_1'])) {
-        $que_1 = $_POST['que_1'];
-    }
-
-    if (isset($_POST['que_2'])) {
-        $que_2 = $_POST['que_2'];
-    }
-    if (isset($_POST['que_3'])) {
-        $que_3 = $_POST['que_3'];
-    }
-    if (isset($_POST['que_4'])) {
-        $que_4 = $_POST['que_4'];
-    }
-    if (isset($_POST['que_5'])) {
-        $que_5 = $_POST['que_5'];
-    }
-
-
-    $cal = $que_1 + $que_2 + $que_3 + $que_4 + $que_5;
-
-
-    if ($cal <= 2) {
-
-
-        $result['status'] = 'beginner';
-        echo json_encode($result);
-        header('Content-type: application/json');
-        exit();
-    } elseif ($cal <= 3) {
-
-        $result['status'] = 'intermediate';
-        echo json_encode($result);
-        header('Content-type: application/json');
-        exit();
-    } else if ($cal <= 5) {
-
-
-        $result['status'] = 'advance';
-        echo json_encode($result);
-        header('Content-type: application/json');
         exit();
     }
 }

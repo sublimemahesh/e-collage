@@ -127,7 +127,7 @@ $LAST_ID = $LAST_ID+1;
                             <div class="col-sm-6">
                                 <div class="form-group">
                                     <label for="student_id">Student ID</label>
-                                    <input id="student_id" class="form-control" type="text" name="student_id"  data-field="student_id" value="<?php echo 'STU00'.$LAST_ID?>" readonly="">
+                                    <input id="student_id" class="form-control" type="text" name="student_id"  data-field="student_id" value="<?php echo 'STU000'.$LAST_ID?>" readonly="">
                                     <div class="valid-message"></div>
                                 </div>
                             </div>
