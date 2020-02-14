@@ -56,21 +56,22 @@ include_once(dirname(__FILE__) . '/auth.php');
                             <div class="profile-container">
                                 <div class="profile-card">
                                     <div class="profile-avetar ">
-<!--                                        <form class="demo-form-wrapper  " style="padding: 50px" id="form-data">-->
-                                            <!--                                            <a href="#" id="update">-->
-                                            <!--                                                <input type="file" >-->
-                                            <img   class="append_img profile-avetar-img " width="128" height="128" src="img/0180441436.jpg"  > <i class="fa fa-camera fa-lg fa-color "></i> 
+                                        <!--                                        <form class="demo-form-wrapper  " style="padding: 50px" id="form-data">-->
+                                        <!--                                            <a href="#" id="update">-->
+                                        <!--                                                <input type="file" >-->
+                                        <img   class="append_img profile-avetar-img " width="128" height="128" src="img/0180441436.jpg"  > <i class="fa fa-camera fa-lg fa-color "></i> 
 
-                                            </a>
-                                           
-<!--                                        </form>-->
-                                       <!--                                            <i class="fa fa-pencil fa-lg"></i>
-                                            <img   class="append_img profile-avetar-img" width="128" height="128" src="upload/student/profile/<?php echo $STUDENT->image_name ?>"  >  
+                                        </a>
+
+                                        <!--                                        </form>-->
+                                                                               <!--                                            <i class="fa fa-pencil fa-lg"></i>
+                                                                                    <img   class="append_img profile-avetar-img" width="128" height="128" src="upload/student/profile/<?php echo $STUDENT->image_name ?>"  >  
                                         -->
 
                                     </div>
                                     <div class="profile-overview">
                                         <h1 class="profile-name"><?php echo $STUDENT->full_name ?></h1>
+                                        <button class="profile-follow-btn" type="button">Change Profile</button>
                                         <p style="margin: 0px 0 1px;">NIC Number : <?php echo $STUDENT->nic_number ?></p>
                                         <p style="margin: 0px 0 1px;">Email : <?php echo $STUDENT->email ?></p>
                                     </div>
