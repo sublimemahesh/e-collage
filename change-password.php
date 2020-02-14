@@ -32,9 +32,9 @@ include_once(dirname(__FILE__) . '/auth.php');
     </head>
     <body class="layout layout-header-fixed">
         <!--Top header -->
-        
-        
-        
+
+
+
         <?php include './top-header.php'; ?>
         <!--End Top header -->
         <div class="layout-main">
@@ -46,11 +46,13 @@ include_once(dirname(__FILE__) . '/auth.php');
                             <div class="profile-container">
                                 <div class="profile-card">
                                     <div class="profile-avetar">
-                                        <?php if (isset($STUDENT->image_name)) { ?>
-                                            <img   width="128" height="128" src="img/0180441436.jpg"  >
+                                        <?php
+                                        if (empty($STUDENT->image_name)) {
+                                            ?>
+                                            <input type="image" src="img/0180441436.jpg" width="128" height="128"  class="append_img profile-avetar-img " /><i class="fa fa-camera fa-lg fa-color "></i> 
 
                                         <?php } else { ?>
-                                            <img class="profile-avetar-img"  src="upload/student/profile/<?php echo $STUDENT->image_name ?>"  >
+                                            <img   class="profile-avetar-img  append_img  "  width="128" height="128"   src="upload/student/profile/<?php echo $STUDENT->image_name ?>"  >  <i class="fa fa-camera fa-lg fa-color "></i> 
                                         <?php } ?>
 
                                     </div>
@@ -68,30 +70,26 @@ include_once(dirname(__FILE__) . '/auth.php');
 
                         <div class="col-md-2"></div>
                         <div class="col-md-8"> 
-
                             <form class="demo-form-wrapper card " style="padding: 50px" id="form-data">
-
                                 <div class="form form-horizontal">
                                     <div class="form-group">
                                         <label class="col-sm-3 control-label" for="old_passsword">Old Password: </label>
                                         <div class="col-sm-9">
-                                            <input id="old_passsword" name="old_passsword" class="form-control" type="text"   >
+                                            <input id="old_passsword" name="old_passsword" class="form-control" type="password"   >
                                         </div>
                                     </div>
                                     <div class="form-group">
                                         <label class="col-sm-3 control-label" for="new_password">New Password: </label>
                                         <div class="col-sm-9">
-                                            <input  class="form-control" type="text" id="new_password" name="new_password" >
+                                            <input  class="form-control"  id="new_password" name="new_password" type="password">
                                         </div>
                                     </div>
                                     <div class="form-group">
                                         <label class="col-sm-3 control-label" for="com_password">Confirm Password: </label>
                                         <div class="col-sm-9">
-                                            <input id="com_password" name="com_password" class="form-control" type="text" >
+                                            <input id="com_password" name="com_password" class="form-control" type="password" >
                                         </div>
                                     </div>
-
-
                                     <div class="form-group">
                                         <div class="col-md-3"></div> 
                                         <div class="col-md-3"></div> 
@@ -110,6 +108,8 @@ include_once(dirname(__FILE__) . '/auth.php');
                 </div>
             </div>
         </div>
+        <input type="hidden" value="<?php echo $_SESSION['id'] ?>" id="student_id">
+
         <script src="js/jquery.min.js" type="text/javascript"></script>
         <script src="ajax/js/student.js" type="text/javascript"></script>
         <script src="js/vendor.min.js"></script>
@@ -117,7 +117,8 @@ include_once(dirname(__FILE__) . '/auth.php');
         <script src="js/application.min.js"></script>
         <script src="js/profile.min.js"></script>
         <script src="js/sweetalert.min.js" type="text/javascript"></script>
-
+        <script src="ajax/js/check-login.js" type="text/javascript"></script>
+        
     </body>
 
 </html>

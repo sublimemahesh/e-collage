@@ -106,20 +106,26 @@ include_once(dirname(__FILE__) . '/auth.php');
                     <div class="col-xs-6 col-md-3"></div>
 
                 </div>
-                <div class="layout-footer ">
-                    <div class="layout-footer-body">
-                        <small class="version">Version 1.4.0</small>
-                        <small class="copyright"><?php echo date('Y') ?>&copy;  <a href="#">Synotect Private Limited.</a></small>
+                <div class="layout-footer ">  
+                    <div class="pull-right" data-toggle="match-height">
+                        <h4 style="margin-right: 15px;"> 
+                            <a class="label label-success" href="#" target="_blank">
+                                <span>Please Verify Your ID Card.! </span>
+                            </a>
+                        </h4> 
                     </div>
                 </div>
             </div>
+
+            <input type="hidden" value="<?php echo $_SESSION['id'] ?>" id="student_id">
+
 
             <script src="js/jquery.min.js" type="text/javascript"></script>
             <script src="js/vendor.min.js"></script>
             <script src="js/elephant.min.js"></script>
             <script src="js/application.min.js"></script>
             <script src="js/sweetalert.min.js" type="text/javascript"></script>
-
+            <script src="ajax/js/check-login.js" type="text/javascript"></script>
 
 
             <script type="text/javascript">

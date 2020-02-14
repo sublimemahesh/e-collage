@@ -1,6 +1,94 @@
 $(document).ready(function () {
 
-//Update student 
+//Change the profile pricute
+    $("#change_profile").click(function (event) {
+        event.preventDefault();
+
+        var formData = new FormData($('#form-data-profile')[0]);
+
+        $.ajax({
+            url: "ajax/post-and-get/student.php",
+            type: "POST",
+            data: formData,
+            async: false,
+            dataType: 'json',
+            success: function (result) {
+                $(".append_img").attr("src", "upload/student/profile/" + result.filename);
+                swal({
+                    title: "Success!",
+                    text: "Your data was saved successfully!.....",
+                    type: 'success',
+                    timer: 2000,
+                    showConfirmButton: false
+                });
+            },
+            cache: false,
+            contentType: false,
+            processData: false
+        });
+        $('#infoModalAlert').modal('hide');
+    });
+
+//Update Nic
+    $("#update_nic").click(function (event) {
+        event.preventDefault();
+
+        $('#loading').show();
+
+        if (!$('#nic_front').val() || $('#nic_front').val().length === 0) {
+            swal({
+                title: "Error!",
+                text: "Please enter NIC front  side image..!",
+                type: 'error',
+                timer: 1500,
+                showConfirmButton: false
+            });
+        } else if (!$('#nic_back').val() || $('#nic_back').val().length === 0) {
+            swal({
+                title: "Error!",
+                text: "Please enter NIC back side image..!",
+                type: 'error',
+                timer: 1500,
+                showConfirmButton: false
+            });
+        } else {
+            var formData = new FormData($('#form-data')[0]);
+
+            $.ajax({
+                url: "ajax/post-and-get/student.php",
+                type: "POST",
+                data: formData,
+                async: false,
+                dataType: 'json',
+                success: function (result) {
+                    $(".append_nic_front_img").attr("src", "uupload/student/nic_card/back/thumb/" + result.filename);
+                    $(".append_nic_back_img").attr("src", "upload/student/nic_card/back/thumb/" + result.filename_2);
+
+
+                    $('#loading').hide();
+                    swal({
+                        title: "Success!",
+                        text: "Your data was saved successfully!.....",
+                        type: 'success',
+                        timer: 2000,
+                        showConfirmButton: false
+                    }, function () {
+                        setTimeout(function () {
+                            window.location.replace("verify-id-card.php");
+                        }, 1500);
+                    });
+
+
+                },
+                cache: false,
+                contentType: false,
+                processData: false
+            });
+        }
+    });
+
+
+//Update student details
     $("#update").click(function (event) {
         event.preventDefault();
 //        $('#loading').show();
@@ -61,15 +149,17 @@ $(document).ready(function () {
                 data: formData,
                 async: false,
                 dataType: 'json',
-                success: function (result) {                    
-//                    $(".append_img").attr("src", "upload/student/profile/" + result.filename);
-//                    $('#loading').hide();
+                success: function (result) {
                     swal({
                         title: "Success!",
                         text: "Your data was saved successfully!.....",
                         type: 'success',
                         timer: 2000,
                         showConfirmButton: false
+                    }, function () {
+                        setTimeout(function () {
+                            window.location.replace("profile.php");
+                        }, 1500);
                     });
                 },
                 cache: false,
@@ -78,6 +168,7 @@ $(document).ready(function () {
             });
         }
     });
+
 
 //change Password
     $("#reset_password").click(function (event) {
@@ -165,8 +256,6 @@ $(document).ready(function () {
 
     $('#asseessment').click(function (event) {
         event.preventDefault();
-
-
         var formData = new FormData($("form#form-data")[0]);
 
         $.ajax({

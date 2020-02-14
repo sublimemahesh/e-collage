@@ -149,7 +149,7 @@ $today = date('Y-m-d');
                             <?php } else { ?>
                                 <img   class="circle append_img  "  width="36" height="36"   src="upload/student/profile/<?php echo $STUDENT->image_name ?>"  >  
                             <?php } ?>
-                            
+
 
                             <?php echo $STUDENT->full_name ?>
                             <span class="caret"></span>
@@ -205,9 +205,11 @@ $today = date('Y-m-d');
                         <?php }
                         ?>
 
+                        <?php
+                        ?>
 
                     </h1>
-
+                    <div class="alert alert-danger" role = "alert" id="message" style="width: 65%;float: right;margin-top: -25px;color: white;padding: 5px 0px 5px 14px;">   </div>
                 </div>
             </nav>
         </div>

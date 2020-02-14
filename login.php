@@ -43,7 +43,8 @@
                     </form>
                 </div>
                 <div class="login-footer">
-                    Don't have an account? <a href="registration.php">Sign Up</a>
+                    Don't have an account? <a href="registration.php">Sign Up</a><br>
+                    Change Password? <a href="forget-password.php">Forgot password? </a>
                 </div>
             </div>
 
