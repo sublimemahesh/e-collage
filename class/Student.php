@@ -230,8 +230,12 @@ class Student {
         }
         return $array_res;
     }
+    
+    
 
     public function update() {
+        
+        
 
         $query = "UPDATE  `student` SET "
                 . "`full_name` ='" . $this->full_name . "', "
