@@ -147,9 +147,7 @@ if ($_POST['action'] == 'UPDATENICCARD') {
         unlink("$dir_dest_thumb_back" . $STUDENT->nic_back);
 
 
-        if ($handle->uploaded) {
-
-
+        if ($handle->uploaded) { 
 
             $img_name = null;
             $img = Helper::randamId();
@@ -221,8 +219,7 @@ if ($_POST['action'] == 'UPDATENICCARD') {
 
                 Student::updateNicImagesFront($_POST["id"], $handle->file_dst_name);
                 Student::updateNicImagesBack($_POST["id"], $handle_back->file_dst_name);
-
-
+                
                 header('Content-Type: application/json');
 
                 $result = [
