@@ -15792,3 +15792,56 @@ a:active {
 .tab-ul{
     line-height: 30pt;
 }
+
+
+input[type="file"] {
+    display: none;
+}
+.custom-file-upload {
+    border: 1px solid #ccc;
+    display: inline-block;
+    padding: 6px 12px;
+    cursor: pointer;
+}
+
+.flipScrollableArea {
+
+    overflow: hidden;
+    position: relative;
+    width: 100%;
+}
+.flipScrollableAreaWrap, .native .flipScrollableAreaWrap:active {
+
+    overflow-y: hidden;
+
+    position: relative;
+
+}
+.flipScrollableAreaBody {
+    position: relative;
+    display: inline-block;
+}
+.flipScrollableAreaContent {
+    white-space: nowrap;
+}
+._uploadedimagesbox, ._uploadedimagesbox_edit {
+    display: inline-block;
+    vertical-align: top;
+}
+._uploadbox {
+    border: 2px dashed 
+        #dddfe2;
+    border-radius: 2px;
+    box-sizing: border-box;
+    display: inline-block;
+    height: 100px;
+    margin-right: 5px;
+    min-width: 100px;
+    position: relative;
+    width: auto;
+    background-image: url(../img/EWLe5fNY_Iz.png);
+    background-position: 50%;
+    background-repeat: no-repeat;
+    background-size: 20px;
+    float: right;
+}
