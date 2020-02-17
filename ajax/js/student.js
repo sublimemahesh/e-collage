@@ -61,7 +61,7 @@ $(document).ready(function () {
                 async: false,
                 dataType: 'json',
                 success: function (result) {
-                    $(".append_nic_front_img").attr("src", "uupload/student/nic_card/back/thumb/" + result.filename);
+                    $(".append_nic_front_img").attr("src", "upload/student/nic_card/front/thumb/" + result.filename);
                     $(".append_nic_back_img").attr("src", "upload/student/nic_card/back/thumb/" + result.filename_2);
 
 
@@ -72,10 +72,6 @@ $(document).ready(function () {
                         type: 'success',
                         timer: 2000,
                         showConfirmButton: false
-                    }, function () {
-                        setTimeout(function () {
-                            window.location.replace("verify-id-card.php");
-                        }, 1500);
                     });
 
 

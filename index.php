@@ -106,15 +106,24 @@ include_once(dirname(__FILE__) . '/auth.php');
                     <div class="col-xs-6 col-md-3"></div>
 
                 </div>
-                <div class="layout-footer ">  
-                    <div class="pull-right" data-toggle="match-height">
-                        <h4 style="margin-right: 15px;"> 
-                            <a class="label label-success" href="#" target="_blank">
-                                <span>Please Verify Your ID Card.! </span>
-                            </a>
-                        </h4> 
+
+                <?php
+                if (empty($STUDENT->nic_back)) {
+                    ?>
+                    <div class="layout-footer ">  
+                        <div class="pull-right" data-toggle="match-height">
+                            <h4 style="margin-right: 15px;"> 
+                                <a class="label label-success" href="verify-id-card.php" >
+                                    <span>Please Verify Your ID Card.! </span>
+                                </a>
+                            </h4> 
+                        </div>
                     </div>
-                </div>
+
+                    <?php
+                }
+                ?>
+
             </div>
 
             <input type="hidden" value="<?php echo $_SESSION['id'] ?>" id="student_id">

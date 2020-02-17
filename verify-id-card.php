@@ -80,7 +80,7 @@ include_once(dirname(__FILE__) . '/auth.php');
                                             <?php
                                             if (empty($STUDENT->nic_front)) {
                                                 ?>
-                                                <img    src="img/Nic_Front.jpg"  >  
+                                                <img    src="img/Nic_Front.jpg" class="append_nic_front_img"   >  
 
                                                 <?php
                                             } else {
@@ -97,7 +97,7 @@ include_once(dirname(__FILE__) . '/auth.php');
                                             <?php
                                             if (empty($STUDENT->nic_back)) {
                                                 ?>
-                                                <img    src="img/Nic_Back.jpg"  >  
+                                                <img    src="img/Nic_Back.jpg" class="append_nic_back_img"  >  
 
                                                 <?php
                                             } else {

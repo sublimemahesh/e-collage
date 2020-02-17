@@ -1,44 +1,50 @@
 <?php
 
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
 /**
  * Description of Post
  *
- * @author User
+ * 
  */
 class Post {
 
     public $id;
-    public $description;
-    public $queue;
+    public $student;
+    public $createdAt;
+    public $description; 
 
     public function __construct($id) {
-
         if ($id) {
 
-            $query = "SELECT * FROM `post` WHERE `id`=" . $id;
+            $query = "SELECT `id`,`student`,`created_at`,`description`  FROM `post` WHERE `id`=" . $id;
 
             $db = new Database();
 
             $result = mysql_fetch_array($db->readQuery($query));
 
             $this->id = $result['id'];
+            $this->student = $result['student'];
+            $this->createdAt = $result['created_at'];
             $this->description = $result['description'];
-            $this->queue = $result['queue'];
+             
 
-            return $result;
+            return $this;
         }
     }
 
     public function create() {
 
-        $query = "INSERT INTO `post` (`description`) VALUES  ('"
-                . $this->description . "')";
+        date_default_timezone_set('Asia/Colombo');
+        $createdAt = date('Y-m-d H:i:s');
+
+        $query = "INSERT INTO `post` ("
+                . "`student`,"
+                . "`created_at`,"
+                . "`description`) "
+                . "VALUES  ("
+                . "'" . $this->student . "',"
+                . "'" . $createdAt . "',"
+                . "'" . $this->description . "'"
+                . ")";
 
         $db = new Database();
 
@@ -53,31 +59,125 @@ class Post {
         }
     }
 
+//    public function shareAd() {
+//
+//        date_default_timezone_set('Asia/Colombo');
+//        $createdAt = date('Y-m-d H:i:s');
+//
+//        $query = "INSERT INTO `post` ("
+//                . "`student`,"
+//                . "`created_at`,"
+//                . "`description`,"
+//                . "`shared_ad`) "
+//                . "VALUES  ("
+//                . "'" . $this->student . "',"
+//                . "'" . $createdAt . "',"
+//                . "'" . $this->description . "',"
+//                . "'" . $this->sharedAd . "'"
+//                . ")";
+//
+//        $db = new Database();
+//
+//        $result = $db->readQuery($query);
+//
+//        if ($result) {
+//            $last_id = mysql_insert_id();
+//
+//            return $this->__construct($last_id);
+//        } else {
+//            return FALSE;
+//        }
+//    }
+
+    public function all() {
+
+        $query = "SELECT * FROM `post` ORDER BY `description` ASC";
+        $db = new Database();
+        $result = $db->readQuery($query);
+        $array_res = array();
+
+        while ($row = mysql_fetch_array($result)) {
+            array_push($array_res, $row);
+        }
+
+        return $array_res;
+    }
+
     public function update() {
 
         $query = "UPDATE  `post` SET "
-                . "`full_name` ='" . $this->full_name . "', "
-                . "`nic_number` ='" . $this->nic_number . "', "
-                . "`gender` ='" . $this->gender . "', "
-                . "`age` ='" . $this->age . "', "
-                . "`phone_number` ='" . $this->phone_number . "', "
-                . "`address` ='" . $this->address . "', "
-                . "`education_level` ='" . $this->education_level . "', "
-                . "`email` ='" . $this->email . "' "
+                . "`description` ='" . $this->description . "' "
                 . "WHERE `id` = '" . $this->id . "'";
-
 
         $db = new Database();
 
         $result = $db->readQuery($query);
 
         if ($result) {
-
             return $this->__construct($this->id);
         } else {
-
             return FALSE;
         }
+    }
+
+    public function delete() {
+
+        $query = 'DELETE FROM `post` WHERE id="' . $this->id . '"';
+
+        $db = new Database();
+
+        return $db->readQuery($query);
+    }
+
+    public function getPostsByStudent($student) {
+
+        $query = "SELECT * FROM `post` WHERE  `student` = $student ORDER BY `created_at` DESC";
+        $db = new Database();
+        $result = $db->readQuery($query);
+        $array_res = array();
+
+        while ($row = mysql_fetch_array($result)) {
+            array_push($array_res, $row);
+        }
+
+        return $array_res;
+    }
+
+//    public function getPostsBySharedAD($ad) {
+//
+//        $query = "SELECT * FROM `post` WHERE  `shared_ad` = $ad ORDER BY `created_at` DESC";
+//        $db = new Database();
+//        $result = $db->readQuery($query);
+//        $array_res = array();
+//
+//        while ($row = mysql_fetch_array($result)) {
+//            array_push($array_res, $row);
+//        }
+//
+//        return $array_res;
+//    }
+
+    public function totalRows() {
+
+        $query = "SELECT count(*) 'total_rows' FROM `post`";
+        $db = new Database();
+        $result = mysql_fetch_array($db->readQuery($query));
+
+        return $result;
+    }
+
+    public function limitRows($offset, $limit) {
+
+        $query = "SELECT * FROM `post` limit $offset, $limit";
+        $db = new Database();
+        $result = $db->readQuery($query);
+        $array_res = array();
+
+//        while ($row = mysql_fetch_array($result)) {
+//            array_push($array_res, $row);
+//        }
+
+        return $result;
     }
 
 }

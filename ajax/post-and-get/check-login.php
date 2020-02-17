@@ -1,21 +1,20 @@
 <?php
 
 include '../../class/include.php';
-
+ 
 if ($_POST['action'] == 'CHECKLOGIN') {
 
     $STUDENT = new Student(NULL);
 
-    $result = $STUDENT->checkLogin($_POST['id']);
-
-    if ($result) {
-        $result['status'] = 'true';
-        echo json_encode($result);
+    if ($STUDENT->checkLogin($_POST['student_id'])) {
+        $response['status'] = 'success';
+        $response['message'] = " Sorry., Your Account has not been activated...! ";
+        echo json_encode($response);
         header('Content-type: application/json');
         exit();
     } else {
-        $result['status'] = 'false';
-        echo json_encode($result);
+        $response['status'] = 'error';        
+        echo json_encode($response);
         header('Content-type: application/json');
         exit();
     }
