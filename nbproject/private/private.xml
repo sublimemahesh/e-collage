@@ -3,12 +3,13 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/xampp/htdocs/institute/navigation.php</file>
-            <file>file:/C:/xampp/htdocs/institute/disable-navigation.php</file>
-            <file>file:/C:/xampp/htdocs/institute/assesment.php</file>
-            <file>file:/C:/xampp/htdocs/institute/index.php</file>
+            <file>file:/C:/xampp/htdocs/institute/ajax/js/student.js</file>
+            <file>file:/C:/xampp/htdocs/institute/class/Database.php</file>
+            <file>file:/C:/xampp/htdocs/institute/profile.php</file>
+            <file>file:/C:/xampp/htdocs/institute/class/Student.php</file>
             <file>file:/C:/xampp/htdocs/institute/top-header.php</file>
-            <file>file:/C:/xampp/htdocs/institute/lesson.php</file>
+            <file>file:/C:/xampp/htdocs/institute/verify-id-card.php</file>
+            <file>file:/C:/xampp/htdocs/institute/ajax/post-and-get/student.php</file>
         </group>
     </open-files>
 </project-private>

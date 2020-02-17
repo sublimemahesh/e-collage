@@ -310,7 +310,7 @@ class Student {
     public function checkLogin($id) {
 
         $query = "SELECT * FROM `student` WHERE `id` ='" . $id . "'  AND `status` = 0 ";
-
+    
         $db = new Database();
         $result = mysql_fetch_array($db->readQuery($query));
         return $result['id'];
