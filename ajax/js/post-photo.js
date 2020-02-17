@@ -31,6 +31,11 @@ $(document).ready(function () {
                                 images: result.thumb,
                                 full_images: result.full
                             });
+                            
+                            $('#gallery2' + post.id).imagesGrid({
+                                images: result.thumb,
+                                full_images: result.full
+                            });
                         });
                     }
                 });

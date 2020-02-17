@@ -59,7 +59,7 @@ include './calculate-time.php';
                                             <?php
                                             if (empty($STUDENT->image_name)) {
                                                 ?>
-                                                <input type="image" src="img/0180441436.jpg" width="128" height="128"  class="append_img profile-avetar-img " /><i class="fa fa-camera fa-lg fa-color "></i> 
+                                                <input type="image" src="img/member.jpg" width="128" height="128"  class="append_img profile-avetar-img " /><i class="fa fa-camera fa-lg fa-color "></i> 
 
                                             <?php } else { ?>
                                                 <img   class="profile-avetar-img  append_img  "  width="128" height="128"   src="upload/student/profile/<?php echo $STUDENT->image_name ?>"  >  <i class="fa fa-camera fa-lg fa-color "></i> 
@@ -92,7 +92,7 @@ include './calculate-time.php';
                                             <?php
                                             if (empty($STUDENT->image_name)) {
                                                 ?>
-                                                <input type="image" src="img/0180441436.jpg" width="48" height="48"  class="append_img profile-avetar-img " /><i class="fa fa-camera fa-lg fa-color "></i> 
+                                                <input type="image" src="img/member.jpg" width="48" height="48"  class="append_img profile-avetar-img " /><i class="fa fa-camera fa-lg fa-color "></i> 
 
                                             <?php } else { ?>
                                                 <img   class="profile-avetar-img  append_img  " width="48" height="48"  src="upload/student/profile/<?php echo $STUDENT->image_name ?>"  >  <i class="fa fa-camera fa-lg fa-color "></i> 
@@ -156,7 +156,6 @@ include './calculate-time.php';
                                                 </label>
                                             </a>
                                             <input type="hidden" id="upload-post-image" name="upload-post-image" value="upload-post-image">
-
                                         </div>
 
                                         <div class="post-actions">
@@ -198,7 +197,7 @@ include './calculate-time.php';
                                                     <?php
                                                     if (empty($STUDENT->image_name)) {
                                                         ?>
-                                                        <input type="image" src="img/0180441436.jpg" width="48" height="48"  class="append_img profile-avetar-img " />
+                                                        <input type="image" src="img/member.jpg" width="48" height="48"  class="append_img profile-avetar-img " />
 
                                                     <?php } else { ?>
                                                         <img   class="profile-avetar-img  append_img  " width="48" height="48"  src="upload/student/profile/<?php echo $STUDENT->image_name ?>"  >  
@@ -219,7 +218,8 @@ include './calculate-time.php';
                                                         <span class="icon icon-angle-down"></span>
                                                     </a>
                                                     <ul class="dropdown-menu dropdown-menu-right">
-                                                        <li><a href="#">Edit </a></li>
+
+                                                        <li><a href="#" data-toggle="modal" data-target="#warningModalAlert<?php echo $post['id']; ?>" class="edit-post"  >Edit </a></li>
                                                         <li><a href="#">Delete</a></li> 
                                                     </ul>
                                                 </div>
@@ -268,10 +268,130 @@ include './calculate-time.php';
         </div>
 
 
-        <!--check Login-->
-
+        <!--check Login--> 
         <input type="hidden" value="<?php echo $_SESSION['id'] ?>" id="student_id">
 
+        <?php
+        $POST = new Post(NULL);
+        foreach ($POST->getPostsByStudent($_SESSION['id']) as $key => $post) {
+            ?>
+
+            <div id="warningModalAlert<?php echo $post['id'] ?>" tabindex="-1" role="dialog" class="modal fade">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal">
+                                <span aria-hidden="true">×</span>
+                                <span class="sr-only">Close</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            <div class="text-center">
+                                <div style="margin-top: -18px;">
+                                    <div class="profile-body"> 
+                                        <div class="col-md-12" >
+                                            <div class="post"  >
+                                                <div class="post-header">
+                                                    <div class="post-author">
+                                                        <div class="post-author-avatar">
+
+                                                            <?php
+                                                            if (empty($STUDENT->image_name)) {
+                                                                ?>
+                                                                <input type="image" src="img/member.jpg" width="48" height="48"  class="append_img profile-avetar-img " /><i class="fa fa-camera fa-lg fa-color "></i> 
+
+                                                            <?php } else { ?>
+                                                                <img   class="profile-avetar-img  append_img  " width="48" height="48"  src="upload/student/profile/<?php echo $STUDENT->image_name ?>"  >  <i class="fa fa-camera fa-lg fa-color "></i> 
+                                                            <?php } ?>
+
+                                                        </div>
+                                                        <div class="post-author-info" style="float: left;">
+                                                            <span class="post-author-name">
+                                                                <a href="#"><?php echo $STUDENT->full_name ?></a>
+                                                            </span> 
+                                                            <span class="post-timestamp">Student ID - <?php echo $STUDENT->student_id ?></span>
+                                                        </div>
+                                                    </div> 
+                                                </div>
+
+
+                                                <div class="post-body"> 
+                                                    <form action="ajax/post-and-get/post.php" method="post" id="post-form">
+                                                        <img id="loading" src="https://www.vedantalimited.com/SiteAssets/Images/loading.gif" style=" display: none;position: absolute;margin-top: 20%;margin-left: 37%;z-index: 9999;"/>
+
+                                                        <label class="control-label" style="float: left;">Share what you are thinking here...</label>
+                                                        <textarea class="form-control post-description control-label" placeholder=""  name="description" style="border: none;margin-top: -15px;height: 36px;margin-bottom: 5px;"></textarea>
+                                                        <div class="flipScrollableArea hidden  " id="image-list"  >
+                                                            <div class="flipScrollableAreaWrap">
+
+                                                                <div class="flipScrollableAreaBody"  >
+                                                                    <div class="flipScrollableAreaContent">
+                                                                        <div class="flipScrollableAreaContent1"> 
+                                                                            <span class="_uploadouterbox">
+                                                                                <div class="_m _6a">
+                                                                                    <a class="_uploadbox" rel="ignore">
+                                                                                        <div class="_upload"> 
+                                                                                            <input multiple="" name="upload-other-images" title="Choose a file to upload" data-test  display="inline-block" type="file" class="_uploadinput _outlinenone" id="add-more-photos">
+                                                                                        </div>
+                                                                                    </a>
+                                                                                </div>
+                                                                            </span>
+                                                                        </div>
+                                                                        <span class="_uploadloaderbox abc">
+                                                                            <div class="_m _6a">
+                                                                                <a class="_uploadbox" rel="ignore">
+                                                                                    <div class="_upload">
+
+                                                                                    </div>
+                                                                                </a>
+                                                                            </div>
+                                                                        </span>
+                                                                    </div>
+                                                                </div>
+
+                                                            </div>
+                                                            <div class="flipScrollableAreaTrack invisible_elem" style="opacity: 0;">
+                                                                <div class="flipScrollableAreaGripper hidden_elem"></div>
+                                                            </div>
+                                                        </div>
+
+                                                        <div class="post-img" style="float: left;">
+                                                            <a href="#">
+                                                                <label class="custom-file-upload">
+                                                                    <input type="file" id="upload_first_image" name="post-image"/>  <span class="icon icon-camera icon-fw"></span>
+                                                                </label>
+                                                            </a>
+                                                            <input type="hidden" id="upload-post-image" name="upload-post-image" value="upload-post-image">
+                                                        </div>
+
+                                                        <div class="post-actions">
+                                                              
+                                                            <div class="post-summary">
+                                                                <input type="hidden" name="student" value="<?php echo $_SESSION['id'] ?>" >
+                                                                <input type="submit"class="btn btn-primary btn-block pull-right share-post"  disabled="" style="width: 60px"  name="save-post" value="POST">
+                                                            </div>
+                                                        </div>
+                                                    </form>
+                                                </div> 
+                                            </div>
+                                        </div>
+                                        
+                                    </div>
+                                </div>
+                                <a href="#">
+                                    <div id="gallery2<?php echo $post['id'] ?>"></div>
+                                </a>
+                                <div class="m-t-lg">
+                                    <button class="btn btn-warning" data-dismiss="modal" type="button">Continue</button>
+                                    <button class="btn btn-default" data-dismiss="modal" type="button">Cancel</button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="modal-footer"></div>
+                    </div>
+                </div>
+            </div>
+        <?php } ?>
         <script src="js/vendor.min.js"></script>
         <script src="js/elephant.min.js"></script>
         <script src="js/application.min.js"></script>
