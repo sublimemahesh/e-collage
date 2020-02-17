@@ -141,6 +141,20 @@ class Student {
         return $array_res;
     }
 
+    public function getAllMembersWithoutThis($student) {
+        
+        $query = "SELECT * FROM `student` WHERE `id` <> '" . $member . "' AND `status` = 1 AND `is_suspend` = 0";
+        $db = new Database();
+        $result = $db->readQuery($query);
+        $array_res = array();
+
+        while ($row = mysql_fetch_array($result)) {
+            array_push($array_res, $row);
+        }
+
+        return $array_res;
+    }
+
     public function login($student_id, $password) {
 
         $enPass = md5($password);
@@ -224,8 +238,8 @@ class Student {
         $query = "UPDATE  `student` SET "
                 . "`nic_back` ='" . $nic_back . "' "
                 . "WHERE `id` = '" . $student . "'";
-        
-       
+
+
         $db = new Database();
 
         $result = $db->readQuery($query);
@@ -310,7 +324,7 @@ class Student {
     public function checkLogin($id) {
 
         $query = "SELECT * FROM `student` WHERE `id` ='" . $id . "'  AND `status` = 0 ";
-    
+
         $db = new Database();
         $result = mysql_fetch_array($db->readQuery($query));
         return $result['id'];

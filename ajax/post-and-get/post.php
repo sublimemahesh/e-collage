@@ -32,6 +32,7 @@ if (isset($_POST['save-post'])) {
     }
 }
 
+//Get post details by student
 if ($_POST['option'] === 'GETPOST') {
     $POST = new Post(NULL);
 
@@ -40,3 +41,12 @@ if ($_POST['option'] === 'GETPOST') {
     header('Content-type: application/json');
     echo json_encode($post);
 }
+
+//Get post by id
+if ($_POST['option'] === 'GETPOSTBYID') {
+    $POST = new Post($_POST['post_id']);
+    header('Content-type: application/json');
+    echo json_encode($POST);
+}
+
+ 

@@ -62,7 +62,7 @@ include_once(dirname(__FILE__) . '/auth.php');
                                             <?php
                                             if (empty($STUDENT->image_name)) {
                                                 ?>
-                                                <input type="image" src="img/0180441436.jpg" width="128" height="128"  class="append_img profile-avetar-img " /><i class="fa fa-camera fa-lg fa-color "></i> 
+                                                <input type="image" src="img/member.jpg" width="128" height="128"  class="append_img profile-avetar-img " /><i class="fa fa-camera fa-lg fa-color "></i> 
 
                                             <?php } else { ?>
                                                 <img   class="profile-avetar-img  append_img  "  width="128" height="128"   src="upload/student/profile/<?php echo $STUDENT->image_name ?>"  >  <i class="fa fa-camera fa-lg fa-color "></i> 
@@ -83,8 +83,7 @@ include_once(dirname(__FILE__) . '/auth.php');
                     </div>
                     <img id="loading" src="https://www.vedantalimited.com/SiteAssets/Images/loading.gif" style="display: none; position: absolute;margin-top: 20%;margin-left: 37%;z-index: 999;"/>
 
-                    <div class="row">
-
+                    <div class="row"> 
                         <div class="col-md-2"></div>
                         <div class="col-md-8"> 
                             <form class="demo-form-wrapper card " style="padding: 50px" id="form-data">
@@ -225,7 +224,7 @@ include_once(dirname(__FILE__) . '/auth.php');
                                 <?php
                                 if (empty($STUDENT->image_name)) {
                                     ?>
-                                    <input type="image" src="img/0180441436.jpg" width="128" height="128"  class="append_img profile-avetar-img " /> 
+                                    <input type="image" src="img/member.jpg" width="128" height="128"  class="append_img profile-avetar-img " /> 
 
                                 <?php } else { ?>
                                     <img   class="profile-avetar-img  append_img  "  width="128" height="128"   src="upload/student/profile/<?php echo $STUDENT->image_name ?>"  >  

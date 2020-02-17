@@ -138,16 +138,16 @@ if ($_POST['action'] == 'UPDATENICCARD') {
             exit();
         }
     } else {
-        
-        
+
+
         unlink("$dir_dest" . $STUDENT->nic_front);
         unlink("$dir_dest_thumb" . $STUDENT->nic_front);
-        
+
         unlink("$dir_dest_back" . $STUDENT->nic_back);
         unlink("$dir_dest_thumb_back" . $STUDENT->nic_back);
 
 
-        if ($handle->uploaded) { 
+        if ($handle->uploaded) {
 
             $img_name = null;
             $img = Helper::randamId();
@@ -179,7 +179,7 @@ if ($_POST['action'] == 'UPDATENICCARD') {
             $handle->image_y = 200;
 
             $handle->Process($dir_dest_thumb);
- 
+
 ////NIC back
             $img_name_back = null;
             $img_back = Helper::randamId();
@@ -219,7 +219,7 @@ if ($_POST['action'] == 'UPDATENICCARD') {
 
                 Student::updateNicImagesFront($_POST["id"], $handle->file_dst_name);
                 Student::updateNicImagesBack($_POST["id"], $handle_back->file_dst_name);
-                
+
                 header('Content-Type: application/json');
 
                 $result = [
@@ -230,7 +230,6 @@ if ($_POST['action'] == 'UPDATENICCARD') {
                 echo json_encode($result);
                 exit();
             }
-
         } else {
 
             header('Content-Type: application/json');
@@ -346,6 +345,18 @@ if ($_POST['action'] == 'CHANGEPROFILE') {
             exit();
         }
     }
+}
+
+
+//get the student details
+
+if ($_POST['action'] == 'GETSTUDENT') {
+    
+    $STUDENT = new Student($_POST['post_student']);
+    
+    header('Content-Type: application/json');
+    echo json_encode($STUDENT);
+    exit();
 }
 
 
