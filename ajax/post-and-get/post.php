@@ -1,7 +1,7 @@
 <?php
 
 include '../../class/include.php';
- 
+
 if (isset($_POST['save-post'])) {
 
     if (empty($_POST['description']) && empty($_POST['post-all-images'])) {
@@ -30,4 +30,13 @@ if (isset($_POST['save-post'])) {
             exit();
         }
     }
+}
+
+if ($_POST['option'] === 'GETPOST') {
+    $POST = new Post(NULL);
+
+    $post = $POST->getPostsByStudent($_POST['student_id']);
+
+    header('Content-type: application/json');
+    echo json_encode($post);
 }
