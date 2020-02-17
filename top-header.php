@@ -155,9 +155,11 @@ $today = date('Y-m-d');
                             <span class="caret"></span>
                         </button>
                         <ul class="dropdown-menu dropdown-menu-right">  
-                            <li><a href="profile.php">Profile</a></li>
+                            <li><a href="student-post.php">My Profile</a></li>
+                            <li><a href="profile.php">Change Profile</a></li>
                             <li><a href="change-password.php">Change Password</a></li>
                             <li><a href="log-out.php">Sign out</a></li>
+                            
                         </ul>
                     </li>
                     <li class="visible-xs-block">

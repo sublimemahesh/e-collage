@@ -63,8 +63,7 @@ $(document).ready(function () {
                 success: function (result) {
                     $(".append_nic_front_img").attr("src", "upload/student/nic_card/front/thumb/" + result.filename);
                     $(".append_nic_back_img").attr("src", "upload/student/nic_card/back/thumb/" + result.filename_2);
-
-
+ 
                     $('#loading').hide();
                     swal({
                         title: "Success!",
@@ -72,9 +71,7 @@ $(document).ready(function () {
                         type: 'success',
                         timer: 2000,
                         showConfirmButton: false
-                    });
-
-
+                    }); 
                 },
                 cache: false,
                 contentType: false,

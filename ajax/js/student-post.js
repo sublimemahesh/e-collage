@@ -15,7 +15,11 @@ $(document).ready(function () {
 
         $('#loading').css('display', 'block')
 
-
+//        loader();
+//        setTimeout(function () {
+//            stoploader();
+//        }, 3000);
+//        setTimeout(function () {
         var fi = document.getElementById('upload_first_image'); // GET THE FILE INPUT.
 
         if (fi.files.length > 0) {
@@ -71,11 +75,12 @@ $(document).ready(function () {
 //                    $('._uploadouterbox').css('left', newleft + 'px');
                 $('._uploadloaderbox').css('left', newleft1 + 'px');
                 $('.share-post').removeAttr('disabled');
-//                }
+//             } 
             },
             cache: false,
             contentType: false,
-            processData: false
+            processData: false,
+
         });
 
 //        }, 2000);
@@ -83,45 +88,45 @@ $(document).ready(function () {
     });
 
 
-//
-//    function loader() {
-//
-//        "use strict";
-//        var element = $('<div class="loader"></div>').css({
-//            width: 100,
-//            height: 100,
-//            border: '0px'
-//        }).appendTo('._uploadloaderbox');
-//        element.canvasLoader({
-//            color: '#ff0000'
-//        });
-//        element.canvasLoader(false);
-//        element.canvasLoader(true);
-////    $(element).trigger('stop.canvasLoader');
-////    element.canvasLoader.options.color = '#008000';
-//        $(element).trigger('start.canvasLoader');
-//        $.fn.canvasLoader.options.color = '#0000ff';
-//        var version = $.fn.canvasLoader.version;
-//    }
-//
-//    function stoploader() {
-//
-//        "use strict";
-//        var element = $('<div class="loader"></div>').css({
-//            width: 100,
-//            height: 100,
-//            border: '0px'
-//        }).appendTo('._uploadloaderbox');
-//        element.canvasLoader({
-//            color: '#ff0000'
-//        });
-//        element.canvasLoader(false);
-//        element.canvasLoader(true);
-//        $(element).trigger('stop.canvasLoader');
-//        element.canvasLoader.options.color = '#008000';
-////    $(element).trigger('start.canvasLoader');
-////    $.fn.canvasLoader.options.color = '#0000ff';
-//        var version = $.fn.canvasLoader.version;
-//    }
-//    ;
+
+    function loader() {
+
+        "use strict";
+        var element = $('<div class="loader"></div>').css({
+            width: 100,
+            height: 100,
+            border: '0px'
+        }).appendTo('._uploadloaderbox');
+        element.canvasLoader({
+            color: '#ff0000'
+        });
+        element.canvasLoader(false);
+        element.canvasLoader(true);
+//    $(element).trigger('stop.canvasLoader');
+//    element.canvasLoader.options.color = '#008000';
+        $(element).trigger('start.canvasLoader');
+        $.fn.canvasLoader.options.color = '#0000ff';
+        var version = $.fn.canvasLoader.version;
+    }
+
+    function stoploader() {
+
+        "use strict";
+        var element = $('<div class="loader"></div>').css({
+            width: 100,
+            height: 100,
+            border: '0px'
+        }).appendTo('._uploadloaderbox');
+        element.canvasLoader({
+            color: '#ff0000'
+        });
+        element.canvasLoader(false);
+        element.canvasLoader(true);
+        $(element).trigger('stop.canvasLoader');
+        element.canvasLoader.options.color = '#008000';
+//    $(element).trigger('start.canvasLoader');
+//    $.fn.canvasLoader.options.color = '#0000ff';
+        var version = $.fn.canvasLoader.version;
+    }
+    ;
 });
