@@ -4,14 +4,10 @@ include '../../class/include.php';
 
 
 //Update Student Details
-
 if (isset($_POST['upload-post-image'])) {
-
-
 
     $dir_dest = '../../upload/post/';
     $imgName = Helper::randamId();
-//    dd($_FILES['post-image']['name'] == '');
 
 
     if ($_FILES['post-image']['name'] == '') {
@@ -20,9 +16,9 @@ if (isset($_POST['upload-post-image'])) {
         $handle = new Upload($_FILES['post-image']);
     }
 
- 
+
     if ($handle->uploaded) {
- 
+
         $handle->image_resize = true;
         $handle->file_new_name_ext = 'jpg';
         $handle->image_ratio_crop = 'C';
@@ -46,15 +42,15 @@ if (isset($_POST['upload-post-image'])) {
 
 
         $handle->process($dir_dest);
-        
+
         if ($handle->processed) {
-           
+
             if ($_FILES['post-image']['name'] == '') {
                 $handle1 = new Upload($_FILES['upload-other-images']);
             } else {
                 $handle1 = new Upload($_FILES['post-image']);
             }
-             
+
             if ($handle1->uploaded) {
                 $handle1->image_resize = true;
                 $handle1->file_new_name_ext = 'jpg';
@@ -133,5 +129,19 @@ if (isset($_POST['upload-post-image'])) {
         ];
         echo json_encode($result);
         exit();
+    }
+}
+
+//Delte Post for edit
+if ($_POST['option'] == 'DELETEPHOTO') {   
+
+    $POST_IMAGES = new PostImage(NULL);
+    $result = $POST_IMAGES->deletePhotos($_POST['id']);  
+   
+    if ($result) {
+
+        $data = array("status" => TRUE);
+        header('Content-type: application/json');
+        echo json_encode($data);
     }
 }

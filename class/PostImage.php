@@ -41,7 +41,7 @@ class PostImage {
                 . "'" . $this->image_name . "',"
                 . "'" . $this->sort . "'"
                 . ")";
-
+       
         $db = new Database();
 
         $result = $db->readQuery($query);
@@ -87,9 +87,20 @@ class PostImage {
         }
     }
 
-    public function delete() {
+    public function deletePhotos($post_id) {
 
-        $query = 'DELETE FROM `post_image` WHERE id="' . $this->id . '"';
+        $allPhotos = $this->getPhotosByPostId($post_id);
+
+        foreach ($allPhotos as $photo) {
+
+
+            unlink(Helper::getSitePath() . "upload/post/" . $photo["image_name"]);
+            unlink(Helper::getSitePath() . "upload/post/thumb/" . $photo["image_name"]);
+            unlink(Helper::getSitePath() . "upload/post/thumb2/" . $photo["image_name"]);
+        }
+
+        $query = 'DELETE FROM `post_image` WHERE post="' . $post_id . '"';
+
 
         $db = new Database();
 

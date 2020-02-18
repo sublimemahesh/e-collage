@@ -2,7 +2,6 @@
 $(document).ready(function () {
 
 //Create Post
-
     $('#upload_first_image').change(function () {
 
         $('.flipScrollableArea').removeClass('hidden');
@@ -51,6 +50,7 @@ $(document).ready(function () {
             success: function (mess) {
 
                 var arr = mess.filename.split('.');
+
                 var html = '';
                 html += '<div class="_uploadedimagesbox" role="presentation" id="col_' + arr[0] + '">';
                 html += '<div data-testid="media-attachment-photo">';
@@ -67,14 +67,13 @@ $(document).ready(function () {
                 $('.flipScrollableArea').removeClass('hidden');
                 $('._uploadloaderbox').css('display', 'none');
                 $('.flipScrollableAreaContent1').prepend(html);
+
+
+
                 $('#upload_first_image').val('');
-                $('#loading').css('display', 'none')
-//                if ($('#image-list ._uploadedimagesbox').length > 1) {
-//                    var left = $('._uploadouterbox').css('left');
+                $('#loading').css('display', 'none');
                 var left1 = $('._uploadloaderbox').css('left');
-//                    var newleft = parseInt(left) + 100;
                 var newleft1 = parseInt(left1) + 105;
-//                    $('._uploadouterbox').css('left', newleft + 'px');
                 $('._uploadloaderbox').css('left', newleft1 + 'px');
                 $('.share-post').removeAttr('disabled');
 //             } 
@@ -89,10 +88,111 @@ $(document).ready(function () {
 
     });
 
-//Update Post
-    $('.edit-post').click(function () {
-        var post_id = $(this).attr("post-id");
+//Delete image for edit
+    $('.img-post-delete').click(function () {
 
+        var id = $(this).attr("data-id");
+
+        swal({
+            title: "Are you sure?",
+            text: "You will not be able to recover this imaginary file!",
+            type: "warning",
+            showCancelButton: true,
+            confirmButtonColor: "#DD6B55",
+            confirmButtonText: "Yes, delete it!",
+            closeOnConfirm: false
+        }, function () {
+            $.ajax({
+                url: "ajax/post-and-get/student-post.php",
+                type: "POST",
+                data: {
+                    id: id,
+                    option: 'DELETEPHOTO'
+                },
+                dataType: "JSON",
+                success: function (jsonStr) {
+                    if (jsonStr.status) {
+
+                        swal({
+                            title: "Deleted!",
+                            text: "Your imaginary file has been deleted.",
+                            type: 'success',
+                            timer: 2000,
+                            showConfirmButton: false
+                        });
+//                        $('.warningModalAlert_2').modal('hide');
+                        $('.del').css('display', 'none');
+                        $('.div' + id).remove();
+
+                    }
+                }
+            });
+        });
+    });
+
+//Update image section
+ $('.upload_first_image_edit').change(function () {
+        
+        $('.flipScrollableArea_2').removeClass('hidden');
+        $('._uploadloaderbox_edit').css('display', 'inline-block');
+
+        var left = $('._uploadouterbox_edit').css('left');
+        var newleft = parseInt(left) + 105;
+        $('._uploadouterbox_edit').css('left', newleft + 'px');
+        $('.loading_2').css('display', 'block')
+        
+        var formData = new FormData($('.edit-post-form')[0]);
+    
+        $.ajax({
+            url: "ajax/post-and-get/student-post.php",
+            type: "POST",
+            data: formData,
+            async: false,
+            dataType: 'json',
+            success: function (mess) {
+
+                var arr = mess.filename.split('.');
+               
+                var html = '';
+                html += '<div class="_uploadedimagesbox" role="presentation" id="col_' + arr[0] + '">';
+                html += '<div data-testid="media-attachment-photo">';
+                html += '<span>';
+                html += '<div class="_uploadedimages" style="width: 100px; height: 100px;margin:5px;" id="js_3mg" aria-controls="js_3mh" aria-haspopup="true">';
+                html += '<img alt="Cute-baby-girl-pics-for-facebook-profile-4-1024x640.jpg" class="img" src="upload/post/thumb2/' + mess.filename + '" width="100" height="100">';
+                html += '<input type="hidden" class="post-all-images" name="post-all-images[]" value="' + mess.filename + '"/>';
+                html += '<i class="img-post-delete _buttons _btn _removebtn _5upp _42ft fa fa-times" title="Remove Photo" id="' + arr[0] + '"></i>';
+                html += '</div>';
+                html += '</span>';
+                html += '</div>';
+                html += '</div>';
+
+                $('.flipScrollableArea_edit').removeClass('hidden');
+                $('._uploadouterbox_edit').css('display', 'none');
+                $('.flipScrollableAreaContent2').prepend(html);
+
+
+
+                $('.upload_first_image_edit').val('');
+                $('.loading_2').css('display', 'none');
+                var left1 = $('._uploadloaderbox_edit').css('left');
+                var newleft1 = parseInt(left1) + 105;
+                $('._uploadloaderbox_edit').css('left', newleft1 + 'px');
+                $('.share-post').removeAttr('disabled');
+//             } 
+            },
+            cache: false,
+            contentType: false,
+            processData: false,
+
+        });
+
+//        }, 2000);
+
+    });
+
+//Update Post
+    $('.edit-post').click(function () {      
+        var formData = new FormData($('#edit-post-form')[0]);
         $.ajax({
             url: "ajax/post-and-get/post.php",
             cache: false,
@@ -114,7 +214,7 @@ $(document).ready(function () {
                         action: 'GETSTUDENT'
                     },
                     success: function (student) {
-                     
+
                         $.ajax({
                             url: "post-and-get/ajax/post-photos.php",
                             cache: false,
@@ -149,12 +249,12 @@ $(document).ready(function () {
                         var img = '';
 
                         if (student.image_name) {
-                               img = '<input type="image" src="img/member.jpg" width="48" height="48"  class="append_img profile-avetar-img " />';
+                            img = '<input type="image" src="img/member.jpg" width="48" height="48"  class="append_img profile-avetar-img " />';
                         } else {
                             img = '<input type="image" src="img/member.jpg" width="48" height="48"  class="append_img profile-avetar-img " /> ';
                         }
-                
-                       
+
+
                         html += '<div id="warningModalAlert" tabindex="-1" role="dialog" class="modal fade">';
                         html += '<div class="modal-dialog">';
                         html += '<div class="modal-content">';
@@ -177,70 +277,8 @@ $(document).ready(function () {
                         html += '<div class="modal-footer"></div>';
                         html += '</div>';
                         html += '</div>';
-                        html += '</div>';
-                        
-                     
-                       
-                        
-//                        html += '<label class="control-label">Share what you are thinking here...</label>';
-//                        html += '<textarea class="form-control" placeholder="" name="description">' + post.description + '</textarea>';
-//
-//                        html += '<div class="flipScrollableArea hidden" id="image-list-edit" style="/*! height: 112px; */ /*! width: 100%; */">';
-//                        html += '<div class="flipScrollableAreaWrap">';
-//                        html += '<div class="flipScrollableAreaBody" style="height: 112px;">';
-//                        html += '<div class="flipScrollableAreaContent">';
-//                        html += '<div class="flipScrollableAreaContent1">';
-//                        html += '</div>';
-//                        html += '<span class="_uploadouterbox_edit">';
-//                        html += '<div class="_m _6a">';
-//                        html += '<a class="_uploadbox" rel="ignore">';
-//                        html += '<div class="_upload">';
-//                        html += '<input multiple="" name="upload-other-images" title="Choose a file to upload" data-testid="add-more-photos" display="inline-block" type="file" class="_uploadinput _outlinenone" id="add-more-photos">';
-//                        html += '</div>';
-//                        html += '</a>';
-//                        html += '</div>';
-//                        html += '</span>';
-//
-//                        html += '</div>';
-//                        html += '</div>';
-//                        html += '</div>';
-//                        html += '<div class="flipScrollableAreaTrack invisible_elem" style="opacity: 0;">';
-//                        html += '<div class="flipScrollableAreaGripper hidden_elem"></div>';
-//                        html += '</div>';
-//                        html += '</div>'; 
-//
-//                        html += '</div>';
-//                        html += '<div class="panel panel-default panel-post">';
-//                        html += '<div class="panel-heading">';
-//                        html += '<ul class="header-dropdown">';
-//                        html += '<li id="remove-circle-' + post.id + '">';
-//
-//                        html += '</li>';
-//                        html += '</ul>';
-//                        html += '</div>';
-//                        html += '<div class="panel-body">';
-//                        html += '<div id="gallery1"></div>';
-//                        html += '</div>';
-//                        html += '</div>';
-//                        html += '<div class="add-options-message">';
-//                        html += '<a class="options-message" data-toggle="tooltip" data-placement="top"   data-original-title="ADD PHOTOS">';
-//                        html += '<svg class="olymp-camera-icon" data-toggle="modal" data-target="#update-header-photo"><use xlink:href="svg-icons/sprites/icons.svg#olymp-camera-icon"></use></svg>';
-//                        html += '<div class="_upload">';
-//                        html += '<input  name="post-image" display="inline" role="button" tabindex="0" data-testid="media-tab" type="file" class="_uploadinput _outlinenone" id="upload_first_image_edit">';
-//                        html += '<input type="hidden" id="upload-post-image" name="upload-post-image" >';
-//                        html += '</div>';
-//                        html += '</a>';
-//                        html += '<a class="options-message" data-toggle="tooltip" data-placement="top"   data-original-title="TAG YOUR FRIENDS">';
-//                        html += '<svg class="olymp-computer-icon"><use xlink:href="svg-icons/sprites/icons.svg#olymp-computer-icon"></use></svg>';
-//                        html += '</a>';
-//                        html += '<a class="options-message" data-toggle="tooltip" data-placement="top"   data-original-title="ADD LOCATION">';
-//                        html += '<svg class="olymp-small-pin-icon"><use xlink:href="svg-icons/sprites/icons.svg#olymp-small-pin-icon"></use></svg>';
-//                        html += '</a>';
-//                        html += '<input type="hidden" value ="' + post.id + '" id="id" name="id" />';
-//                        html += '<input type="submit" name="edit-post" class="btn btn-primary btn-md-2 edit-post" value="Save" />';
-//                        html += '</div>';
-//                        html += '</form>';
-//                        html += '</div>';
+                        html += '</div>'; 
+ 
 
                         $('#edit-post-section').empty();
                         $('#edit-post-section').append(html);
