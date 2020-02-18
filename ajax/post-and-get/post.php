@@ -33,8 +33,7 @@ if (isset($_POST['save-post'])) {
     }
 }
 
-//Edit Post
-
+//Edit Post 
 if (isset($_POST['edit-post'])) {
 
     $POST = new Post($_POST['id']);

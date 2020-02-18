@@ -132,12 +132,27 @@ if (isset($_POST['upload-post-image'])) {
     }
 }
 
+
+//Delte Post  
+if ($_POST['option'] == 'DELETEPOST') {
+
+    $POST = new Post($_POST['id']);
+    $result = $POST->delete();
+
+    if ($result) {
+
+        $data = array("status" => TRUE);
+        header('Content-type: application/json');
+        echo json_encode($data);
+    }
+}
+
 //Delte Post for edit
-if ($_POST['option'] == 'DELETEPHOTO') {   
+if ($_POST['option'] == 'DELETEPHOTO') {
 
     $POST_IMAGES = new PostImage(NULL);
-    $result = $POST_IMAGES->deletePhotos($_POST['id']);  
-   
+    $result = $POST_IMAGES->deletePhotos($_POST['id']);
+
     if ($result) {
 
         $data = array("status" => TRUE);

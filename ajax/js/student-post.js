@@ -89,7 +89,7 @@ $(document).ready(function () {
     });
 
 //Delete image for edit
-    $('.img-post-delete').click(function () {
+$('.img-post-delete').click(function () {
 
         var id = $(this).attr("data-id");
 
@@ -130,6 +130,46 @@ $(document).ready(function () {
         });
     });
 
+
+$('.post-delete').click(function () {
+
+        var id = $(this).attr("data-id");
+        
+        swal({
+            title: "Are you sure?",
+            text: "You will not be able to recover this imaginary file!",
+            type: "warning",
+            showCancelButton: true,
+            confirmButtonColor: "#DD6B55",
+            confirmButtonText: "Yes, delete it!",
+            closeOnConfirm: false
+        }, function () {
+            $.ajax({
+                url: "ajax/post-and-get/student-post.php",
+                type: "POST",
+                data: {
+                    id: id,
+                    option: 'DELETEPOST'
+                },
+                dataType: "JSON",
+                success: function (jsonStr) {
+                    if (jsonStr.status) {
+
+                        swal({
+                            title: "Deleted!",
+                            text: "Your imaginary file has been deleted.",
+                            type: 'success',
+                            timer: 2000,
+                            showConfirmButton: false
+                        });
+                       
+                        $('#div_r' + id).remove();
+                    }
+                }
+            });
+        });
+    });
+    
 //Update image section
  $('.upload_first_image_edit').change(function () {
         

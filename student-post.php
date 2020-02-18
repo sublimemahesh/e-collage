@@ -185,8 +185,7 @@ include './calculate-time.php';
                             $photos = PostImage::getPhotosByPostId($post['id']);
                             ?> 
 
-                            <div class="profile-body">  
-
+                            <div class="profile-body" id="div_r<?php echo $post['id'] ?>">  
                                 <div class="col-md-8" style="margin-left: 120px">
                                     <div class="post" style="padding-top: 15px;">
                                         <div class="post-header">
@@ -218,7 +217,7 @@ include './calculate-time.php';
                                                     <ul class="dropdown-menu dropdown-menu-right">
 
                                                         <li><a href="#" data-toggle="modal" data-target="#warningModalAlert<?php echo $post['id']; ?>" class="edit-post"  >Edit </a></li>
-                                                        <li><a href="#">Delete</a></li> 
+                                                        <li><a href="#" class="post-delete" data-id="<?php echo $post['id']; ?>">Delete</a></li> 
                                                     </ul>
                                                 </div>
                                             </div>
@@ -313,8 +312,7 @@ include './calculate-time.php';
 
                                             <div class="post-body"> 
                                                 <form action="ajax/post-and-get/post.php" method="post" class="edit-post-form">
-                                                          <img class="loading_2" src="https://www.vedantalimited.com/SiteAssets/Images/loading.gif" style="display: none;position: absolute;margin-top: 20%;margin-left: 30%;z-index: 99999;"/>
-
+                                                    <img class="loading_2" src="https://www.vedantalimited.com/SiteAssets/Images/loading.gif" style="display: none;position: absolute;margin-top: 20%;margin-left: 30%;z-index: 99999;"/>
                                                     <label class="control-label" style="float: left;">Share what you are thinking here...</label>
                                                     <textarea class="form-control post-description control-label text-a"   name="description"  > <?php echo $post['description'] ?></textarea>
                                                     <div class="flipScrollableArea_edit hidden  " >
@@ -361,7 +359,7 @@ include './calculate-time.php';
                                                     <div class="post-actions">
                                                         <div class="post-summary">
                                                             <input type="hidden" name="id" value="<?php echo $post['id'] ?>" >
-                                                            <input type="submit"class="btn btn-primary btn-block pull-right share-post"  disabled="" style="width: 60px"  name="edit-post" value="POST">
+                                                            <input type="submit" class="btn btn-primary btn-block pull-right share-post"  disabled="" style="width: 60px"  name="edit-post" value="POST">
                                                         </div>
                                                     </div>
                                                 </form>
@@ -369,7 +367,6 @@ include './calculate-time.php';
                                         </div>                                     
                                     </div>
                                 </div>
-
                                 <a href="#" class="img-post-delete" data-id="<?php echo $post['id'] ?>">
                                     <div class="row">
                                         <span class="icon icon-trash icon-fw pull-right btn-danger del"></span>

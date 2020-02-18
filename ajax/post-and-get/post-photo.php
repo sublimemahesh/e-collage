@@ -1,7 +1,7 @@
 <?php
 
 include '../../class/include.php';
-  
+ 
 if ($_POST['option'] === 'GETPOSTPHOTOS') {
 
     $POST_IMAGE = new PostImage(NULL);
