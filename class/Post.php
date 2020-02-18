@@ -58,36 +58,7 @@ class Post {
             return FALSE;
         }
     }
-
-//    public function shareAd() {
-//
-//        date_default_timezone_set('Asia/Colombo');
-//        $createdAt = date('Y-m-d H:i:s');
-//
-//        $query = "INSERT INTO `post` ("
-//                . "`student`,"
-//                . "`created_at`,"
-//                . "`description`,"
-//                . "`shared_ad`) "
-//                . "VALUES  ("
-//                . "'" . $this->student . "',"
-//                . "'" . $createdAt . "',"
-//                . "'" . $this->description . "',"
-//                . "'" . $this->sharedAd . "'"
-//                . ")";
-//
-//        $db = new Database();
-//
-//        $result = $db->readQuery($query);
-//
-//        if ($result) {
-//            $last_id = mysql_insert_id();
-//
-//            return $this->__construct($last_id);
-//        } else {
-//            return FALSE;
-//        }
-//    }
+ 
 
     public function all() {
 
@@ -120,6 +91,8 @@ class Post {
         }
     }
 
+    
+    
     public function delete() {
 
         $query = 'DELETE FROM `post` WHERE id="' . $this->id . '"';
@@ -129,6 +102,8 @@ class Post {
         return $db->readQuery($query);
     }
 
+    
+     
     public function getPostsByStudent($student) {
 
         $query = "SELECT * FROM `post` WHERE  `student` = $student ORDER BY `created_at` DESC";

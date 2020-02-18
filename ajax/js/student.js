@@ -247,6 +247,7 @@ $(document).ready(function () {
         }
     });
 
+//Assesment
     $('#asseessment').click(function (event) {
         event.preventDefault();
         var formData = new FormData($("form#form-data")[0]);

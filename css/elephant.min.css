@@ -15835,3 +15835,16 @@ a:active {
     background-size: 20px;
     float: right;
 }
+.del{
+    padding: 5px; 
+    border-radius: 4px;
+    width: 23px; 
+    margin-bottom: 3px;
+    margin-right: 14px;
+}
+.text-a{
+    border: none;
+    margin-top: -15px;
+    height: 36px;
+    margin-bottom: 5px;
+}
