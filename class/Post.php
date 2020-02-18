@@ -10,7 +10,7 @@ class Post {
     public $id;
     public $student;
     public $createdAt;
-    public $description; 
+    public $description;
 
     public function __construct($id) {
         if ($id) {
@@ -25,7 +25,7 @@ class Post {
             $this->student = $result['student'];
             $this->createdAt = $result['created_at'];
             $this->description = $result['description'];
-             
+
 
             return $this;
         }
@@ -58,7 +58,6 @@ class Post {
             return FALSE;
         }
     }
- 
 
     public function all() {
 
@@ -91,19 +90,32 @@ class Post {
         }
     }
 
-    
-    
     public function delete() {
 
+//        $this->deletePhotos();
         $query = 'DELETE FROM `post` WHERE id="' . $this->id . '"';
-
+        
         $db = new Database();
 
         return $db->readQuery($query);
     }
 
-    
-     
+    public function deletePhotos() {
+
+        $POST_IMAGE = new PostImage(NULL);
+        $allPhotos = $POST_IMAGE->getPhotosByPostId($this->id);
+
+        foreach ($allPhotos as $photo) {
+
+            unlink(Helper::getSitePath() . "upload/post/" . $photo["image_name"]);
+            unlink(Helper::getSitePath() . "upload/post/thumb/" . $photo["image_name"]);
+            unlink(Helper::getSitePath() . "upload/post/thumb2/" . $photo["image_name"]);
+
+
+            $POST_IMAGE->delete();
+        }
+    }
+
     public function getPostsByStudent($student) {
 
         $query = "SELECT * FROM `post` WHERE  `student` = $student ORDER BY `created_at` DESC";

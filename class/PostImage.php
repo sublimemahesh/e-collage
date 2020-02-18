@@ -41,7 +41,7 @@ class PostImage {
                 . "'" . $this->image_name . "',"
                 . "'" . $this->sort . "'"
                 . ")";
-       
+
         $db = new Database();
 
         $result = $db->readQuery($query);
@@ -85,6 +85,15 @@ class PostImage {
         } else {
             return FALSE;
         }
+    }
+
+    public function delete() {
+
+        $query = 'DELETE FROM `post_image` WHERE id="' . $this->id . '"';
+
+        $db = new Database();
+
+        return $db->readQuery($query);
     }
 
     public function deletePhotos($post_id) {
