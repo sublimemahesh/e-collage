@@ -8,7 +8,7 @@ include './calculate-time.php';
     <head>
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <title>Profile &middot;   </title>
+        <title>Profile in student    </title>
         <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no">
         <meta property="og:url" content="http://demo.madebytilde.com/elephant">
         <meta property="og:type" content="website"> >
@@ -37,7 +37,7 @@ include './calculate-time.php';
                 padding: 6px 12px;
                 cursor: pointer;
             }
-
+            .tex
         </style>
 
     </head>
@@ -110,34 +110,36 @@ include './calculate-time.php';
                                 <div class="post-body"> 
                                     <form action="ajax/post-and-get/post.php" method="post" id="post-form">
                                         <img id="loading" src="https://www.vedantalimited.com/SiteAssets/Images/loading.gif" style=" display: none;position: absolute;margin-top: 20%;margin-left: 37%;z-index: 9999;"/>
-
                                         <label class="control-label">Share what you are thinking here...</label>
-                                        <textarea class="form-control post-description control-label" placeholder=""  name="description" style="border: none;margin-top: -15px;height: 36px;margin-bottom: 5px;"></textarea>
+                                        <textarea class="form-control post-description control-label text-a"   name="description"  ></textarea>
                                         <div class="flipScrollableArea hidden  "  >
                                             <div class="flipScrollableAreaWrap">
-
                                                 <div class="flipScrollableAreaBody"  >
                                                     <div class="flipScrollableAreaContent">
                                                         <div class="flipScrollableAreaContent1"> 
-                                                            <span class="_uploadouterbox">
+
+                                                            <span class="_uploadloaderbox abc">
                                                                 <div class="_m _6a">
+                                                                    <a class="_uploadbox" rel="ignore">
+                                                                        <div class="_upload">
+
+                                                                        </div>
+                                                                    </a>
+                                                                </div>
+                                                            </span>
+
+<!--                                                            <span class="_uploadouterbox">
+                                                                <div class="_m _6a">
+
                                                                     <a class="_uploadbox" rel="ignore">
                                                                         <div class="_upload"> 
                                                                             <input multiple="" name="upload-other-images" title="Choose a file to upload" data-test  display="inline-block" type="file" class="_uploadinput _outlinenone" id="add-more-photos">
                                                                         </div>
                                                                     </a>
                                                                 </div>
-                                                            </span>
+                                                            </span>-->
                                                         </div>
-                                                        <span class="_uploadloaderbox abc">
-                                                            <div class="_m _6a">
-                                                                <a class="_uploadbox" rel="ignore">
-                                                                    <div class="_upload">
 
-                                                                    </div>
-                                                                </a>
-                                                            </div>
-                                                        </span>
                                                     </div>
                                                 </div>
 
@@ -147,28 +149,29 @@ include './calculate-time.php';
                                             </div>
                                         </div>
 
-                                        <div class="post-img">
+                                        <div class="post-img"  style="    margin-bottom: -20px;">
                                             <a href="#">
                                                 <label class="custom-file-upload">
                                                     <input type="file" id="upload_first_image" name="post-image"/>  <span class="icon icon-camera icon-fw"></span>
                                                 </label>
                                             </a>
-                                            <input type="hidden" id="upload-post-image" name="upload-post-image" value="upload-post-image">
+                                            <input type="hidden"  name="upload-post-image" value="upload-post-image">
+                                            <input type="hidden" name="student" value="<?php echo $_SESSION['id'] ?>" >
+                                            <input type="submit"class="btn btn-primary btn-block pull-right share-post"  disabled="" style="width: 60px"  name="save-post" value="POST">
                                         </div>
 
+
+
                                         <div class="post-actions">
-                                            <a class="post-action" href="#">
-                                                <span class="icon icon-thumbs-up icon-fw"></span>
-                                                Like
-                                            </a>
-                                            <a class="post-action" href="#">
-                                                <span class="icon icon-share icon-fw"></span>
-                                                Share
-                                            </a>
-                                            <div class="post-summary">
-                                                <input type="hidden" name="student" value="<?php echo $_SESSION['id'] ?>" >
-                                                <input type="submit"class="btn btn-primary btn-block pull-right share-post"  disabled="" style="width: 60px"  name="save-post" value="POST">
-                                            </div>
+                                            <!--                                            <a class="post-action" href="#">
+                                                                                            <span class="icon icon-thumbs-up icon-fw"></span>
+                                                                                            Like
+                                                                                        </a>
+                                                                                        <a class="post-action" href="#">
+                                                                                            <span class="icon icon-share icon-fw"></span>
+                                                                                            Share
+                                                                                        </a>-->
+                                            <div class="post-summary"> </div>
                                         </div>
                                     </form>
                                 </div> 
@@ -235,21 +238,21 @@ include './calculate-time.php';
                                                         <div id="gallery<?php echo $post['id'] ?>" class="div<?php echo $post['id']; ?>"></div>
                                                     </a>
                                                 </div>
-                                                <div class="post-actions">
-                                                    <a class="post-action" href="#">
-                                                        <span class="icon icon-thumbs-up icon-fw"></span>
-                                                        Like
-                                                    </a>
-                                                    <a class="post-action" href="#">
-                                                        <span class="icon icon-share icon-fw"></span>
-                                                        Share
-                                                    </a>
-                                                    <div class="post-summary">
-                                                        <small class="truncate">
-                                                            <a class="link-muted" href="#">Likes: Ruby Dixon, Agatha Ford and 2.2k others</a>
-                                                        </small>
-                                                    </div>
-                                                </div>
+                                                <!--                                                <div class="post-actions">
+                                                                                                    <a class="post-action" href="#">
+                                                                                                        <span class="icon icon-thumbs-up icon-fw"></span>
+                                                                                                        Like
+                                                                                                    </a>
+                                                                                                    <a class="post-action" href="#">
+                                                                                                        <span class="icon icon-share icon-fw"></span>
+                                                                                                        Share
+                                                                                                    </a>
+                                                                                                    <div class="post-summary">
+                                                                                                        <small class="truncate">
+                                                                                                            <a class="link-muted" href="#">Likes: Ruby Dixon, Agatha Ford and 2.2k others</a>
+                                                                                                        </small>
+                                                                                                    </div>
+                                                                                                </div>-->
                                             </div> 
                                         </div> 
                                     </div>
@@ -311,34 +314,36 @@ include './calculate-time.php';
 
 
                                             <div class="post-body"> 
-                                                <form action="ajax/post-and-get/post.php" method="post" class="edit-post-form">
+                                                <form action="ajax/post-and-get/post.php" method="post" id="edit-post-form<?php echo $post['id'] ?>">
                                                     <img class="loading_2" src="https://www.vedantalimited.com/SiteAssets/Images/loading.gif" style="display: none;position: absolute;margin-top: 20%;margin-left: 30%;z-index: 99999;"/>
                                                     <label class="control-label" style="float: left;">Share what you are thinking here...</label>
                                                     <textarea class="form-control post-description control-label text-a"   name="description"  > <?php echo $post['description'] ?></textarea>
-                                                    <div class="flipScrollableArea_edit hidden  " >
+                                                    <div class="flipScrollableArea_2 hidden  " >
                                                         <div class="flipScrollableAreaWrap">
                                                             <div class="flipScrollableAreaBody" style="float: left;margin-bottom: 8px;" >
-                                                                <div class="flipScrollableAreaContent">
-                                                                    <div class="flipScrollableAreaContent2"> 
-                                                                        <span class="_uploadouterbox_edit">
-                                                                            <div class="_m _6a">
-                                                                                <a class="_uploadbox" rel="ignore">
-                                                                                    <div class="_upload"> 
-                                                                                        <input multiple="" name="upload-other-images" title="Choose a file to upload" data-test  display="inline-block" type="file" class="_uploadinput _outlinenone" id="add-more-photos">
-                                                                                    </div>
-                                                                                </a>
-                                                                            </div>
-                                                                        </span>
-                                                                    </div>
-                                                                    <span class="_uploadloaderbox abc">
-                                                                        <div class="_m _6a">
-                                                                            <a class="_uploadbox" rel="ignore">
-                                                                                <div class="_upload">
+                                                                <div class="flipScrollableAreaContent<?php echo $post['id'] ?>"> 
 
-                                                                                </div>
-                                                                            </a>
-                                                                        </div>
-                                                                    </span>
+        <!--                                                                        <span class="_uploadouterbox_edit">
+                     <div class="_m _6a">
+                         <a class="_uploadbox" rel="ignore">
+                             <div class="_upload"> 
+                                 <input multiple="" name="upload-other-images" title="Choose a file to upload" data-test  display="inline-block" type="file" class="_uploadinput _outlinenone" id="add-more-photos">
+                             </div>
+                         </a>
+                     </div>
+                 </span>-->
+
+        <!--                                                                        <span class="_uploadloaderbox abc">
+                                                                                    <div class="_m _6a">
+                                                                                        <a class="_uploadbox" rel="ignore">
+                                                                                            <div class="_upload">
+
+                                                                                            </div>
+                                                                                        </a>
+                                                                                    </div>
+                                                                                </span>-->
+
+
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -350,15 +355,18 @@ include './calculate-time.php';
                                                     <div class="post-img" style="float: left;">
                                                         <a href="#">
                                                             <label class="custom-file-upload">
-                                                                <input type="file" class="upload_first_image_edit" name="post-image"/>  <span class="icon icon-camera icon-fw"></span>
+                                                                <input type="file" class="upload_first_image_edit" name="post-image-edit" data-id="<?php echo $post['id'] ?>"/>  <span class="icon icon-camera icon-fw"></span>
                                                             </label>
                                                         </a>
-                                                        <input type="hidden" id="upload-post-image" name="upload-post-image" value="upload-post-image">
+                                                        <input type="hidden"   name="upload-post-image-edit" value="upload-post-image-edit">
+                                                        
+                                                        
                                                     </div>
 
                                                     <div class="post-actions">
                                                         <div class="post-summary">
-                                                            <input type="hidden" name="id" value="<?php echo $post['id'] ?>" >
+                                                            <input type="hidden" name="id" class="post_id" value="<?php echo $post['id'] ?>" >
+                                                            
                                                             <input type="submit" class="btn btn-primary btn-block pull-right share-post"  disabled="" style="width: 60px"  name="edit-post" value="POST">
                                                         </div>
                                                     </div>

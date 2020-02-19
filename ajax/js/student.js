@@ -13,6 +13,7 @@ $(document).ready(function () {
             async: false,
             dataType: 'json',
             success: function (result) {
+               
                 $(".append_img").attr("src", "upload/student/profile/" + result.filename);
                 swal({
                     title: "Success!",
