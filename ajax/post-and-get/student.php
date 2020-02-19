@@ -244,7 +244,7 @@ if ($_POST['action'] == 'UPDATENICCARD') {
 }
 
 
-
+//Profile Change
 if ($_POST['action'] == 'CHANGEPROFILE') {
 
     $STUDENT = new Student($_POST['id']);
@@ -271,7 +271,7 @@ if ($_POST['action'] == 'CHANGEPROFILE') {
 
                 Student::ChangeProPic($_POST["id"], $handle->file_dst_name);
                 header('Content-Type: application/json');
-                dd($handle->file_dst_name);
+               
                 $result = [
                     "filename" => $handle->file_dst_name,
                     "message" => 'success'

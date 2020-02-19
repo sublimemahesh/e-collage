@@ -484,13 +484,14 @@ class Student {
 
         if ($email) {
 
-            $query = "SELECT `email`,`student_id`,`resetcode` FROM `student` WHERE `email`= '" . $email . "'";
+            $query = "SELECT `email`,`full_name`,`student_id`,`resetcode` FROM `student` WHERE `email`= '" . $email . "'";
 
             $db = new Database();
 
             $result = mysql_fetch_array($db->readQuery($query));
 
-            $this->username = $result['username'];
+            $this->full_name = $result['full_name'];
+            $this->student_id = $result['student_id'];
             $this->email = $result['email'];
             $this->restCode = $result['resetcode'];
             return $result;

@@ -197,16 +197,6 @@ include_once(dirname(__FILE__) . '/auth.php');
                 </div>
             </div>
         </div>
-        <input type="hidden" value="<?php echo $_SESSION['id'] ?>" id="student_id">
-
-        <script src="js/jquery.min.js" type="text/javascript"></script>
-        <script src="ajax/js/student.js" type="text/javascript"></script>
-        <script src="js/vendor.min.js"></script>
-        <script src="js/elephant.min.js"></script>
-        <script src="js/application.min.js"></script>
-        <script src="js/profile.min.js"></script>
-        <script src="js/sweetalert.min.js" type="text/javascript"></script>
-        <script src="ajax/js/check-login.js" type="text/javascript"></script>
 
         <!--Model for profile change-->
         <div id="infoModalAlert" tabindex="-1" role="dialog" class="modal fade">
@@ -250,6 +240,20 @@ include_once(dirname(__FILE__) . '/auth.php');
                 </div>
             </div>
         </div>
+
+        <input type="hidden" value="<?php echo $_SESSION['id'] ?>" id="student_id">
+
+        <script src="js/jquery.min.js" type="text/javascript"></script> 
+        <script src="js/vendor.min.js"></script>
+        <script src="js/elephant.min.js"></script>
+        <script src="js/application.min.js"></script>
+        <script src="js/profile.min.js"></script>
+        <script src="js/sweetalert.min.js" type="text/javascript"></script>
+
+        <script src="ajax/js/student.js" type="text/javascript"></script>
+        <script src="ajax/js/check-login.js" type="text/javascript"></script>
+
+
     </body>
 
 </html>
