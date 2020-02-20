@@ -14,7 +14,7 @@ $(document).ready(function () {
 //        $('._uploadloaderbox').append()
 
 
-        $('#loading').css('display', 'block')
+        $('#loading').show();
 
 
         var fi = document.getElementById('upload_first_image'); // GET THE FILE INPUT.
@@ -67,7 +67,7 @@ $(document).ready(function () {
 
 
                 $('#upload_first_image').val('');
-                $('#loading').css('display', 'none');
+                $('#loading').hide();
                 var left1 = $('._uploadloaderbox').css('left');
                 var newleft1 = parseInt(left1) + 105;
                 $('._uploadloaderbox').css('left', newleft1 + 'px');

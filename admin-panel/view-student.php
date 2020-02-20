@@ -186,7 +186,37 @@ $STUDENT = new Student($id);
                                     <div class="form-group">
                                         <label class="col-sm-2 control-label" for="">Profile Image</label>
                                         <div class="col-sm-10">
-                                            <img src="../upload/student/profile/<?php echo $STUDENT->image_name ?>" class="img-thumbnail">
+                                            <?php
+                                            if (empty($STUDENT->image_name)) {
+                                                ?>
+                                                <img src="../img/member.jpg" width="128px"class="img-thumbnail">
+                                            <?php } else { ?>
+                                                <img src="../upload/student/profile/<?php echo $STUDENT->image_name ?>" class="img-thumbnail">
+
+                                            <?php } ?>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="col-sm-2 control-label" for="">NIC Front</label>
+                                        <div class="col-sm-5">
+                                            <?php
+                                            if (empty($STUDENT->nic_front)) {
+                                                ?>
+                                                <img src="../img/Nic_Front.jpg"  class="img-thumbnail">
+                                            <?php } else { ?>
+                                                <img src="../upload/student/nic_card/front/<?php echo $STUDENT->nic_front ?>"  class="img-thumbnail">
+                                            <?php } ?>
+                                        </div>
+
+                                        <div class="col-sm-5">
+                                            <?php
+                                            if (empty($STUDENT->nic_back)) {
+                                                ?>
+                                            <img src="../img/Nic_Back.jpg"  class="img-thumbnail">
+                                            <?php } else { ?>
+                                            <img src="../upload/student/nic_card/back/<?php echo $STUDENT->nic_back ?>"  class="img-thumbnail">
+                                            <?php } ?>
+
                                         </div>
                                     </div>
 

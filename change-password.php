@@ -95,7 +95,7 @@ include_once(dirname(__FILE__) . '/auth.php');
                                         </div>
                                     </div>
                                 </div>
-                            </form>>
+                            </form>
                         </div>
                         <div class="col-md-2"></div>
                     </div>

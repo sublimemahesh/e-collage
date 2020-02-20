@@ -53,7 +53,7 @@ $today = date('Y-m-d');
 
 
                     <li class="visible-xs-block">
-                        <h4 class="navbar-text text-center">Hi, Teddy Wilson</h4>
+                        <h4 class="navbar-text text-center"><?php echo $STUDENT->full_name ?></h4>
                     </li>
                     <li class="dropdown">
 
@@ -100,43 +100,13 @@ $today = date('Y-m-d');
                             </div>
                         </div>
                     <li class="dropdown">
-                        <a class="dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true">
-                            <span class="icon-with-child hidden-xs">
-                                <span class="icon icon-bell-o icon-lg"></span>
-                                <span class="badge badge-primary badge-above right">1</span>
-                            </span>
-                            <span class="visible-xs-block">
-                                <span class="icon icon-bell icon-lg icon-fw"></span>
-                                <span class="badge badge-primary pull-right">1</span>
-                                Notifications
-                            </span>
+
+                    <li class="visible-xs-block">
+                        <a href="student-post.php">
+                            <span class="icon icon-image icon-lg icon-fw"></span>
+                             My Profile 
                         </a>
-                        <div class="dropdown-menu dropdown-menu-right dropdown-menu-lg">
-                            <div class="dropdown-header">
-                                <h5 class="dropdown-heading">Recent Notifications</h5>
-                            </div>
-                            <div class="dropdown-body">
-                                <div class="list-group list-group-divided custom-scrollbar">
-                                    <a class="list-group-item" href="#">
-                                        <div class="notification">
-                                            <div class="notification-media">
-                                                <span class="icon icon-flag bg-success circle sq-40"></span>
-                                            </div>
-                                            <div class="notification-content">
-                                                <small class="notification-timestamp">43 min</small>
-                                                <h5 class="notification-heading">Student login</h5>
-                                                <p class="notification-text">
-                                                    <small class="truncate">Successfully login as student.</small>
-                                                </p>
-                                            </div>
-                                        </div>
-                                    </a>
-                                </div>
-                            </div>
-                            <div class="dropdown-footer">
-                                <a class="dropdown-btn" href="#">See All</a>
-                            </div>
-                        </div>
+                    </li>
                     </li>
                     <li class="dropdown hidden-xs">
                         <button class="navbar-account-btn" data-toggle="dropdown" aria-haspopup="true">
@@ -159,23 +129,24 @@ $today = date('Y-m-d');
                             <li><a href="profile.php">Change Profile</a></li>
                             <li><a href="change-password.php">Change Password</a></li>
                             <li><a href="log-out.php">Sign out</a></li>
-                            
+
                         </ul>
                     </li>
+                   
                     <li class="visible-xs-block">
-                        <a href="#">
-                            <span class="icon icon-users icon-lg icon-fw"></span>
-                            Contacts
-                        </a>
-                    </li>
-                    <li class="visible-xs-block">
-                        <a href="#">
+                        <a href="profile.php">
                             <span class="icon icon-user icon-lg icon-fw"></span>
-                            Profile
+                           Change Profile
+                        </a>
+                    </li>
+                     <li class="visible-xs-block">
+                        <a href="change-password.php">
+                            <span class="icon icon-key icon-lg icon-fw"></span>
+                           Change Password
                         </a>
                     </li>
                     <li class="visible-xs-block">
-                        <a href="#">
+                        <a href="log-out.php">
                             <span class="icon icon-power-off icon-lg icon-fw"></span>
                             Sign out
                         </a>
@@ -207,7 +178,7 @@ $today = date('Y-m-d');
                         <?php }
                         ?>  
                     </h1>
-                    
+
                     <div class="alert alert-danger" role = "alert" id="message" style=" width: 65%;float: right;margin-top: -25px;color: white;padding: 5px 0px 5px 14px;">   </div>
                 </div>
             </nav>

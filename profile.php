@@ -54,30 +54,36 @@ include_once(dirname(__FILE__) . '/auth.php');
                     <div class="profile-header">
                         <div class="profile-cover">
                             <div class="profile-container">
+                                <form id="form-data-profile">
 
-                                <div class="profile-card">
-                                    <div class="profile-avetar ">
+                                    <div class="profile-card">
+                                        <div class="profile-avetar ">
 
-                                        <a href="#"data-toggle="modal" data-target="#infoModalAlert" >
-                                            <?php
-                                            if (empty($STUDENT->image_name)) {
-                                                ?>
-                                                <input type="image" src="img/member.jpg" width="128" height="128"  class="append_img profile-avetar-img " /><i class="fa fa-camera fa-lg fa-color "></i> 
+                                            <a href="#"data-toggle="modal" data-target="#infoModalAlert" >
+                                                <?php
+                                                if (empty($STUDENT->image_name)) {
+                                                    ?>
+                                                    <input type="image" src="img/member.jpg" width="128" height="128"  class="append_img profile-avetar-img " /> 
 
-                                            <?php } else { ?>
-                                                <img   class="profile-avetar-img  append_img  "  width="128" height="128"   src="upload/student/profile/<?php echo $STUDENT->image_name ?>"  >  <i class="fa fa-camera fa-lg fa-color "></i> 
-                                            <?php } ?>
-                                        </a>
-                                    </div>
-                                    <div class="profile-overview">
-                                        <h1 class="profile-name"><?php echo $STUDENT->full_name ?></h1>
-
-
-                                        <p style="margin: 0px 0 1px;">NIC Number : <?php echo $STUDENT->nic_number ?></p>
-                                        <p style="margin: 0px 0 1px;">Email : <?php echo $STUDENT->email ?></p>
-                                    </div>
-                                </div> 
-
+                                                <?php } else { ?>
+                                                    <img   class="profile-avetar-img  append_img  "  width="128" height="128"   src="upload/student/profile/<?php echo $STUDENT->image_name ?>"  >   
+                                                <?php } ?>
+                                            </a>
+                                        </div>
+                                        <div class="profile-overview"> 
+                                            <label class="btn btn-primary file-upload-btn">
+                                                Change Profile
+                                                <input class="file-upload-input" type="file" id="change_profile" name="image_name" multiple="multiple">
+                                            </label>
+                                            <br>    
+                                            <p style="margin: 0px 0 1px;">Student Name : <?php echo $STUDENT->full_name ?></p>
+                                            <p style="margin: 0px 0 1px;">NIC Number : <?php echo $STUDENT->nic_number ?></p>
+                                            <p style="margin: 0px 0 1px;">Email : <?php echo $STUDENT->email ?></p>
+                                        </div>
+                                    </div> 
+                                    <input type="hidden"  name="id" value="<?php echo $STUDENT->id ?>">
+                                    <input type="hidden"  name="action" value="CHANGEPROFILE">   
+                                </form>
                             </div>
                         </div>
                     </div>
@@ -198,49 +204,7 @@ include_once(dirname(__FILE__) . '/auth.php');
             </div>
         </div>
 
-        <!--Model for profile change-->
-        <div id="infoModalAlert" tabindex="-1" role="dialog" class="modal fade">
-            <div class="modal-dialog">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <button type="button" class="close" data-dismiss="modal"> 
-                            <span aria-hidden="true">×</span>
-                            <span class="sr-only">Close</span>
-                        </button>
-                    </div>
-                    <div class="modal-body">
-                        <form id="form-data-profile">
-                            <div class="text-center">
-                                <?php
-                                if (empty($STUDENT->image_name)) {
-                                    ?>
-                                    <input type="image" src="img/member.jpg" width="128" height="128"  class="append_img profile-avetar-img " /> 
-
-                                <?php } else { ?>
-                                    <img   class="profile-avetar-img  append_img  "  width="128" height="128"   src="upload/student/profile/<?php echo $STUDENT->image_name ?>"  >  
-                                <?php } ?>
-                                <div class="row" style="margin-top: 10px;">
-                                    <div class="col-md-3">
-                                        <label><h4>Profile Picture </h4></label>
-                                    </div>
-                                    <div class="col-md-9">  
-                                        <input type="file"   name="image_name" class="form-control"  /> 
-                                    </div>
-                                </div>
-                                <div class="m-t-lg">
-                                    <input type="hidden"  name="id" value="<?php echo $STUDENT->id ?>">
-                                    <input type="hidden"  name="action" value="CHANGEPROFILE">   
-                                    <button class="btn btn-primary" type="submit"  id="change_profile" >Change Profile</button> | 
-                                    <button class="btn btn-default" data-dismiss="modal" type="button">Cancel</button>
-                                </div>
-                            </div>
-                        </form>
-                    </div>
-                    <div class="modal-footer"></div>
-                </div>
-            </div>
-        </div>
-
+     
         <input type="hidden" value="<?php echo $_SESSION['id'] ?>" id="student_id">
 
         <script src="js/jquery.min.js" type="text/javascript"></script> 

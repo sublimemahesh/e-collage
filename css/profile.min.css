@@ -340,7 +340,7 @@
 }
 
 @media (max-width:767px) {
-    .profile-header {
+/*    .profile-header {
         display: table;
         height: 100%;
         height: calc(100vh - 50px);
@@ -348,11 +348,11 @@
         padding-bottom: 2px;
         table-layout: fixed;
         width: 100%
-    }
-    .profile-cover {
+    }*/
+/*    .profile-cover {
         display: table-cell;
         vertical-align: middle
-    }
+    }*/
     .profile-card {
         padding-bottom: 64px;
         padding-top: 64px

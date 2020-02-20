@@ -1,7 +1,7 @@
 $(document).ready(function () {
 
 //Change the profile pricute
-    $("#change_profile").click(function (event) {
+    $("#change_profile").change(function (event) {
         event.preventDefault();
 
         var formData = new FormData($('#form-data-profile')[0]);
