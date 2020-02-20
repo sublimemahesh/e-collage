@@ -81,7 +81,7 @@ include './calculate-time.php';
                     <div class="profile-body">
 
                         <div class="col-md-1"></div>
-                        <div class="col-md-8" style="margin-left: 20px">
+                        <div class="col-md-8 post-padd-20"  >
                             <div class="post" style="padding-top: 15px;">
                                 <div class="post-header">
                                     <div class="post-author">
@@ -109,7 +109,7 @@ include './calculate-time.php';
 
                                 <div class="post-body"> 
                                     <form action="ajax/post-and-get/post.php" method="post" id="post-form">
-                                        <img id="loading" src="https://www.vedantalimited.com/SiteAssets/Images/loading.gif" style=" display: none;position: absolute;margin-top: 20%;margin-left: 37%;z-index: 9999;"/>
+                                        <img id="loading" src="https://www.vedantalimited.com/SiteAssets/Images/loading.gif"  class="img-loard"/>
                                         <label class="control-label">Share what you are thinking here...</label>
                                         <textarea class="form-control post-description control-label text-a"   name="description"  ></textarea>
                                         <div class="flipScrollableArea hidden  "  >
@@ -127,22 +127,10 @@ include './calculate-time.php';
                                                                     </a>
                                                                 </div>
                                                             </span>
-
-<!--                                                            <span class="_uploadouterbox">
-                                                                <div class="_m _6a">
-
-                                                                    <a class="_uploadbox" rel="ignore">
-                                                                        <div class="_upload"> 
-                                                                            <input multiple="" name="upload-other-images" title="Choose a file to upload" data-test  display="inline-block" type="file" class="_uploadinput _outlinenone" id="add-more-photos">
-                                                                        </div>
-                                                                    </a>
-                                                                </div>
-                                                            </span>-->
-                                                        </div>
-
+ 
+                                                        </div> 
                                                     </div>
-                                                </div>
-
+                                                </div> 
                                             </div>
                                             <div class="flipScrollableAreaTrack invisible_elem" style="opacity: 0;">
                                                 <div class="flipScrollableAreaGripper hidden_elem"></div>
@@ -189,7 +177,7 @@ include './calculate-time.php';
                             ?> 
 
                             <div class="profile-body" id="div_r<?php echo $post['id'] ?>">  
-                                <div class="col-md-8" style="margin-left: 120px">
+                                <div class="col-md-8 post-padd-l"  >
                                     <div class="post" style="padding-top: 15px;">
                                         <div class="post-header">
                                             <div class="post-author">

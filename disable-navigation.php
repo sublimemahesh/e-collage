@@ -1,9 +1,12 @@
-<div class="layout-sidebar disabled">
-    <div class="layout-sidebar-backdrop"></div>
-    <div class="layout-sidebar-body">
-        <div class="custom-scrollbar">
-                 <ul class="sidenav level-1">
+ 
 
+<div class="layout-sidebar">
+    <div class="layout-sidebar-backdrop"></div>
+    <div class="layout-sidebar-body" style="margin-top: 7%;">
+      
+            <nav id="sidenav" class="sidenav-collapse collapse">
+                <ul class="sidenav level-1">
+                   
                 <?php
                 date_default_timezone_set("Asia/Calcutta");
 
@@ -19,14 +22,14 @@
                     if (date('Y-m-d') == $date) {
                         ?>
 
-                        <li class="sidenav-item has-subnav card disabled"> 
+                        <li class="sidenav-item has-subnav   disabled"> 
                             <a href="lesson.php?date=<?php echo $date ?>" style="padding-left: 10px;color: #0f660c;font-weight: 600;font-size: 16px;">Lesson <?php echo $key ?>    <b style="padding-left: 8px;"><?php echo $date; ?></b> </a>
                         </li> 
 
                         <?php
                     } else if (date('Y-m-d') > $date) {
                         ?>
-                        <li class="sidenav-item has-subnav card disabled"> 
+                        <li class="sidenav-item has-subnav   disabled"> 
                             <a href="lesson.php?date=<?php echo $date ?>" style="padding-left: 10px;">Lesson <?php echo $key ?>    <b style="padding-left: 8px;"><?php echo $date; ?></b> </a>
                         </li> 
                         <?php
@@ -36,12 +39,9 @@
                     $key++;
                 }
                 ?>
-
-
-
-
-
-            </ul>             
-        </div>
+                    
+                </ul>
+            </nav>
+   
     </div>
 </div>

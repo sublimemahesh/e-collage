@@ -40,7 +40,7 @@ include_once(dirname(__FILE__) . '/auth.php');
 
                         <div class="col-xs-12 col-md-3">  
 
-                            <div class="card" style="margin-left: 8%">
+                            <div class="card p-l-card"  >
                                 <div class="card-header">
 
                                     <strong>Company Description</strong>
@@ -71,13 +71,11 @@ include_once(dirname(__FILE__) . '/auth.php');
                                     </center>
 
                                 </div>
-                            </div>  
-
-
+                            </div> 
                         </div>
 
-                        <div class="col-xs-6 col-md-9"> 
-                            <iframe id="existing-iframe-example" width="92%" height="510" src="https://www.youtube.com/embed/viHILXVY_eU?enablejsapi=1?controls=0&showinfo=0&rel=0&autoplay=1&loop=1&playlist=viHILXVY_eU" allow="autoplay" allowfullscreen></iframe>
+                        <div class="col-xs-12 col-md-9"> 
+                            <iframe id="existing-iframe-example "   class="video-res" height="510" src="https://www.youtube.com/embed/viHILXVY_eU?enablejsapi=1?controls=0&showinfo=0&rel=0&autoplay=1&loop=1&playlist=viHILXVY_eU" allow="autoplay" allowfullscreen></iframe>
 <!--                            <iframe id="existing-iframe-example" width="92%" height="510"  src="https://www.youtube.com/embed/40wafTmaMro?enablejsapi=1autoplay=1"    frameborder="0" ></iframe>-->
 
                         </div>
@@ -86,13 +84,10 @@ include_once(dirname(__FILE__) . '/auth.php');
 
                 <div class="row" >
                     <div class="col-xs-6 col-md-5"></div>
-                    <div class="col-xs-6 col-md-4" style="margin-top: 2%">
+                    <div class="col-xs-12 col-md-4" style="margin-top: 2% ;margin-bottom: 28px;">
                         <div class="">
                             <div class="card-body">
-                                <center>
-                                    <!--                                    <div class="form-group "  style="margin-top: 4%;" id="btn-disply-none" > 
-                                                                            <button class=" btn btn-outline-primary btn-block btn-next "   type="button" id="create" style="width: 50%;" disabled="">Start Your Lessons</button>
-                                                                        </div>-->
+                                <center> 
                                     <div class="form-group "  style="margin-top: 2%;" id="btn-disply" > 
                                         <a href="lesson.php">  
                                             <button class=" btn btn-outline-primary btn-block btn-next "   type="button" id="create" style="width: 80%;font-size: 16px" >Start Your Lessons</button>
@@ -112,9 +107,9 @@ include_once(dirname(__FILE__) . '/auth.php');
                     ?>
                     <div class="layout-footer ">  
                         <div class="pull-right" data-toggle="match-height">
-                            <h4 style="margin-right: 15px;"> 
+                            <h4 style="margin-right: 15px; "> 
                                 <a class="label label-success" href="verify-id-card.php" >
-                                    <span>Please Verify Your ID Card.! </span>
+                                    <span>Please Verify Your ID Card from here.! </span>
                                 </a>
                             </h4> 
                         </div>

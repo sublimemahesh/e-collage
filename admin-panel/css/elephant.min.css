@@ -12397,7 +12397,13 @@ select.md-form-control option {
         margin: -15px -15px 0;
         padding: 15px
     }
+    
+    .video-res{
+        width: 100%;
+    }
 }
+
+
 
 @-webkit-keyframes progress-bar-indicating {
     0% {
@@ -12580,15 +12586,16 @@ select.md-form-control option {
 
 .sidenav-heading {
     color: #7d7d8e;
-    font-size: 12px;
+    font-size: 16px;
     font-weight: 500;
     line-height: 1;
     margin-bottom: 0;
-    margin-top: 50px;
+    margin-top: 22px;
     overflow: hidden;
     padding: 10px 15px;
     text-overflow: ellipsis;
-    white-space: nowrap
+    white-space: nowrap;
+    
 }
 
 .sidenav-label {

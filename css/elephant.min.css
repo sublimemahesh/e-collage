@@ -4384,6 +4384,7 @@ tbody.collapse.in {
     color: #343439
 }
 
+
 @media (max-width:767px) {
     .navbar-default .navbar-nav .open .dropdown-menu>li>a {
         color: #7d7d8e
@@ -12101,10 +12102,13 @@ select.md-form-control option {
     .navbar-nav .open .dropdown-menu:before {
         content: normal;
         display: none
-    }
+    } 
 }
 
+
+
 @media (max-width:767px) {
+
     .navbar-default .list-group .list-group-item {
         background-color: transparent;
         border-color: #ebf1f4;
@@ -12126,6 +12130,11 @@ select.md-form-control option {
     .navbar-default .list-group .list-group-item.disabled:hover {
         background-color: transparent;
         color: #ccc
+    }
+}
+@media  (max-width: 780px) and (min-width:360px){
+    .video-res{
+        width: 100% !important; 
     }
 }
 
@@ -12152,6 +12161,7 @@ select.md-form-control option {
         background-color: transparent;
         color: #ccc
     }
+
 }
 
 .overlay {
@@ -12398,6 +12408,8 @@ select.md-form-control option {
         margin: -15px -15px 0;
         padding: 15px
     }
+
+
 }
 
 @-webkit-keyframes progress-bar-indicating {
@@ -12714,6 +12726,7 @@ select.md-form-control option {
 }
 
 @media (min-width:768px) {
+
     .sidenav-collapsed .sidenav-heading {
         display: none
     }
@@ -15847,4 +15860,58 @@ a:active {
     margin-top: -15px;
     height: 36px;
     margin-bottom: 5px;
+}
+
+.video-res{
+    width:98% !important; 
+
+}
+.p-l-card{
+    margin-left: 8%;
+}
+.post-padd-l{
+    margin-left: 120px;
+}
+.post-padd-20{
+    margin-left: 20px;
+}
+.img-loard{
+    display: none;
+    position: absolute;
+    margin-top: 20%;
+    margin-left: 37%;
+    z-index: 9999;
+}
+@media  (max-width: 780px) and (min-width:360px){
+    .video-res{
+        width: 100% !important; 
+        padding: 5px;
+    }
+    .p-l-card{
+        margin-left: 0%;
+    }
+    .post-padd-l{
+        margin-left: 0px!important;  
+    }
+    .post-padd-20{
+        margin-left:  0px!important;  
+    }
+    .collapsed .custom-scrollable-area{
+        height: 0% !important;  
+    }
+    .sidenav{
+        height: 602px; 
+        overflow-y: auto;
+    }
+    .custom-control + .custom-control{
+        margin-left: 0px !important;  
+        margin-top: 5px !important;  
+    }
+    .img-loard{
+        display: none;
+        position: absolute;
+        margin-top: 20%;
+        margin-left: 15%;
+        z-index: 9999;
+    }
 }
