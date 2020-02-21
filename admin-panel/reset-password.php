@@ -1,14 +1,14 @@
 <!DOCTYPE html>
 <?php
-include './class/include.php';
+include '../class/include.php';
+ 
 ?>
 <html lang="en">
     <head>
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
-
-        <title>SSM net - forget Password   </title>
-
+        <title>Reset Password - Web Learning</title>
+        <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no">
         <link rel="icon" type="image/png" href="favicon-32x32.png" sizes="32x32">
         <link rel="icon" type="image/png" href="favicon-16x16.png" sizes="16x16">
 
@@ -24,7 +24,7 @@ include './class/include.php';
         <div class="login">
             <div class="login-body">
                 <a class="login-brand" href="#">
-                    <img class="img-responsive" src="img/logo.png" alt="self english learning">
+                    <img class="img-responsive" src="../img/logo.png" alt="self english learning">
                 </a>
                 <div class="login-form">
                     <?php
@@ -38,14 +38,21 @@ include './class/include.php';
                         <?php
                     }
                     ?>
-                    <form id="sign_in" method="POST" action="ajax/post-and-get/reset-password.php">
+                    <form id="sign_in" method="POST" action="ajax/post-and-get/change-password.php">
                         <div class="form-group">
-                            <label for="your_email">Your Email </label>
-                            <input id="email" class="form-control" type="email" name="email"   >
-
+                            <label for="reset_code">Reset Code </label>
+                            <input id="reset_code" class="form-control" type="text" name="code"   > 
+                        </div>                        
+                        <div class="form-group">
+                            <label for="new_password">New Password </label>
+                            <input id="new_password" class="form-control" type="password" name="password"   > 
+                        </div>                        
+                        <div class="form-group">
+                            <label for="confirm_password">Confirm Password </label>
+                            <input id="confirm_password" class="form-control" type="password" name="confirmpassword"   > 
                         </div>                        
 
-                        <button class="btn btn-primary btn-block" type="submit"  >Send</button>
+                        <button class="btn btn-primary btn-block" type="submit" name="PasswordReset"  >Send</button>
                     </form>
                 </div>
                 <div class="login-footer">
@@ -56,8 +63,6 @@ include './class/include.php';
         </div>
         <script src="js/jquery.min.js" type="text/javascript"></script>
         <script src="js/jquery.formValid.js" type="text/javascript"></script>
-
-
 
     </body>
 </html>

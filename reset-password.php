@@ -1,14 +1,13 @@
 <!DOCTYPE html>
 <?php
 include './class/include.php';
- 
 ?>
 <html lang="en">
     <head>
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <title>Reset Password - Web Learning</title>
-        <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no">
+        <title>SSM net - Reset Password  </title>
+
         <link rel="icon" type="image/png" href="favicon-32x32.png" sizes="32x32">
         <link rel="icon" type="image/png" href="favicon-16x16.png" sizes="16x16">
 

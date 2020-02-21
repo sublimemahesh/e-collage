@@ -65,11 +65,11 @@ if ($_POST['action'] == 'UPDATENICCARD') {
             $handle->image_y = $image_y;
 
             $handle->Process($dir_dest);
-
+             
             $handle->image_resize = true;
             $handle->file_new_name_ext = 'jpg';
             $handle->image_ratio_crop = 'C';
-            $handle->file_new_name_body = $imgName;
+            $handle->file_new_name_body = $img;
 
             $handle->image_x = 450;
             $handle->image_y = 200;
