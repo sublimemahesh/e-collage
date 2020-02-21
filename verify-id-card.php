@@ -41,7 +41,7 @@ include_once(dirname(__FILE__) . '/auth.php');
                                         <?php
                                         if (empty($STUDENT->image_name)) {
                                             ?>
-                                            <input type="image" src="img/0180441436.jpg" width="128" height="128"  class="append_img profile-avetar-img " /><i class="fa fa-camera fa-lg fa-color "></i> 
+                                            <input type="image" src="img/member.jpg" width="128" height="128"  class="append_img profile-avetar-img " /><i class="fa fa-camera fa-lg fa-color "></i> 
 
                                         <?php } else { ?>
                                             <img   class="profile-avetar-img  append_img  "  width="128" height="128"   src="upload/student/profile/<?php echo $STUDENT->image_name ?>"  >  <i class="fa fa-camera fa-lg fa-color "></i> 
@@ -107,7 +107,8 @@ include_once(dirname(__FILE__) . '/auth.php');
                                         <div class="col-md-3"> 
                                             <input type="hidden"  name="id" value="<?php echo $STUDENT->id ?>">
                                             <input type="hidden"  name="action" value="UPDATENICCARD" >
-                                            <input type="submit" class="btn btn-primary btn-block" type="submit" id="update_nic"   value="update" >
+                                        <button class="btn btn-primary spinner spinner-inverse spinner-sm pull-right loading" type="button" disabled="disabled" style="display: none">Save changes</button>
+                                            <input type="submit" class="btn btn-primary btn-block loading_2" type="submit" id="update_nic"   value="update" >
                                         </div>
                                     </div>
                                 </div>

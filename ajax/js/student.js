@@ -3,6 +3,8 @@ $(document).ready(function () {
 //Change the profile pricute
     $("#change_profile").change(function (event) {
         event.preventDefault();
+        $('.loading').show();
+        $('.uploard_btn').hide();
 
         var formData = new FormData($('#form-data-profile')[0]);
 
@@ -13,7 +15,7 @@ $(document).ready(function () {
             async: false,
             dataType: 'json',
             success: function (result) {
-               
+
                 $(".append_img").attr("src", "upload/student/profile/" + result.filename);
                 swal({
                     title: "Success!",
@@ -27,14 +29,17 @@ $(document).ready(function () {
             contentType: false,
             processData: false
         });
-        $('#infoModalAlert').modal('hide');
+        $('.loading').hide();
+        $('.uploard_btn').show();
+
     });
 
 //Update Nic
     $("#update_nic").click(function (event) {
         event.preventDefault();
 
-        $('#loading').show();
+        $('.loading').show();
+        $('.loading_2').hide();
 
         if (!$('#nic_front').val() || $('#nic_front').val().length === 0) {
             swal({
@@ -64,15 +69,16 @@ $(document).ready(function () {
                 success: function (result) {
                     $(".append_nic_front_img").attr("src", "upload/student/nic_card/front/thumb/" + result.filename);
                     $(".append_nic_back_img").attr("src", "upload/student/nic_card/back/thumb/" + result.filename_2);
- 
-                    $('#loading').hide();
+
+                    $('.loading').hide();
+                    $('.loading_2').show();
                     swal({
                         title: "Success!",
                         text: "Your data was saved successfully!.....",
                         type: 'success',
                         timer: 2000,
                         showConfirmButton: false
-                    }); 
+                    });
                 },
                 cache: false,
                 contentType: false,

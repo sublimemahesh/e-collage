@@ -61,7 +61,7 @@ class Post {
 
     public function all() {
 
-        $query = "SELECT * FROM `post` ORDER BY `description` ASC";
+        $query = "SELECT * FROM `post` ORDER BY `id` DESC";
         $db = new Database();
         $result = $db->readQuery($query);
         $array_res = array();

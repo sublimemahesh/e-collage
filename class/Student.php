@@ -98,7 +98,8 @@ class Student {
 
     public function all() {
 
-        $query = "SELECT * FROM `student` ORDER BY queue ASC";
+        $query = "SELECT * FROM `student`  ORDER BY queue ASC";
+      
         $db = new Database();
 
         $result = $db->readQuery($query);
@@ -142,7 +143,7 @@ class Student {
     }
 
     public function getAllMembersWithoutThis($student) {
-        
+
         $query = "SELECT * FROM `student` WHERE `id` <> '" . $member . "' AND `status` = 1 AND `is_suspend` = 0";
         $db = new Database();
         $result = $db->readQuery($query);
@@ -330,61 +331,6 @@ class Student {
         return $result['id'];
     }
 
-    public function update() {
-
-        $query = "UPDATE  `student` SET "
-                . "`full_name` ='" . $this->full_name . "', "
-                . "`nic_number` ='" . $this->nic_number . "', "
-                . "`gender` ='" . $this->gender . "', "
-                . "`age` ='" . $this->age . "', "
-                . "`phone_number` ='" . $this->phone_number . "', "
-                . "`address` ='" . $this->address . "', "
-                . "`education_level` ='" . $this->education_level . "', "
-                . "`email` ='" . $this->email . "' "
-                . "WHERE `id` = '" . $this->id . "'";
-
-
-        $db = new Database();
-
-        $result = $db->readQuery($query);
-
-        if ($result) {
-
-            return $this->__construct($this->id);
-        } else {
-
-            return FALSE;
-        }
-    }
-
-    public function updateActiveStudent() {
-
-        $query = "UPDATE  `student` SET "
-                . "`full_name` ='" . $this->full_name . "', "
-                . "`nic_number` ='" . $this->nic_number . "', "
-                . "`gender` ='" . $this->gender . "', "
-                . "`age` ='" . $this->age . "', "
-                . "`phone_number` ='" . $this->phone_number . "', "
-                . "`address` ='" . $this->address . "', "
-                . "`education_level` ='" . $this->education_level . "', "
-                . "`email` ='" . $this->email . "', "
-                . "`status` ='" . $this->status . "' "
-                . "WHERE `id` = '" . $this->id . "'";
-
-
-        $db = new Database();
-
-        $result = $db->readQuery($query);
-
-        if ($result) {
-
-            return $this->__construct($this->id);
-        } else {
-
-            return FALSE;
-        }
-    }
-
     private function setUserSession($student) {
 
         if (!isset($_SESSION)) {
@@ -531,6 +477,116 @@ class Student {
         } else {
 
             return FALSE;
+        }
+    }
+
+    public function update() {
+
+        $query = "UPDATE  `student` SET "
+                . "`full_name` ='" . $this->full_name . "', "
+                . "`nic_number` ='" . $this->nic_number . "', "
+                . "`gender` ='" . $this->gender . "', "
+                . "`age` ='" . $this->age . "', "
+                . "`phone_number` ='" . $this->phone_number . "', "
+                . "`address` ='" . $this->address . "', "
+                . "`education_level` ='" . $this->education_level . "', "
+                . "`email` ='" . $this->email . "' "
+                . "WHERE `id` = '" . $this->id . "'";
+
+
+        $db = new Database();
+
+        $result = $db->readQuery($query);
+
+        if ($result) {
+
+            return $this->__construct($this->id);
+        } else {
+
+            return FALSE;
+        }
+    }
+
+    public function updateActiveStudent() {
+
+        $query = "UPDATE  `student` SET "
+                . "`full_name` ='" . $this->full_name . "', "
+                . "`nic_number` ='" . $this->nic_number . "', "
+                . "`gender` ='" . $this->gender . "', "
+                . "`age` ='" . $this->age . "', "
+                . "`phone_number` ='" . $this->phone_number . "', "
+                . "`address` ='" . $this->address . "', "
+                . "`education_level` ='" . $this->education_level . "', "
+                . "`email` ='" . $this->email . "', "
+                . "`status` ='" . $this->status . "' "
+                . "WHERE `id` = '" . $this->id . "'";
+
+
+        $db = new Database();
+
+        $result = $db->readQuery($query);
+
+        if ($result) {
+
+            return $this->__construct($this->id);
+        } else {
+
+            return FALSE;
+        }
+    }
+
+    public function delete() {
+
+
+
+        $this->deletePost();
+
+
+        if ($this->image_name) {
+            unlink(Helper::getSitePath() . "upload/student/profile/" . $this->image_name);
+            
+        } elseif ($this->nic_front || $this->image_name) {
+            unlink(Helper::getSitePath() . "upload/student/nic_card/front/" . $this->nic_front);
+            unlink(Helper::getSitePath() . "upload/student/nic_card/front/thumb/" . $this->nic_front);
+            unlink(Helper::getSitePath() . "upload/student/nic_card/back/thumb/" . $this->nic_back);
+            unlink(Helper::getSitePath() . "upload/student/nic_card/back/" . $this->nic_back);
+        }
+
+
+        $query = 'DELETE FROM `student` WHERE id="' . $this->id . '"';
+
+
+        $db = new Database();
+
+
+
+        return $db->readQuery($query);
+    }
+
+    public function deletePost() {
+
+
+
+        $POST = new Post(NULL);
+        $POST_IMAGES = new PostImage(NULL);
+
+        foreach ($POST->getPostsByStudent($this->id) as $post) {
+
+            foreach ($POST_IMAGES->getPhotosByPostId($post['id']) as $post_images) {
+                unlink(Helper::getSitePath() . "upload/post/" . $post_images['image_name']);
+
+                unlink(Helper::getSitePath() . "upload/post/thumb/" . $post_images['image_name']);
+                unlink(Helper::getSitePath() . "upload/post/thumb2/" . $post_images['image_name']);
+
+
+
+                $POST_IMAGES->id = $post_images["id"];
+
+                $POST_IMAGES->delete();
+            }
+            $POST->id = $post["id"];
+
+            $POST->delete();
         }
     }
 
