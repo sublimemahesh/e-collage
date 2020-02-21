@@ -133,6 +133,7 @@ if (isset($_POST['upload-post-image'])) {
     }
 }
 
+//Edit Emage post
 if (isset($_POST['upload-post-image-edit'])) {
 
     $dir_dest = '../../upload/post/';

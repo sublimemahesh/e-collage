@@ -7,15 +7,7 @@ include_once(dirname(__FILE__) . '/auth.php');
     <head>
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <title>Profile   </title>
-        <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no">
-        <meta property="og:url" content="http://demo.madebytilde.com/elephant">
-        <meta property="og:type" content="website">
-        <meta property="og:image" content="../../elephant.html">
-        <meta name="twitter:card" content="summary_large_image">
-        <meta name="twitter:site" content="@madebytilde">
-        <meta name="twitter:creator" content="@madebytilde">
-        <meta name="twitter:image" content="../../elephant.html">
+        <title>SSM net - Verify Id  </title>
         <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
         <link rel="icon" type="image/png" href="favicon-32x32.png" sizes="32x32">
         <link rel="icon" type="image/png" href="favicon-16x16.png" sizes="16x16">
@@ -80,12 +72,12 @@ include_once(dirname(__FILE__) . '/auth.php');
                                             <?php
                                             if (empty($STUDENT->nic_front)) {
                                                 ?>
-                                                <img    src="img/Nic_Front.jpg" class="append_nic_front_img"   >  
+                                                <img    src="img/Nic_Front.jpg" class="append_nic_front_img nic-img"   >  
 
                                                 <?php
                                             } else {
                                                 ?>
-                                                <img   class="append_nic_front_img"     src="upload/student/nic_card/front/thumb/<?php echo $STUDENT->nic_front ?>" >
+                                                <img   class="append_nic_front_img nic-img"     src="upload/student/nic_card/front/thumb/<?php echo $STUDENT->nic_front ?>" >
                                             <?php } ?>
                                         </div>
 
@@ -97,12 +89,12 @@ include_once(dirname(__FILE__) . '/auth.php');
                                             <?php
                                             if (empty($STUDENT->nic_back)) {
                                                 ?>
-                                                <img    src="img/Nic_Back.jpg" class="append_nic_back_img"  >  
+                                                <img    src="img/Nic_Back.jpg" class="append_nic_back_img nic-img "  >  
 
                                                 <?php
                                             } else {
                                                 ?>
-                                                <img   class="append_nic_back_img"     src="upload/student/nic_card/back/thumb/<?php echo $STUDENT->nic_back ?>"  >  
+                                                <img   class="append_nic_back_img nic-img"     src="upload/student/nic_card/back/thumb/<?php echo $STUDENT->nic_back ?>"  >  
                                             <?php } ?>
 
                                         </div>

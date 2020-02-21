@@ -2,20 +2,14 @@
 include './class/include.php';
 $STUDENT = new Student(NULL);
 $LAST_ID = $STUDENT->getLastStudentId();
-$LAST_ID = $LAST_ID+1;
- 
+$LAST_ID = $LAST_ID + 1;
 ?>
 <!DOCTYPE html>
 <html lang="en">
     <head>
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <title>Log In -Web Learning</title>
-        <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no">
-        <meta name="description" content="Elephant is an admin template that helps you build modern Admin Applications, 
-              professionally fast! Built on top of Bootstrap, it includes a large collection of HTML, CSS and JS components that are simple to 
-              use and easy to customize.">
-
+        <title>SSM net - Registration   </title> 
         <link rel="icon" type="image/png" href="favicon-32x32.png" sizes="32x32">
         <link rel="icon" type="image/png" href="favicon-16x16.png" sizes="16x16">
 
@@ -127,7 +121,7 @@ $LAST_ID = $LAST_ID+1;
                             <div class="col-sm-6">
                                 <div class="form-group">
                                     <label for="student_id">Student ID</label>
-                                    <input id="student_id" class="form-control" type="text" name="student_id"  data-field="student_id" value="<?php echo 'STU000'.$LAST_ID?>" readonly="">
+                                    <input id="student_id" class="form-control" type="text" name="student_id"  data-field="student_id" value="<?php echo 'STU000' . $LAST_ID ?>" readonly="">
                                     <div class="valid-message"></div>
                                 </div>
                             </div>

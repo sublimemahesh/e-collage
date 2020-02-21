@@ -129,17 +129,15 @@
     </li>
     <li class="dropdown hidden-xs">
         <button class="navbar-account-btn" data-toggle="dropdown" aria-haspopup="true">
-            <img class="circle" style="margin-right: 10px;" width="36" height="36" src="../img/0180441436.jpg" alt="Admin">Admin
+            <img class="circle" style="margin-right: 10px;" width="36" height="36" src="../img/0180441436.jpg" alt="Admin"> 
             <span class="caret"></span>
         </button>
         <ul class="dropdown-menu dropdown-menu-right">
 
-            <li class="divider"></li>
-            <li class="navbar-upgrade-version">Version: 1.0.0</li>
-            <li class="divider"></li>
+             
             <li><a href="#">Contacts</a></li>
             <li><a href="#">Profile</a></li>
-            <li><a href="#">Sign out</a></li>
+            <li><a href="log-out.php">Sign out</a></li>
         </ul>
     </li>
     <li class="visible-xs-block">

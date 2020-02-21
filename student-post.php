@@ -8,10 +8,8 @@ include './calculate-time.php';
     <head>
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <title>Profile in student    </title>
-        <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no">
-        <meta property="og:url" content="http://demo.madebytilde.com/elephant">
-        <meta property="og:type" content="website"> >
+        <title>SSM net - Student Post </title>
+
         <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
         <link rel="icon" type="image/png" href="favicon-32x32.png" sizes="32x32">
         <link rel="icon" type="image/png" href="favicon-16x16.png" sizes="16x16">
@@ -127,7 +125,7 @@ include './calculate-time.php';
                                                                     </a>
                                                                 </div>
                                                             </span>
- 
+
                                                         </div> 
                                                     </div>
                                                 </div> 
@@ -311,25 +309,25 @@ include './calculate-time.php';
                                                             <div class="flipScrollableAreaBody" style="float: left;margin-bottom: 8px;" >
                                                                 <div class="flipScrollableAreaContent<?php echo $post['id'] ?>"> 
 
-        <!--                                                                        <span class="_uploadouterbox_edit">
-                     <div class="_m _6a">
-                         <a class="_uploadbox" rel="ignore">
-                             <div class="_upload"> 
-                                 <input multiple="" name="upload-other-images" title="Choose a file to upload" data-test  display="inline-block" type="file" class="_uploadinput _outlinenone" id="add-more-photos">
+                <!--                                                                        <span class="_uploadouterbox_edit">
+                             <div class="_m _6a">
+                                 <a class="_uploadbox" rel="ignore">
+                                     <div class="_upload"> 
+                                         <input multiple="" name="upload-other-images" title="Choose a file to upload" data-test  display="inline-block" type="file" class="_uploadinput _outlinenone" id="add-more-photos">
+                                     </div>
+                                 </a>
                              </div>
-                         </a>
-                     </div>
-                 </span>-->
+                         </span>-->
 
-        <!--                                                                        <span class="_uploadloaderbox abc">
-                                                                                    <div class="_m _6a">
-                                                                                        <a class="_uploadbox" rel="ignore">
-                                                                                            <div class="_upload">
+                <!--                                                                        <span class="_uploadloaderbox abc">
+                                                                                            <div class="_m _6a">
+                                                                                                <a class="_uploadbox" rel="ignore">
+                                                                                                    <div class="_upload">
 
+                                                                                                    </div>
+                                                                                                </a>
                                                                                             </div>
-                                                                                        </a>
-                                                                                    </div>
-                                                                                </span>-->
+                                                                                        </span>-->
 
 
                                                                 </div>
@@ -347,14 +345,14 @@ include './calculate-time.php';
                                                             </label>
                                                         </a>
                                                         <input type="hidden"   name="upload-post-image-edit" value="upload-post-image-edit">
-                                                        
-                                                        
+
+
                                                     </div>
 
                                                     <div class="post-actions">
                                                         <div class="post-summary">
                                                             <input type="hidden" name="id" class="post_id" value="<?php echo $post['id'] ?>" >
-                                                            
+
                                                             <input type="submit" class="btn btn-primary btn-block pull-right share-post"  disabled="" style="width: 60px"  name="edit-post" value="POST">
                                                         </div>
                                                     </div>
