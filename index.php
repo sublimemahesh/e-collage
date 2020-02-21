@@ -2,6 +2,7 @@
 <?php
 include_once(dirname(__FILE__) . '/class/include.php');
 include_once(dirname(__FILE__) . '/auth.php');
+$PAGES = new Page(1);
 ?>
 <html lang="en">
     <head>
@@ -9,6 +10,9 @@ include_once(dirname(__FILE__) . '/auth.php');
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <title>SSM net - Index   </title>
         <meta property="og:url" content="http://demo.madebytilde.com/elephant">
+        <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no">
+        <meta property="og:url" content="http://demo.madebytilde.com/elephant">
+        <meta property="og:type" content="website"> >
 
         <link rel="icon" type="image/png" href="favicon-32x32.png" sizes="32x32">
         <link rel="icon" type="image/png" href="favicon-16x16.png" sizes="16x16">
@@ -73,7 +77,7 @@ include_once(dirname(__FILE__) . '/auth.php');
                         </div>
 
                         <div class="col-xs-12 col-md-9"> 
-                            <iframe id="existing-iframe-example "   class="video-res" height="510" src="https://www.youtube.com/embed/viHILXVY_eU?enablejsapi=1?controls=0&showinfo=0&rel=0&autoplay=1&loop=1&playlist=viHILXVY_eU" allow="autoplay" allowfullscreen></iframe>
+                            <iframe id="existing-iframe-example "   class="video-res" height="510" src="<?php echo $PAGES->title ?>" allow="autoplay" allowfullscreen></iframe>
 <!--                            <iframe id="existing-iframe-example" width="92%" height="510"  src="https://www.youtube.com/embed/40wafTmaMro?enablejsapi=1autoplay=1"    frameborder="0" ></iframe>-->
 
                         </div>
