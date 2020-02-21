@@ -7,10 +7,13 @@ include_once(dirname(__FILE__) . '/auth.php');
     <head>
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
-       
-       <title>SSM net - Change Password   </title>
-      
-         <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+
+        <title>SSM net - Change Password   </title>
+        <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no">
+        <meta property="og:url" content="http://demo.madebytilde.com/elephant">
+        <meta property="og:type" content="website"> >
+
+        <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
         <link rel="icon" type="image/png" href="favicon-32x32.png" sizes="32x32">
         <link rel="icon" type="image/png" href="favicon-16x16.png" sizes="16x16">
         <link rel="manifest" href="manifest.json">
@@ -43,7 +46,7 @@ include_once(dirname(__FILE__) . '/auth.php');
                                         <?php
                                         if (empty($STUDENT->image_name)) {
                                             ?>
-                                            <input type="image" src="img/0180441436.jpg" width="128" height="128"  class="append_img profile-avetar-img " /><i class="fa fa-camera fa-lg fa-color "></i> 
+                                        <input type="image" src="img/member.jpg" width="128" height="128"  class="append_img profile-avetar-img " /><i class="fa fa-camera fa-lg fa-color "></i> 
 
                                         <?php } else { ?>
                                             <img   class="profile-avetar-img  append_img  "  width="128" height="128"   src="upload/student/profile/<?php echo $STUDENT->image_name ?>"  >  <i class="fa fa-camera fa-lg fa-color "></i> 
@@ -112,7 +115,7 @@ include_once(dirname(__FILE__) . '/auth.php');
         <script src="js/profile.min.js"></script>
         <script src="js/sweetalert.min.js" type="text/javascript"></script>
         <script src="ajax/js/check-login.js" type="text/javascript"></script>
-        
+
     </body>
 
 </html>

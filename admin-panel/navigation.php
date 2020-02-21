@@ -20,6 +20,16 @@
                             <li><a href="manage-all-students.php">Manage All Student</a></li>
                         </ul>
                     </li>
+                    <li class="sidenav-item has-subnav" style="margin-top: 20px">
+                        <a href="#" aria-haspopup="true">
+                            <span class="sidenav-icon icon icon-works">a</span>
+                            <span class="sidenav-label">Pages</span>
+                        </a>
+                        <ul class="sidenav level-2 collapse"> 
+                            <li><a href="create-page.php">Video URL</a></li>
+                          
+                        </ul>
+                    </li>
                 </ul>
             </nav>
         </div>
