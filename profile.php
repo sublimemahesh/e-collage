@@ -64,7 +64,9 @@ include_once(dirname(__FILE__) . '/auth.php');
                                             </a>
                                         </div>
                                         <div class="profile-overview"> 
-                                            <label class="btn btn-primary file-upload-btn">
+                                            <button class="btn btn-primary spinner spinner-inverse spinner-sm pull-right loading" type="button" disabled="disabled" style="display: none">Save changes</button>
+
+                                            <label class="btn btn-primary file-upload-btn uploard_btn">
                                                 Change Profile
                                                 <input class="file-upload-input" type="file" id="change_profile" name="image_name" multiple="multiple">
                                             </label>

@@ -9,13 +9,7 @@ include '../class/include.php';
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <title>Manage in active  Student</title>
-        <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no">
-        <meta property="og:url" content="http://demo.madebytilde.com/elephant">
-        <meta property="og:type" content="website">
-        <meta property="og:image" content="../../elephant.html">
-        <meta name="twitter:card" content="summary_large_image">
-        <meta name="twitter:site" content="@madebytilde">
-        <meta name="twitter:creator" content="@madebytilde">
+        
         <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-iconaa.png">
         <link rel="icon" type="image/png" href="favicon-32x32.png" sizes="32x32">
         <link rel="icon" type="image/png" href="favicon-16x16.png" sizes="16x16">
@@ -27,6 +21,8 @@ include '../class/include.php';
         <link rel="stylesheet" href="css/elephant.min.css">
         <link rel="stylesheet" href="css/application.min.css">
         <link rel="stylesheet" href="css/demo.min.css">
+        <link href="css/sweetalert.css" rel="stylesheet" type="text/css"/>
+        
     </head>
     <body class="layout layout-header-fixed">
         <div class="layout-header">
@@ -133,7 +129,7 @@ include '../class/include.php';
                                             foreach ($STUDENT->getInActiveStudent() as $key => $student) {
                                                 $key++;
                                                 ?>
-                                                <tr>
+                                                <tr id="div<?php echo $student['id'] ?>">
                                                     <td><?php echo $key ?></td>
                                                     <td><?php echo $student['student_id'] ?></td>
                                                     <td><?php echo $student['full_name'] ?></td> 
@@ -142,7 +138,7 @@ include '../class/include.php';
 
                                                     <td> 
                                                         <a href="edit-student.php?id=<?php echo $student['id'] ?>" class="op-link btn btn-sm btn-info"><i class="icon icon-pencil"></i></a>  |  
-                                                        <a href="#" class="delete-pages btn btn-sm btn-danger" data-id=""><i class="waves-effect icon icon-trash" data-type="cancel"></i></a> |   
+                                                        <a href="#" class="delete-student btn btn-sm btn-danger" data-id="<?php echo $student['id'] ?>"><i class="waves-effect icon icon-trash" data-type="cancel"></i></a> |   
                                                         <a href="view-student.php?id=<?php echo $student['id'] ?>" class="op-link btn btn-sm btn-primary"><i class="icon icon-eye"></i></a>
                                                     </td>
                                                 </tr>
@@ -156,32 +152,13 @@ include '../class/include.php';
                         </div>
                     </div>
                 </div>
-            </div>
-            <!--            <div class="layout-footer">
-                            <div class="layout-footer-body">
-                                <small class="version">Version 1.4.0</small>
-                                <small class="copyright">2017 &copy; Elephant <a href="http://madebytilde.com/">Made by Tilde</a></small>
-                            </div>
-                        </div>-->
+            </div> 
         </div>
         <script src="js/vendor.min.js"></script>
         <script src="js/elephant.min.js"></script>
         <script src="js/application.min.js"></script>
         <script src="js/demo.min.js"></script>
-        <script>
-            (function (i, s, o, g, r, a, m) {
-                i['GoogleAnalyticsObject'] = r;
-                i[r] = i[r] || function () {
-                    (i[r].q = i[r].q || []).push(arguments)
-                }, i[r].l = 1 * new Date();
-                a = s.createElement(o),
-                        m = s.getElementsByTagName(o)[0];
-                a.async = 1;
-                a.src = g;
-                m.parentNode.insertBefore(a, m)
-            })(window, document, 'script', '../../../www.google-analytics.com/analytics.js', 'ga');
-            ga('create', 'UA-83990101-1', 'auto');
-            ga('send', 'pageview');
-        </script>
+        <script src="js/sweetalert.min.js" type="text/javascript"></script>        
+        <script src="delete/js/student.js" type="text/javascript"></script>
     </body>
 </html>

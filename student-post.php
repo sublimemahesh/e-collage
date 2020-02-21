@@ -107,7 +107,7 @@ include './calculate-time.php';
 
                                 <div class="post-body"> 
                                     <form action="ajax/post-and-get/post.php" method="post" id="post-form">
-                                        <img id="loading" src="https://www.vedantalimited.com/SiteAssets/Images/loading.gif"  class="img-loard"/>
+                                        <img  src="https://www.vedantalimited.com/SiteAssets/Images/loading.gif"  class="img-loard loading"/>
                                         <label class="control-label">Share what you are thinking here...</label>
                                         <textarea class="form-control post-description control-label text-a"   name="description"  ></textarea>
                                         <div class="flipScrollableArea hidden  "  >
@@ -136,27 +136,30 @@ include './calculate-time.php';
                                         </div>
 
                                         <div class="post-img"  style="    margin-bottom: -20px;">
-                                            <a href="#">
-                                                <label class="custom-file-upload">
-                                                    <input type="file" id="upload_first_image" name="post-image"/>  <span class="icon icon-camera icon-fw"></span>
-                                                </label>
-                                            </a>
+                                            <?php
+                                            if ($STUDENT->status == '1') {
+                                                ?>
+                                                <a href="#">
+                                                    <label class="custom-file-upload">
+                                                        <input type="file" id="upload_first_image" name="post-image"/>  <span class="icon icon-camera icon-fw"></span>
+                                                    </label>
+                                                </a>
+                                            <?php } else { ?>
+                                                <a href="#" >
+                                                    <label class="custom-file-upload"  >
+                                                        <input type="file" disabled=" "id="upload_first_image" name="post-image"/>  <span class="icon icon-camera icon-fw"></span>
+                                                    </label>
+                                                </a>
+                                            <?php } ?>
                                             <input type="hidden"  name="upload-post-image" value="upload-post-image">
                                             <input type="hidden" name="student" value="<?php echo $_SESSION['id'] ?>" >
-                                            <input type="submit"class="btn btn-primary btn-block pull-right share-post"  disabled="" style="width: 60px"  name="save-post" value="POST">
+                                            <button class="btn btn-primary spinner spinner-inverse spinner-sm pull-right loading" type="button" disabled="disabled" style="display: none">Save changes</button>
+                                            <input type="submit"class="btn btn-primary btn-block pull-right share-post loading_disable"  disabled="" style="width: 60px"  name="save-post" value="POST">
                                         </div>
 
 
 
-                                        <div class="post-actions">
-                                            <!--                                            <a class="post-action" href="#">
-                                                                                            <span class="icon icon-thumbs-up icon-fw"></span>
-                                                                                            Like
-                                                                                        </a>
-                                                                                        <a class="post-action" href="#">
-                                                                                            <span class="icon icon-share icon-fw"></span>
-                                                                                            Share
-                                                                                        </a>-->
+                                        <div class="post-actions"> 
                                             <div class="post-summary"> </div>
                                         </div>
                                     </form>
@@ -167,11 +170,11 @@ include './calculate-time.php';
                     </div>
 
                     <?php
-                    $posts = Post::getPostsByStudent($_SESSION['id']);
+                    $posts = Post::all();
                     if (count($posts) > 0) {
                         foreach ($posts as $key => $post) {
                             $result = getTime($post['created_at']);
-                            $photos = PostImage::getPhotosByPostId($post['id']);
+                            $STUDENT_DETAILS = new Student($post['student'])
                             ?> 
 
                             <div class="profile-body" id="div_r<?php echo $post['id'] ?>">  
@@ -181,18 +184,18 @@ include './calculate-time.php';
                                             <div class="post-author">
                                                 <div class="post-author-avatar">
                                                     <?php
-                                                    if (empty($STUDENT->image_name)) {
+                                                    if (empty($STUDENT_DETAILS->image_name)) {
                                                         ?>
                                                         <input type="image" src="img/member.jpg" width="48" height="48"  class="append_img profile-avetar-img " />
 
                                                     <?php } else { ?>
-                                                        <img   class="profile-avetar-img  append_img  " width="48" height="48"  src="upload/student/profile/<?php echo $STUDENT->image_name ?>"  >  
+                                                        <img   class="profile-avetar-img  append_img  " width="48" height="48"  src="upload/student/profile/<?php echo $STUDENT_DETAILS->image_name ?>"  >  
                                                     <?php } ?>
 
                                                 </div>
                                                 <div class="post-author-info">
                                                     <span class="post-author-name">
-                                                        <a href="#"><?php echo $STUDENT->full_name ?></a>
+                                                        <a href="#"><?php echo $STUDENT_DETAILS->full_name ?></a>
                                                     </span>
 
                                                     <span class="post-timestamp"> <?php echo $result; ?></span>
@@ -203,12 +206,13 @@ include './calculate-time.php';
                                                     <a class="dropdown-toggler" href="#" data-toggle="dropdown" aria-haspopup="true" role="button">
                                                         <span class="icon icon-angle-down"></span>
                                                     </a>
-                                                    <ul class="dropdown-menu dropdown-menu-right">
-
-                                                        <li><a href="#" data-toggle="modal" data-target="#warningModalAlert<?php echo $post['id']; ?>" class="edit-post"  >Edit </a></li>
-                                                        <li><a href="#" class="post-delete" data-id="<?php echo $post['id']; ?>">Delete</a></li> 
-                                                    </ul>
-                                                </div>
+                                                    <?php if ($STUDENT_DETAILS->id == $_SESSION['id']) { ?>
+                                                        <ul class="dropdown-menu dropdown-menu-right">                                                  
+                                                            <li><a href="#" data-toggle="modal" data-target="#warningModalAlert<?php echo $post['id']; ?>" class="edit-post"  >Edit </a></li>
+                                                            <li><a href="#" class="post-delete" data-id="<?php echo $post['id']; ?>">Delete</a></li> 
+                                                        </ul>
+                                                    </div>
+                                                <?php } ?>
                                             </div>
                                         </div>
 
@@ -224,27 +228,14 @@ include './calculate-time.php';
                                                         <div id="gallery<?php echo $post['id'] ?>" class="div<?php echo $post['id']; ?>"></div>
                                                     </a>
                                                 </div>
-                                                <!--                                                <div class="post-actions">
-                                                                                                    <a class="post-action" href="#">
-                                                                                                        <span class="icon icon-thumbs-up icon-fw"></span>
-                                                                                                        Like
-                                                                                                    </a>
-                                                                                                    <a class="post-action" href="#">
-                                                                                                        <span class="icon icon-share icon-fw"></span>
-                                                                                                        Share
-                                                                                                    </a>
-                                                                                                    <div class="post-summary">
-                                                                                                        <small class="truncate">
-                                                                                                            <a class="link-muted" href="#">Likes: Ruby Dixon, Agatha Ford and 2.2k others</a>
-                                                                                                        </small>
-                                                                                                    </div>
-                                                                                                </div>-->
+
                                             </div> 
                                         </div> 
                                     </div>
                                 </div>
                                 <div class="col-md-2"></div>
                             </div>  
+                            <input type="hidden" value="<?php echo $STUDENT_DETAILS->id ?>"  name="students[]" class="students"  >
                             <?php
                         }
                     }
@@ -256,6 +247,7 @@ include './calculate-time.php';
 
         <!--check Login--> 
         <input type="hidden" value="<?php echo $_SESSION['id'] ?>" id="student_id">
+
 
         <?php
         $POST = new Post(NULL);
@@ -309,25 +301,6 @@ include './calculate-time.php';
                                                             <div class="flipScrollableAreaBody" style="float: left;margin-bottom: 8px;" >
                                                                 <div class="flipScrollableAreaContent<?php echo $post['id'] ?>"> 
 
-                <!--                                                                        <span class="_uploadouterbox_edit">
-                             <div class="_m _6a">
-                                 <a class="_uploadbox" rel="ignore">
-                                     <div class="_upload"> 
-                                         <input multiple="" name="upload-other-images" title="Choose a file to upload" data-test  display="inline-block" type="file" class="_uploadinput _outlinenone" id="add-more-photos">
-                                     </div>
-                                 </a>
-                             </div>
-                         </span>-->
-
-                <!--                                                                        <span class="_uploadloaderbox abc">
-                                                                                            <div class="_m _6a">
-                                                                                                <a class="_uploadbox" rel="ignore">
-                                                                                                    <div class="_upload">
-
-                                                                                                    </div>
-                                                                                                </a>
-                                                                                            </div>
-                                                                                        </span>-->
 
 
                                                                 </div>
@@ -345,15 +318,13 @@ include './calculate-time.php';
                                                             </label>
                                                         </a>
                                                         <input type="hidden"   name="upload-post-image-edit" value="upload-post-image-edit">
-
-
                                                     </div>
 
                                                     <div class="post-actions">
                                                         <div class="post-summary">
                                                             <input type="hidden" name="id" class="post_id" value="<?php echo $post['id'] ?>" >
-
-                                                            <input type="submit" class="btn btn-primary btn-block pull-right share-post"  disabled="" style="width: 60px"  name="edit-post" value="POST">
+                                                            <button class="btn btn-primary spinner spinner-inverse spinner-sm pull-right loading_2" type="button" disabled="disabled" style="display: none">Save changes</button>
+                                                            <input type="submit" class="btn btn-primary btn-block pull-right share-post loading_disable"  disabled="" style="width: 60px"  name="edit-post" value="POST">
                                                         </div>
                                                     </div>
                                                 </form>
@@ -387,7 +358,7 @@ include './calculate-time.php';
         <script src="ajax/js/check-login.js" type="text/javascript"></script>
         <script src="ajax/js/post-photo.js" type="text/javascript"></script>
         <script src="ajax/js/student-post.js" type="text/javascript"></script>
-
+        <script src="ajax/js/post-photo-view.js" type="text/javascript"></script>
 
     </body>
 

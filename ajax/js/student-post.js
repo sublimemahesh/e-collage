@@ -11,10 +11,8 @@ $(document).ready(function () {
         var newleft = parseInt(left) + 105;
         $('._uploadouterbox').css('left', newleft + 'px');
 
-//        $('._uploadloaderbox').append()
-
-
-        $('#loading').show();
+        $('.loading').show();
+        $('.loading_disable').hide();
 
 
         var fi = document.getElementById('upload_first_image'); // GET THE FILE INPUT.
@@ -67,7 +65,9 @@ $(document).ready(function () {
 
 
                 $('#upload_first_image').val('');
-                $('#loading').hide();
+                $('.loading').hide();
+                $('.loading_disable').show();
+
                 var left1 = $('._uploadloaderbox').css('left');
                 var newleft1 = parseInt(left1) + 105;
                 $('._uploadloaderbox').css('left', newleft1 + 'px');
@@ -168,13 +168,14 @@ $(document).ready(function () {
 
 //Update image section
     $('.upload_first_image_edit').change(function () {
-        var id = $(this).attr("data-id"); 
+        var id = $(this).attr("data-id");
         $('.flipScrollableArea_2').removeClass('hidden');
         $('._uploadloaderbox_edit').css('display', 'inline-block');
         $('.loading_2').css('display', 'block')
+        $('.loading_disable').hide();
 
         var formData = new FormData($('#edit-post-form' + id)[0]);
-      
+
         $.ajax({
             url: "ajax/post-and-get/student-post.php",
             type: "POST",
@@ -202,8 +203,10 @@ $(document).ready(function () {
                 $('.flipScrollableAreaContent' + id).prepend(html);
 
                 $('.upload_first_image_edit').val('');
-                $('.loading_2').css('display', 'none');  
+                $('.loading_2').css('display', 'none');
+                $ 
                 $('.share-post').removeAttr('disabled');
+                $('.loading_disable').show();
 //             } 
             },
             cache: false,
