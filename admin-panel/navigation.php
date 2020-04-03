@@ -6,8 +6,8 @@
         <div class="custom-scrollbar">
             <nav id="sidenav" class="sidenav-collapse collapse">
                 <ul class="sidenav level-1">
-                  
-               
+
+
                     <li class="sidenav-item has-subnav" style="margin-top: 20px">
                         <a href="#" aria-haspopup="true">
                             <span class="sidenav-icon icon icon-works">p</span>
@@ -27,7 +27,17 @@
                         </a>
                         <ul class="sidenav level-2 collapse"> 
                             <li><a href="create-page.php">Video URL</a></li>
-                          
+
+                        </ul>
+                    </li>
+                    <li class="sidenav-item has-subnav" style="margin-top: 20px">
+                        <a href="#" aria-haspopup="true">
+                            <span class="sidenav-icon icon icon-works">a</span>
+                            <span class="sidenav-label">Subjects</span>
+                        </a>
+                        <ul class="sidenav level-2 collapse"> 
+                            <li><a href="create-subject.php">Create Subject</a></li>
+
                         </ul>
                     </li>
                 </ul>
