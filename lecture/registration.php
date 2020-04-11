@@ -1,5 +1,5 @@
 <?php
-include '..//class/include.php';
+include '../class/include.php';
 ?>
 <!DOCTYPE html>
 <html lang="en">

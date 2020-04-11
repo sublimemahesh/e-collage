@@ -4,7 +4,7 @@
     <head>
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <title>Log In -Ecollege.lk</title>
+        <title>Log In - Ecollege.lk</title>
         <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no">
         <link rel="icon" type="image/png" href="img/logo.png" sizes="32x32">
 
@@ -22,14 +22,15 @@
             <div class="login-body">
                 <a class="login-brand" href="../index.php">
                     <center>
-                        <img class="img-responsive" src="img/logo.png" alt="Ecollege.lk">
+                         <img class="img-responsive" src="img/logo.png" alt="Ecollege.lk">
                     </center>
+                   
                 </a>
                 <div class="login-form">
                     <form   id="form">
                         <div class="form-group">
-                            <label for="email">Email</label>
-                            <input id="email" class="form-control" type="email" name="email"  data-field="email"  >
+                            <label for="student_id">Student ID</label>
+                            <input id="student_id" class="form-control" type="text" name="student_id"  data-field="student_id"  >
                             <div class="valid-message"></div>
                         </div>
                         <div class="form-group">
@@ -45,7 +46,8 @@
                 </div>
                 <div class="login-footer">
                     Don't have an account? <a href="registration.php">Sign Up</a><br>
-                    Change Password? <a href="forget-password.php">Forgot password? </a> 
+                    Change Password? <a href="forget-password.php">Forgot password? </a><br>
+                     
                 </div>
             </div>
 
