@@ -109,6 +109,7 @@
                     <a class="list-group-item" href="#">
                         <div class="notification">
                             <div class="notification-media">
+
                                 <img class="circle" width="40" height="40" src="img/0180441436.jpg" alt="Teddy Wilson">
                             </div>
                             <div class="notification-content">
@@ -129,33 +130,39 @@
     </li>
     <li class="dropdown hidden-xs">
         <button class="navbar-account-btn" data-toggle="dropdown" aria-haspopup="true">
-            <img class="circle" style="margin-right: 10px;" width="36" height="36" src="../img/0180441436.jpg" alt="Admin"> 
-            <span class="caret"></span>
+            <?php
+            if (empty($USER->image_name)) {
+                ?>
+            <img class="circle" width="40" height="40" src="img/3002121059.jpg" class="append_img profile-avetar-img " >
+
+            <?php } else { ?>
+                <img   class="profile-avetar-img  append_img img-circle "  width="40" height="40"   src="upload/user/profile/<?php echo $USER->image_name ?>"  >   
+            <?php } ?>        
+                <span class="caret"></span>
         </button>
         <ul class="dropdown-menu dropdown-menu-right">
 
-             
-            <li><a href="#">Contacts</a></li>
-            <li><a href="#">Profile</a></li>
+            <li><a href="profile.php">Profile</a></li>
+            <li><a href="change-password.php">Change Password</a></li>
             <li><a href="log-out.php">Sign out</a></li>
         </ul>
     </li>
-    <li class="visible-xs-block">
-        <a href="contacts.html">
-            <span class="icon icon-users icon-lg icon-fw"></span>
-            Contacts
-        </a>
-    </li>
-    <li class="visible-xs-block">
-        <a href="profile.html">
-            <span class="icon icon-user icon-lg icon-fw"></span>
-            Profile
-        </a>
-    </li>
-    <li class="visible-xs-block">
-        <a href="login-1.html">
-            <span class="icon icon-power-off icon-lg icon-fw"></span>
-            Sign out
-        </a>
-    </li>
+    <!--    <li class="visible-xs-block">
+            <a href="contacts.html">
+                <span class="icon icon-users icon-lg icon-fw"></span>
+                Contacts
+            </a>
+        </li>
+        <li class="visible-xs-block">
+            <a href="profile.html">
+                <span class="icon icon-user icon-lg icon-fw"></span>
+                Profile
+            </a>
+        </li>
+        <li class="visible-xs-block">
+            <a href="login-1.html">
+                <span class="icon icon-power-off icon-lg icon-fw"></span>
+                Sign out
+            </a>
+        </li>-->
 </ul>

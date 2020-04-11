@@ -6,17 +6,12 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <title>Manage Lesson</title>
         <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no">
-        <meta name="description" content="Elephant is an admin template that helps you build modern Admin Applications, professionally fast! Built on top of Bootstrap, it includes a large collection of HTML, CSS and JS components that are simple to use and easy to customize.">
         <meta property="og:url" content="http://demo.madebytilde.com/elephant">
         <meta property="og:type" content="website">
-        <meta property="og:title" content="The fastest way to build Modern Admin APPS for any platform, browser, or device.">
-        <meta property="og:description" content="Elephant is an admin template that helps you build modern Admin Applications, professionally fast! Built on top of Bootstrap, it includes a large collection of HTML, CSS and JS components that are simple to use and easy to customize.">
         <meta property="og:image" content="../../elephant.html">
         <meta name="twitter:card" content="summary_large_image">
         <meta name="twitter:site" content="@madebytilde">
         <meta name="twitter:creator" content="@madebytilde">
-        <meta name="twitter:title" content="The fastest way to build Modern Admin APPS for any platform, browser, or device.">
-        <meta name="twitter:description" content="Elephant is an admin template that helps you build modern Admin Applications, professionally fast! Built on top of Bootstrap, it includes a large collection of HTML, CSS and JS components that are simple to use and easy to customize.">
         <meta name="twitter:image" content="../../elephant.html">
         <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-iconaa.png">
         <link rel="icon" type="image/png" href="favicon-32x32.png" sizes="32x32">
@@ -70,7 +65,7 @@
                                 <span class="bar-line bar-line-6 in"></span>
                             </span>
                         </button>
-                     <?php include './head-nav-right.php';?>
+                        <?php include './head-nav-right.php'; ?>
                         <div class="title-bar">
                             <h1 class="title-bar-title">
                                 <span class="d-ib">Manage Lesson</span>
@@ -95,9 +90,9 @@
             <div class="layout-content" style="margin-top: 25px;">
                 <div class="layout-content-body">
                     <div class="row gutter-xs">
-<!--                        <div class="col-xs-12">
-                            <p><small>All widgets presented below are created by composing the components along with the utility classes. JavaScript was not used for their implementation.</small></p>
-                        </div>-->
+                        <!--                        <div class="col-xs-12">
+                                                    <p><small>All widgets presented below are created by composing the components along with the utility classes. JavaScript was not used for their implementation.</small></p>
+                                                </div>-->
                     </div>
                     <div class="row gutter-xs">
                         <div class="col-sm-3">

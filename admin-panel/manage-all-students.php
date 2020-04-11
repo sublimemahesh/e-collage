@@ -2,14 +2,14 @@
 
 <?php
 include '../class/include.php';
-?>
+include './auth.php';?>
 <html lang="en">
 
     <head>
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <title>SSM Net - ALL Student</title>
-        
+        <title>Ecollege.lk - ALL Student</title>
+
         <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-iconaa.png">
         <link rel="icon" type="image/png" href="favicon-32x32.png" sizes="32x32">
         <link rel="icon" type="image/png" href="favicon-16x16.png" sizes="16x16">
@@ -22,67 +22,12 @@ include '../class/include.php';
         <link rel="stylesheet" href="css/application.min.css">
         <link rel="stylesheet" href="css/demo.min.css">
         <link href="css/sweetalert.css" rel="stylesheet" type="text/css"/>
-        
+
     </head>
     <body class="layout layout-header-fixed">
-        <div class="layout-header">
-            <div class="navbar navbar-default">
-                <div class="navbar-header">
-                    <a class="navbar-brand navbar-brand-center" href="dashboard.php">
-                        <img class="navbar-brand-logo" src="./../img/logo.png" alt="Elephant">
-                    </a>
-                    <button class="navbar-toggler visible-xs-block collapsed" type="button" data-toggle="collapse" data-target="#sidenav">
-                        <span class="sr-only">Toggle navigation</span>
-                        <span class="bars">
-                            <span class="bar-line bar-line-1 out"></span>
-                            <span class="bar-line bar-line-2 out"></span>
-                            <span class="bar-line bar-line-3 out"></span>
-                        </span>
-                        <span class="bars bars-x">
-                            <span class="bar-line bar-line-4"></span>
-                            <span class="bar-line bar-line-5"></span>
-                        </span>
-                    </button>
-                    <button class="navbar-toggler visible-xs-block collapsed" type="button" data-toggle="collapse" data-target="#navbar">
-                        <span class="sr-only">Toggle navigation</span>
-                        <span class="arrow-up"></span>
-                        <span class="ellipsis ellipsis-vertical">
-                            <img class="ellipsis-object" width="32" height="32" src="img/0180441436.jpg" alt="Teddy Wilson">
-                        </span>
-                    </button>
-                </div>
-                <div class="navbar-toggleable">
-                    <nav id="navbar" class="navbar-collapse collapse">
-                        <button class="sidenav-toggler hidden-xs" title="Collapse sidenav ( [ )" aria-expanded="true" type="button">
-                            <span class="sr-only">Toggle navigation</span>
-                            <span class="bars">
-                                <span class="bar-line bar-line-1 out"></span>
-                                <span class="bar-line bar-line-2 out"></span>
-                                <span class="bar-line bar-line-3 out"></span>
-                                <span class="bar-line bar-line-4 in"></span>
-                                <span class="bar-line bar-line-5 in"></span>
-                                <span class="bar-line bar-line-6 in"></span>
-                            </span>
-                        </button>
-                        <?php include './head-nav-right.php'; ?>
-                        <div class="title-bar">
-                            <h1 class="title-bar-title">
-                                <span class="d-ib">Student Log  History
-                                </span>
-                                <span class="d-ib">
-                                    <a class="title-bar-shortcut" href="#" title="Add to shortcut list" data-container="body" data-toggle-text="Remove from shortcut list" data-trigger="hover" data-placement="right" data-toggle="tooltip">
-                                        <span class="sr-only">Add to shortcut list</span>
-                                    </a>
-                                </span>
-                            </h1>
-                            <p class="title-bar-description">
-                                <small>You can personalize your dashboard by using <a href="widgets.html">widgets</a>.</small>
-                            </p>
-                        </div>
-                    </nav>
-                </div>
-            </div>
-        </div>
+        <?php
+        include './top-header.php';
+        ?>
         <div class="layout-main">
             <?php
             include 'navigation.php';
@@ -130,7 +75,7 @@ include '../class/include.php';
                                             foreach ($STUDENT->all() as $key => $student) {
                                                 $key++;
                                                 ?>
-                                            <tr id="div<?php echo $student['id'] ?>">
+                                                <tr id="div<?php echo $student['id'] ?>">
                                                     <td><?php echo $key ?></td>
                                                     <td><?php echo $student['student_id'] ?></td>
                                                     <td><?php echo $student['full_name'] ?></td> 
@@ -159,7 +104,7 @@ include '../class/include.php';
                     </div>
                 </div>
             </div>
-       
+
         </div>
         <script src="js/vendor.min.js"></script>
         <script src="js/elephant.min.js"></script>

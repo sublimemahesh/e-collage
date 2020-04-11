@@ -8,7 +8,7 @@ $PAGES = new Page(1);
     <head>
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <title>SSM net - Index   </title>
+        <title>Ecollege.lk - Index   </title>
         <meta property="og:url" content="http://demo.madebytilde.com/elephant">
         <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no">
         <meta property="og:url" content="http://demo.madebytilde.com/elephant">
@@ -40,7 +40,7 @@ $PAGES = new Page(1);
                 <div class="layout-content-body" style="margin-top: 2%; padding: 0px">
                     <div class="row "> 
 
-                        <div class="col-xs-12 col-md-3">  
+                        <div class="col-xs-12 col-md-4">  
 
                             <div class="card p-l-card"  >
                                 <div class="card-header">
@@ -50,25 +50,14 @@ $PAGES = new Page(1);
                                 <div class="card-body">
                                     <center>
                                         <div class="col-md-12 m-y">
-                                            <p class="text-justify">
-                                                Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentiall
+                                            <p class="text-justify" style="line-height: 1.8;">
+                                                2020 ජනවාරි මස සිට Covid-19 රෝගය, ලංකාව පුරා ව්‍යාප්ත වීමත් සමග ලංකාවේ සියළු ආකාරයේ රජයේ හා පෞද්ලික අධ්‍යපන පද්ධතිය එක් වරම නවතා දමනු ලැබීය. එම නිසා අසරණ වූ ශිෂ්‍යා නැවත ප්‍රකෘතිමත් කිරීම පිණිස ගුරුවරයා සහ ශිෂ්‍යා නැවත මුණ ගැස්වීමට අප තීරණය කළෙමු.
                                             </p>
-                                            <p class="text-justify">
-                                                Lorem Ipsum is simply dummy text of  It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentiall
-                                            </p>
-                                            <ul class="list-group list-group-divided">
-
-                                                <li class="list-group-item" style=" ">
-                                                    Lorem Ipsum is simply dummy    
-                                                </li>
-                                                <li class="list-group-item">
-                                                    Lorem Ipsum is simply dummy    
-                                                </li>
-                                                <li class="list-group-item">
-                                                    Lorem Ipsum is simply dummy    
-                                                </li>
-
-                                            </ul>
+                                            <p class="text-justify" style="line-height: 1.8;">
+                                                ඒ අනුව අන්තර්ජාලය හා ඩිජිටල් තාක්ෂණය පිළිබද හසල අත්දැකීම් සහිත තාක්ෂණික කණ්ඩායමක සේවාව හා ගුරු ශිෂ්‍ය ප්‍රජාව එකම වෙබ් පිටුවකට ගෙන එනු ලැබූ ලංකාවේ එකම ඩිජිටල් මධ්‍යස්ථානය අප ගොඩනගා ඇත.                                            </p>
+                                            <p class="text-justify" style="line-height: 1.8;">
+                                                ඩිජිටල් තාක්ෂණය හා අන්තර්ජාලය භාවිත කරමින් ශ්‍රී ලංකාවේ අධ්‍යපනය වඩාත් ප්‍රතිඵලදායක ලෙස සිසුන් වෙත ලගා කරවීම සදහාත් ගුරුවරයා සහ ශිෂ්‍යා කාර්යක්ෂමව බැද තැබීම සදහාත් ඩිජිටල් පාලමක් වීම පිණිස ඩිජිටල් තාක්ෂණය ප්‍රචලිත කරවීම උදෙසා කැප වී සිටිමු.                                            </p>
+                                             
                                         </div>  
                                     </center>
 
@@ -76,7 +65,7 @@ $PAGES = new Page(1);
                             </div> 
                         </div>
 
-                        <div class="col-xs-12 col-md-9"> 
+                        <div class="col-xs-12 col-md-8"> 
                             <iframe id="existing-iframe-example "   class="video-res" height="510" src="<?php echo $PAGES->title ?>" allow="autoplay" allowfullscreen></iframe>
 <!--                            <iframe id="existing-iframe-example" width="92%" height="510"  src="https://www.youtube.com/embed/40wafTmaMro?enablejsapi=1autoplay=1"    frameborder="0" ></iframe>-->
 

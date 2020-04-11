@@ -24,7 +24,10 @@ include '../class/include.php';
         <div class="login">
             <div class="login-body">
                 <a class="login-brand" href="#">
-                    <img class="img-responsive" src="../img/logo.png" alt="Elephant">
+                    <center>
+                              <img class="img-responsive" src="../img/logo.png" alt="Elephant">
+                    </center>
+              
                 </a>
                 <h3 class="login-heading">Admin</h3>
                 <div class="login-form">

@@ -8,7 +8,7 @@ include_once(dirname(__FILE__) . '/auth.php');
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
-        <title>SSM net - Change Password   </title>
+        <title>Ecollege.lk - Change Password   </title>
         <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no">
         <meta property="og:url" content="http://demo.madebytilde.com/elephant">
         <meta property="og:type" content="website"> >

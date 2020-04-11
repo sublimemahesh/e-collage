@@ -1,12 +1,13 @@
 <!DOCTYPE html>
 <?php
 include '../class/include.php';
+include './auth.php';
 ?>
 <html lang="en">
     <head>
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <title>Change Password - SSM Net</title>
+        <title>Change Password - Ecollege.lk</title>
         <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no">
         <link rel="icon" type="image/png" href="favicon-32x32.png" sizes="32x32">
         <link rel="icon" type="image/png" href="favicon-16x16.png" sizes="16x16">
@@ -41,9 +42,9 @@ include '../class/include.php';
                         <div class="form-group">
                             <label for="your_email">Your Email </label>
                             <input id="email" class="form-control" type="email" name="email"   >
-                            
+
                         </div>                        
-                       
+
                         <button class="btn btn-primary btn-block" type="submit"  >Send</button>
                     </form>
                 </div>
@@ -55,7 +56,7 @@ include '../class/include.php';
         </div>
         <script src="js/jquery.min.js" type="text/javascript"></script>
         <script src="js/jquery.formValid.js" type="text/javascript"></script>
-       
+
 
 
     </body>
