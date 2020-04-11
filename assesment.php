@@ -7,7 +7,7 @@ include_once(dirname(__FILE__) . '/auth.php');
     <head>
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <title>SSM net - Assessment </title>
+        <title>Ecollege.lk - Assessment </title>
          
 
         <link rel="icon" type="image/png" href="favicon-32x32.png" sizes="32x32">

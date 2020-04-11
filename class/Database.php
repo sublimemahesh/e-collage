@@ -13,14 +13,12 @@
  * */
 class Database {
 
+//    private $host = 'localhost';
+//    private $name = 'synoteca_ecollege';
+//    private $user = 'synoteca_main';
+//    private $password = '3rTI#)-vDmAKczXQ-J';
 
-//  private $host = 'localhost';
-//    private $name = 'islapiiu_self_english';
-//    private $user = 'islapiiu_main';
-//    private $password = 'Ue.t;FNgC?BG,Paf8V';
-
-
-     private $host = 'localhost';
+    private $host = 'localhost';
      private $name = 'institute';
      private $user = 'root';
      private $password = '';

@@ -9,7 +9,7 @@ $LAST_ID = $LAST_ID + 1;
     <head>
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <title>SSM net - Registration   </title> 
+        <title>Ecollege.lk - Registration   </title> 
         <link rel="icon" type="image/png" href="favicon-32x32.png" sizes="32x32">
         <link rel="icon" type="image/png" href="favicon-16x16.png" sizes="16x16">
 
@@ -24,7 +24,10 @@ $LAST_ID = $LAST_ID + 1;
         <div class="signup">
             <div class="signup-body">
                 <a class="signup-brand" href="#">
-                    <img class="img-responsive" src="img/logo.png" alt="Elephant">
+                    <center>
+                           <img class="img-responsive" src="img/logo.png" alt="Ecollege.lk">
+                    </center>
+                 
                 </a>
                 <p class="signup-heading">
                     <em>Student Registration</em>

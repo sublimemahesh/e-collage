@@ -1,6 +1,7 @@
 <?php
-include_once(dirname(__FILE__) . '/class/include.php');
-include_once(dirname(__FILE__) . '/auth.php');
+include '../class/include.php';
+include './auth.php';
+$USER = new User($_SESSION['id']);
 ?>
 <html lang="en">
 
@@ -9,8 +10,8 @@ include_once(dirname(__FILE__) . '/auth.php');
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <title>Change Password   </title>
         <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no">
-      
-         <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+
+        <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
         <link rel="icon" type="image/png" href="favicon-32x32.png" sizes="32x32">
         <link rel="icon" type="image/png" href="favicon-16x16.png" sizes="16x16">
         <link rel="manifest" href="manifest.json">
@@ -32,56 +33,46 @@ include_once(dirname(__FILE__) . '/auth.php');
         <?php include './top-header.php'; ?>
         <!--End Top header -->
         <div class="layout-main">
-            <?php include './disable-navigation.php'; ?>
+            <?php include './navigation.php'; ?>
             <div class="layout-content">
                 <div class="profile">
-                    <div class="profile-header">
-                        <div class="profile-cover">
-                            <div class="profile-container">
-                                <div class="profile-card">
-                                    <div class="profile-avetar">
-                                        <?php
-                                        if (empty($STUDENT->image_name)) {
-                                            ?>
-                                            <input type="image" src="img/0180441436.jpg" width="128" height="128"  class="append_img profile-avetar-img " /><i class="fa fa-camera fa-lg fa-color "></i> 
-
-                                        <?php } else { ?>
-                                            <img   class="profile-avetar-img  append_img  "  width="128" height="128"   src="upload/student/profile/<?php echo $STUDENT->image_name ?>"  >  <i class="fa fa-camera fa-lg fa-color "></i> 
-                                        <?php } ?>
-
-                                    </div>
-                                    <div class="profile-overview">
-                                        <h1 class="profile-name"><?php echo $STUDENT->full_name ?></h1>
-                                        <p style="margin: 0px 0 1px;">NIC Number : <?php echo $STUDENT->nic_number ?></p>
-                                        <p style="margin: 0px 0 1px;">Email : <?php echo $STUDENT->email ?></p>
-                                    </div>
-
-                                </div> 
-                            </div>
-                        </div>
-                    </div>
+                     
                     <div class="row">
 
                         <div class="col-md-2"></div>
                         <div class="col-md-8"> 
-                            <form class="demo-form-wrapper card " style="padding: 50px" id="form-data">
+                            <div style="margin-top: 20px;">
+                                  <?php
+                            if (isset($_GET['message'])) {
+
+                                $MESSAGE = New Message($_GET['message']);
+                                ?>
+                                <div class="alert alert-<?php echo $MESSAGE->status; ?>" role = "alert">
+                                    <?php echo $MESSAGE->description; ?>
+                                </div>
+                                <?php
+                            }
+                            ?>
+                            </div>
+                          
+                            <form class="demo-form-wrapper card " method="post" action="ajax/post-and-get/change-password.php" style="padding: 50px" id="form-data">
                                 <div class="form form-horizontal">
                                     <div class="form-group">
                                         <label class="col-sm-3 control-label" for="old_passsword">Old Password: </label>
                                         <div class="col-sm-9">
-                                            <input id="old_passsword" name="old_passsword" class="form-control" type="password"   >
+                                            <input id="old_passsword" name="old_passsword" class="form-control" type="password"  placeholder="Enter Old Password" >
                                         </div>
                                     </div>
                                     <div class="form-group">
                                         <label class="col-sm-3 control-label" for="new_password">New Password: </label>
                                         <div class="col-sm-9">
-                                            <input  class="form-control"  id="new_password" name="new_password" type="password">
+                                            <input  class="form-control"  id="new_password" name="new_password" type="password" placeholder="Enter New Password">
                                         </div>
                                     </div>
                                     <div class="form-group">
                                         <label class="col-sm-3 control-label" for="com_password">Confirm Password: </label>
                                         <div class="col-sm-9">
-                                            <input id="com_password" name="com_password" class="form-control" type="password" >
+                                            <input id="com_password" name="com_password" class="form-control" type="password" placeholder="Enter Confirm Password">
                                         </div>
                                     </div>
                                     <div class="form-group">
@@ -89,8 +80,8 @@ include_once(dirname(__FILE__) . '/auth.php');
                                         <div class="col-md-3"></div> 
                                         <div class="col-md-3"></div> 
                                         <div class="col-md-3"> 
-                                            <input type="hidden"  name="id" value="<?php echo $STUDENT->id ?>">
-                                            <input type="hidden"  name="action" value="reset_password" >
+                                            <input type="hidden"  name="id" value="<?php echo $USER->id ?>">
+                                            <input type="hidden"   name="changePassword" >
                                             <input type="submit" class="btn btn-primary btn-block" type="submit" id="reset_password"   value="update" >
                                         </div>
                                     </div>
@@ -102,7 +93,7 @@ include_once(dirname(__FILE__) . '/auth.php');
                 </div>
             </div>
         </div>
-        <input type="hidden" value="<?php echo $_SESSION['id'] ?>" id="student_id">
+
 
         <script src="js/jquery.min.js" type="text/javascript"></script>
         <script src="ajax/js/student.js" type="text/javascript"></script>
@@ -112,7 +103,7 @@ include_once(dirname(__FILE__) . '/auth.php');
         <script src="js/profile.min.js"></script>
         <script src="js/sweetalert.min.js" type="text/javascript"></script>
         <script src="ajax/js/check-login.js" type="text/javascript"></script>
-        
+
     </body>
 
 </html>

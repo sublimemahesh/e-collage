@@ -28,15 +28,7 @@ $(document).ready(function () {
                 timer: 1500,
                 showConfirmButton: false
             });
-        } else if (!$('#age').val() || $('#age').val().length === 0) {
-            swal({
-                title: "Error!",
-                text: "Please enter age..!",
-                type: 'error',
-                timer: 1500,
-                showConfirmButton: false
-            });
-        } else if (!$('#phone_number').val() || $('#phone_number').val().length === 0) {
+        }  else if (!$('#phone_number').val() || $('#phone_number').val().length === 0) {
             swal({
                 title: "Error!",
                 text: "Please enter phone number..!",
@@ -56,7 +48,7 @@ $(document).ready(function () {
             var formData = new FormData($('#form-data')[0]);
 
             $.ajax({
-                url: "ajax/post-and-get/subject.php",
+                url: "ajax/post-and-get/student.php",
                 type: "POST",
                 data: formData,
                 async: false,

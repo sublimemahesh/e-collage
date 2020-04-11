@@ -6,7 +6,7 @@ include './class/include.php';
     <head>
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <title>SSM net - Reset Password  </title>
+        <title>Ecollege.lk - Reset Password  </title>
 
         <link rel="icon" type="image/png" href="favicon-32x32.png" sizes="32x32">
         <link rel="icon" type="image/png" href="favicon-16x16.png" sizes="16x16">
@@ -23,7 +23,10 @@ include './class/include.php';
         <div class="login">
             <div class="login-body">
                 <a class="login-brand" href="#">
-                    <img class="img-responsive" src="img/logo.png" alt="self english learning">
+                    <center>
+                            <img class="img-responsive" src="img/logo.png" alt="Ecollege.lk">
+                    </center>
+                
                 </a>
                 <div class="login-form">
                     <?php

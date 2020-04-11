@@ -2,13 +2,14 @@
 include_once(dirname(__FILE__) . '/class/include.php');
 include_once(dirname(__FILE__) . '/auth.php');
 include './calculate-time.php';
+$PAGES = new Page(1);
 ?>
 <html lang="en">
 
     <head>
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <title>SSM net - Student Post </title>
+        <title>Ecollege.lk - Student Post </title>
         <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no">
         <meta property="og:url" content="http://demo.madebytilde.com/elephant">
         <meta property="og:type" content="website"> >

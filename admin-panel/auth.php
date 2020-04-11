@@ -7,3 +7,4 @@ if (!isset($_SESSION)) {
 if (!User::authenticate()) {
     redirect('login.php'); 
 }
+$USER = new User($_SESSION['id']);

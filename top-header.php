@@ -125,7 +125,7 @@ $today = date('Y-m-d');
                             <span class="caret"></span>
                         </button>
                         <ul class="dropdown-menu dropdown-menu-right">  
-                            <li><a href="student-post.php">My Profile</a></li>
+<!--                            <li><a href="student-post.php">My Profile</a></li>-->
                             <li><a href="profile.php">Change Profile</a></li>
                             <li><a href="change-password.php">Change Password</a></li>
                             <li><a href="log-out.php">Sign out</a></li>
@@ -166,7 +166,7 @@ $today = date('Y-m-d');
                                 </a>
                             </span>
                         <?php } else if ($date == 'nu') { ?>
-                            Welcome To Web Learning
+                            Welcome To Ecollege.lk 
                         <?php } else {
                             ?>
                             <span class="d-ib">Lesson on  - <strong style=" color: #0f660c;"> <?php echo $date ?></strong></span>

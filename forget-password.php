@@ -7,7 +7,7 @@ include './class/include.php';
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
-        <title>SSM net - forget Password   </title>
+        <title>Ecollege.lk - forget Password   </title>
 
         <link rel="icon" type="image/png" href="favicon-32x32.png" sizes="32x32">
         <link rel="icon" type="image/png" href="favicon-16x16.png" sizes="16x16">
@@ -23,8 +23,11 @@ include './class/include.php';
     <body class="log-bck">
         <div class="login">
             <div class="login-body">
-                <a class="login-brand" href="#">
-                    <img class="img-responsive" src="img/logo.png" alt="self english learning">
+                <a class="login-brand" href="login.php">
+                    <center>
+                            <img class="img-responsive" src="img/logo.png" alt="Ecollege.lk">
+                    </center>
+                
                 </a>
                 <div class="login-form">
                     <?php

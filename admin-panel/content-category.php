@@ -6,17 +6,12 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <title>Manage Course Content</title>
         <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no">
-        <meta name="description" content="Elephant is an admin template that helps you build modern Admin Applications, professionally fast! Built on top of Bootstrap, it includes a large collection of HTML, CSS and JS components that are simple to use and easy to customize.">
         <meta property="og:url" content="http://demo.madebytilde.com/elephant">
         <meta property="og:type" content="website">
-        <meta property="og:title" content="The fastest way to build Modern Admin APPS for any platform, browser, or device.">
-        <meta property="og:description" content="Elephant is an admin template that helps you build modern Admin Applications, professionally fast! Built on top of Bootstrap, it includes a large collection of HTML, CSS and JS components that are simple to use and easy to customize.">
         <meta property="og:image" content="../../elephant.html">
         <meta name="twitter:card" content="summary_large_image">
         <meta name="twitter:site" content="@madebytilde">
         <meta name="twitter:creator" content="@madebytilde">
-        <meta name="twitter:title" content="The fastest way to build Modern Admin APPS for any platform, browser, or device.">
-        <meta name="twitter:description" content="Elephant is an admin template that helps you build modern Admin Applications, professionally fast! Built on top of Bootstrap, it includes a large collection of HTML, CSS and JS components that are simple to use and easy to customize.">
         <meta name="twitter:image" content="../../elephant.html">
         <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-iconaa.png">
         <link rel="icon" type="image/png" href="favicon-32x32.png" sizes="32x32">
@@ -68,7 +63,7 @@
         <div class="layout-header">
             <div class="navbar navbar-default">
                 <div class="navbar-header">
-                   <a class="navbar-brand navbar-brand-center" href="dashboard.php">
+                    <a class="navbar-brand navbar-brand-center" href="dashboard.php">
                         <img class="navbar-brand-logo" src="./../img/logo.png" alt="Elephant">
                     </a>
                     <button class="navbar-toggler visible-xs-block collapsed" type="button" data-toggle="collapse" data-target="#sidenav">
@@ -104,7 +99,7 @@
                                 <span class="bar-line bar-line-6 in"></span>
                             </span>
                         </button>
-                        <?php include './head-nav-right.php';?>
+                        <?php include './head-nav-right.php'; ?>
                         <div class="title-bar">
                             <h1 class="title-bar-title">
                                 <span class="d-ib">Category</span>
@@ -300,12 +295,12 @@
                     </div>
                 </div>
             </div>
-<!--            <div class="layout-footer">
-                <div class="layout-footer-body">
-                    <small class="version">Version 1.4.0</small>
-                    <small class="copyright">2017 &copy; Elephant <a href="http://madebytilde.com/">Made by Tilde</a></small>
-                </div>
-            </div>-->
+            <!--            <div class="layout-footer">
+                            <div class="layout-footer-body">
+                                <small class="version">Version 1.4.0</small>
+                                <small class="copyright">2017 &copy; Elephant <a href="http://madebytilde.com/">Made by Tilde</a></small>
+                            </div>
+                        </div>-->
         </div>
         <div class="theme">
             <div class="theme-panel theme-panel-collapsed">

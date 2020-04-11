@@ -40,6 +40,16 @@
 
                         </ul>
                     </li>
+                    <li class="sidenav-item has-subnav" style="margin-top: 20px">
+                        <a href="#" aria-haspopup="true">
+                            <span class="sidenav-icon icon icon-works">a</span>
+                            <span class="sidenav-label">Lectures</span>
+                        </a>
+                        <ul class="sidenav level-2 collapse"> 
+                            <li><a href="manage-lectures.php">Manage Lectures</a></li>
+
+                        </ul>
+                    </li>
                 </ul>
             </nav>
         </div>

@@ -4,10 +4,10 @@
     <head>
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <title>Log In - SSM Net</title>
+        <title>Log In - Ecollege.lk</title>
         <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no">
         <link rel="icon" type="image/png" href="img/logo.png" sizes="32x32">
-         
+
 
         <link rel="mask-icon" href="safari-pinned-tab.svg" color="#f7a033">
         <meta name="theme-color" content="#ffffff">
@@ -21,7 +21,10 @@
         <div class="login">
             <div class="login-body">
                 <a class="login-brand" href="#">
-                    <img class="img-responsive" src="img/logo.png" alt="self english learning">
+                    <center>
+                         <img class="img-responsive" src="img/logo.png" alt="Ecollege.lk">
+                    </center>
+                   
                 </a>
                 <div class="login-form">
                     <form   id="form">
@@ -43,7 +46,8 @@
                 </div>
                 <div class="login-footer">
                     Don't have an account? <a href="registration.php">Sign Up</a><br>
-                    Change Password? <a href="forget-password.php">Forgot password? </a>
+                    Change Password? <a href="forget-password.php">Forgot password? </a><br>
+                    Are you Lecture? <a href="lecture/login.php">Login? </a>
                 </div>
             </div>
 
