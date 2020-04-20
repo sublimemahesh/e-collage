@@ -1,4 +1,6 @@
 <!DOCTYPE html>
+
+<?php include './class/include.php'; ?>
 <html>
 
     <head>
@@ -17,51 +19,65 @@
     <body id="index2" class="homepage">
 
 
-        <?php include './header.php'; ?>
+        <?php include './header-index.php'; ?>
         <main>
             <div class="container-fluid categories text-center">	
-              
+
                 <div class="row">
                     <div class="features-carousel">
                         <div class="slick-features">
                             <div class="feature">
-                                <img src="assets/images/features2/feature-1.png" alt="Feature">
-                                <h6>Online trainings from experts</h6>
+                                <center>
+                                    <img src="assets/images/features2/feature-1.png" alt="Feature">
+                                </center>
+                                <h6>Online trainings  from experts</h6>
                                 <p>At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est.</p>
                                 <a href="#" class="readmore"><span>READ MORE&nbsp;&nbsp;&nbsp;</span><i class="zmdi zmdi-long-arrow-right"></i></a>
                             </div>
                             <div class="feature">
-                                <img src="assets/images/features2/feature-2.png" alt="Feature">
-                                <h6>Watch it from everywhere</h6>
+                                <center>
+                                    <img src="assets/images/features2/feature-2.png" alt="Feature">
+                                </center>
+                                <h6>Live Classes</h6>
                                 <p>Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat.</p>
                                 <a href="#" class="readmore"><span>READ MORE&nbsp;&nbsp;&nbsp;</span><i class="zmdi zmdi-long-arrow-right"></i></a>
                             </div>
                             <div class="feature">
-                                <img src="assets/images/features2/feature-3.png" alt="Feature">
-                                <h6>Support videos on all devices</h6>
+                                <center>
+                                    <img src="assets/images/features2/feature-3.png" alt="Feature">
+                                </center>
+                                <h6>Main Courses</h6>
                                 <p>Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat vel illum dolore eu feugiat nulla facilisi.</p>
                                 <a href="#" class="readmore"><span>READ MORE&nbsp;&nbsp;&nbsp;</span><i class="zmdi zmdi-long-arrow-right"></i></a>
                             </div>
                             <div class="feature">
-                                <img src="assets/images/features2/feature-4.png" alt="Feature">
-                                <h6>Learn new skills daily</h6>
+                                <center>
+                                    <img src="assets/images/features2/feature-4.png" alt="Feature">
+                                </center>
+                                <h6>University Lectures</h6>
                                 <p>Iconsetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat.</p>
                                 <a href="#" class="readmore"><span>READ MORE&nbsp;&nbsp;&nbsp;</span><i class="zmdi zmdi-long-arrow-right"></i></a>
                             </div>
                             <div class="feature">
-                                <img src="assets/images/features2/feature-5.png" alt="Feature">
+                                <center>
+                                    <img src="assets/images/features2/feature-5.png" alt="Feature">
+                                </center>
                                 <h6>Occasional video updates</h6>
                                 <p>Let clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet.</p>
                                 <a href="#" class="readmore"><span>READ MORE&nbsp;&nbsp;&nbsp;</span><i class="zmdi zmdi-long-arrow-right"></i></a>
                             </div>
                             <div class="feature">
-                                <img src="assets/images/features2/feature-2.png" alt="Feature">
+                                <center>
+                                    <img src="assets/images/features2/feature-2.png" alt="Feature">
+                                </center>
                                 <h6>Watch it from everywhere</h6>
                                 <p>Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat.</p>
                                 <a href="#" class="readmore"><span>READ MORE&nbsp;&nbsp;&nbsp;</span><i class="zmdi zmdi-long-arrow-right"></i></a>
                             </div>
                             <div class="feature">
-                                <img src="assets/images/features2/feature-3.png" alt="Feature">
+                                <center>
+                                    <img src="assets/images/features2/feature-3.png" alt="Feature">
+                                </center>
                                 <h6>Support videos on all devices</h6>
                                 <p>Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat vel illum dolore eu feugiat nulla facilisi.</p>
                                 <a href="#" class="readmore"><span>READ MORE&nbsp;&nbsp;&nbsp;</span><i class="zmdi zmdi-long-arrow-right"></i></a>
@@ -69,23 +85,22 @@
                         </div>
                     </div>
                 </div>
-                
+
             </div>
 
             <div class="container categories text-center">	
                 <div class="row">
                     <div class="col-sm-10 col-sm-offset-1">
                         <h3>Categories</h3>
-                        <p>
-                            At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, 
-                            no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, coniam voluptua.
+                        <p style="margin-bottom: 50px">
+                            Sri Lanka Education has a different categories, If you can select your <br>suitable category.
                         </p>
                     </div>
                 </div>
                 <div class="row">
                     <div class="col-md-3 col-sm-6 category">
-                        <img src="assets/images/categories/1.png" alt="Category">
-                        <h5>Business</h5>
+                        <img src="assets/images/primary.png" alt="Category">
+                        <h5>Primary</h5>
                         <div class="overlay text-center">
                             <p class="pull-right"><span>93</span>TRAINERS</p>
                             <p class="pull-left"><span>418</span>TUTORIALS</p>
@@ -94,8 +109,8 @@
                         </div>
                     </div>
                     <div class="col-md-3 col-sm-6 category">
-                        <img src="assets/images/categories/2.png" alt="Category">
-                        <h5>Video Production &amp; Animation</h5>
+                        <img src="assets/images/g-5.png" alt="Category">
+                        <h5> Grade 5 </h5>
                         <div class="overlay text-center">
                             <p class="pull-right"><span>93</span>TRAINERS</p>
                             <p class="pull-left"><span>418</span>TUTORIALS</p>
@@ -105,7 +120,7 @@
                     </div>
                     <div class="col-md-3 col-sm-6 category">
                         <img src="assets/images/categories/3.png" alt="Category">
-                        <h5>Web Design &amp; Illustration</h5>
+                        <h5>Ordinary Level (O/L)</h5>
                         <div class="overlay text-center">
                             <p class="pull-right"><span>93</span>TRAINERS</p>
                             <p class="pull-left"><span>418</span>TUTORIALS</p>
@@ -115,7 +130,7 @@
                     </div>
                     <div class="col-md-3 col-sm-6 category">
                         <img src="assets/images/categories/4.png" alt="Category">
-                        <h5>Photography</h5>
+                        <h5>Advance Level (A/L)</h5>
                         <div class="overlay text-center">
                             <p class="pull-right"><span>93</span>TRAINERS</p>
                             <p class="pull-left"><span>418</span>TUTORIALS</p>
@@ -127,7 +142,7 @@
                 <div class="row">
                     <div class="col-md-3 col-sm-6 category">
                         <img src="assets/images/categories/5.png" alt="Category">
-                        <h5>Marketing &amp; CEO</h5>
+                        <h5>Government University</h5>
                         <div class="overlay text-center">
                             <p class="pull-right"><span>93</span>TRAINERS</p>
                             <p class="pull-left"><span>418</span>TUTORIALS</p>
@@ -137,7 +152,7 @@
                     </div>
                     <div class="col-md-3 col-sm-6 category">
                         <img src="assets/images/categories/6.png" alt="Category">
-                        <h5>Development</h5>
+                        <h5>Univotec </h5>
                         <div class="overlay text-center">
                             <p class="pull-right"><span>93</span>TRAINERS</p>
                             <p class="pull-left"><span>418</span>TUTORIALS</p>
@@ -147,7 +162,7 @@
                     </div>
                     <div class="col-md-3 col-sm-6 category">
                         <img src="assets/images/categories/7.png" alt="Category">
-                        <h5>Science &amp; Technology</h5>
+                        <h5>Vocational Training Institute</h5>
                         <div class="overlay text-center">
                             <p class="pull-right"><span>93</span>TRAINERS</p>
                             <p class="pull-left"><span>418</span>TUTORIALS</p>
@@ -157,7 +172,7 @@
                     </div>
                     <div class="col-md-3 col-sm-6 category">
                         <img src="assets/images/categories/8.png" alt="Category">
-                        <h5>Languages &amp; Presentation</h5>
+                        <h5>Others</h5>
                         <div class="overlay text-center">
                             <p class="pull-right"><span>93</span>TRAINERS</p>
                             <p class="pull-left"><span>418</span>TUTORIALS</p>
@@ -174,89 +189,93 @@
                     <div class="col-sm-10 col-sm-offset-1 text-center">
                         <h3>Top Lectures</h3>
                         <p>
-                            At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, 
-                            no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, coniam voluptua.
+                            They are different kind of lectures they are professional lectures,<br> They high educations levels
                         </p>
                         <a href="#" class="blueplay">CHECK ALL TEACHERS</a>
                     </div>
                 </div>
                 <div class="row text-center">
+
                     <div class="col-md-2 col-sm-4 col-xs-6">	
                         <div class="teacher">
                             <div class="imgcontainer">
-                                <img src="assets/images/avatars/1.png" alt="Avatar">
+                                <img src="assets/images/client-1.jpg" alt="Avatar" class="img-responsive img-circle" style="width: 100%">
                                 <div class="overlay">
                                     <img src="assets/images/avatars/profile.png" alt="Profile">
                                     <p>8 VIDEOS</p>
                                 </div>
                             </div>
-                            <a href="#">Kevin Mcfield</a>
+                            <a href="#">Dileshka  Senaratne</a>
                             <p>SCIENTIST</p>
                         </div>
                     </div>
                     <div class="col-md-2 col-sm-4 col-xs-6">	
                         <div class="teacher">
                             <div class="imgcontainer">
-                                <img src="assets/images/avatars/2.png" alt="Avatar">
+                                <img src="assets/images/client-2.jpg" alt="Avatar" class="img-responsive img-circle" style="width: 100%">
                                 <div class="overlay">
                                     <img src="assets/images/avatars/profile.png" alt="Profile">
                                     <p>8 VIDEOS</p>
                                 </div>
                             </div>
-                            <a href="#">Jonathan Creon</a>
-                            <p>DESIGNER</p>
+                            <a href="#">Harsha  Weerarathne</a>
+                            <p>Finance </p>
                         </div>
                     </div>
                     <div class="col-md-2 col-sm-4 col-xs-6">	
                         <div class="teacher">
                             <div class="imgcontainer">
-                                <img src="assets/images/avatars/3.png" alt="Avatar">
+                                <img src="assets/images/client-3.png" alt="Avatar" class="img-responsive img-circle" style="width: 100%">
+
                                 <div class="overlay">
                                     <img src="assets/images/avatars/profile.png" alt="Profile">
                                     <p>8 VIDEOS</p>
                                 </div>
                             </div>
-                            <a href="#">Peter Griffin</a>
-                            <p>LANGUAGE TEACHER</p>
+                            <a href="#">Chamila  Gajasinghe</a>
+                            <p>English</p>
                         </div>
                     </div>
                     <div class="col-md-2 col-sm-4 col-xs-6">	
                         <div class="teacher">
                             <div class="imgcontainer">
-                                <img src="assets/images/avatars/4.png" alt="Avatar">
+                                <img src="assets/images/client-4.png" alt="Avatar" class="img-responsive img-circle" style="width: 100%">
+
                                 <div class="overlay">
                                     <img src="assets/images/avatars/profile.png" alt="Profile">
                                     <p>8 VIDEOS</p>
                                 </div>
                             </div>
-                            <a href="#">Vanessa Dilmor</a>
-                            <p>MARKETING MANAGER</p>
+                            <a href="#"> Eng. Geethike  Ranga</a>
+                            <p>java</p>
                         </div>
                     </div>
                     <div class="col-md-2 col-sm-4 col-xs-6">	
                         <div class="teacher">
                             <div class="imgcontainer">
-                                <img src="assets/images/avatars/5.png" alt="Avatar">
+                                <img src="assets/images/client-5.jpg" alt="Avatar" class="img-responsive img-circle" style="width: 100%">
+
                                 <div class="overlay">
                                     <img src="assets/images/avatars/profile.png" alt="Profile">
                                     <p>8 VIDEOS</p>
                                 </div>
                             </div>
-                            <a href="#">Lydia Bennolt</a>
-                            <p>DEVELOPER</p>
+                            <a href="#">  Sugath  Nandasiri</a>
+                            <p>Spoken English</p>
                         </div>
                     </div>
                     <div class="col-md-2 col-sm-4 col-xs-6">	
                         <div class="teacher">
                             <div class="imgcontainer">
-                                <img src="assets/images/avatars/6.png" alt="Avatar">
+                                <img src="assets/images/client-6.jpg" alt="Avatar" class="img-responsive img-circle" style="width: 100%">
+
                                 <div class="overlay">
                                     <img src="assets/images/avatars/profile.png" alt="Profile">
                                     <p>8 VIDEOS</p>
                                 </div>
                             </div>
-                            <a href="#">Marcus Winter</a>
-                            <p>DIGITAL ARTIST</p>
+                            <a href="#">Anuththara  Bandara </a>
+                            <p>Cambridge & Local trained </p>
                         </div>
                     </div>
                 </div>
@@ -271,39 +290,34 @@
                         <div class="col-md-4">
                             <div class="platform-feature">
                                 <img src="assets/images/platform/1.png" alt="Feature">
-                                <a href="#">Inspirational Ideas</a>
+                                <a href="#">Sign Up for free</a>
                                 <p>
-                                    Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit 
-                                    lobortis nisl ut aliquip ex ea commodo consequat. 
+                                    Within less than two minutes you can create your profile.
                                 </p>
                             </div>
                         </div>
                         <div class="col-md-4">
                             <div class="platform-feature">
                                 <img src="assets/images/platform/2.png" alt="Feature">
-                                <a href="#">Handcrafted &amp; Selfmade</a>
+                                <a href="#">Select a tutor</a>
                                 <p>
-                                    Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit 
-                                    lobortis nisl ut aliquip ex ea commodo consequat. 
+                                    From the best academic performers in you city or location area quickly.
                                 </p>
                             </div>
                         </div>
                         <div class="col-md-4">
                             <div class="platform-feature">
                                 <img src="assets/images/platform/3.png" alt="Feature">
-                                <a href="#">Perfection on time</a>
+                                <a href="#"> Schedule a class</a>
                                 <p>
-                                    Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit 
-                                    lobortis nisl ut aliquip ex ea commodo consequat. 
+                                    If you can schedule your class time with suitable it with your Lecture.
                                 </p>
                             </div>
                         </div>
                     </div>
-                     
+
                 </div>
             </div>
-
-
 
             <div class="container testimonials">
                 <div class="row">	
@@ -352,7 +366,7 @@
 
         </main>
 
-        <?php include './footer.php'; ?>
+        <?php include './footer.php'; ?>    
 
         <script src="assets/libs/jquery/jquery.js"></script>
         <script src="assets/libs/bootstrap/js/bootstrap.min.js"></script>
