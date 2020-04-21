@@ -99,7 +99,7 @@ include './auth.php';
                                         <thead>
                                             <tr>
                                                 <th>ID</th>
-                                                <th>Title</th> 
+                                                <th>Name</th> 
                                                 <th>Orders</th> 
                                                 <th>Option</th>
                                             </tr>
@@ -124,7 +124,7 @@ include './auth.php';
                                         <tfoot>
                                             <tr>
                                                 <th>ID</th>
-                                                <th>Title</th>
+                                                <th>Name</th>
                                                 <th>Orders</th>  
                                                 <th>Option</th>
                                             </tr>
