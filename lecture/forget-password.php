@@ -25,7 +25,7 @@ include '../class/include.php';
             <div class="login-body">
                 <a class="login-brand" href="login.php">
                     <center>
-                            <img class="img-responsive" src="../img/logo.png" alt="Ecollege.lk">
+                            <img class="img-responsive" src="img/logo.png" alt="Ecollege.lk">
                     </center>
                 
                 </a>

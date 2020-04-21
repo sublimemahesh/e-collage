@@ -36,122 +36,311 @@ $PAGES = new Page(1);
 
             <?php include './navigation.php'; ?>
 
-            <div class="layout-content">
-                <div class="layout-content-body" style="margin-top: 2%; padding: 0px">
-                    <div class="row "> 
+            <div class="layout-content" style="padding: 10px;">
 
-                        <div class="col-xs-12 col-md-4">  
 
-                            <div class="card p-l-card"  >
-                                <div class="card-header">
-
-                                    <strong>Company Description</strong>
-                                </div>
-                                <div class="card-body">
-                                    <center>
-                                        <div class="col-md-12 m-y">
-                                            <p class="text-justify" style="line-height: 1.8;">
-                                                2020 ජනවාරි මස සිට Covid-19 රෝගය, ලංකාව පුරා ව්‍යාප්ත වීමත් සමග ලංකාවේ සියළු ආකාරයේ රජයේ හා පෞද්ලික අධ්‍යපන පද්ධතිය එක් වරම නවතා දමනු ලැබීය. එම නිසා අසරණ වූ ශිෂ්‍යා නැවත ප්‍රකෘතිමත් කිරීම පිණිස ගුරුවරයා සහ ශිෂ්‍යා නැවත මුණ ගැස්වීමට අප තීරණය කළෙමු.
-                                            </p>
-                                            <p class="text-justify" style="line-height: 1.8;">
-                                                ඒ අනුව අන්තර්ජාලය හා ඩිජිටල් තාක්ෂණය පිළිබද හසල අත්දැකීම් සහිත තාක්ෂණික කණ්ඩායමක සේවාව හා ගුරු ශිෂ්‍ය ප්‍රජාව එකම වෙබ් පිටුවකට ගෙන එනු ලැබූ ලංකාවේ එකම ඩිජිටල් මධ්‍යස්ථානය අප ගොඩනගා ඇත.                                            </p>
-                                            <p class="text-justify" style="line-height: 1.8;">
-                                                ඩිජිටල් තාක්ෂණය හා අන්තර්ජාලය භාවිත කරමින් ශ්‍රී ලංකාවේ අධ්‍යපනය වඩාත් ප්‍රතිඵලදායක ලෙස සිසුන් වෙත ලගා කරවීම සදහාත් ගුරුවරයා සහ ශිෂ්‍යා කාර්යක්ෂමව බැද තැබීම සදහාත් ඩිජිටල් පාලමක් වීම පිණිස ඩිජිටල් තාක්ෂණය ප්‍රචලිත කරවීම උදෙසා කැප වී සිටිමු.                                            </p>
-                                             
-                                        </div>  
-                                    </center>
-
-                                </div>
-                            </div> 
-                        </div>
-
-                        <div class="col-xs-12 col-md-8"> 
-                            <iframe id="existing-iframe-example "   class="video-res" height="510" src="<?php echo $PAGES->title ?>" allow="autoplay" allowfullscreen></iframe>
-<!--                            <iframe id="existing-iframe-example" width="92%" height="510"  src="https://www.youtube.com/embed/40wafTmaMro?enablejsapi=1autoplay=1"    frameborder="0" ></iframe>-->
-
-                        </div>
-                    </div>
-                </div> 
-
-                <div class="row" >
-                    <div class="col-xs-6 col-md-5"></div>
-                    <div class="col-xs-12 col-md-4" style="margin-top: 2% ;margin-bottom: 28px;">
-                        <div class="">
-                            <div class="card-body">
-                                <center> 
-                                    <div class="form-group "  style="margin-top: 2%;" id="btn-disply" > 
-                                        <a href="lesson.php">  
-                                            <button class=" btn btn-outline-primary btn-block btn-next "   type="button" id="create" style="width: 80%;font-size: 16px" >Start Your Lessons</button>
-                                        </a>
+                <div class="row  ">  
+                    <div class="layout-content-body">
+                        <div class="row gutter-xs">
+                            <div class="col-md-6 col-lg-3 col-lg-push-0">
+                                <div class="card bg-primary">
+                                    <div class="card-body">
+                                        <div class="media">
+                                            <div class="media-middle media-left">
+                                                <span class="bg-primary-inverse circle sq-48">
+                                                    <span class="icon icon-works">&#80;</span>
+                                                </span>
+                                            </div>
+                                            <div class="media-middle media-body">
+                                                <h6 class="media-heading">Students</h6>
+                                                <h3 class="media-heading">
+                                                    <span class="fw-l">10</span>
+                                                </h3>
+                                            </div>
+                                        </div>
                                     </div>
-                                </center>
-
+                                </div>
+                            </div>
+                            <div class="col-md-6 col-lg-3 col-lg-push-3">
+                                <div class="card bg-danger">
+                                    <div class="card-body">
+                                        <div class="media">
+                                            <div class="media-middle media-left">
+                                                <span class="bg-danger-inverse circle sq-48">
+                                                    <span class="icon icon-works">&#90;</span>
+                                                </span>
+                                            </div>
+                                            <div class="media-middle media-body">
+                                                <h6 class="media-heading">Class</h6>
+                                                <h3 class="media-heading">
+                                                    <span class="fw-l">14</span>
+                                                </h3>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6 col-lg-3 col-lg-pull-3">
+                                <div class="card bg-primary">
+                                    <div class="card-body">
+                                        <div class="media">
+                                            <div class="media-middle media-left">
+                                                <span class="bg-primary-inverse circle sq-48">
+                                                    <span class="icon icon-works">&#105;</span>
+                                                </span>
+                                            </div>
+                                            <div class="media-middle media-body">
+                                                <h6 class="media-heading">Schedule Class</h6>
+                                                <h3 class="media-heading">
+                                                    <span class="fw-l">13</span>
+                                                </h3>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6 col-lg-3 col-lg-pull-0">
+                                <div class="card bg-danger">
+                                    <div class="card-body">
+                                        <div class="media">
+                                            <div class="media-middle media-left">
+                                                <span class="bg-danger-inverse circle sq-48">
+                                                    <span class="icon icon-works">&#36;</span>
+                                                </span>
+                                            </div>
+                                            <div class="media-middle media-body">
+                                                <h6 class="media-heading">Manage Profile</h6>
+                                                <h3 class="media-heading">
+                                                    <span class="fw-l">15</span>
+                                                </h3>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
-                    <div class="col-xs-6 col-md-3"></div>
-
                 </div>
+                <div class="row  ">   
+                    <div class="col-md-4 col-md-push-4">
+                        <div class="card">
+                            <div class="card-header"> 
+                                <strong>Manage Students</strong>
+                                <span aria-hidden="true"> · </span>
+                                <a href="#">View All</a>
+                            </div>
+                            <div class="card-body">
+                                <ul class="media-list">
+                                    <li class="media">
+                                        <div class="media-middle media-left">
+                                            <a href="#">
+                                                <img class="img-circle" width="48" height="48" src="img/member.jpg" alt="Raja Elephant T-shirt">
+                                            </a>
+                                        </div>
+                                        <div class="media-middle media-body">
+                                            <h5 class="media-heading">
+                                                <a href="#">Harry Jones</a>
+                                                <small>5 min ago</small>
+                                            </h5>
+                                            <small>Published </small>
+                                        </div>
 
-                <?php
-                if (empty($STUDENT->nic_back)) {
-                    ?>
-                    <div class="layout-footer ">  
-                        <div class="pull-right" data-toggle="match-height">
-                            <h4 style="margin-right: 15px; "> 
-                                <a class="label label-success" href="verify-id-card.php" >
-                                    <span>Please Verify Your ID Card from here.! </span>
-                                </a>
-                            </h4> 
+                                    </li>
+                                    <li class="media">
+                                        <div class="media-middle media-left">
+                                            <a href="#">
+                                                <img class="img-circle" width="48" height="48" src="img/member.jpg" alt="Raja Elephant T-shirt">
+                                            </a>
+                                        </div>
+                                        <div class="media-middle media-body">
+                                            <h5 class="media-heading">
+                                                <a href="#">Harry Jones</a>
+                                                <small>5 min ago</small>
+                                            </h5>
+                                            <small>Published </small>
+                                        </div>
+
+                                    </li>
+                                    <li class="media">
+                                        <div class="media-middle media-left">
+                                            <a href="#">
+                                                <img class="img-circle" width="48" height="48" src="img/member.jpg" alt="Raja Elephant T-shirt">
+                                            </a>
+                                        </div>
+                                        <div class="media-middle media-body">
+                                            <h5 class="media-heading">
+                                                <a href="#">Harry Jones</a>
+                                                <small>5 min ago</small>
+                                            </h5>
+                                            <small>Published </small>
+                                        </div>
+
+                                    </li>
+
+                                </ul>
+                            </div>
                         </div>
                     </div>
+                    <div class="col-md-4 col-md-push-4">
+                        <div class="card">
+                            <div class="card-header"> 
+                                <strong>Schedule Class</strong>
+                                <span aria-hidden="true"> · </span>
+                                <a href="#">View full report</a>
+                            </div>
+                            <div class="card-body">
+                                <ul class="media-list">
+                                    <li class="media">
+                                        <div class="media-middle media-left">
+                                            <a href="#">
+                                                <img class="img-circle" width="48" height="48" src="img/member.jpg" alt="Raja Elephant T-shirt">
 
-                    <?php
+                                            </a>
+                                        </div>
+                                        <div class="media-middle media-body">
+                                            <h5 class="media-heading">
+                                                <a href="#">Harry Jones</a>
+                                                <small>5 min ago</small>
+                                            </h5>
+                                            <small>Published </small>
+                                        </div>
+                                    </li>
+                                    <li class="media">
+                                        <div class="media-middle media-left">
+                                            <a href="#">
+                                                <img class="img-circle" width="48" height="48" src="img/member.jpg" alt="Raja Elephant T-shirt">
+                                            </a>
+                                        </div>
+                                        <div class="media-middle media-body">
+                                            <h5 class="media-heading">
+                                                <a href="#">Harry Jones</a>
+                                                <small>5 min ago</small>
+                                            </h5>
+                                            <small>Published </small>
+                                        </div>
+                                    </li>
+                                    <li class="media">
+                                        <div class="media-middle media-left">
+                                            <a href="#">
+                                                <img class="img-circle" width="48" height="48" src="img/member.jpg" alt="Raja Elephant T-shirt">
+                                            </a>
+                                        </div>
+                                        <div class="media-middle media-body">
+                                            <h5 class="media-heading">
+                                                <a href="#">Harry Jones</a>
+                                                <small>5 min ago</small>
+                                            </h5>
+                                            <small>Published </small>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4 col-md-pull-8">
+                        <div class="card">
+                            <div class="card-header">
+
+                                <strong>New Class</strong>
+                                <span aria-hidden="true"> · </span>
+                                <a href="#">View full    </a>
+                            </div>
+                            <div class="card-body">
+                                <ul class="media-list">
+                                    <li class="media">
+                                        <div class="media-middle media-left">
+                                            <a href="#">
+                                                <img class="img-circle" width="48" height="48" src="img/member.jpg" alt="Raja Elephant T-shirt">
+                                            </a>
+                                        </div>
+                                        <div class="media-middle media-body">
+                                            <h5 class="media-heading">
+                                                <a href="#">Harry Jones</a>
+                                                <small>5 min ago</small>
+                                            </h5>
+                                            <small>Published a product: "Jade Elephant T-shirt".</small>
+                                        </div>
+                                    </li>
+                                    <li class="media">
+                                        <div class="media-middle media-left">
+                                            <a href="#">
+                                                <img class="img-circle" width="48" height="48" src="img/member.jpg" alt="Raja Elephant T-shirt">
+                                            </a>
+                                        </div>
+                                        <div class="media-middle media-body">
+                                            <h5 class="media-heading">
+                                                <a href="#">Teddy Wilson</a>
+                                                <small>(10 min ago)</small>
+                                            </h5>
+                                            <small>Created a new collection: "Summer with Style".</small>
+                                        </div>
+                                    </li>
+                                    <li class="media">
+                                        <div class="media-middle media-left">
+                                            <a href="#">
+                                                <img class="img-circle" width="48" height="48" src="img/member.jpg" alt="Raja Elephant T-shirt">
+                                            </a>
+                                        </div>
+                                        <div class="media-middle media-body">
+                                            <h5 class="media-heading">
+                                                <a href="#">Daniel Taylor</a>
+                                                <small>(12 min ago)</small>
+                                            </h5>
+                                            <small>Created a new page: "Free tools".</small>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div> 
+
+
+        </div>
+    </div>
+
+    <input type="hidden" value="<?php echo $_SESSION['id'] ?>" id="student_id">
+
+
+    <script src="js/jquery.min.js" type="text/javascript"></script>
+    <script src="js/vendor.min.js"></script>
+    <script src="js/elephant.min.js"></script>
+    <script src="js/application.min.js"></script>
+    <script src="js/sweetalert.min.js" type="text/javascript"></script>
+
+
+
+    <script type="text/javascript">
+        var tag = document.createElement('script');
+        tag.id = 'iframe-demo';
+        tag.src = 'https://www.youtube.com/iframe_api';
+        var firstScriptTag = document.getElementsByTagName('script')[0];
+        firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+
+        var player;
+        function onYouTubeIframeAPIReady() {
+            player = new YT.Player('existing-iframe-example', {
+                events: {
+                    'onReady': onPlayerReady,
+                    'onStateChange': onPlayerStateChange
                 }
-                ?>
+            });
+        }
+        function onPlayerReady(event) {
+            document.getElementById('existing-iframe-example').style.borderColor = '#FF6D00';
+        }
 
-            </div>
+        //                function onPlayerStateChange(event) {
+        //                    if (event.data === 0) {
+        //                        $('#btn-disply-none').hide();
+        //                        $('#btn-disply').show();
+        //
+        //                    }
+        //                }
 
-            <input type="hidden" value="<?php echo $_SESSION['id'] ?>" id="student_id">
+    </script>
 
-
-            <script src="js/jquery.min.js" type="text/javascript"></script>
-            <script src="js/vendor.min.js"></script>
-            <script src="js/elephant.min.js"></script>
-            <script src="js/application.min.js"></script>
-            <script src="js/sweetalert.min.js" type="text/javascript"></script>
-            <script src="ajax/js/check-login.js" type="text/javascript"></script>
-
-
-            <script type="text/javascript">
-                var tag = document.createElement('script');
-                tag.id = 'iframe-demo';
-                tag.src = 'https://www.youtube.com/iframe_api';
-                var firstScriptTag = document.getElementsByTagName('script')[0];
-                firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
-
-                var player;
-                function onYouTubeIframeAPIReady() {
-                    player = new YT.Player('existing-iframe-example', {
-                        events: {
-                            'onReady': onPlayerReady,
-                            'onStateChange': onPlayerStateChange
-                        }
-                    });
-                }
-                function onPlayerReady(event) {
-                    document.getElementById('existing-iframe-example').style.borderColor = '#FF6D00';
-                }
-
-//                function onPlayerStateChange(event) {
-//                    if (event.data === 0) {
-//                        $('#btn-disply-none').hide();
-//                        $('#btn-disply').show();
-//
-//                    }
-//                }
-
-            </script>
-
-    </body>
+</body>
 </html>

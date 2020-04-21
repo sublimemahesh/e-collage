@@ -25,7 +25,7 @@ include '../class/include.php';
             <div class="login-body">
                 <a class="login-brand" href="#">
                     <center>
-                              <img class="img-responsive" src="../img/logo.png" alt="Elephant">
+                        <img class="img-responsive" src="img/logo.png" alt="Elephant">
                     </center>
               
                 </a>

@@ -22,7 +22,7 @@ include '../class/include.php';
             <div class="signup-body">
                 <a class="signup-brand" href="#">
                     <center>
-                        <img class="img-responsive" src="../img/logo.png" alt="Ecollege.lk">
+                        <img class="img-responsive" src="img/logo.png" alt="Ecollege.lk">
                     </center>
                 </a>
                 <p class="signup-heading">

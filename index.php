@@ -98,39 +98,28 @@
                     </div>
                 </div>
                 <div class="row">
+                    <?php
+                    $CATEGORY = new Category(null);
+                    foreach ($CATEGORY->all() as $key => $category) {
+                        if ($key < 11) {
+                            ?>
+                            <div class="col-md-3 col-sm-6 category">
+                                <img src="upload/category/<?php echo $category['image_name'] ?>" alt="Category">
+                                <h5><?php echo $category['name'] ?></h5>
+                                <div class="overlay text-center">
+                                    <p class="pull-right"><span>93</span>TRAINERS</p>
+                                    <p class="pull-left"><span>418</span>TUTORIALS</p>
+                                    <h5><?php echo $category['name'] ?></h5>
+                                    <a href="#">Click Here</a>
+                                </div>
+                            </div>
+                            <?php
+                        }
+                    }
+                    ?>
                     <div class="col-md-3 col-sm-6 category">
-                        <img src="assets/images/primary.png" alt="Category">
-                        <h5>Primary</h5>
-                        <div class="overlay text-center">
-                            <p class="pull-right"><span>93</span>TRAINERS</p>
-                            <p class="pull-left"><span>418</span>TUTORIALS</p>
-                            <h5>Business</h5>
-                            <a href="#">CHECK VIDEOS</a>
-                        </div>
-                    </div>
-                    <div class="col-md-3 col-sm-6 category">
-                        <img src="assets/images/g-5.png" alt="Category">
-                        <h5> Grade 5 </h5>
-                        <div class="overlay text-center">
-                            <p class="pull-right"><span>93</span>TRAINERS</p>
-                            <p class="pull-left"><span>418</span>TUTORIALS</p>
-                            <h5>Video Production &amp; Animation</h5>
-                            <a href="#">CHECK VIDEOS</a>
-                        </div>
-                    </div>
-                    <div class="col-md-3 col-sm-6 category">
-                        <img src="assets/images/categories/3.png" alt="Category">
-                        <h5>Ordinary Level (O/L)</h5>
-                        <div class="overlay text-center">
-                            <p class="pull-right"><span>93</span>TRAINERS</p>
-                            <p class="pull-left"><span>418</span>TUTORIALS</p>
-                            <h5>Webdesign &amp; Illustration</h5>
-                            <a href="#">CHECK VIDEOS</a>
-                        </div>
-                    </div>
-                    <div class="col-md-3 col-sm-6 category">
-                        <img src="assets/images/categories/4.png" alt="Category">
-                        <h5>Advance Level (A/L)</h5>
+                        <img src="upload/category/1.JPG.jpg" alt="Category">
+                        <h5>More</h5>
                         <div class="overlay text-center">
                             <p class="pull-right"><span>93</span>TRAINERS</p>
                             <p class="pull-left"><span>418</span>TUTORIALS</p>
@@ -139,48 +128,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="row">
-                    <div class="col-md-3 col-sm-6 category">
-                        <img src="assets/images/categories/5.png" alt="Category">
-                        <h5>Government University</h5>
-                        <div class="overlay text-center">
-                            <p class="pull-right"><span>93</span>TRAINERS</p>
-                            <p class="pull-left"><span>418</span>TUTORIALS</p>
-                            <h5>Marketing &amp; CEO</h5>
-                            <a href="#">CHECK VIDEOS</a>
-                        </div>
-                    </div>
-                    <div class="col-md-3 col-sm-6 category">
-                        <img src="assets/images/categories/6.png" alt="Category">
-                        <h5>Univotec </h5>
-                        <div class="overlay text-center">
-                            <p class="pull-right"><span>93</span>TRAINERS</p>
-                            <p class="pull-left"><span>418</span>TUTORIALS</p>
-                            <h5>Development</h5>
-                            <a href="#">CHECK VIDEOS</a>
-                        </div>
-                    </div>
-                    <div class="col-md-3 col-sm-6 category">
-                        <img src="assets/images/categories/7.png" alt="Category">
-                        <h5>Vocational Training Institute</h5>
-                        <div class="overlay text-center">
-                            <p class="pull-right"><span>93</span>TRAINERS</p>
-                            <p class="pull-left"><span>418</span>TUTORIALS</p>
-                            <h5>Science &amp; Technology</h5>
-                            <a href="#">CHECK VIDEOS</a>
-                        </div>
-                    </div>
-                    <div class="col-md-3 col-sm-6 category">
-                        <img src="assets/images/categories/8.png" alt="Category">
-                        <h5>Others</h5>
-                        <div class="overlay text-center">
-                            <p class="pull-right"><span>93</span>TRAINERS</p>
-                            <p class="pull-left"><span>418</span>TUTORIALS</p>
-                            <h5>Languages &amp; Presentation</h5>
-                            <a href="#">CHECK VIDEOS</a>
-                        </div>
-                    </div>
-                </div>
+
             </div>
 
 
@@ -239,7 +187,7 @@
                     <div class="col-md-2 col-sm-4 col-xs-6">	
                         <div class="teacher">
                             <div class="imgcontainer">
-                                <img src="assets/images/client-4.png" alt="Avatar" class="img-responsive img-circle" style="width: 100%">
+                                <img src="assets/images/client-4.PNG" alt="Avatar" class="img-responsive img-circle" style="width: 100%">
 
                                 <div class="overlay">
                                     <img src="assets/images/avatars/profile.png" alt="Profile">
@@ -289,7 +237,7 @@
                         </div>
                         <div class="col-md-4">
                             <div class="platform-feature">
-                                <img src="assets/images/platform/1.png" alt="Feature">
+                                <img src="assets/images/1.png" alt="ecollage.lk" style="width: 20%">
                                 <a href="#">Sign Up for free</a>
                                 <p>
                                     Within less than two minutes you can create your profile.
@@ -298,7 +246,7 @@
                         </div>
                         <div class="col-md-4">
                             <div class="platform-feature">
-                                <img src="assets/images/platform/2.png" alt="Feature">
+                                <img src="assets/images/2.png" alt="ecollage.lk" style="width: 20%">
                                 <a href="#">Select a tutor</a>
                                 <p>
                                     From the best academic performers in you city or location area quickly.
@@ -307,7 +255,7 @@
                         </div>
                         <div class="col-md-4">
                             <div class="platform-feature">
-                                <img src="assets/images/platform/3.png" alt="Feature">
+                                <img src="assets/images/3.png" alt="ecollage.lk" style="width: 20%">
                                 <a href="#"> Schedule a class</a>
                                 <p>
                                     If you can schedule your class time with suitable it with your Lecture.
@@ -319,33 +267,30 @@
                 </div>
             </div>
 
-            <div class="container testimonials">
-                <div class="row">	
+            <div class="container testimonials" >
+                <div class="row" >	
                     <div class="col-sm-10 col-sm-offset-1 text-center">
                         <h3>Feedbacks</h3>
                         <p>
-                            Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie 
-                            consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan.
+                            What customer say our working ?.
                         </p>
                     </div>
                 </div>
-                <div class="row text-center">
+                <div class="row text-center" style="margin-bottom: 30px;">
                     <div class="col-sm-12">	
                         <div class="slick-testimonials">
                             <div class="testimonial">
-                                <img src="assets/images/avatar.png" alt="Avatar">
-                                <p class="name">Martin Jonson<em>Design &amp; Dev, Inc.</em></p>
+                                <img src="assets/member.jpg" alt="ecollage.lk"  class="img-circle">
+                                <p class="name">Sanka s  Pranandu<em>20 Jan 2020.</em></p>
                                 <em>
-                                    “ I think it's fair to say that personal computers have become the most empowering tool we've ever created. 
-                                    They're tools of communication, they're tools of creativity, and they can be shaped by their user. ”
+                                    “  This is the best online teaching center in Sri Lanka.Ecollage.lk has a many teachers and they are very help for us. if you can select a any kind of subject for your choices. Come and join .”
                                 </em>
                             </div>
                             <div class="testimonial">
-                                <img src="assets/images/avatar.png" alt="Avatar">
-                                <p class="name">Martin Jonson<em>Design &amp; Dev, Inc.</em></p>
+                                <img src="assets/member.jpg" alt="ecollage.lk" class="img-circle">
+                                <p class="name">Kamal j Jonson<em>01 FEB 2020.</em></p>
                                 <em>
-                                    “ I think it's fair to say that personal computers have become the most empowering tool we've ever created. 
-                                    They're tools of communication, they're tools of creativity, and they can be shaped by their user. ”
+                                    “ Ecollage is a very helpful web site for online learning when any kind of student quickly visit the web site and easy selected any tutors , The tutors are all good Knowledge and god experience   ”
                                 </em>
                             </div>
                         </div>
