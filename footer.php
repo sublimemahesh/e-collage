@@ -5,18 +5,10 @@
             <div class="col-md-4 col-sm-6 col-xs-12">
                 <h1 class="logo"><a href="index.html"><img src="assets/images/logo.png" alt="Logo"></a></h1>
                 <ul class="contactinfo">
-                    <li class="address"><strong>Address:</strong> 127 Sith Avenue, 54571 New York City </li>
-                    <li class="phone"><strong>Phone:</strong>  +49 123 456 789</li>
-                    <li class="email"><strong>E-mail:</strong>  info@bromine-theme.com</li>
-                </ul>
-                <ul class="social">
-                    <li><a href="#"><i class="zmdi zmdi-facebook"></i></a></li><li>
-                        <a href="#"><i class="zmdi zmdi-twitter"></i></a></li><li>
-                        <a href="#"><i class="zmdi zmdi-google-old"></i></a></li><li>
-                        <a href="#"><i class="zmdi zmdi-pinterest"></i></a></li><li>
-                        <a href="#"><i class="zmdi zmdi-instagram"></i></a></li><li>
-                        <a href="#"><i class="zmdi zmdi-rss"></i></a></li>
-                </ul>
+                    <li class="address"><strong>Address:</strong> No 55, Isipathanarama Rd, Navinna, Maharagama </li>
+                    <li class="phone"><strong>Phone:</strong>  +94 11 3663 500</li>
+                    <li class="email"><strong>E-mail:</strong>    mail@synotec.lk</li>
+                </ul> 
             </div>
             <div class="col-md-2 col-sm-6 col-xs-12">
                 <h6>GET HELP</h6>
@@ -57,15 +49,15 @@
         </div>
         <div class="row botbar">
             <div class="col-sm-7">
-                <p class="copyright">Copyright 2017 &copy; Bromine - Video Learning Platform  | All Rights Reserved</p>
+                <p class="copyright">Copyright <?php echo date('dd') ?> &copy; ECOLLAGE.LK -  Synotect Holdings   | All Rights Reserved</p>
             </div>
             <div class="col-sm-5">
-                <ul class="pull-right payments">
-                    <li><a href="#"><img src="assets/images/payments/1.png" alt="Payment"></a></li>
-                    <li><a href="#"><img src="assets/images/payments/2.png" alt="Payment"></a></li>
-                    <li><a href="#"><img src="assets/images/payments/3.png" alt="Payment"></a></li>
-                    <li><a href="#"><img src="assets/images/payments/4.png" alt="Payment"></a></li>
-                    <li><a href="#"><img src="assets/images/payments/5.png" alt="Payment"></a></li>
+                <ul class="pull-right payments social">
+                    <li><a href="#"><i class="zmdi zmdi-facebook"></i></a></li> 
+                    <li><a href="#"><i class="zmdi zmdi-twitter"></i></a></li> 
+                    <li><a href="#"><i class="zmdi zmdi-google-old"></i></a> 
+                    <li><a href="#"><i class="zmdi zmdi-pinterest"></i></a> 
+
                 </ul>
             </div>
         </div>
