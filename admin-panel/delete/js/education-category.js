@@ -16,7 +16,7 @@ $('.dataTable').on('click', '.delete-category', function () {
         }, function () {
 
             $.ajax({
-                url: "delete/ajax/category.php",
+                url: "delete/ajax/education-category.php",
                 type: "POST",
                 data: {id: id, option: 'delete'},
                 dataType: "JSON",
