@@ -1,15 +1,15 @@
 <?php
 
 include '../../../class/include.php';
- if (isset($_POST['create'])) {
+if (isset($_POST['create'])) {
 
-    $SUBJECT = new Subject(NULL);
+    $EDUCATION_SUBJECT = new EducationSubject(NULL);
 
 
-    $SUBJECT->name = $_POST['name'];
-    $SUBJECT->order = $_POST['order'];
+    $EDUCATION_SUBJECT->name = $_POST['name'];
+    $EDUCATION_SUBJECT->education_category = $_POST['category'];
 
-    $SUBJECT->create();
+    $EDUCATION_SUBJECT->create();
     $result = [
         "message" => 'success'
     ];
@@ -19,11 +19,11 @@ include '../../../class/include.php';
 
 if (isset($_POST['update'])) {
 
-    $SUBJECT = new Subject($_POST['id']);
+    $EDUCATION_SUBJECT = new EducationSubject($_POST['id']);
 
-    $SUBJECT->name = $_POST['name'];
-    $SUBJECT->order = $_POST['order'];
-    $SUBJECT->update();
+    $EDUCATION_SUBJECT->name = $_POST['name'];
+    $EDUCATION_SUBJECT->education_category = $_POST['category'];
+    $EDUCATION_SUBJECT->update();
     $result = [
         "message" => 'success'
     ];

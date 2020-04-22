@@ -69,9 +69,17 @@ include './auth.php';
                                                 </div>
                                             </div>
                                             <div class="form-group">
-                                                <label class="col-sm-1 control-label" for="title">Order: </label>
+                                                <label class="col-sm-1 control-label" for="title">Category: </label>
                                                 <div class="col-sm-11">
-                                                    <input id="order" name="order" class="form-control" type="text"   >
+                                                    <select id="category" class="custom-select" name="category">
+                                                        <option value="" selected="selected"> -- Select your Category --</option>
+                                                        <?php
+                                                        $EDUCATION_CATEGORY = new EducationCategory(NULL);
+                                                        foreach ($EDUCATION_CATEGORY->activeCategory() as $education_category) {
+                                                            ?>
+                                                            <option value="<?php echo $education_category['id'] ?>"><?php echo $education_category['name'] ?></option> 
+                                                        <?php } ?>
+                                                    </select>
                                                 </div>
                                             </div>
 
@@ -100,19 +108,22 @@ include './auth.php';
                                             <tr>
                                                 <th>ID</th>
                                                 <th>Name</th> 
-                                                <th>Orders</th> 
+                                                <th>Category</th> 
                                                 <th>Option</th>
                                             </tr>
                                         </thead>
                                         <?php
-                                        $SUBJECT = new Subject(NULL);
-                                        foreach ($SUBJECT->all() as $key => $subject) {
+                                        $EDUCATION_SUBJECT = new EducationSubject(NULL);
+                                        foreach ($EDUCATION_SUBJECT->all() as $key => $subject) {
                                             $key++;
                                             ?>
                                             <tr id="div<?php echo $subject['id'] ?>">
                                                 <td><?php echo $key ?></td>
                                                 <td><?php echo $subject['name'] ?></td>
-                                                <td><?php echo $subject['order'] ?></td>
+                                                <td><?php 
+                                                $EDUCATION_CATEGORY = new EducationCategory($subject['education_category'] );
+                                                
+                                                echo $EDUCATION_CATEGORY->name ?></td>
 
                                                 <td> 
                                                     <a href="edit-subject.php?id=<?php echo $subject['id'] ?>" class="op-link btn btn-sm btn-info"><i class="icon icon-pencil"></i></a>  |  
@@ -125,7 +136,7 @@ include './auth.php';
                                             <tr>
                                                 <th>ID</th>
                                                 <th>Name</th>
-                                                <th>Orders</th>  
+                                                <th>Category</th>  
                                                 <th>Option</th>
                                             </tr>
                                         </tfoot>

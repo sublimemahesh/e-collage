@@ -12,10 +12,10 @@ $(document).ready(function () {
                 timer: 1500,
                 showConfirmButton: false
             });
-        } else if (!$('#order').val() || $('#order').val().length === 0) {
+        } else if (!$('#category').val() || $('#category').val().length === 0) {
             swal({
                 title: "Error!",
-                text: "Please enter order..!",
+                text: "Please enter Category..!",
                 type: 'error',
                 timer: 1500,
                 showConfirmButton: false
@@ -65,7 +65,7 @@ $(document).ready(function () {
                 timer: 1500,
                 showConfirmButton: false
             });
-        } else if (!$('#order').val() || $('#order').val().length === 0) {
+        } else if (!$('#category').val() || $('#category').val().length === 0) {
             swal({
                 title: "Error!",
                 text: "Please enter order..!",

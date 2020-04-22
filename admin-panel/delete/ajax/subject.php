@@ -5,9 +5,9 @@ include '../../../class/include.php';
 
 if ($_POST['option'] == 'delete') {
 
-    $SUBJECT = new Subject($_POST['id']);
+    $EDUCATION_SUBJECT = new EducationSubject($_POST['id']);
   
-    $result = $SUBJECT->delete();
+    $result = $EDUCATION_SUBJECT->delete();
 
     if ($result) {
         $data = array("status" => TRUE);
