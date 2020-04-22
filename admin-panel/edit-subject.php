@@ -4,7 +4,7 @@ include '../class/include.php';
 include './auth.php';
 $id = '';
 $id = $_GET['id'];
-$SUBJECT = new Subject($id);
+$EDUCATION_SUBJECT = new EducationSubject($id);
 ?>
 <html lang="en">
 
@@ -69,13 +69,27 @@ $SUBJECT = new Subject($id);
                                             <div class="form-group">
                                                 <label class="col-sm-1 control-label" for="title">Name </label>
                                                 <div class="col-sm-11">
-                                                    <input id="name" name="name" class="form-control" type="text" value="<?php echo $SUBJECT->name ?>"  >
+                                                    <input id="name" name="name" class="form-control" type="text" value="<?php echo $EDUCATION_SUBJECT->name ?>"  >
                                                 </div>
                                             </div>
                                             <div class="form-group">
-                                                <label class="col-sm-1 control-label" for="title">Order </label>
+                                                <label class="col-sm-1 control-label" for="title">Category: </label>
                                                 <div class="col-sm-11">
-                                                    <input id="order" name="order" class="form-control" type="text" value="<?php echo $SUBJECT->order ?>"  >
+                                                    <select id="category" class="custom-select" name="category">
+                                                        <option value="" selected="selected"> -- Select your Category --</option>
+                                                        <?php
+                                                        $EDUCATION_CATEGORY = new EducationCategory(NULL);
+                                                        foreach ($EDUCATION_CATEGORY->activeCategory() as $education_category) {
+                                                            
+                                                            if ($EDUCATION_SUBJECT->education_category == $education_category['id']) {
+                                                                ?>
+                                                                <option value="<?php echo $education_category['id'] ?>" selected=""><?php echo $education_category['name'] ?></option> 
+                                                            <?php } else { ?>
+                                                                <option value="<?php echo $education_category['id'] ?>"  ><?php echo $education_category['name'] ?></option> 
+                                                            <?php }
+                                                        }
+                                                        ?>
+                                                    </select>
                                                 </div>
                                             </div>
 
@@ -84,7 +98,7 @@ $SUBJECT = new Subject($id);
                                                 <div class="col-md-3"></div> 
                                                 <div class="col-md-3"></div> 
                                                 <div class="col-md-3"> 
-                                                    <input type="hidden" name="id" value="<?php echo $SUBJECT->id ?>">
+                                                    <input type="hidden" name="id" value="<?php echo $EDUCATION_SUBJECT->id ?>">
                                                     <input type="hidden" name="update"  >
                                                     <input type="submit" class="btn btn-primary btn-block"   id="update"  value="update" >
                                                 </div>

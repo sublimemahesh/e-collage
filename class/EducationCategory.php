@@ -71,6 +71,20 @@ class EducationCategory {
         return $array_res;
     }
 
+    public function activeCategory() {
+
+        $query = "SELECT * FROM `education_category` WHERE `status` = 1";
+        $db = new Database();
+        $result = $db->readQuery($query);
+        $array_res = array();
+
+        while ($row = mysql_fetch_array($result)) {
+            array_push($array_res, $row);
+        }
+
+        return $array_res;
+    }
+
     public function update() {
 
         $query = "UPDATE  `education_category` SET "
@@ -78,7 +92,7 @@ class EducationCategory {
                 . "`status` ='" . $this->status . "', "
                 . "`sort` ='" . $this->sort . "' "
                 . "WHERE `id` = '" . $this->id . "'";
-        
+
         $db = new Database();
 
         $result = $db->readQuery($query);
@@ -93,7 +107,7 @@ class EducationCategory {
     public function delete() {
 
         $query = 'DELETE FROM `education_category` WHERE id="' . $this->id . '"';
- 
+
         $db = new Database();
 
         return $db->readQuery($query);

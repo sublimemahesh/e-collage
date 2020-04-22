@@ -11,24 +11,26 @@
  *
  * @author Suharshana DsW
  */
-class Subject {
+class EducationSubject {
 
     public $id;
+    public $education_category;
     public $name;
-    public $order;
+    public $sort;
 
     public function __construct($id) {
         if ($id) {
 
-            $query = "SELECT * FROM `subject` WHERE `id`=" . $id;
+            $query = "SELECT * FROM `education_subject` WHERE `id`=" . $id;
 
             $db = new Database();
 
             $result = mysql_fetch_array($db->readQuery($query));
 
             $this->id = $result['id'];
+            $this->education_category = $result['education_category'];
             $this->name = $result['name'];
-            $this->order = $result['order'];
+            $this->sort = $result['sort'];
 
             return $this;
         }
@@ -36,9 +38,9 @@ class Subject {
 
     public function create() {
 
-        $query = "INSERT INTO `subject` (`name`,`order`) VALUES  ('"
+        $query = "INSERT INTO `education_subject` (`name`,`education_category`) VALUES  ('"
                 . $this->name . "','"
-                . $this->order . "')";
+                . $this->education_category . "')";
 
 
         $db = new Database();
@@ -56,7 +58,7 @@ class Subject {
 
     public function all() {
 
-        $query = "SELECT * FROM `subject`";
+        $query = "SELECT * FROM `education_subject`";
         $db = new Database();
         $result = $db->readQuery($query);
         $array_res = array();
@@ -70,9 +72,9 @@ class Subject {
 
     public function update() {
 
-        $query = "UPDATE  `subject` SET "
+        $query = "UPDATE  `education_subject` SET "
                 . "`name` ='" . $this->name . "', "
-                . "`order` ='" . $this->order . "' "
+                . "`education_category` ='" . $this->education_category . "' "
                 . "WHERE `id` = '" . $this->id . "'";
 
         $db = new Database();
@@ -88,7 +90,7 @@ class Subject {
 
     public function delete() {
 
-        $query = 'DELETE FROM `subject` WHERE id="' . $this->id . '"';
+        $query = 'DELETE FROM `education_subject` WHERE id="' . $this->id . '"';
  
         $db = new Database();
 
