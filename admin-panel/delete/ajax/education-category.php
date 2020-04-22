@@ -1,13 +1,13 @@
 <?php
 
 include '../../../class/include.php';
- 
+
 
 if ($_POST['option'] == 'delete') {
 
-    $STUDENT = new Category($_POST['id']);
-  
-    $result = $STUDENT->delete();
+    $EDUCATION_CATEGORY = new EducationCategory($_POST['id']);
+
+    $result = $EDUCATION_CATEGORY->delete();
 
     if ($result) {
         $data = array("status" => TRUE);
