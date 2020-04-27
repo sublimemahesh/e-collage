@@ -63,6 +63,16 @@
                 </form>
             </div>
 
+            
+            <div class="ready">
+                <div class="container">
+                    <div class="row">
+                        <a href="#" class="whitebutton">SIGN UP NOW</a>
+                        <p>ONLINE LEARNING FROM EVERYWHERE</p>
+                        <h4>Are you ready to start learning?</h4>
+                    </div>
+                </div>
+            </div>
         </main>
         
         <?php include './footer.php'; ?>

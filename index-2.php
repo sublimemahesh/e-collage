@@ -20,7 +20,7 @@
 
         <?php include './header-2.php'; ?>
 
-        <?php include './header-index.php'; ?>
+       
         <main>
             <div class="container-fluid categories text-center">	
 
