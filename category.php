@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+<?php include './class/include.php'; ?>
 <html>
     <head>
         <meta charset="utf-8">
@@ -18,47 +19,36 @@
         <?php include './header.php'; ?>
 
         <main>
-
             <div class="page-heading text-center">
                 <div class="container">
                     <h2>CATEGORIES</h2>
                 </div>
             </div>
-            <div class="container categories text-center">
+            <div class="container categories text-center">	
+
                 <div class="row">
+                    <?php
+                    $CATEGORY = new Category(null);
+                    foreach ($CATEGORY->all() as $key => $category) {
+                        if ($key < 11) {
+                            ?>
+                            <div class="col-md-3 col-sm-6 category">
+                                <img src="upload/category/<?php echo $category['image_name'] ?>" alt="Category">
+                                <h5><?php echo $category['name'] ?></h5>
+                                <div class="overlay text-center">
+                                    <p class="pull-right"><span>93</span>TRAINERS</p>
+                                    <p class="pull-left"><span>418</span>TUTORIALS</p>
+                                    <h5><?php echo $category['name'] ?></h5>
+                                    <a href="#">Click Here</a>
+                                </div>
+                            </div>
+                            <?php
+                        }
+                    }
+                    ?>
                     <div class="col-md-3 col-sm-6 category">
-                        <img src="assets/images/categories/1.png" alt="Category">
-                        <h5>Business</h5>
-                        <div class="overlay text-center">
-                            <p class="pull-right"><span>93</span>TRAINERS</p>
-                            <p class="pull-left"><span>418</span>TUTORIALS</p>
-                            <h5>Business</h5>
-                            <a href="#">CHECK VIDEOS</a>
-                        </div>
-                    </div>
-                    <div class="col-md-3 col-sm-6 category">
-                        <img src="assets/images/categories/2.png" alt="Category">
-                        <h5>Video Production &amp; Animation</h5>
-                        <div class="overlay text-center">
-                            <p class="pull-right"><span>93</span>TRAINERS</p>
-                            <p class="pull-left"><span>418</span>TUTORIALS</p>
-                            <h5>Video Production &amp; Animation</h5>
-                            <a href="#">CHECK VIDEOS</a>
-                        </div>
-                    </div>
-                    <div class="col-md-3 col-sm-6 category">
-                        <img src="assets/images/categories/3.png" alt="Category">
-                        <h5>Web Design &amp; Illustration</h5>
-                        <div class="overlay text-center">
-                            <p class="pull-right"><span>93</span>TRAINERS</p>
-                            <p class="pull-left"><span>418</span>TUTORIALS</p>
-                            <h5>Webdesign &amp; Illustration</h5>
-                            <a href="#">CHECK VIDEOS</a>
-                        </div>
-                    </div>
-                    <div class="col-md-3 col-sm-6 category">
-                        <img src="assets/images/categories/4.png" alt="Category">
-                        <h5>Photography</h5>
+                        <img src="upload/category/1.JPG.jpg" alt="Category">
+                        <h5>More</h5>
                         <div class="overlay text-center">
                             <p class="pull-right"><span>93</span>TRAINERS</p>
                             <p class="pull-left"><span>418</span>TUTORIALS</p>
@@ -67,48 +57,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="row">
-                    <div class="col-md-3 col-sm-6 category">
-                        <img src="assets/images/categories/5.png" alt="Category">
-                        <h5>Marketing &amp; CEO</h5>
-                        <div class="overlay text-center">
-                            <p class="pull-right"><span>93</span>TRAINERS</p>
-                            <p class="pull-left"><span>418</span>TUTORIALS</p>
-                            <h5>Marketing &amp; CEO</h5>
-                            <a href="#">CHECK VIDEOS</a>
-                        </div>
-                    </div>
-                    <div class="col-md-3 col-sm-6 category">
-                        <img src="assets/images/categories/6.png" alt="Category">
-                        <h5>Development</h5>
-                        <div class="overlay text-center">
-                            <p class="pull-right"><span>93</span>TRAINERS</p>
-                            <p class="pull-left"><span>418</span>TUTORIALS</p>
-                            <h5>Development</h5>
-                            <a href="#">CHECK VIDEOS</a>
-                        </div>
-                    </div>
-                    <div class="col-md-3 col-sm-6 category">
-                        <img src="assets/images/categories/7.png" alt="Category">
-                        <h5>Science &amp; Technology</h5>
-                        <div class="overlay text-center">
-                            <p class="pull-right"><span>93</span>TRAINERS</p>
-                            <p class="pull-left"><span>418</span>TUTORIALS</p>
-                            <h5>Science &amp; Technology</h5>
-                            <a href="#">CHECK VIDEOS</a>
-                        </div>
-                    </div>
-                    <div class="col-md-3 col-sm-6 category">
-                        <img src="assets/images/categories/8.png" alt="Category">
-                        <h5>Languages &amp; Presentation</h5>
-                        <div class="overlay text-center">
-                            <p class="pull-right"><span>93</span>TRAINERS</p>
-                            <p class="pull-left"><span>418</span>TUTORIALS</p>
-                            <h5>Languages &amp; Presentation</h5>
-                            <a href="#">CHECK VIDEOS</a>
-                        </div>
-                    </div>
-                </div>
+
             </div>
 
             <div class="ready">
