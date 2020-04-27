@@ -2,6 +2,12 @@
 <?php
 include '../class/include.php';
 include './auth.php';
+$id = '';
+if(isset($_GET['id'])){
+$id = $_GET['id'];
+$SUB_CATEGORY=new EducationCategory($id);
+$SUB_CATEGORY_NAME=$SUB_CATEGORY->name;
+}
 ?>
 <html lang="en">
 
@@ -72,7 +78,7 @@ include './auth.php';
                                                 <label class="col-sm-1 control-label" for="title">Category: </label>
                                                 <div class="col-sm-11">
                                                     <select id="category" class="custom-select" name="category">
-                                                        <option value="" selected="selected"> -- Select your Category --</option>
+                                                        <option value="<?php echo $id;?>" selected="selected"> -- <?PHP echo $SUB_CATEGORY_NAME;?> --</option>
                                                         <?php
                                                         $EDUCATION_CATEGORY = new EducationCategory(NULL);
                                                         foreach ($EDUCATION_CATEGORY->activeCategory() as $education_category) {
@@ -121,7 +127,7 @@ include './auth.php';
                                                 <td><?php echo $key ?></td>
                                                 <td><?php echo $subject['name'] ?></td>
                                                 <td><?php 
-                                                $EDUCATION_CATEGORY = new EducationCategory($subject['education_category'] );
+                                                $EDUCATION_CATEGORY = new EducationCategory($subject['sub_category'] );
                                                 
                                                 echo $EDUCATION_CATEGORY->name ?></td>
 
