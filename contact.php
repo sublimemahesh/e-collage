@@ -15,9 +15,10 @@
     </head>
 
     <body id="contact" class="page">
+        
+        <?php include './header-2.php';?>
 
-     <?php include './header-index.php';?>
-
+     
         <main>
 
             <div class="page-heading text-center">
