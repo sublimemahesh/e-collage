@@ -72,6 +72,12 @@ $EDUCATION_CATEGORY = new EducationCategory($id);
                                                     <input id="name" name="name" class="form-control" type="text" value="<?php echo $EDUCATION_CATEGORY->name ?>"  >
                                                 </div>
                                             </div>
+                                            <div class="form-group hidden">
+                                                <label class="col-sm-1 control-label " for="title" style="text-align: left">Name: </label>
+                                                <div class="col-sm-11">
+                                                    <input id="id" name="id" class="form-control" type="text" value="<?php echo $EDUCATION_CATEGORY->category ?>" >
+                                                </div>
+                                            </div>
                                             <div class="form-group">
                                                 <div class="col-sm-1">
                                                 </div>

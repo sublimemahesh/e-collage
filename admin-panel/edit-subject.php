@@ -5,6 +5,9 @@ include './auth.php';
 $id = '';
 $id = $_GET['id'];
 $EDUCATION_SUBJECT = new EducationSubject($id);
+$CATEGORY_ID=$EDUCATION_SUBJECT->sub_category;
+$SUB_CATEGORIES=new EducationCategory($CATEGORY_ID);
+$CATEGORY_NAME=$SUB_CATEGORIES->name;
 ?>
 <html lang="en">
 
@@ -76,7 +79,7 @@ $EDUCATION_SUBJECT = new EducationSubject($id);
                                                 <label class="col-sm-1 control-label" for="title">Category: </label>
                                                 <div class="col-sm-11">
                                                     <select id="category" class="custom-select" name="category">
-                                                        <option value="" selected="selected"> -- Select your Category --</option>
+                                                        <option value="" selected="selected"> <?php echo $CATEGORY_NAME ?></option>
                                                         <?php
                                                         $EDUCATION_CATEGORY = new EducationCategory(NULL);
                                                         foreach ($EDUCATION_CATEGORY->activeCategory() as $education_category) {

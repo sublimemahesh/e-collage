@@ -2,7 +2,7 @@
 <?php
 include '../class/include.php';
 include './auth.php';
-$id=$_GET['id'];
+$id = $_GET['id'];
 ?>
 <html lang="en">
 
@@ -69,10 +69,10 @@ $id=$_GET['id'];
                                                     <input id="name" name="name" class="form-control" type="text"   >
                                                 </div>
                                             </div>
-                                            <div class="form-group ">
+                                            <div class="form-group hidden">
                                                 <label class="col-sm-1 control-label " for="title" style="text-align: left">Name: </label>
                                                 <div class="col-sm-11">
-                                                    <input id="id" name="id" class="form-control" type="text" value="<?php  echo $id?>" >
+                                                    <input id="id" name="id" class="form-control" type="text" value="<?php echo $id ?>" >
                                                 </div>
                                             </div>
                                             <div class="form-group">
@@ -117,7 +117,7 @@ $id=$_GET['id'];
                                             </tr>
                                         </thead>
                                         <?php
-                                        $id=$_GET['id'];
+                                        $id = $_GET['id'];
                                         $EDUCATION_CATEGORY = new EducationCategory(NULL);
                                         foreach ($EDUCATION_CATEGORY->CategoryByEducationId($id) as $key => $education_category) {
                                             $key++;
@@ -132,7 +132,8 @@ $id=$_GET['id'];
                                                     <td>In Activate</td>
                                                 <?php } ?>
                                                 <td> 
-                                                    <a href="edit-education-category.php?id=<?php echo $education_category['id'] ?>" class="op-link btn btn-sm btn-info"><i class="icon icon-pencil"></i></a>  |  
+                                                    <a href="edit-education-category.php?id=<?php echo $education_category['id'] ?>" class="op-link btn btn-sm btn-info"><i class="icon icon-pencil"></i></a>  |
+                                                    <a href="create-subject.php?id=<?php echo $education_category['id'] ?>" class="op-link btn btn-sm btn-info"><i class="icon icon-archive"></i></a>  |  
                                                     <a href="#" class="delete-category btn btn-sm btn-danger" data-id="<?php echo $education_category['id'] ?>"><i class="waves-effect icon icon-trash" data-type="cancel"></i></a> 
 
                                                 </td>

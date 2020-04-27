@@ -30,7 +30,7 @@
 
                         </ul>
                     </li>
-                    <li class="sidenav-item has-subnav" style="margin-top: 20px">
+                    <li class="sidenav-item has-subnav hidden" style="margin-top: 20px">
                         <a href="#" aria-haspopup="true">
                             <span class="sidenav-icon icon icon-works">a</span>
                             <span class="sidenav-label">Subjects</span>

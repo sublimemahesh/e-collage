@@ -86,6 +86,52 @@ include './auth.php';
                                             </div>
                                         </div>
                                     </form>
+                                        <div class="card">
+                                <div class="card-header">
+
+                                    <strong>Manage Category</strong>
+                                </div>
+                                <div class="card-body">
+                                    <table id="demo-datatables-colreorder-1" class="table table-hover table-striped table-nowrap dataTable" cellspacing="0" width="100%">
+                                        <thead>
+                                            <tr>
+                                                <th>ID</th>
+                                                <th>Name</th>  
+                                                <th>Option</th>
+                                            </tr>
+                                        </thead>
+                                        <?php
+                                        $CATEGORY = new Category(NULL);
+                                        foreach ($CATEGORY->all() as $key => $category) {
+                                            $key++;
+                                            ?>
+                                            <tr id="div<?php echo $category['id'] ?>">
+                                                <td><?php echo $key ?></td>
+                                                <td><?php echo $category['name'] ?></td>
+
+                                                <td> 
+                                                    <a href="edit-category.php?id=<?php echo $category['id'] ?>" class="op-link btn btn-sm btn-info"><i class="icon icon-pencil"></i></a>  |  
+                                                    <a href="create-education-category.php?id=<?php echo $category['id'] ?>" class="op-link btn btn-sm btn-info" ><i class="waves-effect icon icon-archive" ></i></a>  | 
+
+                                                    <a href="#" class="delete-category btn btn-sm btn-danger" data-id="<?php echo $category['id'] ?>"><i class="waves-effect icon icon-trash" data-type="cancel"></i></a> 
+
+                                                </td>
+                                            </tr>
+                                        <?php } ?>
+                                        <tfoot>
+                                            <tr>
+                                                <th>ID</th>
+                                                <th>Name</th>   
+                                                <th>Option</th>
+                                            </tr>
+                                        </tfoot>
+                                        <tbody>
+
+
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
                                 </div>
 
                             </div>
