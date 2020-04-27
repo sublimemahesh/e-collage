@@ -65,7 +65,7 @@
                                     <p>8 VIDEOS</p>
                                 </div>
                             </div>
-                            <a href="#">Kevin Mcfield</a>
+                            <a href="lecture-view.php">Kevin Mcfield</a>
                             <p>SCIENTIST</p>
                         </div>
                     </div>
@@ -78,7 +78,7 @@
                                     <p>8 VIDEOS</p>
                                 </div>
                             </div>
-                            <a href="#">Jonathan Creon</a>
+                            <a href="lecture-view.php">Jonathan Creon</a>
                             <p>DESIGNER</p>
                         </div>
                     </div>
@@ -91,7 +91,7 @@
                                     <p>8 VIDEOS</p>
                                 </div>
                             </div>
-                            <a href="#">Peter Griffin</a>
+                            <a href="lecture-view.php">Peter Griffin</a>
                             <p>LANGUAGE TEACHER</p>
                         </div>
                     </div>
