@@ -15,6 +15,7 @@ class EducationCategory {
 
     public $id;
     public $name;
+    public $category;
     public $status;
     public $sort;
 
@@ -29,6 +30,7 @@ class EducationCategory {
 
             $this->id = $result['id'];
             $this->name = $result['name'];
+            $this->category = $result['category'];
             $this->status = $result['status'];
             $this->sort = $result['sort'];
 
@@ -38,8 +40,9 @@ class EducationCategory {
 
     public function create() {
 
-        $query = "INSERT INTO `education_category` (`name`,`status`,`sort`) VALUES  ('"
+        $query = "INSERT INTO `education_category` (`name`,`category`,`status`,`sort`) VALUES  ('"
                 . $this->name . "','"
+                . $this->category . "','"
                 . $this->status . "','"
                 . $this->sort . "')";
 
@@ -89,6 +92,7 @@ class EducationCategory {
 
         $query = "UPDATE  `education_category` SET "
                 . "`name` ='" . $this->name . "', "
+                . "`category` ='" . $this->category . "', "
                 . "`status` ='" . $this->status . "', "
                 . "`sort` ='" . $this->sort . "' "
                 . "WHERE `id` = '" . $this->id . "'";
@@ -102,6 +106,20 @@ class EducationCategory {
         } else {
             return FALSE;
         }
+    }
+
+    public function CategoryByEducationId($id) {
+
+        $query = "SELECT * FROM `education_category`  WHERE `category`= $id ";
+        $db = new Database();
+        $result = $db->readQuery($query);
+        $array_res = array();
+
+        while ($row = mysql_fetch_array($result)) {
+            array_push($array_res, $row);
+        }
+
+        return $array_res;
     }
 
     public function delete() {

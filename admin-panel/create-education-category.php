@@ -2,6 +2,7 @@
 <?php
 include '../class/include.php';
 include './auth.php';
+$id=$_GET['id'];
 ?>
 <html lang="en">
 
@@ -57,7 +58,7 @@ include './auth.php';
                                     ?>
                                     <div class="card">
                                         <div class="card-header"> 
-                                            <strong>Create Education Category</strong>
+                                            <strong>Create Sub Category</strong>
                                         </div>
                                     </div>
                                     <form class="demo-form-wrapper card "  method="post" style="padding: 50px"   id="form-data">
@@ -68,7 +69,12 @@ include './auth.php';
                                                     <input id="name" name="name" class="form-control" type="text"   >
                                                 </div>
                                             </div>
-
+                                            <div class="form-group ">
+                                                <label class="col-sm-1 control-label " for="title" style="text-align: left">Name: </label>
+                                                <div class="col-sm-11">
+                                                    <input id="id" name="id" class="form-control" type="text" value="<?php  echo $id?>" >
+                                                </div>
+                                            </div>
                                             <div class="form-group">
                                                 <div class="col-sm-1">
                                                 </div>
@@ -98,7 +104,7 @@ include './auth.php';
                             <div class="card">
                                 <div class="card-header">
 
-                                    <strong>Manage Education Category</strong>
+                                    <strong>Manage Sub Category</strong>
                                 </div>
                                 <div class="card-body">
                                     <table id="demo-datatables-colreorder-1" class="table table-hover table-striped table-nowrap dataTable" cellspacing="0" width="100%">
@@ -111,8 +117,9 @@ include './auth.php';
                                             </tr>
                                         </thead>
                                         <?php
+                                        $id=$_GET['id'];
                                         $EDUCATION_CATEGORY = new EducationCategory(NULL);
-                                        foreach ($EDUCATION_CATEGORY->all() as $key => $education_category) {
+                                        foreach ($EDUCATION_CATEGORY->CategoryByEducationId($id) as $key => $education_category) {
                                             $key++;
                                             ?>
                                             <tr id="div<?php echo $education_category['id'] ?>">

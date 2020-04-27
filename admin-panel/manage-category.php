@@ -55,41 +55,55 @@ include './auth.php';
                                         <?php
                                     }
                                     ?>
-                                    <div class="card">
-                                        <div class="card-header"> 
-                                            <strong>Create Category</strong>
-                                        </div>
-                                    </div>
-                                    <form class="demo-form-wrapper card "  method="post" style="padding: 50px"   id="form-data">
-                                        <div class="form form-horizontal">
-                                            <div class="form-group">
-                                                <label class="col-sm-2 control-label " for="title" style="text-align: left">Category Name: </label>
-                                                <div class="col-sm-10">
-                                                    <input id="name" name="name" class="form-control" type="text"   >
-                                                </div>
-                                            </div>
-                                            <div class="form-group">
-                                                <label class="col-sm-2 control-label " for="title" style="text-align: left"> Image: </label>
-                                                <div class="col-sm-10">
-                                                    <input id="image_name" name="image_name" class="form-control" type="file"   >
-                                                </div>
-                                            </div>
-
-                                            <div class="form-group">
-                                                <div class="col-md-3"></div> 
-                                                <div class="col-md-3"></div> 
-                                                <div class="col-md-4"></div> 
-                                                <div class="col-md-2">  
-                                                    <input type="hidden"  name="create"  >
-                                                    <input type="submit" class="btn btn-primary btn-block"   value="create" id="create" >
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </form>
                                 </div>
 
                             </div>
-                        
+                            <div class="card">
+                                <div class="card-header">
+
+                                    <strong>Manage Category</strong>
+                                </div>
+                                <div class="card-body">
+                                    <table id="demo-datatables-colreorder-1" class="table table-hover table-striped table-nowrap dataTable" cellspacing="0" width="100%">
+                                        <thead>
+                                            <tr>
+                                                <th>ID</th>
+                                                <th>Name</th>  
+                                                <th>Option</th>
+                                            </tr>
+                                        </thead>
+                                        <?php
+                                        $CATEGORY = new Category(NULL);
+                                        foreach ($CATEGORY->all() as $key => $category) {
+                                            $key++;
+                                            ?>
+                                            <tr id="div<?php echo $category['id'] ?>">
+                                                <td><?php echo $key ?></td>
+                                                <td><?php echo $category['name'] ?></td>
+
+                                                <td> 
+                                                    <a href="edit-category.php?id=<?php echo $category['id'] ?>" class="op-link btn btn-sm btn-info"><i class="icon icon-pencil"></i></a>  |  
+                                                    <a href="create-education-category.php?id=<?php echo $category['id'] ?>" class="op-link btn btn-sm btn-info" ><i class="waves-effect icon icon-archive" ></i></a>  | 
+
+                                                    <a href="#" class="delete-category btn btn-sm btn-danger" data-id="<?php echo $category['id'] ?>"><i class="waves-effect icon icon-trash" data-type="cancel"></i></a> 
+
+                                                </td>
+                                            </tr>
+                                        <?php } ?>
+                                        <tfoot>
+                                            <tr>
+                                                <th>ID</th>
+                                                <th>Name</th>   
+                                                <th>Option</th>
+                                            </tr>
+                                        </tfoot>
+                                        <tbody>
+
+
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>

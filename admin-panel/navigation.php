@@ -50,17 +50,18 @@
 
                         </ul>
                     </li>
-<!--                    <li class="sidenav-item has-subnav" style="margin-top: 20px">
+                    <li class="sidenav-item has-subnav" style="margin-top: 20px">
                         <a href="#" aria-haspopup="true">
                             <span class="sidenav-icon icon icon-works">a</span>
                             <span class="sidenav-label">Category</span>
                         </a>
                         <ul class="sidenav level-2 collapse"> 
                             <li><a href="create-category.php">Create Category</a></li>
+                            <li><a href="manage-category.php">Manage Category</a></li>
 
                         </ul>
-                    </li>-->
-                    <li class="sidenav-item has-subnav" style="margin-top: 20px">
+                    </li>
+<!--                    <li class="sidenav-item has-subnav" style="margin-top: 20px">
                         <a href="#" aria-haspopup="true">
                             <span class="sidenav-icon icon icon-works">a</span>
                             <span class="sidenav-label">Education Category</span>
@@ -69,7 +70,7 @@
                             <li><a href="create-education-category.php">Create Education Category</a></li>
 
                         </ul>
-                    </li>
+                    </li>-->
                 </ul>
             </nav>
         </div>

@@ -8,6 +8,7 @@ if (isset($_POST['create'])) {
     $EDUCATION_CATEGORY = new EducationCategory(NULL);
 
     $EDUCATION_CATEGORY->name = $_POST['name'];
+    $EDUCATION_CATEGORY->category = $_POST['id'];
 
     if (isset($_POST['status'])) {
         $EDUCATION_CATEGORY->status = $_POST['status'];
