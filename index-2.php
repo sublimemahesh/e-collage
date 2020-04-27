@@ -154,7 +154,7 @@
                                     <p>8 VIDEOS</p>
                                 </div>
                             </div>
-                            <a href="#">Dileshka  Senaratne</a>
+                            <a href="lecture-view.php">Dileshka  Senaratne</a>
                             <p>SCIENTIST</p>
                         </div>
                     </div>
@@ -167,7 +167,7 @@
                                     <p>8 VIDEOS</p>
                                 </div>
                             </div>
-                            <a href="#">Harsha  Weerarathne</a>
+                            <a href="lecture-view.php">Harsha  Weerarathne</a>
                             <p>Finance </p>
                         </div>
                     </div>
@@ -181,7 +181,7 @@
                                     <p>8 VIDEOS</p>
                                 </div>
                             </div>
-                            <a href="#">Chamila  Gajasinghe</a>
+                            <a href="lecture-view.php">Chamila  Gajasinghe</a>
                             <p>English</p>
                         </div>
                     </div>
