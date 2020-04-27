@@ -14,9 +14,9 @@
 class EducationSubject {
 
     public $id;
-    public $education_category;
+    public $sub_category;
     public $name;
-    public $sort;
+    public $description;
 
     public function __construct($id) {
         if ($id) {
@@ -28,9 +28,9 @@ class EducationSubject {
             $result = mysql_fetch_array($db->readQuery($query));
 
             $this->id = $result['id'];
-            $this->education_category = $result['education_category'];
+            $this->sub_category = $result['sub_category'];
             $this->name = $result['name'];
-            $this->sort = $result['sort'];
+            $this->description = $result['description'];
 
             return $this;
         }
@@ -38,9 +38,9 @@ class EducationSubject {
 
     public function create() {
 
-        $query = "INSERT INTO `education_subject` (`name`,`education_category`) VALUES  ('"
+        $query = "INSERT INTO `education_subject` (`name`,`sub_category`) VALUES  ('"
                 . $this->name . "','"
-                . $this->education_category . "')";
+                . $this->sub_category . "')";
 
 
         $db = new Database();
@@ -74,7 +74,7 @@ class EducationSubject {
 
         $query = "UPDATE  `education_subject` SET "
                 . "`name` ='" . $this->name . "', "
-                . "`education_category` ='" . $this->education_category . "' "
+                . "`sub_category` ='" . $this->sub_category . "' "
                 . "WHERE `id` = '" . $this->id . "'";
 
         $db = new Database();
