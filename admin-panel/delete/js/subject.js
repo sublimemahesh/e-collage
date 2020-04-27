@@ -1,5 +1,5 @@
 $(document).ready(function () {
-    $('.dataTable').on('click', '.delete-subject', function () {
+    $('.dataTable').on('click', '.delete-category', function () {
     
 
         var id = $(this).attr("data-id");

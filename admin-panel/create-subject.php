@@ -3,10 +3,10 @@
 include '../class/include.php';
 include './auth.php';
 $id = '';
-if(isset($_GET['id'])){
-$id = $_GET['id'];
-$SUB_CATEGORY=new EducationCategory($id);
-$SUB_CATEGORY_NAME=$SUB_CATEGORY->name;
+if (isset($_GET['id'])) {
+    $id = $_GET['id'];
+    $SUB_CATEGORY = new EducationCategory($id);
+    $SUB_CATEGORY_NAME = $SUB_CATEGORY->name;
 }
 ?>
 <html lang="en">
@@ -78,7 +78,7 @@ $SUB_CATEGORY_NAME=$SUB_CATEGORY->name;
                                                 <label class="col-sm-1 control-label" for="title">Category: </label>
                                                 <div class="col-sm-11">
                                                     <select id="category" class="custom-select" name="category">
-                                                        <option value="<?php echo $id;?>" selected="selected"> -- <?PHP echo $SUB_CATEGORY_NAME;?> --</option>
+                                                        <option value="<?php echo $id; ?>" selected="selected"> <?PHP echo $SUB_CATEGORY_NAME; ?> </option>
                                                         <?php
                                                         $EDUCATION_CATEGORY = new EducationCategory(NULL);
                                                         foreach ($EDUCATION_CATEGORY->activeCategory() as $education_category) {
@@ -126,19 +126,20 @@ $SUB_CATEGORY_NAME=$SUB_CATEGORY->name;
                                             <tr id="div<?php echo $subject['id'] ?>">
                                                 <td><?php echo $key ?></td>
                                                 <td><?php echo $subject['name'] ?></td>
-                                                <td><?php 
-                                                $EDUCATION_CATEGORY = new EducationCategory($subject['sub_category'] );
-                                                
-                                                echo $EDUCATION_CATEGORY->name ?></td>
+                                                <td><?php
+                                                    $EDUCATION_CATEGORY = new EducationCategory($subject['sub_category']);
+
+                                                    echo $EDUCATION_CATEGORY->name
+                                                    ?></td>
 
                                                 <td> 
                                                     <a href="edit-subject.php?id=<?php echo $subject['id'] ?>" class="op-link btn btn-sm btn-info"><i class="icon icon-pencil"></i></a>  |  
                                                     <a href="create-subject-sub-category.php?id=<?php echo $subject['id'] ?>" class="op-link btn btn-sm btn-success"><i class="icon icon-arrow-up"></i></a>  |  
-                                                    <a href="#" class="delete-sub-subject btn btn-sm btn-danger" data-id="<?php echo $subject['id'] ?>"><i class="waves-effect icon icon-trash" data-type="cancel"></i></a> 
+                                                    <a href="#" class="delete-category btn btn-sm btn-danger" data-id="<?php echo $subject['id'] ?>"><i class="waves-effect icon icon-trash" data-type="cancel"></i></a> 
 
                                                 </td>
                                             </tr>
-                                        <?php } ?>
+<?php } ?>
                                         <tfoot>
                                             <tr>
                                                 <th>ID</th>
