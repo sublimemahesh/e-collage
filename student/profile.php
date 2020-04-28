@@ -135,6 +135,29 @@ include_once(dirname(__FILE__) . '/auth.php');
                                         </div>
                                     </div>
                                     <div class="form-group">
+                                        <label class="col-sm-3 control-label" for="form-control-1">Category: </label>
+                                        <div class="col-sm-9">
+                                            <select  class="custom-select" id="category" name="category">
+                                                <option value="" selected="selected"> -- Select Category -- </option>
+                                                <?php
+                                               $CATEGORY=new Category(null);
+                                               foreach ($CATEGORY->all() as $category) {
+                                                    ?>
+                                                    <option value="<?php echo $category['id']?>" ><?php echo $category['name']?></option>
+                                                <?php } ?>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="form-group" id="sub_category_show">
+                                        <label class="col-sm-3 control-label" for="form-control-1">Sub Category: </label>
+                                        <div class="col-sm-9">
+                                            <select  class="custom-select" name="sub_category"  id="sub_category">
+                                                <option value="" > -- Select Sub Category -- </option>
+                                                
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
                                         <label class="col-sm-3 control-label" for="age">Age: </label>
                                         <div class="col-sm-9">
                                             <input id="age" name="age" class="form-control" type="text" value="<?php echo $STUDENT->age ?>">
@@ -182,7 +205,8 @@ include_once(dirname(__FILE__) . '/auth.php');
         <script src="js/application.min.js"></script>
         <script src="js/profile.min.js"></script>
         <script src="js/sweetalert.min.js" type="text/javascript"></script>
-
+        
+        <script src="ajax/js/category.js" type="text/javascript"></script>
         <script src="ajax/js/student.js" type="text/javascript"></script>
         <script src="ajax/js/check-login.js" type="text/javascript"></script>
 
