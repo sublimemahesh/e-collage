@@ -93,26 +93,7 @@ $LAST_ID = $LAST_ID + 1;
                             </div>
                         </div>
 
-                        <div class="row gutter-xs" style="margin-bottom: 10px;">
-                            <div class="form-group" style="margin-bottom: 0px!important;">
-                                <label for="phone" >Select Your Educational Level </label>
-                            </div>
-                            <div class="col-sm-6">
-                                <label class="custom-control custom-control-primary custom-radio">
-                                    <input class="custom-control-input" type="radio" name="education_level" value="o/l"  >
-                                    <span class="custom-control-indicator"></span>
-                                    <span class="custom-control-label">Educational Level ( O / L )</span>
-                                </label>
-                            </div>
-                            <div class="col-sm-6">
-                                <label class="custom-control custom-control-primary custom-radio">
-                                    <input class="custom-control-input" type="radio" name="education_level" value="a/l">
-                                    <span class="custom-control-indicator"></span>
-                                    <span class="custom-control-label">Educational Level ( A / L )</span>
-                                </label>
-
-                            </div>
-                        </div>
+                       
                         <div class="row gutter-xs">
                             <div class="col-sm-6">
                                 <div class="form-group">

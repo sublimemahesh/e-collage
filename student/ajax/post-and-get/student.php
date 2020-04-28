@@ -14,7 +14,6 @@ if ($_POST['action'] == 'UPDATE') {
     $STUDENT->age = $_POST['age'];
     $STUDENT->phone_number = $_POST['phone_number'];
     $STUDENT->address = $_POST['address'];
-    $STUDENT->education_level = $_POST['education_level'];
     $STUDENT->email = $_POST['email'];
     $STUDENT->update();
 
@@ -65,7 +64,7 @@ if ($_POST['action'] == 'UPDATENICCARD') {
             $handle->image_y = $image_y;
 
             $handle->Process($dir_dest);
-             
+
             $handle->image_resize = true;
             $handle->file_new_name_ext = 'jpg';
             $handle->image_ratio_crop = 'C';
@@ -271,7 +270,7 @@ if ($_POST['action'] == 'CHANGEPROFILE') {
 
                 Student::ChangeProPic($_POST["id"], $handle->file_dst_name);
                 header('Content-Type: application/json');
-               
+
                 $result = [
                     "filename" => $handle->file_dst_name,
                     "message" => 'success'
@@ -351,9 +350,9 @@ if ($_POST['action'] == 'CHANGEPROFILE') {
 //get the student details
 
 if ($_POST['action'] == 'GETSTUDENT') {
-    
+
     $STUDENT = new Student($_POST['post_student']);
-    
+
     header('Content-Type: application/json');
     echo json_encode($STUDENT);
     exit();

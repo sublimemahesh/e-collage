@@ -152,36 +152,7 @@ include_once(dirname(__FILE__) . '/auth.php');
                                             <input id="address" name="address" class="form-control" type="text" value="<?php echo $STUDENT->address ?>">
                                         </div>
                                     </div>
-                                    <div class="form-group">
-                                        <label class="col-sm-3 control-label" for="form-control-1">Education Level: </label>
-                                        <div class="col-sm-9">
-                                            <?php
-                                            if ($STUDENT->education_level == 'o/l') {
-                                                ?>
-                                                <label class="custom-control custom-control-primary custom-radio">
-                                                    <input class="custom-control-input" type="radio" name="education_level" value="o/l" checked="" >
-                                                    <span class="custom-control-indicator"></span>
-                                                    <span class="custom-control-label">Educational Level ( O / L )</span>
-                                                </label>
-                                                <label class="custom-control custom-control-primary custom-radio">
-                                                    <input class="custom-control-input" type="radio" name="education_level" value="a/l">
-                                                    <span class="custom-control-indicator"></span>
-                                                    <span class="custom-control-label">Educational Level ( A / L )</span>
-                                                </label>
-                                            <?php } else { ?>
-                                                <label class="custom-control custom-control-primary custom-radio">
-                                                    <input class="custom-control-input" type="radio" name="education_level" value="o/l"  >
-                                                    <span class="custom-control-indicator"></span>
-                                                    <span class="custom-control-label">Educational Level ( O / L )</span>
-                                                </label>
-                                                <label class="custom-control custom-control-primary custom-radio">
-                                                    <input class="custom-control-input" type="radio" name="education_level" value="a/l" checked="">
-                                                    <span class="custom-control-indicator"></span>
-                                                    <span class="custom-control-label">Educational Level ( A / L )</span>
-                                                </label>
-                                            <?php } ?>
-                                        </div>
-                                    </div>
+                                
                                     <div class="form-group">
                                         <div class="col-md-3"> </div> 
                                         <div class="col-md-3">  </div> 

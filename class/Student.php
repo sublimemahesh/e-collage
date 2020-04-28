@@ -22,7 +22,6 @@ class Student {
     public $age;
     public $phone_number;
     public $address;
-    public $education_level;
     public $password;
     public $authToken;
     public $lastLogin;
@@ -53,7 +52,6 @@ class Student {
             $this->age = $result['age'];
             $this->phone_number = $result['phone_number'];
             $this->address = $result['address'];
-            $this->education_level = $result['education_level'];
             $this->password = $result['password'];
             $this->authToken = $result['authToken'];
             $this->lastLogin = $result['lastLogin'];
@@ -71,7 +69,7 @@ class Student {
 
     public function create() {
 
-        $query = "INSERT INTO `student` (`full_name`, `student_id`, `email`,`nic_number`,`gender`,`age`,`phone_number`,`address`,`education_level`,`password`) VALUES  ('"
+        $query = "INSERT INTO `student` (`full_name`, `student_id`, `email`,`nic_number`,`gender`,`age`,`phone_number`,`address`,`password`) VALUES  ('"
                 . $this->full_name . "','"
                 . $this->student_id . "', '"
                 . $this->email . "', '"
@@ -80,7 +78,6 @@ class Student {
                 . $this->age . "', '"
                 . $this->phone_number . "', '"
                 . $this->address . "', '"
-                . $this->education_level . "', '"
                 . $this->password . "')";
 
         $db = new Database();
@@ -99,7 +96,7 @@ class Student {
     public function all() {
 
         $query = "SELECT * FROM `student`  ORDER BY queue ASC";
-      
+
         $db = new Database();
 
         $result = $db->readQuery($query);
@@ -489,7 +486,6 @@ class Student {
                 . "`age` ='" . $this->age . "', "
                 . "`phone_number` ='" . $this->phone_number . "', "
                 . "`address` ='" . $this->address . "', "
-                . "`education_level` ='" . $this->education_level . "', "
                 . "`email` ='" . $this->email . "' "
                 . "WHERE `id` = '" . $this->id . "'";
 
@@ -516,7 +512,6 @@ class Student {
                 . "`age` ='" . $this->age . "', "
                 . "`phone_number` ='" . $this->phone_number . "', "
                 . "`address` ='" . $this->address . "', "
-                . "`education_level` ='" . $this->education_level . "', "
                 . "`email` ='" . $this->email . "', "
                 . "`status` ='" . $this->status . "' "
                 . "WHERE `id` = '" . $this->id . "'";
@@ -544,7 +539,6 @@ class Student {
 
         if ($this->image_name) {
             unlink(Helper::getSitePath() . "upload/student/profile/" . $this->image_name);
-            
         } elseif ($this->nic_front || $this->image_name) {
             unlink(Helper::getSitePath() . "upload/student/nic_card/front/" . $this->nic_front);
             unlink(Helper::getSitePath() . "upload/student/nic_card/front/thumb/" . $this->nic_front);
