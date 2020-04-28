@@ -38,10 +38,10 @@ class EducationSubject {
 
     public function create() {
 
-        $query = "INSERT INTO `education_subject` (`name`,`sub_category`) VALUES  ('"
+        $query = "INSERT INTO `education_subject` (`name`,`sub_category`,`description`) VALUES  ('"
                 . $this->name . "','"
-                . $this->sub_category . "')";
-
+                . $this->sub_category . "','"
+                . $this->description . "')";
 
         $db = new Database();
 
@@ -70,11 +70,26 @@ class EducationSubject {
         return $array_res;
     }
 
+    public function getSubjectsByCategory($id) {
+
+        $query = "SELECT * FROM `education_subject` WHERE `sub_category`= $id";
+        $db = new Database();
+        $result = $db->readQuery($query);
+        $array_res = array();
+
+        while ($row = mysql_fetch_array($result)) {
+            array_push($array_res, $row);
+        }
+
+        return $array_res;
+    }
+
     public function update() {
 
         $query = "UPDATE  `education_subject` SET "
                 . "`name` ='" . $this->name . "', "
-                . "`sub_category` ='" . $this->sub_category . "' "
+                . "`sub_category` ='" . $this->sub_category . "', "
+                . "`description` ='" . $this->description . "' "
                 . "WHERE `id` = '" . $this->id . "'";
 
         $db = new Database();
@@ -91,7 +106,7 @@ class EducationSubject {
     public function delete() {
 
         $query = 'DELETE FROM `education_subject` WHERE id="' . $this->id . '"';
- 
+
         $db = new Database();
 
         return $db->readQuery($query);
