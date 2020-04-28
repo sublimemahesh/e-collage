@@ -1,4 +1,4 @@
-        <?php
+  <?php
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -19,7 +19,18 @@ class Lecture {
     public $nic_number;
     public $phone_number;
     public $address;
+    public $birth_day;
+    public $age;
+    public $grade;
+    public $school;
+    public $experience;
+    public $collage;
+    public $mediums;
+    public $education_level;
+    public $payment;
     public $city;
+    public $it_literacy;
+    public $facilities;
     public $district;
     public $authToken;
     public $lastLogin;
@@ -41,6 +52,17 @@ class Lecture {
 
             $this->id = $result['id'];
             $this->full_name = $result['full_name'];
+            $this->birth_day = $result['birth_day'];
+            $this->age = $result['age'];
+            $this->grade = $result['grade'];
+            $this->school = $result['school'];
+            $this->collage = $result['collage'];
+            $this->experience = $result['experience'];
+            $this->mediums = $result['mediums'];
+            $this->education_level = $result['education_level'];
+            $this->payment = $result['payment'];
+            $this->it_literacy = $result['it_literacy'];
+            $this->facilities = $result['facilities'];
             $this->email = $result['email'];
             $this->nic_number = $result['nic_number'];
             $this->phone_number = $result['phone_number'];
@@ -61,8 +83,19 @@ class Lecture {
 
     public function create() {
 
-        $query = "INSERT INTO `lecture` (`full_name`,`email`,`nic_number`,`phone_number`,`address`,`district`,`city`,`subject`,`password`) VALUES  ('"
+        $query = "INSERT INTO `lecture` (`full_name`,`birth_day`,`age`,`grade`,`school`,`collage`,`experience`,`mediums`,`education_level`,`payment`,`it_literacy`,`facilities`,`email`,`nic_number`,`phone_number`,`address`,`district`,`city`,`subject`,`password`) VALUES  ('"
                 . $this->full_name . "','"
+                . $this->birth_day . "','"
+                . $this->age . "','"
+                . $this->grade . "','"
+                . $this->school . "','"
+                . $this->collage . "','"
+                . $this->experience . "','"
+                . $this->mediums . "','"
+                . $this->education_level . "','"
+                . $this->payment . "','"
+                . $this->it_literacy . "','"
+                . $this->facilities . "','"
                 . $this->email . "', '"
                 . $this->nic_number . "', '"
                 . $this->phone_number . "', '"
