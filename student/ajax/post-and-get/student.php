@@ -11,6 +11,7 @@ if ($_POST['action'] == 'UPDATE') {
     $STUDENT->full_name = $_POST['full_name'];
     $STUDENT->nic_number = $_POST['nic_number'];
     $STUDENT->gender = $_POST['gender'];
+    $STUDENT->sub_category = $_POST['sub_category'];
     $STUDENT->age = $_POST['age'];
     $STUDENT->phone_number = $_POST['phone_number'];
     $STUDENT->address = $_POST['address'];
