@@ -17,14 +17,14 @@
 
                             </li> 
                             <li>	
-                                <a href="#">Categories</a>
+                                <a href="category.php">Categories</a>
 
                             </li> 
                             <li>	
-                                <a href="#">Lectures</a>
+                                <a href="lectures.php">Lectures</a>
 
                             </li>  
-                            <li><a href="#">Contact</a></li> 
+                            <li><a href="contact.php">Contact</a></li> 
                         </ul>
                     </nav>
                 </div>
