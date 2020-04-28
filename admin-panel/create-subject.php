@@ -88,6 +88,12 @@ if (isset($_GET['id'])) {
                                                     </select>
                                                 </div>
                                             </div>
+                                            <div class="form-group">
+                                                <label class="col-sm-1 control-label" for="title">Description: </label>
+                                                <div class="col-sm-11">
+                                                    <textarea rows="5"id="description" name="description" class="form-control" ></textarea>
+                                                </div>
+                                            </div>
 
                                             <div class="form-group">
                                                 <div class="col-md-3"></div> 
@@ -139,7 +145,7 @@ if (isset($_GET['id'])) {
 
                                                 </td>
                                             </tr>
-<?php } ?>
+                                        <?php } ?>
                                         <tfoot>
                                             <tr>
                                                 <th>ID</th>
@@ -170,5 +176,8 @@ if (isset($_GET['id'])) {
         <script src="js/demo.min.js"></script>
         <script src="js/sweetalert.min.js" type="text/javascript"></script>        
         <script src="delete/js/subject.js" type="text/javascript"></script>
+        
+
+        </script>
     </body>
 </html>

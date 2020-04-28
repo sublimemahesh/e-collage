@@ -47,7 +47,7 @@ class Student {
             $this->id = $result['id'];
             $this->full_name = $result['full_name'];
             $this->student_id = $result['student_id'];
-            $this->student_id = $result['sub_category'];
+            $this->sub_category = $result['sub_category'];
             $this->email = $result['email'];
             $this->nic_number = $result['nic_number'];
             $this->gender = $result['gender'];
@@ -110,6 +110,7 @@ class Student {
 
         return $array_res;
     }
+
 
     public function getActiveStudent() {
 
@@ -343,6 +344,7 @@ class Student {
         $_SESSION["full_name"] = $student['full_name'];
         $_SESSION["authToken"] = $student['authToken'];
         $_SESSION["lastLogin"] = $student['lastLogin'];
+        
         $_SESSION['login_time'] = time();
         $_SESSION['image_name'] = $student['image_name'];
     }

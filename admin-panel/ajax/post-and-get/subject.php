@@ -8,6 +8,7 @@ if (isset($_POST['create'])) {
 
     $EDUCATION_SUBJECT->name = $_POST['name'];
     $EDUCATION_SUBJECT->sub_category = $_POST['category'];
+    $EDUCATION_SUBJECT->description = $_POST['description'];
 
     $EDUCATION_SUBJECT->create();
     $result = [
@@ -23,6 +24,7 @@ if (isset($_POST['update'])) {
 
     $EDUCATION_SUBJECT->name = $_POST['name'];
     $EDUCATION_SUBJECT->sub_category = $_POST['category'];
+    $EDUCATION_SUBJECT->description = $_POST['description'];
     $EDUCATION_SUBJECT->update();
     $result = [
         "message" => 'success'
