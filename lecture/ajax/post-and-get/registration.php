@@ -20,15 +20,13 @@ $LECTURE->mediums = implode(",", $_POST['mediums']);
 $LECTURE->education_level = $_POST['education_level'];
 $LECTURE->it_literacy = implode(",", $_POST['it_literacy']);
 $LECTURE->facilities = implode(",", $_POST['facilities']);
-$LECTURE->subject = $_POST['subject'];
 $LECTURE->password = md5($_POST['password']);
 
 
 $LECTURE->create();
 if ($LECTURE->id) {
 
-    $LECTURE->login($LECTURE->email, $_POST['password']);
-
+    $LECTURE->login($LECTURE->email, $_POST['password']); 
     $response['status'] = 'success';
     echo json_encode($response);
     exit();
