@@ -174,6 +174,6 @@ if (isset($_GET['id'])) {
         <script src="js/demo.min.js"></script>
         <script src="js/sweetalert.min.js" type="text/javascript"></script>        
         <script src="delete/js/education-sub-category.js" type="text/javascript"></script>
-        <script src="ajax/js/education-sub-category.js" type="text/javascript"></script>
+       
     </body>
 </html>
