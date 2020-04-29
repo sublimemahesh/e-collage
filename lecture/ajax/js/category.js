@@ -1,12 +1,13 @@
 
 $(document).ready(function () {
-    
+
     //category Change
     $('#category').change(function () {
 
         var category = $(this).val();
-       
+
         $('#sub_category').empty();
+        $('#subject').empty();
         $.ajax({
             url: "ajax/post-and-get/category.php",
             type: "POST",
@@ -23,18 +24,18 @@ $(document).ready(function () {
                     html += data.name;
                     html += '</option>';
                 });
-
+                $('#subject').empty();
                 $('#sub_category').empty();
                 $('#sub_category').append(html);
             }
         });
     });
-    
+
 //Sub Category change    
     $('#sub_category').change(function () {
 
         var sub_category = $(this).val();
-       
+
         $('#subject').empty();
         $.ajax({
             url: "ajax/post-and-get/category.php",

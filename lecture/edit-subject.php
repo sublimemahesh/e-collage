@@ -1,13 +1,19 @@
 <?php
 include '../class/include.php';
 include './auth.php';
+$id = '';
+$id = $_GET['id'];
+$LECTURE_SUBJECT = new LectureSubject($id);
+$EDUCATIN_SUBJECT = new EducationSubject($LECTURE_SUBJECT->subject_id);
+$EDUCATION_SUB_CATEGORY = new EducationSubCategory($EDUCATIN_SUBJECT->sub_category);
+$EDUCATION_CATEGORY = new EducationCategory($EDUCATION_SUB_CATEGORY->category);
 ?>
 <html lang="en">
 
     <head>
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <title>Ecollege.lk - Create Subject  </title>
+        <title>Ecollege.lk - Edit Subject  </title>
         <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no">
         <meta property="og:url" content="http://demo.madebytilde.com/elephant">
         <meta property="og:type" content="website"> >
@@ -61,7 +67,7 @@ include './auth.php';
 
                                     <div class="card">
                                         <div class="card-header"> 
-                                            <strong>Create Subjects</strong>
+                                            <strong>Edit Subjects</strong>
                                         </div>
                                     </div>
                                     <form class="demo-form-wrapper card " style="padding: 50px" id="form-data">
@@ -70,13 +76,18 @@ include './auth.php';
                                                 <label class="col-sm-1 control-label " for="title" style="text-align: left">Category: </label>
                                                 <div class="col-sm-11">
                                                     <select  class="custom-select" id="category" name="category" required="">
-                                                        <option value="">-- Select your Category -- </option>
                                                         <?php
                                                         foreach (EducationCategory::all() as $education_category) {
-                                                            ?>
+                                                            if ($education_category['id'] == $EDUCATION_CATEGORY->id) {
+                                                                ?>
 
-                                                            <option value="<?php echo $education_category['id']; ?>"><?php echo $education_category['name']; ?></option>   
-                                                            <?php
+                                                                <option value="<?php echo $education_category['id']; ?>" selected=""><?php echo $education_category['name']; ?></option>   
+                                                            <?php } else {
+                                                                ?>
+                                                                <option value="<?php echo $education_category['id']; ?>" ><?php echo $education_category['name']; ?></option>   
+
+                                                                <?php
+                                                            }
                                                         }
                                                         ?>
                                                     </select>
@@ -86,7 +97,20 @@ include './auth.php';
                                                 <label class="col-sm-1 control-label " for="title" style="text-align: left">Sub Category: </label>
                                                 <div class="col-sm-11">
                                                     <select class="custom-select" name="sub_category" id="sub_category">
-                                                        <option value="" selected=""> -- Please Select Category First --</option>   
+                                                        <?php
+                                                        foreach (EducationSubCategory::all() as $education_sub_category) {
+                                                            if ($education_sub_category['id'] == $EDUCATION_SUB_CATEGORY->id) {
+                                                                ?>
+
+                                                                <option value="<?php echo $education_sub_category['id']; ?>" selected=""><?php echo $education_sub_category['name']; ?></option>   
+                                                            <?php } else {
+                                                                ?>
+                                                                <option value="<?php echo $education_sub_category['id']; ?>" ><?php echo $education_sub_category['name']; ?></option>   
+
+                                                                <?php
+                                                            }
+                                                        }
+                                                        ?>
                                                     </select>
                                                 </div>
                                             </div>
@@ -94,7 +118,20 @@ include './auth.php';
                                                 <label class="col-sm-1 control-label " for="title" style="text-align: left">  Subject: </label>
                                                 <div class="col-sm-11">
                                                     <select class="custom-select" name="subject" id="subject">
-                                                        <option value="" selected=""> -- Please Select Sub Category First --</option>   
+                                                        <?php
+                                                        foreach (EducationSubject::all() as $education_subject) {
+                                                            if ($education_subject['id'] == $EDUCATIN_SUBJECT->id) {
+                                                                ?>
+
+                                                                <option value="<?php echo $education_subject['id']; ?>" selected=""><?php echo $education_subject['name']; ?></option>   
+                                                            <?php } else {
+                                                                ?>
+                                                                <option value="<?php echo $education_subject['id']; ?>" ><?php echo $education_subject['name']; ?></option>   
+
+                                                                <?php
+                                                            }
+                                                        }
+                                                        ?>
                                                     </select>
                                                 </div>
                                             </div>
@@ -103,9 +140,9 @@ include './auth.php';
                                                 <div class="col-md-3"></div> 
                                                 <div class="col-md-4"></div> 
                                                 <div class="col-md-2">  
-                                                    <input type="hidden"  name="create"  >
-                                                    <input type="hidden"  name="lecture"  value="<?php echo $_SESSION['id'] ?>" >
-                                                    <input type="submit" class="btn btn-primary btn-block"   value="create" id="create" >
+                                                    <input type="hidden"  name="update"  >
+                                                    <input type="hidden"  name="id"  value="<?php echo $id ?>" >
+                                                    <input type="submit" class="btn btn-primary btn-block"   value="update" id="update" >
                                                 </div>
                                             </div>
                                         </div>
@@ -114,59 +151,8 @@ include './auth.php';
                                 </div>
 
                             </div>
-                            <div class="card">
-                                <div class="card-header">
-
-                                    <strong>Manage Subjects</strong>
-                                </div>
-                                <div class="card-body">
-                                    <table id="demo-datatables-colreorder-1" class="table table-hover table-striped table-nowrap dataTable" cellspacing="0" width="100%">
-                                        <thead>
-                                            <tr>
-                                                <th>ID</th>
-                                                <th>Category</th>  
-                                                <th>Sub Category</th>  
-                                                <th>Subject</th>  
-                                                <th>Option</th>
-                                            </tr>
-                                        </thead>
-                                        <?php
-                                        $LECTURE_SUBJECT = new LectureSubject(NULL);
-                                        foreach ($LECTURE_SUBJECT->getLectureSubjectsByLecture($_SESSION['id']) as $key => $lecture_subject) {
-                                            $key++;
-                                            $SUBJECT = new EducationSubject($lecture_subject['subject_id']);
-                                            $EDUCATION_SUB_CATEGORY = new EducationSubCategory($SUBJECT->sub_category);
-                                            $EDUCATION_CATEGORY = new EducationCategory($EDUCATION_SUB_CATEGORY->category);
-                                            ?>
-                                            <tr id="div<?php echo $lecture_subject['id'] ?>">
-                                                <td><?php echo $key ?></td>
-                                                <td><?php echo $EDUCATION_CATEGORY->name ?></td>
-                                                <td><?php echo $EDUCATION_SUB_CATEGORY->name ?></td>
-                                                <td><?php echo $SUBJECT->name ?></td>
 
 
-                                                <td> 
-                                                    <a href="edit-subject.php?id=<?php echo $lecture_subject['id'] ?>" class="op-link btn btn-sm btn-info"><i class="icon icon-pencil"></i></a>  |
-                                                    <a href="#" class="delete-lecture-subject btn btn-sm btn-danger" data-id="<?php echo $lecture_subject['id'] ?>"><i class="waves-effect icon icon-trash" data-type="cancel"></i></a> 
-
-                                                </td>
-                                            </tr>
-                                        <?php } ?>
-                                        <tfoot>
-                                            <tr>
-                                                <th>ID</th>
-                                                <th>Name</th>   
-                                                <th>Status</th>  
-                                                <th>Option</th>
-                                            </tr>
-                                        </tfoot>
-                                        <tbody>
-
-
-                                        </tbody>
-                                    </table>
-                                </div>
-                            </div>
                         </div>
                     </div>
                 </div>
@@ -181,9 +167,7 @@ include './auth.php';
         <script src="js/profile.min.js"></script>
         <script src="js/sweetalert.min.js" type="text/javascript"></script>
         <script src="js/demo.min.js"></script>
-        <script src="ajax/js/lecture.js" type="text/javascript"></script>
-        <script src="ajax/js/check-login.js" type="text/javascript"></script>
-
+  
         <script src="ajax/js/category.js" type="text/javascript"></script>
         <script src="ajax/js/lecture_subject.js" type="text/javascript"></script>
         <script src="delete/js/lecture-subject.js" type="text/javascript"></script>
