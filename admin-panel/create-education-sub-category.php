@@ -2,7 +2,13 @@
 <?php
 include '../class/include.php';
 include './auth.php';
-$id = $_GET['id'];
+
+if (isset($_GET['id'])) {
+    $id = $_GET['id'];
+    $CATEGORY = new EducationCategory($id);
+    $CATEGORY_NAME = $CATEGORY->name;
+}
+?>
 ?>
 <html lang="en">
 
@@ -58,7 +64,7 @@ $id = $_GET['id'];
                                     ?>
                                     <div class="card">
                                         <div class="card-header"> 
-                                            <strong>Create Education Sub Category</strong>
+                                            <strong>Create Education Sub Category-<?php echo $CATEGORY_NAME?></strong>
                                         </div>
                                     </div>
                                     <form class="demo-form-wrapper card "  method="post" style="padding: 50px"   id="form-data">
