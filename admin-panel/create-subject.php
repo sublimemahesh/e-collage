@@ -7,6 +7,8 @@ if (isset($_GET['id'])) {
     $id = $_GET['id'];
     $SUB_CATEGORY = new EducationSubCategory($id);
     $SUB_CATEGORY_NAME = $SUB_CATEGORY->name;
+    
+    
 }
 ?>
 <html lang="en">
@@ -63,7 +65,7 @@ if (isset($_GET['id'])) {
                                     ?>
                                     <div class="card">
                                         <div class="card-header"> 
-                                            <strong>Create Subject</strong>
+                                            <strong>Create Subject -<?php echo $SUB_CATEGORY_NAME?></strong>
                                         </div>
                                     </div>
                                     <form class="demo-form-wrapper card "  method="post" style="padding: 50px"   id="form-data">
@@ -74,20 +76,7 @@ if (isset($_GET['id'])) {
                                                     <input id="name" name="name" class="form-control" type="text"   >
                                                 </div>
                                             </div>
-                                            <div class="form-group">
-                                                <label class="col-sm-1 control-label" for="title">Category: </label>
-                                                <div class="col-sm-11">
-                                                    <select id="category" class="custom-select" name="category">
-                                                        <option value="<?php echo $id; ?>" selected="selected"> <?PHP echo $SUB_CATEGORY_NAME; ?> </option>
-                                                        <?php
-                                                        $EDUCATION_SUB_CATEGORY = new EducationSubCategory(NULL);
-                                                        foreach ($EDUCATION_SUB_CATEGORY->activeCategory() as $education_category) {
-                                                            ?>
-                                                            <option value="<?php echo $education_category['id'] ?>"><?php echo $education_category['name'] ?></option> 
-                                                        <?php } ?>
-                                                    </select>
-                                                </div>
-                                            </div>
+                              
                                             <div class="form-group">
                                                 <label class="col-sm-1 control-label" for="title">Description: </label>
                                                 <div class="col-sm-11">
@@ -126,7 +115,7 @@ if (isset($_GET['id'])) {
                                         </thead>
                                         <?php
                                         $EDUCATION_SUBJECT = new EducationSubject(NULL);
-                                        foreach ($EDUCATION_SUBJECT->all() as $key => $subject) {
+                                        foreach ($EDUCATION_SUBJECT->getSubjectsByCategory($id) as $key => $subject) {
                                             $key++;
                                             ?>
                                             <tr id="div<?php echo $subject['id'] ?>">
