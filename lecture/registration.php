@@ -211,7 +211,7 @@ include '../class/include.php';
                                     <label for="password" class="control-label">Register for payments</label> 
                                     <select id="form-control-21" class="custom-select" name="payment">
                                         <option value="" selected="selected"> -- Register for payments -- </option> 
-                                        <option value="1">Bank Account No/option>
+                                        <option value="1">Bank Account No</option>
                                         <option value="2">Account holder’s name as pass book</option>
                                         <option value="3">Bank Name</option>
                                         <option value="4"> Branch</option>  
@@ -263,7 +263,7 @@ include '../class/include.php';
                         <div class="row gutter-xs">
                             <div class="col-sm-12">
                                 <div class="form-group"> 
-                                    <label for="gender" >Equipment Facilities</label></br>
+                                    <label for="gender" >Equipment Facilities</label></br>                                   
                                     <label class="custom-control custom-control-primary custom-checkbox">
                                         <input class="custom-control-input" type="checkbox" name="facilities[]" value="Internet connection " >
                                         <span class="custom-control-indicator"></span>
