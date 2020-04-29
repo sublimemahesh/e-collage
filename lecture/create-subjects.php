@@ -115,8 +115,7 @@ include './auth.php';
 
                             </div>
                             <div class="card">
-                                <div class="card-header">
-
+                                <div class="card-header"> 
                                     <strong>Manage Subjects</strong>
                                 </div>
                                 <div class="card-body">
@@ -142,9 +141,7 @@ include './auth.php';
                                                 <td><?php echo $key ?></td>
                                                 <td><?php echo $EDUCATION_CATEGORY->name ?></td>
                                                 <td><?php echo $EDUCATION_SUB_CATEGORY->name ?></td>
-                                                <td><?php echo $SUBJECT->name ?></td>
-
-
+                                                <td><?php echo $SUBJECT->name ?></td> 
                                                 <td> 
                                                     <a href="edit-subject.php?id=<?php echo $lecture_subject['id'] ?>" class="op-link btn btn-sm btn-info"><i class="icon icon-pencil"></i></a>  |
                                                     <a href="#" class="delete-lecture-subject btn btn-sm btn-danger" data-id="<?php echo $lecture_subject['id'] ?>"><i class="waves-effect icon icon-trash" data-type="cancel"></i></a> 
@@ -159,11 +156,7 @@ include './auth.php';
                                                 <th>Status</th>  
                                                 <th>Option</th>
                                             </tr>
-                                        </tfoot>
-                                        <tbody>
-
-
-                                        </tbody>
+                                        </tfoot>                                       
                                     </table>
                                 </div>
                             </div>

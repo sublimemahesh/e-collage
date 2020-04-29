@@ -146,7 +146,8 @@ include './auth.php';
                                                 <option value="" selected="selected"> <?php
                                                     $CITY = new City($LECTURE->city);
                                                     echo $CITY->name
-                                                    ?> </option>
+                                                    ?> 
+                                                </option>
 
                                             </select>
                                         </div>
@@ -156,38 +157,6 @@ include './auth.php';
                                         <label class="col-sm-3 control-label" for="address">Address: </label>
                                         <div class="col-sm-9">
                                             <input id="address" name="address" class="form-control" type="text" value="<?php echo $LECTURE->address ?>">
-                                        </div>
-                                    </div>
-                                    <div class="form-group">
-                                        <label class="col-sm-3 control-label" for="email">Category: </label>
-                                        <div class="col-sm-9">
-                                            <select  class="custom-select" id="category" name="category" required="">
-                                                <option value="">-- Select your Category -- </option>
-                                                <?php
-                                                foreach (EducationCategory::all() as $education_category) {
-                                                    ?>
-
-                                                    <option value="<?php echo $education_category['id']; ?>"       ><?php echo $education_category['name']; ?></option>   
-                                                    <?php
-                                                }
-                                                ?>
-                                            </select>
-                                        </div>
-                                    </div>
-                                    <div class="form-group">
-                                        <label class="col-sm-3 control-label" for="sub_category">Sub Category: </label>
-                                        <div class="col-sm-9">
-                                            <select class="custom-select" name="sub_category" id="sub_category">
-                                                <option value="" selected=""> -- Please Select Category First --</option>   
-                                            </select>
-                                        </div>
-                                    </div>
-                                    <div class="form-group">
-                                        <label class="col-sm-3 control-label" for="subject">Subject: </label>
-                                        <div class="col-sm-9">
-                                            <select class="custom-select" name="subject" id="subject">
-                                                <option value="" selected=""> -- Please Select Sub Category First --</option>   
-                                            </select>
                                         </div>
                                     </div>
                                     <div class="form-group">

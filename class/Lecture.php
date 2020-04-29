@@ -83,7 +83,7 @@ class Lecture {
 
     public function create() {
 
-        $query = "INSERT INTO `lecture` (`full_name`,`birth_day`,`age`,`grade`,`school`,`collage`,`experience`,`mediums`,`education_level`,`payment`,`it_literacy`,`facilities`,`email`,`nic_number`,`phone_number`,`address`,`district`,`city`,`subject`,`password`) VALUES  ('"
+        $query = "INSERT INTO `lecture` (`full_name`,`birth_day`,`age`,`grade`,`school`,`collage`,`experience`,`mediums`,`education_level`,`payment`,`it_literacy`,`facilities`,`email`,`nic_number`,`phone_number`,`address`,`district`,`city`,`password`) VALUES  ('"
                 . $this->full_name . "','"
                 . $this->birth_day . "','"
                 . $this->age . "','"
@@ -102,7 +102,6 @@ class Lecture {
                 . $this->address . "', '"
                 . $this->district . "', '"
                 . $this->city . "', '"
-                . $this->subject . "', '"
                 . $this->password . "')";
 
         $db = new Database();

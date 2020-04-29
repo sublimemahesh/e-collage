@@ -303,21 +303,8 @@ include '../class/include.php';
                             </div> 
                         </div>
                         <div class="row gutter-xs">
-                            <div class="col-sm-6">
-                                <div class="form-group">
-                                    <label for="gender" >Subject </label>
-                                    <select id="form-control-21" class="custom-select" name="subject">
-                                        <option value="" selected="selected"> -- Select your Subject -- </option>
-                                        <?php
-                                        $SUBJECT = new EducationSubject(NULL);
-                                        foreach ($SUBJECT->all() as $subject) {
-                                            ?>
-                                            <option value="<?php echo $subject['id'] ?>"><?php echo $subject['name'] ?></option>
-                                        <?php } ?>                
-                                    </select>
-                                </div>
-                            </div>
-                            <div class="col-sm-6">
+                   
+                            <div class="col-sm-12">
                                 <div class="form-group">
                                     <label for="password" class="control-label">Password</label> 
                                     <input  id="password" class="form-control" type="password" name="password" id="labelPassword"     data-field="password" >
