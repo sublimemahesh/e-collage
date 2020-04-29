@@ -4,7 +4,7 @@ include '../class/include.php';
 include './auth.php';
 $id = '';
 $id = $_GET['id'];
-$CATEGORY = new Category($id);
+$EDUCATION_CATEGORY = new EducationCategory($id);
 ?>
 <html lang="en">
 
@@ -69,14 +69,14 @@ $CATEGORY = new Category($id);
                                             <div class="form-group">
                                                 <label class="col-sm-1 control-label" for="title">Name </label>
                                                 <div class="col-sm-11">
-                                                    <input id="name" name="name" class="form-control" type="text" value="<?php echo $CATEGORY->name ?>"  >
+                                                    <input id="name" name="name" class="form-control" type="text" value="<?php echo $EDUCATION_CATEGORY->name ?>"  >
                                                 </div>
                                             </div>
                                             <div class="form-group">
                                                 <label class="col-sm-1 control-label " for="title" style="text-align: left"> Image: </label>
                                                 <div class="col-sm-11">
                                                     <input id="image_name" name="image_name" class="form-control" type="file"   >
-                                                    <img src="../upload/category/<?php echo $CATEGORY->image_name?>" style="margin-top: 10px;">
+                                                    <img src="../upload/category/<?php echo $EDUCATION_CATEGORY->image_name?>" style="margin-top: 10px;">
                                                 </div>
                                             </div>
 
@@ -86,8 +86,8 @@ $CATEGORY = new Category($id);
                                                 <div class="col-md-3"></div> 
                                                 <div class="col-md-4"></div> 
                                                 <div class="col-md-2"> 
-                                                    <input type="hidden" name="id" value="<?php echo $CATEGORY->id ?>">
-                                                    <input type="hidden" name="oldImageName" value="<?php echo $CATEGORY->image_name ?>">
+                                                    <input type="hidden" name="id" value="<?php echo $EDUCATION_CATEGORY->id ?>">
+                                                    <input type="hidden" name="oldImageName" value="<?php echo $EDUCATION_CATEGORY->image_name ?>">
                                                     <input type="hidden" name="update"  >
                                                     <input type="submit" class="btn btn-primary btn-block"   id="update"  value="update" >
                                                 </div>

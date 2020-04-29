@@ -735,6 +735,9 @@ header .scrolldown:hover > span{
 	bottom: 4px;
 }
 
+.slick-features-teachers{
+	padding: 0 80px;
+}
 .slick-features .slick-arrow{
 	color: #d4d4d4;
 	line-height: 300px;
@@ -752,7 +755,23 @@ header .scrolldown:hover > span{
 	right: 0;
 	border-left: 1px solid #e8e8e8;
 }
+.slick-features-teachers .slick-arrow{
+	color: #2b4556;
+	line-height: 210px;
+	position: absolute;
+	width: 80px;
+	cursor: pointer;
+	top: 0;
+}
 
+.slick-features-teachers .slick-arrow.zmdi-chevron-left{
+	left: 0;
+}
+
+.slick-features-teachers .slick-arrow.zmdi-chevron-right{
+	right: 0;
+	
+}
 h3 + p {
 	font-family: "Work Sans", sans-serif;
 	font-size: 14px;

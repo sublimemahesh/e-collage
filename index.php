@@ -99,17 +99,17 @@
                 </div>
                 <div class="row">
                     <?php
-                    $CATEGORY = new Category(null);
-                    foreach ($CATEGORY->all() as $key => $category) {
+                    $EDUCATION_CATEGORY = new EducationCategory(null);
+                    foreach ($EDUCATION_CATEGORY->all() as $key => $education_category) {
                         if ($key < 11) {
                             ?>
                             <div class="col-md-3 col-sm-6 category">
-                                <img src="upload/category/<?php echo $category['image_name'] ?>" alt="Category">
-                                <h5><?php echo $category['name'] ?></h5>
+                                <img src="upload/category/<?php echo $education_category['image_name'] ?>" alt="Category">
+                                <h5><?php echo $education_category['name'] ?></h5>
                                 <div class="overlay text-center">
                                     <p class="pull-right"><span>93</span>TRAINERS</p>
                                     <p class="pull-left"><span>418</span>TUTORIALS</p>
-                                    <h5><?php echo $category['name'] ?></h5>
+                                    <h5><?php echo $education_category['name'] ?></h5>
                                     <a href="#">Click Here</a>
                                 </div>
                             </div>
