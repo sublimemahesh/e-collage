@@ -2,14 +2,13 @@
 <?php
 include '../class/include.php';
 include './auth.php';
-$id = $_GET['id'];
 ?>
 <html lang="en">
 
     <head>
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <title>Create Education Category</title>
+        <title>Create Category</title>
 
         <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-iconaa.png">
         <link rel="icon" type="image/png" href="favicon-32x32.png" sizes="32x32">
@@ -58,32 +57,21 @@ $id = $_GET['id'];
                                     ?>
                                     <div class="card">
                                         <div class="card-header"> 
-                                            <strong>Create Sub Category</strong>
+                                            <strong>Create Category</strong>
                                         </div>
                                     </div>
                                     <form class="demo-form-wrapper card "  method="post" style="padding: 50px"   id="form-data">
                                         <div class="form form-horizontal">
                                             <div class="form-group">
-                                                <label class="col-sm-1 control-label " for="title" style="text-align: left">Name: </label>
-                                                <div class="col-sm-11">
+                                                <label class="col-sm-2 control-label " for="title" style="text-align: left">Category Name: </label>
+                                                <div class="col-sm-10">
                                                     <input id="name" name="name" class="form-control" type="text"   >
                                                 </div>
                                             </div>
-                                            <div class="form-group hidden">
-                                                <label class="col-sm-1 control-label " for="title" style="text-align: left">Name: </label>
-                                                <div class="col-sm-11">
-                                                    <input id="id" name="id" class="form-control" type="text" value="<?php echo $id ?>" >
-                                                </div>
-                                            </div>
                                             <div class="form-group">
-                                                <div class="col-sm-1">
-                                                </div>
-                                                <div class="col-sm-11">
-                                                    <label class="custom-control custom-control-primary custom-checkbox">
-                                                        <input class="custom-control-input" type="checkbox" name="status" checked="" value="1" >
-                                                        <span class="custom-control-indicator"></span>
-                                                        <span class="custom-control-label">Active </span>
-                                                    </label> 
+                                                <label class="col-sm-2 control-label " for="title" style="text-align: left"> Image: </label>
+                                                <div class="col-sm-10">
+                                                    <input id="image_name" name="image_name" class="form-control" type="file"   >
                                                 </div>
                                             </div>
 
@@ -98,13 +86,10 @@ $id = $_GET['id'];
                                             </div>
                                         </div>
                                     </form>
-                                </div>
-
-                            </div>
-                            <div class="card">
+                                        <div class="card">
                                 <div class="card-header">
 
-                                    <strong>Manage Sub Category</strong>
+                                    <strong>Manage Category</strong>
                                 </div>
                                 <div class="card-body">
                                     <table id="demo-datatables-colreorder-1" class="table table-hover table-striped table-nowrap dataTable" cellspacing="0" width="100%">
@@ -112,29 +97,23 @@ $id = $_GET['id'];
                                             <tr>
                                                 <th>ID</th>
                                                 <th>Name</th>  
-                                                <th>Status</th>  
                                                 <th>Option</th>
                                             </tr>
                                         </thead>
                                         <?php
-                                        $id = $_GET['id'];
-                                        $EDUCATION_CATEGORY = new EducationCategory(NULL);
-                                        foreach ($EDUCATION_CATEGORY->CategoryByEducationId($id) as $key => $education_category) {
+                                        $CATEGORY = new EducationCategory(NULL);
+                                        foreach ($CATEGORY->all() as $key => $category) {
                                             $key++;
                                             ?>
-                                            <tr id="div<?php echo $education_category['id'] ?>">
+                                            <tr id="div<?php echo $category['id'] ?>">
                                                 <td><?php echo $key ?></td>
-                                                <td><?php echo $education_category['name'] ?></td>
-                                                <?php if ($education_category['status'] == 1) {
-                                                    ?>
-                                                    <td>Activate</td>
-                                                <?php } else { ?>
-                                                    <td>In Activate</td>
-                                                <?php } ?>
+                                                <td><?php echo $category['name'] ?></td>
+
                                                 <td> 
-                                                    <a href="edit-education-category.php?id=<?php echo $education_category['id'] ?>" class="op-link btn btn-sm btn-info"><i class="icon icon-pencil"></i></a>  |
-                                                    <a href="create-subject.php?id=<?php echo $education_category['id'] ?>" class="op-link btn btn-sm btn-info"><i class="icon icon-archive"></i></a>  |  
-                                                    <a href="#" class="delete-category btn btn-sm btn-danger" data-id="<?php echo $education_category['id'] ?>"><i class="waves-effect icon icon-trash" data-type="cancel"></i></a> 
+                                                    <a href="edit-category.php?id=<?php echo $category['id'] ?>" class="op-link btn btn-sm btn-info"><i class="icon icon-pencil"></i></a>  |  
+                                                    <a href="create-education-sub-category.php?id=<?php echo $category['id'] ?>" class="op-link btn btn-sm btn-info" ><i class="waves-effect icon icon-archive" ></i></a>  | 
+
+                                                    <a href="#" class="delete-category btn btn-sm btn-danger" data-id="<?php echo $category['id'] ?>"><i class="waves-effect icon icon-trash" data-type="cancel"></i></a> 
 
                                                 </td>
                                             </tr>
@@ -143,7 +122,6 @@ $id = $_GET['id'];
                                             <tr>
                                                 <th>ID</th>
                                                 <th>Name</th>   
-                                                <th>Status</th>  
                                                 <th>Option</th>
                                             </tr>
                                         </tfoot>
@@ -154,6 +132,10 @@ $id = $_GET['id'];
                                     </table>
                                 </div>
                             </div>
+                                </div>
+
+                            </div>
+                        
                         </div>
                     </div>
                 </div>
@@ -168,6 +150,6 @@ $id = $_GET['id'];
         <script src="js/demo.min.js"></script>
         <script src="js/sweetalert.min.js" type="text/javascript"></script>        
         <script src="delete/js/education-category.js" type="text/javascript"></script>
-        <script src="ajax/js/education_category.js" type="text/javascript"></script>
+        <script src="ajax/js/education-category.js" type="text/javascript"></script>
     </body>
 </html>

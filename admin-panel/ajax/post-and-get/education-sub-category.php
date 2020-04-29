@@ -5,13 +5,13 @@ include '../../../class/include.php';
 //create catetgory
 if (isset($_POST['create'])) {
 
-    $EDUCATION_CATEGORY = new EducationCategory(NULL);
+    $EDUCATION_SUB_CATEGORY = new EducationSubCategory(NULL);
 
-    $EDUCATION_CATEGORY->name = $_POST['name'];
-    $EDUCATION_CATEGORY->category = $_POST['id'];
+    $EDUCATION_SUB_CATEGORY->name = $_POST['name'];
+    $EDUCATION_SUB_CATEGORY->category = $_POST['id'];
 
     if (isset($_POST['status'])) {
-        $EDUCATION_CATEGORY->status = $_POST['status'];
+        $EDUCATION_SUB_CATEGORY->status = $_POST['status'];
     }
 
 //    $dir_dest = '../../../upload/category/';
@@ -36,9 +36,9 @@ if (isset($_POST['create'])) {
 //        }
 //    }
 //
-//    $EDUCATION_CATEGORY->image_name = $imgName;
+//    $EDUCATION_SUB_CATEGORY->image_name = $imgName;
 
-    $EDUCATION_CATEGORY->create();
+    $EDUCATION_SUB_CATEGORY->create();
     $result = [
         "message" => 'success'
     ];
@@ -48,7 +48,7 @@ if (isset($_POST['create'])) {
 
 if (isset($_POST['update'])) {
 
-    $EDUCATION_CATEGORY = new EducationCategory($_POST['id']);
+    $EDUCATION_SUB_CATEGORY = new EducationSubCategory($_POST['id']);
 
 //    $dir_dest = '../../../upload/category/';
 //
@@ -74,15 +74,15 @@ if (isset($_POST['update'])) {
 //        }
 //    }
 //
-//    $EDUCATION_CATEGORY->image_name = $_POST ["oldImageName"];
-    $EDUCATION_CATEGORY->name = $_POST['name'];
+//    $EDUCATION_SUB_CATEGORY->image_name = $_POST ["oldImageName"];
+    $EDUCATION_SUB_CATEGORY->name = $_POST['name'];
     if (empty($_POST['status'])) {
-        $EDUCATION_CATEGORY->status = 0;
+        $EDUCATION_SUB_CATEGORY->status = 0;
     } else {
-        $EDUCATION_CATEGORY->status = $_POST['status'];
+        $EDUCATION_SUB_CATEGORY->status = $_POST['status'];
     }
 
-    $EDUCATION_CATEGORY->update();
+    $EDUCATION_SUB_CATEGORY->update();
     $result = [
         "message" => 'success'
     ];

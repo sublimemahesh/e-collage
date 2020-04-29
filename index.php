@@ -143,7 +143,7 @@
                     </div>
                 </div>
                 <div class="row text-center">
-
+                    <div class="slick-features-teachers">
                     <div class="col-md-2 col-sm-4 col-xs-6">	
                         <div class="teacher">
                             <div class="imgcontainer">
@@ -227,6 +227,7 @@
                         </div>
                     </div>
                 </div>
+                    </div>
             </div>
 
             <div class="platform text-center">
