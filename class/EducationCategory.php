@@ -78,7 +78,7 @@ class EducationCategory {
                 . "`image_name` ='" . $this->image_name . "', "
                 . "`queue` ='" . $this->queue . "' "
                 . "WHERE `id` = '" . $this->id . "'";
-        
+
         $db = new Database();
 
         $result = $db->readQuery($query);
@@ -97,6 +97,22 @@ class EducationCategory {
         $db = new Database();
 
         return $db->readQuery($query);
+    }
+
+    public function GetByDistrict($district) {
+
+        $query = "SELECT * FROM `city` WHERE `district` = '" . $district . "' ORDER BY `queue` ASC";
+
+        $db = new Database();
+
+        $result = $db->readQuery($query);
+        $array_res = array();
+
+        while ($row = mysql_fetch_array($result)) {
+            array_push($array_res, $row);
+        }
+
+        return $array_res;
     }
 
 }

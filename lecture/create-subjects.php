@@ -25,6 +25,7 @@ include './auth.php';
         <link rel="stylesheet" href="css/profile.min.css">
         <link href="css/sweetalert.css" rel="stylesheet" type="text/css"/>
         <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
+         <link rel="stylesheet" href="css/demo.min.css">
         <style>
             .profile-pic {
                 position: relative;
@@ -88,79 +89,14 @@ include './auth.php';
                     <img id="loading" src="https://www.vedantalimited.com/SiteAssets/Images/loading.gif" style="display: none; position: absolute;margin-top: 20%;margin-left: 37%;z-index: 999;"/>
 
                     <div class="row"> 
-                        <div class="col-md-2"></div>
-                        <div class="col-md-8"> 
+                        <div class="col-md-1"></div>
+                        <div class="col-md-10"> 
+
                             <form class="demo-form-wrapper card " style="padding: 50px" id="form-data">
                                 <div class="form form-horizontal">
                                     <div class="form-group">
-                                        <label class="col-sm-3 control-label" for="full_name">Full Name: </label>
-                                        <div class="col-sm-9">
-                                            <input id="full_name" name="full_name" class="form-control" type="text"  value="<?php echo $LECTURE->full_name ?>">
-                                        </div>
-                                    </div>
-                                    <div class="form-group">
-                                        <label class="col-sm-3 control-label" for="nic_number">NIC Number: </label>
-                                        <div class="col-sm-9">
-                                            <input id="nic_number" name="nic_number" class="form-control" type="text" value="<?php echo $LECTURE->nic_number ?>">
-                                        </div>
-                                    </div>
-                                    <div class="form-group">
-                                        <label class="col-sm-3 control-label" for="phone_number">Phone Number: </label>
-                                        <div class="col-sm-9">
-                                            <input id="phone_number" name="phone_number" class="form-control" type="text" value="<?php echo $LECTURE->phone_number ?>">
-                                        </div>
-                                    </div>
-                                    <div class="form-group">
-                                        <label class="col-sm-3 control-label" for="email">Email: </label>
-                                        <div class="col-sm-9">
-                                            <input id="email" name="email" class="form-control" type="text" value="<?php echo $LECTURE->email ?>">
-                                        </div>
-                                    </div>
-
-                                    <div class="form-group">
-                                        <label class="col-sm-3 control-label" for="email">District: </label>
-                                        <div class="col-sm-9">
-                                            <select  class="custom-select" id="district" name="district" required="">
-                                                <option value="">-- Select your District -- </option>
-                                                <?php
-                                                foreach (District::all() as $district) {
-                                                    if ($district['id'] == $LECTURE->district) {
-                                                        ?>
-                                                        <option value="<?php echo $district['id']; ?>" selected=""><?php echo $district['name']; ?></option>   
-                                                        <?php
-                                                    } else {
-                                                        ?> 
-                                                        <option value="<?php echo $district['id']; ?>"       ><?php echo $district['name']; ?></option>   
-                                                        <?php
-                                                    }
-                                                }
-                                                ?>
-                                            </select>
-                                        </div>
-                                    </div>
-
-                                    <div class="form-group">
-                                        <label class="col-sm-3 control-label" for="city">City: </label>
-                                        <div class="col-sm-9">
-                                            <select class="custom-select" name="city" id="city-bar">
-                                                <option value="" selected="selected"> <?php
-                                                    $CITY = new City($LECTURE->city);
-                                                    echo $CITY->name
-                                                    ?> </option>
-
-                                            </select>
-                                        </div>
-                                    </div>
-
-                                    <div class="form-group">
-                                        <label class="col-sm-3 control-label" for="address">Address: </label>
-                                        <div class="col-sm-9">
-                                            <input id="address" name="address" class="form-control" type="text" value="<?php echo $LECTURE->address ?>">
-                                        </div>
-                                    </div>
-                                    <div class="form-group">
-                                        <label class="col-sm-3 control-label" for="email">Category: </label>
-                                        <div class="col-sm-9">
+                                        <label class="col-sm-2 control-label" for="email">Category: </label>
+                                        <div class="col-sm-10">
                                             <select  class="custom-select" id="category" name="category" required="">
                                                 <option value="">-- Select your Category -- </option>
                                                 <?php
@@ -175,16 +111,16 @@ include './auth.php';
                                         </div>
                                     </div>
                                     <div class="form-group">
-                                        <label class="col-sm-3 control-label" for="sub_category">Sub Category: </label>
-                                        <div class="col-sm-9">
+                                        <label class="col-sm-2 control-label" for="sub_category">Sub Category: </label>
+                                        <div class="col-sm-10">
                                             <select class="custom-select" name="sub_category" id="sub_category">
                                                 <option value="" selected=""> -- Please Select Category First --</option>   
                                             </select>
                                         </div>
                                     </div>
                                     <div class="form-group">
-                                        <label class="col-sm-3 control-label" for="subject">Subject: </label>
-                                        <div class="col-sm-9">
+                                        <label class="col-sm-2 control-label" for="subject">Subject: </label>
+                                        <div class="col-sm-10">
                                             <select class="custom-select" name="subject" id="subject">
                                                 <option value="" selected=""> -- Please Select Sub Category First --</option>   
                                             </select>
@@ -203,9 +139,52 @@ include './auth.php';
                                     </div>
                                 </div>
                             </form>
-                           
+
+
+
+                            <div class="layout-content-body">
+                                <div class="card">
+                                    <div class="card-header">
+
+                                        <strong>  Manage Your Subjects</strong>
+                                    </div>
+                                    <div class="card-body">
+                                        <table id="demo-datatables-responsive-2" class="table table-bordered table-striped table-nowrap dataTable" cellspacing="0" width="100%">
+                                            <thead>
+                                                <tr>
+                                                    <th>id</th>
+                                                    <th>Category</th>
+                                                    <th>Sub Category</th>
+                                                    <th>Subject</th>
+                                                    <th>Option</th> 
+                                                    <th>Option</th> 
+                                                    <th>Option</th> 
+                                                    <th>Option</th> 
+                                                   
+                                                 
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr>
+                                                    <td>Tiger</td>
+                                                    <td>Nixon</td>
+                                                    <td>System Architect</td>
+                                                    <td>Edinburgh</td>
+                                                    <td>61</td> 
+                                                    <td>61</td> 
+                                                    <td>61</td> 
+                                                    <td>61</td> 
+                                                </tr>
+
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+
                         </div>
-                        <div class="col-md-2"></div>
+
+                        <div class="col-md-1"></div>
                     </div>
                 </div>
             </div>
@@ -220,7 +199,7 @@ include './auth.php';
         <script src="js/application.min.js"></script>
         <script src="js/profile.min.js"></script>
         <script src="js/sweetalert.min.js" type="text/javascript"></script>
-
+        <script src="js/demo.min.js"></script>
         <script src="ajax/js/lecture.js" type="text/javascript"></script>
         <script src="ajax/js/check-login.js" type="text/javascript"></script>
 
