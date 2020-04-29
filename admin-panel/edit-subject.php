@@ -6,7 +6,7 @@ $id = '';
 $id = $_GET['id'];
 $EDUCATION_SUBJECT = new EducationSubject($id);
 $CATEGORY_ID=$EDUCATION_SUBJECT->sub_category;
-$SUB_CATEGORIES=new EducationCategory($CATEGORY_ID);
+$SUB_CATEGORIES=new EducationSubCategory($CATEGORY_ID);
 $CATEGORY_NAME=$SUB_CATEGORIES->name;
 ?>
 <html lang="en">
@@ -81,7 +81,7 @@ $CATEGORY_NAME=$SUB_CATEGORIES->name;
                                                     <select id="category" class="custom-select" name="category">
                                                         <option value="" selected="selected"> <?php echo $CATEGORY_NAME ?></option>
                                                         <?php
-                                                        $EDUCATION_CATEGORY = new EducationCategory(NULL);
+                                                        $EDUCATION_CATEGORY = new EducationSubCategory(NULL);
                                                         foreach ($EDUCATION_CATEGORY->activeCategory() as $education_category) {
                                                             
                                                             if ($EDUCATION_SUBJECT->education_category == $education_category['id']) {

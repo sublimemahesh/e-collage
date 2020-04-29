@@ -4,7 +4,7 @@ include '../class/include.php';
 include './auth.php';
 $id = '';
 $id = $_GET['id'];
-$EDUCATION_CATEGORY = new EducationCategory($id);
+$EDUCATION_SUB_CATEGORY = new EducationSubCategory($id);
 ?>
 <html lang="en">
 
@@ -69,13 +69,13 @@ $EDUCATION_CATEGORY = new EducationCategory($id);
                                             <div class="form-group">
                                                 <label class="col-sm-1 control-label" for="title">Name </label>
                                                 <div class="col-sm-11">
-                                                    <input id="name" name="name" class="form-control" type="text" value="<?php echo $EDUCATION_CATEGORY->name ?>"  >
+                                                    <input id="name" name="name" class="form-control" type="text" value="<?php echo $EDUCATION_SUB_CATEGORY->name ?>"  >
                                                 </div>
                                             </div>
                                             <div class="form-group hidden">
                                                 <label class="col-sm-1 control-label " for="title" style="text-align: left">Name: </label>
                                                 <div class="col-sm-11">
-                                                    <input id="id" name="id" class="form-control" type="text" value="<?php echo $EDUCATION_CATEGORY->category ?>" >
+                                                    <input id="id" name="id" class="form-control" type="text" value="<?php echo $EDUCATION_SUB_CATEGORY->category ?>" >
                                                 </div>
                                             </div>
                                             <div class="form-group">
@@ -84,7 +84,7 @@ $EDUCATION_CATEGORY = new EducationCategory($id);
                                                 <div class="col-sm-11">
                                                     <label class="custom-control custom-control-primary custom-checkbox">
                                                         <input class="custom-control-input" type="checkbox" name="status"  <?php
-                                                        if ($EDUCATION_CATEGORY->status == 1) {
+                                                        if ($EDUCATION_SUB_CATEGORY->status == 1) {
                                                             echo 'checked';
                                                         }
                                                         ?> value="1">
@@ -100,7 +100,7 @@ $EDUCATION_CATEGORY = new EducationCategory($id);
                                                 <div class="col-md-3"></div> 
                                                 <div class="col-md-4"></div> 
                                                 <div class="col-md-2"> 
-                                                    <input type="hidden" name="id" value="<?php echo $EDUCATION_CATEGORY->id ?>">
+                                                    <input type="hidden" name="id" value="<?php echo $EDUCATION_SUB_CATEGORY->id ?>">
                                                     <input type="hidden" name="update"  >
                                                     <input type="submit" class="btn btn-primary btn-block"   id="update"  value="update" >
                                                 </div>
