@@ -15,9 +15,8 @@ class EducationCategory {
 
     public $id;
     public $name;
-    public $category;
-    public $status;
-    public $sort;
+    public $image_name;
+    public $queue;
 
     public function __construct($id) {
         if ($id) {
@@ -30,9 +29,8 @@ class EducationCategory {
 
             $this->id = $result['id'];
             $this->name = $result['name'];
-            $this->category = $result['category'];
-            $this->status = $result['status'];
-            $this->sort = $result['sort'];
+            $this->image_name = $result['image_name'];
+            $this->queue = $result['queue'];
 
             return $this;
         }
@@ -40,11 +38,10 @@ class EducationCategory {
 
     public function create() {
 
-        $query = "INSERT INTO `education_category` (`name`,`category`,`status`,`sort`) VALUES  ('"
+        $query = "INSERT INTO `education_category` (`name`,`image_name`,`queue`) VALUES  ('"
                 . $this->name . "','"
-                . $this->category . "','"
-                . $this->status . "','"
-                . $this->sort . "')";
+                . $this->image_name . "','"
+                . $this->queue . "')";
 
 
         $db = new Database();
@@ -74,29 +71,14 @@ class EducationCategory {
         return $array_res;
     }
 
-    public function activeCategory() {
-
-        $query = "SELECT * FROM `education_category` WHERE `status` = 1";
-        $db = new Database();
-        $result = $db->readQuery($query);
-        $array_res = array();
-
-        while ($row = mysql_fetch_array($result)) {
-            array_push($array_res, $row);
-        }
-
-        return $array_res;
-    }
-
     public function update() {
 
         $query = "UPDATE  `education_category` SET "
                 . "`name` ='" . $this->name . "', "
-                . "`category` ='" . $this->category . "', "
-                . "`status` ='" . $this->status . "', "
-                . "`sort` ='" . $this->sort . "' "
+                . "`image_name` ='" . $this->image_name . "', "
+                . "`queue` ='" . $this->queue . "' "
                 . "WHERE `id` = '" . $this->id . "'";
-
+        
         $db = new Database();
 
         $result = $db->readQuery($query);
@@ -108,24 +90,10 @@ class EducationCategory {
         }
     }
 
-    public function CategoryByEducationId($id) {
-
-        $query = "SELECT * FROM `education_category`  WHERE `category`= $id ";
-        $db = new Database();
-        $result = $db->readQuery($query);
-        $array_res = array();
-
-        while ($row = mysql_fetch_array($result)) {
-            array_push($array_res, $row);
-        }
-
-        return $array_res;
-    }
-
     public function delete() {
 
         $query = 'DELETE FROM `education_category` WHERE id="' . $this->id . '"';
-
+ 
         $db = new Database();
 
         return $db->readQuery($query);

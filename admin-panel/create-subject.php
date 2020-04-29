@@ -5,7 +5,7 @@ include './auth.php';
 $id = '';
 if (isset($_GET['id'])) {
     $id = $_GET['id'];
-    $SUB_CATEGORY = new EducationCategory($id);
+    $SUB_CATEGORY = new EducationSubCategory($id);
     $SUB_CATEGORY_NAME = $SUB_CATEGORY->name;
 }
 ?>
@@ -80,8 +80,8 @@ if (isset($_GET['id'])) {
                                                     <select id="category" class="custom-select" name="category">
                                                         <option value="<?php echo $id; ?>" selected="selected"> <?PHP echo $SUB_CATEGORY_NAME; ?> </option>
                                                         <?php
-                                                        $EDUCATION_CATEGORY = new EducationCategory(NULL);
-                                                        foreach ($EDUCATION_CATEGORY->activeCategory() as $education_category) {
+                                                        $EDUCATION_SUB_CATEGORY = new EducationSubCategory(NULL);
+                                                        foreach ($EDUCATION_SUB_CATEGORY->activeCategory() as $education_category) {
                                                             ?>
                                                             <option value="<?php echo $education_category['id'] ?>"><?php echo $education_category['name'] ?></option> 
                                                         <?php } ?>
@@ -133,9 +133,9 @@ if (isset($_GET['id'])) {
                                                 <td><?php echo $key ?></td>
                                                 <td><?php echo $subject['name'] ?></td>
                                                 <td><?php
-                                                    $EDUCATION_CATEGORY = new EducationCategory($subject['sub_category']);
+                                                    $EDUCATION_SUB_CATEGORY = new EducationSubCategory($subject['sub_category']);
 
-                                                    echo $EDUCATION_CATEGORY->name
+                                                    echo $EDUCATION_SUB_CATEGORY->name
                                                     ?></td>
 
                                                 <td> 

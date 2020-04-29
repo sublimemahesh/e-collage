@@ -5,9 +5,9 @@ include '../../../class/include.php';
 
 if ($_POST['option'] == 'delete') {
 
-    $EDUCATION_CATEGORY = new EducationCategory($_POST['id']);
+    $CATEGORY = new EducationCategory($_POST['id']);
 
-    $result = $EDUCATION_CATEGORY->delete();
+    $result = $CATEGORY->delete();
 
     if ($result) {
         $data = array("status" => TRUE);

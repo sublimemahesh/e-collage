@@ -56,8 +56,8 @@
                             <span class="sidenav-label">Category</span>
                         </a>
                         <ul class="sidenav level-2 collapse"> 
-                            <li><a href="create-category.php">Create Category</a></li>
-                            <li><a href="manage-category.php">Manage Category</a></li>
+                            <li><a href="create-education-category.php">Create Category</a></li>
+                            <li><a href="manage-education-category.php">Manage Category</a></li>
 
                         </ul>
                     </li>

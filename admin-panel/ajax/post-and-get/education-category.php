@@ -5,7 +5,7 @@ include '../../../class/include.php';
 //create catetgory
 if (isset($_POST['create'])) {
 
-    $CATEGORY = new Category(NULL);
+    $CATEGORY = new EducationCategory(NULL);
 
     $CATEGORY->name = $_POST['name'];
     $dir_dest = '../../../upload/category/';
@@ -42,7 +42,7 @@ if (isset($_POST['create'])) {
 
 if (isset($_POST['update'])) {
 
-    $CATEGORY = new Category($_POST['id']);
+    $CATEGORY = new EducationCategory($_POST['id']);
 
     $dir_dest = '../../../upload/category/';
 

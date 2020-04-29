@@ -73,7 +73,7 @@ include './auth.php';
                                             </tr>
                                         </thead>
                                         <?php
-                                        $CATEGORY = new Category(NULL);
+                                        $CATEGORY = new EducationCategory(NULL);
                                         foreach ($CATEGORY->all() as $key => $category) {
                                             $key++;
                                             ?>
@@ -83,7 +83,7 @@ include './auth.php';
 
                                                 <td> 
                                                     <a href="edit-category.php?id=<?php echo $category['id'] ?>" class="op-link btn btn-sm btn-info"><i class="icon icon-pencil"></i></a>  |  
-                                                    <a href="create-education-category.php?id=<?php echo $category['id'] ?>" class="op-link btn btn-sm btn-info" ><i class="waves-effect icon icon-archive" ></i></a>  | 
+                                                    <a href="create-education-sub-category.php?id=<?php echo $category['id'] ?>" class="op-link btn btn-sm btn-info" ><i class="waves-effect icon icon-archive" ></i></a>  | 
 
                                                     <a href="#" class="delete-category btn btn-sm btn-danger" data-id="<?php echo $category['id'] ?>"><i class="waves-effect icon icon-trash" data-type="cancel"></i></a> 
 

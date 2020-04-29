@@ -38,6 +38,30 @@ $(function() {
 			}
 		}]
 	});
+        $(".slick-features-teachers").slick({
+		slidesToShow: 5,
+		prevArrow: '<i class="zmdi zmdi-chevron-left zmdi-hc-2x text-center"></i>',
+		nextArrow: '<i class="zmdi zmdi-chevron-right zmdi-hc-2x text-center"></i>',
+		responsive: [
+		{
+			breakpoint: 1200,
+			settings: {
+				slidesToShow: 3
+			}
+		},
+   		{
+			breakpoint: 992,
+			settings: {
+				slidesToShow: 2
+			}
+		},
+		{
+			breakpoint: 768,
+			settings: {
+				slidesToShow: 1
+			}
+		}]
+	});
 
 	$(".slick-testimonials").slick({
 		slidesToShow: 1,

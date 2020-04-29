@@ -16,7 +16,7 @@ $(document).ready(function () {
             var formData = new FormData($('#form-data')[0]);
 
             $.ajax({
-                url: "ajax/post-and-get/education_category.php",
+                url: "ajax/post-and-get/education-sub-category.php",
                 type: "POST",
                 data: formData,
                 async: false,
@@ -61,7 +61,7 @@ $(document).ready(function () {
             var formData = new FormData($('#form-data')[0]);
 
             $.ajax({
-                url: "ajax/post-and-get/education_category.php",
+                url: "ajax/post-and-get/education-sub-category.php",
                 type: "POST",
                 data: formData,
                 async: false,
