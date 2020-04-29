@@ -112,4 +112,20 @@ class EducationSubject {
         return $db->readQuery($query);
     }
 
+    public function getSubjectBySubCategory($sub_category) {
+
+        $query = "SELECT * FROM `education_subject` WHERE `sub_category` = '" . $sub_category . "'  ";
+
+        $db = new Database();
+
+        $result = $db->readQuery($query);
+        $array_res = array();
+
+        while ($row = mysql_fetch_array($result)) {
+            array_push($array_res, $row);
+        }
+
+        return $array_res;
+    }
+
 }

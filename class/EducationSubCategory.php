@@ -131,4 +131,20 @@ class EducationSubCategory {
         return $db->readQuery($query);
     }
 
+    public function getSubCategoryByCategory($category) {
+
+        $query = "SELECT * FROM `education_sub_category` WHERE `category` = '" . $category . "' ORDER BY `sort` ASC";
+
+        $db = new Database();
+
+        $result = $db->readQuery($query);
+        $array_res = array();
+
+        while ($row = mysql_fetch_array($result)) {
+            array_push($array_res, $row);
+        }
+
+        return $array_res;
+    }
+
 }
