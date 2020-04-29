@@ -25,7 +25,7 @@ include './auth.php';
         <link rel="stylesheet" href="css/profile.min.css">
         <link href="css/sweetalert.css" rel="stylesheet" type="text/css"/>
         <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
-         <link rel="stylesheet" href="css/demo.min.css">
+        <link rel="stylesheet" href="css/demo.min.css">
         <style>
             .profile-pic {
                 position: relative;
@@ -46,152 +46,131 @@ include './auth.php';
         <!--End Top header -->
         <div class="layout-main">
             <?php include './navigation.php'; ?>
+
             <div class="layout-content">
-                <div class="profile">
-                    <div class="profile-header">
-                        <div class="profile-cover">
-                            <div class="profile-container">
-                                <form id="form-data-profile">
-
-                                    <div class="profile-card">
-                                        <div class="profile-avetar ">
-
-                                            <a href="#"data-toggle="modal" data-target="#infoModalAlert" >
-                                                <?php
-                                                if (empty($LECTURE->image_name)) {
-                                                    ?>
-                                                    <input type="image" src="img/member.jpg" width="128" height="128"  class="append_img profile-avetar-img " /> 
-
-                                                <?php } else { ?>
-                                                    <img   class="profile-avetar-img  append_img  "  width="128" height="128"   src="upload/lecture/profile/<?php echo $LECTURE->image_name ?>"  >   
-                                                <?php } ?>
-                                            </a>
-                                        </div>
-                                        <div class="profile-overview"> 
-                                            <button class="btn btn-primary spinner spinner-inverse spinner-sm pull-right loading" type="button" disabled="disabled" style="display: none">Save changes</button>
-
-                                            <label class="btn btn-primary file-upload-btn uploard_btn">
-                                                Change Profile
-                                                <input class="file-upload-input" type="file" id="change_profile" name="image_name" multiple="multiple">
-                                            </label>
-                                            <br>    
-                                            <p style="margin: 0px 0 1px;">Lecture Name : <?php echo $LECTURE->full_name ?></p>
-                                            <p style="margin: 0px 0 1px;">NIC Number : <?php echo $LECTURE->nic_number ?></p>
-                                            <p style="margin: 0px 0 1px;">Email : <?php echo $LECTURE->email ?></p>
-                                        </div>
-                                    </div> 
-                                    <input type="hidden"  name="id" value="<?php echo $LECTURE->id ?>">
-                                    <input type="hidden"  name="action" value="CHANGEPROFILE">   
-                                </form>
-                            </div>
+                <div class="layout-content-body">
+                    <div class="row gutter-xs">
+                        <div class="col-xs-12">
                         </div>
                     </div>
-                    <img id="loading" src="https://www.vedantalimited.com/SiteAssets/Images/loading.gif" style="display: none; position: absolute;margin-top: 20%;margin-left: 37%;z-index: 999;"/>
+                    <div class="row gutter-xs">
+                        <div class="col-xs-12">
+                            <div class="row">  
 
-                    <div class="row"> 
-                        <div class="col-md-1"></div>
-                        <div class="col-md-10"> 
+                                <div class="col-md-12"> 
 
-                            <form class="demo-form-wrapper card " style="padding: 50px" id="form-data">
-                                <div class="form form-horizontal">
-                                    <div class="form-group">
-                                        <label class="col-sm-2 control-label" for="email">Category: </label>
-                                        <div class="col-sm-10">
-                                            <select  class="custom-select" id="category" name="category" required="">
-                                                <option value="">-- Select your Category -- </option>
-                                                <?php
-                                                foreach (EducationCategory::all() as $education_category) {
-                                                    ?>
-
-                                                    <option value="<?php echo $education_category['id']; ?>"       ><?php echo $education_category['name']; ?></option>   
-                                                    <?php
-                                                }
-                                                ?>
-                                            </select>
+                                    <div class="card">
+                                        <div class="card-header"> 
+                                            <strong>Create Subjects</strong>
                                         </div>
                                     </div>
-                                    <div class="form-group">
-                                        <label class="col-sm-2 control-label" for="sub_category">Sub Category: </label>
-                                        <div class="col-sm-10">
-                                            <select class="custom-select" name="sub_category" id="sub_category">
-                                                <option value="" selected=""> -- Please Select Category First --</option>   
-                                            </select>
-                                        </div>
-                                    </div>
-                                    <div class="form-group">
-                                        <label class="col-sm-2 control-label" for="subject">Subject: </label>
-                                        <div class="col-sm-10">
-                                            <select class="custom-select" name="subject" id="subject">
-                                                <option value="" selected=""> -- Please Select Sub Category First --</option>   
-                                            </select>
-                                        </div>
-                                    </div>
-                                    <div class="form-group">
-                                        <div class="col-md-3"> </div> 
-                                        <div class="col-md-3">  </div> 
-                                        <div class="col-md-3">  </div> 
-                                        <div class="col-md-3"> 
-                                            <input type="hidden"  name="id" value="<?php echo $LECTURE->id ?>"> 
-                                            <input type="hidden"  name="action" value="UPDATE">                                     
-                                            <input type="submit" class="btn btn-primary btn-block" type="submit" id="update"   value="update" >
+                                    <form class="demo-form-wrapper card " style="padding: 50px" id="form-data">
+                                        <div class="form form-horizontal">
+                                            <div class="form-group">
+                                                <label class="col-sm-1 control-label " for="title" style="text-align: left">Category: </label>
+                                                <div class="col-sm-11">
+                                                    <select  class="custom-select" id="category" name="category" required="">
+                                                        <option value="">-- Select your Category -- </option>
+                                                        <?php
+                                                        foreach (EducationCategory::all() as $education_category) {
+                                                            ?>
 
+                                                            <option value="<?php echo $education_category['id']; ?>"><?php echo $education_category['name']; ?></option>   
+                                                            <?php
+                                                        }
+                                                        ?>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="col-sm-1 control-label " for="title" style="text-align: left">Sub Category: </label>
+                                                <div class="col-sm-11">
+                                                    <select class="custom-select" name="sub_category" id="sub_category">
+                                                        <option value="" selected=""> -- Please Select Category First --</option>   
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="col-sm-1 control-label " for="title" style="text-align: left">  Subject: </label>
+                                                <div class="col-sm-11">
+                                                    <select class="custom-select" name="subject" id="subject">
+                                                        <option value="" selected=""> -- Please Select Sub Category First --</option>   
+                                                    </select>
+                                                </div>
+                                            </div>
+                                               <div class="form-group">
+                                                <div class="col-md-3"></div> 
+                                                <div class="col-md-3"></div> 
+                                                <div class="col-md-4"></div> 
+                                                <div class="col-md-2">  
+                                                    <input type="hidden"  name="create"  >
+                                                    <input type="submit" class="btn btn-primary btn-block"   value="create" id="create" >
+                                                </div>
+                                            </div>
                                         </div>
-                                    </div>
+
+                                    </form>
                                 </div>
-                            </form>
+
+                            </div>
+                            <div class="card">
+                                <div class="card-header">
+
+                                    <strong>Manage Subjects</strong>
+                                </div>
+                                <div class="card-body">
+                                    <table id="demo-datatables-colreorder-1" class="table table-hover table-striped table-nowrap dataTable" cellspacing="0" width="100%">
+                                        <thead>
+                                            <tr>
+                                                <th>ID</th>
+                                                <th>Name</th>  
+                                                <th>Status</th>  
+                                                <th>Option</th>
+                                            </tr>
+                                        </thead>
+                                        <?php
+                                        $EDUCATION_SUB_CATEGORY = new EducationSubCategory(NULL);
+                                        foreach ($EDUCATION_SUB_CATEGORY->CategoryByEducationId(1) as $key => $education_sub_category) {
+                                            $key++;
+                                            ?>
+                                            <tr id="div<?php echo $education_sub_category['id'] ?>">
+                                                <td><?php echo $key ?></td>
+                                                <td><?php echo $education_sub_category['name'] ?></td>
+                                                <?php if ($education_sub_category['status'] == 1) {
+                                                    ?>
+                                                    <td>Activate</td>
+                                                <?php } else { ?>
+                                                    <td>In Activate</td>
+                                                <?php } ?>
+                                                <td> 
+                                                    <a href="edit-education-category.php?id=<?php echo $education_sub_category['id'] ?>" class="op-link btn btn-sm btn-info"><i class="icon icon-pencil"></i></a>  |
+                                                    <a href="create-subject.php?id=<?php echo $education_sub_category['id'] ?>" class="op-link btn btn-sm btn-info"><i class="icon icon-archive"></i></a>  |  
+                                                    <a href="#" class="delete-category btn btn-sm btn-danger" data-id="<?php echo $education_sub_category['id'] ?>"><i class="waves-effect icon icon-trash" data-type="cancel"></i></a> 
+
+                                                </td>
+                                            </tr>
+                                        <?php } ?>
+                                        <tfoot>
+                                            <tr>
+                                                <th>ID</th>
+                                                <th>Name</th>   
+                                                <th>Status</th>  
+                                                <th>Option</th>
+                                            </tr>
+                                        </tfoot>
+                                        <tbody>
 
 
-
-                            <div class="layout-content-body">
-                                <div class="card">
-                                    <div class="card-header">
-
-                                        <strong>  Manage Your Subjects</strong>
-                                    </div>
-                                    <div class="card-body">
-                                        <table id="demo-datatables-responsive-2" class="table table-bordered table-striped table-nowrap dataTable" cellspacing="0" width="100%">
-                                            <thead>
-                                                <tr>
-                                                    <th>id</th>
-                                                    <th>Category</th>
-                                                    <th>Sub Category</th>
-                                                    <th>Subject</th>
-                                                    <th>Option</th> 
-                                                    <th>Option</th> 
-                                                    <th>Option</th> 
-                                                    <th>Option</th> 
-                                                   
-                                                 
-                                                </tr>
-                                            </thead>
-                                            <tbody>
-                                                <tr>
-                                                    <td>Tiger</td>
-                                                    <td>Nixon</td>
-                                                    <td>System Architect</td>
-                                                    <td>Edinburgh</td>
-                                                    <td>61</td> 
-                                                    <td>61</td> 
-                                                    <td>61</td> 
-                                                    <td>61</td> 
-                                                </tr>
-
-                                            </tbody>
-                                        </table>
-                                    </div>
+                                        </tbody>
+                                    </table>
                                 </div>
                             </div>
-
                         </div>
-
-                        <div class="col-md-1"></div>
                     </div>
                 </div>
             </div>
+
         </div>
-
-
-        <input type="hidden" value="<?php echo $_SESSION['id'] ?>" id="student_id">
 
         <script src="js/jquery.min.js" type="text/javascript"></script> 
         <script src="js/vendor.min.js"></script>

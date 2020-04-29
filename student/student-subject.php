@@ -45,10 +45,10 @@ $SUB_CATEGORY = $STUDENT_DETAILS->sub_category;
     </head>
     <body class="layout layout-header-fixed">
         <!--Top header -->
-<?php include './top-header.php'; ?>
+        <?php include './top-header.php'; ?>
         <!--End Top header -->
         <div class="layout-main">
-<?php include './disable-navigation.php'; ?>
+            <?php include './disable-navigation.php'; ?>
             <div class="layout-content">
                 <div class="profile">
                     <div class="profile-header">
@@ -60,12 +60,12 @@ $SUB_CATEGORY = $STUDENT_DETAILS->sub_category;
                                         <div class="profile-avetar ">
 
                                             <a href="#"data-toggle="modal" data-target="#infoModalAlert" >
-<?php
-if (empty($STUDENT->image_name)) {
-    ?>
+                                                <?php
+                                                if (empty($STUDENT->image_name)) {
+                                                    ?>
                                                     <input type="image" src="img/member.jpg" width="128" height="128"  class="append_img profile-avetar-img " /> 
 
-<?php } else { ?>
+                                                <?php } else { ?>
                                                     <img   class="profile-avetar-img  append_img  "  width="128" height="128"   src="upload/student/profile/<?php echo $STUDENT->image_name ?>"  >   
                                                 <?php } ?>
                                             </a>
@@ -116,15 +116,15 @@ if (empty($STUDENT->image_name)) {
                             </tr>
                         </thead>
                         <tbody>
-                <?php
-                $SUBJECTS = new EducationSubject(null);
-                foreach ($SUBJECTS->getSubjectsByCategory($SUB_CATEGORY) as $subject) {
-                    ?>
+                            <?php
+                            $SUBJECTS = new EducationSubject(null);
+                            foreach ($SUBJECTS->getSubjectsByCategory($SUB_CATEGORY) as $subject) {
+                                ?>
                                 <tr>
-                                    <td><?php echo $subject['name'];?></td>
-                                    <td><?php echo $subject['description'];?></td>
+                                    <td><?php echo $subject['name']; ?></td>
+                                    <td><?php echo $subject['description']; ?></td>
                                 </tr>
-                <?php } ?>
+                            <?php } ?>
                         </tbody>
                     </table>
 

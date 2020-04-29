@@ -46,7 +46,7 @@ $(document).ready(function () {
             dataType: "JSON",
             success: function (jsonStr) {
 
-                var html = '<option value="" "> -- Select sub category -- </option>';
+                var html = '<option value="" "> -- Select subject -- </option>';
                 $.each(jsonStr, function (i, data) {
                     html += '<option value="' + data.id + '">';
                     html += data.name;
