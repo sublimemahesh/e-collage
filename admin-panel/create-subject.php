@@ -7,8 +7,6 @@ if (isset($_GET['id'])) {
     $id = $_GET['id'];
     $SUB_CATEGORY = new EducationSubCategory($id);
     $SUB_CATEGORY_NAME = $SUB_CATEGORY->name;
-    
-    
 }
 ?>
 <html lang="en">
@@ -65,7 +63,7 @@ if (isset($_GET['id'])) {
                                     ?>
                                     <div class="card">
                                         <div class="card-header"> 
-                                            <strong>Create Subject -<?php echo $SUB_CATEGORY_NAME?></strong>
+                                            <strong>Create Subject -<?php echo $SUB_CATEGORY_NAME ?></strong>
                                         </div>
                                     </div>
                                     <form class="demo-form-wrapper card "  method="post" style="padding: 50px"   id="form-data">
@@ -76,7 +74,15 @@ if (isset($_GET['id'])) {
                                                     <input id="name" name="name" class="form-control" type="text"   >
                                                 </div>
                                             </div>
-                              
+                                            <div class="form-group hidden" >
+                                                <label class="col-sm-3 control-label" for="form-control-1">Gender: </label>
+                                                <div class="col-sm-9">
+                                                    <select id="category" class="custom-select" name="category">
+                                                        <option value="<?php echo $id ?>" selected="selected"> -- Select your Category -- </option>
+
+                                                    </select>
+                                                </div>
+                                            </div>
                                             <div class="form-group">
                                                 <label class="col-sm-1 control-label" for="title">Description: </label>
                                                 <div class="col-sm-11">
@@ -122,10 +128,10 @@ if (isset($_GET['id'])) {
                                                 <td><?php echo $key ?></td>
                                                 <td><?php echo $subject['name'] ?></td>
                                                 <td><?php
-                                                    $EDUCATION_SUB_CATEGORY = new EducationSubCategory($subject['sub_category']);
+                                        $EDUCATION_SUB_CATEGORY = new EducationSubCategory($subject['sub_category']);
 
-                                                    echo $EDUCATION_SUB_CATEGORY->name
-                                                    ?></td>
+                                        echo $EDUCATION_SUB_CATEGORY->name
+                                            ?></td>
 
                                                 <td> 
                                                     <a href="edit-subject.php?id=<?php echo $subject['id'] ?>" class="op-link btn btn-sm btn-info"><i class="icon icon-pencil"></i></a>  |  
@@ -165,8 +171,8 @@ if (isset($_GET['id'])) {
         <script src="js/demo.min.js"></script>
         <script src="js/sweetalert.min.js" type="text/javascript"></script>        
         <script src="delete/js/subject.js" type="text/javascript"></script>
-        
 
-        </script>
-    </body>
+
+    </script>
+</body>
 </html>
