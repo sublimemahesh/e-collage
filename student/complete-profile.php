@@ -92,32 +92,32 @@ include_once(dirname(__FILE__) . '/auth.php');
                         <div class="col-md-8"> 
                             <form class="demo-form-wrapper card " style="padding: 50px" id="form-data">
                                 <div class="form form-horizontal">
-                                    <div class="form-group">
+                                    <div class="form-group hidden">
                                         <label class="col-sm-3 control-label" for="full_name">Student Name: </label>
                                         <div class="col-sm-9">
                                             <input id="full_name" name="full_name" class="form-control" type="text"  value="<?php echo $STUDENT->full_name ?>">
                                         </div>
                                     </div>
-                                    <div class="form-group">
+                                    <div class="form-group hidden">
                                         <label class="col-sm-3 control-label" for="email">Student Id: </label>
                                         <div class="col-sm-9"> 
                                             <input  class="form-control" type="text" value="<?php echo $STUDENT->student_id ?>" readonly="">
                                         </div>
                                     </div>
-                                    <div class="form-group">
+                                    <div class="form-group hidden">
                                         <label class="col-sm-3 control-label" for="email">Email: </label>
                                         <div class="col-sm-9">
                                             <input id="email" name="email" class="form-control" type="text" value="<?php echo $STUDENT->email ?>">
                                         </div>
                                     </div>
 
-                                    <div class="form-group">
+                                    <div class="form-group hidden">
                                         <label class="col-sm-3 control-label" for="nic_number">NIC Number: </label>
                                         <div class="col-sm-9">
                                             <input id="nic_number" name="nic_number" class="form-control" type="text" value="<?php echo $STUDENT->nic_number ?>">
                                         </div>
                                     </div>
-                                    <div class="form-group">
+                                    <div class="form-group hidden" >
                                         <label class="col-sm-3 control-label" for="form-control-1">Gender: </label>
                                         <div class="col-sm-9">
                                             <select id="form-control-21" class="custom-select" name="gender">
@@ -157,19 +157,19 @@ include_once(dirname(__FILE__) . '/auth.php');
                                             </select>
                                         </div>
                                     </div>
-                                    <div class="form-group">
+                                    <div class="form-group hidden">
                                         <label class="col-sm-3 control-label" for="age">Age: </label>
                                         <div class="col-sm-9">
                                             <input id="age" name="age" class="form-control" type="text" value="<?php echo $STUDENT->age ?>">
                                         </div>
                                     </div>
-                                    <div class="form-group">
+                                    <div class="form-group hidden">
                                         <label class="col-sm-3 control-label" for="phone_number">Phone Number: </label>
                                         <div class="col-sm-9">
                                             <input id="phone_number" name="phone_number" class="form-control" type="text" value="<?php echo $STUDENT->phone_number ?>">
                                         </div>
                                     </div>
-                                    <div class="form-group">
+                                    <div class="form-group hidden">
                                         <label class="col-sm-3 control-label" for="address">Address: </label>
                                         <div class="col-sm-9">
                                             <input id="address" name="address" class="form-control" type="text" value="<?php echo $STUDENT->address ?>">
