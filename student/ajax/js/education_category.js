@@ -5,7 +5,7 @@ $(document).ready(function () {
         var category = $(this).val();
 
         $.ajax({
-            url: "ajax/post-and-get/category.php",
+            url: "ajax/post-and-get/education_category.php",
             type: "POST",
             data: {
                 category: category,

@@ -92,7 +92,7 @@ $(document).ready(function () {
                     if (result.status == 'error') {
                         $('#message').text(result.message);
                     } else {
-                        window.location.replace("profile.php");
+                        window.location.replace("complete-profile.php");
                     }
                 }
             });
