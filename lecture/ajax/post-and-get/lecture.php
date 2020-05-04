@@ -9,13 +9,29 @@ if ($_POST['action'] == 'UPDATE') {
 
 
     $LECTURE->full_name = $_POST['full_name'];
+    $LECTURE->birth_day = $_POST['date_of_birth'];
+    $LECTURE->age = $_POST['age'];
     $LECTURE->nic_number = $_POST['nic_number'];
-    $LECTURE->phone_number = $_POST['phone_number'];
-    $LECTURE->email = $_POST['email'];
     $LECTURE->address = $_POST['address'];
     $LECTURE->district = $_POST['district'];
     $LECTURE->city = $_POST['city'];
-    $LECTURE->subject = $_POST['subject'];
+    $LECTURE->phone_number = $_POST['phone_number'];
+    $LECTURE->email = $_POST['email'];
+
+    $LECTURE->mediums = serialize($_POST['mediums']);
+    $LECTURE->grade = $_POST['grade'];
+    $LECTURE->school = $_POST['school'];
+    $LECTURE->collage = $_POST['collage'];
+    $LECTURE->education_level = $_POST['education_level'];
+    $LECTURE->experience = $_POST['experience'];
+    $LECTURE->it_literacy = serialize($_POST['it_literacy']);
+    $LECTURE->facilities = serialize($_POST['facilities']);
+    $LECTURE->account_number = $_POST['account_number'];
+    $LECTURE->account_holder_name = $_POST['account_holder_name'];
+    $LECTURE->bank_name = $_POST['bank_name'];
+    $LECTURE->branch = $_POST['branch'];
+    $LECTURE->hear_about_us = $_POST['hear_about_us'];
+
     $LECTURE->update();
 
 
@@ -65,7 +81,7 @@ if ($_POST['action'] == 'UPDATENICCARD') {
             $handle->image_y = $image_y;
 
             $handle->Process($dir_dest);
-             
+
             $handle->image_resize = true;
             $handle->file_new_name_ext = 'jpg';
             $handle->image_ratio_crop = 'C';
@@ -271,7 +287,7 @@ if ($_POST['action'] == 'CHANGEPROFILE') {
 
                 Lecture::ChangeProPic($_POST["id"], $handle->file_dst_name);
                 header('Content-Type: application/json');
-               
+
                 $result = [
                     "filename" => $handle->file_dst_name,
                     "message" => 'success'
@@ -351,9 +367,9 @@ if ($_POST['action'] == 'CHANGEPROFILE') {
 //get the student details
 
 if ($_POST['action'] == 'GETSTUDENT') {
-    
+
     $LECTURE = new Lecture($_POST['post_student']);
-    
+
     header('Content-Type: application/json');
     echo json_encode($LECTURE);
     exit();

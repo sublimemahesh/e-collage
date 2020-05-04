@@ -27,7 +27,11 @@ class Lecture {
     public $collage;
     public $mediums;
     public $education_level;
-    public $payment;
+    public $account_number;
+    public $account_holder_name;
+    public $hear_about_us;
+    public $bank_name;
+    public $branch;
     public $city;
     public $it_literacy;
     public $facilities;
@@ -60,7 +64,11 @@ class Lecture {
             $this->experience = $result['experience'];
             $this->mediums = $result['mediums'];
             $this->education_level = $result['education_level'];
-            $this->payment = $result['payment'];
+            $this->account_number = $result['account_number'];
+            $this->account_holder_name = $result['account_holder_name'];
+            $this->branch = $result['branch'];
+            $this->bank_name = $result['bank_name'];
+            $this->hear_about_us = $result['hear_about_us'];
             $this->it_literacy = $result['it_literacy'];
             $this->facilities = $result['facilities'];
             $this->email = $result['email'];
@@ -500,13 +508,27 @@ class Lecture {
 
         $query = "UPDATE  `lecture` SET "
                 . "`full_name` ='" . $this->full_name . "', "
-                . "`nic_number` ='" . $this->nic_number . "', " 
-                . "`phone_number` ='" . $this->phone_number . "', "
+                . "`birth_day` ='" . $this->birth_day . "', "
+                . "`age` ='" . $this->age . "', "
+                . "`nic_number` ='" . $this->nic_number . "', "        
                 . "`address` ='" . $this->address . "', "
                 . "`district` ='" . $this->district . "', "
                 . "`city` ='" . $this->city . "', "
-                . "`subject` ='" . $this->subject . "', "
-                . "`email` ='" . $this->email . "' "
+                . "`phone_number` ='" . $this->phone_number . "', "
+                . "`email` ='" . $this->email . "', "
+                . "`mediums` ='" . $this->mediums . "', "
+                . "`grade` ='" . $this->grade . "', "
+                . "`school` ='" . $this->school . "', "
+                . "`collage` ='" . $this->collage . "', "
+                . "`education_level` ='" . $this->education_level . "', "
+                . "`experience` ='" . $this->experience . "', "
+                . "`it_literacy` ='" . $this->it_literacy . "', "
+                . "`account_number` ='" . $this->account_number . "', "
+                . "`account_holder_name` ='" . $this->account_holder_name . "', "
+                . "`bank_name` ='" . $this->bank_name . "', "
+                . "`branch` ='" . $this->branch . "', "
+                . "`facilities` ='" . $this->facilities . "', "
+                . "`hear_about_us` ='" . $this->hear_about_us . "' "
                 . "WHERE `id` = '" . $this->id . "'";
 
 
