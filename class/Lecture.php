@@ -83,17 +83,15 @@ class Lecture {
 
     public function create() {
 
-        $query = "INSERT INTO `lecture` (`full_name`,`birth_day`,`age`,`grade`,`school`,`collage`,`experience`,`mediums`,`education_level`,`payment`,`it_literacy`,`facilities`,`email`,`nic_number`,`phone_number`,`address`,`district`,`city`,`password`) VALUES  ('"
+        $query = "INSERT INTO `lecture` (`full_name`,`birth_day`,`age`,`school`,`collage`,`experience`,`mediums`,`education_level`,`it_literacy`,`facilities`,`email`,`nic_number`,`phone_number`,`address`,`district`,`city`,`password`) VALUES  ('"
                 . $this->full_name . "','"
                 . $this->birth_day . "','"
-                . $this->age . "','"
-                . $this->grade . "','"
+                . $this->age . "','"               
                 . $this->school . "','"
                 . $this->collage . "','"
                 . $this->experience . "','"
                 . $this->mediums . "','"
-                . $this->education_level . "','"
-                . $this->payment . "','"
+                . $this->education_level . "','"         
                 . $this->it_literacy . "','"
                 . $this->facilities . "','"
                 . $this->email . "', '"
