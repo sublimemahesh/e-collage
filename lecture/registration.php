@@ -70,33 +70,52 @@ include '../class/include.php';
                             </div>
                         </div>
 
-                        <div class="row gutter-xs">
-                            <div class="col-sm-4">
-                                <div class="form-group">
-                                    <label for="birth_day" >Birth Day</label>
-                                    <input id="birth_day" class="form-control" type="text" name="birth_day"  class="form-control" data-field="birth_day" >
-                                    <div class="valid-message"></div>
+                        <div class="row gutter-xs"> 
+                            <div class="col-sm-12">
+                                <label for="birth_day" >Date of Birth</label>
+                            </div>
+                            <div class="col-sm-2">
+                                <label for="birth_day" >Date</label>
+                                <div class="form-group"> 
+                                    <select id="dobday"  class="form-control" name="date"></select>
+<!--                                    <input id="birth_day" class="form-control" type="text" name="birth_day"  class="form-control" data-field="birth_day" >-->
+
                                 </div>
                             </div>
+                            <div class="col-sm-3">
+                                <label for="birth_day" >Month</label>
+                                <div class="form-group"> 
+                                    <select id="dobmonth"  class="form-control" name="month"></select>
+<!--                                    <input id="birth_day" class="form-control" type="text" name="birth_day"  class="form-control" data-field="birth_day" >-->
+
+                                </div>
+                            </div>
+
+                            <div class="col-sm-3">
+                                <label for="birth_day" >Year</label>
+                                <div class="form-group"> 
+                                    <select id="dobyear"  class="form-control" name="year"></select>
+<!--                                    <input id="birth_day" class="form-control" type="text" name="birth_day"  class="form-control" data-field="birth_day" >-->
+                                </div>
+                            </div>
+
 
                             <div class="col-sm-4">
                                 <div class="form-group">
                                     <label for="age" >Address</label>
                                     <input id="address" class="form-control" type="text" name="address"  >
-                                  
+
                                 </div>
                             </div>
-                            <div class="col-sm-4">
-                                <div class="form-group">
-                                    <label for="age" >Grade</label>
-                                    <input id="grade" class="form-control" type="text" name="grade"   >
-                                   
-                                </div>
-                            </div>
+                            <!--                            <div class="col-sm-4" hidden="">
+                                                            <div class="form-group">
+                                                                <label for="age" >Grade</label>
+                                                                <input id="grade" class="form-control" type="text" name="grade"   >
+                            
+                                                            </div>
+                                                        </div>-->
                         </div> 
 
-
-                        <hr>
                         <div class="row gutter-xs">
                             <div class="col-sm-6">
                                 <div class="form-group">
@@ -137,15 +156,15 @@ include '../class/include.php';
                             <div class="col-sm-4">
                                 <div class="form-group">
                                     <label for="age" >College / Tuition Class</label>
-                                    <input id="collage" class="form-control" type="text" name="collage"    >
-                                    
+                                    <input id="collage" class="form-control" type="text" name="collage">
+
                                 </div>
                             </div>
                             <div class="col-sm-4">
                                 <div class="form-group">
-                                    <label for="password" class="control-label">Experience (How much years) –</label> 
-                                    <input  id="experience" class="form-control" type="text" name="experience" id="labelPassword"     >
-                                    
+                                    <label for="password" class="control-label">Experience (How much years) </label> 
+                                    <input  id="experience" class="form-control" type="number" name="experience" id="labelPassword"   min="0"  >
+
                                 </div>
                             </div> 
 
@@ -184,6 +203,114 @@ include '../class/include.php';
                             </div>
 
                         </div>
+
+                        <div class="row gutter-xs">
+
+
+                            <!--                            <div class="col-sm-6">
+                                                            <div class="form-group">
+                                                                <label for="password" class="control-label">Register for payments</label> 
+                                                                <select id="form-control-21" class="custom-select" name="payment">
+                                                                    <option value="" selected="selected"> -- Register for payments -- </option> 
+                                                                    <option value="1">Bank Account No</option>
+                                                                    <option value="2">Account holder’s name as pass book</option>
+                                                                    <option value="3">Bank Name</option>
+                                                                    <option value="4"> Branch</option>  
+                                                                </select>
+                                                            </div>
+                                                        </div> -->
+
+
+                        </div>
+                        <div class="row gutter-xs">
+                            <div class="col-sm-12">
+                                <div class="form-group">
+                                    <label for="gender" >IT literacy </label> <br>
+                                    <div class="col-md-5">
+                                        <label class="custom-control custom-control-primary custom-checkbox">
+                                            <input class="custom-control-input" type="checkbox" name="it_literacy[]" value="I can operate digital equipments" >
+                                            <span class="custom-control-indicator"></span>
+                                            <span class="custom-control-label">I can operate digital equipments </span>
+                                        </label>
+
+                                    </div>
+                                    <div class="col-md-6">   
+
+                                        <label class="custom-control custom-control-primary custom-checkbox">
+                                            <input class="custom-control-input" type="checkbox" name="it_literacy[]" value="I can use Internet browsing & email " >
+                                            <span class="custom-control-indicator"></span>
+                                            <span class="custom-control-label">I can use Internet browsing & email </span>
+                                        </label>
+                                    </div>
+
+                                    <div class="col-md-5">
+                                        <label class="custom-control custom-control-primary custom-checkbox">
+                                            <input class="custom-control-input" type="checkbox" name="it_literacy[]" value="I can Type setting " >
+                                            <span class="custom-control-indicator"></span>
+                                            <span class="custom-control-label">I can Type setting </span>
+                                        </label>
+                                    </div>
+                                    <div class="col-md-7">
+                                        <label class="custom-control custom-control-primary custom-checkbox"  >
+                                            <input class="custom-control-input" type="checkbox" name="it_literacy[]" value="No It literacy (don’t worry about I will support you)" >
+                                            <span class="custom-control-indicator"></span>
+                                            <span class="custom-control-label">No It literacy (don’t worry about I will support you) </span>
+                                        </label> 
+                                    </div> 
+                                </div>
+                            </div> 
+                        </div>
+                        <hr>
+                        <div class="row gutter-xs">
+                            <div class="col-sm-12">
+                                <div class="form-group"> 
+                                    <label for="gender" >Equipment Facilities</label></br>     
+                                    <div class="col-md-4">
+                                        <label class="custom-control custom-control-primary custom-checkbox">
+                                            <input class="custom-control-input" type="checkbox" name="facilities[]" value="Internet connection " >
+                                            <span class="custom-control-indicator"></span>
+                                            <span class="custom-control-label">Internet connection </span>
+                                        </label>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <label class="custom-control custom-control-primary custom-checkbox">
+                                            <input class="custom-control-input" type="checkbox" name="facilities[]" value="Desktop computer" >
+                                            <span class="custom-control-indicator"></span>
+                                            <span class="custom-control-label">Desktop / Laptop </span>
+                                        </label>
+                                    </div>
+
+                                    <div class="col-md-4">
+                                        <label class="custom-control custom-control-primary custom-checkbox">
+                                            <input class="custom-control-input" type="checkbox" name="facilities[]" value="Tablet computer ">
+                                            <span class="custom-control-indicator"></span>
+                                            <span class="custom-control-label">Tablet computer </span>
+                                        </label>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <label class="custom-control custom-control-primary custom-checkbox"  >
+                                            <input class="custom-control-input" type="checkbox" name="facilities[]" value="Smart phone">
+                                            <span class="custom-control-indicator"></span>
+                                            <span class="custom-control-label">Smart phone</span>
+                                        </label>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <label class="custom-control custom-control-primary custom-checkbox">
+                                            <input class="custom-control-input" type="checkbox" name="facilities[]" value="Video camera">
+                                            <span class="custom-control-indicator"></span>
+                                            <span class="custom-control-label">Video camera</span>
+                                        </label>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <label class="custom-control custom-control-primary custom-checkbox" 
+                                               <input class="custom-control-input" type="checkbox" name="facilities[]" value="Recording instruments" >
+                                            <span class="custom-control-indicator"></span>
+                                            <span class="custom-control-label"> Recording instruments</span>
+                                        </label> 
+                                    </div>
+                                </div>
+                            </div> 
+                        </div>
                         <hr>
                         <div class="row gutter-xs">
                             <div class="col-sm-6">
@@ -205,106 +332,7 @@ include '../class/include.php';
                                     </select>
                                 </div>
                             </div>
-
                             <div class="col-sm-6">
-                                <div class="form-group">
-                                    <label for="password" class="control-label">Register for payments</label> 
-                                    <select id="form-control-21" class="custom-select" name="payment">
-                                        <option value="" selected="selected"> -- Register for payments -- </option> 
-                                        <option value="1">Bank Account No</option>
-                                        <option value="2">Account holder’s name as pass book</option>
-                                        <option value="3">Bank Name</option>
-                                        <option value="4"> Branch</option>  
-                                    </select>
-                                </div>
-                            </div> 
-
-
-                        </div>
-                        <div class="row gutter-xs">
-                            <div class="col-sm-12">
-                                <div class="form-group">
-                                    <label for="gender" >IT literacy </label> <br>
-                                    <div class="col-md-6">
-                                        <label class="custom-control custom-control-primary custom-checkbox">
-                                            <input class="custom-control-input" type="checkbox" name="it_literacy[]" value="I can operate digital equipments" >
-                                            <span class="custom-control-indicator"></span>
-                                            <span class="custom-control-label">I can operate digital equipments </span>
-                                        </label>
-
-                                    </div>
-                                    <div class="col-md-6">   
-
-                                        <label class="custom-control custom-control-primary custom-checkbox">
-                                            <input class="custom-control-input" type="checkbox" name="it_literacy[]" value="I can use Internet browsing & email " >
-                                            <span class="custom-control-indicator"></span>
-                                            <span class="custom-control-label">I can use Internet browsing & email </span>
-                                        </label>
-                                    </div>
-
-                                    <div class="col-md-4">
-                                        <label class="custom-control custom-control-primary custom-checkbox">
-                                            <input class="custom-control-input" type="checkbox" name="it_literacy[]" value="I can Type setting " >
-                                            <span class="custom-control-indicator"></span>
-                                            <span class="custom-control-label">I can Type setting </span>
-                                        </label>
-                                    </div>
-                                    <div class="col-md-7">
-                                        <label class="custom-control custom-control-primary custom-checkbox"  >
-                                            <input class="custom-control-input" type="checkbox" name="it_literacy[]" value="No It literacy (don’t worry about I will support you)" >
-                                            <span class="custom-control-indicator"></span>
-                                            <span class="custom-control-label">No It literacy (don’t worry about I will support you) </span>
-                                        </label> 
-                                    </div> 
-                                </div>
-                            </div> 
-                        </div>
-                        <hr>
-                        <div class="row gutter-xs">
-                            <div class="col-sm-12">
-                                <div class="form-group"> 
-                                    <label for="gender" >Equipment Facilities</label></br>                                   
-                                    <label class="custom-control custom-control-primary custom-checkbox">
-                                        <input class="custom-control-input" type="checkbox" name="facilities[]" value="Internet connection " >
-                                        <span class="custom-control-indicator"></span>
-                                        <span class="custom-control-label">Internet connection </span>
-                                    </label>
-                                    <label class="custom-control custom-control-primary custom-checkbox">
-                                        <input class="custom-control-input" type="checkbox" name="facilities[]" value="Desktop computer" >
-                                        <span class="custom-control-indicator"></span>
-                                        <span class="custom-control-label">Desktop computer</span>
-                                    </label>
-                                    <label class="custom-control custom-control-primary custom-checkbox">
-                                        <input class="custom-control-input" type="checkbox" name="facilities[]"  value="Laptop computer">
-                                        <span class="custom-control-indicator"></span>
-                                        <span class="custom-control-label">Laptop computer </span>
-                                    </label>
-                                    <label class="custom-control custom-control-primary custom-checkbox">
-                                        <input class="custom-control-input" type="checkbox" name="facilities[]" value="Tablet computer ">
-                                        <span class="custom-control-indicator"></span>
-                                        <span class="custom-control-label">Tablet computer </span>
-                                    </label>
-                                    <label class="custom-control custom-control-primary custom-checkbox"  >
-                                        <input class="custom-control-input" type="checkbox" name="facilities[]" value="Smart phone">
-                                        <span class="custom-control-indicator"></span>
-                                        <span class="custom-control-label">Smart phone</span>
-                                    </label>
-                                    <label class="custom-control custom-control-primary custom-checkbox">
-                                        <input class="custom-control-input" type="checkbox" name="facilities[]" value="Video camera">
-                                        <span class="custom-control-indicator"></span>
-                                        <span class="custom-control-label">Video camera</span>
-                                    </label>
-                                    <label class="custom-control custom-control-primary custom-checkbox" 
-                                           <input class="custom-control-input" type="checkbox" name="facilities[]" value="Recording instruments" >
-                                        <span class="custom-control-indicator"></span>
-                                        <span class="custom-control-label"> Recording instruments</span>
-                                    </label> 
-                                </div>
-                            </div> 
-                        </div>
-                        <div class="row gutter-xs">
-                   
-                            <div class="col-sm-12">
                                 <div class="form-group">
                                     <label for="password" class="control-label">Password</label> 
                                     <input  id="password" class="form-control" type="password" name="password" id="labelPassword"     data-field="password" >
@@ -326,12 +354,31 @@ include '../class/include.php';
             </div>
 
         </div>
-        <script src="js/jquery.min.js" type="text/javascript"></script>
-        <script src="js/vendor.min.js"></script>
-        <script src="js/elephant.min.js"></script>
+        <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+        <script src="../assets/js/dobpicker.js" type="text/javascript"></script>
+
+        <script>
+            $(document).ready(function () {
+                $.dobPicker({
+                    daySelector: '#dobday', /* Required */
+                    monthSelector: '#dobmonth', /* Required */
+                    yearSelector: '#dobyear', /* Required */
+                    dayDefault: 'Day', /* Optional */
+                    monthDefault: 'Month', /* Optional */
+                    yearDefault: 'Year', /* Optional */
+                    minimumAge: 12, /* Optional */
+                    maximumAge: 80 /* Optional */
+                });
+            });
+        </script>
+
+        <!--        
+                <script src="js/vendor.min.js"></script>
+                <script src="js/elephant.min.js"></script>-->
         <script src="js/signup-1.min.js"></script> 
         <script src="js/jquery.formValid.js" type="text/javascript"></script>
         <script src="ajax/js/registration.js" type="text/javascript"></script>
         <script src="ajax/js/city.js" type="text/javascript"></script>
+
     </body>
 </html>
