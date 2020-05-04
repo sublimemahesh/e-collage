@@ -174,27 +174,27 @@ include '../class/include.php';
                                 <div class="form-group">
                                     <label for="mediums" >Mediums </label></br>
                                     <label class="custom-control custom-control-primary custom-checkbox">
-                                        <input class="custom-control-input" type="checkbox" name="mediums[]" value="Sinhala" >
+                                        <input class="custom-control-input" type="checkbox" name="mediums[]" value="1" >
                                         <span class="custom-control-indicator"></span>
                                         <span class="custom-control-label">Sinhala </span>
                                     </label>
                                     <label class="custom-control custom-control-primary custom-checkbox">
-                                        <input class="custom-control-input" type="checkbox" name="mediums[]" value="Tamil" >
+                                        <input class="custom-control-input" type="checkbox" name="mediums[]" value="2" >
                                         <span class="custom-control-indicator"></span>
                                         <span class="custom-control-label">Tamil </span>
                                     </label>
                                     <label class="custom-control custom-control-primary custom-checkbox">
-                                        <input class="custom-control-input" type="checkbox" name="mediums[]" value="English" >
+                                        <input class="custom-control-input" type="checkbox" name="mediums[]" value="3" >
                                         <span class="custom-control-indicator"></span>
                                         <span class="custom-control-label">English </span>
                                     </label>
                                     <label class="custom-control custom-control-primary custom-checkbox">
-                                        <input class="custom-control-input" type="checkbox" name="mediums[]" value="Arabic">
+                                        <input class="custom-control-input" type="checkbox" name="mediums[]" value="4">
                                         <span class="custom-control-indicator"></span>
                                         <span class="custom-control-label">Arabic </span>
                                     </label>
                                     <label class="custom-control custom-control-primary custom-checkbox">
-                                        <input class="custom-control-input" type="checkbox" name="mediums[]" value="Hindi"  >
+                                        <input class="custom-control-input" type="checkbox" name="mediums[]" value="5"  >
                                         <span class="custom-control-indicator"></span>
                                         <span class="custom-control-label">Hindi </span>
                                     </label>
@@ -228,7 +228,7 @@ include '../class/include.php';
                                     <label for="gender" >IT literacy </label> <br>
                                     <div class="col-md-5">
                                         <label class="custom-control custom-control-primary custom-checkbox">
-                                            <input class="custom-control-input" type="checkbox" name="it_literacy[]" value="I can operate digital equipments" >
+                                            <input class="custom-control-input" type="checkbox" name="it_literacy[]" value="1" >
                                             <span class="custom-control-indicator"></span>
                                             <span class="custom-control-label">I can operate digital equipments </span>
                                         </label>
@@ -237,7 +237,7 @@ include '../class/include.php';
                                     <div class="col-md-6">   
 
                                         <label class="custom-control custom-control-primary custom-checkbox">
-                                            <input class="custom-control-input" type="checkbox" name="it_literacy[]" value="I can use Internet browsing & email " >
+                                            <input class="custom-control-input" type="checkbox" name="it_literacy[]" value="2" >
                                             <span class="custom-control-indicator"></span>
                                             <span class="custom-control-label">I can use Internet browsing & email </span>
                                         </label>
@@ -245,14 +245,14 @@ include '../class/include.php';
 
                                     <div class="col-md-5">
                                         <label class="custom-control custom-control-primary custom-checkbox">
-                                            <input class="custom-control-input" type="checkbox" name="it_literacy[]" value="I can Type setting " >
+                                            <input class="custom-control-input" type="checkbox" name="it_literacy[]" value="3" >
                                             <span class="custom-control-indicator"></span>
                                             <span class="custom-control-label">I can Type setting </span>
                                         </label>
                                     </div>
                                     <div class="col-md-7">
                                         <label class="custom-control custom-control-primary custom-checkbox"  >
-                                            <input class="custom-control-input" type="checkbox" name="it_literacy[]" value="No It literacy (don’t worry about I will support you)" >
+                                            <input class="custom-control-input" type="checkbox" name="it_literacy[]" value="4" >
                                             <span class="custom-control-indicator"></span>
                                             <span class="custom-control-label">No It literacy (don’t worry about I will support you) </span>
                                         </label> 
@@ -267,14 +267,14 @@ include '../class/include.php';
                                     <label for="gender" >Equipment Facilities</label></br>     
                                     <div class="col-md-4">
                                         <label class="custom-control custom-control-primary custom-checkbox">
-                                            <input class="custom-control-input" type="checkbox" name="facilities[]" value="Internet connection " >
+                                            <input class="custom-control-input" type="checkbox" name="facilities[]" value="1" >
                                             <span class="custom-control-indicator"></span>
                                             <span class="custom-control-label">Internet connection </span>
                                         </label>
                                     </div>
                                     <div class="col-md-4">
                                         <label class="custom-control custom-control-primary custom-checkbox">
-                                            <input class="custom-control-input" type="checkbox" name="facilities[]" value="Desktop computer" >
+                                            <input class="custom-control-input" type="checkbox" name="facilities[]" value="2" >
                                             <span class="custom-control-indicator"></span>
                                             <span class="custom-control-label">Desktop / Laptop </span>
                                         </label>
@@ -282,28 +282,28 @@ include '../class/include.php';
 
                                     <div class="col-md-4">
                                         <label class="custom-control custom-control-primary custom-checkbox">
-                                            <input class="custom-control-input" type="checkbox" name="facilities[]" value="Tablet computer ">
+                                            <input class="custom-control-input" type="checkbox" name="facilities[]" value="3">
                                             <span class="custom-control-indicator"></span>
                                             <span class="custom-control-label">Tablet computer </span>
                                         </label>
                                     </div>
                                     <div class="col-md-4">
                                         <label class="custom-control custom-control-primary custom-checkbox"  >
-                                            <input class="custom-control-input" type="checkbox" name="facilities[]" value="Smart phone">
+                                            <input class="custom-control-input" type="checkbox" name="facilities[]" value="4">
                                             <span class="custom-control-indicator"></span>
                                             <span class="custom-control-label">Smart phone</span>
                                         </label>
                                     </div>
                                     <div class="col-md-4">
                                         <label class="custom-control custom-control-primary custom-checkbox">
-                                            <input class="custom-control-input" type="checkbox" name="facilities[]" value="Video camera">
+                                            <input class="custom-control-input" type="checkbox" name="facilities[]" value="5">
                                             <span class="custom-control-indicator"></span>
                                             <span class="custom-control-label">Video camera</span>
                                         </label>
                                     </div>
                                     <div class="col-md-4">
                                         <label class="custom-control custom-control-primary custom-checkbox" 
-                                               <input class="custom-control-input" type="checkbox" name="facilities[]" value="Recording instruments" >
+                                               <input class="custom-control-input" type="checkbox" name="facilities[]" value="6" >
                                             <span class="custom-control-indicator"></span>
                                             <span class="custom-control-label"> Recording instruments</span>
                                         </label> 
@@ -318,7 +318,6 @@ include '../class/include.php';
                                     <label for="gender" >Educated Level (Select option) </label>
                                     <select id="form-control-21" class="custom-select" name="education_level">
                                         <option value="" selected="selected"> -- Select your Educated Level -- </option>
-
                                         <option value="1">Doctorate / ආචාර්ය උපාධිය</option>
                                         <option value="2">Master's degree or Postgraduate / පශ්චාත් උපාධිය</option>
                                         <option value="3">Bachelor's degree / උපාධිය</option>

@@ -6,7 +6,7 @@ $(document).ready(function () {
         $('.loading').show();
         $('.uploard_btn').hide();
 
-        var formData = new FormData($('#form-data-profile')[0]);
+        var formData = new FormData($('#form-data')[0]);
 
         $.ajax({
             url: "ajax/post-and-get/lecture.php",
@@ -88,8 +88,8 @@ $(document).ready(function () {
     });
 
 
-//Update student details
-    $("#update").click(function (event) {
+//Update lecture details
+    $("#update-profile").click(function (event) {
         event.preventDefault();
 //        $('#loading').show();
         if (!$('#full_name').val() || $('#full_name').val().length === 0) {
@@ -100,10 +100,18 @@ $(document).ready(function () {
                 timer: 1500,
                 showConfirmButton: false
             });
-        } else if (!$('#email').val() || $('#email').val().length === 0) {
+        } else if (!$('#date_of_birth').val() || $('#date_of_birth').val().length === 0) {
             swal({
                 title: "Error!",
-                text: "Please enter email..!",
+                text: "Please enter Date of birth ..!",
+                type: 'error',
+                timer: 1500,
+                showConfirmButton: false
+            });
+        } else if (!$('#age').val() || $('#age').val().length === 0) {
+            swal({
+                title: "Error!",
+                text: "Please enter Age..!",
                 type: 'error',
                 timer: 1500,
                 showConfirmButton: false
@@ -112,14 +120,6 @@ $(document).ready(function () {
             swal({
                 title: "Error!",
                 text: "Please enter short nic number..!",
-                type: 'error',
-                timer: 1500,
-                showConfirmButton: false
-            });
-        } else if (!$('#phone_number').val() || $('#phone_number').val().length === 0) {
-            swal({
-                title: "Error!",
-                text: "Please enter phone number..!",
                 type: 'error',
                 timer: 1500,
                 showConfirmButton: false
@@ -133,7 +133,7 @@ $(document).ready(function () {
                 showConfirmButton: false
             });
         } else {
-            var formData = new FormData($('#form-data')[0]);
+            var formData = new FormData($('#form-data-profile')[0]);
 
             $.ajax({
                 url: "ajax/post-and-get/lecture.php",
@@ -246,56 +246,6 @@ $(document).ready(function () {
         }
     });
 
-//Assesment
-    $('#asseessment').click(function (event) {
-        event.preventDefault();
-        var formData = new FormData($("form#form-data")[0]);
-
-        $.ajax({
-            url: "ajax/post-and-get/lecture.php",
-            type: 'POST',
-            data: formData,
-            async: false,
-            cache: false,
-            contentType: false,
-            processData: false,
-            dataType: "JSON",
-            success: function (result) {
-                if (result.status == 'beginner') {
-                    swal({
-                        title: "Opps...!",
-                        text: "you have obtain less than 40% marks ...",
-                        type: 'warning',
-                        confirmButtonText: "try again.",
-                        showCancelButton: false,
-                    }, function () {
-                        window.location = "assessment-paper.php";
-                    });
-                } else if (result.status == 'intermediate') {
-                    swal({
-                        title: "Congratulation.! ",
-                        text: "you have obtain 60% marks ... ",
-                        type: 'warning',
-                        showCancelButton: false,
-
-                    }, function () {
-                        window.location = "index.php";
-                    });
-                } else if (result.status == 'advance') {
-                    swal({
-                        title: "Congratulation.! ",
-                        text: "you have obtain 100% marks ..",
-                        type: 'warning',
-                        showCancelButton: false
-
-                    }, function () {
-                        window.location = "index.php";
-                    });
-                }
-            }
-        });
-
-    });
 
 });
 

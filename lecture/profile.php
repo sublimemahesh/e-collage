@@ -50,7 +50,7 @@ include './auth.php';
                     <div class="profile-header">
                         <div class="profile-cover">
                             <div class="profile-container">
-                                <form id="form-data-profile">
+                                <form id="form-data" >
 
                                     <div class="profile-card">
                                         <div class="profile-avetar ">
@@ -90,7 +90,7 @@ include './auth.php';
                     <div class="row"> 
                         <div class="col-md-2"></div>
                         <div class="col-md-8"> 
-                            <form class="demo-form-wrapper card " style="padding: 50px" id="form-data">
+                            <form class="demo-form-wrapper card " style="padding: 50px" id="form-data-profile">
                                 <div class="form form-horizontal">
                                     <div class="form-group">
                                         <label class="col-sm-3 control-label" for="full_name">Full Name: </label>
@@ -99,24 +99,30 @@ include './auth.php';
                                         </div>
                                     </div>
                                     <div class="form-group">
-                                        <label class="col-sm-3 control-label" for="nic_number">NIC Number: </label>
+                                        <label class="col-sm-3 control-label" for="date_of_birth">Date of Birth: </label>
+                                        <div class="col-sm-9">
+                                            <input id="date_of_birth" name="date_of_birth" class="form-control" type="text"  value="<?php echo $LECTURE->birth_day ?>">
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="col-sm-3 control-label" for="age"> Age: </label>
+                                        <div class="col-sm-9">
+                                            <input id="age" name="age" class="form-control" type="text" value="<?php echo $LECTURE->age ?>">
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="col-sm-3 control-label" for="age"> NIC / Passport no: </label>
                                         <div class="col-sm-9">
                                             <input id="nic_number" name="nic_number" class="form-control" type="text" value="<?php echo $LECTURE->nic_number ?>">
                                         </div>
                                     </div>
-                                    <div class="form-group">
-                                        <label class="col-sm-3 control-label" for="phone_number">Phone Number: </label>
-                                        <div class="col-sm-9">
-                                            <input id="phone_number" name="phone_number" class="form-control" type="text" value="<?php echo $LECTURE->phone_number ?>">
-                                        </div>
-                                    </div>
-                                    <div class="form-group">
-                                        <label class="col-sm-3 control-label" for="email">Email: </label>
-                                        <div class="col-sm-9">
-                                            <input id="email" name="email" class="form-control" type="text" value="<?php echo $LECTURE->email ?>">
-                                        </div>
-                                    </div>
 
+                                    <div class="form-group">
+                                        <label class="col-sm-3 control-label" for="address">Address: </label>
+                                        <div class="col-sm-9">
+                                            <input id="address" name="address" class="form-control" type="text" value="<?php echo $LECTURE->address ?>">
+                                        </div>
+                                    </div>
                                     <div class="form-group">
                                         <label class="col-sm-3 control-label" for="email">District: </label>
                                         <div class="col-sm-9">
@@ -143,45 +149,421 @@ include './auth.php';
                                         <label class="col-sm-3 control-label" for="city">City: </label>
                                         <div class="col-sm-9">
                                             <select class="custom-select" name="city" id="city-bar">
-                                                <option value="" selected="selected"> <?php
+                                                <option value="<?php echo $LECTURE->city ?>" selected="selected"> <?php
                                                     $CITY = new City($LECTURE->city);
                                                     echo $CITY->name
                                                     ?> 
-                                                </option>
-
+                                                </option> 
                                             </select>
                                         </div>
                                     </div>
 
                                     <div class="form-group">
-                                        <label class="col-sm-3 control-label" for="address">Address: </label>
+                                        <label class="col-sm-3 control-label" for="phone_number">Phone Number: </label>
                                         <div class="col-sm-9">
-                                            <input id="address" name="address" class="form-control" type="text" value="<?php echo $LECTURE->address ?>">
+                                            <input id="phone_number" name="phone_number" class="form-control" type="text" value="<?php echo $LECTURE->phone_number ?>">
                                         </div>
                                     </div>
                                     <div class="form-group">
-                                        <div class="col-md-3"> </div> 
-                                        <div class="col-md-3">  </div> 
-                                        <div class="col-md-3">  </div> 
-                                        <div class="col-md-3"> 
-                                            <input type="hidden"  name="id" value="<?php echo $LECTURE->id ?>"> 
-                                            <input type="hidden"  name="action" value="UPDATE">                                     
-                                            <input type="submit" class="btn btn-primary btn-block" type="submit" id="update"   value="update" >
+                                        <label class="col-sm-3 control-label" for="email">Email: </label>
+                                        <div class="col-sm-9">
+                                            <input id="email" name="email" class="form-control" type="text" value="<?php echo $LECTURE->email ?>">
+                                        </div>
+                                    </div>
 
+
+                                    <div class="form-group">
+                                        <label class="col-sm-3 control-label" for="email">Mediums: </label>
+
+                                        <div class="col-sm-9">
+
+                                            <?php
+                                            $medium = unserialize($LECTURE->mediums);
+                                            ?>
+                                            <label class="custom-control custom-control-primary custom-checkbox">
+                                                <input class="custom-control-input" type="checkbox" name="mediums[]" value="1" <?php
+                                                if (in_array("1", $medium)) {
+                                                    echo 'checked';
+                                                }
+                                                ?>>
+                                                <span class="custom-control-indicator"></span>
+                                                <span class="custom-control-label">Sinhala </span>
+                                            </label>
+                                            <label class="custom-control custom-control-primary custom-checkbox">
+                                                <input class="custom-control-input" type="checkbox" name="mediums[]" value="2" <?php
+                                                if (in_array("1", $medium)) {
+                                                    echo 'checked';
+                                                }
+                                                ?>>
+                                                <span class="custom-control-indicator"></span>
+                                                <span class="custom-control-label">Tamil </span>
+                                            </label>
+                                            <label class="custom-control custom-control-primary custom-checkbox">
+                                                <input class="custom-control-input" type="checkbox" name="mediums[]" value="3"  <?php
+                                                if (in_array("3", $medium)) {
+                                                    echo 'checked';
+                                                }
+                                                ?>>
+                                                <span class="custom-control-indicator"></span>
+                                                <span class="custom-control-label">English </span>
+                                            </label>
+                                            <label class="custom-control custom-control-primary custom-checkbox">
+                                                <input class="custom-control-input" type="checkbox" name="mediums[]" value="4"  <?php
+                                                if (in_array("4", $medium)) {
+                                                    echo 'checked';
+                                                }
+                                                ?>>
+                                                <span class="custom-control-indicator"></span>
+                                                <span class="custom-control-label">Arabic </span>
+                                            </label>
+                                            <label class="custom-control custom-control-primary custom-checkbox">
+                                                <input class="custom-control-input" type="checkbox" name="mediums[]" value="5"   <?php
+                                                if (in_array("5", $medium)) {
+                                                    echo 'checked';
+                                                }
+                                                ?>>
+                                                <span class="custom-control-indicator"></span>
+                                                <span class="custom-control-label">Hindi </span>
+                                            </label>
+
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="col-sm-3 control-label" for="grade">Grade: </label>
+                                        <div class="col-sm-9">
+                                            <input id="grade" name="grade" class="form-control" type="text" value="<?php echo $LECTURE->grade ?>">
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="col-sm-3 control-label" for="grade">School: </label>
+                                        <div class="col-sm-9">
+                                            <input id="school" name="school" class="form-control" type="text" value="<?php echo $LECTURE->school ?>">
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="col-sm-3 control-label" for="grade">Collage / Tuition Class: </label>
+                                        <div class="col-sm-9">
+                                            <input id="collage" name="collage" class="form-control" type="text" value="<?php echo $LECTURE->collage ?>">
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="col-sm-3 control-label" for="grade">Educated Level :</label>
+                                        <div class="col-sm-9">
+                                            <select id="form-control-21" class="custom-select" name="education_level">
+                                                <option value="" selected="selected"> -- Select your Educated Level -- </option>
+                                                <?php if ($LECTURE->education_level == 1) { ?>                
+                                                    <option value="1" selected="">Doctorate / ආචාර්ය උපාධිය</option>
+                                                    <option value="2">Master's degree or Postgraduate / පශ්චාත් උපාධිය</option>
+                                                    <option value="3">Bachelor's degree / උපාධිය</option>
+                                                    <option value="4">Graduate Teacher / උපාධිධාරී ගුරු</option>
+                                                    <option value="5">Trainee Teacher / පුහුණු ගුරු</option>
+                                                    <option value="6">Diploma / ඩිප්ලෝමා</option>
+                                                    <option value="7">Certificate / සහතිකපත්</option>
+                                                    <option value="8">Professional / වෘත්තීමය</option>
+                                                    <option value="9">Other / වෙනත්</option>
+                                                <?php } ?>
+                                                <?php if ($LECTURE->education_level == 2) { ?>                
+                                                    <option value="1">Doctorate / ආචාර්ය උපාධිය</option>
+                                                    <option value="2" selected="">Master's degree or Postgraduate / පශ්චාත් උපාධිය</option>
+                                                    <option value="3">Bachelor's degree / උපාධිය</option>
+                                                    <option value="4">Graduate Teacher / උපාධිධාරී ගුරු</option>
+                                                    <option value="5">Trainee Teacher / පුහුණු ගුරු</option>
+                                                    <option value="6">Diploma / ඩිප්ලෝමා</option>
+                                                    <option value="7">Certificate / සහතිකපත්</option>
+                                                    <option value="8">Professional / වෘත්තීමය</option>
+                                                    <option value="9">Other / වෙනත්</option>
+                                                <?php } ?>
+                                                <?php if ($LECTURE->education_level == 3) { ?>                
+                                                    <option value="1">Doctorate / ආචාර්ය උපාධිය</option>
+                                                    <option value="2">Master's degree or Postgraduate / පශ්චාත් උපාධිය</option>
+                                                    <option value="3"  selected="">Bachelor's degree / උපාධිය</option>
+                                                    <option value="4">Graduate Teacher / උපාධිධාරී ගුරු</option>
+                                                    <option value="5">Trainee Teacher / පුහුණු ගුරු</option>
+                                                    <option value="6">Diploma / ඩිප්ලෝමා</option>
+                                                    <option value="7">Certificate / සහතිකපත්</option>
+                                                    <option value="8">Professional / වෘත්තීමය</option>
+                                                    <option value="9">Other / වෙනත්</option>
+                                                <?php } ?>
+                                                <?php if ($LECTURE->education_level == 4) { ?>                
+                                                    <option value="1">Doctorate / ආචාර්ය උපාධිය</option>
+                                                    <option value="2">Master's degree or Postgraduate / පශ්චාත් උපාධිය</option>
+                                                    <option value="3">Bachelor's degree / උපාධිය</option>
+                                                    <option value="4" selected="">Graduate Teacher / උපාධිධාරී ගුරු</option>
+                                                    <option value="5">Trainee Teacher / පුහුණු ගුරු</option>
+                                                    <option value="6">Diploma / ඩිප්ලෝමා</option>
+                                                    <option value="7">Certificate / සහතිකපත්</option>
+                                                    <option value="8">Professional / වෘත්තීමය</option>
+                                                    <option value="9">Other / වෙනත්</option>
+                                                <?php } ?>
+                                                <?php if ($LECTURE->education_level == 5) { ?>                
+                                                    <option value="1">Doctorate / ආචාර්ය උපාධිය</option>
+                                                    <option value="2">Master's degree or Postgraduate / පශ්චාත් උපාධිය</option>
+                                                    <option value="3">Bachelor's degree / උපාධිය</option>
+                                                    <option value="4">Graduate Teacher / උපාධිධාරී ගුරු</option>
+                                                    <option value="5"  selected="">Trainee Teacher / පුහුණු ගුරු</option>
+                                                    <option value="6">Diploma / ඩිප්ලෝමා</option>
+                                                    <option value="7">Certificate / සහතිකපත්</option>
+                                                    <option value="8">Professional / වෘත්තීමය</option>
+                                                    <option value="9">Other / වෙනත්</option>
+                                                <?php } ?>
+                                                <?php if ($LECTURE->education_level == 6) { ?>                
+                                                    <option value="1">Doctorate / ආචාර්ය උපාධිය</option>
+                                                    <option value="2">Master's degree or Postgraduate / පශ්චාත් උපාධිය</option>
+                                                    <option value="3">Bachelor's degree / උපාධිය</option>
+                                                    <option value="4">Graduate Teacher / උපාධිධාරී ගුරු</option>
+                                                    <option value="5">Trainee Teacher / පුහුණු ගුරු</option>
+                                                    <option value="6" selected="">Diploma / ඩිප්ලෝමා</option>
+                                                    <option value="7">Certificate / සහතිකපත්</option>
+                                                    <option value="8">Professional / වෘත්තීමය</option>
+                                                    <option value="9">Other / වෙනත්</option>
+                                                <?php } ?>
+                                                <?php if ($LECTURE->education_level == 7) { ?>                
+                                                    <option value="1">Doctorate / ආචාර්ය උපාධිය</option>
+                                                    <option value="2">Master's degree or Postgraduate / පශ්චාත් උපාධිය</option>
+                                                    <option value="3">Bachelor's degree / උපාධිය</option>
+                                                    <option value="4">Graduate Teacher / උපාධිධාරී ගුරු</option>
+                                                    <option value="5">Trainee Teacher / පුහුණු ගුරු</option>
+                                                    <option value="6" >Diploma / ඩිප්ලෝමා</option>
+                                                    <option value="7" selected="">Certificate / සහතිකපත්</option>
+                                                    <option value="8">Professional / වෘත්තීමය</option>
+                                                    <option value="9">Other / වෙනත්</option>
+                                                <?php } ?>
+                                                <?php if ($LECTURE->education_level == 8) { ?>                
+                                                    <option value="1">Doctorate / ආචාර්ය උපාධිය</option>
+                                                    <option value="2">Master's degree or Postgraduate / පශ්චාත් උපාධිය</option>
+                                                    <option value="3">Bachelor's degree / උපාධිය</option>
+                                                    <option value="4">Graduate Teacher / උපාධිධාරී ගුරු</option>
+                                                    <option value="5">Trainee Teacher / පුහුණු ගුරු</option>
+                                                    <option value="6" >Diploma / ඩිප්ලෝමා</option>
+                                                    <option value="7" >Certificate / සහතිකපත්</option>
+                                                    <option value="8" selected="">Professional / වෘත්තීමය</option>
+                                                    <option value="9">Other / වෙනත්</option>
+                                                <?php } ?>
+                                                <?php if ($LECTURE->education_level == 9) { ?>                
+                                                    <option value="1">Doctorate / ආචාර්ය උපාධිය</option>
+                                                    <option value="2">Master's degree or Postgraduate / පශ්චාත් උපාධිය</option>
+                                                    <option value="3">Bachelor's degree / උපාධිය</option>
+                                                    <option value="4">Graduate Teacher / උපාධිධාරී ගුරු</option>
+                                                    <option value="5">Trainee Teacher / පුහුණු ගුරු</option>
+                                                    <option value="6">Diploma / ඩිප්ලෝමා</option>
+                                                    <option value="7">Certificate / සහතිකපත්</option>
+                                                    <option value="8">Professional / වෘත්තීමය</option>
+                                                    <option value="9" selected="">Other / වෙනත්</option>
+                                                <?php } ?>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="col-sm-3 control-label" for="experience">Experience: </label>
+                                        <div class="col-sm-9">
+                                            <input id="experience" name="experience" class="form-control" type="number" min="0" value="<?php echo $LECTURE->experience ?>">
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group"> 
+                                        <label class="col-sm-3 control-label" for="it_literancy">IT literacy: </label>
+                                        <div class="col-sm-9">
+
+                                            <?php
+                                            $it_literacy = unserialize($LECTURE->it_literacy);
+                                            ?>
+
+                                            <div class="col-md-5" style="margin-bottom: 8px;">
+                                                <label class="custom-control custom-control-primary custom-checkbox">
+                                                    <input class="custom-control-input" type="checkbox" name="it_literacy[]" value="1" <?php
+                                                    if (in_array("1", $it_literacy)) {
+                                                        echo 'checked';
+                                                    }
+                                                    ?>>
+                                                    <span class="custom-control-indicator"></span>
+                                                    <span class="custom-control-label">I can operate digital equipments </span>
+                                                </label>
+
+                                            </div>
+                                            <div class="col-md-6" style="margin-bottom: 8px;">   
+                                                <label class="custom-control custom-control-primary custom-checkbox">
+                                                    <input class="custom-control-input" type="checkbox" name="it_literacy[]" value="2" <?php
+                                                    if (in_array("2", $it_literacy)) {
+                                                        echo 'checked';
+                                                    }
+                                                    ?>>
+                                                    <span class="custom-control-indicator"></span>
+                                                    <span class="custom-control-label">I can use Internet browsing & email </span>
+                                                </label>
+                                            </div>
+
+                                            <div class="col-md-5">
+                                                <label class="custom-control custom-control-primary custom-checkbox">
+                                                    <input class="custom-control-input" type="checkbox" name="it_literacy[]" value="3" <?php
+                                                    if (in_array("3", $it_literacy)) {
+                                                        echo 'checked';
+                                                    }
+                                                    ?>>
+                                                    <span class="custom-control-indicator"></span>
+                                                    <span class="custom-control-label">I can Type setting </span>
+                                                </label>
+                                            </div>
+                                            <div class="col-md-7">
+                                                <label class="custom-control custom-control-primary custom-checkbox"  >
+                                                    <input class="custom-control-input" type="checkbox" name="it_literacy[]" value="4"<?php
+                                                    if (in_array("4", $it_literacy)) {
+                                                        echo 'checked';
+                                                    }
+                                                    ?> >
+                                                    <span class="custom-control-indicator"></span>
+                                                    <span class="custom-control-label">No It literacy (don’t worry about I will support you) </span>
+                                                </label> 
+                                            </div> 
+                                        </div>
+                                    </div>
+
+                                    <?php
+                                    $facility = unserialize($LECTURE->facilities);
+                                    ?>
+
+                                    <div class="form-group"> 
+                                        <label class="col-sm-3 control-label" for="it_literancy">Equipment Facilities: </label>
+                                        <div class="col-sm-9">                                               
+                                            <div class="col-md-6" style="margin-bottom: 6px;">
+                                                <label class="custom-control custom-control-primary custom-checkbox">
+                                                    <input class="custom-control-input" type="checkbox" name="facilities[]" value="1" <?php
+                                                    if (in_array("1", $facility)) {
+                                                        echo 'checked';
+                                                    }
+                                                    ?>>
+                                                    <span class="custom-control-indicator"></span>
+                                                    <span class="custom-control-label">Internet connection </span>
+                                                </label>
+                                            </div>
+                                            <div class="col-md-6" style="margin-bottom: 6px;">
+                                                <label class="custom-control custom-control-primary custom-checkbox">
+                                                    <input class="custom-control-input" type="checkbox" name="facilities[]" value="2" <?php
+                                                    if (in_array("2", $facility)) {
+                                                        echo 'checked';
+                                                    }
+                                                    ?>>
+                                                    <span class="custom-control-indicator"></span>
+                                                    <span class="custom-control-label">Desktop / Laptop </span>
+                                                </label>
+                                            </div>
+
+                                            <div class="col-md-6" style="margin-bottom: 6px;">
+                                                <label class="custom-control custom-control-primary custom-checkbox">
+                                                    <input class="custom-control-input" type="checkbox" name="facilities[]" value="3" <?php
+                                                    if (in_array("3", $facility)) {
+                                                        echo 'checked';
+                                                    }
+                                                    ?>>
+                                                    <span class="custom-control-indicator"></span>
+                                                    <span class="custom-control-label">Tablet computer </span>
+                                                </label>
+                                            </div>
+                                            <div class="col-md-6" style="margin-bottom: 6px;">
+                                                <label class="custom-control custom-control-primary custom-checkbox"  >
+                                                    <input class="custom-control-input" type="checkbox" name="facilities[]" value="4"  <?php
+                                                    if (in_array("4", $facility)) {
+                                                        echo 'checked';
+                                                    }
+                                                    ?>>
+                                                    <span class="custom-control-indicator"></span>
+                                                    <span class="custom-control-label">Smart phone</span>
+                                                </label>
+                                            </div>
+                                            <div class="col-md-6" >
+                                                <label class="custom-control custom-control-primary custom-checkbox">
+                                                    <input class="custom-control-input" type="checkbox" name="facilities[]" value="5"  <?php
+                                                    if (in_array("5", $facility)) {
+                                                        echo 'checked';
+                                                    }
+                                                    ?>>
+                                                    <span class="custom-control-indicator"></span>
+                                                    <span class="custom-control-label">Video camera</span>
+                                                </label>
+                                            </div>
+                                            <div class="col-md-6" >
+                                                <label class="custom-control custom-control-primary custom-checkbox">
+                                                    <input class="custom-control-input" type="checkbox" name="facilities[]" value="6"  <?php
+                                                    if (in_array("6", $facility)) {
+                                                        echo 'checked';
+                                                    }
+                                                    ?>>
+                                                    <span class="custom-control-indicator"></span>
+                                                    <span class="custom-control-label">Recording instruments</span>
+                                                </label>
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="col-sm-3 control-label" for="grade"> Register For Payment: </label>
+                                        <div class="col-sm-9">
+                                            <lable>Account Number</lable>
+                                            <input id="account_number" name="account_number" class="form-control" type="text" value="<?php echo $LECTURE->account_number ?>" style="margin-bottom: 10px;">
+                                            <lable >Account Holder Name</lable>
+                                            <input id="account_holder_name" name="account_holder_name" class="form-control" type="text" value="<?php echo $LECTURE->account_holder_name ?>" style="margin-bottom: 10px;">
+                                            <lable >Bank Name</lable>
+                                            <input id="bank_name" name="bank_name" class="form-control" type="text" value="<?php echo $LECTURE->bank_name ?>"  style="margin-bottom: 10px;">
+                                            <lable >Branch</lable>
+                                            <input id="branch" name="branch" class="form-control" type="text" value="<?php echo $LECTURE->branch ?>">
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="col-sm-3 control-label" for="grade"> How did you hear about us?: </label>
+                                        <div class="col-sm-9"> 
+                                            <select class="form-control"  name="hear_about_us">
+                                                <option selected="">-- Select one --</option>
+                                                <?php if ($LECTURE->hear_about_us == 1) { ?>
+                                                    <option value="1" selected="">Facebook / ෆේස්බුක්/social media</option>                                                
+                                                    <option value="2" >Google Search / ගූගල් පිරික්සීමෙන්</option>
+                                                    <option value="3"  >Someone suggested me / තවත් කෙනෙකු යෝජනා කිරීමෙන්</option>
+                                                    <option value="4"  >Other / වෙනත්</option>
+                                                <?php } ?>
+                                                <?php if ($LECTURE->hear_about_us == 2) { ?>
+                                                    <option value="1" >Facebook / ෆේස්බුක්/social media</option>                                                
+                                                    <option value="2" selected="">Google Search / ගූගල් පිරික්සීමෙන්</option>
+                                                    <option value="3"  >Someone suggested me / තවත් කෙනෙකු යෝජනා කිරීමෙන්</option>
+                                                    <option value="4"  >Other / වෙනත්</option>
+                                                <?php } ?>
+                                                <?php if ($LECTURE->hear_about_us == 3) { ?>
+                                                    <option value="1" >Facebook / ෆේස්බුක්/social media</option>                                                
+                                                    <option value="2" >Google Search / ගූගල් පිරික්සීමෙන්</option>
+                                                    <option value="3" selected="" >Someone suggested me / තවත් කෙනෙකු යෝජනා කිරීමෙන්</option>
+                                                    <option value="4"  >Other / වෙනත්</option>
+                                                <?php } ?>
+                                                <?php if ($LECTURE->hear_about_us == 4) { ?>
+                                                    <option value="1" >Facebook / ෆේස්බුක්/social media</option>                                                
+                                                    <option value="2" >Google Search / ගූගල් පිරික්සීමෙන්</option>
+                                                    <option value="3"  >Someone suggested me / තවත් කෙනෙකු යෝජනා කිරීමෙන්</option>
+                                                    <option value="4" selected="" >Other / වෙනත්</option>
+                                                <?php } else { ?>
+                                                    <option value="1" >Facebook / ෆේස්බුක්/social media</option>                                                
+                                                    <option value="2" >Google Search / ගූගල් පිරික්සීමෙන්</option>
+                                                    <option value="3"  >Someone suggested me / තවත් කෙනෙකු යෝජනා කිරීමෙන්</option>
+                                                    <option value="4"  >Other / වෙනත්</option>
+                                                    <?php } ?>
+
+                                                </select> 
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <div class="col-md-3"></div> 
+                                            <div class="col-md-3"></div> 
+                                            <div class="col-md-3"></div> 
+                                            <div class="col-md-3"> 
+                                                <input type="hidden"  name="id" value="<?php echo $LECTURE->id ?>"> 
+                                            <input type="hidden"  name="action" value="UPDATE">                                     
+                                            <input type="submit" class="btn btn-primary btn-block" type="submit" id="update-profile"   value="update" >
                                         </div>
                                     </div>
                                 </div>
                             </form>
-                           
+
                         </div>
                         <div class="col-md-2"></div>
                     </div>
                 </div>
             </div>
         </div>
-
-
-        <input type="hidden" value="<?php echo $_SESSION['id'] ?>" id="student_id">
 
         <script src="js/jquery.min.js" type="text/javascript"></script> 
         <script src="js/vendor.min.js"></script>
@@ -191,9 +573,12 @@ include './auth.php';
         <script src="js/sweetalert.min.js" type="text/javascript"></script>
 
         <script src="ajax/js/lecture.js" type="text/javascript"></script>
-        <script src="ajax/js/check-login.js" type="text/javascript"></script>
-
+        <script src="ajax/js/check-login.js" type="text/javascript"></script> 
         <script src="ajax/js/category.js" type="text/javascript"></script>
+        <script src="ajax/js/city.js" type="text/javascript"></script>
+        <script src="ajax/js/lecture.js" type="text/javascript"></script>
+
     </body>
+
 
 </html>
