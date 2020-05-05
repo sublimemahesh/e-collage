@@ -1,6 +1,11 @@
 <?php
 include '../class/include.php';
-include './auth.php';
+if (!isset($_SESSION)) {
+    session_start();
+}
+if (!Lecture::authenticate()) {
+    redirect('login.php');
+}
 ?>
 <html lang="en">
 
@@ -51,6 +56,17 @@ include './auth.php';
                 <div class="layout-content-body">
                     <div class="row gutter-xs">
                         <div class="col-xs-12">
+                            <?php
+                            if (isset($_GET['message'])) {
+
+                                $MESSAGE = New Message($_GET['message']);
+                                ?>
+                                <div class="alert alert-<?php echo $MESSAGE->status; ?>" role = "alert">
+                                    <?php echo $MESSAGE->description; ?>
+                                </div>
+                                <?php
+                            }
+                            ?>
                         </div>
                     </div>
                     <div class="row gutter-xs">
@@ -136,19 +152,35 @@ include './auth.php';
                                             $SUBJECT = new EducationSubject($lecture_subject['subject_id']);
                                             $EDUCATION_SUB_CATEGORY = new EducationSubCategory($SUBJECT->sub_category);
                                             $EDUCATION_CATEGORY = new EducationCategory($EDUCATION_SUB_CATEGORY->category);
-                                            ?>
-                                            <tr id="div<?php echo $lecture_subject['id'] ?>">
-                                                <td><?php echo $key ?></td>
-                                                <td><?php echo $EDUCATION_CATEGORY->name ?></td>
-                                                <td><?php echo $EDUCATION_SUB_CATEGORY->name ?></td>
-                                                <td><?php echo $SUBJECT->name ?></td> 
-                                                <td> 
-                                                    <a href="edit-subject.php?id=<?php echo $lecture_subject['id'] ?>" class="op-link btn btn-sm btn-info"><i class="icon icon-pencil"></i></a>  |
-                                                    <a href="#" class="delete-lecture-subject btn btn-sm btn-danger" data-id="<?php echo $lecture_subject['id'] ?>"><i class="waves-effect icon icon-trash" data-type="cancel"></i></a> 
+                                            if ($key == 1) {
+                                                ?>
+                                                <tr id="div<?php echo $lecture_subject['id'] ?>">
+                                                    <td><?php echo $key ?></td>
+                                                    <td><?php echo $EDUCATION_CATEGORY->name ?></td>
+                                                    <td><?php echo $EDUCATION_SUB_CATEGORY->name ?></td>
+                                                    <td><?php echo $SUBJECT->name ?></td> 
+                                                    <td> 
+                                                        <a href="edit-subject.php?id=<?php echo $lecture_subject['id'] ?>" class="op-link btn btn-sm btn-info"><i class="icon icon-pencil"></i></a>   
 
-                                                </td>
-                                            </tr>
-                                        <?php } ?>
+                                                    </td>
+                                                </tr>
+                                            <?php } else {
+                                                ?>
+                                                <tr id="div<?php echo $lecture_subject['id'] ?>">
+                                                    <td><?php echo $key ?></td>
+                                                    <td><?php echo $EDUCATION_CATEGORY->name ?></td>
+                                                    <td><?php echo $EDUCATION_SUB_CATEGORY->name ?></td>
+                                                    <td><?php echo $SUBJECT->name ?></td> 
+                                                    <td> 
+                                                        <a href="edit-subject.php?id=<?php echo $lecture_subject['id'] ?>" class="op-link btn btn-sm btn-info"><i class="icon icon-pencil"></i></a>  |
+                                                        <a href="#" class="delete-lecture-subject btn btn-sm btn-danger" data-id="<?php echo $lecture_subject['id'] ?>"><i class="waves-effect icon icon-trash" data-type="cancel"></i></a> 
+
+                                                    </td>
+                                                </tr>
+                                            <?php
+                                            }
+                                        }
+                                        ?>
                                         <tfoot>
                                             <tr>
                                                 <th>ID</th>
