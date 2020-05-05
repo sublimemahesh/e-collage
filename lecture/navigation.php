@@ -34,7 +34,7 @@
                     <li class="sidenav-item has-subnav" style="margin-top: 20px">
                         <a href="create-subjects.php" aria-haspopup="true">
                             <span class="sidenav-icon icon icon-book"></span>
-                            <span class="sidenav-label">Create Subject</span>
+                            <span class="sidenav-label">My Subject</span>
                         </a>
 
                     </li>

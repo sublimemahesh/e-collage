@@ -11,15 +11,7 @@ $(document).ready(function () {
                     }
                 ]
             },
-            "nic_number": {
-                "required": true,
-                "tests": [
-                    {
-                        "type": "null",
-                        "message": "Please enter the nic number..!"
-                    }
-                ]
-            },
+             
             "gender": {
                 "required": true,
                 "tests": [

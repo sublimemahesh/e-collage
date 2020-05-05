@@ -3,7 +3,7 @@
     <div class="container">
         <div class="row">
             <div class="col-md-4 col-sm-6 col-xs-12">
-                <h1 class="logo"><a href="index.html"><img src="assets/images/logo.png" alt="Logo"></a></h1>
+                <h1 class="logo"><a href="index.php"><img src="assets/images/logo.png" alt="Logo"></a></h1>
                 <ul class="contactinfo">
                     <li class="address"><strong>Address:</strong> No 55, Isipathanarama Rd, Navinna, Maharagama </li>
                     <li class="phone"><strong>Phone:</strong>  +94 11 3663 500</li>

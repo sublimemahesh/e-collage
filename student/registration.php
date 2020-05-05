@@ -23,7 +23,7 @@ $LAST_ID = $LAST_ID + 1;
     <body class="reg-bck">
         <div class="signup">
             <div class="signup-body">
-                <a class="signup-brand" href="#">
+                <a class="signup-brand" href="../index.php">
                     <center>
                            <img class="img-responsive" src="img/logo.png" alt="Ecollege.lk">
                     </center>
