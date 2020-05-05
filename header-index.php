@@ -33,7 +33,7 @@
 
 
             </div>
-            <h1 class="logo"><a href="index1.html"><img src="assets/images/logo.png" alt="Logo" width="85%"></a></h1>
+            <h1 class="logo"><a href="index.php"><img src="assets/images/logo.png" alt="Logo" width="85%"></a></h1>
         </div>
         <div class="row">
             <div class="col-md-8 col-md-offset-2 text-center">
@@ -44,7 +44,7 @@
             </div>
         </div>
     </div>
-    <ul class="rslides-header">	
+    <ul class="rslides-header" style="list-style:none; ">	
         <li><img src="assets/images/header-slider/slide-1.jpg" class="resp-img" alt="Slide"></li>
         <li><img src="assets/images/header-slider/slide-2.jpg" class="resp-img" alt="Slide"></li>
         <li><img src="assets/images/header-slider/slide-3.jpg" class="resp-img" alt="Slide"></li>

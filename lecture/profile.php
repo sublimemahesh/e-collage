@@ -175,12 +175,12 @@ include './auth.php';
                                     <div class="form-group">
                                         <label class="col-sm-3 control-label" for="email">Mediums: </label>
 
-                                        <div class="col-sm-9">
+                                        <div class="col-sm-7" style="margin-right: 0px!important;">
 
                                             <?php
                                             $medium = unserialize($LECTURE->mediums);
                                             ?>
-                                            <label class="custom-control custom-control-primary custom-checkbox">
+                                            <label class="custom-control custom-control-primary custom-checkbox" style="margin-left: 5px!important;">
                                                 <input class="custom-control-input" type="checkbox" name="mediums[]" value="1" <?php
                                                 if (in_array("1", $medium)) {
                                                     echo 'checked';
@@ -189,7 +189,7 @@ include './auth.php';
                                                 <span class="custom-control-indicator"></span>
                                                 <span class="custom-control-label">Sinhala </span>
                                             </label>
-                                            <label class="custom-control custom-control-primary custom-checkbox">
+                                            <label class="custom-control custom-control-primary custom-checkbox" style="margin-left: 5px!important;">
                                                 <input class="custom-control-input" type="checkbox" name="mediums[]" value="2" <?php
                                                 if (in_array("1", $medium)) {
                                                     echo 'checked';
@@ -198,7 +198,7 @@ include './auth.php';
                                                 <span class="custom-control-indicator"></span>
                                                 <span class="custom-control-label">Tamil </span>
                                             </label>
-                                            <label class="custom-control custom-control-primary custom-checkbox">
+                                            <label class="custom-control custom-control-primary custom-checkbox" style="margin-left:0px!important;">
                                                 <input class="custom-control-input" type="checkbox" name="mediums[]" value="3"  <?php
                                                 if (in_array("3", $medium)) {
                                                     echo 'checked';
@@ -207,7 +207,7 @@ include './auth.php';
                                                 <span class="custom-control-indicator"></span>
                                                 <span class="custom-control-label">English </span>
                                             </label>
-                                            <label class="custom-control custom-control-primary custom-checkbox">
+                                            <label class="custom-control custom-control-primary custom-checkbox" style="margin-left: 5px!important;">
                                                 <input class="custom-control-input" type="checkbox" name="mediums[]" value="4"  <?php
                                                 if (in_array("4", $medium)) {
                                                     echo 'checked';
@@ -216,7 +216,7 @@ include './auth.php';
                                                 <span class="custom-control-indicator"></span>
                                                 <span class="custom-control-label">Arabic </span>
                                             </label>
-                                            <label class="custom-control custom-control-primary custom-checkbox">
+                                            <label class="custom-control custom-control-primary custom-checkbox" style="margin-left: 5px!important;">
                                                 <input class="custom-control-input" type="checkbox" name="mediums[]" value="5"   <?php
                                                 if (in_array("5", $medium)) {
                                                     echo 'checked';
@@ -226,7 +226,25 @@ include './auth.php';
                                                 <span class="custom-control-label">Hindi </span>
                                             </label>
 
+                                            <label class="custom-control custom-control-primary custom-checkbox" style="margin-left:0px!important;">
+                                                <input class="custom-control-input" type="checkbox" name="mediums[]" value="6"  id="other" <?php
+                                                if (in_array("6", $medium)) {
+                                                    echo 'checked';
+                                                }
+                                                ?>>
+                                                <span class="custom-control-indicator"></span>
+                                                <span class="custom-control-label">Other </span>
+                                            </label> 
                                         </div>
+                                        <?php
+                                        if (in_array("6", $medium)) {
+                                            ?> 
+                                        <div class="col-sm-2" style="padding-left: 0px;" id="other_bar">
+                                                <input id="other_val" name="mediums[]" class="form-control" type="text" value="<?php echo end($medium); ?>">
+                                            </div>
+                                            <?php
+                                        }
+                                        ?>
                                     </div>
                                     <div class="form-group">
                                         <label class="col-sm-3 control-label" for="grade">Grade: </label>
@@ -540,17 +558,17 @@ include './auth.php';
                                                     <option value="2" >Google Search / ගූගල් පිරික්සීමෙන්</option>
                                                     <option value="3"  >Someone suggested me / තවත් කෙනෙකු යෝජනා කිරීමෙන්</option>
                                                     <option value="4"  >Other / වෙනත්</option>
-                                                    <?php } ?>
+                                                <?php } ?>
 
-                                                </select> 
-                                            </div>
+                                            </select> 
                                         </div>
-                                        <div class="form-group">
-                                            <div class="col-md-3"></div> 
-                                            <div class="col-md-3"></div> 
-                                            <div class="col-md-3"></div> 
-                                            <div class="col-md-3"> 
-                                                <input type="hidden"  name="id" value="<?php echo $LECTURE->id ?>"> 
+                                    </div>
+                                    <div class="form-group">
+                                        <div class="col-md-3"></div> 
+                                        <div class="col-md-3"></div> 
+                                        <div class="col-md-3"></div> 
+                                        <div class="col-md-3"> 
+                                            <input type="hidden"  name="id" value="<?php echo $LECTURE->id ?>"> 
                                             <input type="hidden"  name="action" value="UPDATE">                                     
                                             <input type="submit" class="btn btn-primary btn-block" type="submit" id="update-profile"   value="update" >
                                         </div>
@@ -566,6 +584,24 @@ include './auth.php';
         </div>
 
         <script src="js/jquery.min.js" type="text/javascript"></script> 
+        
+            <script>
+            $(document).ready(function () {
+
+                $('#other').click(function () {
+                    if ($(this).prop("checked") == true) {
+                         
+                        $("#other_bar").show();
+                    } else if ($(this).prop("checked") == false) {
+
+                        $("#other_bar").hide();
+                        $("#other_val").val( );
+
+                    }
+                });
+            });
+
+        </script>
         <script src="js/vendor.min.js"></script>
         <script src="js/elephant.min.js"></script>
         <script src="js/application.min.js"></script>
@@ -577,7 +613,7 @@ include './auth.php';
         <script src="ajax/js/category.js" type="text/javascript"></script>
         <script src="ajax/js/city.js" type="text/javascript"></script>
         <script src="ajax/js/lecture.js" type="text/javascript"></script>
-
+    
     </body>
 
 

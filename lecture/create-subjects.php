@@ -77,7 +77,7 @@ if (!Lecture::authenticate()) {
 
                                     <div class="card">
                                         <div class="card-header"> 
-                                            <strong>Create Subjects</strong>
+                                            <strong>My Subjects</strong>
                                         </div>
                                     </div>
                                     <form class="demo-form-wrapper card " style="padding: 50px" id="form-data">
@@ -121,7 +121,7 @@ if (!Lecture::authenticate()) {
                                                 <div class="col-md-2">  
                                                     <input type="hidden"  name="create"  >
                                                     <input type="hidden"  name="lecture"  value="<?php echo $_SESSION['id'] ?>" >
-                                                    <input type="submit" class="btn btn-primary btn-block"   value="create" id="create" >
+                                                    <input type="submit" class="btn btn-primary btn-block"   value="ADD" id="create" >
                                                 </div>
                                             </div>
                                         </div>

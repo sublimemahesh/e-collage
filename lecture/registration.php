@@ -20,7 +20,7 @@ include '../class/include.php';
     <body class="reg-bck">
         <div class="signup" style="max-width: 650px!important;">
             <div class="signup-body">
-                <a class="signup-brand" href="#">
+                <a class="signup-brand" href="../index.php">
                     <center>
                         <img class="img-responsive" src="img/logo.png" alt="Ecollege.lk">
                     </center>
@@ -118,19 +118,19 @@ include '../class/include.php';
                                 <label for="birth_day" >Month</label>
                                 <div class="form-group"> 
                                     <select   class="custom-select"  name="month">
-                                    <option> --  Month --</option>
-                                    <option value="Jan">Jan</option>
-                                    <option value="Feb">Feb</option>
-                                    <option value="Mar">Mar</option>
-                                    <option value="Apr">Apr</option>
-                                    <option value="May">May</option>
-                                    <option value="Jun">Jun</option>
-                                    <option value="Jul">Jul</option>
-                                    <option value="Aug">Aug</option>
-                                    <option value="Sep">Sep</option>
-                                    <option value="Oct">Oct</option>
-                                    <option value="Nov">Nov</option>
-                                    <option value="Dec">Dec</option>
+                                        <option> --  Month --</option>
+                                        <option value="Jan">Jan</option>
+                                        <option value="Feb">Feb</option>
+                                        <option value="Mar">Mar</option>
+                                        <option value="Apr">Apr</option>
+                                        <option value="May">May</option>
+                                        <option value="Jun">Jun</option>
+                                        <option value="Jul">Jul</option>
+                                        <option value="Aug">Aug</option>
+                                        <option value="Sep">Sep</option>
+                                        <option value="Oct">Oct</option>
+                                        <option value="Nov">Nov</option>
+                                        <option value="Dec">Dec</option>
                                     </select>
                                 </div>
                             </div>
@@ -239,7 +239,7 @@ include '../class/include.php';
                                 <div class="form-group">
                                     <label for="age" >City</label>
                                     <select class="custom-select" name="city" id="city-bar">
-                                        <option value="" selected="selected"> -- Select your district -- </option>
+                                        <option value="" selected="selected"> -- Select your city -- </option>
 
                                     </select>
                                 </div>
@@ -271,9 +271,10 @@ include '../class/include.php';
 
                         </div>
                         <div class="row gutter-xs">
-                            <div class="col-sm-12">
-                                <div class="form-group">
-                                    <label for="mediums" >Mediums </label></br>
+
+                            <div class="form-group">
+                                <label for="mediums" >Mediums </label></br>
+                                <div class="col-sm-9">
                                     <label class="custom-control custom-control-primary custom-checkbox">
                                         <input class="custom-control-input" type="checkbox" name="mediums[]" value="1" >
                                         <span class="custom-control-indicator"></span>
@@ -299,30 +300,26 @@ include '../class/include.php';
                                         <span class="custom-control-indicator"></span>
                                         <span class="custom-control-label">Hindi </span>
                                     </label>
+                                    <label class="custom-control custom-control-primary custom-checkbox">
+                                        <input class="custom-control-input" type="checkbox" name="mediums[]" value="6"  id="other">
+                                        <span class="custom-control-indicator"></span>
+                                        <span class="custom-control-label">Other </span>
+                                    </label>
 
                                 </div>
+                                <div class="col-sm-3" style="display: none" id="other_bar">
+                                    <label class="custom-control custom-control-primary custom-checkbox "> 
+                                        <div class="form-group">
+                                            <input id="collage" class="form-control" type="text" name="mediums[]"> 
+                                        </div>
+                                    </label>
+                                </div>
+
                             </div>
 
-                        </div>
-
-                        <div class="row gutter-xs">
-
-
-                            <!--                            <div class="col-sm-6">
-                                                            <div class="form-group">
-                                                                <label for="password" class="control-label">Register for payments</label> 
-                                                                <select id="form-control-21" class="custom-select" name="payment">
-                                                                    <option value="" selected="selected"> -- Register for payments -- </option> 
-                                                                    <option value="1">Bank Account No</option>
-                                                                    <option value="2">Account holder’s name as pass book</option>
-                                                                    <option value="3">Bank Name</option>
-                                                                    <option value="4"> Branch</option>  
-                                                                </select>
-                                                            </div>
-                                                        </div> -->
-
 
                         </div>
+
                         <div class="row gutter-xs">
                             <div class="col-sm-12">
                                 <div class="form-group">
@@ -395,6 +392,14 @@ include '../class/include.php';
                                             <span class="custom-control-label">Smart phone</span>
                                         </label>
                                     </div>
+
+                                    <div class="col-md-4">
+                                        <label class="custom-control custom-control-primary custom-checkbox">
+                                            <input class="custom-control-input" type="checkbox" name="facilities[]" value="6">
+                                            <span class="custom-control-indicator"></span>
+                                            <span class="custom-control-label">Recording instruments</span>
+                                        </label>
+                                    </div>
                                     <div class="col-md-4">
                                         <label class="custom-control custom-control-primary custom-checkbox">
                                             <input class="custom-control-input" type="checkbox" name="facilities[]" value="5">
@@ -402,13 +407,7 @@ include '../class/include.php';
                                             <span class="custom-control-label">Video camera</span>
                                         </label>
                                     </div>
-                                    <div class="col-md-4">
-                                        <label class="custom-control custom-control-primary custom-checkbox" 
-                                               <input class="custom-control-input" type="checkbox" name="facilities[]" value="6" >
-                                            <span class="custom-control-indicator"></span>
-                                            <span class="custom-control-label"> Recording instruments</span>
-                                        </label> 
-                                    </div>
+
                                 </div>
                             </div> 
                         </div>
@@ -435,7 +434,7 @@ include '../class/include.php';
                             <div class="col-sm-6">
                                 <div class="form-group">
                                     <label for="password" class="control-label">Password</label> 
-                                    <input  id="password" class="form-control" type="password" name="password" id="labelPassword"     data-field="password" >
+                                    <input  id="password" class="form-control" type="password" name="password" id="labelPassword"     data-field="password" placeholder="Enter your Password">
                                     <div class="valid-message" ></div>  
                                 </div>
                             </div> 
@@ -456,6 +455,24 @@ include '../class/include.php';
         </div>
         <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
         <script src="../assets/js/dobpicker.js" type="text/javascript"></script>
+
+
+        <script>
+            $(document).ready(function () {
+
+                $('#other').click(function () {
+                    if ($(this).prop("checked") == true) {
+                        $("#other_bar").show();
+                    } else if ($(this).prop("checked") == false) {
+
+                        $("#other_bar").hide();
+
+                    }
+                });
+            });
+
+        </script>
+
 
         <script>
             $(document).ready(function () {
