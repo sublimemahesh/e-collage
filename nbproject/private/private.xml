@@ -3,11 +3,11 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/xampp/htdocs/institute/student/student-subject.php</file>
-            <file>file:/C:/xampp/htdocs/institute/student/education-subject.php</file>
-            <file>file:/C:/xampp/htdocs/institute/admin-panel/ajax/js/subject.js</file>
-            <file>file:/C:/xampp/htdocs/institute/student/complete-profile.php</file>
-            <file>file:/C:/xampp/htdocs/institute/admin-panel/create-subject.php</file>
+            <file>file:/C:/xampp/htdocs/institute/class/Lecture.php</file>
+            <file>file:/C:/xampp/htdocs/institute/lecture/complete-profile.php</file>
+            <file>file:/C:/xampp/htdocs/institute/lecture/ajax/post-and-get/lecture.php</file>
+            <file>file:/C:/xampp/htdocs/institute/class/LectureSubject.php</file>
+            <file>file:/C:/xampp/htdocs/institute/lecture/create-subjects.php</file>
         </group>
     </open-files>
 </project-private>

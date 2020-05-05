@@ -9,7 +9,7 @@
 
 
                     <li class="sidenav-item has-subnav active" style="margin-top: 20px">
-                        <a href="#" aria-haspopup="true" >
+                        <a href="index.php" aria-haspopup="true" >
                             <span class="sidenav-icon icon icon-works">g</span>
                             <span class="sidenav-label">Dashboard</span>
                         </a>
@@ -28,6 +28,13 @@
                         <a href="#" aria-haspopup="true">
                             <span class="sidenav-icon icon icon-works">a</span>
                             <span class="sidenav-label">Schedule Class</span>
+                        </a>
+
+                    </li>
+                    <li class="sidenav-item has-subnav" style="margin-top: 20px">
+                        <a href="create-subjects.php" aria-haspopup="true">
+                            <span class="sidenav-icon icon icon-works">a</span>
+                            <span class="sidenav-label">Create Subject</span>
                         </a>
 
                     </li>
