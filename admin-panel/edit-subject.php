@@ -5,9 +5,9 @@ include './auth.php';
 $id = '';
 $id = $_GET['id'];
 $EDUCATION_SUBJECT = new EducationSubject($id);
-$CATEGORY_ID=$EDUCATION_SUBJECT->sub_category;
-$SUB_CATEGORIES=new EducationSubCategory($CATEGORY_ID);
-$CATEGORY_NAME=$SUB_CATEGORIES->name;
+$CATEGORY_ID = $EDUCATION_SUBJECT->sub_category;
+$SUB_CATEGORIES = new EducationSubCategory($CATEGORY_ID);
+$CATEGORY_NAME = $SUB_CATEGORIES->name;
 ?>
 <html lang="en">
 
@@ -76,23 +76,9 @@ $CATEGORY_NAME=$SUB_CATEGORIES->name;
                                                 </div>
                                             </div>
                                             <div class="form-group">
-                                                <label class="col-sm-1 control-label" for="title">Category: </label>
+                                                <label class="col-sm-1 control-label" for="title">Description: </label>
                                                 <div class="col-sm-11">
-                                                    <select id="category" class="custom-select" name="category">
-                                                        <option value="" selected="selected"> <?php echo $CATEGORY_NAME ?></option>
-                                                        <?php
-                                                        $EDUCATION_CATEGORY = new EducationSubCategory(NULL);
-                                                        foreach ($EDUCATION_CATEGORY->activeCategory() as $education_category) {
-                                                            
-                                                            if ($EDUCATION_SUBJECT->education_category == $education_category['id']) {
-                                                                ?>
-                                                                <option value="<?php echo $education_category['id'] ?>" selected=""><?php echo $education_category['name'] ?></option> 
-                                                            <?php } else { ?>
-                                                                <option value="<?php echo $education_category['id'] ?>"  ><?php echo $education_category['name'] ?></option> 
-                                                            <?php }
-                                                        }
-                                                        ?>
-                                                    </select>
+                                                    <textarea rows="5"id="description" name="description" class="form-control" ><?php echo $EDUCATION_SUBJECT->description ?></textarea>
                                                 </div>
                                             </div>
 

@@ -49,7 +49,7 @@
         </div>
         <div class="row botbar">
             <div class="col-sm-7">
-                <p class="copyright">Copyright <?php echo date('dd') ?> &copy; ECOLLAGE.LK -  Synotect Holdings   | All Rights Reserved</p>
+                <p class="copyright">Copyright <?php echo date('Y') ?> &copy; ECOLLAGE.LK -  Synotect Holdings   | All Rights Reserved</p>
             </div>
             <div class="col-sm-5">
                 <ul class="pull-right payments social">

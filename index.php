@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 
-<?php include './class/include.php'; ?>
+<?php include './class/include.php'; 
+ 
+?>
 <html>
 
     <head>

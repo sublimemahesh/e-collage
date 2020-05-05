@@ -64,7 +64,7 @@ if (isset($_GET['id'])) {
                                     ?>
                                     <div class="card">
                                         <div class="card-header"> 
-                                            <strong>Create Education Sub Category-<?php echo $CATEGORY_NAME?></strong>
+                                            <strong>Create Education Sub Category-<?php echo $CATEGORY_NAME ?></strong>
                                         </div>
                                     </div>
                                     <form class="demo-form-wrapper card "  method="post" style="padding: 50px"   id="form-data">
@@ -138,8 +138,8 @@ if (isset($_GET['id'])) {
                                                     <td>In Activate</td>
                                                 <?php } ?>
                                                 <td> 
-                                                    <a href="edit-education-category.php?id=<?php echo $education_sub_category['id'] ?>" class="op-link btn btn-sm btn-info"><i class="icon icon-pencil"></i></a>  |
-                                                    <a href="create-subject.php?id=<?php echo $education_sub_category['id'] ?>" class="op-link btn btn-sm btn-info"><i class="icon icon-archive"></i></a>  |  
+                                                    <a href="edit-education-sub-category.php?id=<?php echo $education_sub_category['id'] ?>" class="op-link btn btn-sm btn-info"><i class="icon icon-pencil"></i></a>  |
+                                                    <a href="create-subject.php?id=<?php echo $education_sub_category['id'] ?>" class="op-link btn btn-sm btn-success"><i class="icon icon-book"></i></a>  |  
                                                     <a href="#" class="delete-category btn btn-sm btn-danger" data-id="<?php echo $education_sub_category['id'] ?>"><i class="waves-effect icon icon-trash" data-type="cancel"></i></a> 
 
                                                 </td>
@@ -175,7 +175,7 @@ if (isset($_GET['id'])) {
         <script src="js/sweetalert.min.js" type="text/javascript"></script>        
         <script src="delete/js/education-sub-category.js" type="text/javascript"></script>
         <a href="ajax/post-and-get/education-sub-category.php"></a>
-   
-    <script src="ajax/js/education-sub-category.js" type="text/javascript"></script>
+
+        <script src="ajax/js/education-sub-category.js" type="text/javascript"></script>
     </body>
 </html>

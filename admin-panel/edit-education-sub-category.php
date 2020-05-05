@@ -4,14 +4,14 @@ include '../class/include.php';
 include './auth.php';
 $id = '';
 $id = $_GET['id'];
-$EDUCATION_CATEGORY = new EducationCategory($id);
+$EDUCATION_SUB_CATEGORY = new EducationSubCategory($id);
 ?>
 <html lang="en">
 
     <head>
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <title>Edit Category</title>
+        <title>Edit Education Category</title>
 
         <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-iconaa.png">
         <link rel="icon" type="image/png" href="favicon-32x32.png" sizes="32x32">
@@ -61,7 +61,7 @@ $EDUCATION_CATEGORY = new EducationCategory($id);
                                     ?>
                                     <div class="card">
                                         <div class="card-header"> 
-                                            <strong>Edit Category</strong>
+                                            <strong>Edit Education Category</strong>
                                         </div>
                                     </div>
                                     <form class="demo-form-wrapper card "  method="post" style="padding: 50px"   id="form-data">
@@ -69,14 +69,29 @@ $EDUCATION_CATEGORY = new EducationCategory($id);
                                             <div class="form-group">
                                                 <label class="col-sm-1 control-label" for="title">Name </label>
                                                 <div class="col-sm-11">
-                                                    <input id="name" name="name" class="form-control" type="text" value="<?php echo $EDUCATION_CATEGORY->name ?>"  >
+                                                    <input id="name" name="name" class="form-control" type="text" value="<?php echo $EDUCATION_SUB_CATEGORY->name ?>"  >
                                                 </div>
                                             </div>
-                                            <div class="form-group">
-                                                <label class="col-sm-1 control-label " for="title" style="text-align: left"> Image: </label>
+                                            <div class="form-group hidden">
+                                                <label class="col-sm-1 control-label " for="title" style="text-align: left">Name: </label>
                                                 <div class="col-sm-11">
-                                                    <input id="image_name" name="image_name" class="form-control" type="file"   >
-                                                    <img src="../upload/category/<?php echo $EDUCATION_CATEGORY->image_name?>" style="margin-top: 10px;">
+                                                    <input id="id" name="id" class="form-control" type="text" value="<?php echo $EDUCATION_SUB_CATEGORY->category ?>" >
+                                                </div>
+                                            </div>
+                                            
+                                            <div class="form-group">
+                                                <div class="col-sm-1">
+                                                </div>
+                                                <div class="col-sm-11">
+                                                    <label class="custom-control custom-control-primary custom-checkbox">
+                                                        <input class="custom-control-input" type="checkbox" name="status"  <?php
+                                                        if ($EDUCATION_SUB_CATEGORY->status == 1) {
+                                                            echo 'checked';
+                                                        }
+                                                        ?> value="1">
+                                                        <span class="custom-control-indicator"></span>
+                                                        <span class="custom-control-label"> Active </span>
+                                                    </label> 
                                                 </div>
                                             </div>
 
@@ -86,8 +101,7 @@ $EDUCATION_CATEGORY = new EducationCategory($id);
                                                 <div class="col-md-3"></div> 
                                                 <div class="col-md-4"></div> 
                                                 <div class="col-md-2"> 
-                                                    <input type="hidden" name="id" value="<?php echo $EDUCATION_CATEGORY->id ?>">
-                                                    <input type="hidden" name="oldImageName" value="<?php echo $EDUCATION_CATEGORY->image_name ?>">
+                                                    <input type="hidden" name="id" value="<?php echo $EDUCATION_SUB_CATEGORY->id ?>">
                                                     <input type="hidden" name="update"  >
                                                     <input type="submit" class="btn btn-primary btn-block"   id="update"  value="update" >
                                                 </div>
@@ -107,8 +121,7 @@ $EDUCATION_CATEGORY = new EducationCategory($id);
         <script src="js/elephant.min.js"></script>
         <script src="js/application.min.js"></script>
         <script src="js/demo.min.js"></script>
-        <script src="js/sweetalert.min.js" type="text/javascript"></script>        
-        <script src="delete/js/student.js" type="text/javascript"></script>
-        <script src="ajax/js/category.js" type="text/javascript"></script>
+        <script src="js/sweetalert.min.js" type="text/javascript"></script>     
+        <script src="ajax/js/education-sub-category.js" type="text/javascript"></script>
     </body>
 </html>

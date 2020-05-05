@@ -82,8 +82,8 @@ include './auth.php';
                                                 <td><?php echo $category['name'] ?></td>
 
                                                 <td> 
-                                                    <a href="edit-category.php?id=<?php echo $category['id'] ?>" class="op-link btn btn-sm btn-info"><i class="icon icon-pencil"></i></a>  |  
-                                                    <a href="create-education-sub-category.php?id=<?php echo $category['id'] ?>" class="op-link btn btn-sm btn-info" ><i class="waves-effect icon icon-archive" ></i></a>  | 
+                                                    <a href="edit-education-category.php?id=<?php echo $category['id'] ?>" class="op-link btn btn-sm btn-info"><i class="icon icon-pencil"></i></a>  |  
+                                                    <a href="create-education-sub-category.php?id=<?php echo $category['id'] ?>" class="op-link btn btn-sm btn-success" ><i class="waves-effect icon icon-book" ></i></a>  | 
 
                                                     <a href="#" class="delete-category btn btn-sm btn-danger" data-id="<?php echo $category['id'] ?>"><i class="waves-effect icon icon-trash" data-type="cancel"></i></a> 
 
