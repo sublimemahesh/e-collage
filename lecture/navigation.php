@@ -10,14 +10,14 @@
 
                     <li class="sidenav-item has-subnav active" style="margin-top: 20px">
                         <a href="index.php" aria-haspopup="true" >
-                            <span class="sidenav-icon icon icon-works">g</span>
+                            <span class="sidenav-icon icon icon-dashboard"></span>
                             <span class="sidenav-label">Dashboard</span>
                         </a>
                     </li> 
                     <li class="sidenav-item has-subnav  " style=" ">
                         <a href="#" aria-haspopup="true">
-                            <span class="sidenav-icon icon icon-works">p</span>
-                            <span class="sidenav-label">Student</span>
+                            <span class="sidenav-icon icon icon-group"></span>
+                            <span class="sidenav-label">Students</span>
                         </a>
                         <ul class="sidenav level-2 collapse">
                             <li class="sidenav-heading">Your Class</li>
@@ -26,14 +26,14 @@
                     </li>
                     <li class="sidenav-item has-subnav" style="margin-top: 20px">
                         <a href="#" aria-haspopup="true">
-                            <span class="sidenav-icon icon icon-works">a</span>
+                            <span class="sidenav-icon icon icon-calendar-check-o"></span>
                             <span class="sidenav-label">Schedule Class</span>
                         </a>
 
                     </li>
                     <li class="sidenav-item has-subnav" style="margin-top: 20px">
                         <a href="create-subjects.php" aria-haspopup="true">
-                            <span class="sidenav-icon icon icon-works">a</span>
+                            <span class="sidenav-icon icon icon-book"></span>
                             <span class="sidenav-label">Create Subject</span>
                         </a>
 

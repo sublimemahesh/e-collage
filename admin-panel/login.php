@@ -23,7 +23,7 @@ include '../class/include.php';
     <body>
         <div class="login">
             <div class="login-body">
-                <a class="login-brand" href="#">
+                <a class="login-brand" href="../index.php">
                     <center>
                         <img class="img-responsive" src="img/logo.png" alt="Elephant">
                     </center>

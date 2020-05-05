@@ -23,8 +23,7 @@ if (isset($_POST['update'])) {
     $EDUCATION_SUBJECT = new EducationSubject($_POST['id']);
 
     $EDUCATION_SUBJECT->name = $_POST['name'];
-    $EDUCATION_SUBJECT->sub_category = $_POST['category'];
-    $EDUCATION_SUBJECT->description = $_POST['description'];
+     $EDUCATION_SUBJECT->description = $_POST['description'];
     $EDUCATION_SUBJECT->update();
     $result = [
         "message" => 'success'

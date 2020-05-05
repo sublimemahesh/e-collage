@@ -135,7 +135,7 @@ if (isset($_GET['id'])) {
 
                                                 <td> 
                                                     <a href="edit-subject.php?id=<?php echo $subject['id'] ?>" class="op-link btn btn-sm btn-info"><i class="icon icon-pencil"></i></a>  |  
-                                                    <a href="create-subject-sub-category.php?id=<?php echo $subject['id'] ?>" class="op-link btn btn-sm btn-success"><i class="icon icon-arrow-up"></i></a>  |  
+<!--                                                    <a href="create-subject-sub-category.php?id=<?php echo $subject['id'] ?>" class="op-link btn btn-sm btn-success"><i class="icon icon-arrow-up"></i></a>  |  -->
                                                     <a href="#" class="delete-category btn btn-sm btn-danger" data-id="<?php echo $subject['id'] ?>"><i class="waves-effect icon icon-trash" data-type="cancel"></i></a> 
 
                                                 </td>

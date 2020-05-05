@@ -87,8 +87,7 @@ class EducationSubject {
     public function update() {
 
         $query = "UPDATE  `education_subject` SET "
-                . "`name` ='" . $this->name . "', "
-                . "`sub_category` ='" . $this->sub_category . "', "
+                . "`name` ='" . $this->name . "', " 
                 . "`description` ='" . $this->description . "' "
                 . "WHERE `id` = '" . $this->id . "'";
 
