@@ -1,6 +1,12 @@
 <?php
 include '../class/include.php';
-include_once(dirname(__FILE__) . '/auth.php');
+if (!isset($_SESSION)) {
+    session_start();
+}
+
+if (!Student::authenticate()) {
+    redirect('login.php');
+}
 ?>
 <html lang="en">
 
@@ -44,97 +50,153 @@ include_once(dirname(__FILE__) . '/auth.php');
         <?php include './top-header.php'; ?>
         <!--End Top header -->
         <div class="layout-main">
-            <?php include './disable-navigation.php'; ?>
+            <?php include './navigation.php'; ?>
+
             <div class="layout-content">
-                <div class="profile">
-                    <div class="profile-header">
-                        <div class="profile-cover">
-                            <div class="profile-container">
-                                <form id="form-data-profile">
+                <div class="layout-content-body">
+                    <div class="row gutter-xs">
+                        <div class="col-xs-12">
+                            <?php
+                            if (isset($_GET['message'])) {
 
-                                    <div class="profile-card">
-                                        <div class="profile-avetar ">
+                                $MESSAGE = New Message($_GET['message']);
+                                ?>
+                                <div class="alert alert-<?php echo $MESSAGE->status; ?>" role = "alert">
+                                    <?php echo $MESSAGE->description; ?>
+                                </div>
+                                <?php
+                            }
+                            ?>
+                        </div>
+                    </div>
+                    <div class="row gutter-xs">
+                        <div class="col-xs-12">
+                            <div class="row">  
 
-                                            <a href="#"data-toggle="modal" data-target="#infoModalAlert" >
+                                <div class="col-md-12"> 
+
+                                    <div class="card">
+                                        <div class="card-header"> 
+                                            <strong>My Subjects</strong>
+                                        </div>
+                                    </div>
+                                    <form class="demo-form-wrapper card " style="padding: 50px" id="form-data">
+                                        <div class="form form-horizontal">
+                                            <div class="form-group">
+                                                <label class="col-sm-1 control-label " for="title" style="text-align: left">Category: </label>
+                                                <div class="col-sm-11">
+                                                    <select  class="custom-select" id="category" name="category" required="">
+                                                        <option value="">-- Select your Category -- </option>
+                                                        <?php
+                                                        foreach (EducationCategory::all() as $education_category) {
+                                                            ?>
+
+                                                            <option value="<?php echo $education_category['id']; ?>"><?php echo $education_category['name']; ?></option>   
+                                                            <?php
+                                                        }
+                                                        ?>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="col-sm-1 control-label " for="title" style="text-align: left">Sub Category: </label>
+                                                <div class="col-sm-11">
+                                                    <select class="custom-select" name="sub_category" id="sub_category">
+                                                        <option value="" selected=""> -- Please Select Category First --</option>   
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="col-sm-1 control-label " for="title" style="text-align: left">  Subject: </label>
+                                                <div class="col-sm-11">
+                                                    <select class="custom-select" name="subject" id="subject">
+                                                        <option value="" selected=""> -- Please Select Sub Category First --</option>   
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <div class="col-md-3"></div> 
+                                                <div class="col-md-3"></div> 
+                                                <div class="col-md-4"></div> 
+                                                <div class="col-md-2">  
+                                                    <input type="hidden"  name="action" value="UPDATE_SUBJECTS" >
+                                                    <input type="hidden"  name="id"  value="<?php echo $_SESSION['id'] ?>" >
+                                                    <input type="submit" class="btn btn-primary btn-block"   value="ADD" id="update_subjects" >
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                    </form>
+                                </div>
+
+                            </div>
+                            <div class="card">
+                                <div class="card-header"> 
+                                    <strong>Manage Subjects</strong>
+                                </div>
+                                <div class="card-body">
+                                    <table id="demo-datatables-colreorder-1" class="table table-hover table-striped table-nowrap dataTable" cellspacing="0" width="100%">
+                                        <thead>
+                                            <tr>
+                                                <th>ID</th>
+                                                <th>Category</th>  
+                                                <th>Sub Category</th>  
+                                                <th>Subject</th>  
+                                                <th>Option</th>
+                                            </tr>
+                                        </thead>
+                                        <?php
+                                        $STUDENT_SUBJECT = new StudentSubject(NULL);
+                                        foreach ($STUDENT_SUBJECT->getSubjectsByStudent($_SESSION['id']) as $key => $student_subject) {
+                                            $key++;
+                                            $SUBJECT = new EducationSubject($student_subject['subject']);
+                                            $EDUCATION_SUB_CATEGORY = new EducationSubCategory($SUBJECT->sub_category);
+                                            $EDUCATION_CATEGORY = new EducationCategory($EDUCATION_SUB_CATEGORY->category);
+                                            if ($key == 1) {
+                                                ?>
+                                                <tr id="div<?php echo $lecture_subject['id'] ?>">
+                                                    <td><?php echo $key ?></td>
+                                                    <td><?php echo $EDUCATION_CATEGORY->name ?></td>
+                                                    <td><?php echo $EDUCATION_SUB_CATEGORY->name ?></td>
+                                                    <td><?php echo $SUBJECT->name ?></td> 
+                                                    <td> 
+                                                        <a href="edit-subject.php?id=<?php echo $lecture_subject['id'] ?>" class="op-link btn btn-sm btn-info"><i class="icon icon-pencil"></i></a>   
+
+                                                    </td>
+                                                </tr>
+                                            <?php } else {
+                                                ?>
+                                                <tr id="div<?php echo $lecture_subject['id'] ?>">
+                                                    <td><?php echo $key ?></td>
+                                                    <td><?php echo $EDUCATION_CATEGORY->name ?></td>
+                                                    <td><?php echo $EDUCATION_SUB_CATEGORY->name ?></td>
+                                                    <td><?php echo $SUBJECT->name ?></td> 
+                                                    <td> 
+                                                        <a href="edit-subject.php?id=<?php echo $lecture_subject['id'] ?>" class="op-link btn btn-sm btn-info"><i class="icon icon-pencil"></i></a>  |
+                                                        <a href="#" class="delete-lecture-subject btn btn-sm btn-danger" data-id="<?php echo $lecture_subject['id'] ?>"><i class="waves-effect icon icon-trash" data-type="cancel"></i></a> 
+
+                                                    </td>
+                                                </tr>
                                                 <?php
-                                                if (empty($STUDENT->image_name)) {
-                                                    ?>
-                                                    <input type="image" src="img/member.jpg" width="128" height="128"  class="append_img profile-avetar-img " /> 
-
-                                                <?php } else { ?>
-                                                    <img   class="profile-avetar-img  append_img  "  width="128" height="128"   src="upload/student/profile/<?php echo $STUDENT->image_name ?>"  >   
-                                                <?php } ?>
-                                            </a>
-                                        </div>
-                                        <div class="profile-overview"> 
-                                            <button class="btn btn-primary spinner spinner-inverse spinner-sm pull-right loading" type="button" disabled="disabled" style="display: none">Save changes</button>
-
-                                            <label class="btn btn-primary file-upload-btn uploard_btn">
-                                                Change Profile
-                                                <input class="file-upload-input" type="file" id="change_profile" name="image_name" multiple="multiple">
-                                            </label>
-                                            <br>    
-                                            <p style="margin: 0px 0 1px;">Student Name : <?php echo $STUDENT->full_name ?></p>
-                                            <p style="margin: 0px 0 1px;">NIC Number : <?php echo $STUDENT->nic_number ?></p>
-                                            <p style="margin: 0px 0 1px;">Email : <?php echo $STUDENT->email ?></p>
-                                        </div>
-                                    </div> 
-                                    <input type="hidden"  name="id" value="<?php echo $STUDENT->id ?>">
-                                    <input type="hidden"  name="action" value="CHANGEPROFILE">   
-                                </form>
+                                            }
+                                        }
+                                        ?>
+                                        <tfoot>
+                                            <tr>
+                                                <th>ID</th>
+                                                <th>Name</th>   
+                                                <th>Status</th>  
+                                                <th>Option</th>
+                                            </tr>
+                                        </tfoot>                                       
+                                    </table>
+                                </div>
                             </div>
                         </div>
                     </div>
-                    <img id="loading" src="https://www.vedantalimited.com/SiteAssets/Images/loading.gif" style="display: none; position: absolute;margin-top: 20%;margin-left: 37%;z-index: 999;"/>
-
-                    <div class="row"> 
-                        <div class="col-md-2"></div>
-                        <div class="col-md-8"> 
-                            <form class="demo-form-wrapper card " style="padding: 50px" id="form-data">
-                                <div class="form form-horizontal">
-          
-                                    <div class="form-group">
-                                        <label class="col-sm-3 control-label" for="form-control-1">Category: </label>
-                                        <div class="col-sm-9">
-                                            <select  class="custom-select" id="category" name="category">
-                                                <option value="" selected="selected"> -- Select Category -- </option>
-                                                <?php
-                                               $EDUCATION_CATEGORY=new EducationCategory(null);
-                                               foreach ($EDUCATION_CATEGORY->all() as $category) {
-                                                    ?>
-                                                    <option value="<?php echo $category['id']?>" ><?php echo $category['name']?></option>
-                                                <?php } ?>
-                                            </select>
-                                        </div>
-                                    </div>
-                                    <div class="form-group" id="sub_category_show">
-                                        <label class="col-sm-3 control-label" for="form-control-1">Sub Category: </label>
-                                        <div class="col-sm-9">
-                                            <select  class="custom-select" name="sub_category"  id="sub_category">
-                                                <option value="" > -- Select Sub Category -- </option>
-                                                
-                                            </select>
-                                        </div>
-                                    </div>
-                                
-                                    <div class="form-group">
-                                        <div class="col-md-3"> </div> 
-                                        <div class="col-md-3">  </div> 
-                                        <div class="col-md-3">  </div> 
-                                        <div class="col-md-3"> 
-                                            <input type="hidden"  name="id" value="<?php echo $STUDENT->id ?>"> 
-                                            <input type="hidden"  name="action" value="UPDATE">                                     
-                                            <input type="submit" class="btn btn-primary btn-block" type="submit" id="update"   value="update" >
-
-                                        </div>
-                                    </div>
-                                </div>
-                            </form>
-                        </div>
-                        <div class="col-md-2"></div>
-                    </div>
                 </div>
             </div>
+
         </div>
 
 
@@ -146,12 +208,11 @@ include_once(dirname(__FILE__) . '/auth.php');
         <script src="js/application.min.js"></script>
         <script src="js/profile.min.js"></script>
         <script src="js/sweetalert.min.js" type="text/javascript"></script>
-        
+
         <script src="ajax/js/education_category.js" type="text/javascript"></script>
         <script src="ajax/js/student.js" type="text/javascript"></script>
         <script src="ajax/js/check-login.js" type="text/javascript"></script>
-
-
+        <script src="ajax/js/category.js" type="text/javascript"></script>
     </body>
 
 </html>

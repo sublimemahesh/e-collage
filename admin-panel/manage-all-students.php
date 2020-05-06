@@ -44,7 +44,7 @@ include './auth.php';?>
                             <div class="card">
                                 <div class="card-header">
 
-                                    <strong>Student Log  History  </strong>
+                                    <strong>Manage Students </strong>
                                 </div>
                                 <div class="card-body">
 

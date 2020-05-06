@@ -11,7 +11,7 @@ if ($_POST['action'] == 'UPDATE') {
     $STUDENT->full_name = $_POST['full_name'];
     $STUDENT->nic_number = $_POST['nic_number'];
     $STUDENT->gender = $_POST['gender'];
-    $STUDENT->sub_category = $_POST['sub_category'];
+    $STUDENT->city = $_POST['city'];
     $STUDENT->age = $_POST['age'];
     $STUDENT->phone_number = $_POST['phone_number'];
     $STUDENT->address = $_POST['address'];
@@ -20,6 +20,19 @@ if ($_POST['action'] == 'UPDATE') {
 
 
     $result = ["id" => $_POST['id']];
+    echo json_encode($result);
+    exit();
+}
+//Update Student subjects
+if ($_POST['action'] == 'UPDATE_SUBJECTS') {
+    $STUDENT = new StudentSubject(NULL);
+
+
+    $STUDENT->subject = $_POST['subject'];
+    $STUDENT->student = $_POST['id'];
+    $STUDENT->create(); 
+
+    $result = ["status" => 'success'];
     echo json_encode($result);
     exit();
 }

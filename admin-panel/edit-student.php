@@ -26,7 +26,7 @@ $STUDENT = new Student($id);
         <link rel="stylesheet" href="css/elephant.min.css">
         <link rel="stylesheet" href="css/application.min.css">
         <link rel="stylesheet" href="css/demo.min.css">
-        <link href="../css/sweetalert.css" rel="stylesheet" type="text/css"/>
+        <link href="css/sweetalert.css" rel="stylesheet" type="text/css"/>
         <style>.demo-form-wrapper {
                 padding-bottom: 25px;
                 padding-top: 25px;
@@ -109,45 +109,14 @@ $STUDENT = new Student($id);
                                             <input id="address" name="address" class="form-control" type="text" value="<?php echo $STUDENT->address ?>"  >
                                         </div>
                                     </div>
-                                    <div class="form-group">
-                                        <label class="col-sm-2 control-label" for="">Education Level</label>
-
-                                        <div class="col-sm-8">
-                                            <?php
-                                            if ($STUDENT->education_level == 'o/l') {
-                                                ?>
-                                                <label class="custom-control custom-control-primary custom-radio">
-                                                    <input class="custom-control-input" type="radio" name="education_level" value="o/l" checked="" >
-                                                    <span class="custom-control-indicator"></span>
-                                                    <span class="custom-control-label">Educational Level ( O / L )</span>
-                                                </label>
-                                                <label class="custom-control custom-control-primary custom-radio">
-                                                    <input class="custom-control-input" type="radio" name="education_level" value="a/l">
-                                                    <span class="custom-control-indicator"></span>
-                                                    <span class="custom-control-label">Educational Level ( A / L )</span>
-                                                </label>
-                                            <?php } else { ?>
-                                                <label class="custom-control custom-control-primary custom-radio">
-                                                    <input class="custom-control-input" type="radio" name="education_level" value="o/l"  >
-                                                    <span class="custom-control-indicator"></span>
-                                                    <span class="custom-control-label">Educational Level ( O / L )</span>
-                                                </label>
-                                                <label class="custom-control custom-control-primary custom-radio">
-                                                    <input class="custom-control-input" type="radio" name="education_level" value="a/l" checked="">
-                                                    <span class="custom-control-indicator"></span>
-                                                    <span class="custom-control-label">Educational Level ( A / L )</span>
-                                                </label>
-                                            <?php } ?>
-                                        </div>
-
-                                    </div>
+                                     
                                     <div class="form-group">
                                         <label class="col-sm-2 control-label" for="">Profile Image</label>
                                         <div class="col-sm-10">
                                             <?php
                                             if (empty($STUDENT->image_name)) {
                                                 ?>
-                                            <img src="../img/member.jpg" width="128px"class="img-thumbnail">
+                                            <img src="img/3002121059.jpg" width="128px"class="img-thumbnail">
                                             <?php } else { ?>
                                                 <img src="../upload/student/profile/<?php echo $STUDENT->image_name ?>" class="img-thumbnail">
 
@@ -198,7 +167,7 @@ $STUDENT = new Student($id);
         <script src="js/elephant.min.js"></script>
         <script src="js/application.min.js"></script>
         <script src="js/demo.min.js"></script> 
-        <script src="../js/sweetalert.min.js" type="text/javascript"></script>
+        <script src="js/sweetalert.min.js" type="text/javascript"></script>
         <script src="ajax/js/student.js" type="text/javascript"></script>
 
 

@@ -14,7 +14,6 @@ if ($_POST['action'] == 'UPDATE') {
     $STUDENT->age = $_POST['age'];
     $STUDENT->phone_number = $_POST['phone_number'];
     $STUDENT->address = $_POST['address'];
-    $STUDENT->education_level = $_POST['education_level'];
     $STUDENT->email = $_POST['email'];
 
     if (isset($_POST['status'])) {

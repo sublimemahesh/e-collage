@@ -16,11 +16,12 @@ class Student {
     public $id;
     public $full_name;
     public $student_id;
-    public $sub_category;
+    public $subjects;
     public $email;
     public $nic_number;
     public $gender;
     public $age;
+    public $city;
     public $phone_number;
     public $address;
     public $password;
@@ -47,11 +48,12 @@ class Student {
             $this->id = $result['id'];
             $this->full_name = $result['full_name'];
             $this->student_id = $result['student_id'];
-            $this->sub_category = $result['sub_category'];
+            $this->subjects = $result['subjects'];
             $this->email = $result['email'];
             $this->nic_number = $result['nic_number'];
             $this->gender = $result['gender'];
             $this->age = $result['age'];
+            $this->city = $result['city'];
             $this->phone_number = $result['phone_number'];
             $this->address = $result['address'];
             $this->password = $result['password'];
@@ -71,13 +73,14 @@ class Student {
 
     public function create() {
 
-        $query = "INSERT INTO `student` (`full_name`, `student_id`, `email`,`nic_number`,`gender`,`age`,`phone_number`,`address`,`password`) VALUES  ('"
+        $query = "INSERT INTO `student` (`full_name`, `student_id`, `email`,`nic_number`,`gender`,`age`,`city`,`phone_number`,`address`,`password`) VALUES  ('"
                 . $this->full_name . "','"
                 . $this->student_id . "', '"
                 . $this->email . "', '"
                 . $this->nic_number . "', '"
                 . $this->gender . "', '"
                 . $this->age . "', '"
+                . $this->city . "', '"
                 . $this->phone_number . "', '"
                 . $this->address . "', '"
                 . $this->password . "')";
@@ -97,7 +100,7 @@ class Student {
 
     public function all() {
 
-        $query = "SELECT * FROM `student`  ORDER BY queue ASC";
+        $query = "SELECT * FROM `student`  ORDER BY `id` DESC";
 
         $db = new Database();
 
@@ -111,10 +114,9 @@ class Student {
         return $array_res;
     }
 
-
     public function getActiveStudent() {
 
-        $query = "SELECT * FROM `student` WHERE `status` = 1 ORDER BY queue ASC";
+        $query = "SELECT * FROM `student` WHERE `status` = 1 ORDER BY `id` DESC";
         $db = new Database();
 
         $result = $db->readQuery($query);
@@ -129,7 +131,7 @@ class Student {
 
     public function getInActiveStudent() {
 
-        $query = "SELECT * FROM `student` WHERE `status` = 0 ORDER BY queue ASC";
+        $query = "SELECT * FROM `student` WHERE `status` = 0 ORDER BY `id` DESC";
         $db = new Database();
 
         $result = $db->readQuery($query);
@@ -141,6 +143,7 @@ class Student {
 
         return $array_res;
     }
+
 
     public function getAllMembersWithoutThis($student) {
 
@@ -344,7 +347,7 @@ class Student {
         $_SESSION["full_name"] = $student['full_name'];
         $_SESSION["authToken"] = $student['authToken'];
         $_SESSION["lastLogin"] = $student['lastLogin'];
-        
+
         $_SESSION['login_time'] = time();
         $_SESSION['image_name'] = $student['image_name'];
     }
@@ -485,7 +488,7 @@ class Student {
 
         $query = "UPDATE  `student` SET "
                 . "`full_name` ='" . $this->full_name . "', "
-                . "`sub_category` ='" . $this->sub_category . "', "
+                . "`subjects` ='" . $this->subjects . "', "
                 . "`nic_number` ='" . $this->nic_number . "', "
                 . "`gender` ='" . $this->gender . "', "
                 . "`age` ='" . $this->age . "', "
@@ -512,7 +515,7 @@ class Student {
 
         $query = "UPDATE  `student` SET "
                 . "`full_name` ='" . $this->full_name . "', "
-                . "`sub_category` ='" . $this->sub_category . "', "
+                . "`subjects` ='" . $this->subjects . "', "
                 . "`nic_number` ='" . $this->nic_number . "', "
                 . "`gender` ='" . $this->gender . "', "
                 . "`age` ='" . $this->age . "', "
