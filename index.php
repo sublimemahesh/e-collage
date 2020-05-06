@@ -120,7 +120,7 @@
                     ?>
                     <div class="row pros">	
                         <div class="col-sm-10 col-sm-offset-1 text-center"> 
-                            <a href="#" class="blueplay" style="color: black; ">CHECK ALL TEACHERS</a>
+                            <a href="#" class="blueplay" style="color: black; ">CHECK ALL CATEGORY</a>
                         </div>
                     </div>
                 </div>
@@ -225,7 +225,7 @@
                     </div>
                     <div class="row pros">	
                         <div class="col-sm-10 col-sm-offset-1 text-center"> 
-                            <a href="#" class="blueplay" style="color: black; ">CHECK ALL TEACHERS</a>
+                            <a href="#" class="blueplay" style="color: black; ">CHECK ALL LECTURES</a>
                         </div>
                     </div>
                 </div>

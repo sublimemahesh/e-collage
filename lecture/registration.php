@@ -15,6 +15,7 @@ include '../class/include.php';
         <link rel="stylesheet" href="css/elephant.min.css">
         <link rel="stylesheet" href="css/signup-2.min.css"> 
         <link href="css/jquery.formValid.css" rel="stylesheet" type="text/css"/>
+        <link href="css/sweetalert.css" rel="stylesheet" type="text/css"/>
     </head>
 
     <body class="reg-bck">
@@ -440,6 +441,13 @@ include '../class/include.php';
                             </div> 
 
                         </div>
+
+                        <label class="custom-control custom-control-primary custom-checkbox">
+                            <input class="custom-control-input" type="checkbox" id="agreement">
+                            <span class="custom-control-indicator"></span>
+                            <span class="custom-control-label">Please Accept our <a href="agreement.php" target="_blank">Agreement</a> Before you login </span>
+                        </label>
+
                         <div class="form-group">
                             <div class="pull-left text-danger btn-padding font-size-new" id="message"></div>
                         </div>
@@ -489,9 +497,7 @@ include '../class/include.php';
             });
         </script>
 
-        <!--        
-                <script src="js/vendor.min.js"></script>
-                <script src="js/elephant.min.js"></script>-->
+        <script src="js/sweetalert.min.js" type="text/javascript"></script>
         <script src="js/signup-1.min.js"></script> 
         <script src="js/jquery.formValid.js" type="text/javascript"></script>
         <script src="ajax/js/registration.js" type="text/javascript"></script>

@@ -79,8 +79,8 @@ class LectureSubject {
 
     public function checkLectureSubjects($id) {
 
-        $query = 'SELECT `id` FROM `lecture_subject`  WHERE `lecture`="' . $id . '"';
-
+        $query = 'SELECT `id` FROM `lecture_subject`  WHERE `lecture` ="' . $id . '"';
+  
         $db = new Database();
         $result = mysql_fetch_array($db->readQuery($query));
 
