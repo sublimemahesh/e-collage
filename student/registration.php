@@ -25,9 +25,9 @@ $LAST_ID = $LAST_ID + 1;
             <div class="signup-body">
                 <a class="signup-brand" href="../index.php">
                     <center>
-                           <img class="img-responsive" src="img/logo.png" alt="Ecollege.lk">
+                        <img class="img-responsive" src="img/logo.png" alt="Ecollege.lk">
                     </center>
-                 
+
                 </a>
                 <p class="signup-heading">
                     <em>Student Registration</em>
@@ -38,17 +38,15 @@ $LAST_ID = $LAST_ID + 1;
                             <div class="col-sm-6">
                                 <div class="form-group">
                                     <label for="first-name" >Full Name</label>
-                                    <input id="first_name" class="form-control" type="text" name="full_name"   class="form-
-                                           control" data-field="full_name" >
+                                    <input id="first_name" class="form-control" type="text" name="full_name"   class="form-control" data-field="full_name"  placeholder="Enter your Full Name" >
                                     <div class="valid-message"></div>
                                 </div>
                             </div>
                             <div class="col-sm-6">
                                 <div class="form-group">
                                     <label for="nic_number" >NIC Number</label>
-                                    <input id="nic_number" class="form-control" type="text" name="nic_number"   class="form-
-                                           control" data-field="nic_number" >
-                                    <div class="valid-message"></div>
+                                    <input id="nic_number" class="form-control" type="text" name="nic_number"   class="form-control"  placeholder="Enter your Nic number"  >
+                                
                                 </div>
                             </div>
                         </div>
@@ -68,8 +66,7 @@ $LAST_ID = $LAST_ID + 1;
                             <div class="col-sm-6">
                                 <div class="form-group">
                                     <label for="age" >Age</label>
-                                    <input id="age" class="form-control" type="text" name="age"   class="form-control" data-
-                                           field="age" >
+                                    <input id="age" class="form-control" type="text" name="age"   class="form-control" data-field="age"  placeholder="Enter your age">
                                     <div class="valid-message"></div>
                                 </div>
                             </div>
@@ -79,26 +76,52 @@ $LAST_ID = $LAST_ID + 1;
                             <div class="col-sm-6">
                                 <div class="form-group">
                                     <label for="phone" >Phone Number</label>
-                                    <input id="phone_number" class="form-control" type="text" name="phone_number"   class="form-control" data-field="phone_number" >
+                                    <input id="phone_number" class="form-control" type="text" name="phone_number"   class="form-control" data-field="phone_number"  placeholder="Enter your phone number">
                                     <div class="valid-message"></div>
                                 </div>
                             </div>
                             <div class="col-sm-6">
                                 <div class="form-group">
                                     <label for="phone" >Address</label>
-                                    <input id="address" class="form-control" type="text" name="address"   class="form-control" 
-                                           data-field="address" >
+                                    <input id="address" class="form-control" type="text" name="address"   class="form-control"  placeholder="Enter your address"  data-field="address" >
                                     <div class="valid-message"></div>
                                 </div>
                             </div>
                         </div>
+                        <div class="row gutter-xs">
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label for="gender" >District </label>
 
-                       
+                                    <select  class="custom-select" id="district" name="district" required="">
+                                        <option value="">-- Select your District -- </option>
+                                        <?php
+                                        foreach (District::all() as $district) {
+                                            ?>
+                                            <option value="<?php echo $district['id']; ?>"><?php echo $district['name']; ?></option>   
+                                            <?php
+                                        }
+                                        ?> 
+                                    </select>
+
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label for="age" >City</label>
+                                    <select class="custom-select" name="city" id="city-bar">
+                                        <option value="" selected="selected"> -- Select your city -- </option>
+
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+
                         <div class="row gutter-xs">
                             <div class="col-sm-6">
                                 <div class="form-group">
                                     <label for="email">Email</label>
-                                    <input id="email" class="form-control" type="email" name="email"  data-field="email" >
+                                    <input id="email" class="form-control" type="email" name="email"  data-field="email" placeholder="Enter your email">
                                     <div class="valid-message"></div>
                                 </div>
                             </div>
@@ -117,7 +140,7 @@ $LAST_ID = $LAST_ID + 1;
                                 <div class="form-group">
                                     <label for="password" class="control-label">Password</label>
                                     <!--<div class="input-group">-->
-                                    <input  id="password" class="form-control" type="password" name="password" id="labelPassword"     data-field="password" >
+                                    <input  id="password" class="form-control" type="password" name="password" id="labelPassword"     data-field="password"  placeholder="Enter your Password">
                                     <div class="valid-message" ></div> 
 
                                 </div>
@@ -126,7 +149,7 @@ $LAST_ID = $LAST_ID + 1;
                                 <div class="form-group">
                                     <label for="com_password" class="control-label">Confirm Password</label>
                                     <!--<div class="input-group">-->
-                                    <input  id="com_password" class="form-control" type="password" name="com_password" id="labelPassword"      data-field="com_password" >
+                                    <input  id="com_password" class="form-control" type="password" name="com_password" id="labelPassword"      data-field="com_password"  placeholder="Enter your Password again">
                                     <div class="valid-message" ></div> 
 
                                 </div>
@@ -151,6 +174,7 @@ $LAST_ID = $LAST_ID + 1;
         <script src="js/signup-1.min.js"></script> 
         <script src="js/jquery.formValid.js" type="text/javascript"></script>
         <script src="ajax/js/registration.js" type="text/javascript"></script>
+        <script src="ajax/js/city.js" type="text/javascript"></script>
 
     </body>
 </html>

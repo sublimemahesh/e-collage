@@ -93,22 +93,7 @@ $PAGES = new Page(1);
 
                 </div>
 
-                <?php
-                if (empty($STUDENT->nic_back)) {
-                    ?>
-                    <div class="layout-footer ">  
-                        <div class="pull-right" data-toggle="match-height">
-                            <h4 style="margin-right: 15px; "> 
-                                <a class="label label-success" href="verify-id-card.php" >
-                                    <span>Please Verify Your ID Card from here.! </span>
-                                </a>
-                            </h4> 
-                        </div>
-                    </div>
-
-                    <?php
-                }
-                ?>
+                 
 
             </div>
 

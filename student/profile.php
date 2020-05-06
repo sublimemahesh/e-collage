@@ -135,25 +135,37 @@ include_once(dirname(__FILE__) . '/auth.php');
                                         </div>
                                     </div>
                                     <div class="form-group">
-                                        <label class="col-sm-3 control-label" for="form-control-1">Category: </label>
+                                        <label class="col-sm-3 control-label" for="form-control-1">District: </label>
                                         <div class="col-sm-9">
-                                            <select  class="custom-select" id="category" name="category">
-                                                <option value="" selected="selected"> -- Select Category -- </option>
+                                            <select  class="custom-select" id="district" name="district" required="">
+                                                <option value="">-- Select your District -- </option>
                                                 <?php
-                                               $EDUCATION_CATEGORY=new EducationCategory(null);
-                                               foreach ($EDUCATION_CATEGORY->all() as $category) {
-                                                    ?>
-                                                    <option value="<?php echo $category['id']?>" ><?php echo $category['name']?></option>
-                                                <?php } ?>
+                                                $CITY = new City($STUDENT->city);
+                                                $DISTRICT = new District($CITY->district);
+                                                foreach (District::all() as $district) {
+                                                    if ($district['id'] == $DISTRICT->id) {
+                                                        ?>
+                                                        <option value="<?php echo $district['id']; ?>" selected=""><?php echo $district['name']; ?></option>   
+                                                        <?php
+                                                    } else {
+                                                        ?> 
+                                                        <option value="<?php echo $district['id']; ?>"       ><?php echo $district['name']; ?></option>   
+                                                        <?php
+                                                    }
+                                                }
+                                                ?>
                                             </select>
                                         </div>
                                     </div>
                                     <div class="form-group" id="sub_category_show">
-                                        <label class="col-sm-3 control-label" for="form-control-1">Sub Category: </label>
+                                        <label class="col-sm-3 control-label" for="form-control-1">  City: </label>
                                         <div class="col-sm-9">
-                                            <select  class="custom-select" name="sub_category"  id="sub_category">
-                                                <option value="" > -- Select Sub Category -- </option>
-                                                
+                                            <select class="custom-select" name="city" id="city-bar">
+                                                <option value="<?php echo $STUDENT->city ?>" selected="selected"> <?php
+                                                    $CITY = new City($STUDENT->city);
+                                                    echo $CITY->name
+                                                    ?> 
+                                                </option> 
                                             </select>
                                         </div>
                                     </div>
@@ -175,7 +187,7 @@ include_once(dirname(__FILE__) . '/auth.php');
                                             <input id="address" name="address" class="form-control" type="text" value="<?php echo $STUDENT->address ?>">
                                         </div>
                                     </div>
-                                
+
                                     <div class="form-group">
                                         <div class="col-md-3"> </div> 
                                         <div class="col-md-3">  </div> 
@@ -205,11 +217,11 @@ include_once(dirname(__FILE__) . '/auth.php');
         <script src="js/application.min.js"></script>
         <script src="js/profile.min.js"></script>
         <script src="js/sweetalert.min.js" type="text/javascript"></script>
-        
+
         <script src="ajax/js/education_category.js" type="text/javascript"></script>
         <script src="ajax/js/student.js" type="text/javascript"></script>
         <script src="ajax/js/check-login.js" type="text/javascript"></script>
-
+        <script src="ajax/js/city.js" type="text/javascript"></script>
 
     </body>
 

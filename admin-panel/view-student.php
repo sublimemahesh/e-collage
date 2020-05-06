@@ -143,6 +143,25 @@ $STUDENT = new Student($id);
                                         </div>
                                     </div>
                                     <div class="form-group">
+                                        <label class="col-sm-2 control-label" for="">District</label>
+                                        <div class="col-sm-10">
+                                            <input id="form-control-4" class="form-control" type="text" value="<?php
+                                            $CITY = new City($STUDENT->city);
+                                            $DISTRICT = new District($CITY->district);
+                                            echo $DISTRICT->name;
+                                            ?>" disabled="">
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="col-sm-2 control-label" for="">CITY</label>
+                                        <div class="col-sm-10">
+                                            <input id="form-control-4" class="form-control" type="text" value="<?php
+                                            $CITY = new City($STUDENT->city);
+                                            echo $CITY->name;
+                                            ?>" disabled="">
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
                                         <label class="col-sm-2 control-label" for="">Phone Number</label>
                                         <div class="col-sm-10">
                                             <input id="form-control-4" class="form-control" type="text" value="<?php echo $STUDENT->phone_number ?>" disabled="">
@@ -154,83 +173,21 @@ $STUDENT = new Student($id);
                                             <input id="form-control-4" class="form-control" type="text" value="<?php echo $STUDENT->address ?>" disabled="">
                                         </div>
                                     </div>
-                                    <div class="form-group">
-                                        <label class="col-sm-2 control-label" for="">Education Level</label>
-                                        <div class="col-sm-10">
-                                            <?php
-                                            if ($STUDENT->education_level == 'o/l') {
-                                                ?>
-                                                <label class="custom-control custom-control-primary custom-radio">
-                                                    <input class="custom-control-input" type="radio" name="education_level" value="o/l" checked="" >
-                                                    <span class="custom-control-indicator"></span>
-                                                    <span class="custom-control-label">Educational Level ( O / L )</span>
-                                                </label>
-                                                <label class="custom-control custom-control-primary custom-radio">
-                                                    <input class="custom-control-input" type="radio" name="education_level" value="a/l">
-                                                    <span class="custom-control-indicator"></span>
-                                                    <span class="custom-control-label">Educational Level ( A / L )</span>
-                                                </label>
-                                            <?php } else { ?>
-                                                <label class="custom-control custom-control-primary custom-radio">
-                                                    <input class="custom-control-input" type="radio" name="education_level" value="o/l"  >
-                                                    <span class="custom-control-indicator"></span>
-                                                    <span class="custom-control-label">Educational Level ( O / L )</span>
-                                                </label>
-                                                <label class="custom-control custom-control-primary custom-radio">
-                                                    <input class="custom-control-input" type="radio" name="education_level" value="a/l" checked="">
-                                                    <span class="custom-control-indicator"></span>
-                                                    <span class="custom-control-label">Educational Level ( A / L )</span>
-                                                </label>
-                                            <?php } ?>                                        </div>
-                                    </div>
+
                                     <div class="form-group">
                                         <label class="col-sm-2 control-label" for="">Profile Image</label>
                                         <div class="col-sm-10">
                                             <?php
                                             if (empty($STUDENT->image_name)) {
                                                 ?>
-                                                <img src="../img/member.jpg" width="128px"class="img-thumbnail">
+                                                <img src="img/3002121059.jpg" width="128px"class="img-thumbnail">
                                             <?php } else { ?>
                                                 <img src="../upload/student/profile/<?php echo $STUDENT->image_name ?>" class="img-thumbnail">
 
                                             <?php } ?>
                                         </div>
                                     </div>
-                                    <div class="form-group">
-                                        <label class="col-sm-2 control-label" for="">NIC Front</label>
-                                        <div class="col-sm-5">
-                                            <?php
-                                            if (empty($STUDENT->nic_front)) {
-                                                ?>
-                                                <img src="../img/Nic_Front.jpg"  class="img-thumbnail">
-                                            <?php } else { ?>
-                                                <div class="gallery  " >
-                                                    <a href="../upload/student/nic_card/front/<?php echo $STUDENT->nic_front ?>" class="big">
-                                                        <img src="../upload/student/nic_card/front/thumb/<?php echo $STUDENT->nic_front ?>"   title=" " class="img-thumbnail"/>
-                                                    </a>
-                                                </div>
-                                            <?php } ?>
-                                        </div>
 
-                                        <div class="col-sm-5">
-                                            <?php
-                                            if (empty($STUDENT->nic_back)) {
-                                                ?>
-                                                <img src="../img/Nic_Back.jpg"  class="img-thumbnail">
-                                            <?php } else { ?>
-                                                <div class="gallery  " >
-
-                                                    <a href="../upload/student/nic_card/back/<?php echo $STUDENT->nic_back ?>" class="big">
-                                                        <img src="../upload/student/nic_card/back/thumb/<?php echo $STUDENT->nic_back ?>"     class="img-thumbnail"/>
-                                                    </a>
-
-
-                                                </div>
-                                                <img src=""  class="img-thumbnail">
-                                            <?php } ?>
-
-                                        </div>
-                                    </div>
 
                                 </form>
                             </div>

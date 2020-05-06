@@ -8,6 +8,7 @@ $STUDENT->full_name = $_POST['full_name'];
 $STUDENT->nic_number = $_POST['nic_number'];
 $STUDENT->gender = $_POST['gender'];
 $STUDENT->age = $_POST['age'];
+$STUDENT->city = $_POST['city'];
 $STUDENT->phone_number = $_POST['phone_number'];
 $STUDENT->address = $_POST['address'];
 $STUDENT->student_id = $_POST['student_id'];

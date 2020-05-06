@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 
-<?php include './class/include.php'; 
- 
+<?php include './class/include.php';
 ?>
 <html>
 
@@ -103,7 +102,7 @@
                     <?php
                     $EDUCATION_CATEGORY = new EducationCategory(null);
                     foreach ($EDUCATION_CATEGORY->all() as $key => $education_category) {
-                        if ($key < 11) {
+                        if ($key < 12) {
                             ?>
                             <div class="col-md-3 col-sm-6 category">
                                 <img src="upload/category/<?php echo $education_category['image_name'] ?>" alt="Category">
@@ -119,14 +118,9 @@
                         }
                     }
                     ?>
-                    <div class="col-md-3 col-sm-6 category">
-                        <img src="upload/category/1.JPG.jpg" alt="Category">
-                        <h5>More</h5>
-                        <div class="overlay text-center">
-                            <p class="pull-right"><span>93</span>TRAINERS</p>
-                            <p class="pull-left"><span>418</span>TUTORIALS</p>
-                            <h5>Photography</h5>
-                            <a href="#">CHECK VIDEOS</a>
+                    <div class="row pros">	
+                        <div class="col-sm-10 col-sm-offset-1 text-center"> 
+                            <a href="#" class="blueplay" style="color: black; ">CHECK ALL TEACHERS</a>
                         </div>
                     </div>
                 </div>
@@ -134,105 +128,110 @@
             </div>
 
 
-            <div class="container pros">
+            <div class="container pros" style="margin-top: 0px;">
                 <div class="row">	
                     <div class="col-sm-10 col-sm-offset-1 text-center">
-                        <h3>Top Lectures</h3>
+                        <h3 style="margin-top: 0px;">Top Lectures</h3>
                         <p>
                             They are different kind of lectures they are professional lectures,<br> They high educations levels
                         </p>
-                        <a href="#" class="blueplay">CHECK ALL TEACHERS</a>
+
                     </div>
                 </div>
-                <div class="row text-center">
+                <div class="row text-center" style="margin-top: 20px;">
                     <div class="slick-features-teachers">
-                    <div class="col-md-2 col-sm-4 col-xs-6">	
-                        <div class="teacher">
-                            <div class="imgcontainer">
-                                <img src="assets/images/client-1.jpg" alt="Avatar" class="img-responsive img-circle" style="width: 100%">
-                                <div class="overlay">
-                                    <img src="assets/images/avatars/profile.png" alt="Profile">
-                                    <p>8 VIDEOS</p>
+                        <div class="col-md-2 col-sm-4 col-xs-6">	
+                            <div class="teacher">
+                                <div class="imgcontainer">
+                                    <img src="assets/images/client-1.jpg" alt="Avatar" class="img-responsive img-circle" style="width: 100%">
+                                    <div class="overlay">
+                                        <img src="assets/images/avatars/profile.png" alt="Profile">
+                                        <p>8 VIDEOS</p>
+                                    </div>
                                 </div>
+                                <a href="#">Dileshka  Senaratne</a>
+                                <p>SCIENTIST</p>
                             </div>
-                            <a href="#">Dileshka  Senaratne</a>
-                            <p>SCIENTIST</p>
                         </div>
-                    </div>
-                    <div class="col-md-2 col-sm-4 col-xs-6">	
-                        <div class="teacher">
-                            <div class="imgcontainer">
-                                <img src="assets/images/client-2.jpg" alt="Avatar" class="img-responsive img-circle" style="width: 100%">
-                                <div class="overlay">
-                                    <img src="assets/images/avatars/profile.png" alt="Profile">
-                                    <p>8 VIDEOS</p>
+                        <div class="col-md-2 col-sm-4 col-xs-6">	
+                            <div class="teacher">
+                                <div class="imgcontainer">
+                                    <img src="assets/images/client-2.jpg" alt="Avatar" class="img-responsive img-circle" style="width: 100%">
+                                    <div class="overlay">
+                                        <img src="assets/images/avatars/profile.png" alt="Profile">
+                                        <p>8 VIDEOS</p>
+                                    </div>
                                 </div>
+                                <a href="#">Harsha  Weerarathne</a>
+                                <p>Finance </p>
                             </div>
-                            <a href="#">Harsha  Weerarathne</a>
-                            <p>Finance </p>
                         </div>
-                    </div>
-                    <div class="col-md-2 col-sm-4 col-xs-6">	
-                        <div class="teacher">
-                            <div class="imgcontainer">
-                                <img src="assets/images/client-3.png" alt="Avatar" class="img-responsive img-circle" style="width: 100%">
+                        <div class="col-md-2 col-sm-4 col-xs-6">	
+                            <div class="teacher">
+                                <div class="imgcontainer">
+                                    <img src="assets/images/client-3.png" alt="Avatar" class="img-responsive img-circle" style="width: 100%">
 
-                                <div class="overlay">
-                                    <img src="assets/images/avatars/profile.png" alt="Profile">
-                                    <p>8 VIDEOS</p>
+                                    <div class="overlay">
+                                        <img src="assets/images/avatars/profile.png" alt="Profile">
+                                        <p>8 VIDEOS</p>
+                                    </div>
                                 </div>
+                                <a href="#">Chamila  Gajasinghe</a>
+                                <p>English</p>
                             </div>
-                            <a href="#">Chamila  Gajasinghe</a>
-                            <p>English</p>
+                        </div>
+                        <div class="col-md-2 col-sm-4 col-xs-6">	
+                            <div class="teacher">
+                                <div class="imgcontainer">
+                                    <img src="assets/images/client-4.PNG" alt="Avatar" class="img-responsive img-circle" style="width: 100%">
+
+                                    <div class="overlay">
+                                        <img src="assets/images/avatars/profile.png" alt="Profile">
+                                        <p>8 VIDEOS</p>
+                                    </div>
+                                </div>
+                                <a href="#"> Eng. Geethike  Ranga</a>
+                                <p>java</p>
+                            </div>
+                        </div>
+                        <div class="col-md-2 col-sm-4 col-xs-6">	
+                            <div class="teacher">
+                                <div class="imgcontainer">
+                                    <img src="assets/images/client-5.jpg" alt="Avatar" class="img-responsive img-circle" style="width: 100%">
+
+                                    <div class="overlay">
+                                        <img src="assets/images/avatars/profile.png" alt="Profile">
+                                        <p>8 VIDEOS</p>
+                                    </div>
+                                </div>
+                                <a href="#">  Sugath  Nandasiri</a>
+                                <p>Spoken English</p>
+                            </div>
+                        </div>
+                        <div class="col-md-2 col-sm-4 col-xs-6">	
+                            <div class="teacher">
+                                <div class="imgcontainer">
+                                    <img src="assets/images/client-6.jpg" alt="Avatar" class="img-responsive img-circle" style="width: 100%">
+
+                                    <div class="overlay">
+                                        <img src="assets/images/avatars/profile.png" alt="Profile">
+                                        <p>8 VIDEOS</p>
+                                    </div>
+                                </div>
+                                <a href="#">Anuththara  Bandara </a>
+                                <p>Cambridge & Local trained </p>
+                            </div>
                         </div>
                     </div>
-                    <div class="col-md-2 col-sm-4 col-xs-6">	
-                        <div class="teacher">
-                            <div class="imgcontainer">
-                                <img src="assets/images/client-4.PNG" alt="Avatar" class="img-responsive img-circle" style="width: 100%">
-
-                                <div class="overlay">
-                                    <img src="assets/images/avatars/profile.png" alt="Profile">
-                                    <p>8 VIDEOS</p>
-                                </div>
-                            </div>
-                            <a href="#"> Eng. Geethike  Ranga</a>
-                            <p>java</p>
-                        </div>
-                    </div>
-                    <div class="col-md-2 col-sm-4 col-xs-6">	
-                        <div class="teacher">
-                            <div class="imgcontainer">
-                                <img src="assets/images/client-5.jpg" alt="Avatar" class="img-responsive img-circle" style="width: 100%">
-
-                                <div class="overlay">
-                                    <img src="assets/images/avatars/profile.png" alt="Profile">
-                                    <p>8 VIDEOS</p>
-                                </div>
-                            </div>
-                            <a href="#">  Sugath  Nandasiri</a>
-                            <p>Spoken English</p>
-                        </div>
-                    </div>
-                    <div class="col-md-2 col-sm-4 col-xs-6">	
-                        <div class="teacher">
-                            <div class="imgcontainer">
-                                <img src="assets/images/client-6.jpg" alt="Avatar" class="img-responsive img-circle" style="width: 100%">
-
-                                <div class="overlay">
-                                    <img src="assets/images/avatars/profile.png" alt="Profile">
-                                    <p>8 VIDEOS</p>
-                                </div>
-                            </div>
-                            <a href="#">Anuththara  Bandara </a>
-                            <p>Cambridge & Local trained </p>
+                    <div class="row pros">	
+                        <div class="col-sm-10 col-sm-offset-1 text-center"> 
+                            <a href="#" class="blueplay" style="color: black; ">CHECK ALL TEACHERS</a>
                         </div>
                     </div>
                 </div>
-                    </div>
             </div>
 
-            <div class="platform text-center">
+            <div class="platform text-center" style="margin-top: 30px;">
                 <div class="container">
                     <div class="row">
                         <div class="col-sm-12">
