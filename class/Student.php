@@ -16,7 +16,6 @@ class Student {
     public $id;
     public $full_name;
     public $student_id;
-    public $subjects;
     public $email;
     public $nic_number;
     public $gender;
@@ -48,7 +47,6 @@ class Student {
             $this->id = $result['id'];
             $this->full_name = $result['full_name'];
             $this->student_id = $result['student_id'];
-            $this->subjects = $result['subjects'];
             $this->email = $result['email'];
             $this->nic_number = $result['nic_number'];
             $this->gender = $result['gender'];
@@ -143,7 +141,6 @@ class Student {
 
         return $array_res;
     }
-
 
     public function getAllMembersWithoutThis($student) {
 
@@ -488,7 +485,6 @@ class Student {
 
         $query = "UPDATE  `student` SET "
                 . "`full_name` ='" . $this->full_name . "', "
-                . "`subjects` ='" . $this->subjects . "', "
                 . "`nic_number` ='" . $this->nic_number . "', "
                 . "`gender` ='" . $this->gender . "', "
                 . "`age` ='" . $this->age . "', "
@@ -515,7 +511,6 @@ class Student {
 
         $query = "UPDATE  `student` SET "
                 . "`full_name` ='" . $this->full_name . "', "
-                . "`subjects` ='" . $this->subjects . "', "
                 . "`nic_number` ='" . $this->nic_number . "', "
                 . "`gender` ='" . $this->gender . "', "
                 . "`age` ='" . $this->age . "', "

@@ -11,7 +11,7 @@ $(document).ready(function () {
                     }
                 ]
             },
-             
+
             "gender": {
                 "required": true,
                 "tests": [
@@ -34,7 +34,7 @@ $(document).ready(function () {
                     }
                 ]
             },
-            
+
             "student_id": {
                 "required": true,
                 "tests": [
@@ -68,28 +68,38 @@ $(document).ready(function () {
     form.keypress(300);
 
     $('button[type="submit"]').click(function () {
-        form.test();
-        if (form.errors() == 0) {
-            var formData = new FormData($("form#form")[0]);
-            $.ajax({
-                url: "ajax/post-and-get/registration.php",
-                type: 'POST',
-                data: formData,
-                async: false,
-                cache: false,
-                contentType: false,
-                processData: false,
-                dataType: "JSON",
-                success: function (result) {
-                    if (result.status == 'error') {
-                        $('#message').text(result.message);
-                    } else {
-                        window.location.replace("complete-profile.php");
-                    }
-                }
+        if ($('#agreement').prop("checked") == false) {
+            swal({
+                title: "Error!",
+                text: "Please accept our term and conditions",
+                type: 'error',
+                timer: 2000,
+                showConfirmButton: false
             });
+        } else {
+            form.test();
+            if (form.errors() == 0) {
+                var formData = new FormData($("form#form")[0]);
+                $.ajax({
+                    url: "ajax/post-and-get/registration.php",
+                    type: 'POST',
+                    data: formData,
+                    async: false,
+                    cache: false,
+                    contentType: false,
+                    processData: false,
+                    dataType: "JSON",
+                    success: function (result) {
+                        if (result.status == 'error') {
+                            $('#message').text(result.message);
+                        } else {
+                            window.location.replace("complete-profile.php");
+                        }
+                    }
+                });
+            }
+            return false;
         }
-        return false;
     });
 
 

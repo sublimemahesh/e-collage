@@ -20,15 +20,7 @@ $(document).ready(function () {
                 timer: 1500,
                 showConfirmButton: false
             });
-        } else if (!$('#nic_number').val() || $('#nic_number').val().length === 0) {
-            swal({
-                title: "Error!",
-                text: "Please enter short nic number..!",
-                type: 'error',
-                timer: 1500,
-                showConfirmButton: false
-            });
-        }  else if (!$('#phone_number').val() || $('#phone_number').val().length === 0) {
+        }else if (!$('#phone_number').val() || $('#phone_number').val().length === 0) {
             swal({
                 title: "Error!",
                 text: "Please enter phone number..!",
