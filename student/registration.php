@@ -156,21 +156,18 @@ $LAST_ID = $LAST_ID + 1;
                                 </div>
                             </div> 
                         </div>
-
-                        <div class="form-group">
-                            <div class="pull-left text-danger btn-padding font-size-new" id="message"></div>
+                        <div class="row" style="margin-bottom: 8px;">
+                            <div class="form-group">
+                                <div class="pull-left text-danger btn-padding font-size-new" id="message"></div>
+                            </div>
                         </div>
-                        <div class="row">
+                        <div class="row"  >
                             <div class="col-md-3">  </div>
                             <div class="col-md-6">    <button class="btn btn-primary btn-block" type="submit" id="next">Next</button>  </div>
                             <div class="col-md-3"> 
 
                             </div>
-                        </div>
-
-
-
-
+                        </div> 
                 </div>
 
                 <div class="signup-footer">
@@ -214,7 +211,7 @@ $LAST_ID = $LAST_ID + 1;
 
                         <label class="custom-control custom-control-primary custom-checkbox" style="margin-bottom:20px;"  >
                             <input class="custom-control-input" type="checkbox" id="agreement">
-                            <span class="custom-control-indicator"></span>
+                            <span class="custom-control-indicator"  style="border-color: #ff0707!important;"></span>
                             <span class="custom-control-label" style="font-size: 16px;">Please Accept our <span style="color: #f7a033"> Agreement </span> Before you login </span>
                         </label>
                         <div class="row" style="margin:0px;">

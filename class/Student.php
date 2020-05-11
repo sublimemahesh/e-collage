@@ -365,6 +365,37 @@ class Student {
         }
     }
 
+    public function checkRegistrationMobile($phone_number) {
+
+
+        $query = "SELECT `id` FROM `student` WHERE `phone_number`= '" . $phone_number . "'";
+
+        $db = new Database();
+
+        $result = mysql_fetch_array($db->readQuery($query));
+
+        if (!$result) {
+            return FALSE;
+        } else {
+            return TRUE;
+        }
+    }
+
+    public function checkRegistrationEmail($email) {
+
+        $query = "SELECT `id` FROM `student` WHERE `email`= '" . $email . "'";
+
+        $db = new Database();
+
+        $result = mysql_fetch_array($db->readQuery($query));
+
+        if (!$result) {
+            return FALSE;
+        } else {
+            return TRUE;
+        }
+    }
+
     private function setLastLogin($id) {
 
         date_default_timezone_set('Asia/Colombo');

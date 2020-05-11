@@ -25,7 +25,7 @@ if ($_POST['password'] != $_POST['com_password']) {
     $STUDENT->create();
     if ($STUDENT->id) {
 
-        $STUDENT->login($STUDENT->student_id, $STUDENT->password);
+        $STUDENT->login($STUDENT->student_id, $_POST['password']);
 
         $response['status'] = 'success';
         echo json_encode($response);

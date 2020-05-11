@@ -117,7 +117,7 @@ $(document).ready(function () {
                     processData: false,
                     dataType: "JSON",
                     success: function (result) {
-                        alert(result.status);
+                       
                         if (result.status == 'error') {
                             $('#message').text(result.message);
                         } else {
