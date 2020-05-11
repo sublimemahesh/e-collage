@@ -35,7 +35,7 @@ include '../class/include.php';
                             <div class="col-sm-4">
                                 <div class="form-group">
                                     <label for="first-name" >Full Name</label>
-                                    <input id="first_name" class="form-control" type="text" name="full_name"   class="form-
+                                    <input id="full_name" class="form-control" type="text" name="full_name"   class="form-
                                            control" data-field="full_name" >
                                     <div class="valid-message"></div>
                                 </div>
@@ -58,14 +58,14 @@ include '../class/include.php';
                             <div class="col-sm-6">
                                 <div class="form-group">
                                     <label for="nic_number" >NIC Number / Passport No</label>
-                                    <input id="nic_number" class="form-control" type="text" name="nic_number"   class="form-control" data-field="nic_number" >
+                                    <input id="nic_number" class="form-control" type="text" name="nic_number" maxlength="9"  class="form-control" data-field="nic_number"  >
                                     <div class="valid-message"></div>
                                 </div>
                             </div>
                             <div class="col-sm-6">
                                 <div class="form-group">
                                     <label for="phone" >Phone Number</label>
-                                    <input id="phone_number" class="form-control" type="text" name="phone_number"   class="form-control" data-field="phone_number" >
+                                    <input id="phone_number" class="form-control" type="text" name="phone_number"  maxlength="10" class="form-control" data-field="phone_number" placeholder="0777123456" >
                                     <div class="valid-message"></div>
                                 </div>
                             </div>
@@ -442,11 +442,17 @@ include '../class/include.php';
                         </div> 
 
                         <div class="form-group">
-                            <div class="pull-left text-danger btn-padding font-size-new" id="message"></div>
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="pull-left text-danger btn-padding font-size-new" id="message"></div>
+                                </div>
+                            </div>
                         </div>
                         <div class="row">
                             <div class="col-md-3">  </div>
-                            <div class="col-md-6">    <button class="btn btn-primary btn-block" type="submit" id="next">Next</button>  </div>
+                            <div class="col-md-6">    
+                               
+                                <button class="btn btn-primary btn-block" type="submit" id="next">Next</button>  </div>
                             <div class="col-md-3"> 
 
                             </div>

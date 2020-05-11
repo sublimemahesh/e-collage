@@ -224,6 +224,52 @@ class Lecture {
             return TRUE;
         }
     }
+    public function checkRegistrationEmail($email) {
+ 
+
+        $query = "SELECT `id` FROM `lecture` WHERE `email`= '" . $email . "'";
+
+        $db = new Database();
+
+        $result = mysql_fetch_array($db->readQuery($query));
+     
+        if (!$result) {
+            return FALSE;
+        } else {
+            return TRUE;
+        }
+    }
+    public function checkRegistrationNicNumber($nic_number) {
+ 
+
+        $query = "SELECT `id` FROM `lecture` WHERE `nic_number`= '" . $nic_number . "'";
+
+        $db = new Database();
+
+        $result = mysql_fetch_array($db->readQuery($query));
+     
+        if (!$result) {
+            return FALSE;
+        } else {
+            return TRUE;
+        }
+    }
+  
+    public function checkRegistrationMobile($phone_number) {
+ 
+
+        $query = "SELECT `id` FROM `lecture` WHERE `phone_number`= '" . $phone_number . "'";
+
+        $db = new Database();
+
+        $result = mysql_fetch_array($db->readQuery($query));
+     
+        if (!$result) {
+            return FALSE;
+        } else {
+            return TRUE;
+        }
+    }
 
     public function changePassword($id, $password) {
 
