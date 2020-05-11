@@ -508,7 +508,7 @@ include '../class/include.php';
                     </p>
                     <label class="custom-control custom-control-primary custom-checkbox" style="margin-bottom:20px;"  >
                         <input class="custom-control-input" type="checkbox" id="agreement">
-                        <span class="custom-control-indicator"></span>
+                        <span class="custom-control-indicator" style="border-color: #ff0707!important;"></span>
                         <span class="custom-control-label" style="font-size: 16px;">Please Accept our <span style="color: #f7a033"> Agreement </span> Before you login </span>
                     </label>
                     <div class="row" style="margin:0px;">

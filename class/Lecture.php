@@ -224,6 +224,7 @@ class Lecture {
             return TRUE;
         }
     }
+    
     public function checkRegistrationEmail($email) {
  
 
@@ -239,6 +240,7 @@ class Lecture {
             return TRUE;
         }
     }
+    
     public function checkRegistrationNicNumber($nic_number) {
  
 
