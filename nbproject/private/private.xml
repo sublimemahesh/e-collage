@@ -5,13 +5,8 @@
         <group>
             <file>file:/C:/xampp/htdocs/institute/lecture/registration.php</file>
             <file>file:/C:/xampp/htdocs/institute/student/registration.php</file>
-            <file>file:/C:/xampp/htdocs/institute/lecture/navigation.php</file>
-            <file>file:/C:/xampp/htdocs/institute/header.php</file>
-            <file>file:/C:/xampp/htdocs/institute/footer.php</file>
-            <file>file:/C:/xampp/htdocs/institute/lecture/create-subjects.php</file>
-            <file>file:/C:/xampp/htdocs/institute/lecture/css/elephant.min.css</file>
-            <file>file:/C:/xampp/htdocs/institute/student/ajax/js/registration.js</file>
-            <file>file:/C:/xampp/htdocs/institute/header-index.php</file>
+            <file>file:/C:/xampp/htdocs/institute/student/agreement.php</file>
+            <file>file:/C:/xampp/htdocs/institute/lecture/agreement.php</file>
         </group>
     </open-files>
 </project-private>
