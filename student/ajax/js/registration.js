@@ -65,42 +65,55 @@ $(document).ready(function () {
         }
     });
 
-    form.keypress(300);
+    form.keypress(300); 
 
-    $('button[type="submit"]').click(function () {
-        if ($('#agreement').prop("checked") == false) {
-            swal({
-                title: "Error!",
-                text: "Please accept our term and conditions",
-                type: 'error',
-                timer: 2000,
-                showConfirmButton: false
+    $('#next').click(function () {
+
+        form.test();
+        if (form.errors() == 0) {
+            $('#agreement_form').show();
+            $('#register_form').hide();
+
+
+            $('#black').click(function () {
+                $('#register_form').show();
+                $('#agreement_form').hide();
+
             });
-        } else {
-            form.test();
-            if (form.errors() == 0) {
-                var formData = new FormData($("form#form")[0]);
-                $.ajax({
-                    url: "ajax/post-and-get/registration.php",
-                    type: 'POST',
-                    data: formData,
-                    async: false,
-                    cache: false,
-                    contentType: false,
-                    processData: false,
-                    dataType: "JSON",
-                    success: function (result) {
-                        if (result.status == 'error') {
-                            $('#message').text(result.message);
-                        } else {
-                            window.location.replace("complete-profile.php");
+            $('#register').click(function () {
+                if ($('#agreement').prop("checked") == false) {
+                    swal({
+                        title: "Error!",
+                        text: "Please accept our Agreement..!",
+                        type: 'error',
+                        timer: 2000,
+                        showConfirmButton: false
+                    });
+                } else {
+                    var formData = new FormData($("form#form")[0]);
+                    $.ajax({
+                        url: "ajax/post-and-get/registration.php",
+                        type: 'POST',
+                        data: formData,
+                        async: false,
+                        cache: false,
+                        contentType: false,
+                        processData: false,
+                        dataType: "JSON",
+                        success: function (result) {
+                            if (result.status == 'error') {
+                                $('#message').text(result.message);
+                            } else {
+                                window.location.replace("complete-profile.php");
+                            }
                         }
-                    }
-                });
-            }
-            return false;
-        }
-    });
+                    });
+                }
+            });
 
+        }
+        return false;
+
+    });
 
 });

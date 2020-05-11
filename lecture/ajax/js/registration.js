@@ -80,7 +80,7 @@ $(document).ready(function () {
                 if ($('#agreement').prop("checked") == false) {
                     swal({
                         title: "Error!",
-                        text: "Please accept our term and conditions",
+                        text: "Please accept our Agreement..!",
                         type: 'error',
                         timer: 2000,
                         showConfirmButton: false
