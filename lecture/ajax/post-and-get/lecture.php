@@ -278,8 +278,8 @@ if ($_POST['action'] == 'CHANGEPROFILE') {
             $handle->image_ratio_crop = 'C';
             $handle->file_new_name_body = $imgName;
 
-            $handle->image_x = 128;
-            $handle->image_y = 128;
+            $handle->image_x = 400;
+            $handle->image_y = 400;
 
             $handle->Process($folder);
 
@@ -323,8 +323,8 @@ if ($_POST['action'] == 'CHANGEPROFILE') {
             $handle->image_ratio_crop = 'C';
             $handle->file_new_name_body = $imgName;
 
-            $handle->image_x = 128;
-            $handle->image_y = 128;
+            $handle->image_x = 400;
+            $handle->image_y = 400;
 
             $handle->Process($folder);
 

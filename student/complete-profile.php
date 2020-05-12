@@ -196,11 +196,11 @@ if (!Student::authenticate()) {
                     </div>
                 </div>
             </div>
-
+            <?php include './footer.php'; ?>
         </div>
 
 
-        <input type="hidden" value="<?php echo $_SESSION['id'] ?>" id="student_id">
+
 
         <script src="js/jquery.min.js" type="text/javascript"></script> 
         <script src="js/vendor.min.js"></script>
