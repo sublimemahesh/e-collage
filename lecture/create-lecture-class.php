@@ -136,7 +136,7 @@ include './auth.php';
                                                 </div>
                                             </div>
                                             <div class="form-group">
-                                                <label class="col-sm-2 control-label " for="title" style="text-align: left">Class_fee: </label>
+                                                <label class="col-sm-2 control-label " for="title" style="text-align: left">Class Fee: </label>
                                                 <div class="col-sm-10">
                                                     <input id="class_fee" name="class_fee" class="form-control" type="text"   placeholder="Enter your Course Fee">
                                                 </div>
@@ -193,8 +193,8 @@ include './auth.php';
                                                 <td><?php echo number_format($lecture_class['class_fee'], 2) ?></td>
 
                                                 <td> 
-                                                    <a href="edit-lecture-class.php?id=<?php echo $lecture_subject['id'] ?>" class="op-link btn btn-sm btn-info"><i class="icon icon-pencil"></i></a>  |
-                                                    <a href="#" class="delete-lecture-subject btn btn-sm btn-danger" data-id="<?php echo $lecture_subject['id'] ?>"><i class="waves-effect icon icon-trash" data-type="cancel"></i></a> 
+                                                    <a href="edit-lecture-class.php?id=<?php echo $lecture_class['id'] ?>" class="op-link btn btn-sm btn-info"><i class="icon icon-pencil"></i></a>  |
+                                                    <a href="#" class="delete-lecture-class btn btn-sm btn-danger" data-id="<?php echo $lecture_class['id'] ?>"><i class="waves-effect icon icon-trash" data-type="cancel"></i></a> 
 
                                                 </td>
                                             </tr>
@@ -245,7 +245,7 @@ include './auth.php';
             });
         </script> 
         <script src="ajax/js/lecture_class.js" type="text/javascript"></script>
-        <script src="delete/js/lecture-subject.js" type="text/javascript"></script>
+        <script src="delete/js/lecture-class.js" type="text/javascript"></script>
     </body>
 
 </html>

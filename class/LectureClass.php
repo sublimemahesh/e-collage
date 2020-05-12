@@ -82,14 +82,16 @@ class LectureClass {
 
     public function update() {
 
-        $query = 'UPDATE `lecture_class` SET `class_type`= "'
-                . $this->class_type . '", '
-                . $this->subject_id . '", '
-                . $this->start_date . '", '
-                . $this->start_time . '", '
-                . $this->duration . '", '
-                . $this->class_fee . '" '
-                . 'WHERE id="' . $this->id . '"';
+        $query = "UPDATE  `lecture_class` SET "
+                . "`class_type` ='" . $this->class_type . "', "
+                . "`subject_id` ='" . $this->subject_id . "', "
+                . "`start_date` ='" . $this->start_date . "', "
+                . "`start_time` ='" . $this->start_time . "', "
+                . "`duration` ='" . $this->duration . "', "
+                . "`class_fee` ='" . $this->class_fee . "' "
+                . "WHERE `id` = '" . $this->id . "'";
+        
+       
 
         $db = new Database();
         $result = $db->readQuery($query);

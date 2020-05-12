@@ -25,7 +25,7 @@
                         </ul>
                     </li>
                     <li class="sidenav-item has-subnav" style="margin-top: 20px">
-                        <a href="#" aria-haspopup="true">
+                        <a href="create-lecture-class.php" aria-haspopup="true">
                             <span class="sidenav-icon icon icon-calendar-check-o"></span>
                             <span class="sidenav-label">Schedule Class</span>
                         </a>

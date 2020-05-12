@@ -1,6 +1,9 @@
 <?php
 include '../class/include.php';
 include './auth.php';
+$id = '';
+$id = $_GET['id'];
+$LECTURE_CLASS = new LectureClass($id);
 ?>
 <html lang="en">
 
@@ -70,9 +73,7 @@ include './auth.php';
                     <div class="row gutter-xs">
                         <div class="col-xs-12">
                             <div class="row">  
-
-                                <div class="col-md-12"> 
-
+                                <div class="col-md-12">
                                     <div class="card">
                                         <div class="card-header"> 
                                             <strong>Edit Lecture Class</strong>
@@ -87,10 +88,15 @@ include './auth.php';
                                                         <option value="">-- Select your Class Type -- </option>
                                                         <?php
                                                         foreach (EducationCategory::all() as $education_category) {
-                                                            ?>
-
-                                                            <option value="<?php echo $education_category['id']; ?>"><?php echo $education_category['name']; ?></option>   
-                                                            <?php
+                                                            if ($LECTURE_CLASS->class_type == $education_category['id']) {
+                                                                ?> 
+                                                                <option value="<?php echo $education_category['id']; ?>" selected=""><?php echo $education_category['name']; ?></option>   
+                                                                <?php
+                                                            } else {
+                                                                ?>
+                                                                <option value="<?php echo $education_category['id']; ?>"><?php echo $education_category['name']; ?></option>   
+                                                                <?php
+                                                            }
                                                         }
                                                         ?>
                                                     </select>
@@ -103,12 +109,24 @@ include './auth.php';
                                                         <option value="">-- Select your Subject -- </option>
                                                         <?php
                                                         foreach (LectureSubject::getLectureSubjectsByLecture($_SESSION['id']) as $lecture_subject) {
-                                                            ?> 
-                                                            <option value="<?php echo $lecture_subject['subject_id']; ?>"><?php
-                                                                $EDUCATIN_SUBJECT = new EducationSubject($lecture_subject['subject_id']);
-                                                                echo $EDUCATIN_SUBJECT->name;
-                                                                ?></option>   
-                                                            <?php
+
+                                                            if ($LECTURE_CLASS->subject_id == $lecture_subject['subject_id']) {
+                                                                ?> 
+                                                                <option value="<?php echo $lecture_subject['subject_id']; ?>" selected=""><?php
+                                                                    $EDUCATIN_SUBJECT = new EducationSubject($lecture_subject['subject_id']);
+                                                                    echo $EDUCATIN_SUBJECT->name;
+                                                                    ?>
+                                                                </option>   
+                                                                <?php
+                                                            } else {
+                                                                ?>
+                                                                <option value="<?php echo $lecture_subject['subject_id']; ?>"  ><?php
+                                                                    $EDUCATIN_SUBJECT = new EducationSubject($lecture_subject['subject_id']);
+                                                                    echo $EDUCATIN_SUBJECT->name;
+                                                                    ?>
+                                                                </option> 
+                                                                <?php
+                                                            }
                                                         }
                                                         ?>
                                                     </select>
@@ -118,27 +136,27 @@ include './auth.php';
                                             <div class="form-group">
                                                 <label class="col-sm-2 control-label " for="title" style="text-align: left">Start Date: </label>
                                                 <div class="col-sm-10">
-                                                    <input id="start_date" name="start_date" class="form-control datepicker" type="text"  placeholder="Enter start date" >
+                                                    <input id="start_date" name="start_date" class="form-control datepicker" type="text"  placeholder="Enter start date" value="<?php echo $LECTURE_CLASS->start_date ?>">
                                                 </div>
                                             </div>
 
                                             <div class="form-group">
                                                 <label class="col-sm-2 control-label " for="title" style="text-align: left">Start Time: </label>
                                                 <div class="col-sm-10">
-                                                    <input id="start_time" name="start_time" class="form-control" type="text"  placeholder="Enter start time">
+                                                    <input id="start_time" name="start_time" class="form-control" type="text"  placeholder="Enter start time" value="<?php echo $LECTURE_CLASS->start_time ?>">
                                                 </div>
                                             </div>
                                             <div class="form-group">
                                                 <label class="col-sm-2 control-label " for="title" style="text-align: left">Duration: </label>
                                                 <div class="col-sm-10">
 
-                                                    <input id="duration" name="duration" class="form-control" type="text"   placeholder="Duration">
+                                                    <input id="duration" name="duration" class="form-control" type="text"   placeholder="Duration" value="<?php echo $LECTURE_CLASS->duration ?>">
                                                 </div>
                                             </div>
                                             <div class="form-group">
-                                                <label class="col-sm-2 control-label " for="title" style="text-align: left">Class_fee: </label>
+                                                <label class="col-sm-2 control-label " for="title" style="text-align: left">Class Fee: </label>
                                                 <div class="col-sm-10">
-                                                    <input id="class_fee" name="class_fee" class="form-control" type="text"   placeholder="Enter your Course Fee">
+                                                    <input id="class_fee" name="class_fee" class="form-control" type="text"   placeholder="Enter your Course Fee" value="<?php echo $LECTURE_CLASS->class_fee ?>">
                                                 </div>
                                             </div>
 
@@ -147,16 +165,16 @@ include './auth.php';
                                                 <div class="col-md-3"></div> 
                                                 <div class="col-md-4"></div> 
                                                 <div class="col-md-2">  
-                                                    <input type="hidden"  name="create">
-                                                    <input type="hidden"  name="lecture"  value="<?php echo $_SESSION['id'] ?>" >
-                                                    <input type="submit" class="btn btn-primary btn-block"   value="ADD" id="create" >
+                                                    <input type="hidden"  name="update">
+                                                    <input type="hidden"  name="id"  value="<?php echo $id ?>" >
+                                                    <input type="submit" class="btn btn-primary btn-block"   value="Update" id="update" >
                                                 </div>
                                             </div>
                                         </div> 
                                     </form>
                                 </div> 
                             </div>
-                             
+
                         </div>
                     </div>
                 </div>
