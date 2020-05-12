@@ -34,7 +34,7 @@ $PAGES = new Page(1);
 
         <div class="layout-main parallax">
 
-            <?php include './disable-navigation.php'; ?>
+            <?php include './navigation.php'; ?>
 
             <div class="layout-content">
                 <div class="layout-content-body" style="margin-top: 2%; padding: 0px">
@@ -93,11 +93,11 @@ $PAGES = new Page(1);
 
                 </div>
 
-                 
+                  <?php include './footer.php';?>
 
             </div>
 
-            <input type="hidden" value="<?php echo $_SESSION['id'] ?>" id="student_id">
+         
 
 
             <script src="js/jquery.min.js" type="text/javascript"></script>
