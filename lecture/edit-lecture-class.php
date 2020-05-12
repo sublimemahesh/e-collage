@@ -87,14 +87,14 @@ $LECTURE_CLASS = new LectureClass($id);
                                                     <select  class="custom-select" id="class_type" name="class_type" required="">
                                                         <option value="">-- Select your Class Type -- </option>
                                                         <?php
-                                                        foreach (EducationCategory::all() as $education_category) {
-                                                            if ($LECTURE_CLASS->class_type == $education_category['id']) {
+                                                        foreach (ClassType::all() as $class_type) {
+                                                            if ($LECTURE_CLASS->class_type == $class_type['id']) {
                                                                 ?> 
-                                                                <option value="<?php echo $education_category['id']; ?>" selected=""><?php echo $education_category['name']; ?></option>   
+                                                                <option value="<?php echo $class_type['id']; ?>" selected=""><?php echo $class_type['name']; ?></option>   
                                                                 <?php
                                                             } else {
                                                                 ?>
-                                                                <option value="<?php echo $education_category['id']; ?>"><?php echo $education_category['name']; ?></option>   
+                                                                <option value="<?php echo $class_type['id']; ?>"><?php echo $class_type['name']; ?></option>   
                                                                 <?php
                                                             }
                                                         }

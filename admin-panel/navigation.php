@@ -68,6 +68,17 @@
 
                         </ul>
                     </li>
+                    <li class="sidenav-item has-subnav" style="margin-top: 20px">
+                        <a href="#" aria-haspopup="true">
+                            <span class="sidenav-icon icon icon-stack-exchange"></span>
+                            <span class="sidenav-label">Classes</span>
+                        </a>
+                        <ul class="sidenav level-2 collapse"> 
+                            <li><a href="create-class-type.php"> <span class="sidenav-icon icon icon-angle-right"></span>Class Type</a></li>
+                            <li><a href="manage-education-category.php"> <span class="sidenav-icon icon icon-angle-right"></span>Manage Category</a></li>
+
+                        </ul>
+                    </li>
 <!--                    <li class="sidenav-item has-subnav" style="margin-top: 20px">
                         <a href="#" aria-haspopup="true">
                             <span class="sidenav-icon icon icon-works">a</span>

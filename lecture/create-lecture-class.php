@@ -86,10 +86,10 @@ include './auth.php';
                                                     <select  class="custom-select" id="class_type" name="class_type" required="">
                                                         <option value="">-- Select your Class Type -- </option>
                                                         <?php
-                                                        foreach (EducationCategory::all() as $education_category) {
+                                                        foreach (ClassType::all() as $class_type) {
                                                             ?>
 
-                                                            <option value="<?php echo $education_category['id']; ?>"><?php echo $education_category['name']; ?></option>   
+                                                            <option value="<?php echo $class_type['id']; ?>"><?php echo $class_type['name']; ?></option>   
                                                             <?php
                                                         }
                                                         ?>
@@ -182,7 +182,9 @@ include './auth.php';
                                             ?>
                                             <tr id="div<?php echo $lecture_class['id'] ?>">
                                                 <td><?php echo $key ?></td>
-                                                <td><?php echo $lecture_class['class_type'] ?></td>
+                                                <td><?php 
+                                                $CLASS_TYPE = new ClassType($lecture_class['class_type']);
+                                                echo $CLASS_TYPE->name ?></td>
                                                 <td><?php
                                                     $SUBJECT = new EducationSubject($lecture_class['subject_id']);
                                                     echo $SUBJECT->name
