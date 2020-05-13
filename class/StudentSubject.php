@@ -91,6 +91,20 @@ class StudentSubject {
         }
     }
 
+    public function checkStudentDuplicateSubjects($subject, $id) {
+
+        $query = 'SELECT `id` FROM `student_subjects`  WHERE `subject`="' . $subject . '" AND `student`="' . $id . '"';
+         
+        $db = new Database();
+        $result = mysql_fetch_array($db->readQuery($query));
+
+        if (!$result) {
+            return FALSE;
+        } else {
+            return TRUE;
+        }
+    }
+
     public function delete() {
 
         $query = 'DELETE FROM `student_subjects` WHERE id="' . $this->id . '"';

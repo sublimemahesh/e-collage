@@ -16,7 +16,7 @@
 
     <body id="categories" class="page">
 
-        <?php include './header.php'; ?>
+        <?php include './header-2.php'; ?>
 
         <main>
             <div class="page-heading text-center">
@@ -28,9 +28,9 @@
 
                 <div class="row">
                     <?php
-                    $CATEGORY = new Category(null);
+                    $CATEGORY = new EducationCategory(null);
                     foreach ($CATEGORY->all() as $key => $category) {
-                        if ($key < 11) {
+                 
                             ?>
                             <div class="col-md-3 col-sm-6 category">
                                 <img src="upload/category/<?php echo $category['image_name'] ?>" alt="Category">
@@ -44,18 +44,9 @@
                             </div>
                             <?php
                         }
-                    }
+                 
                     ?>
-                    <div class="col-md-3 col-sm-6 category">
-                        <img src="upload/category/1.JPG.jpg" alt="Category">
-                        <h5>More</h5>
-                        <div class="overlay text-center">
-                            <p class="pull-right"><span>93</span>TRAINERS</p>
-                            <p class="pull-left"><span>418</span>TUTORIALS</p>
-                            <h5>Photography</h5>
-                            <a href="#">CHECK VIDEOS</a>
-                        </div>
-                    </div>
+                     
                 </div>
 
             </div>

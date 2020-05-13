@@ -15,7 +15,7 @@
 
     <body id="teachers" class="page">
 
-        <?php include './header.php'; ?>
+        <?php include './header-2.php'; ?>
 
         <main>
 

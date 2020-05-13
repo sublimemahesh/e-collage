@@ -10,11 +10,18 @@ if (isset($_POST['create'])) {
 
     $LECTURE_SUBJECT->subject_id = $_POST['subject'];
     $LECTURE_SUBJECT->lecture = $_POST['lecture'];
-    $LECTURE_SUBJECT->create();
 
-    $response['status'] = 'success';
-    echo json_encode($response);
-    exit();
+
+    if ($LECTURE_SUBJECT->checkLectureSubjects($_POST['subject'], $_POST['lecture'])) {
+        $result = ["status" => 'error'];
+        echo json_encode($result);
+        exit();
+    } else {
+        $LECTURE_SUBJECT->create();
+        $response['status'] = 'success';
+        echo json_encode($response);
+        exit();
+    }
 }
 
 //update 
@@ -23,7 +30,7 @@ if (isset($_POST['update'])) {
 
 
     $LECTURE_SUBJECT->subject_id = $_POST['subject'];
-    
+
     $LECTURE_SUBJECT->update();
 
 

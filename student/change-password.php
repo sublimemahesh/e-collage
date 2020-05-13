@@ -35,7 +35,7 @@ include_once(dirname(__FILE__) . '/auth.php');
         <?php include './top-header.php'; ?>
         <!--End Top header -->
         <div class="layout-main">
-            <?php include './disable-navigation.php'; ?>
+            <?php include './navigation.php'; ?>
             <div class="layout-content">
                 <div class="profile">
                     <div class="profile-header">

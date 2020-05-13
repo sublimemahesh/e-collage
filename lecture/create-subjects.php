@@ -120,7 +120,7 @@ if (!Lecture::authenticate()) {
                                                 <div class="col-md-4"></div> 
                                                 <div class="col-md-2">  
                                                     <input type="hidden"  name="create"  >
-                                                    <input type="hidden"  name="lecture"  value="<?php echo $_SESSION['id'] ?>" >
+                                                     <input type="hidden"  name="lecture"  value="<?php echo $_SESSION['id'] ?>" >
                                                     <input type="submit" class="btn btn-primary btn-block"   value="ADD" id="create" >
                                                 </div>
                                             </div>
@@ -177,7 +177,7 @@ if (!Lecture::authenticate()) {
 
                                                     </td>
                                                 </tr>
-                                            <?php
+                                                <?php
                                             }
                                         }
                                         ?>

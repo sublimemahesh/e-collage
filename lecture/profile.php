@@ -67,7 +67,6 @@ include './auth.php';
                                             </a>
                                         </div>
                                         <div class="profile-overview"> 
-                                            <button class="btn btn-primary spinner spinner-inverse spinner-sm pull-right loading" type="button" disabled="disabled" style="display: none">Save changes</button>
 
                                             <label class="btn btn-primary file-upload-btn uploard_btn">
                                                 Change Profile
@@ -85,7 +84,6 @@ include './auth.php';
                             </div>
                         </div>
                     </div>
-                    <img id="loading" src="https://www.vedantalimited.com/SiteAssets/Images/loading.gif" style="display: none; position: absolute;margin-top: 20%;margin-left: 37%;z-index: 999;"/>
 
                     <div class="row"> 
                         <div class="col-md-2"></div>

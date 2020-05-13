@@ -117,52 +117,12 @@ $(document).ready(function () {
                     processData: false,
                     dataType: "JSON",
                     success: function (result) {
-                       
+
                         if (result.status == 'error') {
                             $('#message').text(result.message);
                         } else {
                             $('#agreement_form').show();
                             $('#register_form').hide();
-
-
-                            $('#black').click(function () {
-                                $('#register_form').show();
-                                $('#agreement_form').hide();
-
-                            });
-                            $('#register').click(function () {
-
-                                if ($('#agreement').prop("checked") == false) {
-                                    swal({
-                                        title: "Error!",
-                                        text: "Please accept our Agreement..!",
-                                        type: 'error',
-                                        timer: 2000,
-                                        showConfirmButton: false
-                                    });
-                                } else {
-                                    var formData = new FormData($("form#form")[0]);
-                                    $.ajax({
-                                        url: "ajax/post-and-get/registration.php",
-                                        type: 'POST',
-                                        data: formData,
-                                        async: false,
-                                        cache: false,
-                                        contentType: false,
-                                        processData: false,
-                                        dataType: "JSON",
-                                        success: function (result) {
-                                            if (result.status == 'error') {
-                                                $('#message').text(result.message);
-                                            } else {
-                                                window.location.replace("index.php");
-                                            }
-                                        }
-                                    });
-                                }
-                            });
-
-
                         }
                     }
 
@@ -170,6 +130,45 @@ $(document).ready(function () {
             }
         }
         return false;
+
+    });
+
+    $('#register').click(function (event) {
+        event.preventDefault();
+        if ($('#agreement').prop("checked") == false) {
+            swal({
+                title: "Error!",
+                text: "Please accept our Agreement..!",
+                type: 'error',
+                timer: 2000,
+                showConfirmButton: false
+            });
+        } else {
+            var formData = new FormData($("form#form")[0]);
+            $.ajax({
+                url: "ajax/post-and-get/registration.php",
+                type: 'POST',
+                data: formData,
+                async: false,
+                cache: false,
+                contentType: false,
+                processData: false,
+                dataType: "JSON",
+                success: function (result) {
+                    if (result.status == 'error') {
+                        $('#message').text(result.message);
+                    } else {
+                        window.location.replace("index.php");
+                    }
+                }
+            });
+        }
+    });
+
+    $('#black').click(function (event) {
+        event.preventDefault();
+        $('#register_form').show();
+        $('#agreement_form').hide();
 
     });
 });

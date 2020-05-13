@@ -154,26 +154,26 @@ if (!Student::authenticate()) {
                                             $EDUCATION_CATEGORY = new EducationCategory($EDUCATION_SUB_CATEGORY->category);
                                             if ($key == 1) {
                                                 ?>
-                                                <tr id="div<?php echo $lecture_subject['id'] ?>">
+                                                <tr id="div<?php echo $student_subject['id'] ?>">
                                                     <td><?php echo $key ?></td>
                                                     <td><?php echo $EDUCATION_CATEGORY->name ?></td>
                                                     <td><?php echo $EDUCATION_SUB_CATEGORY->name ?></td>
                                                     <td><?php echo $SUBJECT->name ?></td> 
                                                     <td> 
-                                                        <a href="edit-subject.php?id=<?php echo $lecture_subject['id'] ?>" class="op-link btn btn-sm btn-info"><i class="icon icon-pencil"></i></a>   
+                                                        <a href="edit-subject.php?id=<?php echo $student_subject['id'] ?>" class="op-link btn btn-sm btn-info"><i class="icon icon-pencil"></i></a>   
 
                                                     </td>
                                                 </tr>
                                             <?php } else {
                                                 ?>
-                                                <tr id="div<?php echo $lecture_subject['id'] ?>">
+                                                <tr id="div<?php echo $student_subject['id'] ?>">
                                                     <td><?php echo $key ?></td>
                                                     <td><?php echo $EDUCATION_CATEGORY->name ?></td>
                                                     <td><?php echo $EDUCATION_SUB_CATEGORY->name ?></td>
                                                     <td><?php echo $SUBJECT->name ?></td> 
                                                     <td> 
-                                                        <a href="edit-subject.php?id=<?php echo $lecture_subject['id'] ?>" class="op-link btn btn-sm btn-info"><i class="icon icon-pencil"></i></a>  |
-                                                        <a href="#" class="delete-lecture-subject btn btn-sm btn-danger" data-id="<?php echo $lecture_subject['id'] ?>"><i class="waves-effect icon icon-trash" data-type="cancel"></i></a> 
+                                                        <a href="edit-subject.php?id=<?php echo $student_subject['id'] ?>" class="op-link btn btn-sm btn-info"><i class="icon icon-pencil"></i></a>  |
+                                                        <a href="#" class="delete-student-subject btn btn-sm btn-danger" data-id="<?php echo $student_subject['id'] ?>"><i class="waves-effect icon icon-trash" data-type="cancel"></i></a> 
 
                                                     </td>
                                                 </tr>
@@ -213,6 +213,9 @@ if (!Student::authenticate()) {
         <script src="ajax/js/student.js" type="text/javascript"></script>
         <script src="ajax/js/check-login.js" type="text/javascript"></script>
         <script src="ajax/js/category.js" type="text/javascript"></script>
+        <script src="delete/js/student-subject.js" type="text/javascript"></script>
+        
+        
     </body>
 
 </html>

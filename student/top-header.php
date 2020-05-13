@@ -129,7 +129,7 @@ $today = date('Y-m-d');
                             <li><a href="profile.php">Change Profile</a></li>
                             <li><a href="change-password.php">Change Password</a></li>
                             <li><a href="complete-profile.php">My Subjects</a></li>
-                            <li><a href="education-subject.php">Education Subjects</a></li>
+<!--                            <li><a href="education-subject.php">Education Subjects</a></li>-->
                             <li><a href="log-out.php">Sign out</a></li>
 
                         </ul>
