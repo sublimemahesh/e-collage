@@ -87,7 +87,7 @@ $(document).ready(function () {
         }
     });
 
-//Update Nic
+//Update Subject
     $("#update_subjects").click(function (event) {
         event.preventDefault();
 
@@ -96,7 +96,7 @@ $(document).ready(function () {
                 title: "Error!",
                 text: "Please select your Subject..!",
                 type: 'error',
-                timer: 1500,
+                timer: 3000,
                 showConfirmButton: false
             });
         } else {
@@ -108,18 +108,28 @@ $(document).ready(function () {
                 data: formData,
                 async: false,
                 dataType: 'json',
-                success: function (result) {
-                    swal({
-                        title: "Success!",
-                        text: "Your data was saved successfully!.....",
-                        type: 'success',
-                        timer: 2000,
-                        showConfirmButton: false
-                    }, function () {
-                        setTimeout(function () {
-                            window.location.replace("complete-profile.php");
-                        }, 1500);
-                    });
+                success: function (result) { 
+                    if (result.status == 'error') {
+                        swal({
+                            title: "Error!",
+                            text: "You can't add same Subjects..!",
+                            type: 'error',
+                            timer: 1500,
+                            showConfirmButton: false
+                        });
+                    } else {
+                        swal({
+                            title: "Success!",
+                            text: "Your data was saved successfully!.....",
+                            type: 'success',
+                            timer: 2000,
+                            showConfirmButton: false
+                        }, function () {
+                            setTimeout(function () {
+                                window.location.replace("complete-profile.php");
+                            }, 1500);
+                        });
+                    }
                 },
                 cache: false,
                 contentType: false,

@@ -15,12 +15,6 @@ $STUDENT->student_id = $_POST['student_id'];
 $STUDENT->email = $_POST['email'];
 $STUDENT->password = md5($_POST['password']);
 
-if ($_POST['password'] != $_POST['com_password']) {
-    $response['status'] = 'error';
-    $response['message'] = " Password and Confirm Password dosn't match. ";
-    echo json_encode($response);
-    exit();
-} else {
 
     $STUDENT->create();
     if ($STUDENT->id) {
@@ -36,4 +30,3 @@ if ($_POST['password'] != $_POST['com_password']) {
         echo json_encode($response);
         exit();
     }
-}

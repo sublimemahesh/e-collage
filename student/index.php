@@ -37,7 +37,7 @@ $PAGES = new Page(1);
             <?php include './navigation.php'; ?>
 
             <div class="layout-content">
-                <div class="layout-content-body" style="margin-top: 2%; padding: 0px">
+                <div class="layout-content-body" >
                     <div class="row "> 
 
                         <div class="col-xs-12 col-md-4">  
@@ -45,9 +45,9 @@ $PAGES = new Page(1);
                             <div class="card p-l-card"  >
                                 <div class="card-header">
 
-                                    <strong>Company Description</strong>
+                                    <strong class="text-center"><center>Company Description</center></strong>
                                 </div>
-                                <div class="card-body">
+                                <div class="card-body" style="  height: 458px!important;">
                                     <center>
                                         <div class="col-md-12 m-y">
                                             <p class="text-justify" style="line-height: 1.8;">
@@ -57,7 +57,7 @@ $PAGES = new Page(1);
                                                 ඒ අනුව අන්තර්ජාලය හා ඩිජිටල් තාක්ෂණය පිළිබද හසල අත්දැකීම් සහිත තාක්ෂණික කණ්ඩායමක සේවාව හා ගුරු ශිෂ්‍ය ප්‍රජාව එකම වෙබ් පිටුවකට ගෙන එනු ලැබූ ලංකාවේ එකම ඩිජිටල් මධ්‍යස්ථානය අප ගොඩනගා ඇත.                                            </p>
                                             <p class="text-justify" style="line-height: 1.8;">
                                                 ඩිජිටල් තාක්ෂණය හා අන්තර්ජාලය භාවිත කරමින් ශ්‍රී ලංකාවේ අධ්‍යපනය වඩාත් ප්‍රතිඵලදායක ලෙස සිසුන් වෙත ලගා කරවීම සදහාත් ගුරුවරයා සහ ශිෂ්‍යා කාර්යක්ෂමව බැද තැබීම සදහාත් ඩිජිටල් පාලමක් වීම පිණිස ඩිජිටල් තාක්ෂණය ප්‍රචලිත කරවීම උදෙසා කැප වී සිටිමු.                                            </p>
-                                             
+
                                         </div>  
                                     </center>
 
@@ -73,31 +73,31 @@ $PAGES = new Page(1);
                     </div>
                 </div> 
 
-                <div class="row" >
-                    <div class="col-xs-6 col-md-5"></div>
-                    <div class="col-xs-12 col-md-4" style="margin-top: 2% ;margin-bottom: 28px;">
-                        <div class="">
-                            <div class="card-body">
-                                <center> 
-                                    <div class="form-group "  style="margin-top: 2%;" id="btn-disply" > 
-                                        <a href="lesson.php">  
-                                            <button class=" btn btn-outline-primary btn-block btn-next "   type="button" id="create" style="width: 80%;font-size: 16px" >Start Your Lessons</button>
-                                        </a>
+                <!--                <div class="row" >
+                                    <div class="col-xs-6 col-md-5"></div>
+                                    <div class="col-xs-12 col-md-4" style="margin-top: 2% ;margin-bottom: 28px;">
+                                        <div class="">
+                                            <div class="card-body">
+                                                <center> 
+                                                    <div class="form-group "  style="margin-top: 2%;" id="btn-disply" > 
+                                                        <a href="lesson.php">  
+                                                            <button class=" btn btn-outline-primary btn-block btn-next "   type="button" id="create" style="width: 80%;font-size: 16px" >Start Your Lessons</button>
+                                                        </a>
+                                                    </div>
+                                                </center>
+                
+                                            </div>
+                                        </div>
                                     </div>
-                                </center>
+                                    <div class="col-xs-6 col-md-3"></div>
+                
+                                </div>-->
 
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-xs-6 col-md-3"></div>
-
-                </div>
-
-                  <?php include './footer.php';?>
+                <?php include './footer.php'; ?>
 
             </div>
 
-         
+
 
 
             <script src="js/jquery.min.js" type="text/javascript"></script>

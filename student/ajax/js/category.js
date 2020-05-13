@@ -24,9 +24,14 @@ $(document).ready(function () {
                     html += data.name;
                     html += '</option>';
                 });
+
+
+                var html2 = '<option value="" "> -- Please Select sub category First-- </option>';
+
                 $('#subject').empty();
                 $('#sub_category').empty();
                 $('#sub_category').append(html);
+                $('#subject').append(html2);
             }
         });
     });

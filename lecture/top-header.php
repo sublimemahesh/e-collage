@@ -121,8 +121,8 @@ $today = date('Y-m-d');
                             <?php } ?>
 
 
-                            <?php echo $LECTURE->full_name ?>
-                            <span class="caret"></span>
+                         <?php echo $LECTURE->full_name ?>
+                            <span class="caret">   </span>
                         </button>
                         <ul class="dropdown-menu dropdown-menu-right">   
                             <li><a href="profile.php">Change Profile</a></li>

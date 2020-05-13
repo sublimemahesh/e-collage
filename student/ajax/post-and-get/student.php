@@ -23,6 +23,7 @@ if ($_POST['action'] == 'UPDATE') {
     echo json_encode($result);
     exit();
 }
+
 //Update Student subjects
 if ($_POST['action'] == 'UPDATE_SUBJECTS') {
     $STUDENT = new StudentSubject(NULL);
@@ -30,11 +31,18 @@ if ($_POST['action'] == 'UPDATE_SUBJECTS') {
 
     $STUDENT->subject = $_POST['subject'];
     $STUDENT->student = $_POST['id'];
-    $STUDENT->create(); 
-
-    $result = ["status" => 'success'];
-    echo json_encode($result);
-    exit();
+ 
+    
+    if ($STUDENT->checkStudentDuplicateSubjects($_POST['subject'], $_POST['id'])) {
+        $result = ["status" => 'error'];
+        echo json_encode($result);
+        exit();
+    } else {
+        $STUDENT->create();
+        $result = ["status" => 'success'];
+        echo json_encode($result);
+        exit();
+    }
 }
 
 //Verify Id Card

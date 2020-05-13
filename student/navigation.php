@@ -15,17 +15,15 @@
 
 
                     <li class="sidenav-item has-subnav">
-                        <a href="#" aria-haspopup="true">
+                        <a href="select-class.php" aria-haspopup="true">
                             <span class="sidenav-icon icon icon-calendar-check-o"></span>
                             <span class="sidenav-label">My Classes</span>
                         </a>
-                        <ul class="sidenav level-2 collapse"> 
-                            <li><a href="select-class.php">   <span class="sidenav-icon icon icon-calendar-check-o"></span> Select Classes</a></li>
-                        </ul>
+                        
                     </li> 
                     <li class="sidenav-item has-subnav">
                         <a href="complete-profile.php" aria-haspopup="true">
-                          <span class="sidenav-icon icon icon-book"></span>
+                            <span class="sidenav-icon icon icon-book"></span>
                             <span class="sidenav-label">My Subjects</span>
                         </a>
 
