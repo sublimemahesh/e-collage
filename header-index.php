@@ -33,13 +33,13 @@
 
 
             </div>
-            <h1 class="logo"><a href="index.php"><img src="assets/images/logo.png" alt="Logo" width="85%"></a></h1>
+            <h1 class="blueplay logo"><a href="index.php"><img src="assets/images/logo.png" alt="Logo" width="85%"></a></h1>
         </div>
         <div class="row">
             <div class="col-md-8 col-md-offset-2 text-center">
                 <p class="pretitle">ONLINE VIDEO TRAININGS</p>
                 <h2 style="text-shadow: 0 2px 5px rgba(0, 0, 0, .5);">PROOF YOUR TALENT</h2>
-                <p style="text-shadow: 0 2px 5px rgba(0, 0, 0, .5);">Learn something new every day and get inspired by the diversity of online learning</p>
+                <p style="text-shadow: 0 2px 5px rgba(0, 0, 0, .5);" class="dis text">Learn something new every day and get inspired by the diversity of online learning</p>
                
             </div>
         </div>
