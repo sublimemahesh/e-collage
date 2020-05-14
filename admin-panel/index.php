@@ -9,7 +9,7 @@ include './auth.php';
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <title>Ecollege.lk</title>
-         
+
         <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-iconaa.png">
         <link rel="icon" type="image/png" href="favicon-32x32.png" sizes="32x32">
         <link rel="icon" type="image/png" href="favicon-16x16.png" sizes="16x16">
@@ -23,17 +23,17 @@ include './auth.php';
         <link rel="stylesheet" href="css/demo.min.css">
     </head>
     <body class="layout layout-header-fixed">
-          <?php
-            include './top-header.php';
-            ?>
+        <?php
+        include './top-header.php';
+        ?>
         <div class="layout-main">
             <?php
             include 'navigation.php';
             ?>
-            
+
             <div class="layout-content"> 
                 <div class="layout-content-body">
-                      <?php
+                    <?php
                     if (isset($_GET['message'])) {
 
                         $MESSAGE = New Message($_GET['message']);
@@ -49,8 +49,8 @@ include './auth.php';
                             <div class="card">
                                 <div class="card-values">
                                     <div class="p-x">
-                                        <small>Visitors</small>
-                                        <h3 class="card-title fw-l">185,118</h3>
+                                        <small>All Student</small>
+                                        <h3 class="card-title fw-l">30</h3>
                                     </div>
                                 </div>
                                 <div class="card-chart">
@@ -62,8 +62,8 @@ include './auth.php';
                             <div class="card">
                                 <div class="card-values">
                                     <div class="p-x">
-                                        <small>New visitors</small>
-                                        <h3 class="card-title fw-l">68,494</h3>
+                                        <small>All Lectures</small>
+                                        <h3 class="card-title fw-l">16</h3>
                                     </div>
                                 </div>
                                 <div class="card-chart">
@@ -75,8 +75,8 @@ include './auth.php';
                             <div class="card">
                                 <div class="card-values">
                                     <div class="p-x">
-                                        <small>Pageviews</small>
-                                        <h3 class="card-title fw-l">925,590</h3>
+                                        <small>All Category</small>
+                                        <h3 class="card-title fw-l">20</h3>
                                     </div>
                                 </div>
                                 <div class="card-chart">
@@ -88,8 +88,8 @@ include './auth.php';
                             <div class="card">
                                 <div class="card-values">
                                     <div class="p-x">
-                                        <small>Average duration</small>
-                                        <h3 class="card-title fw-l">00:07:56</h3>
+                                        <small>All Classes</small>
+                                        <h3 class="card-title fw-l">12</h3>
                                     </div>
                                 </div>
                                 <div class="card-chart">
@@ -98,45 +98,109 @@ include './auth.php';
                             </div>
                         </div>
                     </div>
+                    <!--                                       <div class="row gutter-xs">
+                                                                <div class="col-xs-12 col-md-6">
+                                                                    <div class="card">
+                                                                        <div class="card-body">
+                                                                            <div class="pull-left">
+                                                                                <h4 class="card-title">Audience Overview</h4>
+                                                                            </div>
+                                                                            <div class="pull-right" data-toggle="buttons">
+                                                                                <label class="btn btn-outline-primary btn-xs btn-pill active">
+                                                                                    <input type="radio" name="options" id="option1" autocomplete="off" checked="checked"> Past 24hr
+                                                                                </label>
+                                                                                <label class="btn btn-outline-primary btn-xs btn-pill">
+                                                                                    <input type="radio" name="options" id="option2" autocomplete="off"> Past 7 days
+                                                                                </label>
+                                                                                <label class="btn btn-outline-primary btn-xs btn-pill">
+                                                                                    <input type="radio" name="options" id="option3" autocomplete="off"> Past 30 days
+                                                                                </label>
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="card-body">
+                                                                            <div class="card-chart">
+                                                                                <canvas data-chart="line" data-animation="false" data-labels='["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"]' data-values='[{"label": "This week", "backgroundColor": "#f7a033", "borderColor": "#f7a033", "data": [5022, 11017, 12230, 8801, 14102, 21512, 9932]}, {"label": "Last week", "backgroundColor": "#ed4882", "borderColor": "#ed4882", "data": [5012, 7203, 10204, 15052, 14820, 21805, 13203]}]' data-tooltips='{"mode": "label"}' data-hide='["gridLinesX", "legend", "points"]' data-scales='{"yAxes": [{"gridLines": {"color": "#f5f5f5"}, "ticks": {"fontColor": "#bcc1c6", "maxTicksLimit": 5}}], "xAxes": [{ "gridLines": {"color": "#f5f5f5"}, "ticks": {"fontColor": "#bcc1c6"}} ]}' height="128"></canvas>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="col-xs-12 col-md-6">
+                                                                    <div class="card">
+                                                                        <div class="card-body">
+                                                                            <h4 class="card-title">229 Signups</h4>
+                                                                        </div>
+                                                                        <div class="card-body">
+                                                                            <div class="card-chart">
+                                                                                <canvas data-chart="bar" data-animation="false" data-labels='["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"]' data-values='[{"label": "This week", "backgroundColor": "#f7a033", "borderColor": "#f7a033", "data": [23167, 15991, 13905, 17447, 24558, 22594, 23067]}, {"label": "Last week", "backgroundColor": "#ed4882", "borderColor": "#ed4882", "data": [7374, 16740, 22929, 16788, 12103, 16459, 24058]}]' data-tooltips='{"mode": "label"}' data-hide='["gridLinesX", "legend", "points"]' data-scales='{"yAxes": [{"gridLines": {"color": "#f5f5f5"}, "ticks": {"fontColor": "#bcc1c6", "maxTicksLimit": 5}}], "xAxes": [{ "gridLines": {"color": "#f5f5f5"}, "ticks": {"fontColor": "#bcc1c6"}} ]}' height="128"></canvas>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>-->
+
                     <div class="row gutter-xs">
-                        <div class="col-xs-12 col-md-6">
-                            <div class="card">
-                                <div class="card-body">
-                                    <div class="pull-left">
-                                        <h4 class="card-title">Audience Overview</h4>
-                                    </div>
-                                    <div class="pull-right" data-toggle="buttons">
-                                        <label class="btn btn-outline-primary btn-xs btn-pill active">
-                                            <input type="radio" name="options" id="option1" autocomplete="off" checked="checked"> Past 24hr
-                                        </label>
-                                        <label class="btn btn-outline-primary btn-xs btn-pill">
-                                            <input type="radio" name="options" id="option2" autocomplete="off"> Past 7 days
-                                        </label>
-                                        <label class="btn btn-outline-primary btn-xs btn-pill">
-                                            <input type="radio" name="options" id="option3" autocomplete="off"> Past 30 days
-                                        </label>
-                                    </div>
+                        <div class="col-xs-6 col-md-3">
+                            <div class="pricing-card">
+                                <div class="pricing-card-header bg-default">
+                                    <h4 class="m-y-sm">Student</h4>
                                 </div>
-                                <div class="card-body">
-                                    <div class="card-chart">
-                                        <canvas data-chart="line" data-animation="false" data-labels='["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"]' data-values='[{"label": "This week", "backgroundColor": "#f7a033", "borderColor": "#f7a033", "data": [5022, 11017, 12230, 8801, 14102, 21512, 9932]}, {"label": "Last week", "backgroundColor": "#ed4882", "borderColor": "#ed4882", "data": [5012, 7203, 10204, 15052, 14820, 21805, 13203]}]' data-tooltips='{"mode": "label"}' data-hide='["gridLinesX", "legend", "points"]' data-scales='{"yAxes": [{"gridLines": {"color": "#f5f5f5"}, "ticks": {"fontColor": "#bcc1c6", "maxTicksLimit": 5}}], "xAxes": [{ "gridLines": {"color": "#f5f5f5"}, "ticks": {"fontColor": "#bcc1c6"}} ]}' height="128"></canvas>
+                                <div class="pricing-card-body">
+                                    <div class="list-group">
+                                        <a class="list-group-item " href="./active-student.php"> Active Student  </a>
+                                        <a class="list-group-item" href="./inactive-student.php"> Inactive Student</a>  
+                                        <a class="list-group-item" href="./manage-all-students.php"> Manage All Student</a> 
+
                                     </div>
                                 </div>
                             </div>
                         </div>
-                        <div class="col-xs-12 col-md-6">
-                            <div class="card">
-                                <div class="card-body">
-                                    <h4 class="card-title">229 Signups</h4>
+                        <div class="col-xs-6 col-md-3">
+                            <div class="pricing-card">
+                                <div class="pricing-card-header bg-default">
+                                    <h4 class="m-y-sm">Lectures</h4>
                                 </div>
-                                <div class="card-body">
-                                    <div class="card-chart">
-                                        <canvas data-chart="bar" data-animation="false" data-labels='["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"]' data-values='[{"label": "This week", "backgroundColor": "#f7a033", "borderColor": "#f7a033", "data": [23167, 15991, 13905, 17447, 24558, 22594, 23067]}, {"label": "Last week", "backgroundColor": "#ed4882", "borderColor": "#ed4882", "data": [7374, 16740, 22929, 16788, 12103, 16459, 24058]}]' data-tooltips='{"mode": "label"}' data-hide='["gridLinesX", "legend", "points"]' data-scales='{"yAxes": [{"gridLines": {"color": "#f5f5f5"}, "ticks": {"fontColor": "#bcc1c6", "maxTicksLimit": 5}}], "xAxes": [{ "gridLines": {"color": "#f5f5f5"}, "ticks": {"fontColor": "#bcc1c6"}} ]}' height="128"></canvas>
+                                <div class="pricing-card-body">
+                                    <div class="list-group">
+                                        <a class="list-group-item " href="#"> Add new  </a>
+                                        <a class="list-group-item" href="#">  Manage</a>  
+                                        <a class="list-group-item" href="#">  Arrange</a> 
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-xs-6 col-md-3">
+                            <div class="pricing-card">
+                                <div class="pricing-card-header bg-default">
+                                    <h4 class="m-y-sm">Category</h4>
+                                </div>
+                                <div class="pricing-card-body">
+                                    <div class="list-group">
+                                        <a class="list-group-item " href="#"> Add new  </a>
+                                        <a class="list-group-item" href="#">  Manage</a>  
+                                        <a class="list-group-item" href="#">  Arrange</a> 
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-xs-6 col-md-3">
+                            <div class="pricing-card">
+                                <div class="pricing-card-header bg-default">
+                                    <h4 class="m-y-sm">Classes</h4>
+                                </div>
+                                <div class="pricing-card-body">
+                                    <div class="list-group">
+                                        <a class="list-group-item " href="#"> Add new  </a>
+                                        <a class="list-group-item" href="#">  Manage</a>  
+                                        <a class="list-group-item" href="#">  Arrange</a> 
+
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
+
                     <div class="row gutter-xs">
                         <div class="col-md-4">
                             <div class="card">
@@ -161,14 +225,14 @@ include './auth.php';
                                 </div>
                             </div>
                         </div>
-                        <div class="col-md-4">
+                         <div class="col-md-4">
                             <div class="card">
                                 <div class="card-body">
                                     <div class="media">
                                         <div class="media-middle media-left">
-                                            <div class="media-chart">
-                                                <canvas data-chart="doughnut" data-animation="false" data-labels='["Resolved", "Unresolved"]' data-values='[{"backgroundColor": ["#f7a033", "#667589"], "data": [879, 377]}]' data-hide='["legend", "scalesX", "scalesY", "tooltips"]' height="64" width="64"></canvas>
-                                            </div>
+                                            <span class="bg-gray sq-64 circle">
+                                                <span class="icon icon-group"></span>
+                                            </span>
                                         </div>
                                         <div class="media-middle media-body">
                                             <h2 class="media-heading">
@@ -181,14 +245,14 @@ include './auth.php';
                                 </div>
                             </div>
                         </div>
-                        <div class="col-md-4">
+                         <div class="col-md-4">
                             <div class="card">
                                 <div class="card-body">
                                     <div class="media">
                                         <div class="media-middle media-left">
-                                            <div class="media-chart">
-                                                <canvas data-chart="doughnut" data-animation="false" data-labels='["Resolved", "Unresolved"]' data-values='[{"backgroundColor": ["#667589", "#f7a033"], "data": [879, 377]}]' data-hide='["legend", "scalesX", "scalesY", "tooltips"]' height="64" width="64"></canvas>
-                                            </div>
+                                            <span class="bg-gray sq-64 circle">
+                                                <span class="icon icon-graduation-cap"></span>
+                                            </span>
                                         </div>
                                         <div class="media-middle media-body">
                                             <h2 class="media-heading">
@@ -201,8 +265,9 @@ include './auth.php';
                                 </div>
                             </div>
                         </div>
+                       
+                       
                     </div>
-
                 </div>
             </div>
             <!--            <div class="layout-footer">
