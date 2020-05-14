@@ -9730,7 +9730,8 @@ textarea {
 
 .row.gutter-xs {
     margin-left: -5px;
-    margin-right: -5px
+    margin-right: -5px;
+        padding:17px
 }
 
 .row.gutter-xs>.col-lg-1,
