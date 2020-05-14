@@ -24,21 +24,18 @@ include './auth.php';
         <link href="css/sweetalert.css" rel="stylesheet" type="text/css"/>
     </head>
     <body class="layout layout-header-fixed">
-          <?php
-            include './top-header.php';
-            ?>
+        <?php
+        include './top-header.php';
+        ?>
+
         <div class="layout-main">
-
-
             <?php
             include 'navigation.php';
             ?>
-
             <div class="layout-content">
                 <div class="layout-content-body">
                     <div class="row gutter-xs">
-                        <div class="col-xs-12">
-                        </div>
+                        <div class="col-xs-12"> </div>
                     </div>
                     <div class="row gutter-xs">
                         <div class="col-xs-12">
@@ -71,9 +68,8 @@ include './auth.php';
                                                 <td><?php echo $lecture['phone_number'] ?></td>
 
                                                 <td> 
-                                                    <a href="#" class="op-link btn btn-sm btn-info"><i class="icon icon-pencil"></i></a>  |  
+                                                    <a href="view-lecture.php?id=<?php echo $lecture['id'] ?>" class="op-link btn btn-sm btn-primary"><i class="icon icon-eye"></i></a> | 
                                                     <a href="#" class="  btn btn-sm btn-danger" data-id="<?php echo $lecture['id'] ?>"><i class="waves-effect icon icon-trash" data-type="cancel"></i></a> 
-
                                                 </td>
                                             </tr>
                                         <?php } ?>
@@ -86,8 +82,6 @@ include './auth.php';
                                             </tr>
                                         </tfoot>
                                         <tbody>
-
-
                                         </tbody>
                                     </table>
                                 </div>
