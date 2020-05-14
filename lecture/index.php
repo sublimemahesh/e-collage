@@ -121,183 +121,53 @@ $PAGES = new Page(1);
                         </div>
                     </div>
                 </div>
-                <div class="row  ">   
-                    <div class="col-md-4 col-md-push-4">
-                        <div class="card">
+                <div class="row "> 
+                    <div class="col-xs-12 col-md-4"> 
+                        <div class="card  "  >
                             <div class="card-header"> 
-                                <strong>Manage Students</strong>
-                                <span aria-hidden="true"> · </span>
-                                <a href="#">View All</a>
+                                <strong class="text-center"><center>Lecture Instruction</center></strong>
                             </div>
-                            <div class="card-body">
-                                <ul class="media-list">
-                                    <li class="media">
-                                        <div class="media-middle media-left">
-                                            <a href="#">
-                                                <img class="img-circle" width="48" height="48" src="img/member.jpg" alt="Raja Elephant T-shirt">
-                                            </a>
-                                        </div>
-                                        <div class="media-middle media-body">
-                                            <h5 class="media-heading">
-                                                <a href="#">Harry Jones</a>
-                                                <small>5 min ago</small>
-                                            </h5>
-                                            <small>Published </small>
-                                        </div>
+                            <div class="card-body" style="  height: 465px!important;overflow-y: auto;">
+                                <center>
+                                    <div class="col-md-12 m-y">
+                                        <p class="text-justify" style="line-height: 1.8;">
+                                            During your live sessions you will be on camera and recorded.Present yourself in each session 
+                                            like you are attending in all student at once.              
+                                        </p>
+                                        <p class="text-justify" style="line-height: 1.8;"> 
+                                            Make sure that your personal presentation, the location you lecture in and content in shared
+                                            screens,are appropriate.Any distractions caused by your appearance, background, or shared screens
+                                            may impact others learning and will be recorded for posterity.
+                                        <p class="text-justify" style="line-height: 1.8;">
 
-                                    </li>
-                                    <li class="media">
-                                        <div class="media-middle media-left">
-                                            <a href="#">
-                                                <img class="img-circle" width="48" height="48" src="img/member.jpg" alt="Raja Elephant T-shirt">
-                                            </a>
-                                        </div>
-                                        <div class="media-middle media-body">
-                                            <h5 class="media-heading">
-                                                <a href="#">Harry Jones</a>
-                                                <small>5 min ago</small>
-                                            </h5>
-                                            <small>Published </small>
-                                        </div>
+                                            <b> Microphones & Camera        </b><br>
+                                            Consider the microphone you plan to for your live session.A headset with a microphone is the best
+                                            way to participate in the discussion.A separate headset and mic will reduce feedback noise and will
+                                            reduce the amount of distracting external noise.Always mute your microphone when you are not talking. <br>
+                                            Before attending your live session, test your microphone & camera.How good is the sound and clarity of your headset & 
+                                            camera? If your microphone is old or suffering from wear and tear,consider replacing it. 
 
-                                    </li>
-                                    <li class="media">
-                                        <div class="media-middle media-left">
-                                            <a href="#">
-                                                <img class="img-circle" width="48" height="48" src="img/member.jpg" alt="Raja Elephant T-shirt">
-                                            </a>
-                                        </div>
-                                        <div class="media-middle media-body">
-                                            <h5 class="media-heading">
-                                                <a href="#">Harry Jones</a>
-                                                <small>5 min ago</small>
-                                            </h5>
-                                            <small>Published </small>
-                                        </div>
+                                        </p>
+                                        <p class="text-justify" style="line-height: 1.8;">
+                                            <b>The Lecture Space</b><br>
+                                            The Lecture Space in Critical to successfully engaging in the live Session. A quit lecturing place is key. Consider how you can remove or reduce distractions from your area,<br>
+                                            <b>  1)  </b>Silence your personal device.(Tv, Mobile Phone etc.)<br>
+                                            <b>2)  </b>Inform Relatives, roommates and pets that you are about to begin your session and to interrupt you.<br>
+                                            <b>3)  </b>Stop any music or videos thar could distract you or others.<br>
+                                            <b>  4) </b>Eat before the session, It's rude if you don't have enough to share with whole class. <br>
+                                        </p> 
 
-                                    </li>
-
-                                </ul>
+                                    </div>  
+                                </center>
                             </div>
-                        </div>
+                        </div> 
                     </div>
-                    <div class="col-md-4 col-md-push-4">
-                        <div class="card">
-                            <div class="card-header"> 
-                                <strong>Schedule Class</strong>
-                                <span aria-hidden="true"> · </span>
-                                <a href="#">View full report</a>
-                            </div>
-                            <div class="card-body">
-                                <ul class="media-list">
-                                    <li class="media">
-                                        <div class="media-middle media-left">
-                                            <a href="#">
-                                                <img class="img-circle" width="48" height="48" src="img/member.jpg" alt="Raja Elephant T-shirt">
 
-                                            </a>
-                                        </div>
-                                        <div class="media-middle media-body">
-                                            <h5 class="media-heading">
-                                                <a href="#">Harry Jones</a>
-                                                <small>5 min ago</small>
-                                            </h5>
-                                            <small>Published </small>
-                                        </div>
-                                    </li>
-                                    <li class="media">
-                                        <div class="media-middle media-left">
-                                            <a href="#">
-                                                <img class="img-circle" width="48" height="48" src="img/member.jpg" alt="Raja Elephant T-shirt">
-                                            </a>
-                                        </div>
-                                        <div class="media-middle media-body">
-                                            <h5 class="media-heading">
-                                                <a href="#">Harry Jones</a>
-                                                <small>5 min ago</small>
-                                            </h5>
-                                            <small>Published </small>
-                                        </div>
-                                    </li>
-                                    <li class="media">
-                                        <div class="media-middle media-left">
-                                            <a href="#">
-                                                <img class="img-circle" width="48" height="48" src="img/member.jpg" alt="Raja Elephant T-shirt">
-                                            </a>
-                                        </div>
-                                        <div class="media-middle media-body">
-                                            <h5 class="media-heading">
-                                                <a href="#">Harry Jones</a>
-                                                <small>5 min ago</small>
-                                            </h5>
-                                            <small>Published </small>
-                                        </div>
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-4 col-md-pull-8">
-                        <div class="card">
-                            <div class="card-header">
-
-                                <strong>New Class</strong>
-                                <span aria-hidden="true"> · </span>
-                                <a href="#">View full    </a>
-                            </div>
-                            <div class="card-body">
-                                <ul class="media-list">
-                                    <li class="media">
-                                        <div class="media-middle media-left">
-                                            <a href="#">
-                                                <img class="img-circle" width="48" height="48" src="img/member.jpg" alt="Raja Elephant T-shirt">
-                                            </a>
-                                        </div>
-                                        <div class="media-middle media-body">
-                                            <h5 class="media-heading">
-                                                <a href="#">Harry Jones</a>
-                                                <small>5 min ago</small>
-                                            </h5>
-                                            <small>Published a product: "Jade Elephant T-shirt".</small>
-                                        </div>
-                                    </li>
-                                    <li class="media">
-                                        <div class="media-middle media-left">
-                                            <a href="#">
-                                                <img class="img-circle" width="48" height="48" src="img/member.jpg" alt="Raja Elephant T-shirt">
-                                            </a>
-                                        </div>
-                                        <div class="media-middle media-body">
-                                            <h5 class="media-heading">
-                                                <a href="#">Teddy Wilson</a>
-                                                <small>(10 min ago)</small>
-                                            </h5>
-                                            <small>Created a new collection: "Summer with Style".</small>
-                                        </div>
-                                    </li>
-                                    <li class="media">
-                                        <div class="media-middle media-left">
-                                            <a href="#">
-                                                <img class="img-circle" width="48" height="48" src="img/member.jpg" alt="Raja Elephant T-shirt">
-                                            </a>
-                                        </div>
-                                        <div class="media-middle media-body">
-                                            <h5 class="media-heading">
-                                                <a href="#">Daniel Taylor</a>
-                                                <small>(12 min ago)</small>
-                                            </h5>
-                                            <small>Created a new page: "Free tools".</small>
-                                        </div>
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
+                    <div class="col-xs-12 col-md-8"> 
+                        <iframe id="existing-iframe-example "   class="video-res" height="510" src="<?php echo $PAGES->title ?>" allow="autoplay" allowfullscreen></iframe>
                     </div>
                 </div>
-
             </div> 
-
-
         </div>
     </div>
 

@@ -10887,8 +10887,7 @@ button.collapsed .bars-x .bar-line:last-child {
     border: 1px solid #f1f1f1;
     border-radius: 4px;
     display: block;
-    margin-bottom: 10px;
-    margin-top: 10px;
+    margin-bottom: 10px;  
     position: relative
 }
 
