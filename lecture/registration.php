@@ -502,7 +502,7 @@ include '../class/include.php';
                             When you use www.ecollege.lk, you join a community of people from all over the world. Every cool, new community feature on www.ecollege.lk involves a certain level of trust. Millions of users respect that trust and we trust you to be responsible too. Following the guidelines below helps to keep www.ecollege.lk learn for everyone.
                             You might not like everything you see on www.ecollege.lk. If you think content is inappropriate, use the flagging feature to submit it for review by our www.ecollege.lk staff. Our staff carefully reviews flagged content 24 hours a day, 7 days a week to determine whether there’s a violation of our Community Guidelines.
                         </p>
-                        <p style="font-size: 20px;text-align: center;"><u>  Copyright</u></p>   
+                        <p style="font-size: 20px;text-align: center;"><u>Copyright</u></p>   
 
                         <p style="font-size: 14px;text-align: justify;"> 
                             Respect copyright. Only upload videos that you made or that you're authorized to use. This means don't upload videos you didn't make, or use content in your videos that someone else owns the copyright to, such as music tracks, snippets of copyrighted programs, or videos made by other users, without necessary authorizations. Visit our Copyright Center for more information. 
@@ -513,10 +513,11 @@ include '../class/include.php';
                             <span class="custom-control-label" style="font-size: 16px;">Please Accept our <span style="color: #f7a033"> Agreement </span> Before you login </span>
                         </label>
                         <div class="row" style="margin:0px;">
+                            
                             <div class="col-md-4">
                                 <button class="btn btn-primary btn-block" type="submit" id="black"  >Back</button> 
-
                             </div>
+                            
                             <div class="col-md-4">  </div>
                             <div class="col-md-4">
                                 <button class="btn btn-primary btn-block" type="submit"  id="register"  >Sign up</button> 

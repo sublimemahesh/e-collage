@@ -33,9 +33,9 @@
 
 
             </div>
-            <h1 class="blueplay logo"><a href="index.php"><img src="assets/images/logo.png" alt="Logo" width="85%"></a></h1>
+            <h1 class=" logo"><a href="index.php"><img src="assets/images/logo.png" alt="Logo" width="85%"></a></h1>
         </div>
-        <div class="row">
+        <div class="row hidden-sm hidden-xs">
             <div class="col-md-8 col-md-offset-2 text-center">
                 <p class="pretitle">ONLINE VIDEO TRAININGS</p>
                 <h2 style="text-shadow: 0 2px 5px rgba(0, 0, 0, .5);">PROOF YOUR TALENT</h2>

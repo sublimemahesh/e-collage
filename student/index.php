@@ -47,7 +47,7 @@ $PAGES = new Page(1);
 
                                     <strong class="text-center"><center>Company Description</center></strong>
                                 </div>
-                                <div class="card-body" style="  height: 458px!important;">
+                                <div class="card-body" style="  height: 455px!important;overflow-y: auto;">
                                     <center>
                                         <div class="col-md-12 m-y">
                                             <p class="text-justify" style="line-height: 1.8;">
@@ -56,7 +56,14 @@ $PAGES = new Page(1);
                                             <p class="text-justify" style="line-height: 1.8;">
                                                 ඒ අනුව අන්තර්ජාලය හා ඩිජිටල් තාක්ෂණය පිළිබද හසල අත්දැකීම් සහිත තාක්ෂණික කණ්ඩායමක සේවාව හා ගුරු ශිෂ්‍ය ප්‍රජාව එකම වෙබ් පිටුවකට ගෙන එනු ලැබූ ලංකාවේ එකම ඩිජිටල් මධ්‍යස්ථානය අප ගොඩනගා ඇත.                                            </p>
                                             <p class="text-justify" style="line-height: 1.8;">
-                                                ඩිජිටල් තාක්ෂණය හා අන්තර්ජාලය භාවිත කරමින් ශ්‍රී ලංකාවේ අධ්‍යපනය වඩාත් ප්‍රතිඵලදායක ලෙස සිසුන් වෙත ලගා කරවීම සදහාත් ගුරුවරයා සහ ශිෂ්‍යා කාර්යක්ෂමව බැද තැබීම සදහාත් ඩිජිටල් පාලමක් වීම පිණිස ඩිජිටල් තාක්ෂණය ප්‍රචලිත කරවීම උදෙසා කැප වී සිටිමු.                                            </p>
+                                                ඩිජිටල් තාක්ෂණය හා අන්තර්ජාලය භාවිත කරමින් ශ්‍රී ලංකාවේ අධ්‍යපනය වඩාත් ප්‍රතිඵලදායක ලෙස සිසුන් වෙත ලගා කරවීම සදහාත් ගුරුවරයා සහ ශිෂ්‍යා කාර්යක්ෂමව බැද තැබීම සදහාත් ඩිජිටල් පාලමක් වීම පිණිස ඩිජිටල් තාක්ෂණය ප්‍රචලිත කරවීම උදෙසා කැප වී සිටිමු.                            
+                                            </p>
+                                            <p class="text-justify" style="line-height: 1.8;">
+                                                <b><u>Instruction for Student.</u></b><br>
+                                                It is important that you do not interrupt others while they speak.Any questions
+or comments you may have should be posted into chat room.
+                                                
+                                            </p>
 
                                         </div>  
                                     </center>
