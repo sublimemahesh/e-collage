@@ -1131,9 +1131,9 @@ h3 + p {
 
 .whyus p{
     font-family: "Work Sans", sans-serif;
-    font-size: 12px;
+    font-size: 16px;
     color: #535353;
-    margin-bottom: 55px;
+    margin-bottom: 30px;
 }
 
 #index1 .whyus,
@@ -1202,7 +1202,7 @@ h3 + p {
     box-shadow: 0 0 10px 2px rgba(0, 0, 0, 0.13); 
     position: relative;
     overflow: hidden;
-    border: 4px solid #fff;
+     
 }
 
 .pros .imgcontainer .overlay{
@@ -2614,10 +2614,6 @@ aside.categories ul li:not(:last-child),
     margin-bottom: 80px;
 }
 
-#pull-left a {
-    margin-right: 45px;
-    margin-bottom: 170px;
-    
 #pricing .pricings .col-md-3{
     padding-right: 8px;
     padding-left: 8px;
@@ -2643,7 +2639,7 @@ aside.categories ul li:not(:last-child),
 
 #how-it-works .step p{
     font-family: "Work Sans", sans-serif;
-    font-size: 12px;
+    font-size: 14px;
     color: #535353;
 }
 
