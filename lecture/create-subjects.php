@@ -108,10 +108,13 @@ if (!Lecture::authenticate()) {
                                             </div>
                                             <div class="form-group">
                                                 <label class="col-sm-1 control-label " for="title" style="text-align: left">  Subject: </label>
-                                                <div class="col-sm-11">
+                                                <div class="col-sm-9">
                                                     <select class="custom-select" name="subject" id="subject">
-                                                        <option value="" selected=""> -- Please Select Sub Category First --</option>   
+                                                        <option value="" selected=""> -- Please Select Sub Category First --</option>  
                                                     </select>
+                                                </div>
+                                                <div class="col-sm-2 "  >
+                                                    <button class="btn btn-outline-success inputDisabled" data-toggle="modal" data-target="#successModalAlert" type="button" style="width: 100%" disabled="">Add your Subject</button>
                                                 </div>
                                             </div>
                                             <div class="form-group">
@@ -120,7 +123,7 @@ if (!Lecture::authenticate()) {
                                                 <div class="col-md-4"></div> 
                                                 <div class="col-md-2">  
                                                     <input type="hidden"  name="create"  >
-                                                     <input type="hidden"  name="lecture"  value="<?php echo $_SESSION['id'] ?>" >
+                                                    <input type="hidden"  name="lecture"  value="<?php echo $_SESSION['id'] ?>" >
                                                     <input type="submit" class="btn btn-primary btn-block"   value="ADD" id="create" >
                                                 </div>
                                             </div>
@@ -128,7 +131,6 @@ if (!Lecture::authenticate()) {
 
                                     </form>
                                 </div>
-
                             </div>
                             <div class="card">
                                 <div class="card-header"> 
@@ -198,7 +200,47 @@ if (!Lecture::authenticate()) {
             </div>
 
         </div>
+        <div id="successModalAlert" tabindex="-1" role="dialog" class="modal fade">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <div class="row">
+                            <div class="col-md-10">
+                                <h3 class="text-success text-center">Add Your Subject </h3>
+                            </div>
+                            <div class="col-md-2">
+                                <button type="button" class="close" data-dismiss="modal">
+                                    <span aria-hidden="true">×</span>
+                                    <span class="sr-only">Close</span>
+                                </button>  
+                            </div>
+                        </div>       
+                    </div>
+                    <div class="modal-body">
+                        <div class="text-center">
 
+                            <div class="form form-horizontal">
+                                <form method="post" id="form-data-2">
+                                    <div class="form-group">
+                                        <label class="col-sm-3 control-label " for="title" style="text-align: left">Subject Name: </label>
+                                        <div class="col-sm-9" >
+                                            <input type="text" name="subject" id="subject"class="form-control"style="text-align: left;width: 100%">
+                                        </div>
+                                    </div>
+                                    <div class="m-t-lg">
+                                        <input type="hidden" name="sub_category" id="sub_category_append">
+                                        <input type="hidden" name="action" value="create">
+                                        <button class="btn btn-success" data-dismiss="modal" type="submit" id="add-lecture-subject">Submit</button>
+                                        <button class="btn btn-default" data-dismiss="modal" type="button">Cancel</button>
+                                    </div>
+                                </form>
+                            </div>  
+                            <div class="modal-footer"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
         <script src="js/jquery.min.js" type="text/javascript"></script> 
         <script src="js/vendor.min.js"></script>
         <script src="js/elephant.min.js"></script>

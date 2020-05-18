@@ -20,4 +20,17 @@ if ($_POST['action'] == 'GET_SUBJECT_BY_SUB_CATEGORY') {
     header('Content-type: application/json');
     exit();
 }
+if ($_POST['action'] == 'create') { 
 
+    $EDUCATION_SUBJECT = new EducationSubject(NULL); 
+
+    $EDUCATION_SUBJECT->name = $_POST['subject'];
+    $EDUCATION_SUBJECT->sub_category = $_POST['sub_category']; 
+
+    $EDUCATION_SUBJECT->create();
+    $result = [
+        "message" => 'success'
+    ];
+    echo json_encode($result);
+    exit();
+}
