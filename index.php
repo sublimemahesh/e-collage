@@ -29,60 +29,53 @@
                         <div class="slick-features">
                             <div class="feature">
                                 <center>
-                                    <img src="assets/images/features2/feature-1.png" alt="Feature">
+                                    <img src="assets/images/features2/002-online-course.png" alt="Feature">
                                 </center>
-                                <h6>Online trainings  from experts</h6>
-                                <p>At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est.</p>
+                                <h6>Main Course</h6>
+                                <p>We have the courses you need for further education. Thereby  You can easy to learn your further education.</p>
                                 <a href="#" class="readmore"><span>READ MORE&nbsp;&nbsp;&nbsp;</span><i class="zmdi zmdi-long-arrow-right"></i></a>
                             </div>
                             <div class="feature">
                                 <center>
-                                    <img src="assets/images/features2/feature-2.png" alt="Feature">
-                                </center>
-                                <h6>Live Classes</h6>
-                                <p>Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat.</p>
-                                <a href="#" class="readmore"><span>READ MORE&nbsp;&nbsp;&nbsp;</span><i class="zmdi zmdi-long-arrow-right"></i></a>
-                            </div>
-                            <div class="feature">
-                                <center>
-                                    <img src="assets/images/features2/feature-3.png" alt="Feature">
-                                </center>
-                                <h6>Main Courses</h6>
-                                <p>Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat vel illum dolore eu feugiat nulla facilisi.</p>
-                                <a href="#" class="readmore"><span>READ MORE&nbsp;&nbsp;&nbsp;</span><i class="zmdi zmdi-long-arrow-right"></i></a>
-                            </div>
-                            <div class="feature">
-                                <center>
-                                    <img src="assets/images/features2/feature-4.png" alt="Feature">
+                                    <img src="assets/images/features2/006-online-learning.png" alt="Feature">
                                 </center>
                                 <h6>University Lectures</h6>
-                                <p>Iconsetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat.</p>
+                                <p>Undergraduates will conduct independent learning with lectures, seminars and dissertations.Veteran lecturers come for this.</p>
                                 <a href="#" class="readmore"><span>READ MORE&nbsp;&nbsp;&nbsp;</span><i class="zmdi zmdi-long-arrow-right"></i></a>
                             </div>
                             <div class="feature">
                                 <center>
-                                    <img src="assets/images/features2/feature-5.png" alt="Feature">
+                                    <img src="assets/images/features2/005-video-tutorial.png" alt="Feature">
                                 </center>
-                                <h6>Occasional video updates</h6>
-                                <p>Let clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet.</p>
+                                <h6>Occasional  Video </h6>
+                                <p>The video will be updated so that you can get the information you need. Thereby you can improve your knowladge</p>
                                 <a href="#" class="readmore"><span>READ MORE&nbsp;&nbsp;&nbsp;</span><i class="zmdi zmdi-long-arrow-right"></i></a>
                             </div>
                             <div class="feature">
                                 <center>
-                                    <img src="assets/images/features2/feature-2.png" alt="Feature">
+                                    <img src="assets/images/features2/001-study.png" alt="Feature">
                                 </center>
-                                <h6>Watch it from everywhere</h6>
-                                <p>Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat.</p>
+                                <h6>Online Training Expert</h6>
+                                <p>Online training is regularly becoming a major industry with many trainers training students and employees around the world. </p>
                                 <a href="#" class="readmore"><span>READ MORE&nbsp;&nbsp;&nbsp;</span><i class="zmdi zmdi-long-arrow-right"></i></a>
                             </div>
                             <div class="feature">
                                 <center>
-                                    <img src="assets/images/features2/feature-3.png" alt="Feature">
+                                    <img src="assets/images/features2/003-video.png" alt="Feature">
                                 </center>
-                                <h6>Support videos on all devices</h6>
-                                <p>Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat vel illum dolore eu feugiat nulla facilisi.</p>
+                                <h6>Support Video On All Devices</h6>
+                                <p>You can watch our released videos on all devices. It will make your education easier.</p>
                                 <a href="#" class="readmore"><span>READ MORE&nbsp;&nbsp;&nbsp;</span><i class="zmdi zmdi-long-arrow-right"></i></a>
                             </div>
+                            <div class="feature">
+                                <center>
+                                    <img src="assets/images/features2/001-education.png" alt="Feature">
+                                </center>
+                                <h6>Live Class</h6>
+                                <p>You can connect directly with your student by selecting a text chat, audio chat or live video. In that live learning space, you can learn a few different options.</p>
+                                <a href="#" class="readmore"><span>READ MORE&nbsp;&nbsp;&nbsp;</span><i class="zmdi zmdi-long-arrow-right"></i></a>
+                            </div>
+                            
                         </div>
                     </div>
                 </div>
