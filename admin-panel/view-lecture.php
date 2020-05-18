@@ -37,7 +37,7 @@ $LECTURE = new Lecture($id);
             <div class="navbar navbar-default">
                 <div class="navbar-header">
                     <a class="navbar-brand navbar-brand-center" href="dashboard.php">
-                        <img class="navbar-brand-logo" src="img/logo.png" alt="Elephant">
+                        <img class="navbar-brand-logo" src="img/logo.png" alt="Ecollage.lk">
                     </a>
                     <button class="navbar-toggler visible-xs-block collapsed" type="button" data-toggle="collapse" data-target="#sidenav">
                         <span class="sr-only">Toggle navigation</span>

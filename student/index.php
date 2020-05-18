@@ -8,11 +8,10 @@ $PAGES = new Page(1);
     <head>
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <title>Ecollege.lk - Index   </title>
-        <meta property="og:url" content="http://demo.madebytilde.com/elephant">
+        <title>Ecollege.lk Web Learning</title>
         <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no">
+        <meta name="description" content="Elephant is an admin template that helps you build modern Admin Applications, professionally fast! Built on top of Bootstrap, it includes a large collection of HTML, CSS and JS components that are simple to use and easy to customize.">
         <meta property="og:url" content="http://demo.madebytilde.com/elephant">
-        <meta property="og:type" content="website"> >
 
         <link rel="icon" type="image/png" href="favicon-32x32.png" sizes="32x32">
         <link rel="icon" type="image/png" href="favicon-16x16.png" sizes="16x16">
@@ -32,118 +31,167 @@ $PAGES = new Page(1);
         <?php include './top-header.php'; ?>
         <!--End Top header -->
 
-        <div class="layout-main parallax">
+        <div class="layout-main">
 
+            <!-- Navigation -->
             <?php include './navigation.php'; ?>
+            <!--End Navigation -->
 
             <div class="layout-content">
-                <div class="layout-content-body" >
-                    <div class="row "> 
-
-                        <div class="col-xs-12 col-md-4">  
-
-                            <div class="card p-l-card"  >
-                                <div class="card-header">
-
-                                    <strong class="text-center"><center>Company Description</center></strong>
+                <div class="layout-content-body">
+                    <div class="row gutter-xs panel"> 
+                        <div class="col-xs-12 col-md-12">
+                            <div class="card">
+                                <div class="col-md-3"  > 
+                                    <div class="tab-content">
+                                        <div class="tab-pane fade active in home-1"  >
+                                            <h3 class="text-center tab-padding"  >විෂයන් රැසක්</h3>
+                                            <p class="text-justify">    
+                                                පළමු ශ්‍රේණියේ සිට උසස් අධ්‍යාපනය දක්වා විෂයන් රැසක් අප ආයතනය තුලින්  ඔබට හැදෑරීමට අවස්ථාව හිමි වනු ඇත.ඔබට අවශ්‍ය ක්ෂේත්‍රය ඔස්සේ වැඩි දුර අධ්‍යාපනය සඳහා අදම අප හා එක්වන්න.</p>
+                                        </div>
+                                        <div class="tab-pane fade home-2"  >
+                                            <h3 class="text-center tab-padding"  >Listen Carefuly</h3>
+                                            <p class="text-justify">  
+                                                Curabitur ullamcorper ultricies nisi. Nam eget dui. Etiam rhoncus. Maecenas tempus, tellus eget condimentum rhoncus, sem quam semper libero, sit amet adipiscing sem neque sed ipsum.
+                                            </p>
+                                        </div>
+                                        <div class="tab-pane fade home-3"  >
+                                            <h3 class="text-center tab-padding"  >Repeat</h3>
+                                            <p class="text-justify">    Nam quam nunc, blandit vel, luctus pulvinar, hendrerit id, lorem. Maecenas nec odio et ante tincidunt tempus. Donec vitae sapien ut libero venenatis faucibus. Nullam quis ante..</p>
+                                        </div>
+                                        <div class="tab-pane fade home-4"  >
+                                            <h3 class="text-center tab-padding"  >Understand</h3>
+                                            <p class="text-justify"> 
+                                                Curabitur ullamcorper ultricies nisi. Nam eget dui. Etiam rhoncus. Maecenas tempus, tellus eget condimentum rhoncus, sem quam semper libero, sit amet adipiscing sem neque sed ipsum.
+                                            </p>
+                                        </div>
+                                        <div class="tab-pane fade home-5"  >
+                                            <h3 class="text-center tab-padding"  >Check your Level</h3>
+                                            <p class="text-justify"> Nam quam nunc, blandit vel, luctus pulvinar, hendrerit id, lorem. Maecenas nec odio et ante tincidunt tempus. Donec vitae sapien ut libero venenatis faucibus. Nullam quis ante.</p>
+                                        </div> 
+                                    </div> 
                                 </div>
-                                <div class="card-body" style="  height: 455px!important;overflow-y: auto;">
-                                    <center>
-                                        <div class="col-md-12 m-y">
-                                            <p class="text-justify" style="line-height: 1.8;">
-                                                2020 ජනවාරි මස සිට Covid-19 රෝගය, ලංකාව පුරා ව්‍යාප්ත වීමත් සමග ලංකාවේ සියළු ආකාරයේ රජයේ හා පෞද්ලික අධ්‍යපන පද්ධතිය එක් වරම නවතා දමනු ලැබීය. එම නිසා අසරණ වූ ශිෂ්‍යා නැවත ප්‍රකෘතිමත් කිරීම පිණිස ගුරුවරයා සහ ශිෂ්‍යා නැවත මුණ ගැස්වීමට අප තීරණය කළෙමු.
-                                            </p>
-                                            <p class="text-justify" style="line-height: 1.8;">
-                                                ඒ අනුව අන්තර්ජාලය හා ඩිජිටල් තාක්ෂණය පිළිබද හසල අත්දැකීම් සහිත තාක්ෂණික කණ්ඩායමක සේවාව හා ගුරු ශිෂ්‍ය ප්‍රජාව එකම වෙබ් පිටුවකට ගෙන එනු ලැබූ ලංකාවේ එකම ඩිජිටල් මධ්‍යස්ථානය අප ගොඩනගා ඇත.                                            </p>
-                                            <p class="text-justify" style="line-height: 1.8;">
-                                                ඩිජිටල් තාක්ෂණය හා අන්තර්ජාලය භාවිත කරමින් ශ්‍රී ලංකාවේ අධ්‍යපනය වඩාත් ප්‍රතිඵලදායක ලෙස සිසුන් වෙත ලගා කරවීම සදහාත් ගුරුවරයා සහ ශිෂ්‍යා කාර්යක්ෂමව බැද තැබීම සදහාත් ඩිජිටල් පාලමක් වීම පිණිස ඩිජිටල් තාක්ෂණය ප්‍රචලිත කරවීම උදෙසා කැප වී සිටිමු.                            
-                                            </p>
-                                            <p class="text-justify" style="line-height: 1.8;">
-                                                <b><u>Instruction for Student.</u></b><br>
-                                                It is important that you do not interrupt others while they speak.Any questions
-or comments you may have should be posted into chat room.
-                                                
-                                            </p>
+                                <div class="col-md-7 tab-padding-col"  > 
+                                    <div class="tab-content tab-padding-col-zero"  >
+                                        
+                                        <div class="tab-pane fade active in home-1"  >
+                                            <img src="img/img/writing.jpg" alt="" class="img-responsive tab-padding-col-zero" width="100%"  />
+                                        </div>
+                                        <div class="tab-pane fade home-2"  >
+                                            <img src="img/img/listening.jpg" alt="" class="img-responsive tab-padding-col-zero" width="100%"  />
+                                        </div>
 
-                                        </div>  
-                                    </center>
-
+                                        <div class="tab-pane fade home-3"  >
+                                            <img src="img/img/listne.jpg" alt="" class="img-responsive tab-padding-col-zero" width="100%"   />
+                                        </div>
+                                        <div class="tab-pane fade home-4"  >
+                                            <img src="img/img/understand.jpg" alt="" class="img-responsive tab-padding-col-zero" width="100%"  />
+                                        </div>
+                                        <div class="tab-pane fade home-5"  >
+                                            <img src="img/img/ss.jpg" alt="" class="img-responsive tab-padding-col-zero" width="100%"  />
+                                        </div>
+                                    </div>  
                                 </div>
-                            </div> 
-                        </div>
 
-                        <div class="col-xs-12 col-md-8"> 
-                            <iframe id="existing-iframe-example "   class="video-res" height="510" src="<?php echo $PAGES->title ?>" allow="autoplay" allowfullscreen></iframe>
-<!--                            <iframe id="existing-iframe-example" width="92%" height="510"  src="https://www.youtube.com/embed/40wafTmaMro?enablejsapi=1autoplay=1"    frameborder="0" ></iframe>-->
-
-                        </div>
-                    </div>
-                </div> 
-
-                <!--                <div class="row" >
-                                    <div class="col-xs-6 col-md-5"></div>
-                                    <div class="col-xs-12 col-md-4" style="margin-top: 2% ;margin-bottom: 28px;">
-                                        <div class="">
-                                            <div class="card-body">
-                                                <center> 
-                                                    <div class="form-group "  style="margin-top: 2%;" id="btn-disply" > 
-                                                        <a href="lesson.php">  
-                                                            <button class=" btn btn-outline-primary btn-block btn-next "   type="button" id="create" style="width: 80%;font-size: 16px" >Start Your Lessons</button>
-                                                        </a>
-                                                    </div>
-                                                </center>
-                
-                                            </div>
+                                <div class="col-md-2 text-center tab-padding-col"  > 
+                                    <div class=" tab-padding-col-top m-b-lg"  >
+                                        <div class="tabs-right">
+                                            <ul class="nav nav-tabs">
+                                                <li class="active" ><a href=".home-1" data-toggle="tab"  class="tab-content-title" >විෂයන් රැසක්  </a></li>
+                                                <li><a href=".home-2" data-toggle="tab" class="tab-content-title"  >Listen Carefuly</a></li>
+                                                <li><a href=".home-3" data-toggle="tab" class="tab-content-title">Repeat</a></li>
+                                                <li><a href=".home-4" data-toggle="tab" class="tab-content-title">Understand</a></li>
+                                                <li><a href=".home-5" data-toggle="tab" class="tab-content-title">Check Your Level</a></li>
+                                            </ul>
+                                            <a href="#">
+                                                <div class="form-group pull-right" style="margin-right: 40px;margin-top: 12%"  > 
+                                                    <button class=" btn btn-outline-primary btn-block btn-next" width="17%" type="button" id="create" >Assessment</button>
+                                                </div>
+                                            </a>
+                                        </div>
+                                    </div> 
+                                </div>
+                            </div>
+                        </div> 
+                    </div>    
+                    <div class="row gutter-xs">
+                        <div class="col-md-4 col-md-push-4">
+                            <div class="card">
+                                <div class="card-header"> 
+                                    <strong>මතකය දියුණු කරගත හැකි සුපිරි ක්‍රම 07ක්</strong> 
+                                </div>
+                                <div class="card-body">
+                                    <div class="card-body">
+                                        <div class="card-body">
+                                            <iframe width="350" height="200" src="https://www.youtube.com/embed/h04Hj6sb1qg" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                                         </div>
                                     </div>
-                                    <div class="col-xs-6 col-md-3"></div>
-                
-                                </div>-->
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4 col-md-push-4">
+                            <div class="card">
+                                <div class="card-header"> 
+                                    <strong>How to study well and pass the EXAM</strong> 
+                                </div>
+                                <div class="card-body">
+                                    <div class="card-body">
+                                        <div class="card-body">
+                                            <iframe width="350" height="200" src="https://www.youtube.com/embed/fheL2_Je0Mo" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
 
-                <?php include './footer.php'; ?>
-
+                        <div class="col-md-4 col-md-pull-8">
+                            <div class="card">
+                                <div class="card-header"> 
+                                    <strong>තත්පර දෙකෙන් ගුණ කරන්න රහස් ක්‍රම 5ක්  </strong> 
+                                </div>
+                                <div class="card-body">
+                                    <div class="card-body">
+                                        <iframe width="350" height="200" src="https://www.youtube.com/embed/3qZ7ack5Fc8" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div> 
+                </div>
             </div>
+              <?php include './footer.php'; ?>
+        </div>
 
-
-
-
-            <script src="js/jquery.min.js" type="text/javascript"></script>
-            <script src="js/vendor.min.js"></script>
-            <script src="js/elephant.min.js"></script>
-            <script src="js/application.min.js"></script>
-            <script src="js/sweetalert.min.js" type="text/javascript"></script>
-            <script src="ajax/js/check-login.js" type="text/javascript"></script>
-
-
-            <script type="text/javascript">
-                var tag = document.createElement('script');
-                tag.id = 'iframe-demo';
-                tag.src = 'https://www.youtube.com/iframe_api';
-                var firstScriptTag = document.getElementsByTagName('script')[0];
-                firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
-
-                var player;
-                function onYouTubeIframeAPIReady() {
-                    player = new YT.Player('existing-iframe-example', {
-                        events: {
-                            'onReady': onPlayerReady,
-                            'onStateChange': onPlayerStateChange
-                        }
-                    });
-                }
-                function onPlayerReady(event) {
-                    document.getElementById('existing-iframe-example').style.borderColor = '#FF6D00';
-                }
-
-//                function onPlayerStateChange(event) {
-//                    if (event.data === 0) {
-//                        $('#btn-disply-none').hide();
-//                        $('#btn-disply').show();
-//
-//                    }
-//                }
-
-            </script>
-
+        <script src="js/jquery.min.js" type="text/javascript"></script>
+        <script src="js/vendor.min.js"></script>
+        <script src="js/elephant.min.js"></script>
+        <script src="js/application.min.js"></script>
+        <script src="js/sweetalert.min.js" type="text/javascript"></script> 
+        <script src="ajax/js/check-login.js" type="text/javascript"></script>
+        <script>
+            var tabChange = function () {
+                var tabs = $('.nav-tabs > li');
+                var active = tabs.filter('.active');
+                var next = active.next('li').length ? active.next('li').find('a') : tabs.filter(':first-child').find('a');
+                // Bootsrap tab show, para ativar a tab
+                next.tab('show')
+            }
+            // Tab Cycle function
+            var tabCycle = setInterval(tabChange, 5000)
+            // Tab click event handler
+            $(function () {
+                $('.nav-tabs a').click(function (e) {
+                    e.preventDefault();
+                    // Parar o loop
+                    clearInterval(tabCycle);
+                    // mosta o tab clicado, default bootstrap
+                    $(this).tab('show')
+                    // Inicia o ciclo outra vez
+                    setTimeout(function () {
+                        tabCycle = setInterval(tabChange, 3000)//quando recomeça assume este timing
+                    }, 3000);
+                });
+            });
+        </script>
     </body>
 </html>

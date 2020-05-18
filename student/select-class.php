@@ -137,24 +137,22 @@ include_once(dirname(__FILE__) . '/auth.php');
                                                 <center>
                                                     <?php
                                                     $STUDENT_REGISTRATION = new StudentRegistration(NULL);
-                                                    foreach ($STUDENT_REGISTRATION->getRegistrationClassesByStudent($lecture_class['id'], $_SESSION['id']) as $Registration_class) {
-                                                        if ($Registration_class['class_id'] == $lecture_class['id']) {
-                                                            ?>
-                                                            <input type="submit" class="btn btn-success btn-block"   value="Selected" id="create" style="width: 40%">
-                                                        <?php } else { ?>
-
-                                                            <?php
+                                                    if (count($STUDENT_REGISTRATION->getRegistrationClassesByStudent($lecture_class['id'], $_SESSION['id'])) > 0) {
+                                                        foreach ($STUDENT_REGISTRATION->getRegistrationClassesByStudent($lecture_class['id'], $_SESSION['id']) as $Registration_class) {
+                                                            if ($Registration_class['class_id'] == $lecture_class['id']) {
+                                                                ?>
+                                                                <input type="submit" class="btn btn-success btn-block remove"   data-id="<?php echo $Registration_class['id'] ?>"  value="Selected"  style="width: 40%">
+                                                                <?php
+                                                            }
                                                         }
+                                                    } else {
+                                                        ?>
+                                                        <input type="submit" class="btn btn-primary btn-block select "  data-id="<?php echo $lecture_class['id'] ?>" stu_id="<?php echo $_SESSION['id'] ?>" lecture_id="<?php echo $lecture_class['lecture'] ?>" value="Select"   name="create" style="width: 40%">
+
+                                                        <?php
                                                     }
                                                     ?>
-                                                    <input type="hidden" name="create"  >
-                                                    <input type="hidden" name="student_id" value="<?php echo $_SESSION['id'] ?>">
-                                                    <input type="hidden" name="class_id" value="<?php echo $lecture_class['id'] ?>">
-                                                    <input type="hidden" name="lecture_id" value="<?php echo $lecture_class['lecture'] ?>">
-                                                    <input type="submit" class="btn btn-primary btn-block  "   value="Select"   name="create" style="width: 40%">
-
                                                 </center> 
-
                                             </div>
                                         </div>
                                     </div>
