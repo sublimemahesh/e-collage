@@ -1,4 +1,7 @@
 <!DOCTYPE html>
+<?php
+include './class/include.php';
+?>
 <html>
     <head>
         <meta charset="utf-8">
@@ -15,12 +18,12 @@
 
     <body id="teachers" class="page">
 
-        <?php include './header-2.php'; ?>
+        <?php include './header.php'; ?>
 
         <main>
 
             <div class="page-heading text-center">
-                <h2>OUR TEACHERS</h2>
+                <h2>OUR LECTURES</h2>
             </div>
             <div class="container teachers-browse pros">
                 <div class="row toolbar">
@@ -56,245 +59,29 @@
                     </div>
                 </div>
                 <div class="row text-center">
-                    <div class="col-md-2 col-sm-4 col-xs-6">		
-                        <div class="teacher">
-                            <div class="imgcontainer">
-                                <img src="assets/images/avatars/1.png" alt="Avatar">
-                                <div class="overlay">
-                                    <img src="assets/images/avatars/profile.png" alt="Profile">
-                                    <p>8 VIDEOS</p>
+                    <?php
+                    $LECTURE = new Lecture(NULL);
+                    foreach ($LECTURE->all() as $lecture) {
+                        ?>
+                        <div class="col-md-2 col-sm-4 col-xs-6">		
+                            <div class="teacher">
+                                <div class="imgcontainer">
+                                    <?php
+                                    if (empty($lecture['image_name'])) {
+                                        ?>
+                                        <img src="assets/member.jpg" alt="Avatar" class="img-responsive">
+                                    <?php } else { ?>
+                                        <img src="lecture/upload/lecture/profile/<?php echo $lecture['image_name'] ?>" alt="Avatar" class="img-responsive">
+
+                                    <?php } ?>
                                 </div>
+                                <a href="#"><?php echo $lecture['full_name'] ?></a>
+                                <p><?php echo $lecture['email'] ?></p>
                             </div>
-                            <a href="lecture-view.php">Kevin Mcfield</a>
-                            <p>SCIENTIST</p>
                         </div>
-                    </div>
-                    <div class="col-md-2 col-sm-4 col-xs-6">	
-                        <div class="teacher">
-                            <div class="imgcontainer">
-                                <img src="assets/images/avatars/2.png" alt="Avatar">
-                                <div class="overlay">
-                                    <img src="assets/images/avatars/profile.png" alt="Profile">
-                                    <p>8 VIDEOS</p>
-                                </div>
-                            </div>
-                            <a href="lecture-view.php">Jonathan Creon</a>
-                            <p>DESIGNER</p>
-                        </div>
-                    </div>
-                    <div class="col-md-2 col-sm-4 col-xs-6">		
-                        <div class="teacher">
-                            <div class="imgcontainer">
-                                <img src="assets/images/avatars/3.png" alt="Avatar">
-                                <div class="overlay">
-                                    <img src="assets/images/avatars/profile.png" alt="Profile">
-                                    <p>8 VIDEOS</p>
-                                </div>
-                            </div>
-                            <a href="lecture-view.php">Peter Griffin</a>
-                            <p>LANGUAGE TEACHER</p>
-                        </div>
-                    </div>
-                    <div class="col-md-2 col-sm-4 col-xs-6">		
-                        <div class="teacher">
-                            <div class="imgcontainer">
-                                <img src="assets/images/avatars/4.png" alt="Avatar">
-                                <div class="overlay">
-                                    <img src="assets/images/avatars/profile.png" alt="Profile">
-                                    <p>8 VIDEOS</p>
-                                </div>
-                            </div>
-                            <a href="#">Vanessa Dilmor</a>
-                            <p>MARKETING MANAGER</p>
-                        </div>
-                    </div>
-                    <div class="col-md-2 col-sm-4 col-xs-6">		
-                        <div class="teacher">
-                            <div class="imgcontainer">
-                                <img src="assets/images/avatars/5.png" alt="Avatar">
-                                <div class="overlay">
-                                    <img src="assets/images/avatars/profile.png" alt="Profile">
-                                    <p>8 VIDEOS</p>
-                                </div>
-                            </div>
-                            <a href="#">Lydia Bennolt</a>
-                            <p>DEVELOPER</p>
-                        </div>
-                    </div>
-                    <div class="col-md-2 col-sm-4 col-xs-6">		
-                        <div class="teacher">
-                            <div class="imgcontainer">
-                                <img src="assets/images/avatars/6.png" alt="Avatar">
-                                <div class="overlay">
-                                    <img src="assets/images/avatars/profile.png" alt="Profile">
-                                    <p>8 VIDEOS</p>
-                                </div>
-                            </div>
-                            <a href="#">Marcus Winter</a>
-                            <p>DIGITAL ARTIST</p>
-                        </div>
-                    </div>
+                    <?php } ?>
                 </div>
-                <div class="row text-center">
-                    <div class="col-md-2 col-sm-4 col-xs-6">	
-                        <div class="teacher">
-                            <div class="imgcontainer">
-                                <img src="assets/images/avatars/7.png" alt="Avatar">
-                                <div class="overlay">
-                                    <img src="assets/images/avatars/profile.png" alt="Profile">
-                                    <p>8 VIDEOS</p>
-                                </div>
-                            </div>
-                            <a href="#">Eva Wichel</a>
-                            <p>SCIENTIST</p>
-                        </div>
-                    </div>
-                    <div class="col-md-2 col-sm-4 col-xs-6">	
-                        <div class="teacher">
-                            <div class="imgcontainer">
-                                <img src="assets/images/avatars/8.png" alt="Avatar">
-                                <div class="overlay">
-                                    <img src="assets/images/avatars/profile.png" alt="Profile">
-                                    <p>8 VIDEOS</p>
-                                </div>
-                            </div>
-                            <a href="#">Janette Bling</a>
-                            <p>BLOGGER</p>
-                        </div>
-                    </div>
-                    <div class="col-md-2 col-sm-4 col-xs-6">	
-                        <div class="teacher">
-                            <div class="imgcontainer">
-                                <img src="assets/images/avatars/9.png" alt="Avatar">
-                                <div class="overlay">
-                                    <img src="assets/images/avatars/profile.png" alt="Profile">
-                                    <p>8 VIDEOS</p>
-                                </div>
-                            </div>
-                            <a href="#">Xo Ming</a>
-                            <p>AUTHOR</p>
-                        </div>
-                    </div>
-                    <div class="col-md-2 col-sm-4 col-xs-6">		
-                        <div class="teacher">
-                            <div class="imgcontainer">
-                                <img src="assets/images/avatars/10.png" alt="Avatar">
-                                <div class="overlay">
-                                    <img src="assets/images/avatars/profile.png" alt="Profile">
-                                    <p>8 VIDEOS</p>
-                                </div>
-                            </div>
-                            <a href="#">James Ome</a>
-                            <p>DESIGNER</p>
-                        </div>
-                    </div>
-                    <div class="col-md-2 col-sm-4 col-xs-6">	
-                        <div class="teacher">
-                            <div class="imgcontainer">
-                                <img src="assets/images/avatars/11.png" alt="Avatar">
-                                <div class="overlay">
-                                    <img src="assets/images/avatars/profile.png" alt="Profile">
-                                    <p>8 VIDEOS</p>
-                                </div>
-                            </div>
-                            <a href="#">Eva Longori</a>
-                            <p>DEVELOPER</p>
-                        </div>
-                    </div>
-                    <div class="col-md-2 col-sm-4 col-xs-6">	
-                        <div class="teacher">
-                            <div class="imgcontainer">
-                                <img src="assets/images/avatars/12.png" alt="Avatar">
-                                <div class="overlay">
-                                    <img src="assets/images/avatars/profile.png" alt="Profile">
-                                    <p>8 VIDEOS</p>
-                                </div>
-                            </div>
-                            <a href="#">David Manning</a>
-                            <p>SEO SPECIALIST</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="row text-center">
-                    <div class="col-md-2 col-sm-4 col-xs-6">		
-                        <div class="teacher">
-                            <div class="imgcontainer">
-                                <img src="assets/images/avatars/1.png" alt="Avatar">
-                                <div class="overlay">
-                                    <img src="assets/images/avatars/profile.png" alt="Profile">
-                                    <p>8 VIDEOS</p>
-                                </div>
-                            </div>
-                            <a href="#">Kevin Mcfield</a>
-                            <p>SCIENTIST</p>
-                        </div>
-                    </div>
-                    <div class="col-md-2 col-sm-4 col-xs-6">		
-                        <div class="teacher">
-                            <div class="imgcontainer">
-                                <img src="assets/images/avatars/2.png" alt="Avatar">
-                                <div class="overlay">
-                                    <img src="assets/images/avatars/profile.png" alt="Profile">
-                                    <p>8 VIDEOS</p>
-                                </div>
-                            </div>
-                            <a href="#">Jonathan Creon</a>
-                            <p>DESIGNER</p>
-                        </div>
-                    </div>
-                    <div class="col-md-2 col-sm-4 col-xs-6">		
-                        <div class="teacher">
-                            <div class="imgcontainer">
-                                <img src="assets/images/avatars/3.png" alt="Avatar">
-                                <div class="overlay">
-                                    <img src="assets/images/avatars/profile.png" alt="Profile">
-                                    <p>8 VIDEOS</p>
-                                </div>
-                            </div>
-                            <a href="#">Peter Griffin</a>
-                            <p>LANGUAGE TEACHER</p>
-                        </div>
-                    </div>
-                    <div class="col-md-2 col-sm-4 col-xs-6">		
-                        <div class="teacher">
-                            <div class="imgcontainer">
-                                <img src="assets/images/avatars/4.png" alt="Avatar">
-                                <div class="overlay">
-                                    <img src="assets/images/avatars/profile.png" alt="Profile">
-                                    <p>8 VIDEOS</p>
-                                </div>
-                            </div>
-                            <a href="#">Vanessa Dilmor</a>
-                            <p>MARKETING MANAGER</p>
-                        </div>
-                    </div>
-                    <div class="col-md-2 col-sm-4 col-xs-6">		
-                        <div class="teacher">
-                            <div class="imgcontainer">
-                                <img src="assets/images/avatars/5.png" alt="Avatar">
-                                <div class="overlay">
-                                    <img src="assets/images/avatars/profile.png" alt="Profile">
-                                    <p>8 VIDEOS</p>
-                                </div>
-                            </div>
-                            <a href="#">Lydia Bennolt</a>
-                            <p>DEVELOPER</p>
-                        </div>
-                    </div>
-                    <div class="col-md-2 col-sm-4 col-xs-6">	
-                        <div class="teacher">
-                            <div class="imgcontainer">
-                                <img src="assets/images/avatars/6.png" alt="Avatar">
-                                <div class="overlay">
-                                    <img src="assets/images/avatars/profile.png" alt="Profile">
-                                    <p>8 VIDEOS</p>
-                                </div>
-                            </div>
-                            <a href="#">Marcus Winter</a>
-                            <p>DIGITAL ARTIST</p>
-                        </div>
-                    </div>
-                </div>
+
 
 
             </div>

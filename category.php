@@ -16,7 +16,7 @@
 
     <body id="categories" class="page">
 
-        <?php include './header-2.php'; ?>
+        <?php include './header.php'; ?>
 
         <main>
             <div class="page-heading text-center">

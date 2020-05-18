@@ -13,7 +13,7 @@
 
                             </li>
                             <li>
-                                <a href="#">Online Courses</a>
+                                <a href="about-us.php">About Us</a>
 
                             </li> 
                             <li>	

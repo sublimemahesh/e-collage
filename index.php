@@ -75,7 +75,7 @@
                                 <p>You can connect directly with your student by selecting a text chat, audio chat or live video. In that live learning space, you can learn a few different options.</p>
                                 <a href="#" class="readmore"><span>READ MORE&nbsp;&nbsp;&nbsp;</span><i class="zmdi zmdi-long-arrow-right"></i></a>
                             </div>
-                            
+
                         </div>
                     </div>
                 </div>

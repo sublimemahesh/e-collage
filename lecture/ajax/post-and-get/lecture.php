@@ -264,7 +264,7 @@ if ($_POST['action'] == 'UPDATENICCARD') {
 if ($_POST['action'] == 'CHANGEPROFILE') {
 
     $LECTURE = new Lecture($_POST['id']);
-    $folder = '../../upload/lecture/profile/';
+    $folder = '../../../upload/lecture/profile/';
 
     $imgName = Helper::randamId();
 

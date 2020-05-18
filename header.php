@@ -14,7 +14,7 @@
 
                             </li>
                             <li>
-                                <a href="#">Online Courses</a>
+                                <a href="about-us.php">About Us</a>
 
                             </li> 
                             <li>	
@@ -29,7 +29,7 @@
                                 <a href="#">Support</a>
 
                             </li> 
-                            <li><a href="#">Contact</a></li> 
+                            <li><a href="contact.php">Contact</a></li> 
                         </ul>
                     </nav>
                 </div>
@@ -40,7 +40,7 @@
             </div>
             <h1 class="logo"><a href="index1.html"><img src="assets/images/logo.png" alt="Logo" width="85%"></a></h1>
         </div>
-        
+
     </div>
-    
+
 </header>

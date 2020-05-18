@@ -16,7 +16,7 @@
 
     <body id="contact" class="page">
 
-        <?php include './header-2.php'; ?>
+        <?php include './header.php'; ?>
 
 
         <main>
