@@ -50,7 +50,8 @@ $(document).ready(function () {
             dataType: "JSON",
             success: function (jsonStr) {
 
-                var html = '<option value="" "> -- Select subject -- </option>';
+                var html = '<option value="" selected=""> -- Select subject -- </option>';
+
                 $.each(jsonStr, function (i, data) {
                     html += '<option value="' + data.id + '">';
                     html += data.name;
@@ -59,8 +60,47 @@ $(document).ready(function () {
 
                 $('#subject').empty();
                 $('#subject').append(html);
+                $('#sub_category_append').val(sub_category);
+                $('.inputDisabled').removeAttr("disabled")
             }
         });
     });
+
+
+//lectures add subjects
+    $('#add-lecture-subject').click(function (event) {
+        event.preventDefault();
+
+
+        var formData = new FormData($('#form-data-2')[0]);
+        $.ajax({
+            url: "ajax/post-and-get/category.php",
+            type: "POST",
+            data: formData,
+            async: false,
+            dataType: 'json',
+            success: function (result) {
+
+                swal({
+                    title: "Success!",
+                    text: "Your data was saved successfully!.....",
+                    type: 'success',
+                    timer: 2000,
+                    showConfirmButton: false
+                }, function () {
+                    setTimeout(function () {
+                        window.location.reload();
+                    }, 1500);
+                });
+
+
+            },
+            cache: false,
+            contentType: false,
+            processData: false
+        });
+
+    });
+
 });
 
