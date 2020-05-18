@@ -45,35 +45,55 @@ $PAGES = new Page(1);
                                 <div class="col-md-3"  > 
                                     <div class="tab-content">
                                         <div class="tab-pane fade active in home-1"  >
-                                            <h3 class="text-center tab-padding"  >විෂයන් රැසක්</h3>
+                                            <h3 class="text-center tab-padding"  ><u>  විෂයන් රැසක්    </u></h3>
                                             <p class="text-justify">    
                                                 පළමු ශ්‍රේණියේ සිට උසස් අධ්‍යාපනය දක්වා විෂයන් රැසක් අප ආයතනය තුලින්  ඔබට හැදෑරීමට අවස්ථාව හිමි වනු ඇත.ඔබට අවශ්‍ය ක්ෂේත්‍රය ඔස්සේ වැඩි දුර අධ්‍යාපනය සඳහා අදම අප හා එක්වන්න.</p>
                                         </div>
                                         <div class="tab-pane fade home-2"  >
-                                            <h3 class="text-center tab-padding"  >Listen Carefuly</h3>
+                                            <h3 class="text-center tab-padding"  > 
+                                                <u>
+                                                    ගුරුවරුන් තෝරා ගන්න.
+                                                </u>
+                                            </h3>
                                             <p class="text-justify">  
-                                                Curabitur ullamcorper ultricies nisi. Nam eget dui. Etiam rhoncus. Maecenas tempus, tellus eget condimentum rhoncus, sem quam semper libero, sit amet adipiscing sem neque sed ipsum.
+                                                ප්‍රවීන දක්ෂ ගුරු මඬුල්ලක් අප හා අත්වැල් බැඳගෙන ඇති අතර ඔබට අධ්‍යාපනය හැදෑරීමට අවශ්‍ය ගුරුවරයා තෝරා ගැනීමේ අවස්ථාව හිමිවනු ඇත. ඔබට අපහසු විශයන් පහසුවෙන් සරලව ඉගනීමට අදම අප හා එක්වන්න.
                                             </p>
                                         </div>
                                         <div class="tab-pane fade home-3"  >
-                                            <h3 class="text-center tab-padding"  >Repeat</h3>
-                                            <p class="text-justify">    Nam quam nunc, blandit vel, luctus pulvinar, hendrerit id, lorem. Maecenas nec odio et ante tincidunt tempus. Donec vitae sapien ut libero venenatis faucibus. Nullam quis ante..</p>
+                                            <h3 class="text-center tab-padding"  >
+                                                <u>
+                                                    සජීවී පන්ති
+                                                </u>
+                                            </h3>
+                                            <p class="text-justify"> 
+                                                සජීවී පන්ති හෝ සජීවී වීඩියෝවක් තෝරා ගැනීමෙන් ඔබට ඔබේ ගුරුවරයා සමඟ කෙලින්ම සම්බන්ධ විය හැකිය. එම සජීවී ඉගෙනුම් අවකාශය තුළ, ඔබට පහසුවෙන් සරලව ඉගනීමට අවස්ථාව හිමිවනු ඇත.
+                                            </p>
                                         </div>
                                         <div class="tab-pane fade home-4"  >
-                                            <h3 class="text-center tab-padding"  >Understand</h3>
+                                            <h3 class="text-center tab-padding"  >
+                                                <u>
+                                                වීඩියෝ නරඹන්න
+                                                </u>
+                                            </h3>
                                             <p class="text-justify"> 
-                                                Curabitur ullamcorper ultricies nisi. Nam eget dui. Etiam rhoncus. Maecenas tempus, tellus eget condimentum rhoncus, sem quam semper libero, sit amet adipiscing sem neque sed ipsum.
+                                                ඔබට අවශ්‍ය තොරතුරු ලබා ගත හැකි වන පරිදි අප වීඩියෝ යාවත්කාලීන කරන අතර එමගින් ඔබට ඔබේ දැනුම වැඩි දියුණු කළ හැකිය. අපගේ මුදා හරින ලද වීඩියෝ සියලු උපාංග වලින් ඔබට නැරඹිය හැකිය. එය ඔබේ අධ්‍යාපනය පහසු කරනු ඇත.
                                             </p>
                                         </div>
                                         <div class="tab-pane fade home-5"  >
-                                            <h3 class="text-center tab-padding"  >Check your Level</h3>
-                                            <p class="text-justify"> Nam quam nunc, blandit vel, luctus pulvinar, hendrerit id, lorem. Maecenas nec odio et ante tincidunt tempus. Donec vitae sapien ut libero venenatis faucibus. Nullam quis ante.</p>
+                                            <h3 class="text-center tab-padding">
+                                              <u>
+                                            දැනුම ලබා ගන්න.
+                                                </u>    
+                                            </h3>
+                                            <p class="text-justify"> 
+                                            සජීවී ව මෙන් ම වීඩියෝ මඟින් ද පහසුවෙන් නිවසේ සිටම ආරක්ෂාකාරීව ඔබට අවශ්‍ය දැනුම ලබා ගැනීම සඳහා අදම අප හා එක්වන්න.මේ සඳහා ප්‍රවීන දක්ෂ ගුරු මඬුල්ලක් අප හා අත්වැල් බැඳගෙන සිටී.       
+                                            </p>
                                         </div> 
                                     </div> 
                                 </div>
                                 <div class="col-md-7 tab-padding-col"  > 
                                     <div class="tab-content tab-padding-col-zero"  >
-                                        
+
                                         <div class="tab-pane fade active in home-1"  >
                                             <img src="img/img/writing.jpg" alt="" class="img-responsive tab-padding-col-zero" width="100%"  />
                                         </div>
@@ -98,10 +118,10 @@ $PAGES = new Page(1);
                                         <div class="tabs-right">
                                             <ul class="nav nav-tabs">
                                                 <li class="active" ><a href=".home-1" data-toggle="tab"  class="tab-content-title" >විෂයන් රැසක්  </a></li>
-                                                <li><a href=".home-2" data-toggle="tab" class="tab-content-title"  >Listen Carefuly</a></li>
-                                                <li><a href=".home-3" data-toggle="tab" class="tab-content-title">Repeat</a></li>
-                                                <li><a href=".home-4" data-toggle="tab" class="tab-content-title">Understand</a></li>
-                                                <li><a href=".home-5" data-toggle="tab" class="tab-content-title">Check Your Level</a></li>
+                                                <li><a href=".home-2" data-toggle="tab" class="tab-content-title"  >ගුරුවරුන් තෝරා ගන්න.</a></li>
+                                                <li><a href=".home-3" data-toggle="tab" class="tab-content-title">සජීවී පන්ති</a></li>
+                                                <li><a href=".home-4" data-toggle="tab" class="tab-content-title">වීඩියෝ නරඹන්න</a></li>
+                                                <li><a href=".home-5" data-toggle="tab" class="tab-content-title">  දැනුම ලබා ගන්න.</a></li>
                                             </ul>
                                             <a href="#">
                                                 <div class="form-group pull-right" style="margin-right: 40px;margin-top: 12%"  > 
@@ -159,7 +179,7 @@ $PAGES = new Page(1);
                     </div> 
                 </div>
             </div>
-              <?php include './footer.php'; ?>
+            <?php include './footer.php'; ?>
         </div>
 
         <script src="js/jquery.min.js" type="text/javascript"></script>
