@@ -2614,6 +2614,10 @@ aside.categories ul li:not(:last-child),
     margin-bottom: 80px;
 }
 
+#pull-left a {
+    margin-right: 45px;
+    margin-bottom: 170px;
+    
 #pricing .pricings .col-md-3{
     padding-right: 8px;
     padding-left: 8px;
