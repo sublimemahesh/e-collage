@@ -21,7 +21,7 @@
 
             <div class="page-heading text-center">
                 <div class="container">
-                    <h2>About Ecoollage.lk</h2>
+                    <h2>About Ecollege.lk</h2>
                 </div>
             </div>
 

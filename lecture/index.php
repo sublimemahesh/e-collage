@@ -123,11 +123,11 @@ $PAGES = new Page(1);
                 </div>
                 <div class="row "> 
                     <div class="col-xs-12 col-md-4"> 
-                        <div class="card  "  >
+                        <div class="card  "  style="margin-top: 0px;">
                             <div class="card-header"> 
                                 <strong class="text-center"><center>Lecture Instruction</center></strong>
                             </div>
-                            <div class="card-body" style="  height: 465px!important;overflow-y: auto;">
+                            <div class="card-body" style="  height: 468px!important;overflow-y: auto;">
                                 <center>
                                     <div class="col-md-12 m-y">
                                         <p class="text-justify" style="line-height: 1.8;">

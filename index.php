@@ -275,14 +275,14 @@
                     <div class="col-sm-12">	
                         <div class="slick-testimonials">
                             <div class="testimonial">
-                                <img src="assets/member.jpg" alt="ecollage.lk"  class="img-circle">
+                                <img src="assets/member.jpg" alt="ecollage.lk"  class="img-circle" width="8%">
                                 <p class="name">Sanka s  Pranandu<em>20 Jan 2020.</em></p>
                                 <em>
                                     “  This is the best online teaching center in Sri Lanka.Ecollage.lk has a many teachers and they are very help for us. if you can select a any kind of subject for your choices. Come and join .”
                                 </em>
                             </div>
                             <div class="testimonial">
-                                <img src="assets/member.jpg" alt="ecollage.lk" class="img-circle">
+                                <img src="assets/member.jpg" alt="ecollage.lk" class="img-circle" width="8%">
                                 <p class="name">Kamal j Jonson<em>01 FEB 2020.</em></p>
                                 <em>
                                     “ Ecollage is a very helpful web site for online learning when any kind of student quickly visit the web site and easy selected any tutors , The tutors are all good Knowledge and god experience   ”
