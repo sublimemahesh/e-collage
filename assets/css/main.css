@@ -1137,11 +1137,12 @@ h3 + p {
 }
 
 #index1 .whyus,
-#how-it-works .whyus{
+/*#how-it-works .whyus{
     background-image: url("../images/woman-laptop.jpg");
     background-size: cover;
-    background-position: right bottom;
-}
+    background-position: right;
+    background-repeat: no-repeat;
+}*/
 
 /*Homepage2 $index2*/
 
@@ -2652,7 +2653,7 @@ aside.categories ul li:not(:last-child),
 }
 
 #how-it-works .whyus{
-    padding-bottom: 60px;
+    padding-bottom: 40px;
 }
 
 #how-it-works .ready{
