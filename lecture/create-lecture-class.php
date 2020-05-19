@@ -2,8 +2,9 @@
 include '../class/include.php';
 include './auth.php';
 ?>
-<html lang="en">
 
+<!doctype html>
+<html>
     <head>
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -27,7 +28,8 @@ include './auth.php';
         <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
         <link rel="stylesheet" href="css/demo.min.css">
         <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
-        <link href="css/jquery.timepicker.css" rel="stylesheet" type="text/css"/>
+        <link href="http://www.jqueryscript.net/css/jquerysctipttop.css" rel="stylesheet" type="text/css">
+        <link href="css/hr-timePicker.min.css" rel="stylesheet" type="text/css"/>
 
         <style>
             .profile-pic {
@@ -40,9 +42,11 @@ include './auth.php';
 
                 margin-top: -43px;
             }
-
+            body { font-family:'Roboto';}
+            body{font-family:arial,sans serif}ul{list-style-type:none;margin:0;padding:0}.main-wrapper{max-width:768px;margin:150px auto}
         </style>
     </head>
+
     <body class="layout layout-header-fixed">
         <!--Top header -->
         <?php include './top-header.php'; ?>
@@ -96,7 +100,7 @@ include './auth.php';
                                                     </select>
                                                 </div>
                                             </div>
-                                            
+
                                             <div class="form-group">
                                                 <label class="col-sm-2 control-label " for="title" style="text-align: left">Subject: </label>
                                                 <div class="col-sm-10">
@@ -131,8 +135,28 @@ include './auth.php';
                                             </div>
                                             <div class="form-group">
                                                 <label class="col-sm-2 control-label " for="title" style="text-align: left">Duration: </label>
+
                                                 <div class="col-sm-10">
-                                                    <input id="duration" name="duration" class="form-control" type="text"   placeholder="Duration">
+
+
+                                                    <div class="hr-time-picker"  >
+                                                        <div class="picked-time-wrapper">
+                                                            <input type="text" class="form-control picked-time" id="duration" name="duration" >
+                                                        </div>
+                                                        <div class="pick-time-now">
+                                                            <div class="hours hr-timer">
+                                                                <div class="movable-area">
+                                                                    <ul></ul>
+                                                                </div>
+                                                            </div>
+                                                            <div class="minutes hr-timer">
+                                                                <ul></ul>
+                                                            </div>
+                                                        </div>
+                                                    </div> 
+
+
+<!--                                                    <input id="duration" name="duration" class="form-control" type="text"   placeholder="Duration">-->
                                                 </div>
                                             </div>
                                             <div class="form-group">
@@ -153,11 +177,12 @@ include './auth.php';
                                                 </div>
                                             </div>
                                         </div>
-
                                     </form>
                                 </div>
-
                             </div>
+
+
+
                             <div class="card">
                                 <div class="card-header"> 
                                     <strong>Manage Lecture Classes</strong>
@@ -182,9 +207,10 @@ include './auth.php';
                                             ?>
                                             <tr id="div<?php echo $lecture_class['id'] ?>">
                                                 <td><?php echo $key ?></td>
-                                                <td><?php 
-                                                $CLASS_TYPE = new ClassType($lecture_class['class_type']);
-                                                echo $CLASS_TYPE->name ?></td>
+                                                <td><?php
+                                                    $CLASS_TYPE = new ClassType($lecture_class['class_type']);
+                                                    echo $CLASS_TYPE->name
+                                                    ?></td>
                                                 <td><?php
                                                     $SUBJECT = new EducationSubject($lecture_class['subject_id']);
                                                     echo $SUBJECT->name
@@ -223,30 +249,62 @@ include './auth.php';
             </div>
 
         </div>
-</body>
-        <script src="js/jquery.min.js" type="text/javascript"></script> 
-        <script src="js/vendor.min.js"></script>
-        <script src="js/elephant.min.js"></script>
-        <script src="js/application.min.js"></script>
-        <script src="js/profile.min.js"></script>
-        <script src="js/sweetalert.min.js" type="text/javascript"></script>
-        <script src="js/demo.min.js"></script>
-        <script src="ajax/js/lecture.js" type="text/javascript"></script>
-        <script src="js/jquery.timepicker.min.js" type="text/javascript"></script>
-        <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-        <script>
-            $(function () {
-                $(".datepicker").datepicker({dateFormat: 'yy-mm-dd',
-                    minDate: 'today',
-                });
-            });
+    </body>
 
-            $(function () {
-                $('#start_time').timepicker({'scrollDefault': 'now'});
+
+
+    <script src="js/jquery.min.js" type="text/javascript"></script> 
+    <script src="ajax/js/lecture_class.js" type="text/javascript"></script>
+    <script src="delete/js/lecture-class.js" type="text/javascript"></script>
+    <script src="js/sweetalert.min.js" type="text/javascript"></script>
+    <script src="https://code.jquery.com/jquery-3.2.0.min.js"></script>
+    <script src="js/hr.timePicker.min.js" type="text/javascript"></script>
+
+    <script>
+        $(document).ready(function () {
+            $(".hr-time-picker").hrTimePicker({
+                disableColor: "#989c9c", // red, green, #000
+                enableColor: "#ff5722", // red, green, #000
+                arrowTopSymbol: "&#9650;", // ▲ -- Enter html entity code
+                arrowBottomSymbol: "&#9660;" // ▼ -- Enter html entity code
             });
-        </script> 
-        <script src="ajax/js/lecture_class.js" type="text/javascript"></script>
-        <script src="delete/js/lecture-class.js" type="text/javascript"></script>
-    
+        });
+    </script>
+    <script type="text/javascript">
+
+        var _gaq = _gaq || [];
+        _gaq.push(['_setAccount', 'UA-36251023-1']);
+        _gaq.push(['_setDomainName', 'jqueryscript.net']);
+        _gaq.push(['_trackPageview']);
+
+        (function () {
+            var ga = document.createElement('script');
+            ga.type = 'text/javascript';
+            ga.async = true;
+            ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+            var s = document.getElementsByTagName('script')[0];
+            s.parentNode.insertBefore(ga, s);
+        })();
+
+    </script>
+
+    <script src="js/jquery.timepicker.min.js" type="text/javascript"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <script>
+        $(function () {
+            $(".datepicker").datepicker({dateFormat: 'yy-mm-dd',
+                minDate: 'today',
+            });
+        });
+
+        $(function () {
+            $('#start_time').timepicker({'scrollDefault': 'now'});
+        });
+    </script>
+
+
+
+
+
 
 </html>
