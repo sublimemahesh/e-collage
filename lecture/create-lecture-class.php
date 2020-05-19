@@ -181,68 +181,6 @@ include './auth.php';
                                 </div>
                             </div>
 
-
-
-                            <div class="card">
-                                <div class="card-header"> 
-                                    <strong>Manage Lecture Classes</strong>
-                                </div>
-                                <div class="card-body">
-                                    <table id="demo-datatables-colreorder-1" class="table table-hover table-striped table-nowrap dataTable" cellspacing="0" width="100%">
-                                        <thead>
-                                            <tr>
-                                                <th>ID</th>
-                                                <th>Class Type</th>   
-                                                <th>Subject</th>  
-                                                <th>Start Date</th>  
-                                                <th>Start Time</th>  
-                                                <th>Duration</th>  
-                                                <th>Class Fee</th>  
-                                                <th>Option</th>
-                                            </tr>
-                                        </thead>
-                                        <?php
-                                        $LECTURE_CLASS = new LectureClass(NULL);
-                                        foreach ($LECTURE_CLASS->getLectureClassesByLecture($_SESSION['id']) as $key => $lecture_class) {
-                                            ?>
-                                            <tr id="div<?php echo $lecture_class['id'] ?>">
-                                                <td><?php echo $key ?></td>
-                                                <td><?php
-                                                    $CLASS_TYPE = new ClassType($lecture_class['class_type']);
-                                                    echo $CLASS_TYPE->name
-                                                    ?></td>
-                                                <td><?php
-                                                    $SUBJECT = new EducationSubject($lecture_class['subject_id']);
-                                                    echo $SUBJECT->name
-                                                    ?></td>
-                                                <td><?php echo $lecture_class['start_date'] ?></td>
-                                                <td><?php echo $lecture_class['start_time'] ?></td>
-                                                <td><?php echo $lecture_class['duration'] ?></td>
-                                                <td><?php echo number_format($lecture_class['class_fee'], 2) ?></td>
-
-                                                <td> 
-                                                    <a href="edit-lecture-class.php?id=<?php echo $lecture_class['id'] ?>" class="op-link btn btn-sm btn-info"><i class="icon icon-pencil"></i></a>  |
-                                                    <a href="#" class="delete-lecture-class btn btn-sm btn-danger" data-id="<?php echo $lecture_class['id'] ?>"><i class="waves-effect icon icon-trash" data-type="cancel"></i></a> 
-                                                </td>
-                                            </tr>
-                                            <?php
-                                        }
-                                        ?>
-                                        <tfoot>
-                                            <tr>
-                                                <th>ID</th>
-                                                <th>Class Type</th>   
-                                                <th>Subject</th>  
-                                                <th>Start Date</th>  
-                                                <th>Start Time</th>  
-                                                <th>Duration</th>  
-                                                <th>Class Fee</th>  
-                                                <th>Option</th>
-                                            </tr>
-                                        </tfoot>                                       
-                                    </table>
-                                </div>
-                            </div>
                         </div>
                     </div>
                 </div>
@@ -253,12 +191,16 @@ include './auth.php';
 
 
 
-    <script src="js/jquery.min.js" type="text/javascript"></script> 
+    <script src="js/jquery.min.js" type="text/javascript"></script>  
+    <script src="js/vendor.min.js"></script>
+    <script src="js/elephant.min.js"></script> 
+    <script src="js/application.min.js"></script>
     <script src="ajax/js/lecture_class.js" type="text/javascript"></script>
     <script src="delete/js/lecture-class.js" type="text/javascript"></script>
     <script src="js/sweetalert.min.js" type="text/javascript"></script>
     <script src="https://code.jquery.com/jquery-3.2.0.min.js"></script>
     <script src="js/hr.timePicker.min.js" type="text/javascript"></script>
+
 
     <script>
         $(document).ready(function () {

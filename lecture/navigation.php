@@ -14,16 +14,18 @@
                         </a>
                     </li> 
                     
-                    <li class="sidenav-item has-subnav  " style=" ">
+                   
+                    
+                    <li class="sidenav-item has-subnav" style="margin-top: 20px">
                         <a href="#" aria-haspopup="true">
                             <span class="sidenav-icon icon icon-group"></span>
                             <span class="sidenav-label">Students</span>
                         </a>
                         <ul class="sidenav level-2 collapse">
-                            <li class="sidenav-heading">Your Class</li>
-                        </ul>
+                            <li><a href="manage-lecture-class-students.php"> <span class="sidenav-icon icon icon-angle-right"></span> Classes Students</a></li>
+                             
+                         </ul>
                     </li>
-                    
                     <li class="sidenav-item has-subnav" style="margin-top: 20px">
                         <a href="#" aria-haspopup="true">
                             <span class="sidenav-icon icon icon-calendar-check-o"></span>
