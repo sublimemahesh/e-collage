@@ -25,6 +25,9 @@ include './auth.php';
         <link rel="stylesheet" href="css/profile.min.css">
         <link href="css/sweetalert.css" rel="stylesheet" type="text/css"/>
         <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
+        <link href="css/jm.spinner.css" rel="stylesheet" type="text/css"/>
+        
+        
         <style>
             .profile-pic {
                 position: relative;
@@ -40,6 +43,7 @@ include './auth.php';
         </style>
     </head>
     <body class="layout layout-header-fixed">
+        <div class="box"></div>
         <!--Top header -->
         <?php include './top-header.php'; ?>
         <!--End Top header -->
@@ -62,7 +66,7 @@ include './auth.php';
                                                     <input type="image" src="img/member.jpg" width="128" height="128"  class="append_img profile-avetar-img " /> 
 
                                                 <?php } else { ?>
-                                                    <img   class="profile-avetar-img  append_img  "  width="128" height="128"   src="upload/lecture/profile/<?php echo $LECTURE->image_name ?>"  >   
+                                                    <img   class="profile-avetar-img  append_img  "  width="128" height="128"   src="../upload/lecture/profile/<?php echo $LECTURE->image_name ?>"  >   
                                                 <?php } ?>
                                             </a>
                                         </div>
@@ -605,7 +609,8 @@ include './auth.php';
         <script src="js/application.min.js"></script>
         <script src="js/profile.min.js"></script>
         <script src="js/sweetalert.min.js" type="text/javascript"></script>
-
+        <script src="js/jm.spinner.js" type="text/javascript"></script>
+        
         <script src="ajax/js/lecture.js" type="text/javascript"></script>
         <script src="ajax/js/check-login.js" type="text/javascript"></script> 
         <script src="ajax/js/category.js" type="text/javascript"></script>

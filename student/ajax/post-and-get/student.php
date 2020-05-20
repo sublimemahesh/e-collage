@@ -269,7 +269,7 @@ if ($_POST['action'] == 'UPDATENICCARD') {
 if ($_POST['action'] == 'CHANGEPROFILE') {
 
     $STUDENT = new Student($_POST['id']);
-    $folder = '../../upload/student/profile/';
+    $folder = '../../../upload/student/profile/';
 
     $imgName = Helper::randamId();
 
