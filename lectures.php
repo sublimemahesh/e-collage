@@ -75,7 +75,7 @@ include './class/include.php';
 
                                     <?php } ?>
                                 </div>
-                                <a href="#"><?php echo $lecture['full_name'] ?></a>
+                                <a href="./lecture-view.php?id=<?php echo $lecture['id'] ?>"><?php echo $lecture['full_name'] ?></a>
                                 <p><?php echo $lecture['email'] ?></p>
                             </div>
                         </div>
