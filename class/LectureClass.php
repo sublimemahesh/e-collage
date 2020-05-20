@@ -9,6 +9,8 @@
 class LectureClass {
 
     public $id;
+    public $name;
+    public $city;
     public $lecture;
     public $class_type;
     public $subject_id;
@@ -28,6 +30,8 @@ class LectureClass {
             $result = mysql_fetch_array($db->readQuery($query));
 
             $this->id = $result['id'];
+            $this->name = $result['name'];
+            $this->city = $result['city'];
             $this->lecture = $result['lecture'];
             $this->class_type = $result['class_type'];
             $this->subject_id = $result['subject_id'];
@@ -43,7 +47,9 @@ class LectureClass {
 
     public function create() {
 
-        $query = "INSERT INTO `lecture_class` (`lecture`,`class_type`,`subject_id`,`start_date`,`start_time`,`duration`,`class_fee`,`queue`) VALUES  ('"
+        $query = "INSERT INTO `lecture_class` (`name`,`city`,`lecture`,`class_type`,`subject_id`,`start_date`,`start_time`,`duration`,`class_fee`,`queue`) VALUES  ('"
+                . $this->name . "', '"
+                . $this->city . "', '"
                 . $this->lecture . "', '"
                 . $this->class_type . "', '"
                 . $this->subject_id . "', '"
@@ -83,6 +89,8 @@ class LectureClass {
     public function update() {
 
         $query = "UPDATE  `lecture_class` SET "
+                . "`name` ='" . $this->name . "', "
+                . "`city` ='" . $this->city . "', "
                 . "`class_type` ='" . $this->class_type . "', "
                 . "`subject_id` ='" . $this->subject_id . "', "
                 . "`start_date` ='" . $this->start_date . "', "
@@ -90,8 +98,8 @@ class LectureClass {
                 . "`duration` ='" . $this->duration . "', "
                 . "`class_fee` ='" . $this->class_fee . "' "
                 . "WHERE `id` = '" . $this->id . "'";
-        
-       
+
+
 
         $db = new Database();
         $result = $db->readQuery($query);
@@ -127,6 +135,7 @@ class LectureClass {
 
         return $array_res;
     }
+
     public function getLectureClassesBySubjectId($id) {
 
         $query = "SELECT * FROM `lecture_class` WHERE `subject_id` = '" . $id . "'  ";

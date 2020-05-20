@@ -81,6 +81,59 @@ $LECTURE_CLASS = new LectureClass($id);
                                     </div>
                                     <form class="demo-form-wrapper card " style="padding: 50px" id="form-data">
                                         <div class="form form-horizontal">
+
+                                            <div class="form-group">
+                                                <label class="col-sm-2 control-label " for="name" style="text-align: left">Name: </label>
+                                                <div class="col-sm-10">
+                                                    <input id="name" name="name" class="form-control  " type="text"  placeholder="Enter class name " value="<?php echo $LECTURE_CLASS->name ?>" >
+                                                </div>
+                                            </div>
+
+                                            <div class="form-group">
+                                                <label class="col-sm-2 control-label " for="title" style="text-align: left">Location: </label>
+                                                <div class="col-sm-5">
+                                                    <select  class="custom-select" id="district" name="district" required="">
+                                                        <option value="">-- Select your District -- </option>
+                                                        <?php
+                                                        foreach (District::all() as $district) {
+                                                            $CITY = new City($LECTURE_CLASS->city);
+                                                            $DISTRICT = new District($CITY->district);
+                                                            if ($DISTRICT->id == $district['id']) {
+                                                                ?>
+                                                                <option value="<?php echo $district['id']; ?>" selected=""><?php echo $district['name']; ?></option>   
+                                                                <?php
+                                                            } else {
+                                                                ?>
+                                                                <option value="<?php echo $district['id']; ?>"  ><?php echo $district['name']; ?></option> 
+                                                                <?php
+                                                            }
+                                                        }
+                                                        ?> 
+                                                    </select>
+                                                </div>
+
+                                                <div class="col-sm-5">
+                                                    <select class="custom-select" name="city" id="city-bar">
+                                                        <option value=""  > -- Select your city -- </option>
+                                                        <?php
+                                                        foreach (City::all() as $city) {
+
+                                                            if ($LECTURE_CLASS->city == $city['id']) {
+                                                                ?>
+                                                                <option value="<?php echo $city['id']; ?>" selected=""><?php echo $city['name']; ?></option>   
+                                                                <?php
+                                                            } else {
+                                                                ?>
+                                                                <option value="<?php echo $city['id']; ?>"  ><?php echo $city['name']; ?></option> 
+                                                                <?php
+                                                            }
+                                                        }
+                                                        ?> 
+                                                    </select>
+                                                </div>
+                                            </div>
+
+
                                             <div class="form-group">
                                                 <label class="col-sm-2 control-label " for="title" style="text-align: left">Class Type: </label>
                                                 <div class="col-sm-10">
@@ -192,6 +245,8 @@ $LECTURE_CLASS = new LectureClass($id);
         <script src="ajax/js/lecture.js" type="text/javascript"></script>
         <script src="js/jquery.timepicker.min.js" type="text/javascript"></script>
         <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+        <script src="ajax/js/city.js" type="text/javascript"></script>
+
         <script>
             $(function () {
                 $(".datepicker").datepicker({dateFormat: 'yy-mm-dd',
@@ -203,6 +258,8 @@ $LECTURE_CLASS = new LectureClass($id);
                 $('#start_time').timepicker({'scrollDefault': 'now'});
             });
         </script> 
+
+        <script src="ajax/js/city.js" type="text/javascript"></script>
         <script src="ajax/js/lecture_class.js" type="text/javascript"></script>
         <script src="delete/js/lecture-subject.js" type="text/javascript"></script>
     </body>
