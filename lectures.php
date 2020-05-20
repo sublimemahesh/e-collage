@@ -21,65 +21,63 @@ include './class/include.php';
         <?php include './header.php'; ?>
 
         <main>
-
             <div class="page-heading text-center">
                 <h2>OUR LECTURES</h2>
             </div>
             <div class="container teachers-browse pros">
                 <div class="row toolbar">
-                    <div class="col-md-4 col-sm-6 col-xs-12 select-categories">
-                        <select class="jquery-select">	
-                            <option>choose a category</option>
-                            <option value="1">Category 1</option>
-                            <option value="2">Category 2</option>
-                            <option value="3">Category 3</option>
+                    <div class="col-md-1 col-sm-6 col-xs-12 select-categories">
+
+                        <select  id="district" name="district"  style="padding: 10px;">
+                            <option value="">- your District - </option>
+                            <?php
+                            foreach (District::all() as $district) {
+                                ?>
+                                <option value="<?php echo $district['id']; ?>"><?php echo $district['name']; ?></option>   
+                                <?php
+                            }
+                            ?> 
                         </select>
                     </div>
-                    <div class="col-md-4 col-sm-6 col-xs-12 select-numofvids">
-                        <select class="jquery-select">	
-                            <option>number of videos</option>
-                            <option value="1">2</option>
-                            <option value="2">4</option>
-                            <option value="3">8</option>
+                    <div class="col-md-2 col-sm-6 col-xs-12 select-numofvids">
+                        <select  name="city" id="city-bar" style="padding: 10px;">
+                            <option value="" selected="selected"> - your city - </option>
                         </select>
                     </div>
-                    <div class="col-md-4 col-sm-6 col-xs-12 select-name">
-                        <select class="jquery-select">	
-                            <option>name</option>
-                            <option value="1">Name 1</option>
-                            <option value="2">Name 2</option>
-                            <option value="3">Name 3</option>
+                    <div class="col-md-3     col-sm-6 col-xs-12 select-name">
+                        <select  class="custom-select" id="category" name="category" style="padding: 10px;">
+                            <option value="">- Select  Category - </option>
+                            <?php
+                            foreach (EducationCategory::all() as $education_category) {
+                                ?>
+
+                                <option value="<?php echo $education_category['id']; ?>"><?php echo $education_category['name']; ?></option>   
+                                <?php
+                            }
+                            ?>
                         </select>
                     </div>
-                    <div class="col-sm-6 col-xs-12 text-keywords">
-                        <input class="keywords" name="keywords" type="text" placeholder="keywords">	
+                    <div class="col-md-2 col-sm-6 col-xs-12 select-name">
+
+                        <select class="custom-select" name="sub_category" id="sub_category"  style="padding: 10px;">
+                            <option value="" selected=""> - Select Sub Category -</option>   
+                        </select>
                     </div>
-                    <div class="col-sm-6 col-xs-12 search-button">
-                        <button class="search-teachers">SEARCH</button>
+                    <div class="col-md-2 col-sm-6 col-xs-12 select-name">
+                        <select class="custom-select" name="subject" id="subject" style="padding: 10px;">	
+                            <option value="" selected=""> - Select Subject  -</option>  
+                        </select>
+ 
+                    </div>
+
+                    <div class="col-sm-4 col-xs-12 search-button">
+                        <button class="search-teachers" id="search">SEARCH</button>
                     </div>
                 </div>
-                <div class="row text-center">
-                    <?php
-                    $LECTURE = new Lecture(NULL);
-                    foreach ($LECTURE->all() as $lecture) {
-                        ?>
-                        <div class="col-md-2 col-sm-4 col-xs-6">		
-                            <div class="teacher">
-                                <div class="imgcontainer">
-                                    <?php
-                                    if (empty($lecture['image_name'])) {
-                                        ?>
-                                        <img src="assets/member.jpg" alt="Avatar" class="img-responsive">
-                                    <?php } else { ?>
-                                        <img src="lecture/upload/lecture/profile/<?php echo $lecture['image_name'] ?>" alt="Avatar" class="img-responsive">
-
-                                    <?php } ?>
-                                </div>
-                                <a href="./lecture-view.php?id=<?php echo $lecture['id'] ?>"><?php echo $lecture['full_name'] ?></a>
-                                <p><?php echo $lecture['email'] ?></p>
-                            </div>
-                        </div>
-                    <?php } ?>
+                <div class="row text-center filter_data">
+                 
+                         
+                 
                 </div>
 
 
@@ -118,5 +116,9 @@ include './class/include.php';
         <script src="assets/libs/jquery-ui/jquery-ui.min.js"></script>
         <script src="assets/libs/slick/slick.min.js"></script>
         <script src="assets/js/main.js"></script>
+
+        <script src="ajax/js/city.js" type="text/javascript"></script>
+        <script src="lecture/ajax/js/category.js" type="text/javascript"></script>
+        <script src="ajax/js/filter.js" type="text/javascript"></script>
     </body>
 </html>

@@ -1,4 +1,4 @@
-  <?php
+<?php
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -94,12 +94,12 @@ class Lecture {
         $query = "INSERT INTO `lecture` (`full_name`,`birth_day`,`age`,`school`,`collage`,`experience`,`mediums`,`education_level`,`it_literacy`,`facilities`,`email`,`nic_number`,`phone_number`,`address`,`district`,`city`,`password`) VALUES  ('"
                 . $this->full_name . "','"
                 . $this->birth_day . "','"
-                . $this->age . "','"               
+                . $this->age . "','"
                 . $this->school . "','"
                 . $this->collage . "','"
                 . $this->experience . "','"
                 . $this->mediums . "','"
-                . $this->education_level . "','"         
+                . $this->education_level . "','"
                 . $this->it_literacy . "','"
                 . $this->facilities . "','"
                 . $this->email . "', '"
@@ -137,6 +137,57 @@ class Lecture {
         }
 
         return $array_res;
+    }
+
+    public function getAllByFilter($district,$city, $subject, $pageLimit, $setLimit) {
+
+
+        $query = "SELECT * FROM `lecture`  ";
+
+        if (!empty($district)) {
+            $query .= " WHERE `district` = " . $district . "    ";
+        }
+        if (!empty($city)) {
+            $query .= " AND `city` = " . $city . "   ";
+        }
+
+//        if (!empty($city)) {
+//            $query .= "`city` = " . $city . "   ";
+//        }
+
+        $query .= " ORDER BY  id DESC   ";
+
+        $db = new Database();
+        $result = $db->readQuery($query);
+        $out_put = '';
+        while ($row = mysql_fetch_array($result)) {
+
+
+            $out_put .= ' <div class="col-md-2 col-sm-4 col-xs-6">	
+                            <div class="teacher">
+                                <div class="imgcontainer">';
+            if (empty($row['image_name'])) {
+                $out_put .= '<a href="lecture-view.php?id=' . $row['id'] . '">'
+                        . '<img src="assets/member.jpg" alt="' . $row['full_name'] . '" class="img-responsive"></a>';
+            } else {
+
+                $out_put .= '<a href="lecture-view.php?id=' . $row['id'] . '">'
+                        . '<img src="upload/lecture/profile/' . $row['image_name'] . '" alt="' . $row['full_name'] . '" class="img-responsive img-circle" style="width: 100%"></a>';
+            }
+
+            $out_put .= ' 
+                                </div>
+                                <a href="lecture-view.php?id=' . $row['id'] . '"> ' . $row['full_name'] . '</a>
+                                <p>' . $row['email'] . '</p>
+                            </div>
+                        </div>';
+        }
+
+        if (!empty($out_put)) {
+            echo $out_put;
+        } else {
+            echo $out_put = '<p style="color: red;font-weight: 600;">No Data Found..!</p>';
+        }
     }
 
     public function getActiveStudent() {
@@ -224,48 +275,48 @@ class Lecture {
             return TRUE;
         }
     }
-    
+
     public function checkRegistrationEmail($email) {
- 
+
 
         $query = "SELECT `id` FROM `lecture` WHERE `email`= '" . $email . "'";
 
         $db = new Database();
 
         $result = mysql_fetch_array($db->readQuery($query));
-     
+
         if (!$result) {
             return FALSE;
         } else {
             return TRUE;
         }
     }
-    
+
     public function checkRegistrationNicNumber($nic_number) {
- 
+
 
         $query = "SELECT `id` FROM `lecture` WHERE `nic_number`= '" . $nic_number . "'";
 
         $db = new Database();
 
         $result = mysql_fetch_array($db->readQuery($query));
-     
+
         if (!$result) {
             return FALSE;
         } else {
             return TRUE;
         }
     }
-  
+
     public function checkRegistrationMobile($phone_number) {
- 
+
 
         $query = "SELECT `id` FROM `lecture` WHERE `phone_number`= '" . $phone_number . "'";
 
         $db = new Database();
 
         $result = mysql_fetch_array($db->readQuery($query));
-     
+
         if (!$result) {
             return FALSE;
         } else {
@@ -387,7 +438,7 @@ class Lecture {
 
         unset($_SESSION["id"]);
         unset($_SESSION["full_name"]);
-        unset($_SESSION["email"]); 
+        unset($_SESSION["email"]);
         unset($_SESSION["nic_number"]);
         unset($_SESSION["authToken"]);
         unset($_SESSION["subject"]);
@@ -558,7 +609,7 @@ class Lecture {
                 . "`full_name` ='" . $this->full_name . "', "
                 . "`birth_day` ='" . $this->birth_day . "', "
                 . "`age` ='" . $this->age . "', "
-                . "`nic_number` ='" . $this->nic_number . "', "        
+                . "`nic_number` ='" . $this->nic_number . "', "
                 . "`address` ='" . $this->address . "', "
                 . "`district` ='" . $this->district . "', "
                 . "`city` ='" . $this->city . "', "

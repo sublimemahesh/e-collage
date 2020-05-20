@@ -1223,7 +1223,7 @@ h3 + p {
 }
 
 .pros .teacher a{
-    margin-top: 20px;
+  
     color: #202020;
     display: block;
 }
@@ -3148,7 +3148,7 @@ footer .botbar{
     .select-categories,
     .select-numofvids,
     .select-name{
-        width: 22.582%;
+    
     }
 
     .text-keywords{
