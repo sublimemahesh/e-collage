@@ -3,8 +3,12 @@ $(document).ready(function () {
 //Change the profile pricute
     $("#change_profile").change(function (event) {
         event.preventDefault();
-        $('.loading').show();
+
         $('.uploard_btn').hide();
+
+        $('.box').jmspinner('large');
+        $('.box').addClass('well');
+        $('.box').css('z-index', '9999');
 
         var formData = new FormData($('#form-data-profile')[0]);
 
@@ -16,7 +20,7 @@ $(document).ready(function () {
             dataType: 'json',
             success: function (result) {
 
-                $(".append_img").attr("src", "upload/student/profile/" + result.filename);
+                $(".append_img").attr("src", "../upload/student/profile/" + result.filename);
                 swal({
                     title: "Success!",
                     text: "Your data was saved successfully!.....",
@@ -29,63 +33,14 @@ $(document).ready(function () {
             contentType: false,
             processData: false
         });
-        $('.loading').hide();
+        $('.box').jmspinner(false);
+        $('.box').removeClass('well');
+        $('.box').css('z-index', '-1111');
+
         $('.uploard_btn').show();
 
     });
 
-//Update Nic
-    $("#update_nic").click(function (event) {
-        event.preventDefault();
-
-        $('.loading').show();
-        $('.loading_2').hide();
-
-        if (!$('#nic_front').val() || $('#nic_front').val().length === 0) {
-            swal({
-                title: "Error!",
-                text: "Please enter NIC front  side image..!",
-                type: 'error',
-                timer: 1500,
-                showConfirmButton: false
-            });
-        } else if (!$('#nic_back').val() || $('#nic_back').val().length === 0) {
-            swal({
-                title: "Error!",
-                text: "Please enter NIC back side image..!",
-                type: 'error',
-                timer: 1500,
-                showConfirmButton: false
-            });
-        } else {
-            var formData = new FormData($('#form-data')[0]);
-
-            $.ajax({
-                url: "ajax/post-and-get/student.php",
-                type: "POST",
-                data: formData,
-                async: false,
-                dataType: 'json',
-                success: function (result) {
-                    $(".append_nic_front_img").attr("src", "upload/student/nic_card/front/thumb/" + result.filename);
-                    $(".append_nic_back_img").attr("src", "upload/student/nic_card/back/thumb/" + result.filename_2);
-
-                    $('.loading').hide();
-                    $('.loading_2').show();
-                    swal({
-                        title: "Success!",
-                        text: "Your data was saved successfully!.....",
-                        type: 'success',
-                        timer: 2000,
-                        showConfirmButton: false
-                    });
-                },
-                cache: false,
-                contentType: false,
-                processData: false
-            });
-        }
-    });
 
 //Update Subject
     $("#update_subjects").click(function (event) {
@@ -108,7 +63,7 @@ $(document).ready(function () {
                 data: formData,
                 async: false,
                 dataType: 'json',
-                success: function (result) { 
+                success: function (result) {
                     if (result.status == 'error') {
                         swal({
                             title: "Error!",

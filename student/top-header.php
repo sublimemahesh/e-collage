@@ -117,7 +117,7 @@ $today = date('Y-m-d');
                                 <img class="circle append_img"  width="36" height="36"  src="img/member.jpg"  >
 
                             <?php } else { ?>
-                                <img   class="circle append_img  "  width="36" height="36"   src="upload/student/profile/<?php echo $STUDENT->image_name ?>"  >  
+                                <img   class="circle append_img  "  width="36" height="36"   src="../upload/student/profile/<?php echo $STUDENT->image_name ?>"  >  
                             <?php } ?>
 
 

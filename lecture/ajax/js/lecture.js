@@ -3,8 +3,12 @@ $(document).ready(function () {
 //Change the profile pricute
     $("#change_profile").change(function (event) {
         event.preventDefault();
-        $('.loading').show();
+
         $('.uploard_btn').hide();
+
+        $('.box').jmspinner('large');
+        $('.box').addClass('well');
+        $('.box').css('z-index', '9999');
 
         var formData = new FormData($('#form-data')[0]);
 
@@ -16,7 +20,7 @@ $(document).ready(function () {
             dataType: 'json',
             success: function (result) {
 
-                $(".append_img").attr("src", "upload/lecture/profile/" + result.filename);
+                $(".append_img").attr("src", "../upload/lecture/profile/" + result.filename);
                 swal({
                     title: "Success!",
                     text: "Your data was saved successfully!.....",
@@ -29,7 +33,9 @@ $(document).ready(function () {
             contentType: false,
             processData: false
         });
-        $('.loading').hide();
+        $('.box').jmspinner(false);
+        $('.box').removeClass('well');
+        $('.box').css('z-index', '-1111');
         $('.uploard_btn').show();
 
     });
