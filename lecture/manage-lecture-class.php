@@ -91,6 +91,7 @@ include './auth.php';
                                         <?php
                                         $LECTURE_CLASS = new LectureClass(NULL);
                                         foreach ($LECTURE_CLASS->getLectureClassesByLecture($_SESSION['id']) as $key => $lecture_class) {
+                                        $key++;
                                             ?>
                                             <tr id="div<?php echo $lecture_class['id'] ?>">
                                                 <td><?php echo $key ?></td>

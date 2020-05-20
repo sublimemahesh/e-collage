@@ -530,7 +530,7 @@ include '../class/include.php';
         </form>
 
 
-        <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
         <script src="../assets/js/dobpicker.js" type="text/javascript"></script>
 
 

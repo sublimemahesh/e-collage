@@ -73,8 +73,7 @@ include './auth.php';
                     </div>
                     <div class="row gutter-xs">
                         <div class="col-xs-12">
-                            <div class="row">  
-
+                            <div class="row"> 
                                 <div class="col-md-12"> 
 
                                     <div class="card">
@@ -84,6 +83,34 @@ include './auth.php';
                                     </div>
                                     <form class="demo-form-wrapper card " style="padding: 50px" id="form-data">
                                         <div class="form form-horizontal">
+                                            <div class="form-group">
+                                                <label class="col-sm-2 control-label " for="name" style="text-align: left">Name: </label>
+                                                <div class="col-sm-10">
+                                                    <input id="name" name="name" class="form-control  " type="text"  placeholder="Enter class name " >
+                                                </div>
+                                            </div>
+
+                                            <div class="form-group">
+                                                <label class="col-sm-2 control-label " for="title" style="text-align: left">Location: </label>
+                                                <div class="col-sm-5">
+                                                    <select  class="custom-select" id="district" name="district" required="">
+                                                        <option value="">-- Select your District -- </option>
+                                                        <?php
+                                                        foreach (District::all() as $district) {
+                                                            ?>
+                                                            <option value="<?php echo $district['id']; ?>"><?php echo $district['name']; ?></option>   
+                                                            <?php
+                                                        }
+                                                        ?> 
+                                                    </select>
+                                                </div>
+                                                <div class="col-sm-5">
+                                                    <select class="custom-select" name="city" id="city-bar">
+                                                        <option value="" selected="selected"> -- Select your city -- </option>
+                                                    </select>
+                                                </div>
+                                            </div>
+
                                             <div class="form-group">
                                                 <label class="col-sm-2 control-label " for="title" style="text-align: left">Class Type: </label>
                                                 <div class="col-sm-10">
@@ -191,15 +218,16 @@ include './auth.php';
 
 
 
-    <script src="js/jquery.min.js" type="text/javascript"></script>  
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="js/vendor.min.js"></script>
     <script src="js/elephant.min.js"></script> 
-    <script src="js/application.min.js"></script>
-    <script src="ajax/js/lecture_class.js" type="text/javascript"></script>
-    <script src="delete/js/lecture-class.js" type="text/javascript"></script>
+    <script src="js/application.min.js"></script> 
     <script src="js/sweetalert.min.js" type="text/javascript"></script>
     <script src="https://code.jquery.com/jquery-3.2.0.min.js"></script>
     <script src="js/hr.timePicker.min.js" type="text/javascript"></script>
+
+    <script src="ajax/js/lecture_class.js" type="text/javascript"></script>
+    <script src="ajax/js/city.js" type="text/javascript"></script>
 
 
     <script>

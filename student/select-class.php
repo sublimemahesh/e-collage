@@ -37,7 +37,7 @@ include_once(dirname(__FILE__) . '/auth.php');
             <?php include './navigation.php'; ?>
             <div class="layout-content">
                 <div class="layout-content-body">                    
-                    <div class="row">                             
+<!--                    <div class="row">                             
                         <form class="sidenav-form" action="http://demo.madebytilde.com/">
                             <div class="form-group form-group-lg">
                                 <div class="input-with-icon">
@@ -46,7 +46,7 @@ include_once(dirname(__FILE__) . '/auth.php');
                                 </div>
                             </div>
                         </form>                         
-                    </div>
+                    </div>-->
 
 
                     <div class="row gutter-xs">
@@ -84,7 +84,9 @@ include_once(dirname(__FILE__) . '/auth.php');
                                                     </span>
 
                                                 </div>
+                                               
                                                 <h3 class="card-title text-center" style="margin-top: 10px"><?php echo $LECTURE->full_name ?></h3>
+                        
 
                                                 <?php if ($LECTURE->education_level == 1) { ?> 
                                                     <h6 class="card-subtitle text-center">Doctorate / ආචාර්ය උපාධිය</h6>
@@ -106,7 +108,7 @@ include_once(dirname(__FILE__) . '/auth.php');
                                                     <h6 class="card-subtitle text-center">Other / වෙනත්</h6>
                                                 <?php } ?>    
 
-
+                         <h5 class="card-subtitle text-left" style="margin-top: 10px"><?php echo $lecture_class['name'] ?></h5>
                                                 <div class="row" style="margin-top: 10px;margin-bottom: 10px;">
                                                     <div class="col-md-5" style="padding-right: 0px;">
                                                         <a class="link-muted" href="#">
