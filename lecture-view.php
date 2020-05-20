@@ -32,7 +32,15 @@ $LECTURE = new Lecture($id);
 	<div class="container teacher-page">
 		<div class="row">
 			<div class="col-sm-3 text-center">
-				<img src="assets/images/teacher.png" alt="Avatar" class="teacher-avatar">
+                           <?php
+                                    if (empty($LECTURE->image_name)) {
+                                        ?>
+                            <img src="assets/member.jpg" alt="<?php echo $LECTURE->full_name?>" class="teacher-avatar">
+                                    <?php } else { ?>
+                                        <img src="lecture/upload/lecture/profile/<?php echo $LECTURE->image_name ?>" alt="<?php echo $LECTURE->full_name?>" class="teacher-avatar">
+
+                                    <?php } ?>
+				
 				<ul class="social">
 					<li><a href="#"><i class="zmdi zmdi-facebook"></i></a></li><li>
 					<a href="#"><i class="zmdi zmdi-twitter"></i></a></li><li>
@@ -96,9 +104,13 @@ $LECTURE = new Lecture($id);
                                 
                                 
                                 <p class="class-details">	
-					<span class="lessons"><i class="zmdi zmdi-assignment"></i><?php echo $LECTURE->subject?></span>
-					<span class="views"><i class="zmdi zmdi-eye"></i><?php echo $LECTURE->city?></span>
-					<span class="rating"><i class="zmdi zmdi-star"></i><?php echo $LECTURE->experience?></span>
+					<span class="lessons"><i class="zmdi zmdi-assignment"></i><?php 
+                                        
+                                        echo $LECTURE->subject?></span>
+					<span class="views"><i class="zmdi zmdi-eye"></i><?php
+                                        $CITY = new City($LECTURE->city);
+                                        echo $CITY->name ?></span>
+					<span class="rating"><i class="zmdi zmdi-star"></i><?php echo $LECTURE->experience?> Of Experience</span>
 				</p>
 				<p class="abs">
 					Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore 
