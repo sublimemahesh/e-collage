@@ -427,9 +427,9 @@ include '../class/include.php';
                                         <option value="4">Graduate Teacher / උපාධිධාරී ගුරු</option>
                                         <option value="5">Trainee Teacher / පුහුණු ගුරු</option>
                                         <option value="6">Diploma / ඩිප්ලෝමා</option>
-                                        <option value="7">Certificate / සහතිකපත්</option>
+                                        <option value="7">Certificate / සහතිකපත් </option>
                                         <option value="8">Professional / වෘත්තීමය</option>
-                                        <option value="9">Other / වෙනත්</option>
+                                        <option value="9">Other / වෙනත් </option>
 
                                     </select>
                                 </div>

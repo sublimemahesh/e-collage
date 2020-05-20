@@ -1,23 +1,32 @@
 <!DOCTYPE html>
+<?php
+include './class/include.php';
+
+$id = '';
+
+$id = $_GET['id'];
+
+
+$LECTURE = new Lecture($id);
+?>
 <html>
-
-<!-- Mirrored from kl-webmedia.com/demo/bromine/teacher-single.html by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 27 Apr 2020 06:58:49 GMT -->
-<head>
-	<meta charset="utf-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1"/>
-	<title>ecollege.lk | View Lecture</title>
-	<link rel="stylesheet" href="assets/libs/bootstrap/css/bootstrap.min.css">
-	<link rel="stylesheet" href="assets/libs/material-design-iconic-font/css/material-design-iconic-font.min.css">
-	<link rel="stylesheet" href="assets/libs/jquery-ui/jquery-ui.min.css">
-	<link rel="stylesheet" href="assets/libs/rslides/responsiveslides.css">
-	<link rel="stylesheet" href="assets/libs/slick/slick.css">
-	<link rel="stylesheet" href="assets/css/main.css">
-	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Work+Sans:400,500,600%7CMontserrat:300,400,600%7CRaleway:300,400,400i,600%7COpen+Sans:400,400i%7CVarela+Round">
-</head>
-
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1"/>
+        <title>Ecollage.lk | View Lecture</title>
+         <link rel="stylesheet" href="assets/libs/bootstrap/css/bootstrap.min.css">
+        <link rel="stylesheet" href="assets/libs/material-design-iconic-font/css/material-design-iconic-font.min.css">
+        <link rel="stylesheet" href="assets/libs/jquery-ui/jquery-ui.min.css">
+        <link rel="stylesheet" href="assets/libs/rslides/responsiveslides.css">
+        <link rel="stylesheet" href="assets/libs/slick/slick.css">
+        <link rel="stylesheet" href="assets/css/main.css">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Work+Sans:400,500,600%7CMontserrat:300,400,600%7CRaleway:300,400,400i,600%7COpen+Sans:400,400i%7CVarela+Round">
+    </head>
+    
 <body id="teacher-single" class="page">
 
-<?php include './header-2.php'; ?>
+ <?php include './header.php'; ?>
+
 
 <main>
 	<div class="container teacher-page">
@@ -35,12 +44,61 @@
 				</ul>
 			</div>
 			<div class="col-sm-9">
-				<h5>Kevin Micfield</h5>
-				<p>SOFTWARE ENGINEER AND CONSULTANT</p>
-				<p class="class-details">	
-					<span class="lessons"><i class="zmdi zmdi-assignment"></i>8 COURSES</span>
-					<span class="views"><i class="zmdi zmdi-eye"></i>2241 VIEWS</span>
-					<span class="rating"><i class="zmdi zmdi-star"></i>AVERAGE RATES : 4,8</span>
+				<h5><?php echo $LECTURE->full_name?></h5>
+                                
+                                
+                                <?php 
+                                if($LECTURE->education_level == 1){
+                                ?>
+				<p>Doctorate / ආචාර්ය උපාධිය</p>
+                                <?php }?>
+                                <?php 
+                                if($LECTURE->education_level == 2){
+                                ?>
+				<p>Master's degree or Postgraduate / පශ්චාත් උපාධිය</p>
+                                <?php }?>
+                                <?php 
+                                if($LECTURE->education_level == 3){
+                                ?>
+				<p>Bachelor's degree / උපාධිය</p>
+                                <?php }?>
+                                <?php 
+                                if($LECTURE->education_level == 4){
+                                ?>
+				<p>Graduate Teacher / උපාධිධාරී ගුරු</p>
+                                <?php }?>
+                                <?php 
+                                if($LECTURE->education_level == 5){
+                                ?>
+				<p>Trainee Teacher / පුහුණු ගුරු</p>
+                                <?php }?>
+                                <?php 
+                                if($LECTURE->education_level == 6){
+                                ?>
+				<p>Diploma / ඩිප්ලෝමා</p>
+                                <?php }?>
+                                <?php 
+                                if($LECTURE->education_level == 7){
+                                ?>
+				<p>Certificate / සහතිකපත් </p>
+                                <?php }?>
+                                 <?php 
+                                if($LECTURE->education_level == 8){
+                                ?>
+				<p>Professional / වෘත්තීමය </p>
+                                <?php }?>
+                                 <?php 
+                                if($LECTURE->education_level == 9){
+                                ?>
+				<p>Other / වෙනත් </p>
+                                <?php }?>
+                                
+                                
+                                
+                                <p class="class-details">	
+					<span class="lessons"><i class="zmdi zmdi-assignment"></i><?php echo $LECTURE->subject?></span>
+					<span class="views"><i class="zmdi zmdi-eye"></i><?php echo $LECTURE->city?></span>
+					<span class="rating"><i class="zmdi zmdi-star"></i><?php echo $LECTURE->experience?></span>
 				</p>
 				<p class="abs">
 					Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore 
@@ -102,26 +160,24 @@
 	</div>
     
     <div class="ready">
-                <div class="container">
-                    <div class="row">
-                        <a href="#" class="whitebutton">SIGN UP NOW</a>
-                        <p>ONLINE LEARNING FROM EVERYWHERE</p>
-                        <h4>Are you ready to start learning?</h4>
-                    </div>
+            <div class="container">
+                <div class="row">
+                    <a href="#" class="whitebutton">SIGN UP NOW</a>
+                    <p>ONLINE LEARNING FROM EVERYWHERE</p>
+                    <h4>Are you ready to start learning?</h4>
                 </div>
             </div>
-    
-</main>
+        </div>
 
-<?php include './footer.php'; ?>
+    </main>
 
-<script src="assets/libs/jquery/jquery.js"></script>
-<script src="assets/libs/bootstrap/js/bootstrap.min.js"></script>
-<script src="assets/libs/rslides/responsiveslides.min.js"></script>
-<script src="assets/libs/jquery-ui/jquery-ui.min.js"></script>
-<script src="assets/libs/slick/slick.min.js"></script>
-<script src="assets/js/main.js"></script>
+   <?php include './footer.php'; ?>
+
+    <script src="assets/libs/jquery/jquery.js"></script>
+    <script src="assets/libs/bootstrap/js/bootstrap.min.js"></script>
+    <script src="assets/libs/rslides/responsiveslides.min.js"></script>
+    <script src="assets/libs/jquery-ui/jquery-ui.min.js"></script>
+    <script src="assets/libs/slick/slick.min.js"></script>
+    <script src="assets/js/main.js"></script>
 </body>
-
-<!-- Mirrored from kl-webmedia.com/demo/bromine/teacher-single.html by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 27 Apr 2020 06:58:51 GMT -->
 </html>

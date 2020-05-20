@@ -1727,7 +1727,7 @@ h3 + p {
     margin-top: 63px;
 }
 
-#teacher-single h4{
+/*#teacher-single h4{
     font-family: "Montserrat", sans-serif;
     font-size: 25px;
     color: #202020;
@@ -1740,7 +1740,7 @@ h3 + p {
     width: 46px;
     background-color: #e6e6e6;
     margin: 18px 0;
-}
+}*/
 
 .teacher-page .teacher-avatar{
     box-shadow: 0 0 10px 2px rgba(0, 0, 0, 0.13); 
