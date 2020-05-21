@@ -29,7 +29,6 @@ include './auth.php';
         <link rel="stylesheet" href="css/demo.min.css">
         <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
         <link href="http://www.jqueryscript.net/css/jquerysctipttop.css" rel="stylesheet" type="text/css">
-        <link href="css/hr-timePicker.min.css" rel="stylesheet" type="text/css"/>
 
         <style>
             .profile-pic {
@@ -161,35 +160,19 @@ include './auth.php';
                                                 </div>
                                             </div>
                                             <div class="form-group">
-                                                <label class="col-sm-2 control-label " for="title" style="text-align: left">Duration: </label>
+                                                <label class="col-sm-2 control-label " for="title" style="text-align: left">End Time: </label>
 
                                                 <div class="col-sm-10">
 
+                                                    <input id="end_time" name="end_time" class="form-control" type="text"  placeholder="Enter end time">
 
-                                                    <div class="hr-time-picker"  >
-                                                        <div class="picked-time-wrapper">
-                                                            <input type="text" class="form-control picked-time" id="duration" name="duration" >
-                                                        </div>
-                                                        <div class="pick-time-now">
-                                                            <div class="hours hr-timer">
-                                                                <div class="movable-area">
-                                                                    <ul></ul>
-                                                                </div>
-                                                            </div>
-                                                            <div class="minutes hr-timer">
-                                                                <ul></ul>
-                                                            </div>
-                                                        </div>
-                                                    </div> 
-
-
-<!--                                                    <input id="duration" name="duration" class="form-control" type="text"   placeholder="Duration">-->
                                                 </div>
+
                                             </div>
                                             <div class="form-group">
                                                 <label class="col-sm-2 control-label " for="title" style="text-align: left">Class Fee: </label>
                                                 <div class="col-sm-10">
-                                                    <input id="class_fee" name="class_fee" class="form-control" type="text"   placeholder="Enter your Course Fee">
+                                                    <input id="class_fee" name="class_fee" class="form-control" type="number"  min="0" placeholder="Enter your Course Fee">
                                                 </div>
                                             </div>
 
@@ -269,6 +252,9 @@ include './auth.php';
 
         $(function () {
             $('#start_time').timepicker({'scrollDefault': 'now'});
+        });
+        $(function () {
+            $('#end_time').timepicker({'scrollDefault': 'now'});
         });
     </script>
 

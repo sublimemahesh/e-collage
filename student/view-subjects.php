@@ -49,7 +49,7 @@ include_once(dirname(__FILE__) . '/auth.php');
                                 <div class="card ">
                                     <div class="card-image">
 
-                                        <a class="card-link" href="select-class.php?id=<?php echo $student_subject['subject'] ?>">
+                                        <a class="card-link" href="select-lectures.php?id=<?php echo $student_subject['subject'] ?>">
 
                                             <img class="card-img-top img-responsive" src="img/color.jpg"   style="width: 100%">
 
@@ -58,7 +58,7 @@ include_once(dirname(__FILE__) . '/auth.php');
                                     </div>
 
                                     <div class="card-body">
-                                        <a class="card-link" href="select-class.php?id=<?php echo $student_subject['subject'] ?>">
+                                        <a class="card-link" href="select-lectures.php?id=<?php echo $student_subject['subject'] ?>">
                                             <div class="overlay-content overlay-top text-center" style="margin-top: -160px;">
                                                 <span class="label  " style="font-size: 22px;border-radius: 0px;text-align: center; padding: 0px"> 
                                                     <?php echo $EDUCATIN_SUBJECT->name;
@@ -72,7 +72,7 @@ include_once(dirname(__FILE__) . '/auth.php');
                                             echo $count;
                                             ?> </b>Available Lecture Classes</h6>
 
-                                        <a class="card-link" href="select-class.php?id=<?php echo $student_subject['subject'] ?>">
+                                        <a class="card-link" href="select-lectures.php?id=<?php echo $student_subject['subject'] ?>">
                                             <center>
                                                 <p class="btn btn-success btn-block" style="width: 80%" > Select Your Lectures
                                                 </p>

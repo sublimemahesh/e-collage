@@ -16,7 +16,7 @@ class LectureClass {
     public $subject_id;
     public $start_date;
     public $start_time;
-    public $duration;
+    public $end_time; 
     public $class_fee;
     public $queue;
 
@@ -37,7 +37,7 @@ class LectureClass {
             $this->subject_id = $result['subject_id'];
             $this->start_date = $result['start_date'];
             $this->start_time = $result['start_time'];
-            $this->duration = $result['duration'];
+            $this->end_time = $result['end_time'];
             $this->class_fee = $result['class_fee'];
             $this->queue = $result['queue'];
 
@@ -47,7 +47,7 @@ class LectureClass {
 
     public function create() {
 
-        $query = "INSERT INTO `lecture_class` (`name`,`city`,`lecture`,`class_type`,`subject_id`,`start_date`,`start_time`,`duration`,`class_fee`,`queue`) VALUES  ('"
+        $query = "INSERT INTO `lecture_class` (`name`,`city`,`lecture`,`class_type`,`subject_id`,`start_date`,`start_time`,`end_time`,`class_fee`,`queue`) VALUES  ('"
                 . $this->name . "', '"
                 . $this->city . "', '"
                 . $this->lecture . "', '"
@@ -55,7 +55,7 @@ class LectureClass {
                 . $this->subject_id . "', '"
                 . $this->start_date . "', '"
                 . $this->start_time . "', '"
-                . $this->duration . "', '"
+                . $this->end_time . "', '"
                 . $this->class_fee . "', '"
                 . $this->queue . "')";
 
@@ -95,7 +95,7 @@ class LectureClass {
                 . "`subject_id` ='" . $this->subject_id . "', "
                 . "`start_date` ='" . $this->start_date . "', "
                 . "`start_time` ='" . $this->start_time . "', "
-                . "`duration` ='" . $this->duration . "', "
+                . "`end_time` ='" . $this->end_time . "', "
                 . "`class_fee` ='" . $this->class_fee . "' "
                 . "WHERE `id` = '" . $this->id . "'";
 
@@ -139,6 +139,21 @@ class LectureClass {
     public function getLectureClassesBySubjectId($id) {
 
         $query = "SELECT * FROM `lecture_class` WHERE `subject_id` = '" . $id . "'  ";
+
+        $db = new Database();
+
+        $result = $db->readQuery($query);
+        $array_res = array();
+
+        while ($row = mysql_fetch_array($result)) {
+            array_push($array_res, $row);
+        }
+
+        return $array_res;
+    }
+    public function getLectureClassesBySubjectAndLecture($id,$lecture) {
+
+        $query = "SELECT * FROM `lecture_class` WHERE `subject_id` = '" . $id . "' AND `lecture` = '" . $lecture . "'  ";
 
         $db = new Database();
 

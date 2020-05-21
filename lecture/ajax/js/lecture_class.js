@@ -38,10 +38,10 @@ $(document).ready(function () {
                 timer: 1500,
                 showConfirmButton: false
             });
-        } else if (!$('#duration').val() || $('#duration').val().length === 0) {
+        } else if (!$('#end_time').val() || $('#end_time').val().length === 0) {
             swal({
                 title: "Error!",
-                text: "Please enter duration..!",
+                text: "Please enter end time..!",
                 type: 'error',
                 timer: 1500,
                 showConfirmButton: false
@@ -114,7 +114,7 @@ $(document).ready(function () {
                 timer: 1500,
                 showConfirmButton: false
             });
-        } else if (!$('#duration').val() || $('#duration').val().length === 0) {
+        } else if (!$('#end_time').val() || $('#end_time').val().length === 0) {
             swal({
                 title: "Error!",
                 text: "Please enter duration..!",
