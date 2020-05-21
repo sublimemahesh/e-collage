@@ -151,5 +151,6 @@ class LectureClass {
 
         return $array_res;
     }
+   
 
 }

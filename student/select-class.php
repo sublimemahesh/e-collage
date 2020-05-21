@@ -2,6 +2,8 @@
 <?php
 include '../class/include.php';
 include_once(dirname(__FILE__) . '/auth.php');
+$id = '';
+$id = $_GET['id'];
 ?>
 <html lang="en">
 
@@ -37,24 +39,24 @@ include_once(dirname(__FILE__) . '/auth.php');
             <?php include './navigation.php'; ?>
             <div class="layout-content">
                 <div class="layout-content-body">                    
-<!--                    <div class="row">                             
-                        <form class="sidenav-form" action="http://demo.madebytilde.com/">
-                            <div class="form-group form-group-lg">
-                                <div class="input-with-icon">
-                                    <input class="form-control" type="text" placeholder="Search Your Lecture or Class…">
-                                    <span class="icon icon-search input-icon"></span>
-                                </div>
-                            </div>
-                        </form>                         
-                    </div>-->
+                    <!--                    <div class="row">                             
+                                            <form class="sidenav-form" action="http://demo.madebytilde.com/">
+                                                <div class="form-group form-group-lg">
+                                                    <div class="input-with-icon">
+                                                        <input class="form-control" type="text" placeholder="Search Your Lecture or Class…">
+                                                        <span class="icon icon-search input-icon"></span>
+                                                    </div>
+                                                </div>
+                                            </form>                         
+                                        </div>-->
 
 
                     <div class="row gutter-xs">
                         <?php
                         $STUDENT_SUBJECT = new StudentSubject(NULL);
                         $LECTURE_CLASS = new LectureClass(NULL);
-                        foreach ($STUDENT_SUBJECT->getSubjectsByStudent($_SESSION['id']) as $student_subject) {
-                            foreach ($LECTURE_CLASS->getLectureClassesBySubjectId($student_subject['subject']) as $lecture_class) {
+                        if (count($LECTURE_CLASS->getLectureClassesBySubjectId($id))) {
+                            foreach ($LECTURE_CLASS->getLectureClassesBySubjectId($id) as $lecture_class) {
                                 $LECTURE = new Lecture($lecture_class['lecture']);
                                 ?>
                                 <form class="form-data">
@@ -66,27 +68,16 @@ include_once(dirname(__FILE__) . '/auth.php');
                                                     <?php
                                                     if (empty($LECTURE->image_name)) {
                                                         ?>
-                                                        <img class="card-img-top img-responsive" src="img/member.jpg" alt="lecture" style="width: 100%">
+                                                        <img class="card-img-top img-responsive" src="img/member.jpg" alt=""<?php echo $LECTURE->full_name ?>" style="width: 100%">
                                                     <?php } else { ?>
-                                                        <img class="card-img-top img-responsive" src="../lecture/upload/lecture/profile/<?php echo $LECTURE->image_name ?>" alt="lecture" style="width: 100%">
+                                                        <img class="card-img-top img-responsive" src="upload/lecture/profile/<?php echo $LECTURE->image_name ?>" alt="<?php echo $LECTURE->full_name ?>" style="width: 100%">
                                                     <?php } ?>
                                                 </a>
 
                                             </div>
 
                                             <div class="card-body">
-                                                <div class="overlay-content overlay-top text-center" style="margin-top: -43px;">
-                                                    <span class="label label-success " style="font-size: 16px;border-radius: 0px;"> 
-                                                        <?php
-                                                        $EDUCATIN_SUBJECT = new EducationSubject($lecture_class['subject_id']);
-                                                        echo $EDUCATIN_SUBJECT->name;
-                                                        ?>
-                                                    </span>
-
-                                                </div>
-                                               
                                                 <h3 class="card-title text-center" style="margin-top: 10px"><?php echo $LECTURE->full_name ?></h3>
-                        
 
                                                 <?php if ($LECTURE->education_level == 1) { ?> 
                                                     <h6 class="card-subtitle text-center">Doctorate / ආචාර්ය උපාධිය</h6>
@@ -108,7 +99,7 @@ include_once(dirname(__FILE__) . '/auth.php');
                                                     <h6 class="card-subtitle text-center">Other / වෙනත්</h6>
                                                 <?php } ?>    
 
-                         <h5 class="card-subtitle text-left" style="margin-top: 10px"><?php echo $lecture_class['name'] ?></h5>
+                                                <h5 class="card-subtitle text-left" style="margin-top: 10px"><?php echo $lecture_class['name'] ?></h5>
                                                 <div class="row" style="margin-top: 10px;margin-bottom: 10px;">
                                                     <div class="col-md-5" style="padding-right: 0px;">
                                                         <a class="link-muted" href="#">
@@ -143,13 +134,13 @@ include_once(dirname(__FILE__) . '/auth.php');
                                                         foreach ($STUDENT_REGISTRATION->getRegistrationClassesByStudent($lecture_class['id'], $_SESSION['id']) as $Registration_class) {
                                                             if ($Registration_class['class_id'] == $lecture_class['id']) {
                                                                 ?>
-                                                                <input type="submit" class="btn btn-success btn-block remove"   data-id="<?php echo $Registration_class['id'] ?>"  value="Selected"  style="width: 40%">
+                                                                <input type="submit" class="btn btn-success btn-block remove"   data-id="<?php echo $Registration_class['id'] ?>" sub_id="<?php echo $id ?>"  value="Selected"  style="width: 40%">
                                                                 <?php
                                                             }
                                                         }
                                                     } else {
                                                         ?>
-                                                        <input type="submit" class="btn btn-primary btn-block select "  data-id="<?php echo $lecture_class['id'] ?>" stu_id="<?php echo $_SESSION['id'] ?>" lecture_id="<?php echo $lecture_class['lecture'] ?>" value="Select"   name="create" style="width: 40%">
+                                                        <input type="submit" class="btn btn-primary btn-block select "  data-id="<?php echo $lecture_class['id'] ?>" stu_id="<?php echo $_SESSION['id'] ?>" lecture_id="<?php echo $lecture_class['lecture'] ?>" sub_id="<?php echo $id ?>" value="Select"   name="create" style="width: 40%">
 
                                                         <?php
                                                     }
@@ -162,9 +153,13 @@ include_once(dirname(__FILE__) . '/auth.php');
                                 </form>
                                 <?php
                             }
-                        }
-                        ?>
+                        } else {
+                            ?>
+                        <div class="row" style="margin-top: 60px;">
+                            <h4 class="text-center text-danger">No Lecture Classes Available..!</h4>
+                            </div>
 
+                        <?php } ?>
                     </div> 
                 </div>
             </div>
