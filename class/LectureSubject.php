@@ -130,4 +130,20 @@ class LectureSubject {
         return $array_res;
     }
 
+    public function getLectureSubjectsBySubject($id) {
+
+        $query = "SELECT * FROM `lecture_subject` WHERE `subject_id` = '" . $id . "'  ";
+
+        $db = new Database();
+
+        $result = $db->readQuery($query);
+        $array_res = array();
+
+        while ($row = mysql_fetch_array($result)) {
+            array_push($array_res, $row);
+        }
+
+        return $array_res;
+    }
+
 }

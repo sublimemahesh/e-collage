@@ -203,7 +203,7 @@ $LECTURE_CLASS = new LectureClass($id);
                                                 <label class="col-sm-2 control-label " for="title" style="text-align: left">Duration: </label>
                                                 <div class="col-sm-10">
 
-                                                    <input id="duration" name="duration" class="form-control" type="text"   placeholder="Duration" value="<?php echo $LECTURE_CLASS->duration ?>">
+                                                    <input id="end_time" name="end_time" class="form-control" type="text"  placeholder="Enter end time" value="<?php echo $LECTURE_CLASS->end_time ?>">
                                                 </div>
                                             </div>
                                             <div class="form-group">
@@ -256,6 +256,10 @@ $LECTURE_CLASS = new LectureClass($id);
 
             $(function () {
                 $('#start_time').timepicker({'scrollDefault': 'now'});
+            });
+
+            $(function () {
+                $('#end_time').timepicker({'scrollDefault': 'now'});
             });
         </script> 
 

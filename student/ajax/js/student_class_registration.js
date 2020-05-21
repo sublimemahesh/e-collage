@@ -30,7 +30,7 @@ $(document).ready(function () {
                     showConfirmButton: false
                 }, function () {
                     setTimeout(function () {
-                        window.location.replace("select-class.php?id=" + sub_id);
+                        window.location.reload(); 
                     }, 1500);
                 });
             },

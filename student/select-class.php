@@ -4,6 +4,7 @@ include '../class/include.php';
 include_once(dirname(__FILE__) . '/auth.php');
 $id = '';
 $id = $_GET['id'];
+$lecture = $_GET['lecture'];
 ?>
 <html lang="en">
 
@@ -55,11 +56,11 @@ $id = $_GET['id'];
                         <?php
                         $STUDENT_SUBJECT = new StudentSubject(NULL);
                         $LECTURE_CLASS = new LectureClass(NULL);
-                        if (count($LECTURE_CLASS->getLectureClassesBySubjectId($id))) {
-                            foreach ($LECTURE_CLASS->getLectureClassesBySubjectId($id) as $lecture_class) {
+                        if (count($LECTURE_CLASS->getLectureClassesBySubjectAndLecture($id, $lecture))) {
+                            foreach ($LECTURE_CLASS->getLectureClassesBySubjectAndLecture($id, $lecture) as $lecture_class) {
                                 $LECTURE = new Lecture($lecture_class['lecture']);
                                 ?>
-                                <form class="form-data">
+                               
                                     <div class="col-md-3">
                                         <div class="card ">
                                             <div class="card-image">
@@ -111,13 +112,17 @@ $id = $_GET['id'];
 
                                                     </div>
                                                     <div class="col-md-7" style="padding: 0px;">
-                                                        <a class="link-muted" href="#">
-                                                            <span class="icon icon-calendar icon-1x"></span> - <?php echo $lecture_class['start_date'] ?> / <?php echo $lecture_class['start_time'] ?>
+                                                        <a class="link-muted" href="#"  style="text-align: left !important">
+                                                            <span class="icon icon-clock-o icon-1x"></span> -  <?php
+                                                            echo $lecture_class['start_time'] . ' to ' . $lecture_class['end_time'];
+//                                                         
+                                                            ?>
                                                         </a>
+
                                                     </div>
                                                     <div class="col-md-5"  >
-                                                        <a class="link-muted" href="#"  style="text-align: left !important">
-                                                            <span class="icon icon-clock-o icon-1x"></span> -  <?php echo $lecture_class['duration'] ?>
+                                                        <a class="link-muted" href="#">
+                                                            <span class="icon icon-calendar icon-1x"></span> - <?php echo $lecture_class['start_date'] ?> 
                                                         </a>
                                                     </div>
                                                     <div class="col-md-7" style="padding: 0px;">
@@ -134,7 +139,10 @@ $id = $_GET['id'];
                                                         foreach ($STUDENT_REGISTRATION->getRegistrationClassesByStudent($lecture_class['id'], $_SESSION['id']) as $Registration_class) {
                                                             if ($Registration_class['class_id'] == $lecture_class['id']) {
                                                                 ?>
-                                                                <input type="submit" class="btn btn-success btn-block remove"   data-id="<?php echo $Registration_class['id'] ?>" sub_id="<?php echo $id ?>"  value="Selected"  style="width: 40%">
+                                                                
+                                                                    <input type="submit" class="btn btn-success    "     value="Selected"  style="width: 40%">
+                                                                
+
                                                                 <?php
                                                             }
                                                         }
@@ -150,13 +158,13 @@ $id = $_GET['id'];
                                         </div>
                                     </div>
 
-                                </form>
+                              
                                 <?php
                             }
                         } else {
                             ?>
-                        <div class="row" style="margin-top: 60px;">
-                            <h4 class="text-center text-danger">No Lecture Classes Available..!</h4>
+                            <div class="row" style="margin-top: 60px;">
+                                <h4 class="text-center text-danger">No Lecture Classes Available..!</h4>
                             </div>
 
                         <?php } ?>

@@ -104,7 +104,7 @@ include './auth.php';
                                                     ?></td>
                                                 <td><?php echo $lecture_class['start_date'] ?></td>
                                                 <td><?php echo $lecture_class['start_time'] ?></td>
-                                                <td><?php echo $lecture_class['duration'] ?></td>
+                                                <td><?php echo $lecture_class['end_time'] ?></td>
                                                 <td><?php echo number_format($lecture_class['class_fee'], 2) ?></td>
 
                                                 <td> 
