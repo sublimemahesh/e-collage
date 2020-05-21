@@ -25,8 +25,8 @@ include './class/include.php';
                 <h2>OUR LECTURES</h2>
             </div>
             <div class="container teachers-browse pros">
-                <div class="row toolbar">
-                    <div class="col-md-1 col-sm-6 col-xs-12 select-categories">
+         <!--       <div class="row toolbar">
+                      <div class="col-md-1 col-sm-6 col-xs-12 select-categories">
 
                         <select  id="district" name="district"  style="padding: 10px;">
                             <option value="">- your District - </option>
@@ -73,7 +73,7 @@ include './class/include.php';
                     <div class="col-sm-4 col-xs-12 search-button">
                         <button class="search-teachers" id="search">SEARCH</button>
                     </div>
-                </div>
+                </div>-->
                 <div class="row text-center filter_data">
                  
                          

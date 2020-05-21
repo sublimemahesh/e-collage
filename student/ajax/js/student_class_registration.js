@@ -8,7 +8,8 @@ $(document).ready(function () {
         var class_id = $(this).attr("data-id");
         var stu_id = $(this).attr("stu_id");
         var lecture_id = $(this).attr("lecture_id");
- 
+        var sub_id = $(this).attr("sub_id");
+
         $.ajax({
             url: "ajax/post-and-get/student_class_registration.php",
             type: "POST",
@@ -29,7 +30,7 @@ $(document).ready(function () {
                     showConfirmButton: false
                 }, function () {
                     setTimeout(function () {
-                        window.location.replace("select-class.php");
+                        window.location.replace("select-class.php?id=" + sub_id);
                     }, 1500);
                 });
             },
@@ -42,7 +43,8 @@ $(document).ready(function () {
         event.preventDefault();
 
         var id = $(this).attr("data-id");
-      
+        var sub_id = $(this).attr("sub_id");
+        
         swal({
             title: "Are you sure?",
             text: "Now you are leave this class Room..!",
@@ -69,7 +71,7 @@ $(document).ready(function () {
                             showConfirmButton: false
                         }, function () {
                             setTimeout(function () {
-                                window.location.replace("select-class.php");
+                                window.location.replace("select-class.php?id=" + sub_id);
                             }, 1500);
                         });
 
