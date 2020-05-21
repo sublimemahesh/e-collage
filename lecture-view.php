@@ -44,15 +44,13 @@ $LECTURE = new Lecture($id);
 				<ul class="social">
 					<li><a href="#"><i class="zmdi zmdi-facebook"></i></a></li><li>
 					<a href="#"><i class="zmdi zmdi-twitter"></i></a></li><li>
-					<a href="#"><i class="zmdi zmdi-google-old"></i></a></li><li>
-					<a href="#"><i class="zmdi zmdi-pinterest"></i></a></li><li>
 					<a href="#"><i class="zmdi zmdi-instagram"></i></a></li><li>
 					<a href="#"><i class="zmdi zmdi-email"></i></a></li><li>
-					<a href="#"><i class="zmdi zmdi-globe-alt"></i></a></li>
+					
 				</ul>
 			</div>
 			<div class="col-sm-9">
-				<h5><?php echo $LECTURE->full_name?></h5>
+                            <h5><?php echo ucfirst($LECTURE->full_name)?></h5>
                                 
                                 
                                 <?php 
@@ -129,47 +127,108 @@ $LECTURE = new Lecture($id);
 		</div>
 	</div>
 
-	<div class="container popular">
-		<h4>Kevin Micfield Courses</h4>
-		<div class="row tutorials">
-			<div class="tutorial">
-				<img src="assets/images/popular/1.jpg" class="resp-img" alt="Tutorial">
-				<div class="tutorial-details">
-					<h6>How to become an UX Designer</h6>
-					<p><span class="lessons"><i class="zmdi zmdi-assignment"></i>12 LESSONS</span><span class="duration"><i class="zmdi zmdi-time"></i>3:15h</span></p>
-					<p class="abs">At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est.</p>
-					<a href="#" class="greybutton">VIEW COURSE</a>
-				</div>
-			</div>
-			<div class="tutorial">
-				<img src="assets/images/popular/2.jpg" class="resp-img" alt="Tutorial">
-				<div class="tutorial-details">
-					<h6>8 steps to your own startup</h6>
-					<p><span class="lessons"><i class="zmdi zmdi-assignment"></i>8 LESSONS</span><span class="duration"><i class="zmdi zmdi-time"></i>4:32h</span></p>
-					<p class="abs">At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est.</p>
-					<a href="#" class="greybutton">VIEW COURSE</a>
-				</div>
-			</div>
-			<div class="tutorial">
-				<img src="assets/images/popular/3.jpg" class="resp-img" alt="Tutorial">
-				<div class="tutorial-details">
-					<h6>Business communication for marketers</h6>
-					<p><span class="lessons"><i class="zmdi zmdi-assignment"></i>15 LESSONS</span><span class="duration"><i class="zmdi zmdi-time"></i>6:04h</span></p>
-					<p class="abs">At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est.</p>
-					<a href="#" class="greybutton">VIEW COURSE</a>
-				</div>
-			</div>
-			<div class="tutorial">
-				<img src="assets/images/popular/2.jpg" class="resp-img" alt="Tutorial">
-				<div class="tutorial-details">
-					<h6>8 steps to your own startup</h6>
-					<p><span class="lessons"><i class="zmdi zmdi-assignment"></i>8 LESSONS</span><span class="duration"><i class="zmdi zmdi-time"></i>4:32h</span></p>
-					<p class="abs">At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est.</p>
-					<a href="#" class="greybutton">VIEW COURSE</a>
-				</div>
-			</div>
-		</div>
-	</div>
+	    <div class="container pros" style="    margin-top: 32px;">
+                <div class="row">	
+                    <div class="col-sm-10 col-sm-offset-1 text-center">
+                        <h3 style="margin-top: 0px;">Top Lectures</h3>
+                        <p>
+                            They are different kind of lectures they are professional lectures,<br> They high educations levels
+                        </p>
+
+                    </div>
+                </div>
+                <div class="row text-center" style="margin-top: 20px;">
+                    <div class="slick-features-teachers">
+                        <div class="col-md-2 col-sm-4 col-xs-6">	
+                            <div class="teacher">
+                                <div class="imgcontainer">
+                                    <img src="assets/images/client-1.jpg" alt="Avatar" class="img-responsive img-circle" style="width: 100%">
+                                    <div class="overlay">
+                                        <img src="assets/images/avatars/profile.png" alt="Profile">
+                                        <p>8 VIDEOS</p>
+                                    </div>
+                                </div>
+                                <a href="#">Dileshka  Senaratne</a>
+                                <p>SCIENTIST</p>
+                            </div>
+                        </div>
+                        <div class="col-md-2 col-sm-4 col-xs-6">	
+                            <div class="teacher">
+                                <div class="imgcontainer">
+                                    <img src="assets/images/client-2.jpg" alt="Avatar" class="img-responsive img-circle" style="width: 100%">
+                                    <div class="overlay">
+                                        <img src="assets/images/avatars/profile.png" alt="Profile">
+                                        <p>8 VIDEOS</p>
+                                    </div>
+                                </div>
+                                <a href="#">Harsha  Weerarathne</a>
+                                <p>Finance </p>
+                            </div>
+                        </div>
+                        <div class="col-md-2 col-sm-4 col-xs-6">	
+                            <div class="teacher">
+                                <div class="imgcontainer">
+                                    <img src="assets/images/client-3.png" alt="Avatar" class="img-responsive img-circle" style="width: 100%">
+
+                                    <div class="overlay">
+                                        <img src="assets/images/avatars/profile.png" alt="Profile">
+                                        <p>8 VIDEOS</p>
+                                    </div>
+                                </div>
+                                <a href="#">Chamila  Gajasinghe</a>
+                                <p>English</p>
+                            </div>
+                        </div>
+                        <div class="col-md-2 col-sm-4 col-xs-6">	
+                            <div class="teacher">
+                                <div class="imgcontainer">
+                                    <img src="assets/images/client-4.PNG" alt="Avatar" class="img-responsive img-circle" style="width: 100%">
+
+                                    <div class="overlay">
+                                        <img src="assets/images/avatars/profile.png" alt="Profile">
+                                        <p>8 VIDEOS</p>
+                                    </div>
+                                </div>
+                                <a href="#"> Eng. Geethike  Ranga</a>
+                                <p>java</p>
+                            </div>
+                        </div>
+                        <div class="col-md-2 col-sm-4 col-xs-6">	
+                            <div class="teacher">
+                                <div class="imgcontainer">
+                                    <img src="assets/images/client-5.jpg" alt="Avatar" class="img-responsive img-circle" style="width: 100%">
+
+                                    <div class="overlay">
+                                        <img src="assets/images/avatars/profile.png" alt="Profile">
+                                        <p>8 VIDEOS</p>
+                                    </div>
+                                </div>
+                                <a href="#">  Sugath  Nandasiri</a>
+                                <p>Spoken English</p>
+                            </div>
+                        </div>
+                        <div class="col-md-2 col-sm-4 col-xs-6">	
+                            <div class="teacher">
+                                <div class="imgcontainer">
+                                    <img src="assets/images/client-6.jpg" alt="Avatar" class="img-responsive img-circle" style="width: 100%">
+
+                                    <div class="overlay">
+                                        <img src="assets/images/avatars/profile.png" alt="Profile">
+                                        <p>8 VIDEOS</p>
+                                    </div>
+                                </div>
+                                <a href="#">Anuththara  Bandara </a>
+                                <p>Cambridge & Local trained </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row pros">	
+                        <div class="col-sm-10 col-sm-offset-1 text-center"> 
+                            <a href="#" class="blueplay" style="color: black; ">CHECK ALL LECTURES</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
     
     <div class="ready">
             <div class="container">
