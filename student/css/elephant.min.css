@@ -11,7 +11,7 @@ html {
 body {
     margin: 0
 }
- 
+
 article,
 aside,
 details,
@@ -15916,4 +15916,21 @@ a:active {
         margin-left: 15%;
         z-index: 9999;
     }
+}
+
+.student_nav{
+    background-color: #213c50
+}
+
+.cover-img{
+    border-radius: 6px;
+    width: 65px;
+    height: 78px;
+   box-shadow: 0 3px 11px -2px rgba(0, 0, 0, 0.33);
+}
+
+.box-shadow{
+    border-radius: 8px;
+   box-shadow: 0 3px 11px -2px rgba(177, 157, 157, 0.33); 
+   
 }
