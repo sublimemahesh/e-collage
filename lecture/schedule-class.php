@@ -2,6 +2,9 @@
 <?php
 include '../class/include.php';
 include_once(dirname(__FILE__) . '/auth.php');
+
+$id = '';
+$id = $_GET['id'];
 ?>
 <html lang="en">
 
@@ -96,9 +99,8 @@ include_once(dirname(__FILE__) . '/auth.php');
                                         </div>
                                     </div>
                                     <div class="tab-pane fade" id="mcq_papers">
-                                        <form class="demo-form-wrapper card " style="padding: 50px" id="form-data">
-                                            <div class="form form-horizontal">
-
+                                        <form class="demo-form-wrapper card " style="padding: 50px" id="form-mcq">
+                                            <div class="form form-horizontal"> 
                                                 <div class="form-group">
                                                     <label class="col-sm-2 control-label " for="name" style="text-align: left"> Title: </label>
                                                     <div class="col-sm-10">
@@ -108,7 +110,7 @@ include_once(dirname(__FILE__) . '/auth.php');
                                                 <div class="form-group">
                                                     <label class="col-sm-2 control-label " for="name" style="text-align: left">MCQ Papers: </label>
                                                     <div class="col-sm-10">
-                                                        <input id="name" name="name" class="form-control  " type="file"   >
+                                                        <input id="name" name="pdf_file" class="form-control  " type="file"   >
                                                     </div>
                                                 </div>
 
@@ -117,9 +119,9 @@ include_once(dirname(__FILE__) . '/auth.php');
                                                     <div class="col-md-3"></div> 
                                                     <div class="col-md-4"></div> 
                                                     <div class="col-md-2">  
-                                                        <input type="hidden"  name="update">
+                                                        <input type="hidden"  name="create-mcq">
                                                         <input type="hidden"  name="id"  value="<?php echo $id ?>" >
-                                                        <input type="submit" class="btn btn-primary btn-block"   value="Add" id="update" >
+                                                        <input type="submit" class="btn btn-primary btn-block"   value="Add" id="create-mcq" >
                                                     </div>
                                                 </div>
                                             </div>
@@ -290,7 +292,7 @@ include_once(dirname(__FILE__) . '/auth.php');
         <script src="js/elephant.min.js"></script>
         <script src="js/application.min.js"></script>
         <script src="js/demo.min.js"></script>
-
+        <script src="ajax/js/lecture_class.js" type="text/javascript"></script>
 
     </body>
 
