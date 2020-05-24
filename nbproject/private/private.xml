@@ -3,9 +3,13 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/xampp/htdocs/institute/class/LectureClass.php</file>
-            <file>file:/C:/xampp/htdocs/institute/student/ajax/js/student_class_registration.js</file>
-            <file>file:/C:/xampp/htdocs/institute/student/navigation.php</file>
+            <file>file:/C:/xampp/htdocs/institute/lecture/delete/ajax/lecture-mcq.php</file>
+            <file>file:/C:/xampp/htdocs/institute/class/LectureMcq.php</file>
+            <file>file:/C:/xampp/htdocs/institute/lecture/schedule-class.php</file>
+            <file>file:/C:/xampp/htdocs/institute/lecture/manage-lecture.php</file>
+            <file>file:/C:/xampp/htdocs/institute/lecture/ajax/js/lecture_class.js</file>
+            <file>file:/C:/xampp/htdocs/institute/lecture/delete/js/lecture-mcq.js</file>
+            <file>file:/C:/xampp/htdocs/institute/lecture/ajax/post-and-get/lecture_class.php</file>
         </group>
     </open-files>
 </project-private>
