@@ -48,8 +48,8 @@ if (isset($_POST['update'])) {
 //update 
 if (isset($_POST['create-mcq'])) {
 
-    $LECTURE_CLASS = new LectureClass($_POST['id']);
-    $dir_dest = '../../../upload/class/';
+    $LECTURE_MCQ = new LectureMcq(NULL);
+    $dir_dest = '../../../upload/class/mcq/';
     $filename = $_FILES['pdf_file']['name'];
 
     $handle = new Upload($_FILES['pdf_file']);
@@ -57,11 +57,11 @@ if (isset($_POST['create-mcq'])) {
 
     if ($handle->uploaded) {
         $handle->file_dst_name = Helper::randamId();
-        $imgName = $handle->file_dst_name;
+        $imgName = $handle->file_dst_name; 
+        $handle->file_new_name_body = $imgName;
         $handle->Process($dir_dest);
-    } 
+    }
 
-    // get the file extension
     $extension = pathinfo($filename, PATHINFO_EXTENSION);
 
     // the physical file on a temporary uploads directory on the server
@@ -75,6 +75,13 @@ if (isset($_POST['create-mcq'])) {
         exit();
     } else {
 
+
+        $LECTURE_MCQ->file_name =  $imgName . '.pdf';
+        $LECTURE_MCQ->title = $_POST['title'];
+        $LECTURE_MCQ->lecture_id = $_POST['lecture_id'];
+
+
+        $LECTURE_MCQ->create();
         $result = ["status" => "sucess"];
         echo json_encode($result);
         exit();
