@@ -122,7 +122,7 @@ $LECTURE_CLASS = new LectureClass($id);
                                                     <div class="col-md-4"></div> 
                                                     <div class="col-md-2">  
                                                         <input type="hidden"  name="create-mcq">
-                                                        <input type="hidden"  name="lecture_id"  value="<?php echo $id ?>" >
+                                                        <input type="hidden"  name="lecture_id"  value="<?php echo $_SESSION['id'] ?>" >
                                                         <input type="submit" class="btn btn-primary btn-block"   value="Add" id="create-mcq" >
                                                     </div>
                                                 </div>
@@ -143,7 +143,7 @@ $LECTURE_CLASS = new LectureClass($id);
                                                     <hr>
                                                     <?php
                                                     $LECTURE_MCQ = new LectureMcq(NULL);
-                                                    foreach ($LECTURE_MCQ->getMcqByLecture($id) as $lecture_mcq) {
+                                                    foreach ($LECTURE_MCQ->getMcqByLecture($_SESSION['id']) as $lecture_mcq) {
                                                         ?>
 
                                                         <div class="file" id="div<?php echo $lecture_mcq['id'] ?>"
@@ -168,19 +168,19 @@ $LECTURE_CLASS = new LectureClass($id);
                                         </div>
                                     </div>
                                     <div class="tab-pane fade" id="tutorials">
-                                        <form class="demo-form-wrapper card " style="padding: 50px" id="form-data">
+                                        <form class="demo-form-wrapper card " style="padding: 50px" id="form-tutorials">
                                             <div class="form form-horizontal">
 
                                                 <div class="form-group">
                                                     <label class="col-sm-2 control-label " for="name" style="text-align: left"> Title: </label>
                                                     <div class="col-sm-10">
-                                                        <input id="name" name="name" class="form-control  " type="text"  placeholder="Enter Title "   >
+                                                        <input id="title_1" name="title" class="form-control" type="text"  placeholder="Enter Title "   >
                                                     </div>
                                                 </div>
                                                 <div class="form-group">
-                                                    <label class="col-sm-2 control-label " for="name" style="text-align: left">MCQ Papers: </label>
+                                                    <label class="col-sm-2 control-label " for="pdf_file" style="text-align: left">MCQ Papers: </label>
                                                     <div class="col-sm-10">
-                                                        <input id="name" name="name" class="form-control  " type="file"   >
+                                                        <input id="pdf_file_1" name="pdf_file" class="form-control  " type="file"   >
                                                     </div>
                                                 </div>
 
@@ -189,9 +189,9 @@ $LECTURE_CLASS = new LectureClass($id);
                                                     <div class="col-md-3"></div> 
                                                     <div class="col-md-4"></div> 
                                                     <div class="col-md-2">  
-                                                        <input type="hidden"  name="update">
-                                                        <input type="hidden"  name="id"  value="<?php echo $id ?>" >
-                                                        <input type="submit" class="btn btn-primary btn-block"   value="Add" id="update" >
+                                                        <input type="hidden"  name="create-tutorials">
+                                                        <input type="hidden"  name="lecture_id"  value="<?php echo $_SESSION['id'] ?>" >
+                                                        <input type="submit" class="btn btn-primary btn-block"   value="Add" id="create-tutorial" >
                                                     </div>
                                                 </div>
                                             </div>
@@ -202,28 +202,34 @@ $LECTURE_CLASS = new LectureClass($id);
                                                 <div class="card-header">
                                                     <h5>
                                                         <a  href="#" >
-                                                            Chemical Equilibrium Part 3 <small> (2020-05-16 )</small>
+                                                            Manage Tutorials Papers<small> ( <?php echo $LECTURE_CLASS->start_date?> )</small>
                                                             <span class="fas-fa fa-chevron-down"> 
                                                             </span> 
                                                         </a>
                                                     </h5>
                                                     <hr>
-                                                    <div class="file">
-                                                        <a href="#" class="file-link" title="file-name.pdf">
-                                                            <div class="file-thumbnail file-thumbnail-pdf">
+                                                      <?php
+                                                    $LECTURE_TUTORIALS= new LectureTutorial(NULL);
+                                                    foreach ($LECTURE_TUTORIALS->getTutorialsByLecture($_SESSION['id']) as $lecture_tutorials) {
+                                                        ?>
 
-                                                            </div>
-                                                            <div class="file-info">
-                                                                <h5 style="padding:5px;"> සමතුලිතතාව   3වන කොටස </h5>   
-                                                            </div>
+                                                        <div class="file" id="div<?php echo $lecture_tutorials['id'] ?>"
+                                                             <a href="../upload/class/tutorials/<?php echo $lecture_tutorials['file_name'] ?>" target="_blank" class="file-link" title="file-name.pdf">
+                                                                <div class="file-thumbnail file-thumbnail-pdf">
 
-                                                        </a>
+                                                                </div>
+                                                                <div class="file-info">
+                                                                    <h5 style="padding:5px;"> <?php echo $lecture_tutorials['title'] ?></h5>   
+                                                                </div>
 
-                                                        <button class="file-delete-btn delete"title="Delete" type="button">
-                                                            <span class="icon icon-remove"></span>
+                                                            </a>
 
-                                                        </button>
-                                                    </div>
+                                                            <button class="file-delete-btn delete delete-tutorials" data-id=" <?php echo $lecture_tutorials['id'] ?>" title="Delete" type="button">
+                                                                <span class="icon icon-remove"></span> 
+                                                            </button>
+                                                        </div>
+
+                                                    <?php } ?>
                                                 </div>
                                             </div>
                                         </div>
@@ -304,6 +310,7 @@ $LECTURE_CLASS = new LectureClass($id);
         <script src="js/sweetalert.min.js" type="text/javascript"></script>
         <script src="ajax/js/lecture_class.js" type="text/javascript"></script>
         <script src="delete/js/lecture-mcq.js" type="text/javascript"></script>
+        <script src="delete/js/lecture-tutorial.js" type="text/javascript"></script>
     </body>
 
 </html>
