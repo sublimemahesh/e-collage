@@ -5,6 +5,7 @@ include_once(dirname(__FILE__) . '/auth.php');
 
 $id = '';
 $id = $_GET['id'];
+$LECTURE_CLASS = new LectureClass($id);
 ?>
 <html lang="en">
 
@@ -27,6 +28,7 @@ $id = $_GET['id'];
         <link rel="stylesheet" href="css/elephant.min.css">
         <link rel="stylesheet" href="css/application.min.css">
         <link rel="stylesheet" href="css/demo.min.css">
+        <link href="css/sweetalert.css" rel="stylesheet" type="text/css"/>
     </head>
     <body class="layout layout-header-fixed">
         <?php include './top-header.php'; ?>
@@ -37,7 +39,7 @@ $id = $_GET['id'];
                     <div class="row">
                         <div class="col-md-12 " style="margin-top: 25px;">
                             <div class="col-md-12 text-center" style="padding: 10px;border-bottom: 1px solid #bfbcbc;">
-                                <h3>Manage Class Documents</h3>
+                                <h3>Manage Class Documents - <?php echo $LECTURE_CLASS->start_date?></h3>
                             </div>
                             <div class="panel m-b-lg">
                                 <ul class="nav nav-tabs nav-justified">
@@ -104,13 +106,13 @@ $id = $_GET['id'];
                                                 <div class="form-group">
                                                     <label class="col-sm-2 control-label " for="name" style="text-align: left"> Title: </label>
                                                     <div class="col-sm-10">
-                                                        <input id="name" name="name" class="form-control  " type="text"  placeholder="Enter Title "   >
+                                                        <input id="title" name="title" class="form-control  " type="text"  placeholder="Enter Title "   >
                                                     </div>
                                                 </div>
                                                 <div class="form-group">
                                                     <label class="col-sm-2 control-label " for="name" style="text-align: left">MCQ Papers: </label>
                                                     <div class="col-sm-10">
-                                                        <input id="name" name="pdf_file" class="form-control  " type="file"   >
+                                                        <input id="pdf_file" name="pdf_file" class="form-control  " type="file"   >
                                                     </div>
                                                 </div>
 
@@ -120,11 +122,12 @@ $id = $_GET['id'];
                                                     <div class="col-md-4"></div> 
                                                     <div class="col-md-2">  
                                                         <input type="hidden"  name="create-mcq">
-                                                        <input type="hidden"  name="id"  value="<?php echo $id ?>" >
+                                                        <input type="hidden"  name="lecture_id"  value="<?php echo $id ?>" >
                                                         <input type="submit" class="btn btn-primary btn-block"   value="Add" id="create-mcq" >
                                                     </div>
                                                 </div>
                                             </div>
+
                                         </form>
 
                                         <div class="card">
@@ -132,28 +135,34 @@ $id = $_GET['id'];
                                                 <div class="card-header">
                                                     <h5>
                                                         <a  href="#" >
-                                                            Chemical Equilibrium Part 3 <small> (2020-05-16 )</small>
+                                                           Manage MCQ Papers<small> ( <?php echo $LECTURE_CLASS->start_date?> )</small>
                                                             <span class="fas-fa fa-chevron-down"> 
                                                             </span> 
                                                         </a>
                                                     </h5>
                                                     <hr>
-                                                    <div class="file">
-                                                        <a href="#" class="file-link" title="file-name.pdf">
-                                                            <div class="file-thumbnail file-thumbnail-pdf">
+                                                    <?php
+                                                    $LECTURE_MCQ = new LectureMcq(NULL);
+                                                    foreach ($LECTURE_MCQ->getMcqByLecture($id) as $lecture_mcq) {
+                                                        ?>
 
-                                                            </div>
-                                                            <div class="file-info">
-                                                                <h5 style="padding:5px;"> සමතුලිතතාව   3වන කොටස </h5>   
-                                                            </div>
+                                                        <div class="file" id="div<?php echo $lecture_mcq['id'] ?>"
+                                                            <a href="../upload/class/mcq/<?php echo $lecture_mcq['file_name'] ?>" target="_blank" class="file-link" title="file-name.pdf">
+                                                                <div class="file-thumbnail file-thumbnail-pdf">
 
-                                                        </a>
+                                                                </div>
+                                                                <div class="file-info">
+                                                                    <h5 style="padding:5px;"> <?php echo $lecture_mcq['title'] ?></h5>   
+                                                                </div>
 
-                                                        <button class="file-delete-btn delete"title="Delete" type="button">
-                                                            <span class="icon icon-remove"></span>
+                                                            </a>
 
-                                                        </button>
-                                                    </div>
+                                                            <button class="file-delete-btn delete delete-mcq" data-id=" <?php echo $lecture_mcq['id'] ?>" title="Delete" type="button">
+                                                                <span class="icon icon-remove"></span> 
+                                                            </button>
+                                                        </div>
+
+                                                    <?php } ?>
                                                 </div>
                                             </div>
                                         </div>
@@ -287,13 +296,14 @@ $id = $_GET['id'];
                 </div>
             </div>
         </div>
-
+        <script src="js/jquery.min.js" type="text/javascript"></script>
         <script src="js/vendor.min.js"></script>
         <script src="js/elephant.min.js"></script>
         <script src="js/application.min.js"></script>
         <script src="js/demo.min.js"></script>
+        <script src="js/sweetalert.min.js" type="text/javascript"></script>
         <script src="ajax/js/lecture_class.js" type="text/javascript"></script>
-
+        <script src="delete/js/lecture-mcq.js" type="text/javascript"></script>
     </body>
 
 </html>

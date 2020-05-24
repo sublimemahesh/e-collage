@@ -5,9 +5,9 @@ include '../../../class/include.php';
 
 if ($_POST['option'] == 'delete') {
 
-    $LECTURE_CLASS = new LectureClass($_POST['id']);
-
-    $result = $LECTURE_CLASS->delete();
+    $LECTURE_MCQ = new LectureMcq($_POST['id']);
+    unlink('../../../upload/class/mcq/' . $LECTURE_MCQ->file_name);
+    $result = $LECTURE_MCQ->delete();
 
     if ($result) {
         $data = array("status" => TRUE);

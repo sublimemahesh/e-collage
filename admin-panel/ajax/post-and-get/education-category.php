@@ -8,7 +8,7 @@ if (isset($_POST['create'])) {
     $CATEGORY = new EducationCategory(NULL);
 
     $CATEGORY->name = $_POST['name'];
-    $dir_dest = '../../../upload/category/';
+    $dir_dest = '../../../upload/class/mcq/';
 
     $handle = new Upload($_FILES['image_name']);
 

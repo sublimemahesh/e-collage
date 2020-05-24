@@ -156,25 +156,25 @@ $(document).ready(function () {
     //Create lecture class
     $('#create-mcq').click(function (event) {
         event.preventDefault();
-        alert();
+        
 
-//        if (!$('#class_type').val() || $('#class_type').val().length === 0) {
-//            swal({
-//                title: "Error!",
-//                text: "Please enter class type..!",
-//                type: 'error',
-//                timer: 1500,
-//                showConfirmButton: false
-//            });
-//        } else if (!$('#subject').val() || $('#subject').val().length === 0) {
-//            swal({
-//                title: "Error!",
-//                text: "Please enter  subject name..!",
-//                type: 'error',
-//                timer: 1500,
-//                showConfirmButton: false
-//            });
-//        } else {
+        if (!$('#title').val() || $('#title').val().length === 0) {
+            swal({
+                title: "Error!",
+                text: "Please enter title..!",
+                type: 'error',
+                timer: 1500,
+                showConfirmButton: false
+            });
+        } else if (!$('#pdf_file').val() || $('#pdf_file').val().length === 0) {
+            swal({
+                title: "Error!",
+                text: "Please enter attach file.!",
+                type: 'error',
+                timer: 1500,
+                showConfirmButton: false
+            });
+        } else {
        
             var formData = new FormData($('#form-mcq')[0]);
             $.ajax({
@@ -183,8 +183,7 @@ $(document).ready(function () {
                 data: formData,
                 async: false,
                 dataType: 'json',
-                success: function (result) {
-
+                success: function (result) { 
                     swal({
                         title: "Success!",
                         text: "Your data was saved successfully!.....",
@@ -193,7 +192,7 @@ $(document).ready(function () {
                         showConfirmButton: false
                     }, function () {
                         setTimeout(function () {
-                            window.location.replace("create-lecture-class.php");
+                            window.location.reload();
                         }, 1500);
                     });
                 },
@@ -201,7 +200,7 @@ $(document).ready(function () {
                 contentType: false,
                 processData: false
             });
-//        }
+        }
     });
 
 });
