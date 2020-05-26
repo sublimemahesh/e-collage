@@ -100,7 +100,7 @@ $LECTURE = new Lecture($STUDENT_REGISTRATION->lecture_id);
                                                     <hr>
                                                     <?php
                                                     $LECTURE_MCQ = new LectureMcq(NULL);
-                                                    foreach ($LECTURE_MCQ->getMcqByLecture($LECTURE_CLASS->id) as $lecture_mcq) {
+                                                    foreach ($LECTURE_MCQ->getMcqByLecture($STUDENT_REGISTRATION->lecture_id) as $lecture_mcq) {
                                                         ?>
 
                                                         <div class="file" id="div<?php echo $lecture_mcq['id'] ?>">
@@ -140,7 +140,7 @@ $LECTURE = new Lecture($STUDENT_REGISTRATION->lecture_id);
                                                     <hr>
                                                     <?php
                                                     $LECTURE_TUTORIALS = new LectureTutorial(NULL);
-                                                    foreach ($LECTURE_TUTORIALS->getTutorialsByLecture($LECTURE_CLASS->id) as $lecture_tutorials) {
+                                                    foreach ($LECTURE_TUTORIALS->getTutorialsByLecture($STUDENT_REGISTRATION->lecture_id) as $lecture_tutorials) {
                                                         ?>
 
                                                         <div class="file" id="div<?php echo $lecture_tutorials['id'] ?>">
@@ -167,7 +167,7 @@ $LECTURE = new Lecture($STUDENT_REGISTRATION->lecture_id);
                                     <div class="tab-pane fade" id="assignment">
                                         <?php
                                         $LECTURE_ASSESSMENT = new LectureAssessment(NULL);
-                                        foreach ($LECTURE_ASSESSMENT->getAssessmentByLecture($LECTURE_CLASS->id) as $lecture_assessment) {
+                                        foreach ($LECTURE_ASSESSMENT->getAssessmentByLecture($STUDENT_REGISTRATION->lecture_id) as $lecture_assessment) {
                                             ?>
                                             <div class="col-md-4 card " style="padding: 10px;margin: 10px;" id="div_3<?php echo $lecture_assessment['id'] ?>">
                                                 <div class="text-center">

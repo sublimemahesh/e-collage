@@ -538,6 +538,48 @@ class Student {
         }
     }
 
+    public function sendStudentRegistrationEmail() {
+
+        $to = '<' . $this->email . '>';
+        $subject = 'Your Registration is Successful!. - Ecollage.lk';
+        $from = 'SYNOTEC.LK NOREPLY <noreply@airportcars.lk>';
+
+// To send HTML mail, the Content-type header must be set
+        $headers = 'MIME-Version: 1.0' . "\r\n";
+        $headers .= 'Content-type: text/html; charset=iso-8859-1' . "\r\n";
+
+// Create email headers
+        $headers .= 'From: ' . $from . "\r\n" .
+                'Reply-To: ' . $from . "\r\n" .
+                'X-Mailer: PHP/' . phpversion();
+
+// Compose a simple HTML email message
+        $message = '<html>';
+        $message .= '<body>';
+        $message .= '<div  style="padding: 10px; max-width: 650px; background-color: #f2f1ff; border: 1px solid #d4d4d4;">';
+        $message .= '<h4>Welcome to the Ecollage.lk!.</h4>';
+        $message .= '<p>Dear sir/madam, Thank you for registering on www.ecollage.lk. Please use your Student ID when you log in to the website with the password, which you gave when creating your account...</p>';
+        $message .= '<hr/>';
+        $message .= '<h3>Your Member ID :' . $this->student_id . '</h3>';
+        $message .= "<h4>Please Complete Your Profile From <a href='#'><span> here <span></h4></a>";
+        $message .= '<hr/>';
+        $message .= '<p>Thanks & Best Regards!.. <br/> www.thaksalawa.lk<p/>';
+        $message .= '<small>*Please do not reply to this email. This is an automated email & you will not receive a response.</small><br/>';
+        $message .= '<span>Hotline: +94 77 455 4141 </span><br/>';
+        $message .= '<span>mail@ecollage.lk</span>';
+        $message .= '</div>';
+        $message .= '</body>';
+        $message .= '</html>';
+
+
+
+        if (mail($to, $subject, $message, $headers)) {
+            return TRUE;
+        } else {
+            return FALSE;
+        }
+    }
+
     public function updateActiveStudent() {
 
         $query = "UPDATE  `student` SET "

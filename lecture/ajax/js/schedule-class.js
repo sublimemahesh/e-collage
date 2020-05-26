@@ -22,7 +22,12 @@ $(document).ready(function () {
                 showConfirmButton: false
             });
         } else {
-       
+
+            $('.box').jmspinner('large');
+            $('.box').addClass('well');
+            $('.box').css('z-index', '9999');
+
+
             var formData = new FormData($('#form-mcq')[0]);
             $.ajax({
                 url: "ajax/post-and-get/schedule-class.php",
@@ -31,6 +36,11 @@ $(document).ready(function () {
                 async: false,
                 dataType: 'json',
                 success: function (result) { 
+
+                    $('.box').jmspinner(false);
+                    $('.box').removeClass('well');
+                    $('.box').css('z-index', '-1111');
+
                     swal({
                         title: "Success!",
                         text: "Your data was saved successfully!.....",
@@ -49,12 +59,12 @@ $(document).ready(function () {
             });
         }
     });
-    
+
     //Create lecture Tutorials
     $('#create-tutorial').click(function (event) {
         event.preventDefault();
-        
-       
+
+
         if (!$('#title_1').val() || $('#title_1').val().length === 0) {
             swal({
                 title: "Error!",
@@ -72,7 +82,11 @@ $(document).ready(function () {
                 showConfirmButton: false
             });
         } else {
-       
+
+            $('.box').jmspinner('large');
+            $('.box').addClass('well');
+            $('.box').css('z-index', '9999');
+
             var formData = new FormData($('#form-tutorials')[0]);
             $.ajax({
                 url: "ajax/post-and-get/schedule-class.php",
@@ -80,7 +94,12 @@ $(document).ready(function () {
                 data: formData,
                 async: false,
                 dataType: 'json',
-                success: function (result) { 
+                success: function (result) {
+
+                    $('.box').jmspinner(false);
+                    $('.box').removeClass('well');
+                    $('.box').css('z-index', '-1111');
+
                     swal({
                         title: "Success!",
                         text: "Your data was saved successfully!.....",
@@ -99,12 +118,12 @@ $(document).ready(function () {
             });
         }
     });
-    
+
     //Create lecture Assessment
     $('#create-assessment').click(function (event) {
         event.preventDefault();
-        
-       
+
+
         if (!$('#title_2').val() || $('#title_2').val().length === 0) {
             swal({
                 title: "Error!",
@@ -122,7 +141,11 @@ $(document).ready(function () {
                 showConfirmButton: false
             });
         } else {
-       
+
+            $('.box').jmspinner('large');
+            $('.box').addClass('well');
+            $('.box').css('z-index', '9999');
+
             var formData = new FormData($('#form-assessment')[0]);
             $.ajax({
                 url: "ajax/post-and-get/schedule-class.php",
@@ -130,7 +153,13 @@ $(document).ready(function () {
                 data: formData,
                 async: false,
                 dataType: 'json',
-                success: function (result) { 
+                success: function (result) {
+
+
+                    $('.box').jmspinner(false);
+                    $('.box').removeClass('well');
+                    $('.box').css('z-index', '-1111');
+
                     swal({
                         title: "Success!",
                         text: "Your data was saved successfully!.....",

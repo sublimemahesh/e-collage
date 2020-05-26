@@ -1,6 +1,6 @@
 <?php
 
- include '../../../class/include.php';
+include '../../../class/include.php';
 
 $STUDENT = new Student(NULL);
 
@@ -16,17 +16,18 @@ $STUDENT->email = $_POST['email'];
 $STUDENT->password = md5($_POST['password']);
 
 
-    $STUDENT->create();
-    if ($STUDENT->id) {
+$STUDENT->create();
+if ($STUDENT->id) {
 
-        $STUDENT->login($STUDENT->student_id, $_POST['password']);
+    $STUDENT->login($STUDENT->student_id, $_POST['password']);
+    $STUDENT->sendStudentRegistrationEmail();
+    
+    $response['status'] = 'success';
+    echo json_encode($response);
+    exit();
+} else {
 
-        $response['status'] = 'success';
-        echo json_encode($response);
-        exit();
-    } else {
-
-        $response['status'] = 'error';
-        echo json_encode($response);
-        exit();
-    }
+    $response['status'] = 'error';
+    echo json_encode($response);
+    exit();
+}
