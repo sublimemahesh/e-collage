@@ -2,25 +2,23 @@
 <?php
 include '../class/include.php';
 include_once(dirname(__FILE__) . '/auth.php');
+$id = $_GET['id'];
+$STUDENT_REGISTRATION = new StudentRegistration($id);
+$LECTURE_CLASS = new LectureClass($STUDENT_REGISTRATION->class_id);
+$LECTURE = new Lecture($STUDENT_REGISTRATION->lecture_id);
 ?>
 <html lang="en">
 
     <head>
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <title>Tabs &middot; Elephant Template &middot; The fastest way to build Modern Admin APPS for any platform, browser, or device.</title>
+        <title>Ecollege.lk - Student Class View  </title>
         <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no">
-        <meta name="description" content="Elephant is an admin template that helps you build modern Admin Applications, professionally fast! Built on top of Bootstrap, it includes a large collection of HTML, CSS and JS components that are simple to use and easy to customize.">
-        <meta property="og:url" content="http://demo.madebytilde.com/elephant">
         <meta property="og:type" content="website">
-        <meta property="og:title" content="The fastest way to build Modern Admin APPS for any platform, browser, or device.">
-        <meta property="og:description" content="Elephant is an admin template that helps you build modern Admin Applications, professionally fast! Built on top of Bootstrap, it includes a large collection of HTML, CSS and JS components that are simple to use and easy to customize.">
         <meta property="og:image" content="../../elephant.html">
         <meta name="twitter:card" content="summary_large_image">
         <meta name="twitter:site" content="@madebytilde">
         <meta name="twitter:creator" content="@madebytilde">
-        <meta name="twitter:title" content="The fastest way to build Modern Admin APPS for any platform, browser, or device.">
-        <meta name="twitter:description" content="Elephant is an admin template that helps you build modern Admin Applications, professionally fast! Built on top of Bootstrap, it includes a large collection of HTML, CSS and JS components that are simple to use and easy to customize.">
         <meta name="twitter:image" content="../../elephant.html">
         <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
         <link rel="icon" type="image/png" href="favicon-32x32.png" sizes="32x32">
@@ -43,7 +41,7 @@ include_once(dirname(__FILE__) . '/auth.php');
                     <div class="row">
                         <div class="col-md-12"style="margin-top: 15px;">
                             <div class="col-md-12">
-                                <h3 style="text-align: center">   Manage Class </h3>
+                                <h3 style="text-align: center">  <?php echo ucfirst($LECTURE_CLASS->name) . ' - ' . $LECTURE->full_name ?> </h3>
                             </div>
                             <div class="panel m-b-lg">
                                 <ul class="nav nav-tabs nav-justified">
@@ -94,32 +92,38 @@ include_once(dirname(__FILE__) . '/auth.php');
                                                 <div class="card-header">
                                                     <h5>
                                                         <a  href="#" >
-                                                            Chemical Equilibrium Part 3 <small> (2020-05-16 )</small>
-                                                            <span class="fas-fa fa-chevron-down">
-                                                            </span>
+                                                            View MCQ Papers<small> ( <?php echo $LECTURE_CLASS->start_date ?> )</small>
+                                                            <span class="fas-fa fa-chevron-down"> 
+                                                            </span> 
                                                         </a>
                                                     </h5>
                                                     <hr>
-                                                    <div class="file">
-                                                        <a href="#" class="file-link" title="file-name.pdf">
-                                                            <div class="file-thumbnail file-thumbnail-pdf">
+                                                    <?php
+                                                    $LECTURE_MCQ = new LectureMcq(NULL);
+                                                    foreach ($LECTURE_MCQ->getMcqByLecture($LECTURE_CLASS->id) as $lecture_mcq) {
+                                                        ?>
 
-                                                            </div>
-                                                            <div class="file-info">
-                                                                <h5 style="padding:5px;"> සමතුලිතතාව   3වන කොටස </h5>  
-                                                            </div>
+                                                        <div class="file" id="div<?php echo $lecture_mcq['id'] ?>">
+                                                             <a href="../upload/class/mcq/<?php echo $lecture_mcq['file_name'] ?>" target="_blank" class="file-link" title="file-name.pdf">
+                                                                <div class="file-thumbnail file-thumbnail-pdf">
 
-                                                        </a>
+                                                                </div>
+                                                                <div class="file-info">
+                                                                    <h5 style="padding:5px;"> <?php echo $lecture_mcq['title'] ?></h5>   
+                                                                </div>
 
-                                                        <button class="file-delete-btn delete"title="Delete" type="button">
-                                                            <span class="icon icon-remove"></span>
+                                                            </a>
 
-                                                        </button>
-                                                    </div>
+                                                            <button class="file-delete-btn delete delete-mcq" data-id=" <?php echo $lecture_mcq['id'] ?>" title="Delete" type="button">
+                                                                <span class="icon icon-remove"></span> 
+                                                            </button>
+                                                        </div>
+
+                                                    <?php } ?>
                                                 </div>
                                             </div>
                                         </div>
-                                        
+
                                     </div>
 
                                     <div class="tab-pane fade" id="tutorials">
@@ -128,63 +132,39 @@ include_once(dirname(__FILE__) . '/auth.php');
                                                 <div class="card-header">
                                                     <h5>
                                                         <a  href="#" >
-                                                            Chemical Equilibrium Part 3 <small> (2020-05-16 )</small>
-                                                            <span class="fas-fa fa-chevron-down">
-                                                            </span>
+                                                            View Lecture Tutorials <small> ( <?php echo $LECTURE_CLASS->start_date ?> )</small>
+                                                            <span class="fas-fa fa-chevron-down"> 
+                                                            </span> 
                                                         </a>
                                                     </h5>
                                                     <hr>
-                                                    <div class="file">
-                                                        <a href="#" class="file-link" title="file-name.pdf">
-                                                            <div class="file-thumbnail file-thumbnail-pdf">
+                                                    <?php
+                                                    $LECTURE_TUTORIALS = new LectureTutorial(NULL);
+                                                    foreach ($LECTURE_TUTORIALS->getTutorialsByLecture($LECTURE_CLASS->id) as $lecture_tutorials) {
+                                                        ?>
 
-                                                            </div>
-                                                            <div class="file-info">
-                                                                <h5 style="padding:5px;"> සමතුලිතතාව   3වන කොටස </h5>  
-                                                            </div>
+                                                        <div class="file" id="div<?php echo $lecture_tutorials['id'] ?>">
+                                                             <a href="../upload/class/tutorials/<?php echo $lecture_tutorials['file_name'] ?>" target="_blank" class="file-link" title="file-name.pdf">
+                                                                <div class="file-thumbnail file-thumbnail-pdf">
 
-                                                        </a>
+                                                                </div>
+                                                                <div class="file-info">
+                                                                    <h5 style="padding:5px;"> <?php echo $lecture_tutorials['title'] ?></h5>   
+                                                                </div>
 
-                                                        <button class="file-delete-btn delete"title="Delete" type="button">
-                                                            <span class="icon icon-remove"></span>
+                                                            </a>
 
-                                                        </button>
-                                                    </div>
+                                                            <button class="file-delete-btn delete delete-tutorials" data-id=" <?php echo $lecture_tutorials['id'] ?>" title="Delete" type="button">
+                                                                <span class="icon icon-remove"></span> 
+                                                            </button>
+                                                        </div>
+
+                                                    <?php } ?>
                                                 </div>
                                             </div>
                                         </div>
-                                        <div class="card">
-                                            <div class="box-shadow">
-                                                <div class="card-header">
-                                                    <h5>
-                                                        <a  href="#" >
-                                                            Chemical Equilibrium Part 3 <small> (2020-05-16 )</small>
-                                                            <span class="fas-fa fa-chevron-down">
-                                                            </span>
-                                                        </a>
-                                                    </h5>
-                                                    <hr>
-                                                    <div class="file">
-                                                        <a href="#" class="file-link" title="file-name.pdf">
-                                                            <div class="file-thumbnail file-thumbnail-pdf">
 
-                                                            </div>
-                                                            <div class="file-info">
-                                                                <h5 style="padding:5px;"> සමතුලිතතාව   3වන කොටස </h5>  
-                                                            </div>
-
-                                                        </a>
-
-                                                        <button class="file-delete-btn delete"title="Delete" type="button">
-                                                            <span class="icon icon-remove"></span>
-
-                                                        </button>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
                                     </div>
-
 
                                     <div class="tab-pane fade" id="assignment">
                                         <div class="col-lg-4 col-sm-12 grid-margin ">
@@ -231,34 +211,14 @@ include_once(dirname(__FILE__) . '/auth.php');
                 </div>
             </div>
         </div>
-        <div class="layout-footer">
-            <div class="layout-footer-body">
-                <small class="version">Version 1.4.0</small>
-                <small class="copyright">2017 &copy; Elephant <a href="http://madebytilde.com/">Made by Tilde</a></small>
-            </div>
-        </div>
+        <?php include './footer.php'; ?>
     </div>
 
     <script src="js/vendor.min.js"></script>
     <script src="js/elephant.min.js"></script>
     <script src="js/application.min.js"></script>
     <script src="js/demo.min.js"></script>
-    <script>
-        (function (i, s, o, g, r, a, m) {
-            i['GoogleAnalyticsObject'] = r;
-            i[r] = i[r] || function () {
-                (i[r].q = i[r].q || []).push(arguments)
-            }, i[r].l = 1 * new Date();
-            a = s.createElement(o),
-                    m = s.getElementsByTagName(o)[0];
-            a.async = 1;
-            a.src = g;
-            m.parentNode.insertBefore(a, m)
-        })(window, document, 'script', '../../../www.google-analytics.com/analytics.js', 'ga');
-        ga('create', 'UA-83990101-1', 'auto');
-        ga('send', 'pageview');
-    </script>
+    <script src="ajax/js/check-login.js" type="text/javascript"></script>>
 </body>
 
-<!-- Mirrored from demo.madebytilde.com/elephant-v1.4.0/theme-5/tabs.html by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 02 Jul 2019 07:44:47 GMT -->
 </html>
