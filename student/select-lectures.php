@@ -51,8 +51,8 @@ $id = $_GET['id'];
                                     <div class="col-md-3">
                                         <div class="card ">
                                             <div class="card-image">
+                                                <a class="card-link"  href="select-class.php?id=<?php echo $lecture_class['subject_id'] ?>&&lecture=<?php echo $lecture_class['lecture'] ?>">
 
-                                                <a class="card-link" href="#">
                                                     <?php
                                                     if (empty($LECTURES->image_name)) {
                                                         ?>

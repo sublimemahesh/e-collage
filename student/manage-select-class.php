@@ -50,7 +50,7 @@ include_once(dirname(__FILE__) . '/auth.php');
                                             <?php
                                             if (empty($LECTURE->image_name)) {
                                                 ?>
-                                                <img class="card-img-top img-responsive" src="img/member.jpg" alt=""<?php echo $LECTURE->full_name ?>" style="width: 100%">
+                                                <img class="card-img-top img-responsive" src="img/member.jpg" alt="<?php echo $LECTURE->full_name ?>" style="width: 100%">
                                             <?php } else { ?>
                                                 <img class="card-img-top img-responsive" src="upload/lecture/profile/<?php echo $LECTURE->image_name ?>" alt="<?php echo $LECTURE->full_name ?>" style="width: 100%">
                                             <?php } ?>
@@ -61,7 +61,7 @@ include_once(dirname(__FILE__) . '/auth.php');
                                         <div class="overlay-content overlay-top text-center" style="margin-top: -43px;">
                                             <span class="label label-success " style="font-size: 16px;border-radius: 0px;"> 
                                                 <?php
-                                                $LECTURE_CLASS = new LectureClass($student_registration['lecture_id']);
+                                                $LECTURE_CLASS = new LectureClass($student_registration['class_id']);
 
                                                 $EDUCATIN_SUBJECT = new EducationSubject($LECTURE_CLASS->subject_id);
                                                 echo $EDUCATIN_SUBJECT->name;

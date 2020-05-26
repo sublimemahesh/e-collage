@@ -33,11 +33,12 @@ $(document).ready(function () {
             contentType: false,
             processData: false
         });
+        
+        
         $('.box').jmspinner(false);
         $('.box').removeClass('well');
         $('.box').css('z-index', '-1111');
-        $('.uploard_btn').show();
-
+          
     });
 
 //Update Nic

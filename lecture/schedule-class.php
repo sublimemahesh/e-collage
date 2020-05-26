@@ -29,8 +29,14 @@ $LECTURE_CLASS = new LectureClass($id);
         <link rel="stylesheet" href="css/application.min.css">
         <link rel="stylesheet" href="css/demo.min.css">
         <link href="css/sweetalert.css" rel="stylesheet" type="text/css"/>
+        <link href="css/jm.spinner.css" rel="stylesheet" type="text/css"/>
+        
+        
     </head>
     <body class="layout layout-header-fixed">
+        <div class="box"></div>
+        
+        
         <?php include './top-header.php'; ?>
         <div class="layout-main">
             <?php include './navigation.php'; ?>
@@ -311,7 +317,7 @@ $LECTURE_CLASS = new LectureClass($id);
         <script src="delete/js/lecture-mcq.js" type="text/javascript"></script>
         <script src="delete/js/lecture-tutorial.js" type="text/javascript"></script>
         <script src="delete/js/lecture-assessment.js" type="text/javascript"></script>
-        
+        <script src="js/jm.spinner.js" type="text/javascript"></script>
     </body>
 
 </html>
