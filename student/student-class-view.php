@@ -41,7 +41,7 @@ $LECTURE = new Lecture($STUDENT_REGISTRATION->lecture_id);
                     <div class="row">
                         <div class="col-md-12"style="margin-top: 15px;">
                             <div class="col-md-12">
-                                <h3 style="text-align: center">  <?php echo ucfirst($LECTURE_CLASS->name) . ' - ' . $LECTURE->full_name ?> </h3>
+                                <h3 style="text-align: center">  <span class="text-success"><?php echo ucfirst($LECTURE_CLASS->name) ?></span> -   <?php echo $LECTURE->full_name ?> </h3>
                             </div>
                             <div class="panel m-b-lg">
                                 <ul class="nav nav-tabs nav-justified">
@@ -104,7 +104,7 @@ $LECTURE = new Lecture($STUDENT_REGISTRATION->lecture_id);
                                                         ?>
 
                                                         <div class="file" id="div<?php echo $lecture_mcq['id'] ?>">
-                                                             <a href="../upload/class/mcq/<?php echo $lecture_mcq['file_name'] ?>" target="_blank" class="file-link" title="file-name.pdf">
+                                                            <a href="../upload/class/mcq/<?php echo $lecture_mcq['file_name'] ?>" target="_blank" class="file-link" title="file-name.pdf">
                                                                 <div class="file-thumbnail file-thumbnail-pdf">
 
                                                                 </div>
@@ -144,7 +144,7 @@ $LECTURE = new Lecture($STUDENT_REGISTRATION->lecture_id);
                                                         ?>
 
                                                         <div class="file" id="div<?php echo $lecture_tutorials['id'] ?>">
-                                                             <a href="../upload/class/tutorials/<?php echo $lecture_tutorials['file_name'] ?>" target="_blank" class="file-link" title="file-name.pdf">
+                                                            <a href="../upload/class/tutorials/<?php echo $lecture_tutorials['file_name'] ?>" target="_blank" class="file-link" title="file-name.pdf">
                                                                 <div class="file-thumbnail file-thumbnail-pdf">
 
                                                                 </div>
@@ -158,49 +158,27 @@ $LECTURE = new Lecture($STUDENT_REGISTRATION->lecture_id);
                                                                 <span class="icon icon-remove"></span> 
                                                             </button>
                                                         </div>
-
                                                     <?php } ?>
                                                 </div>
                                             </div>
                                         </div>
-
                                     </div>
 
                                     <div class="tab-pane fade" id="assignment">
-                                        <div class="col-lg-4 col-sm-12 grid-margin ">
-                                            <div class="card-header">
-
-                                                <div class="box-shadow">
-
-                                                    <div class="text-center">
-                                                        <h4 class="">පළමු ප්‍රශ්නය - මෙම ප්‍රශ්නය ඩවුන්ලෝඩ් කරගෙන, හෙට පන්තියට පලමු නියමිත පරිදි පිළිතුරු සපයාගෙන සූදානම් කර තබාගන්න.</h4>
-                                                        <p>2020-05-16</p>
-
-                                                        <a href="" target="blank" class="btn btn-success">  VIEW ASSIGNMENT </a>
-                                                        <br/><br/>
-                                                        <p class="label label-danger">Not Submitted / +6 Days Late</p>
-                                                    </div>
+                                        <?php
+                                        $LECTURE_ASSESSMENT = new LectureAssessment(NULL);
+                                        foreach ($LECTURE_ASSESSMENT->getAssessmentByLecture($LECTURE_CLASS->id) as $lecture_assessment) {
+                                            ?>
+                                            <div class="col-md-4 card " style="padding: 10px;margin: 10px;" id="div_3<?php echo $lecture_assessment['id'] ?>">
+                                                <div class="text-center">
+                                                    <p>
+                                                        <?php echo $lecture_assessment['title'] ?> 
+                                                    </p> 
+                                                    <a href="../upload/class/assessment/<?php echo $lecture_assessment['file_name'] ?>" target="_blank"  class="btn btn-success  " style="margin-bottom: 10px;">  VIEW ASSIGNMENT </a>  
 
                                                 </div>
-
                                             </div>
-                                        </div>
-                                        <div class="col-lg-4 col-sm-12 grid-margin ">
-                                            <div class="card-header">
-                                                <div class="box-shadow">
-
-                                                    <div class="text-center">
-                                                        <h4 class="">පළමු ප්‍රශ්නය - මෙම ප්‍රශ්නය ඩවුන්ලෝඩ් කරගෙන, හෙට පන්තියට පලමු නියමිත පරිදි පිළිතුරු සපයාගෙන සූදානම් කර තබාගන්න.</h4>
-                                                        <p>2020-05-16</p>
-
-                                                        <a href="" target="blank" class="btn btn-success">  VIEW ASSIGNMENT </a>
-                                                        <br/><br/>
-                                                        <p class="label label-danger">Not Submitted / +6 Days Late</p>
-                                                    </div>
-                                                </div>
-
-                                            </div>
-                                        </div>
+                                        <?php } ?>
                                     </div>
                                 </div>
 

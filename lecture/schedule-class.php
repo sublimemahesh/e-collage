@@ -39,7 +39,7 @@ $LECTURE_CLASS = new LectureClass($id);
                     <div class="row">
                         <div class="col-md-12 " style="margin-top: 25px;">
                             <div class="col-md-12 text-center" style="padding: 10px;border-bottom: 1px solid #bfbcbc;">
-                                <h3>Manage Class Documents - <?php echo $LECTURE_CLASS->start_date?></h3>
+                                <h3>Manage <span class="text-success"><?php echo $LECTURE_CLASS->name ?></span> Class Documents - <?php echo $LECTURE_CLASS->start_date ?></h3>
                             </div>
                             <div class="panel m-b-lg">
                                 <ul class="nav nav-tabs nav-justified">
@@ -134,7 +134,7 @@ $LECTURE_CLASS = new LectureClass($id);
                                                 <div class="card-header">
                                                     <h5>
                                                         <a  href="#" >
-                                                           Manage MCQ Papers<small> ( <?php echo $LECTURE_CLASS->start_date?> )</small>
+                                                            Manage MCQ Papers<small> ( <?php echo $LECTURE_CLASS->start_date ?> )</small>
                                                             <span class="fas-fa fa-chevron-down"> 
                                                             </span> 
                                                         </a>
@@ -201,19 +201,19 @@ $LECTURE_CLASS = new LectureClass($id);
                                                 <div class="card-header">
                                                     <h5>
                                                         <a  href="#" >
-                                                            Manage Tutorials Papers<small> ( <?php echo $LECTURE_CLASS->start_date?> )</small>
+                                                            Manage Tutorials Papers<small> ( <?php echo $LECTURE_CLASS->start_date ?> )</small>
                                                             <span class="fas-fa fa-chevron-down"> 
                                                             </span> 
                                                         </a>
                                                     </h5>
                                                     <hr>
-                                                      <?php
-                                                    $LECTURE_TUTORIALS= new LectureTutorial(NULL);
+                                                    <?php
+                                                    $LECTURE_TUTORIALS = new LectureTutorial(NULL);
                                                     foreach ($LECTURE_TUTORIALS->getTutorialsByLecture($_SESSION['id']) as $lecture_tutorials) {
                                                         ?>
 
-                                                        <div class="file" id="div<?php echo $lecture_tutorials['id'] ?>">
-                                                             <a href="../upload/class/tutorials/<?php echo $lecture_tutorials['file_name'] ?>" target="_blank" class="file-link" title="file-name.pdf">
+                                                        <div class="file" id="div_2<?php echo $lecture_tutorials['id'] ?>">
+                                                            <a href="../upload/class/tutorials/<?php echo $lecture_tutorials['file_name'] ?>" target="_blank" class="file-link" title="file-name.pdf">
                                                                 <div class="file-thumbnail file-thumbnail-pdf">
 
                                                                 </div>
@@ -234,20 +234,19 @@ $LECTURE_CLASS = new LectureClass($id);
                                         </div>
                                     </div>
                                     <div class="tab-pane fade" id="assignment">
-                                        <form class="demo-form-wrapper card " style="padding: 50px" id="form-data">
+                                        <form class="demo-form-wrapper card " style="padding: 50px" id="form-assessment">
                                             <div class="form form-horizontal">
 
                                                 <div class="form-group">
                                                     <label class="col-sm-2 control-label " for="name" style="text-align: left"> Title: </label>
                                                     <div class="col-sm-10">
-                                                        <input id="name" name="name" class="form-control  " type="text"  placeholder="Enter Title "   >
+                                                        <input id="title_2" name="title" class="form-control" type="text"  placeholder="Enter Title "   >
                                                     </div>
                                                 </div>
-
                                                 <div class="form-group">
-                                                    <label class="col-sm-2 control-label " for="name" style="text-align: left">Assignment: </label>
+                                                    <label class="col-sm-2 control-label " for="pdf_file" style="text-align: left">Assessment Papers: </label>
                                                     <div class="col-sm-10">
-                                                        <input id="name" name="name" class="form-control  " type="file"   >
+                                                        <input id="pdf_file_2" name="pdf_file" class="form-control  " type="file"   >
                                                     </div>
                                                 </div>
 
@@ -256,35 +255,41 @@ $LECTURE_CLASS = new LectureClass($id);
                                                     <div class="col-md-3"></div> 
                                                     <div class="col-md-4"></div> 
                                                     <div class="col-md-2">  
-                                                        <input type="hidden"  name="update">
-                                                        <input type="hidden"  name="id"  value="<?php echo $id ?>" >
-                                                        <input type="submit" class="btn btn-primary btn-block"   value="Add" id="update" >
+                                                        <input type="hidden"  name="create-assessment">
+                                                        <input type="hidden"  name="lecture_id"  value="<?php echo $_SESSION['id'] ?>" >
+                                                        <input type="submit" class="btn btn-primary btn-block"   value="Add" id="create-assessment" >
                                                     </div>
                                                 </div>
                                             </div>
                                         </form>
                                         <div class="card">
-                                            <div class="box-shadow">
+                                            <div class="box-shadow"> 
                                                 <div class="card-header">
                                                     <h5>
                                                         <a  href="#" >
-                                                            Manage Assignments <small> (2020-05-16 )</small>
+                                                            Manage Assessment  <small> ( <?php echo $LECTURE_CLASS->start_date ?> )</small>
                                                             <span class="fas-fa fa-chevron-down"> 
                                                             </span> 
                                                         </a>
                                                     </h5>
                                                     <hr>
-                                                    <div class="col-md-4 card">
-                                                        <div class="text-center">
-                                                            <h4 class="">පළමු ප්‍රශ්නය - මෙම ප්‍රශ්නය ඩවුන්ලෝඩ් කරගෙන, හෙට පන්තියට පලමු නියමිත පරිදි පිළිතුරු සපයාගෙන සූදානම් කර තබාගන්න.</h4>
-                                                            <p>2020-05-16</p>
+                                                    <?php
+                                                    $LECTURE_ASSESSMENT = new LectureAssessment(NULL);
+                                                    foreach ($LECTURE_ASSESSMENT->getAssessmentByLecture($_SESSION['id']) as $lecture_assessment) {
+                                                        ?>
+                                                    <div class="col-md-4 card " style="padding: 10px;margin: 10px;" id="div_3<?php echo $lecture_assessment['id'] ?>">
+                                                            <div class="text-center">
+                                                                <p>
+                                                                    <?php echo $lecture_assessment['title'] ?> 
+                                                                </p> 
+                                                                <a href="../upload/class/assessment/<?php echo $lecture_assessment['file_name'] ?>" target="_blank"  class="btn btn-success  " style="margin-bottom: 10px;">  VIEW ASSIGNMENT </a> | 
+                                                                <a href="#" class="delete-lecture-assessment btn btn-sm btn-danger"  data-id="<?php echo $lecture_assessment['id'] ?>" style="margin-top: -8px;"><i class="waves-effect icon icon-trash" data-type="cancel"></i></a> 
 
-                                                            <a href="" target="blank" class="btn btn-success">  VIEW ASSIGNMENT </a>
-                                                            <br/><br/>
-                                                            <p class="label label-danger">Not Submitted / +6 Days Late</p>
+                                                            </div>
                                                         </div>
-                                                    </div>
-                                                </div>
+                                                    <?php } ?>
+                                                </div>                                              
+
                                             </div>
                                         </div>
                                     </div> 
@@ -294,12 +299,7 @@ $LECTURE_CLASS = new LectureClass($id);
                     </div>
                 </div>
             </div>
-            <div class="layout-footer">
-                <div class="layout-footer-body">
-                    <small class="version">Version 1.4.0</small>
-                    <small class="copyright">2017 &copy; Elephant <a href="http://madebytilde.com/">Made by Tilde</a></small>
-                </div>
-            </div>
+            <?php include './footer.php'; ?>
         </div>
         <script src="js/jquery.min.js" type="text/javascript"></script>
         <script src="js/vendor.min.js"></script>
@@ -307,9 +307,11 @@ $LECTURE_CLASS = new LectureClass($id);
         <script src="js/application.min.js"></script>
         <script src="js/demo.min.js"></script>
         <script src="js/sweetalert.min.js" type="text/javascript"></script>
-        <script src="ajax/js/lecture_class.js" type="text/javascript"></script>
+        <script src="ajax/js/schedule-class.js" type="text/javascript"></script>
         <script src="delete/js/lecture-mcq.js" type="text/javascript"></script>
         <script src="delete/js/lecture-tutorial.js" type="text/javascript"></script>
+        <script src="delete/js/lecture-assessment.js" type="text/javascript"></script>
+        
     </body>
 
 </html>
