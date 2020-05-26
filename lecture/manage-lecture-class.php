@@ -79,11 +79,11 @@ include './auth.php';
                                         <thead>
                                             <tr>
                                                 <th>ID</th>
-                                                <th>Class Type</th>   
+                                                <th>Class Name</th>   
                                                 <th>Subject</th>  
                                                 <th>Start Date</th>  
                                                 <th>Start Time</th>  
-                                                <th>Duration</th>  
+                                                <th>End Time</th>  
                                                 <th>Class Fee</th>  
                                                 <th>Option</th>
                                             </tr>
@@ -96,8 +96,8 @@ include './auth.php';
                                             <tr id="div<?php echo $lecture_class['id'] ?>">
                                                 <td><?php echo $key ?></td>
                                                 <td><?php
-                                                    $CLASS_TYPE = new ClassType($lecture_class['class_type']);
-                                                    echo $CLASS_TYPE->name
+                                                    
+                                                    echo $lecture_class['name']
                                                     ?></td>
                                                 <td><?php
                                                     $SUBJECT = new EducationSubject($lecture_class['subject_id']);
@@ -125,7 +125,7 @@ include './auth.php';
                                                 <th>Subject</th>  
                                                 <th>Start Date</th>  
                                                 <th>Start Time</th>  
-                                                <th>Duration</th>  
+                                                 <th>End Time</th>
                                                 <th>Class Fee</th>  
                                                 <th>Option</th>
                                             </tr>
