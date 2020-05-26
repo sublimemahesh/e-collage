@@ -12,7 +12,7 @@ $LECTURE_CLASS = new LectureClass($id);
     <head>
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <title>Tabs -- </title>
+        <title>Schedule Class - Ecollage.lk</title>
         <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no">
         <meta property="og:url" content="http://demo.madebytilde.com/elephant">
         <meta property="og:type" content="website">
@@ -95,7 +95,6 @@ $LECTURE_CLASS = new LectureClass($id);
 
                                                     <iframe width="100%" height="500" src="https://www.youtube.com/embed/h04Hj6sb1qg" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
-
                                                 </div>
                                             </div>
                                         </div>
@@ -146,7 +145,7 @@ $LECTURE_CLASS = new LectureClass($id);
                                                     foreach ($LECTURE_MCQ->getMcqByLecture($_SESSION['id']) as $lecture_mcq) {
                                                         ?>
 
-                                                        <div class="file" id="div<?php echo $lecture_mcq['id'] ?>"
+                                                        <div class="file" id="div<?php echo $lecture_mcq['id'] ?>">
                                                             <a href="../upload/class/mcq/<?php echo $lecture_mcq['file_name'] ?>" target="_blank" class="file-link" title="file-name.pdf">
                                                                 <div class="file-thumbnail file-thumbnail-pdf">
 
@@ -213,7 +212,7 @@ $LECTURE_CLASS = new LectureClass($id);
                                                     foreach ($LECTURE_TUTORIALS->getTutorialsByLecture($_SESSION['id']) as $lecture_tutorials) {
                                                         ?>
 
-                                                        <div class="file" id="div<?php echo $lecture_tutorials['id'] ?>"
+                                                        <div class="file" id="div<?php echo $lecture_tutorials['id'] ?>">
                                                              <a href="../upload/class/tutorials/<?php echo $lecture_tutorials['file_name'] ?>" target="_blank" class="file-link" title="file-name.pdf">
                                                                 <div class="file-thumbnail file-thumbnail-pdf">
 
