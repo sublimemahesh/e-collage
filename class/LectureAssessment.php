@@ -11,13 +11,14 @@ class LectureAssessment {
     //put your code here
     public $id;
     public $lecture_id;
+    public $date;
     public $title;
     public $file_name;
 
     public function __construct($id) {
         if ($id) {
 
-            $query = "SELECT `id`,`lecture_id`,`title`,`file_name` FROM `lecture_assessment` WHERE `id`=" . $id;
+            $query = "SELECT * FROM `lecture_assessment` WHERE `id`=" . $id;
 
             $db = new Database();
 
@@ -25,6 +26,7 @@ class LectureAssessment {
 
             $this->id = $result['id'];
             $this->lecture_id = $result['lecture_id'];
+            $this->date = $result['date'];
             $this->title = $result['title'];
             $this->file_name = $result['file_name'];
 
@@ -34,7 +36,11 @@ class LectureAssessment {
 
     public function create() {
 
-        $query = "INSERT INTO `lecture_assessment` (`lecture_id`, `title`, `file_name`) VALUES  ('" . $this->lecture_id . "', '" . $this->title . "','" . $this->file_name . "')";
+        $query = "INSERT INTO `lecture_assessment` (`lecture_id`,`date`, `title`, `file_name`) VALUES  ('" 
+                . $this->lecture_id . "', '"
+                . $this->date . "', '"
+                . $this->title . "','" 
+                . $this->file_name . "')";
 
         $db = new Database();
 

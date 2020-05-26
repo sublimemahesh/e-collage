@@ -32,9 +32,9 @@ if (isset($_POST['create-mcq'])) {
         exit();
     } else {
 
-
         $LECTURE_MCQ->file_name = $imgName . '.pdf';
-        $LECTURE_MCQ->title = $_POST['title'];
+        $LECTURE_MCQ->title = ucwords($_POST['title']);
+        $LECTURE_MCQ->date = $_POST['date'];
         $LECTURE_MCQ->lecture_id = $_POST['lecture_id'];
 
 
@@ -77,7 +77,8 @@ if (isset($_POST['create-tutorials'])) {
 
 
         $LECTURE_TUTORIALS->file_name = $imgName . '.pdf';
-        $LECTURE_TUTORIALS->title = $_POST['title'];
+        $LECTURE_TUTORIALS->title = ucwords($_POST['title']);
+        $LECTURE_TUTORIALS->date = $_POST['date'];
         $LECTURE_TUTORIALS->lecture_id = $_POST['lecture_id'];
 
 
@@ -121,7 +122,8 @@ if (isset($_POST['create-assessment'])) {
 
 
         $LECTURE_ASSESSMENT->file_name = $imgName . '.pdf';
-        $LECTURE_ASSESSMENT->title = $_POST['title'];
+        $LECTURE_ASSESSMENT->title = ucwords($_POST['title']);
+        $LECTURE_ASSESSMENT->date = $_POST['date'];
         $LECTURE_ASSESSMENT->lecture_id = $_POST['lecture_id'];
 
 

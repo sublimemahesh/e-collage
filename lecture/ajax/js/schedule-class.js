@@ -21,6 +21,14 @@ $(document).ready(function () {
                 timer: 1500,
                 showConfirmButton: false
             });
+//        } else if (!$('#date').val() || $('#date').val().length === 0) {
+//            swal({
+//                title: "Error!",
+//                text: "Please select the class schedule day.!",
+//                type: 'error',
+//                timer: 1500,
+//                showConfirmButton: false
+//            });
         } else {
 
             $('.box').jmspinner('large');
@@ -35,7 +43,7 @@ $(document).ready(function () {
                 data: formData,
                 async: false,
                 dataType: 'json',
-                success: function (result) { 
+                success: function (result) {
 
                     $('.box').jmspinner(false);
                     $('.box').removeClass('well');
@@ -81,6 +89,14 @@ $(document).ready(function () {
                 timer: 1500,
                 showConfirmButton: false
             });
+//        } else if (!$('#date_1').val() || $('#date_1').val().length === 0) {
+//            swal({
+//                title: "Error!",
+//                text: "Please select the class schedule day.!",
+//                type: 'error',
+//                timer: 1500,
+//                showConfirmButton: false
+//            });
         } else {
 
             $('.box').jmspinner('large');
@@ -140,6 +156,16 @@ $(document).ready(function () {
                 timer: 1500,
                 showConfirmButton: false
             });
+
+//        } else if (!$('#date_2').val() || $('#date_2').val().length === 0) {
+//            swal({
+//                title: "Error!",
+//                text: "Please select the class schedule day.!",
+//                type: 'error',
+//                timer: 1500,
+//                showConfirmButton: false
+//            });
+
         } else {
 
             $('.box').jmspinner('large');

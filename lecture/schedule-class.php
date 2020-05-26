@@ -6,6 +6,14 @@ include_once(dirname(__FILE__) . '/auth.php');
 $id = '';
 $id = $_GET['id'];
 $LECTURE_CLASS = new LectureClass($id);
+
+$begin = new DateTime($LECTURE_CLASS->start_date);
+$date = new DateTime($LECTURE_CLASS->start_date);
+$days = ($LECTURE_CLASS->modules * 7);
+
+$end = $date->modify('+' . $days . ' day');
+$interval = DateInterval::createFromDateString('7 day');
+$PERIOD = new DatePeriod($begin, $interval, $end);
 ?>
 <html lang="en">
 
@@ -30,13 +38,12 @@ $LECTURE_CLASS = new LectureClass($id);
         <link rel="stylesheet" href="css/demo.min.css">
         <link href="css/sweetalert.css" rel="stylesheet" type="text/css"/>
         <link href="css/jm.spinner.css" rel="stylesheet" type="text/css"/>
-        
-        
+
+
     </head>
     <body class="layout layout-header-fixed">
         <div class="box"></div>
-        
-        
+
         <?php include './top-header.php'; ?>
         <div class="layout-main">
             <?php include './navigation.php'; ?>
@@ -69,6 +76,22 @@ $LECTURE_CLASS = new LectureClass($id);
                                                     <label class="col-sm-2 control-label " for="name" style="text-align: left">Video URL: </label>
                                                     <div class="col-sm-10">
                                                         <input id="name" name="name" class="form-control  " type="text"  placeholder="Enter Video URL "   >
+                                                    </div>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label class="col-sm-2 control-label " for="name" style="text-align: left">Select Date: </label>
+                                                    <div class="col-sm-10">
+
+                                                        <select  class="custom-select" id="district" name="district" required="">
+                                                            <option value="">-- Select schedule date -- </option>
+                                                            <?php
+                                                            foreach ($period as $dt) {
+                                                                ?>
+                                                                <option value=""><?php echo $dt->format("Y-m-d "); ?></option>   
+                                                                <?php
+                                                            }
+                                                            ?> 
+                                                        </select> 
                                                     </div>
                                                 </div>
 
@@ -120,7 +143,22 @@ $LECTURE_CLASS = new LectureClass($id);
                                                         <input id="pdf_file" name="pdf_file" class="form-control  " type="file"   >
                                                     </div>
                                                 </div>
+                                                <div class="form-group">
+                                                    <label class="col-sm-2 control-label " for="name" style="text-align: left">Select Date: </label>
+                                                    <div class="col-sm-10">
 
+                                                        <select  class="custom-select" id="date" name="date" required="">
+                                                            <option value="">-- Select schedule date -- </option>
+                                                            <?php
+                                                            foreach ($PERIOD as $date) {
+                                                                ?>
+                                                                <option value="<?php echo $date->format("Y-m-d"); ?>"><?php echo $date->format("Y-m-d "); ?></option>   
+                                                                <?php
+                                                            }
+                                                            ?> 
+                                                        </select> 
+                                                    </div>
+                                                </div>
                                                 <div class="form-group">
                                                     <div class="col-md-3"></div> 
                                                     <div class="col-md-3"></div> 
@@ -135,42 +173,55 @@ $LECTURE_CLASS = new LectureClass($id);
 
                                         </form>
 
-                                        <div class="card">
-                                            <div class="box-shadow">
-                                                <div class="card-header">
-                                                    <h5>
-                                                        <a  href="#" >
-                                                            Manage MCQ Papers<small> ( <?php echo $LECTURE_CLASS->start_date ?> )</small>
-                                                            <span class="fas-fa fa-chevron-down"> 
-                                                            </span> 
-                                                        </a>
-                                                    </h5>
-                                                    <hr>
-                                                    <?php
-                                                    $LECTURE_MCQ = new LectureMcq(NULL);
-                                                    foreach ($LECTURE_MCQ->getMcqByLecture($_SESSION['id']) as $lecture_mcq) {
-                                                        ?>
 
-                                                        <div class="file" id="div<?php echo $lecture_mcq['id'] ?>">
-                                                            <a href="../upload/class/mcq/<?php echo $lecture_mcq['file_name'] ?>" target="_blank" class="file-link" title="file-name.pdf">
-                                                                <div class="file-thumbnail file-thumbnail-pdf">
-
-                                                                </div>
-                                                                <div class="file-info">
-                                                                    <h5 style="padding:5px;"> <?php echo $lecture_mcq['title'] ?></h5>   
-                                                                </div>
-
+                                        <?php
+                                        foreach ($PERIOD as $date) {
+                                            $date_f = $date->format("Y-m-d");
+                                            ?>
+                                            <div class="card">
+                                                <div class="box-shadow">
+                                                    <div class="card-header"> 
+                                                        <h5>
+                                                            <a  href="#" >
+                                                                Manage MCQ Papers  - ( <?php echo $date_f ?> )
+                                                                <span class="fas-fa fa-chevron-down"> 
+                                                                </span> 
                                                             </a>
+                                                        </h5>
+                                                        <hr>
+                                                        <?php
+                                                        $LECTURE_MCQ = new LectureMcq(NULL);
+                                                        foreach ($LECTURE_MCQ->getMcqByLecture($_SESSION['id']) as $lecture_mcq) {
+                                                            if ($date_f == $lecture_mcq['date']) {
+                                                                ?>
 
-                                                            <button class="file-delete-btn delete delete-mcq" data-id=" <?php echo $lecture_mcq['id'] ?>" title="Delete" type="button">
-                                                                <span class="icon icon-remove"></span> 
-                                                            </button>
-                                                        </div>
+                                                                <div class="file" id="div<?php echo $lecture_mcq['id'] ?>">
+                                                                    <a href="../upload/class/mcq/<?php echo $lecture_mcq['file_name'] ?>" target="_blank" class="file-link" title="file-name.pdf">
+                                                                        <div class="file-thumbnail file-thumbnail-pdf">
 
-                                                    <?php } ?>
+                                                                        </div>
+                                                                        <div class="file-info">
+                                                                            <h5 style="padding:5px;"> <?php echo $lecture_mcq['title'] ?></h5>   
+                                                                        </div>
+
+                                                                    </a>
+
+                                                                    <button class="file-delete-btn delete delete-mcq" data-id=" <?php echo $lecture_mcq['id'] ?>" title="Delete" type="button">
+                                                                        <span class="icon icon-remove"></span> 
+                                                                    </button>
+                                                                </div>
+
+                                                                <?php
+                                                            }
+                                                        }
+                                                        ?>
+                                                    </div>
                                                 </div>
                                             </div>
-                                        </div>
+                                            <?php
+                                        }
+                                        ?> 
+
                                     </div>
                                     <div class="tab-pane fade" id="tutorials">
                                         <form class="demo-form-wrapper card " style="padding: 50px" id="form-tutorials">
@@ -188,6 +239,21 @@ $LECTURE_CLASS = new LectureClass($id);
                                                         <input id="pdf_file_1" name="pdf_file" class="form-control  " type="file"   >
                                                     </div>
                                                 </div>
+                                                <div class="form-group">
+                                                    <label class="col-sm-2 control-label " for="name" style="text-align: left">Select Date: </label>
+                                                    <div class="col-sm-10">
+                                                        <select  class="custom-select" id="date_1" name="date" >
+                                                            <option value="">-- Select schedule date -- </option>
+                                                            <?php
+                                                            foreach ($PERIOD as $date) {
+                                                                ?>
+                                                                <option value="<?php echo $date->format("Y-m-d"); ?>"><?php echo $date->format("Y-m-d"); ?></option>   
+                                                                <?php
+                                                            }
+                                                            ?> 
+                                                        </select> 
+                                                    </div>
+                                                </div>
 
                                                 <div class="form-group">
                                                     <div class="col-md-3"></div> 
@@ -201,44 +267,53 @@ $LECTURE_CLASS = new LectureClass($id);
                                                 </div>
                                             </div>
                                         </form>
-
-                                        <div class="card">
-                                            <div class="box-shadow">
-                                                <div class="card-header">
-                                                    <h5>
-                                                        <a  href="#" >
-                                                            Manage Tutorials Papers<small> ( <?php echo $LECTURE_CLASS->start_date ?> )</small>
-                                                            <span class="fas-fa fa-chevron-down"> 
-                                                            </span> 
-                                                        </a>
-                                                    </h5>
-                                                    <hr>
-                                                    <?php
-                                                    $LECTURE_TUTORIALS = new LectureTutorial(NULL);
-                                                    foreach ($LECTURE_TUTORIALS->getTutorialsByLecture($_SESSION['id']) as $lecture_tutorials) {
-                                                        ?>
-
-                                                        <div class="file" id="div_2<?php echo $lecture_tutorials['id'] ?>">
-                                                            <a href="../upload/class/tutorials/<?php echo $lecture_tutorials['file_name'] ?>" target="_blank" class="file-link" title="file-name.pdf">
-                                                                <div class="file-thumbnail file-thumbnail-pdf">
-
-                                                                </div>
-                                                                <div class="file-info">
-                                                                    <h5 style="padding:5px;"> <?php echo $lecture_tutorials['title'] ?></h5>   
-                                                                </div>
-
+                                        <?php
+                                        foreach ($PERIOD as $date) {
+                                            $date_f = $date->format("Y-m-d");
+                                            ?>
+                                            <div class="card">
+                                                <div class="box-shadow">
+                                                    <div class="card-header">
+                                                        <h5>
+                                                            <a  href="#" >
+                                                                Manage Tutorials Papers  - <?php echo $date_f ?>
+                                                                <span class="fas-fa fa-chevron-down"> 
+                                                                </span> 
                                                             </a>
+                                                        </h5>
+                                                        <hr>
+                                                        <?php
+                                                        $LECTURE_TUTORIALS = new LectureTutorial(NULL);
+                                                        foreach ($LECTURE_TUTORIALS->getTutorialsByLecture($_SESSION['id']) as $lecture_tutorials) {
+                                                            if ($date_f == $lecture_tutorials['date']) {
+                                                                ?>
 
-                                                            <button class="file-delete-btn delete delete-tutorials" data-id=" <?php echo $lecture_tutorials['id'] ?>" title="Delete" type="button">
-                                                                <span class="icon icon-remove"></span> 
-                                                            </button>
-                                                        </div>
+                                                                <div class="file" id="div_2<?php echo $lecture_tutorials['id'] ?>">
+                                                                    <a href="../upload/class/tutorials/<?php echo $lecture_tutorials['file_name'] ?>" target="_blank" class="file-link" title="file-name.pdf">
+                                                                        <div class="file-thumbnail file-thumbnail-pdf">
 
-                                                    <?php } ?>
+                                                                        </div>
+                                                                        <div class="file-info">
+                                                                            <h5 style="padding:5px;"> <?php echo $lecture_tutorials['title'] ?></h5>   
+                                                                        </div>
+
+                                                                    </a>
+
+                                                                    <button class="file-delete-btn delete delete-tutorials" data-id=" <?php echo $lecture_tutorials['id'] ?>" title="Delete" type="button">
+                                                                        <span class="icon icon-remove"></span> 
+                                                                    </button>
+                                                                </div>
+
+                                                                <?php
+                                                            }
+                                                        }
+                                                        ?>
+                                                    </div>
                                                 </div>
-                                            </div>
-                                        </div>
+                                            </div> 
+                                        <?php } ?>
                                     </div>
+
                                     <div class="tab-pane fade" id="assignment">
                                         <form class="demo-form-wrapper card " style="padding: 50px" id="form-assessment">
                                             <div class="form form-horizontal">
@@ -255,7 +330,22 @@ $LECTURE_CLASS = new LectureClass($id);
                                                         <input id="pdf_file_2" name="pdf_file" class="form-control  " type="file"   >
                                                     </div>
                                                 </div>
+                                                <div class="form-group">
+                                                    <label class="col-sm-2 control-label " for="name" style="text-align: left">Select Date: </label>
+                                                    <div class="col-sm-10">
 
+                                                        <select  class="custom-select" id="date_2" name="date"  >
+                                                            <option value="">-- Select schedule date -- </option>
+                                                            <?php
+                                                            foreach ($PERIOD as $date) {
+                                                                ?>
+                                                                <option value="<?php echo $date->format("Y-m-d"); ?>"><?php echo $date->format("Y-m-d"); ?></option>   
+                                                                <?php
+                                                            }
+                                                            ?> 
+                                                        </select> 
+                                                    </div>
+                                                </div>
                                                 <div class="form-group">
                                                     <div class="col-md-3"></div> 
                                                     <div class="col-md-3"></div> 
@@ -268,36 +358,45 @@ $LECTURE_CLASS = new LectureClass($id);
                                                 </div>
                                             </div>
                                         </form>
-                                        <div class="card">
-                                            <div class="box-shadow"> 
-                                                <div class="card-header">
-                                                    <h5>
-                                                        <a  href="#" >
-                                                            Manage Assessment  <small> ( <?php echo $LECTURE_CLASS->start_date ?> )</small>
-                                                            <span class="fas-fa fa-chevron-down"> 
-                                                            </span> 
-                                                        </a>
-                                                    </h5>
-                                                    <hr>
-                                                    <?php
-                                                    $LECTURE_ASSESSMENT = new LectureAssessment(NULL);
-                                                    foreach ($LECTURE_ASSESSMENT->getAssessmentByLecture($_SESSION['id']) as $lecture_assessment) {
+                                        <?php
+                                        foreach ($PERIOD as $date) {
+                                            $date_f = $date->format("Y-m-d");
+                                            ?>
+                                            <div class="card">
+                                                <div class="box-shadow"> 
+                                                    <div class="card-header">
+                                                        <h5>
+                                                            <a  href="#" >
+                                                                Manage Assessment - <?php echo $date_f ?> 
+                                                                <span class="fas-fa fa-chevron-down"> 
+                                                                </span> 
+                                                            </a>
+                                                        </h5>
+                                                        <hr>
+                                                        <?php
+                                                        $LECTURE_ASSESSMENT = new LectureAssessment(NULL);
+                                                        foreach ($LECTURE_ASSESSMENT->getAssessmentByLecture($_SESSION['id']) as $lecture_assessment) {
+                                                            if ($date_f == $lecture_assessment['date']) {
+                                                                ?>
+                                                                <div class="col-md-4 card " style="padding: 10px;margin: 10px;" id="div_3<?php echo $lecture_assessment['id'] ?>">
+                                                                    <div class="text-center">
+                                                                        <p>
+                                                                            <?php echo $lecture_assessment['title'] ?> 
+                                                                        </p> 
+                                                                        <a href="../upload/class/assessment/<?php echo $lecture_assessment['file_name'] ?>" target="_blank"  class="btn btn-success  " style="margin-bottom: 10px;">  VIEW ASSIGNMENT </a> | 
+                                                                        <a href="#" class="delete-lecture-assessment btn btn-sm btn-danger"  data-id="<?php echo $lecture_assessment['id'] ?>" style="margin-top: -8px;"><i class="waves-effect icon icon-trash" data-type="cancel"></i></a> 
+
+                                                                    </div>
+                                                                </div>
+                                                                <?php
+                                                            }
+                                                        }
                                                         ?>
-                                                    <div class="col-md-4 card " style="padding: 10px;margin: 10px;" id="div_3<?php echo $lecture_assessment['id'] ?>">
-                                                            <div class="text-center">
-                                                                <p>
-                                                                    <?php echo $lecture_assessment['title'] ?> 
-                                                                </p> 
-                                                                <a href="../upload/class/assessment/<?php echo $lecture_assessment['file_name'] ?>" target="_blank"  class="btn btn-success  " style="margin-bottom: 10px;">  VIEW ASSIGNMENT </a> | 
-                                                                <a href="#" class="delete-lecture-assessment btn btn-sm btn-danger"  data-id="<?php echo $lecture_assessment['id'] ?>" style="margin-top: -8px;"><i class="waves-effect icon icon-trash" data-type="cancel"></i></a> 
+                                                    </div>                                              
 
-                                                            </div>
-                                                        </div>
-                                                    <?php } ?>
-                                                </div>                                              
-
-                                            </div>
-                                        </div>
+                                                </div>
+                                            </div> 
+                                        <?php } ?>
                                     </div> 
                                 </div>
                             </div>              

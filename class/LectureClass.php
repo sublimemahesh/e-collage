@@ -16,7 +16,8 @@ class LectureClass {
     public $subject_id;
     public $start_date;
     public $start_time;
-    public $end_time; 
+    public $end_time;
+    public $modules;
     public $class_fee;
     public $queue;
 
@@ -38,6 +39,7 @@ class LectureClass {
             $this->start_date = $result['start_date'];
             $this->start_time = $result['start_time'];
             $this->end_time = $result['end_time'];
+            $this->modules = $result['modules'];
             $this->class_fee = $result['class_fee'];
             $this->queue = $result['queue'];
 
@@ -47,7 +49,7 @@ class LectureClass {
 
     public function create() {
 
-        $query = "INSERT INTO `lecture_class` (`name`,`city`,`lecture`,`class_type`,`subject_id`,`start_date`,`start_time`,`end_time`,`class_fee`,`queue`) VALUES  ('"
+        $query = "INSERT INTO `lecture_class` (`name`,`city`,`lecture`,`class_type`,`subject_id`,`start_date`,`start_time`,`end_time`,`modules`,`class_fee`,`queue`) VALUES  ('"
                 . $this->name . "', '"
                 . $this->city . "', '"
                 . $this->lecture . "', '"
@@ -56,6 +58,7 @@ class LectureClass {
                 . $this->start_date . "', '"
                 . $this->start_time . "', '"
                 . $this->end_time . "', '"
+                . $this->modules . "', '"
                 . $this->class_fee . "', '"
                 . $this->queue . "')";
 
@@ -96,12 +99,12 @@ class LectureClass {
                 . "`start_date` ='" . $this->start_date . "', "
                 . "`start_time` ='" . $this->start_time . "', "
                 . "`end_time` ='" . $this->end_time . "', "
+                . "`modules` ='" . $this->modules . "', "
                 . "`class_fee` ='" . $this->class_fee . "' "
                 . "WHERE `id` = '" . $this->id . "'";
-
-
-
+ 
         $db = new Database();
+        
         $result = $db->readQuery($query);
 
         if ($result) {
@@ -151,7 +154,8 @@ class LectureClass {
 
         return $array_res;
     }
-    public function getLectureClassesBySubjectAndLecture($id,$lecture) {
+
+    public function getLectureClassesBySubjectAndLecture($id, $lecture) {
 
         $query = "SELECT * FROM `lecture_class` WHERE `subject_id` = '" . $id . "' AND `lecture` = '" . $lecture . "'  ";
 
@@ -166,6 +170,5 @@ class LectureClass {
 
         return $array_res;
     }
-   
 
 }

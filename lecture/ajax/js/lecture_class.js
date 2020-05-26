@@ -46,6 +46,22 @@ $(document).ready(function () {
                 timer: 1500,
                 showConfirmButton: false
             });
+        } else if (!$('#lessons').val() || $('#lessons').val().length === 0) {
+            swal({
+                title: "Error!",
+                text: "Please enter number of class lessons..!",
+                type: 'error',
+                timer: 1500,
+                showConfirmButton: false
+            });
+        } else if (!$('#class_fee').val() || $('#class_fee').val().length === 0) {
+            swal({
+                title: "Error!",
+                text: "Please enter class class fee..!",
+                type: 'error',
+                timer: 1500,
+                showConfirmButton: false
+            });
         } else {
             var formData = new FormData($('#form-data')[0]);
             $.ajax({

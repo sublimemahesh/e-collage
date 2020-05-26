@@ -11,13 +11,14 @@ class LectureMcq {
     //put your code here
     public $id;
     public $lecture_id;
+    public $date;
     public $title;
     public $file_name;
 
     public function __construct($id) {
         if ($id) {
 
-            $query = "SELECT `id`,`lecture_id`,`title`,`file_name` FROM `lecture_mcq` WHERE `id`=" . $id;
+            $query = "SELECT * FROM `lecture_mcq` WHERE `id`=" . $id;
 
             $db = new Database();
 
@@ -25,6 +26,7 @@ class LectureMcq {
 
             $this->id = $result['id'];
             $this->lecture_id = $result['lecture_id'];
+            $this->date = $result['date'];
             $this->title = $result['title'];
             $this->file_name = $result['file_name'];
 
@@ -34,7 +36,11 @@ class LectureMcq {
 
     public function create() {
 
-        $query = "INSERT INTO `lecture_mcq` (`lecture_id`, `title`, `file_name`) VALUES  ('" . $this->lecture_id . "', '" . $this->title . "','" . $this->file_name . "')";
+        $query = "INSERT INTO `lecture_mcq` (`lecture_id`,`date`, `title`, `file_name`) VALUES  ('" 
+                . $this->lecture_id . "', '"
+                . $this->date . "', '"
+                . $this->title . "','" 
+                . $this->file_name . "')";
 
         $db = new Database();
 
@@ -89,7 +95,7 @@ class LectureMcq {
     public function getMcqByLecture($id) {
 
         $query = "SELECT * FROM `lecture_mcq` WHERE `lecture_id` = '" . $id . "'  ";
- 
+
         $db = new Database();
 
         $result = $db->readQuery($query);
@@ -98,7 +104,7 @@ class LectureMcq {
         while ($row = mysql_fetch_array($result)) {
             array_push($array_res, $row);
         }
-      
+
         return $array_res;
     }
 
