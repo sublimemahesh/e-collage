@@ -163,12 +163,17 @@ include './auth.php';
                                                 <label class="col-sm-2 control-label " for="title" style="text-align: left">End Time: </label>
 
                                                 <div class="col-sm-10">
-
                                                     <input id="end_time" name="end_time" class="form-control" type="text"  placeholder="Enter end time">
-
-                                                </div>
-
+                                                </div> 
                                             </div>
+                                            <div class="form-group">
+                                                <label class="col-sm-2 control-label " for="title" style="text-align: left">No Lessons: </label>
+
+                                                <div class="col-sm-10">
+                                                    <input id="lessons" name="lessons" class="form-control" type="number"  min="1" placeholder="Enter how many lessons ">
+                                                </div>
+                                            </div>
+
                                             <div class="form-group">
                                                 <label class="col-sm-2 control-label " for="title" style="text-align: left">Class Fee: </label>
                                                 <div class="col-sm-10">

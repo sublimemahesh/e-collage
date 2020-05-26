@@ -8,6 +8,7 @@ if (isset($_POST['create'])) {
     $LECTURE_CLASS = new LectureClass(NULL);
 
     $LECTURE_CLASS->lecture = $_POST['lecture'];
+    $LECTURE_CLASS->modules = $_POST['lessons'];
     $LECTURE_CLASS->name = ucwords($_POST['name']);
     $LECTURE_CLASS->city = $_POST['city'];
     $LECTURE_CLASS->class_type = $_POST['class_type'];
