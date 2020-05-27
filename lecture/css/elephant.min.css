@@ -11,7 +11,7 @@ html {
 body {
     margin: 0
 }
- 
+
 article,
 aside,
 details,
@@ -12585,7 +12585,7 @@ select.md-form-control option {
     margin-left: -35px;
     text-align: center;
     width: 20px;
-   
+
     font-weight: 600;
 }
 .sidenav .icon1 {
@@ -15916,4 +15916,9 @@ a:active {
         margin-left: 15%;
         z-index: 9999;
     }
+}
+.f-right{
+    font-weight: bold;
+    margin-top: 11px;
+    font-size: 18px;
 }
