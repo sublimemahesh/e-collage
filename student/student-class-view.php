@@ -7,6 +7,10 @@ $STUDENT_REGISTRATION = new StudentRegistration($id);
 $LECTURE_CLASS = new LectureClass($STUDENT_REGISTRATION->class_id);
 $LECTURE = new Lecture($STUDENT_REGISTRATION->lecture_id);
 
+date_default_timezone_set("Asia/Calcutta");
+$today_time = date('Y-m-d H:i:A');
+
+
 //set start time
 $start_time = $LECTURE_CLASS->start_date . ' ' . $LECTURE_CLASS->start_time;
 
@@ -43,6 +47,11 @@ $PERIOD = new DatePeriod($begin, $interval, $end);
         <link rel="stylesheet" href="css/application.min.css">
         <link rel="stylesheet" href="css/demo.min.css">
 
+
+        <link rel="stylesheet" href="assets/css/jquery.classycountdown.min.css"> 
+        <link rel="stylesheet" href="assets/css/main.css"> 
+        <script src="assets/js/vendor/modernizr-2.8.3-respond-1.4.2.min.js"></script>
+
     </head>
     <body class="layout layout-header-fixed">
 
@@ -54,8 +63,7 @@ $PERIOD = new DatePeriod($begin, $interval, $end);
                     <div class="row">
                         <div class="col-md-12"style="margin-top: 15px;">
                             <div class="col-md-12">
-                                <h3 style="text-align: center">  <span class="text-success">
-
+                                <h3 style="text-align: center">  <span class="text-success"> 
                                         <?php echo ucfirst($LECTURE_CLASS->name) ?></span> -   <?php echo $LECTURE->full_name ?> </h3>
                             </div>
 
@@ -68,32 +76,46 @@ $PERIOD = new DatePeriod($begin, $interval, $end);
                                     <li><a href="#assignment" data-toggle="tab">Assignment</a></li> 
                                 </ul>
                                 <div class="tab-content">
-                                    <div class="tab-pane fade active in" id="home">
+                                    <div class="tab-pane fade active in" id="home"> 
+                                        <div id="wrapper" class="white">
+                                            <div class="animated"> 
+                                                <div class="middle-area">
+                                                    <h4 class="text-center text-danger"><b>WAITING FOR YOUR NEXT CLASS SESSION..!</b></h4>
+                                                    <?php
+                                                    foreach ($PERIOD as $key => $date) {
 
-                                        <div class="row"> 
-                                            <div class="col-md-3"></div>
-                                            <div class="col-md-6">
-                                                <div class="middle">
-                                                    <h1 style="font-size:30px;text-align: center;">NEXT CLASS SESSION</h1> 
-                                                    <p id="demo" class="text-danger" style="font-size:30px;text-align: center;"></p>
-                                                </div>  
-                                            </div>
-                                            <div class="col-md-3"></div>
+                                                        $date_start = $date->format("M d, Y");
+                                                        $date_start_2 = $date->format("Y-m-d");
 
-                                        </div> 
+                                                        $date = $date_start . ' ' . substr($LECTURE_CLASS->start_time, 0, 5);
+
+                                                        if ($date_start_2 . $LECTURE_CLASS->start_time >= $today_time) {
+                                                            ?> 
+
+                                                            <div class="countdown"  data-end="<?php echo $date ?>"></div>
+                                                            <?php
+                                                            break;
+                                                        }
+                                                    }
+                                                    ?>
+                                                </div>
+                                              
+                                            </div>  
+                                        </div>
                                     </div>
+
                                     <div class="tab-pane fade" id="past_lesson">
                                         <?php
                                         foreach ($PERIOD as $date) {
-                                            $date_f = $date->format("Y-m-d");
+                                            $date_Start = $date->format("Y-m-d");
                                             ?>
-                                            <input type="hidden" class="date_view" value="<?php echo $date_f . ' ' . substr($LECTURE_CLASS->start_time, 0, 5) ?>" >
+                                            <input type="hidden" class="date_view" value="<?php echo $date_Start . ' ' . substr($LECTURE_CLASS->start_time, 0, 5) ?>" >
                                             <div class="card">
                                                 <a href="# "class="   card-toggler" title="Collapse">  
                                                     <div class="card-header  ">
                                                         <div class="col-md-8">
                                                             <h5>
-                                                                View Previous - <span class="text-success" ><b>( <?php echo $date_f ?> ) </b></span>
+                                                                View Previous - <span class="text-success" ><b>( <?php echo $date_Start ?> ) </b></span>
                                                                 <span class="fas-fa fa-chevron-down">   </span> 
                                                             </h5>
                                                         </div>
@@ -118,14 +140,14 @@ $PERIOD = new DatePeriod($begin, $interval, $end);
                                             <div class="col-md-12">
                                                 <?php
                                                 foreach ($PERIOD as $date) {
-                                                    $date_f = $date->format("Y-m-d");
+                                                    $date_Start = $date->format("Y-m-d");
                                                     ?>
                                                     <div class="card"> 
                                                         <a href="# "class="   card-toggler" title="Collapse">  
                                                             <div class="card-header  ">
                                                                 <div class="col-md-8">
                                                                     <h5>
-                                                                        Manage MCQ Papers  - <span class="text-success" ><b>( <?php echo $date_f ?> ) </b></span>
+                                                                        Manage MCQ Papers  - <span class="text-success" ><b>( <?php echo $date_Start ?> ) </b></span>
                                                                         <span class="fas-fa fa-chevron-down">   </span> 
                                                                     </h5>
                                                                 </div>
@@ -140,7 +162,7 @@ $PERIOD = new DatePeriod($begin, $interval, $end);
                                                             <?php
                                                             $LECTURE_MCQ = new LectureMcq(NULL);
                                                             foreach ($LECTURE_MCQ->getMcqByLecture($STUDENT_REGISTRATION->lecture_id) as $lecture_mcq) {
-                                                                if ($date_f == $lecture_mcq['date']) {
+                                                                if ($date_Start == $lecture_mcq['date']) {
                                                                     ?>
 
                                                                     <div class="file" id="div<?php echo $lecture_mcq['id'] ?>">
@@ -175,14 +197,14 @@ $PERIOD = new DatePeriod($begin, $interval, $end);
                                     <div class="tab-pane fade" id="tutorials"> 
                                         <?php
                                         foreach ($PERIOD as $date) {
-                                            $date_f = $date->format("Y-m-d");
+                                            $date_Start = $date->format("Y-m-d");
                                             ?>
                                             <div class="card">
                                                 <a href="# "class="   card-toggler" title="Collapse">  
                                                     <div class="card-header  ">
                                                         <div class="col-md-8">
                                                             <h5>
-                                                                Manage Tutorials Papers   - <span class="text-success" ><b>( <?php echo $date_f ?> ) </b></span>
+                                                                Manage Tutorials Papers   - <span class="text-success" ><b>( <?php echo $date_Start ?> ) </b></span>
                                                                 <span class="fas-fa fa-chevron-down">   </span> 
                                                             </h5>
                                                         </div>
@@ -198,7 +220,7 @@ $PERIOD = new DatePeriod($begin, $interval, $end);
                                                     <?php
                                                     $LECTURE_TUTORIALS = new LectureTutorial(NULL);
                                                     foreach ($LECTURE_TUTORIALS->getTutorialsByLecture($STUDENT_REGISTRATION->lecture_id) as $lecture_tutorials) {
-                                                        if ($date_f == $lecture_tutorials['date']) {
+                                                        if ($date_Start == $lecture_tutorials['date']) {
                                                             ?>
 
                                                             <div class="file" id="div_2<?php echo $lecture_tutorials['id'] ?>">
@@ -230,7 +252,7 @@ $PERIOD = new DatePeriod($begin, $interval, $end);
 
                                         <?php
                                         foreach ($PERIOD as $date) {
-                                            $date_f = $date->format("Y-m-d");
+                                            $date_Start = $date->format("Y-m-d");
                                             ?>
 
                                             <div class="card">
@@ -238,7 +260,7 @@ $PERIOD = new DatePeriod($begin, $interval, $end);
                                                     <div class="card-header  ">
                                                         <div class="col-md-8">
                                                             <h5>
-                                                                Manage Assessment   - <span class="text-success" ><b>( <?php echo $date_f ?> ) </b></span>
+                                                                Manage Assessment   - <span class="text-success" ><b>( <?php echo $date_Start ?> ) </b></span>
                                                                 <span class="fas-fa fa-chevron-down">   </span> 
                                                             </h5>
                                                         </div>
@@ -254,7 +276,7 @@ $PERIOD = new DatePeriod($begin, $interval, $end);
                                                     <?php
                                                     $LECTURE_ASSESSMENT = new LectureAssessment(NULL);
                                                     foreach ($LECTURE_ASSESSMENT->getAssessmentByLecture($STUDENT_REGISTRATION->lecture_id) as $lecture_assessment) {
-                                                        if ($date_f == $lecture_assessment['date']) {
+                                                        if ($date_Start == $lecture_assessment['date']) {
                                                             ?>
                                                             <div class="col-md-4 card " style="padding: 10px;margin: 10px;" id="div_3<?php echo $lecture_assessment['id'] ?>">
                                                                 <div class="text-center">
@@ -284,44 +306,23 @@ $PERIOD = new DatePeriod($begin, $interval, $end);
         <?php include './footer.php'; ?>
     </div>
 
+
     <script src="js/vendor.min.js"></script>
     <script src="js/elephant.min.js"></script>
     <script src="js/application.min.js"></script>
     <script src="js/demo.min.js"></script>
     <script src="ajax/js/check-login.js" type="text/javascript"></script>
-    <script>
-// Set the date we're counting down to
-      
-            var countDownDate = new Date('2020-05-28').getTime();
 
-// Update the count down every 1 second
-            var countdownfunction = setInterval(function () {
 
-                // Get todays date and time
-                var now = new Date().getTime();
+    <script src="assets/js/vendor/jQuery-1.12.1.min.js"></script>
+    <script src="assets/js/bootstrap.min.js"></script>
+    <script src="assets/js/jquery.classycountdown.min.js"></script>
+    <script src="assets/js/jquery.knob.js"></script>
+    <script src="assets/js/jquery.throttle.js"></script>
 
-                // Find the distance between now an the count down date
-                var distance = countDownDate - now;
+    <script src="assets/js/main.js"></script>
 
-                // Time calculations for days, hours, minutes and seconds
-                var days = Math.floor(distance / (1000 * 60 * 60 * 24));
-                var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-                var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-                var seconds = Math.floor((distance % (1000 * 60)) / 1000);
 
-                // Output the result in an element with id="demo"
-                document.getElementById("demo").innerHTML = days + "<span class='text-success f-14'>Days</span>  " + hours + "<span class='text-success f-14'>Hours</span>  "
-                        + minutes + "<span class='text-success f-14'>Minutes</span>  " + seconds + "<span class='text-success f-14'>Seconds</span>";
-
-                // If the count down is over, write some text 
-                if (distance < 0) {
-                    clearInterval(countdownfunction);
-                    document.getElementById("demo").innerHTML = "Now Start Your Class";
-                }
-            }, 1000);
-      
-
-    </script>
 </body>
 
 </html>
