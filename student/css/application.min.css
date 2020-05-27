@@ -636,9 +636,9 @@ html {
     outline: 0
 }
 
-.card-toggler:before {
+/*.card-toggler:before {
     content: "\f078"
-}
+}*/
 
 .card-reload:before {
     content: "\f0e2"
@@ -656,9 +656,9 @@ html {
     border: none
 }
 
-.card-collapsed .card-toggler:before {
+/*.card-collapsed .card-toggler:before {
     content: "\f077"
-}
+}*/
 
 .card-focused {
     bottom: 0;

@@ -255,12 +255,19 @@ $LECTURE_CLASS = new LectureClass($id);
             });
 
             $(function () {
-                $('#start_time').timepicker({'scrollDefault': 'now'});
+                $('#start_time').timepicker({'scrollDefault': 'now',
+                    'forceRoundTime': true,
+                    'timeFormat': 'H:i:A'
+                });
             });
 
             $(function () {
-                $('#end_time').timepicker({'scrollDefault': 'now'});
+                $('#end_time').timepicker({'scrollDefault': 'now', 'forceRoundTime': true,
+                'timeFormat': 'H:i:A'});
             });
+
+           
+            
         </script> 
 
         <script src="ajax/js/city.js" type="text/javascript"></script>
