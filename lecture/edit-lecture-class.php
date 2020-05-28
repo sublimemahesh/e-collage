@@ -207,6 +207,13 @@ $LECTURE_CLASS = new LectureClass($id);
                                                 </div>
                                             </div>
                                             <div class="form-group">
+                                                <label class="col-sm-2 control-label " for="title" style="text-align: left">No Lessons: </label>
+
+                                                <div class="col-sm-10">
+                                                    <input id="lessons" name="lessons" class="form-control" type="number"  min="1" placeholder="Enter how many lessons ">
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
                                                 <label class="col-sm-2 control-label " for="title" style="text-align: left">Class Fee: </label>
                                                 <div class="col-sm-10">
                                                     <input id="class_fee" name="class_fee" class="form-control" type="text"   placeholder="Enter your Course Fee" value="<?php echo $LECTURE_CLASS->class_fee ?>">
@@ -263,11 +270,11 @@ $LECTURE_CLASS = new LectureClass($id);
 
             $(function () {
                 $('#end_time').timepicker({'scrollDefault': 'now', 'forceRoundTime': true,
-                'timeFormat': 'H:i:A'});
+                    'timeFormat': 'H:i:A'});
             });
 
-           
-            
+
+
         </script> 
 
         <script src="ajax/js/city.js" type="text/javascript"></script>

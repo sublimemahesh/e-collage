@@ -133,92 +133,36 @@
                 </div>
                 <div class="row text-center" style="margin-top: 20px;">
                     <div class="slick-features-teachers">
+                        
+                         <?php
+                    $LECTURE = new Lecture(NULL);
+                    foreach ($LECTURE->all() as $lecture) {
+                        ?>
                         <div class="col-md-2 col-sm-4 col-xs-6">	
                             <div class="teacher">
                                 <div class="imgcontainer">
-                                    <img src="assets/images/client-1.jpg" alt="Avatar" class="img-responsive img-circle" style="width: 100%">
-                                    <div class="overlay">
-                                        <img src="assets/images/avatars/profile.png" alt="Profile">
-                                        <p>8 VIDEOS</p>
-                                    </div>
-                                </div>
-                                <a href="#">Dileshka  Senaratne</a>
-                                <p>SCIENTIST</p>
-                            </div>
-                        </div>
-                        <div class="col-md-2 col-sm-4 col-xs-6">	
-                            <div class="teacher">
-                                <div class="imgcontainer">
-                                    <img src="assets/images/client-2.jpg" alt="Avatar" class="img-responsive img-circle" style="width: 100%">
-                                    <div class="overlay">
-                                        <img src="assets/images/avatars/profile.png" alt="Profile">
-                                        <p>8 VIDEOS</p>
-                                    </div>
-                                </div>
-                                <a href="#">Harsha  Weerarathne</a>
-                                <p>Finance </p>
-                            </div>
-                        </div>
-                        <div class="col-md-2 col-sm-4 col-xs-6">	
-                            <div class="teacher">
-                                <div class="imgcontainer">
-                                    <img src="assets/images/client-3.png" alt="Avatar" class="img-responsive img-circle" style="width: 100%">
+                                    <?php
+                                    if (empty($lecture['image_name'])) {
+                                        ?>
+                                        <img src="assets/member.jpg" alt="Avatar" class="img-responsive">
+                                    <?php } else { ?>
+                                        <img src="upload/lecture/profile/<?php echo $lecture['image_name'] ?>" alt="<?php echo $lecture['full_name'] ?>" class="img-responsive">
 
-                                    <div class="overlay">
+                                    <?php } ?>
+                                     <div class="overlay">
                                         <img src="assets/images/avatars/profile.png" alt="Profile">
                                         <p>8 VIDEOS</p>
                                     </div>
                                 </div>
-                                <a href="#">Chamila  Gajasinghe</a>
-                                <p>English</p>
+                                <a href="#"><?php echo $lecture['full_name'] ?></a>
+                                <p><?php echo $lecture['email'] ?></p>
                             </div>
                         </div>
-                        <div class="col-md-2 col-sm-4 col-xs-6">	
-                            <div class="teacher">
-                                <div class="imgcontainer">
-                                    <img src="assets/images/client-4.PNG" alt="Avatar" class="img-responsive img-circle" style="width: 100%">
-
-                                    <div class="overlay">
-                                        <img src="assets/images/avatars/profile.png" alt="Profile">
-                                        <p>8 VIDEOS</p>
-                                    </div>
-                                </div>
-                                <a href="#"> Eng. Geethike  Ranga</a>
-                                <p>java</p>
-                            </div>
-                        </div>
-                        <div class="col-md-2 col-sm-4 col-xs-6">	
-                            <div class="teacher">
-                                <div class="imgcontainer">
-                                    <img src="assets/images/client-5.jpg" alt="Avatar" class="img-responsive img-circle" style="width: 100%">
-
-                                    <div class="overlay">
-                                        <img src="assets/images/avatars/profile.png" alt="Profile">
-                                        <p>8 VIDEOS</p>
-                                    </div>
-                                </div>
-                                <a href="#">  Sugath  Nandasiri</a>
-                                <p>Spoken English</p>
-                            </div>
-                        </div>
-                        <div class="col-md-2 col-sm-4 col-xs-6">	
-                            <div class="teacher">
-                                <div class="imgcontainer">
-                                    <img src="assets/images/client-6.jpg" alt="Avatar" class="img-responsive img-circle" style="width: 100%">
-
-                                    <div class="overlay">
-                                        <img src="assets/images/avatars/profile.png" alt="Profile">
-                                        <p>8 VIDEOS</p>
-                                    </div>
-                                </div>
-                                <a href="#">Anuththara  Bandara </a>
-                                <p>Cambridge & Local trained </p>
-                            </div>
-                        </div>
+                          <?php } ?>
                     </div>
                     <div class="row pros">	
                         <div class="col-sm-10 col-sm-offset-1 text-center"> 
-                            <a href="#" class="blueplay" style="color: black; ">CHECK ALL LECTURES</a>
+                            <a href="lectures.php" class="blueplay" style="color: black; ">CHECK ALL LECTURES</a>
                         </div>
                     </div>
                 </div>

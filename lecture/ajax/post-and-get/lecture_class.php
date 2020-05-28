@@ -8,7 +8,6 @@ if (isset($_POST['create'])) {
     $LECTURE_CLASS = new LectureClass(NULL);
 
     $LECTURE_CLASS->lecture = $_POST['lecture'];
-    $LECTURE_CLASS->modules = $_POST['lessons'];
     $LECTURE_CLASS->name = ucwords($_POST['name']);
     $LECTURE_CLASS->city = $_POST['city'];
     $LECTURE_CLASS->class_type = $_POST['class_type'];
@@ -16,6 +15,7 @@ if (isset($_POST['create'])) {
     $LECTURE_CLASS->start_date = $_POST['start_date'];
     $LECTURE_CLASS->start_time = $_POST['start_time'];
     $LECTURE_CLASS->end_time = $_POST['end_time'];
+    $LECTURE_CLASS->modules = $_POST['lessons'];
     $LECTURE_CLASS->class_fee = $_POST['class_fee'];
     $LECTURE_CLASS->create();
 
@@ -36,6 +36,7 @@ if (isset($_POST['update'])) {
     $LECTURE_CLASS->start_date = $_POST['start_date'];
     $LECTURE_CLASS->start_time = $_POST['start_time'];
     $LECTURE_CLASS->end_time = $_POST['end_time'];
+    $LECTURE_CLASS->modules = $_POST['lessons'];
     $LECTURE_CLASS->class_fee = $_POST['class_fee'];
     $LECTURE_CLASS->update();
 
@@ -58,7 +59,7 @@ if (isset($_POST['create-mcq'])) {
 
     if ($handle->uploaded) {
         $handle->file_dst_name = Helper::randamId();
-        $imgName = $handle->file_dst_name; 
+        $imgName = $handle->file_dst_name;
         $handle->file_new_name_body = $imgName;
         $handle->Process($dir_dest);
     }
@@ -77,7 +78,7 @@ if (isset($_POST['create-mcq'])) {
     } else {
 
 
-        $LECTURE_MCQ->file_name =  $imgName . '.pdf';
+        $LECTURE_MCQ->file_name = $imgName . '.pdf';
         $LECTURE_MCQ->title = $_POST['title'];
         $LECTURE_MCQ->lecture_id = $_POST['lecture_id'];
 
@@ -101,7 +102,7 @@ if (isset($_POST['create-tutorials'])) {
 
     if ($handle->uploaded) {
         $handle->file_dst_name = Helper::randamId();
-        $imgName = $handle->file_dst_name; 
+        $imgName = $handle->file_dst_name;
         $handle->file_new_name_body = $imgName;
         $handle->Process($dir_dest);
     }
@@ -120,7 +121,7 @@ if (isset($_POST['create-tutorials'])) {
     } else {
 
 
-        $LECTURE_TUTORIALS->file_name =  $imgName . '.pdf';
+        $LECTURE_TUTORIALS->file_name = $imgName . '.pdf';
         $LECTURE_TUTORIALS->title = $_POST['title'];
         $LECTURE_TUTORIALS->lecture_id = $_POST['lecture_id'];
 
