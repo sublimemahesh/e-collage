@@ -2,22 +2,14 @@
 
 include '../../../class/include.php';
 
+//Create home work
+if (isset($_POST['create-home-work'])) {
 
-
-//Update Student Details
-
-if (isset($_POST['upload-post-image'])) {
-
-    $dir_dest = '../../upload/post/';
+    $dir_dest = '../../../upload/home-work/';
     $imgName = Helper::randamId();
 
 
-    if ($_FILES['post-image']['name'] == '') {
-        $handle = new Upload($_FILES['upload-other-images']);
-    } else {
-        $handle = new Upload($_FILES['post-image']);
-    }
-
+    $handle = new Upload($_FILES['image']);
 
     if ($handle->uploaded) {
 
@@ -47,59 +39,34 @@ if (isset($_POST['upload-post-image'])) {
 
         if ($handle->processed) {
 
-            if ($_FILES['post-image']['name'] == '') {
-                $handle1 = new Upload($_FILES['upload-other-images']);
-            } else {
-                $handle1 = new Upload($_FILES['post-image']);
-            }
+            $handle1 = new Upload($_FILES['image']);
 
             if ($handle1->uploaded) {
                 $handle1->image_resize = true;
                 $handle1->file_new_name_ext = 'jpg';
                 $handle1->image_ratio_crop = 'C';
                 $handle1->file_new_name_body = $imgName;
-                $handle1->image_x = 500;
-                $handle1->image_y = 500;
+                $handle1->image_x = 320;
+                $handle1->image_y = 300;
                 $handle1->Process($dir_dest . '/thumb');
+
                 if ($handle1->processed) {
-                    if ($_FILES['post-image']['name'] == '') {
-                        $handle2 = new Upload($_FILES['upload-other-images']);
-                    } else {
-                        $handle2 = new Upload($_FILES['post-image']);
-                    }
-                    if ($handle2->uploaded) {
-                        $handle2->image_resize = true;
-                        $handle2->file_new_name_ext = 'jpg';
-                        $handle2->image_ratio_crop = 'C';
-                        $handle2->file_new_name_body = $imgName;
-                        $handle2->image_x = 100;
-                        $handle2->image_y = 100;
-                        $handle2->Process($dir_dest . '/thumb2');
-                        if ($handle2->processed) {
-                            $handle2->Clean();
-                            header('Content-Type: application/json');
-                            $result = [
-                                "filename" => $handle2->file_dst_name,
-                                "message" => 'success'
-                            ];
-                            echo json_encode($result);
-                            exit();
-                        } else {
-                            header('Content-Type: application/json');
-                            $result = [
-                                "message" => 'error2'
-                            ];
-                            echo json_encode($result);
-                            exit();
-                        }
-                    } else {
-                        header('Content-Type: application/json');
-                        $result = [
-                            "message" => 'error'
-                        ];
-                        echo json_encode($result);
-                        exit();
-                    }
+
+                    $imgName = $handle1->file_dst_name;
+
+                    $HOME_WORK = new HomeWork(NULL);
+                    $HOME_WORK->image_name = $imgName;
+                    $HOME_WORK->class_id = $_POST['class_id'];
+                    $HOME_WORK->title = $_POST['title'];
+                    $HOME_WORK->student_id = $_POST['student_id'];
+                    $HOME_WORK->create();
+                    
+                    header('Content-Type: application/json');
+                    $result = [
+                        "message" => 'success'
+                    ];
+                    echo json_encode($result);
+                    exit();
                 } else {
                     header('Content-Type: application/json');
                     $result = [
@@ -140,7 +107,7 @@ if (isset($_POST['upload-post-image-edit'])) {
     $dir_dest = '../../upload/post/';
     $imgName = Helper::randamId();
 
-        $handle = new Upload($_FILES['post-image-edit']);
+    $handle = new Upload($_FILES['post-image-edit']);
 
 
     if ($handle->uploaded) {
@@ -187,8 +154,6 @@ if (isset($_POST['upload-post-image-edit'])) {
                 if ($handle1->processed) {
 
                     $handle2 = new Upload($_FILES['post-image-edit']);
-
-
 
                     if ($handle2->uploaded) {
                         $handle2->image_resize = true;
