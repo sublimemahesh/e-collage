@@ -46,7 +46,9 @@ $PERIOD = new DatePeriod($begin, $interval, $end);
         <link rel="stylesheet" href="css/elephant.min.css">
         <link rel="stylesheet" href="css/application.min.css">
         <link rel="stylesheet" href="css/demo.min.css">
-
+        <link href="css/sweetalert.css" rel="stylesheet" type="text/css"/>
+        <link href="css/simplelightbox.min.css" rel="stylesheet" type="text/css"/>
+        <link href="css/jm.spinner.css" rel="stylesheet" type="text/css"/>
 
         <link rel="stylesheet" href="assets/css/jquery.classycountdown.min.css"> 
         <link rel="stylesheet" href="assets/css/main.css"> 
@@ -54,7 +56,7 @@ $PERIOD = new DatePeriod($begin, $interval, $end);
 
     </head>
     <body class="layout layout-header-fixed">
-
+        <div class="box"></div>
         <?php include './top-header.php'; ?>
         <div class="layout-main">
             <?php include './navigation.php'; ?>
@@ -74,6 +76,7 @@ $PERIOD = new DatePeriod($begin, $interval, $end);
                                     <li><a href="#mcq_papers" data-toggle="tab">MCQ Papers</a></li> 
                                     <li><a href="#tutorials" data-toggle="tab">Tutorials</a></li> 
                                     <li><a href="#assignment" data-toggle="tab">Assignment</a></li> 
+                                    <li><a href="#home_work" data-toggle="tab">Home Work</a></li> 
                                 </ul>
                                 <div class="tab-content">
                                     <div class="tab-pane fade active in" id="home"> 
@@ -99,11 +102,10 @@ $PERIOD = new DatePeriod($begin, $interval, $end);
                                                     }
                                                     ?>
                                                 </div>
-                                              
+
                                             </div>  
                                         </div>
-                                    </div>
-
+                                    </div> 
                                     <div class="tab-pane fade" id="past_lesson">
                                         <?php
                                         foreach ($PERIOD as $date) {
@@ -246,10 +248,8 @@ $PERIOD = new DatePeriod($begin, $interval, $end);
                                                 </div>
                                             </div>                                                                                    
                                         <?php } ?>
-                                    </div>
-
+                                    </div> 
                                     <div class="tab-pane fade" id="assignment">
-
                                         <?php
                                         foreach ($PERIOD as $date) {
                                             $date_Start = $date->format("Y-m-d");
@@ -296,6 +296,56 @@ $PERIOD = new DatePeriod($begin, $interval, $end);
                                             </div>  
                                         <?php } ?>
                                     </div> 
+                                    <div class="tab-pane fade" id="home_work">
+                                        <form class="demo-form-wrapper card " style="padding: 50px" id="form-data">
+                                            <div class="form form-horizontal"> 
+                                                <div class="form-group">
+                                                    <label class="col-sm-1 control-label " for="name" style="text-align: left"> Title: </label>
+                                                    <div class="col-sm-11">
+                                                        <input id="title" name="title" class="form-control  " type="text"  placeholder="Enter Title "   >
+                                                    </div>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label class="col-sm-1 control-label " for="name" style="text-align: left">Image: </label>
+                                                    <div class="col-sm-11">
+                                                        <input id="image" name="image" class="form-control  " type="file"   >
+                                                    </div>
+                                                </div>
+
+                                                <div class="form-group">
+                                                    <div class="col-md-3"></div> 
+                                                    <div class="col-md-3"></div> 
+                                                    <div class="col-md-4"></div> 
+                                                    <div class="col-md-2">  
+                                                        <input type="hidden"  name="create-home-work">
+                                                        <input type="hidden"  name="class_id"  value="<?php echo $LECTURE_CLASS->id ?>" >
+                                                        <input type="hidden"  name="student_id"  value="<?php echo $_SESSION['id'] ?>" >
+                                                        <input type="submit" class="btn btn-primary btn-block"   value="Submit" id="create" >
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                        </form>
+                                        <?php
+                                        $HOME_WORK = new HomeWork(NULL);
+                                        foreach ($HOME_WORK->getHomeWorkByStudent($_SESSION['id']) as $home_work) {
+                                            ?>
+                                            <div class="col-md-4">
+                                                <div class="card">
+                                                    <div class="card-header  ">
+                                                        <h5>
+                                                            <?php echo $home_work['title'] ?>
+                                                        </h5>
+                                                        <div class="gallery"> 
+                                                            <a href="../upload/home-work/<?php echo $home_work['image_name'] ?>" class="big">
+                                                                <img src="../upload/home-work/thumb/<?php echo $home_work['image_name'] ?>" alt="<?php echo $home_work['title'] ?>" title="<?php echo $home_work['title'] ?>" />
+                                                            </a>
+                                                        </div>
+                                                    </div> 
+                                                </div> 
+                                            </div>  
+                                        <?php } ?>
+                                    </div> 
                                 </div>
                             </div> 
                         </div>              
@@ -303,26 +353,74 @@ $PERIOD = new DatePeriod($begin, $interval, $end);
                 </div>
             </div>
         </div>
-        <?php include './footer.php'; ?>
+
     </div>
 
 
     <script src="js/vendor.min.js"></script>
     <script src="js/elephant.min.js"></script>
     <script src="js/application.min.js"></script>
-    <script src="js/demo.min.js"></script>
-    <script src="ajax/js/check-login.js" type="text/javascript"></script>
-
-
+    <script src="js/demo.min.js"></script> 
     <script src="assets/js/vendor/jQuery-1.12.1.min.js"></script>
     <script src="assets/js/bootstrap.min.js"></script>
     <script src="assets/js/jquery.classycountdown.min.js"></script>
     <script src="assets/js/jquery.knob.js"></script>
     <script src="assets/js/jquery.throttle.js"></script>
-
     <script src="assets/js/main.js"></script>
+    <script src="js/sweetalert.min.js" type="text/javascript"></script>
+    <script src="js/simple-lightbox.min.js" type="text/javascript"></script>
+    <script src="js/jm.spinner.js" type="text/javascript"></script>
+
+    <script src="ajax/js/check-login.js" type="text/javascript"></script>
+    <script src="ajax/js/home-work.js" type="text/javascript"></script>
 
 
+    <script>
+        $(function () {
+            var $gallery = $('.gallery a').simpleLightbox();
+
+            $gallery.on('show.simplelightbox', function () {
+                console.log('Requested for showing');
+            })
+                    .on('shown.simplelightbox', function () {
+                        console.log('Shown');
+                    })
+                    .on('close.simplelightbox', function () {
+                        console.log('Requested for closing');
+                    })
+                    .on('closed.simplelightbox', function () {
+                        console.log('Closed');
+                    })
+                    .on('change.simplelightbox', function () {
+                        console.log('Requested for change');
+                    })
+                    .on('next.simplelightbox', function () {
+                        console.log('Requested for next');
+                    })
+                    .on('prev.simplelightbox', function () {
+                        console.log('Requested for prev');
+                    })
+                    .on('nextImageLoaded.simplelightbox', function () {
+                        console.log('Next image loaded');
+                    })
+                    .on('prevImageLoaded.simplelightbox', function () {
+                        console.log('Prev image loaded');
+                    })
+                    .on('changed.simplelightbox', function () {
+                        console.log('Image changed');
+                    })
+                    .on('nextDone.simplelightbox', function () {
+                        console.log('Image changed to next');
+                    })
+                    .on('prevDone.simplelightbox', function () {
+                        console.log('Image changed to prev');
+                    })
+                    .on('error.simplelightbox', function (e) {
+                        console.log('No image found, go to the next/prev');
+                        console.log(e);
+                    });
+        });
+    </script>
 </body>
 
 </html>
