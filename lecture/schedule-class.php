@@ -38,7 +38,7 @@ $PERIOD = new DatePeriod($begin, $interval, $end);
         <link rel="stylesheet" href="css/demo.min.css">
         <link href="css/sweetalert.css" rel="stylesheet" type="text/css"/>
         <link href="css/jm.spinner.css" rel="stylesheet" type="text/css"/>
-
+        <link href="css/simplelightbox.min.css" rel="stylesheet" type="text/css"/>
 
     </head>
     <body class="layout layout-header-fixed">
@@ -61,6 +61,7 @@ $PERIOD = new DatePeriod($begin, $interval, $end);
                                     <li><a href="#mcq_papers" data-toggle="tab">MCQ Papers</a></li> 
                                     <li><a href="#tutorials" data-toggle="tab">Tutorials</a></li> 
                                     <li><a href="#assignment" data-toggle="tab">Assignment</a></li> 
+                                    <li><a href="#home_work" data-toggle="tab">Home Work</a></li> 
                                 </ul>
                                 <div class="tab-content">
                                     <div class="tab-pane fade active in" id="home">
@@ -432,6 +433,32 @@ $PERIOD = new DatePeriod($begin, $interval, $end);
                                             </div>  
                                         <?php } ?>
                                     </div> 
+
+                                    <div class="tab-pane fade" id="home_work">
+
+                                        <?php
+                                        $HOME_WORK = new HomeWork(NULL);
+                                        foreach ($HOME_WORK->getHomeWorkByClassId($id) as $home_work) {
+                                            ?>
+                                            <div class="col-md-4">
+                                                <div class="card">
+                                                    <div class="card-header  ">
+                                                        <h5>
+                                                            <?php echo $home_work['title'] ?>- <span class="text-success"><b><?php 
+                                                            $STUDENT = new Student($home_work['student_id']);
+                                                            echo $STUDENT->full_name;
+                                                            ?></b></span>
+                                                        </h5>
+                                                        <div class="gallery"> 
+                                                            <a href="../upload/home-work/<?php echo $home_work['image_name'] ?>" class="big">
+                                                                <img src="../upload/home-work/thumb/<?php echo $home_work['image_name'] ?>" alt="<?php echo $home_work['title'] ?>"  />
+                                                            </a>
+                                                        </div>
+                                                    </div> 
+                                                </div> 
+                                            </div>  
+                                        <?php } ?>
+                                    </div> 
                                 </div>
                             </div>              
                         </div>            
@@ -451,6 +478,54 @@ $PERIOD = new DatePeriod($begin, $interval, $end);
         <script src="delete/js/lecture-tutorial.js" type="text/javascript"></script>
         <script src="delete/js/lecture-assessment.js" type="text/javascript"></script>
         <script src="js/jm.spinner.js" type="text/javascript"></script>
+        <script src="js/simple-lightbox.min.js" type="text/javascript"></script>
+    
+        <script>
+            $(function () {
+                var $gallery = $('.gallery a').simpleLightbox();
+
+                $gallery.on('show.simplelightbox', function () {
+                    console.log('Requested for showing');
+                })
+                        .on('shown.simplelightbox', function () {
+                            console.log('Shown');
+                        })
+                        .on('close.simplelightbox', function () {
+                            console.log('Requested for closing');
+                        })
+                        .on('closed.simplelightbox', function () {
+                            console.log('Closed');
+                        })
+                        .on('change.simplelightbox', function () {
+                            console.log('Requested for change');
+                        })
+                        .on('next.simplelightbox', function () {
+                            console.log('Requested for next');
+                        })
+                        .on('prev.simplelightbox', function () {
+                            console.log('Requested for prev');
+                        })
+                        .on('nextImageLoaded.simplelightbox', function () {
+                            console.log('Next image loaded');
+                        })
+                        .on('prevImageLoaded.simplelightbox', function () {
+                            console.log('Prev image loaded');
+                        })
+                        .on('changed.simplelightbox', function () {
+                            console.log('Image changed');
+                        })
+                        .on('nextDone.simplelightbox', function () {
+                            console.log('Image changed to next');
+                        })
+                        .on('prevDone.simplelightbox', function () {
+                            console.log('Image changed to prev');
+                        })
+                        .on('error.simplelightbox', function (e) {
+                            console.log('No image found, go to the next/prev');
+                            console.log(e);
+                        });
+            });
+        </script>
     </body>
 
 </html>

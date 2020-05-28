@@ -353,7 +353,7 @@ $PERIOD = new DatePeriod($begin, $interval, $end);
                 </div>
             </div>
         </div>
-
+        <input type="hidden" value="<?php echo $_SESSION['id'] ?>" id="student_id">
     </div>
 
 
