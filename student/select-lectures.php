@@ -56,9 +56,9 @@ $id = $_GET['id'];
                                                     <?php
                                                     if (empty($LECTURES->image_name)) {
                                                         ?>
-                                                        <img class="card-img-top img-responsive" src="img/member.jpg" alt=""<?php echo $LECTURES->full_name ?>" style="width: 100%">
+                                                        <img class="card-img-top img-responsive" src="img/member.jpg" alt="<?php echo $LECTURES->full_name ?>" style="width: 100%">
                                                     <?php } else { ?>
-                                                        <img class="card-img-top img-responsive" src="upload/lecture/profile/<?php echo $LECTURES->image_name ?>" alt="<?php echo $LECTURES->full_name ?>" style="width: 100%">
+                                                        <img class="card-img-top img-responsive" src="../upload/lecture/profile/<?php echo $LECTURES->image_name ?>" alt="<?php echo $LECTURES->full_name ?>" style="width: 100%">
                                                     <?php } ?>
                                                 </a>
 

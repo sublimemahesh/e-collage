@@ -11,6 +11,7 @@ class LectureAssessment {
     //put your code here
     public $id;
     public $lecture_id;
+    public $class_id;
     public $date;
     public $title;
     public $file_name;
@@ -26,6 +27,7 @@ class LectureAssessment {
 
             $this->id = $result['id'];
             $this->lecture_id = $result['lecture_id'];
+            $this->class_id = $result['class_id'];
             $this->date = $result['date'];
             $this->title = $result['title'];
             $this->file_name = $result['file_name'];
@@ -36,8 +38,9 @@ class LectureAssessment {
 
     public function create() {
 
-        $query = "INSERT INTO `lecture_assessment` (`lecture_id`,`date`, `title`, `file_name`) VALUES  ('" 
+        $query = "INSERT INTO `lecture_assessment` (`lecture_id`,`class_id`,`date`, `title`, `file_name`) VALUES  ('" 
                 . $this->lecture_id . "', '"
+                . $this->class_id . "', '"
                 . $this->date . "', '"
                 . $this->title . "','" 
                 . $this->file_name . "')";
@@ -92,9 +95,9 @@ class LectureAssessment {
         return $db->readQuery($query);
     }
 
-    public function getAssessmentByLecture($id) {
+    public function getAssessmentByClassId($id,$date) {
 
-        $query = "SELECT * FROM `lecture_assessment` WHERE `lecture_id` = '" . $id . "'  ";
+        $query = "SELECT * FROM `lecture_assessment` WHERE `class_id` = '" . $id . "'   AND `date` = '" . $date . "' ";
  
         $db = new Database();
 

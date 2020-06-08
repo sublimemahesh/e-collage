@@ -2,13 +2,13 @@
 <?php
 include '../class/include.php';
 include_once(dirname(__FILE__) . '/auth.php');
-$id = $_GET['id'];
-$STUDENT_REGISTRATION = new StudentRegistration($id);
-$LECTURE_CLASS = new LectureClass($STUDENT_REGISTRATION->class_id);
-$LECTURE = new Lecture($STUDENT_REGISTRATION->lecture_id);
+$id = $_GET['id']; 
+$LECTURE_CLASS = new LectureClass($id);
+$LECTURE = new Lecture($LECTURE_CLASS->lecture);
 
 date_default_timezone_set("Asia/Calcutta");
 $today_time = date('Y-m-d H:i:A');
+$today = date('Y-m-d');
 
 
 //set start time
@@ -99,8 +99,6 @@ $PERIOD = new DatePeriod($begin, $interval, $end);
                                                             <div class="countdown"  data-end="<?php echo $date ?>"></div>
                                                             <?php
                                                             break;
-                                                        } else if ($date_start_2 . $LECTURE_CLASS->start_time == $today_time) {
-                                                            echo '<p>testesfdsfddsa </p>';
                                                         }
                                                     }
                                                     ?>
@@ -112,29 +110,45 @@ $PERIOD = new DatePeriod($begin, $interval, $end);
                                         <?php
                                         foreach ($PERIOD as $date) {
                                             $date_Start = $date->format("Y-m-d");
-                                            ?>
-                                            <input type="hidden" class="date_view" value="<?php echo $date_Start . ' ' . substr($LECTURE_CLASS->start_time, 0, 5) ?>" >
-                                            <div class="card">
-                                                <a href="# "class="   card-toggler" title="Collapse">  
-                                                    <div class="card-header  ">
-                                                        <div class="col-md-8">
-                                                            <h5>
-                                                                View Previous - <span class="text-success" ><b>( <?php echo $date_Start ?> ) </b></span>
-                                                                <span class="fas-fa fa-chevron-down">   </span> 
-                                                            </h5>
+                                            if ($date_Start < $today) {
+                                                ?>
+                                                <input type="hidden" class="date_view" value="<?php echo $date_Start . ' ' . substr($LECTURE_CLASS->start_time, 0, 5) ?>" >
+                                                <div class="card">
+                                                    <a href="# "class="   card-toggler" title="Collapse">  
+                                                        <div class="card-header  ">
+                                                            <div class="col-md-8">
+                                                                <h5>
+                                                                    View Previous - <span class="text-success" ><b>( <?php echo $date_Start ?> ) </b></span>
+                                                                    <span class="fas-fa fa-chevron-down">   </span> 
+                                                                </h5>
+                                                            </div>
+                                                            <div class="col-md-4">
+                                                                <span class=" icon icon-angle-down pull-right f-right"></span>
+                                                            </div> 
                                                         </div>
-                                                        <div class="col-md-4">
-                                                            <span class=" icon icon-angle-down pull-right f-right"></span>
-                                                        </div> 
-                                                    </div>
-                                                </a> 
+                                                    </a> 
 
-                                                <div class="card-body" style="display: none;">
-                                                    <hr style="margin: 0px 0px 20px 0px;">
-                                                    <iframe width="100%" height="500" src="https://www.youtube.com/embed/h04Hj6sb1qg" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-                                                </div>
-                                            </div>  
-                                        <?php } ?>
+                                                    <div class="card-body" style="display: none;">
+                                                        <hr style="margin: 0px 0px 20px 0px;">
+                                                        <?php
+                                                        $LECTURE_VIDEO = new LectureVideo(NULL);
+
+                                                        if (count($LECTURE_VIDEO->getVideoByClass($id, $date_Start)) > 0) {
+                                                            foreach ($LECTURE_VIDEO->getVideoByClass($id, $date_Start) as $lecture_video) {
+                                                                ?>
+                                                                <iframe width="100%" height="500" src="https://www.youtube.com/embed/<?php echo $lecture_video['url'] ?>" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                                                                <?php
+                                                            }
+                                                        } else {
+                                                            ?>
+                                                            <h4 class="text-danger text-center"> No Video Available</h4>
+                                                        <?php } ?>
+                                                    </div>
+                                                </div>  
+                                                <?php
+                                            }
+                                        }
+                                        ?>
 
 
                                     </div>
@@ -145,53 +159,58 @@ $PERIOD = new DatePeriod($begin, $interval, $end);
                                                 <?php
                                                 foreach ($PERIOD as $date) {
                                                     $date_Start = $date->format("Y-m-d");
-                                                    ?>
-                                                    <div class="card"> 
-                                                        <a href="# "class="   card-toggler" title="Collapse">  
-                                                            <div class="card-header  ">
-                                                                <div class="col-md-8">
-                                                                    <h5>
-                                                                        Manage MCQ Papers  - <span class="text-success" ><b>( <?php echo $date_Start ?> ) </b></span>
-                                                                        <span class="fas-fa fa-chevron-down">   </span> 
-                                                                    </h5>
-                                                                </div>
-                                                                <div class="col-md-4">
-                                                                    <span class=" icon icon-angle-down pull-right f-right"></span>
-                                                                </div> 
-                                                            </div>
-                                                        </a> 
-
-                                                        <div class="card-body" style="display: none;">
-                                                            <hr style="margin: 0px 0px 20px 0px;">
-                                                            <?php
-                                                            $LECTURE_MCQ = new LectureMcq(NULL);
-                                                            foreach ($LECTURE_MCQ->getMcqByLecture($STUDENT_REGISTRATION->lecture_id) as $lecture_mcq) {
-                                                                if ($date_Start == $lecture_mcq['date']) {
-                                                                    ?>
-
-                                                                    <div class="file" id="div<?php echo $lecture_mcq['id'] ?>">
-                                                                        <a href="../upload/class/mcq/<?php echo $lecture_mcq['file_name'] ?>" target="_blank" class="file-link" title="file-name.pdf">
-                                                                            <div class="file-thumbnail file-thumbnail-pdf">
-
-                                                                            </div>
-                                                                            <div class="file-info">
-                                                                                <h5 style="padding:5px;"> <?php echo $lecture_mcq['title'] ?></h5>   
-                                                                            </div>
-
-                                                                        </a>
-
-                                                                        <button class="file-delete-btn delete delete-mcq" data-id=" <?php echo $lecture_mcq['id'] ?>" title="Delete" type="button">
-                                                                            <span class="icon icon-remove"></span> 
-                                                                        </button>
+                                                    if ($date_Start < $today) {
+                                                        ?>
+                                                        <div class="card"> 
+                                                            <a href="# "class="   card-toggler" title="Collapse">  
+                                                                <div class="card-header  ">
+                                                                    <div class="col-md-8">
+                                                                        <h5>
+                                                                            Manage MCQ Papers  - <span class="text-success" ><b>( <?php echo $date_Start ?> ) </b></span>
+                                                                            <span class="fas-fa fa-chevron-down">   </span> 
+                                                                        </h5>
                                                                     </div>
+                                                                    <div class="col-md-4">
+                                                                        <span class=" icon icon-angle-down pull-right f-right"></span>
+                                                                    </div> 
+                                                                </div>
+                                                            </a> 
 
-                                                                    <?php
-                                                                }
-                                                            }
-                                                            ?>
+                                                            <div class="card-body" style="display: none;">
+                                                                <hr style="margin: 0px 0px 20px 0px;">
+                                                                <?php
+                                                                $LECTURE_MCQ = new LectureMcq(NULL);
+                                                                if (count($LECTURE_MCQ->getMcqByClassId($id, $date_Start)) > 0) {
+                                                                    foreach ($LECTURE_MCQ->getMcqByClassId($id, $date_Start) as $lecture_mcq) {
+                                                                        ?>
+
+                                                                        <div class="file" id="div<?php echo $lecture_mcq['id'] ?>">
+                                                                            <a href="../upload/class/mcq/<?php echo $lecture_mcq['file_name'] ?>" target="_blank" class="file-link" title="file-name.pdf">
+                                                                                <div class="file-thumbnail file-thumbnail-pdf">
+
+                                                                                </div>
+                                                                                <div class="file-info">
+                                                                                    <h5 style="padding:5px;"> <?php echo $lecture_mcq['title'] ?></h5>   
+                                                                                </div>
+
+                                                                            </a>
+
+                                                                            <button class="file-delete-btn delete delete-mcq" data-id=" <?php echo $lecture_mcq['id'] ?>" title="Delete" type="button">
+                                                                                <span class="icon icon-remove"></span> 
+                                                                            </button>
+                                                                        </div>
+
+                                                                        <?php
+                                                                    }
+                                                                } else {
+                                                                    ?>
+                                                                    <h4 class="text-danger text-center"> No Available MCQ Papers..!</h4>
+                                                                <?php } ?>
+
+                                                            </div>
                                                         </div>
-                                                    </div>
-                                                    <?php
+                                                        <?php
+                                                    }
                                                 }
                                                 ?> 
 
@@ -202,101 +221,114 @@ $PERIOD = new DatePeriod($begin, $interval, $end);
                                         <?php
                                         foreach ($PERIOD as $date) {
                                             $date_Start = $date->format("Y-m-d");
-                                            ?>
-                                            <div class="card">
-                                                <a href="# "class="   card-toggler" title="Collapse">  
-                                                    <div class="card-header  ">
-                                                        <div class="col-md-8">
-                                                            <h5>
-                                                                Manage Tutorials Papers   - <span class="text-success" ><b>( <?php echo $date_Start ?> ) </b></span>
-                                                                <span class="fas-fa fa-chevron-down">   </span> 
-                                                            </h5>
-                                                        </div>
-                                                        <div class="col-md-4">
-                                                            <span class=" icon icon-angle-down pull-right f-right"></span>
-                                                        </div> 
-                                                    </div>
-                                                </a> 
-
-                                                <div class="card-body" style="display: none;">
-                                                    <hr style="margin: 0px 0px 20px 0px;">
-
-                                                    <?php
-                                                    $LECTURE_TUTORIALS = new LectureTutorial(NULL);
-                                                    foreach ($LECTURE_TUTORIALS->getTutorialsByLecture($STUDENT_REGISTRATION->lecture_id) as $lecture_tutorials) {
-                                                        if ($date_Start == $lecture_tutorials['date']) {
-                                                            ?>
-
-                                                            <div class="file" id="div_2<?php echo $lecture_tutorials['id'] ?>">
-                                                                <a href="../upload/class/tutorials/<?php echo $lecture_tutorials['file_name'] ?>" target="_blank" class="file-link" title="file-name.pdf">
-                                                                    <div class="file-thumbnail file-thumbnail-pdf">
-
-                                                                    </div>
-                                                                    <div class="file-info">
-                                                                        <h5 style="padding:5px;"> <?php echo $lecture_tutorials['title'] ?></h5>   
-                                                                    </div>
-
-                                                                </a>
-
-                                                                <button class="file-delete-btn delete delete-tutorials" data-id=" <?php echo $lecture_tutorials['id'] ?>" title="Delete" type="button">
-                                                                    <span class="icon icon-remove"></span> 
-                                                                </button>
+                                            if ($date_Start < $today) {
+                                                ?>
+                                                <div class="card">
+                                                    <a href="# "class="   card-toggler" title="Collapse">  
+                                                        <div class="card-header  ">
+                                                            <div class="col-md-8">
+                                                                <h5>
+                                                                    Manage Tutorials Papers   - <span class="text-success" ><b>( <?php echo $date_Start ?> ) </b></span>
+                                                                    <span class="fas-fa fa-chevron-down">   </span> 
+                                                                </h5>
                                                             </div>
+                                                            <div class="col-md-4">
+                                                                <span class=" icon icon-angle-down pull-right f-right"></span>
+                                                            </div> 
+                                                        </div>
+                                                    </a> 
 
-                                                            <?php
-                                                        }
-                                                    }
-                                                    ?>
-                                                </div>
-                                            </div>                                                                                    
-                                        <?php } ?>
+                                                    <div class="card-body" style="display: none;">
+                                                        <hr style="margin: 0px 0px 20px 0px;">
+
+                                                        <?php
+                                                        $LECTURE_TUTORIALS = new LectureTutorial(NULL);
+                                                        if (count($LECTURE_TUTORIALS->getTutorialsClassId($id, $date_Start)) > 0) {
+                                                            foreach ($LECTURE_TUTORIALS->getTutorialsClassId($id, $date_Start) as $lecture_tutorials) {
+                                                                ?>
+
+                                                                <div class="file" id="div_2<?php echo $lecture_tutorials['id'] ?>">
+                                                                    <a href="../upload/class/tutorials/<?php echo $lecture_tutorials['file_name'] ?>" target="_blank" class="file-link" title="file-name.pdf">
+                                                                        <div class="file-thumbnail file-thumbnail-pdf">
+
+                                                                        </div>
+                                                                        <div class="file-info">
+                                                                            <h5 style="padding:5px;"> <?php echo $lecture_tutorials['title'] ?></h5>   
+                                                                        </div>
+
+                                                                    </a>
+
+                                                                    <button class="file-delete-btn delete delete-tutorials" data-id=" <?php echo $lecture_tutorials['id'] ?>" title="Delete" type="button">
+                                                                        <span class="icon icon-remove"></span> 
+                                                                    </button>
+                                                                </div>
+
+                                                                <?php
+                                                            }
+                                                        } else {
+                                                            ?>
+                                                            <h4 class="text-danger text-center"> No Available MCQ Papers..!</h4>
+                                                        <?php } ?>
+
+                                                    </div>
+                                                </div>                                                                                    
+                                                <?php
+                                            }
+                                        }
+                                        ?>
                                     </div> 
                                     <div class="tab-pane fade" id="assignment">
                                         <?php
                                         foreach ($PERIOD as $date) {
                                             $date_Start = $date->format("Y-m-d");
-                                            ?>
+                                            if ($date_Start < $today) {
+                                                ?>
 
-                                            <div class="card">
-                                                <a href="# "class="   card-toggler" title="Collapse">  
-                                                    <div class="card-header  ">
-                                                        <div class="col-md-8">
-                                                            <h5>
-                                                                Manage Assessment   - <span class="text-success" ><b>( <?php echo $date_Start ?> ) </b></span>
-                                                                <span class="fas-fa fa-chevron-down">   </span> 
-                                                            </h5>
-                                                        </div>
-                                                        <div class="col-md-4">
-                                                            <span class=" icon icon-angle-down pull-right f-right"></span>
-                                                        </div> 
-                                                    </div>
-                                                </a> 
-
-                                                <div class="card-body" style="display: none;">
-                                                    <hr style="margin: 0px 0px 20px 0px;">
-
-                                                    <?php
-                                                    $LECTURE_ASSESSMENT = new LectureAssessment(NULL);
-                                                    foreach ($LECTURE_ASSESSMENT->getAssessmentByLecture($STUDENT_REGISTRATION->lecture_id) as $lecture_assessment) {
-                                                        if ($date_Start == $lecture_assessment['date']) {
-                                                            ?>
-                                                            <div class="col-md-4 card " style="padding: 10px;margin: 10px;" id="div_3<?php echo $lecture_assessment['id'] ?>">
-                                                                <div class="text-center">
-                                                                    <p>
-                                                                        <?php echo $lecture_assessment['title'] ?> 
-                                                                    </p> 
-                                                                    <a href="../upload/class/assessment/<?php echo $lecture_assessment['file_name'] ?>" target="_blank"  class="btn btn-success  " style="margin-bottom: 10px;">  VIEW ASSIGNMENT </a> | 
-                                                                    <a href="#" class="delete-lecture-assessment btn btn-sm btn-danger"  data-id="<?php echo $lecture_assessment['id'] ?>" style="margin-top: -8px;"><i class="waves-effect icon icon-trash" data-type="cancel"></i></a> 
-
-                                                                </div>
+                                                <div class="card">
+                                                    <a href="# "class="   card-toggler" title="Collapse">  
+                                                        <div class="card-header  ">
+                                                            <div class="col-md-8">
+                                                                <h5>
+                                                                    Manage Assessment   - <span class="text-success" ><b>( <?php echo $date_Start ?> ) </b></span>
+                                                                    <span class="fas-fa fa-chevron-down">   </span> 
+                                                                </h5>
                                                             </div>
-                                                            <?php
-                                                        }
-                                                    }
-                                                    ?>
-                                                </div>
-                                            </div>  
-                                        <?php } ?>
+                                                            <div class="col-md-4">
+                                                                <span class=" icon icon-angle-down pull-right f-right"></span>
+                                                            </div> 
+                                                        </div>
+                                                    </a> 
+
+                                                    <div class="card-body" style="display: none;">
+                                                        <hr style="margin: 0px 0px 20px 0px;">
+
+                                                        <?php
+                                                        $LECTURE_ASSESSMENT = new LectureAssessment(NULL);
+                                                        if (count($LECTURE_ASSESSMENT->getAssessmentByClassId($id, $date_Start)) > 0) {
+                                                            foreach ($LECTURE_ASSESSMENT->getAssessmentByClassId($id, $date_Start) as $lecture_assessment) {
+                                                                ?>
+                                                                <div class="col-md-4 card " style="padding: 10px;margin: 10px;" id="div_3<?php echo $lecture_assessment['id'] ?>">
+                                                                    <div class="text-center">
+                                                                        <p>
+                                                                            <?php echo $lecture_assessment['title'] ?> 
+                                                                        </p> 
+                                                                        <a href="../upload/class/assessment/<?php echo $lecture_assessment['file_name'] ?>" target="_blank"  class="btn btn-success  " style="margin-bottom: 10px;">  VIEW ASSIGNMENT </a> | 
+                                                                        <a href="#" class="delete-lecture-assessment btn btn-sm btn-danger"  data-id="<?php echo $lecture_assessment['id'] ?>" style="margin-top: -8px;"><i class="waves-effect icon icon-trash" data-type="cancel"></i></a> 
+
+                                                                    </div>
+                                                                </div>
+                                                                <?php
+                                                            }
+                                                        } else {
+                                                            ?>
+                                                            <h4 class="text-danger text-center"> No Available Assessment Papers..!</h4>
+                                                        <?php } ?>
+                                                    </div>
+                                                </div>  
+                                                <?php
+                                            }
+                                        }
+                                        ?>
                                     </div> 
                                     <div class="tab-pane fade" id="home_work">
                                         <form class="demo-form-wrapper card " style="padding: 50px" id="form-data">

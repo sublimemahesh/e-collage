@@ -83,7 +83,7 @@ include './auth.php';
                                     <form class="demo-form-wrapper card " style="padding: 50px" id="form-data">
                                         <div class="form form-horizontal">
                                             <div class="form-group">
-                                                <label class="col-sm-2 control-label " for="name" style="text-align: left">Name: </label>
+                                                <label class="col-sm-2 control-label " for="name" style="text-align: left">Institute Name: </label>
                                                 <div class="col-sm-10">
                                                     <input id="name" name="name" class="form-control  " type="text"  placeholder="Enter class name " >
                                                 </div>
@@ -167,7 +167,7 @@ include './auth.php';
                                                 </div> 
                                             </div>
                                             <div class="form-group">
-                                                <label class="col-sm-2 control-label " for="title" style="text-align: left">No Lessons: </label>
+                                                <label class="col-sm-2 control-label " for="title" style="text-align: left">No of Class Coverd Dates: </label>
 
                                                 <div class="col-sm-10">
                                                     <input id="lessons" name="lessons" class="form-control" type="number"  min="1" placeholder="Enter how many lessons ">

@@ -6,31 +6,29 @@
  * @author sublime holdings
  * @web www.sublime.lk
  */
-class LectureMcq {
+class LectureVideo {
 
     //put your code here
     public $id;
     public $lecture_id;
     public $class_id;
+    public $url;
     public $date;
-    public $title;
-    public $file_name;
 
     public function __construct($id) {
         if ($id) {
 
-            $query = "SELECT * FROM `lecture_mcq` WHERE `id`=" . $id;
+            $query = "SELECT * FROM `lecture_class_video` WHERE `id`=" . $id;
 
             $db = new Database();
 
             $result = mysql_fetch_array($db->readQuery($query));
 
             $this->id = $result['id'];
-            $this->lecture_id = $result['lecture_id'];
             $this->class_id = $result['class_id'];
+            $this->lecture_id = $result['lecture_id'];
             $this->date = $result['date'];
-            $this->title = $result['title'];
-            $this->file_name = $result['file_name'];
+            $this->url = $result['url'];
 
             return $this;
         }
@@ -38,12 +36,11 @@ class LectureMcq {
 
     public function create() {
 
-        $query = "INSERT INTO `lecture_mcq` (`lecture_id`,`class_id`,`date`, `title`, `file_name`) VALUES  ('"
+        $query = "INSERT INTO `lecture_class_video` (`lecture_id`,`class_id`, `date`, `url`) VALUES  ('"
                 . $this->lecture_id . "', '"
                 . $this->class_id . "', '"
-                . $this->date . "', '"
-                . $this->title . "','"
-                . $this->file_name . "')";
+                . $this->date . "','"
+                . $this->url . "')";
 
         $db = new Database();
 
@@ -60,7 +57,7 @@ class LectureMcq {
 
     public function all() {
 
-        $query = "SELECT * FROM `lecture_mcq` ORDER BY `lecture_id` ASC";
+        $query = "SELECT * FROM `lecture_class_video` ORDER BY `lecture_id` ASC";
         $db = new Database();
         $result = $db->readQuery($query);
         $array_res = array();
@@ -72,9 +69,9 @@ class LectureMcq {
         return $array_res;
     }
 
-    public function update() {
+    public function upclass_id() {
 
-        $query = 'UPDATE `lecture_mcq` SET `lecture_id`= "' . $this->lecture_id . '" WHERE id="' . $this->id . '"';
+        $query = 'UPDATE `lecture_class_video` SET `lecture_id`= "' . $this->lecture_id . '" WHERE id="' . $this->id . '"';
 
         $db = new Database();
         $result = $db->readQuery($query);
@@ -88,16 +85,16 @@ class LectureMcq {
 
     public function delete() {
 
-        $query = 'DELETE FROM `lecture_mcq` WHERE id="' . $this->id . '"';
+        $query = 'DELETE FROM `lecture_class_video` WHERE id="' . $this->id . '"';
 
         $db = new Database();
 
         return $db->readQuery($query);
     }
 
-    public function getMcqByClassId($id,$date) {
+    public function getVideoByClass($id, $date) {
 
-        $query = "SELECT * FROM `lecture_mcq` WHERE `class_id` = '" . $id . "' AND `date` = '" . $date . "' ";
+        $query = "SELECT * FROM `lecture_class_video` WHERE `class_id` = '" . $id . "' AND `date` = '" . $date . "' ";
 
         $db = new Database();
 
@@ -109,6 +106,17 @@ class LectureMcq {
         }
 
         return $array_res;
+    }
+
+    public function getVideoByClassDay($id, $date) {
+
+        $query = "SELECT * FROM `lecture_class_video` WHERE `class_id` = '" . $id . "' AND `date` = '" . $date . "' ";
+
+        $db = new Database();
+
+        $result = mysql_fetch_array($db->readQuery($query));
+
+        return $result['id'];
     }
 
 }

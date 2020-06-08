@@ -11,6 +11,7 @@ class LectureTutorial {
     //put your code here
     public $id;
     public $lecture_id;
+    public $class_id;
     public $date;
     public $title;
     public $file_name;
@@ -26,6 +27,7 @@ class LectureTutorial {
 
             $this->id = $result['id'];
             $this->lecture_id = $result['lecture_id'];
+            $this->class_id = $result['class_id'];
             $this->date = $result['date'];
             $this->title = $result['title'];
             $this->file_name = $result['file_name'];
@@ -36,10 +38,11 @@ class LectureTutorial {
 
     public function create() {
 
-        $query = "INSERT INTO `lecture_tutorial` (`lecture_id`,`date`, `title`, `file_name`) VALUES  ('" 
-                . $this->lecture_id . "', '" 
-                . $this->date . "', '" 
-                . $this->title . "','" 
+        $query = "INSERT INTO `lecture_tutorial` (`lecture_id`,`class_id`,`date`, `title`, `file_name`) VALUES  ('"
+                . $this->class_id . "', '"
+                . $this->lecture_id . "', '"
+                . $this->date . "', '"
+                . $this->title . "','"
                 . $this->file_name . "')";
 
         $db = new Database();
@@ -92,10 +95,10 @@ class LectureTutorial {
         return $db->readQuery($query);
     }
 
-    public function getTutorialsByLecture($id) {
+    public function getTutorialsClassId($id, $date) {
 
-        $query = "SELECT * FROM `lecture_tutorial` WHERE `lecture_id` = '" . $id . "'  ";
- 
+        $query = "SELECT * FROM `lecture_tutorial` WHERE `class_id` = '" . $id . "' AND `date` = '" . $date . "' ";
+
         $db = new Database();
 
         $result = $db->readQuery($query);
@@ -104,7 +107,7 @@ class LectureTutorial {
         while ($row = mysql_fetch_array($result)) {
             array_push($array_res, $row);
         }
-      
+
         return $array_res;
     }
 

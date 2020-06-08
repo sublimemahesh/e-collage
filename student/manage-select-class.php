@@ -46,13 +46,13 @@ include_once(dirname(__FILE__) . '/auth.php');
                             <div class="col-md-3">
                                 <div class="card ">
                                     <div class="card-image">
-                                        <a class="card-link" href="student-class-view.php?id=<?php echo $student_registration['id'] ?>">
+                                        <a class="card-link" href="student-class-view.php?id=<?php echo $student_registration['class_id'] ?>">
                                             <?php
                                             if (empty($LECTURE->image_name)) {
                                                 ?>
                                                 <img class="card-img-top img-responsive" src="img/member.jpg" alt="<?php echo $LECTURE->full_name ?>" style="width: 100%">
                                             <?php } else { ?>
-                                                <img class="card-img-top img-responsive" src="upload/lecture/profile/<?php echo $LECTURE->image_name ?>" alt="<?php echo $LECTURE->full_name ?>" style="width: 100%">
+                                                <img class="card-img-top img-responsive" src="../upload/lecture/profile/<?php echo $LECTURE->image_name ?>" alt="<?php echo $LECTURE->full_name ?>" style="width: 100%">
                                             <?php } ?>
                                         </a> 
                                     </div>
@@ -64,7 +64,7 @@ include_once(dirname(__FILE__) . '/auth.php');
                                                 $LECTURE_CLASS = new LectureClass($student_registration['class_id']);
 
                                                 $EDUCATIN_SUBJECT = new EducationSubject($LECTURE_CLASS->subject_id);
-                                                echo $EDUCATIN_SUBJECT->name;
+                                                echo $LECTURE_CLASS->name ;
                                                 ?>
                                             </span>
                                         </div>
@@ -91,20 +91,20 @@ include_once(dirname(__FILE__) . '/auth.php');
                                         <?php } ?>    
 
                                         <div class="row" style="margin-top: 10px;margin-bottom: 10px;">
-                                            <div class="col-md-5" style="padding-right: 0px;">
+                                            <div class="col-md-8" style="padding-right: 0px;">
                                                 <a class="link-muted" href="#">
-                                                    <span class="icon icon-group icon-1x"></span> -  9 Sessions
+                                                    <span class="icon icon-group icon-1x"></span> -  <?php echo $EDUCATIN_SUBJECT->name?>
                                                 </a>
                                             </div>
 
-                                            <div class="col-md-7" style="padding: 0px;">
+                                            <div class="col-md-4" style="padding: 0px;">
                                                 <a class="link-muted" href="#">
-                                                    <span class="icon icon-calendar icon-1x"></span> -   14 Hours
+                                                    <span class="icon icon-calendar icon-1x"></span> - <?php echo $LECTURE_CLASS->modules ?> Modules
                                                 </a>
                                             </div>
                                         </div>
 
-                                        <a class="card-link" href="student-class-view.php?id=<?php echo $student_registration['id'] ?>">
+                                        <a class="card-link" href="student-class-view.php?id=<?php echo $student_registration['class_id'] ?>">
                                             <center>
                                                 <p class="btn btn-success btn-block" style="width: 80%" > Enter Your Class
                                                 </p>
