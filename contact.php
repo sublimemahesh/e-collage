@@ -68,7 +68,7 @@
                                     <div class="  clearfix">
                                         <div class="col-md-6">
                                             <label class="req" for="Security Code">Security Code</label>
-                                            <input id="captchacode"  type="text" name="captchacode" placeholder="Security Code">
+                                            <input id="captchacode"  type="text" name="captchacode" placeholder="Code">
                                             <div class="col-md-12">
                                                 <span id="capspan"></span>
                                             </div>

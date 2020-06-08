@@ -12,7 +12,7 @@ $site_link = "https://" . $_SERVER['HTTP_HOST'];
 $comany_name = "Sri Lanka Peter Tours";
 $website_name = "www.srilankapetertours.com";
 $comConNumber = "+94 77 621 6932";
-$comEmail = "info@srilankapetertours.com";
+$comEmail = " ";
 $comOwner = "Peter";
 $customer_msg = 'Hello, and thank you for your interest in ' . $comany_name . '. We have received your enquiry , and we will get back to you as soon as possible.';
 
