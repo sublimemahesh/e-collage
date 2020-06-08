@@ -467,7 +467,7 @@ include '../class/include.php';
                     </div> 
                 </div> 
             </div>
-            <div class="signup" style="max-width: 650px!important;display: none;" id="agreement_form">
+            <div class="signup" style="max-width: 650px!important;display: none; " id="agreement_form">
                 <div class="signup-body">
                     <a class="signup-brand" href="../index.php">
                         <center>
@@ -507,17 +507,19 @@ include '../class/include.php';
                         <p style="font-size: 14px;text-align: justify;"> 
                             Respect copyright. Only upload videos that you made or that you're authorized to use. This means don't upload videos you didn't make, or use content in your videos that someone else owns the copyright to, such as music tracks, snippets of copyrighted programs, or videos made by other users, without necessary authorizations. Visit our Copyright Center for more information. 
                         </p>
-                        <label class="custom-control custom-control-primary custom-checkbox" style="margin-bottom:20px;"  >
+                        <p style="font-size: 20px;text-align: center;"><u>Working Introduction</u></p> 
+                        <iframe width="100%" height="315" src="https://www.youtube.com/embed/TxP_c9PFevg" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                        <label class="custom-control custom-control-primary custom-checkbox" style="margin-bottom:20px;margin-top: 10px;"  >
                             <input class="custom-control-input" type="checkbox" id="agreement">
                             <span class="custom-control-indicator" style="border-color: #ff0707!important;"></span>
                             <span class="custom-control-label" style="font-size: 16px;">Please Accept our <span style="color: #f7a033"> Agreement </span> Before you login </span>
                         </label>
                         <div class="row" style="margin:0px;">
-                            
+
                             <div class="col-md-4">
                                 <button class="btn btn-primary btn-block" type="submit" id="black"  >Back</button> 
                             </div>
-                            
+
                             <div class="col-md-4">  </div>
                             <div class="col-md-4">
                                 <button class="btn btn-primary btn-block" type="submit"  id="register"  >Sign up</button> 
@@ -530,7 +532,7 @@ include '../class/include.php';
         </form>
 
 
-      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
         <script src="../assets/js/dobpicker.js" type="text/javascript"></script>
 
 

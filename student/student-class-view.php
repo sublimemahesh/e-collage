@@ -78,11 +78,12 @@ $PERIOD = new DatePeriod($begin, $interval, $end);
                                     <li><a href="#assignment" data-toggle="tab">Assignment</a></li> 
                                     <li><a href="#home_work" data-toggle="tab">Home Work</a></li> 
                                 </ul>
+                                <input type="hidden" value="<?php echo $id ?>" id="class_id">
                                 <div class="tab-content">
                                     <div class="tab-pane fade active in" id="home"> 
                                         <div id="wrapper" class="white">
                                             <div class="animated"> 
-                                                <div class="middle-area">
+                                                <div class="middle-area" id="count_section"  >
                                                     <h4 class="text-center text-danger"><b>WAITING FOR YOUR NEXT CLASS SESSION..!</b></h4>
                                                     <?php
                                                     foreach ($PERIOD as $key => $date) {
@@ -98,11 +99,12 @@ $PERIOD = new DatePeriod($begin, $interval, $end);
                                                             <div class="countdown"  data-end="<?php echo $date ?>"></div>
                                                             <?php
                                                             break;
+                                                        } else if ($date_start_2 . $LECTURE_CLASS->start_time == $today_time) {
+                                                            echo '<p>testesfdsfddsa </p>';
                                                         }
                                                     }
                                                     ?>
-                                                </div>
-
+                                                </div> 
                                             </div>  
                                         </div>
                                     </div> 

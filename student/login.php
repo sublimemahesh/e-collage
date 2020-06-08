@@ -28,6 +28,7 @@
                 </a>
                 <div class="login-form">
                     <form   id="form">
+                         <div class="msg">Sign in to start your session</div>
                         <div class="form-group">
                             <label for="student_id">Student ID</label>
                             <input id="student_id" class="form-control" type="text" name="student_id"  data-field="student_id"  >
