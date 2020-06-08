@@ -1,47 +1,39 @@
  
-
-<div class="layout-sidebar">
+<div class="layout-sidebar disabled"  >
     <div class="layout-sidebar-backdrop"></div>
-    <div class="layout-sidebar-body" style="margin-top: 7%;">
-      
+    <div class="layout-sidebar-body">
+        <div class="custom-scrollbar">
             <nav id="sidenav" class="sidenav-collapse collapse">
                 <ul class="sidenav level-1">
-                   
-                <?php
-                date_default_timezone_set("Asia/Calcutta");
 
-                // Start date
-                $date = date('Y-m-d');
-                // End date
-                $end_date = '2020-1-24';
-                $key = 1;
+                    <li class="sidenav-heading"> </li>
+                    <li class="sidenav-item has-subnav" >
+                        <a href="index.php" aria-haspopup="true">
+                            <span class="sidenav-icon icon icon-dashboard"></span>
+                            <span class="sidenav-label" >Dashboards</span>
+                        </a> 
+                    </li> 
 
-                while (strtotime($date) >= strtotime($end_date)) {
+                    <li class="sidenav-item has-subnav">
+                        <a href="#" aria-haspopup="true">
+                            <span class="sidenav-icon icon icon-calendar-check-o"></span>
+                            <span class="sidenav-label">My Classes</span>
+                        </a>
 
+                        <ul class="sidenav level-2 collapse">
+                            <li><a href="view-subjects.php"> <span class="sidenav-icon icon icon-angle-right"></span> Select Your Class</a></li>
+                            <li><a href="manage-select-class.php"> <span class="sidenav-icon icon icon-angle-right"></span> Enter Your Class</a></li>
+                        </ul>
 
-                    if (date('Y-m-d') == $date) {
-                        ?>
-
-                        <li class="sidenav-item has-subnav   disabled"> 
-                            <a href="lesson.php?date=<?php echo $date ?>" style="padding-left: 10px;color: #0f660c;font-weight: 600;font-size: 16px;">Lesson <?php echo $key ?>    <b style="padding-left: 8px;"><?php echo $date; ?></b> </a>
-                        </li> 
-
-                        <?php
-                    } else if (date('Y-m-d') > $date) {
-                        ?>
-                        <li class="sidenav-item has-subnav   disabled"> 
-                            <a href="lesson.php?date=<?php echo $date ?>" style="padding-left: 10px;">Lesson <?php echo $key ?>    <b style="padding-left: 8px;"><?php echo $date; ?></b> </a>
-                        </li> 
-                        <?php
-                    }
-
-                    $date = date("Y-m-d", strtotime("-1 day", strtotime($date)));
-                    $key++;
-                }
-                ?>
-                    
+                    </li> 
+                    <li class="sidenav-item has-subnav">
+                        <a href="complete-profile.php" aria-haspopup="true">
+                            <span class="sidenav-icon icon icon-book"></span>
+                            <span class="sidenav-label">My Subjects</span>
+                        </a>
+                    </li> 
                 </ul>
             </nav>
-   
+        </div>
     </div>
 </div>

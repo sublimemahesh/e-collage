@@ -59,7 +59,7 @@ $lecture = $_GET['lecture'];
                                                     ?>
                                                     <img class="card-img-top img-responsive" src="img/member.jpg" alt=""<?php echo $LECTURE->full_name ?>" style="width: 100%">
                                                 <?php } else { ?>
-                                                    <img class="card-img-top img-responsive" src="upload/lecture/profile/<?php echo $LECTURE->image_name ?>" alt="<?php echo $LECTURE->full_name ?>" style="width: 100%">
+                                                    <img class="card-img-top img-responsive" src="../upload/lecture/profile/<?php echo $LECTURE->image_name ?>" alt="<?php echo $LECTURE->full_name ?>" style="width: 100%">
                                                 <?php } ?>
                                             </a>
 

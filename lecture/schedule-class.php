@@ -65,18 +65,13 @@ $PERIOD = new DatePeriod($begin, $interval, $end);
                                 </ul>
                                 <div class="tab-content">
                                     <div class="tab-pane fade active in" id="home">
-                                        <form class="demo-form-wrapper card " style="padding: 50px" id="form-data">
+                                        <form class="demo-form-wrapper card " style="padding: 50px" id="form-video">
                                             <div class="form form-horizontal">
+
                                                 <div class="form-group">
-                                                    <label class="col-sm-2 control-label " for="name" style="text-align: left">Video Title: </label>
+                                                    <label class="col-sm-2 control-label " for="name" style="text-align: left">Video URL Code: </label>
                                                     <div class="col-sm-10">
-                                                        <input id="name" name="name" class="form-control  " type="file"  placeholder="Enter Video Title name "   >
-                                                    </div>
-                                                </div>
-                                                <div class="form-group">
-                                                    <label class="col-sm-2 control-label " for="name" style="text-align: left">Video URL: </label>
-                                                    <div class="col-sm-10">
-                                                        <input id="name" name="name" class="form-control  " type="text"  placeholder="Enter Video URL "   >
+                                                        <input id="url" name="url" class="form-control  " type="text"  placeholder="Enter Video URL Code "   >
                                                     </div>
                                                 </div>
                                                 <div class="form-group">
@@ -101,9 +96,10 @@ $PERIOD = new DatePeriod($begin, $interval, $end);
                                                     <div class="col-md-3"></div> 
                                                     <div class="col-md-4"></div> 
                                                     <div class="col-md-2">  
-                                                        <input type="hidden"  name="update">
-                                                        <input type="hidden"  name="id"  value="<?php echo $id ?>" >
-                                                        <input type="submit" class="btn btn-primary btn-block"   value="Add" id="update" >
+                                                        <input type="hidden"  name="create_video">
+                                                        <input type="hidden"  name="lecture_id"  value="<?php echo $_SESSION['id'] ?>" >
+                                                        <input type="hidden"  name="class_id"  value="<?php echo $id ?>" >
+                                                        <input type="submit" class="btn btn-primary btn-block"   value="Create" id="create-video" >
                                                     </div>
                                                 </div>
                                             </div>
@@ -133,10 +129,19 @@ $PERIOD = new DatePeriod($begin, $interval, $end);
 
                                                 <div class="card-body" style="display: none;">
                                                     <hr style="margin: 0px 0px 20px 0px;">
+                                                    <?php
+                                                    $LECTURE_VIDEO = new LectureVideo(NULL);
 
-                                                    <iframe width="100%" height="500" src="https://www.youtube.com/embed/h04Hj6sb1qg" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-
-
+                                                    if (count($LECTURE_VIDEO->getVideoByClass($id, $date_f)) > 0) {
+                                                        foreach ($LECTURE_VIDEO->getVideoByClass($id, $date_f) as $lecture_video) {
+                                                            ?>
+                                                            <iframe width="100%" height="500" src="https://www.youtube.com/embed/<?php echo $lecture_video['url'] ?>" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                                                            <?php
+                                                        }
+                                                    } else {
+                                                        ?>
+                                                        <h4 class="text-danger text-center"> No Video Available</h4>
+                                                    <?php } ?>
                                                 </div>
                                             </div>  
                                         <?php } ?>
@@ -180,6 +185,7 @@ $PERIOD = new DatePeriod($begin, $interval, $end);
                                                     <div class="col-md-4"></div> 
                                                     <div class="col-md-2">  
                                                         <input type="hidden"  name="create-mcq">
+                                                        <input type="hidden"  name="class_id"  value="<?php echo $id ?>" >
                                                         <input type="hidden"  name="lecture_id"  value="<?php echo $_SESSION['id'] ?>" >
                                                         <input type="submit" class="btn btn-primary btn-block"   value="Add" id="create-mcq" >
                                                     </div>
@@ -213,8 +219,8 @@ $PERIOD = new DatePeriod($begin, $interval, $end);
                                                             <hr style="margin: 0px 0px 20px 0px;">
                                                             <?php
                                                             $LECTURE_MCQ = new LectureMcq(NULL);
-                                                            foreach ($LECTURE_MCQ->getMcqByLecture($_SESSION['id']) as $lecture_mcq) {
-                                                                if ($date_f == $lecture_mcq['date']) {
+                                                            if (count($LECTURE_MCQ->getMcqByClassId($id, $date_f)) > 0) {
+                                                                foreach ($LECTURE_MCQ->getMcqByClassId($id, $date_f) as $lecture_mcq) {
                                                                     ?>
 
                                                                     <div class="file" id="div<?php echo $lecture_mcq['id'] ?>">
@@ -235,8 +241,10 @@ $PERIOD = new DatePeriod($begin, $interval, $end);
 
                                                                     <?php
                                                                 }
-                                                            }
-                                                            ?>
+                                                            } else {
+                                                                ?>
+                                                                <h4 class="text-danger text-center"> No Available MCQ</h4>
+                                                            <?php } ?>
                                                         </div>
                                                     </div>
                                                     <?php
@@ -257,7 +265,7 @@ $PERIOD = new DatePeriod($begin, $interval, $end);
                                                     </div>
                                                 </div>
                                                 <div class="form-group">
-                                                    <label class="col-sm-2 control-label " for="pdf_file" style="text-align: left">MCQ Papers: </label>
+                                                    <label class="col-sm-2 control-label " for="pdf_file" style="text-align: left">Tutorials Papers: </label>
                                                     <div class="col-sm-10">
                                                         <input id="pdf_file_1" name="pdf_file" class="form-control  " type="file"   >
                                                     </div>
@@ -284,6 +292,7 @@ $PERIOD = new DatePeriod($begin, $interval, $end);
                                                     <div class="col-md-4"></div> 
                                                     <div class="col-md-2">  
                                                         <input type="hidden"  name="create-tutorials">
+                                                        <input type="hidden"  name="class_id"  value="<?php echo $id ?>" >
                                                         <input type="hidden"  name="lecture_id"  value="<?php echo $_SESSION['id'] ?>" >
                                                         <input type="submit" class="btn btn-primary btn-block"   value="Add" id="create-tutorial" >
                                                     </div>
@@ -314,8 +323,8 @@ $PERIOD = new DatePeriod($begin, $interval, $end);
 
                                                     <?php
                                                     $LECTURE_TUTORIALS = new LectureTutorial(NULL);
-                                                    foreach ($LECTURE_TUTORIALS->getTutorialsByLecture($_SESSION['id']) as $lecture_tutorials) {
-                                                        if ($date_f == $lecture_tutorials['date']) {
+                                                    if (count($LECTURE_TUTORIALS->getTutorialsClassId($id, $date_f)) > 0) {
+                                                        foreach ($LECTURE_TUTORIALS->getTutorialsClassId($id, $date_f) as $lecture_tutorials) {
                                                             ?>
 
                                                             <div class="file" id="div_2<?php echo $lecture_tutorials['id'] ?>">
@@ -336,8 +345,10 @@ $PERIOD = new DatePeriod($begin, $interval, $end);
 
                                                             <?php
                                                         }
-                                                    }
-                                                    ?>
+                                                    } else {
+                                                        ?>
+                                                        <h4 class="text-danger text-center"> No Available Tutorials</h4>
+                                                    <?php } ?>
                                                 </div>
                                             </div>                                                                                    
                                         <?php } ?>
@@ -381,6 +392,7 @@ $PERIOD = new DatePeriod($begin, $interval, $end);
                                                     <div class="col-md-4"></div> 
                                                     <div class="col-md-2">  
                                                         <input type="hidden"  name="create-assessment">
+                                                        <input type="hidden"  name="class_id"  value="<?php echo $id ?>" >
                                                         <input type="hidden"  name="lecture_id"  value="<?php echo $_SESSION['id'] ?>" >
                                                         <input type="submit" class="btn btn-primary btn-block"   value="Add" id="create-assessment" >
                                                     </div>
@@ -412,8 +424,8 @@ $PERIOD = new DatePeriod($begin, $interval, $end);
 
                                                     <?php
                                                     $LECTURE_ASSESSMENT = new LectureAssessment(NULL);
-                                                    foreach ($LECTURE_ASSESSMENT->getAssessmentByLecture($_SESSION['id']) as $lecture_assessment) {
-                                                        if ($date_f == $lecture_assessment['date']) {
+                                                    if (count($LECTURE_ASSESSMENT->getAssessmentByClassId($id, $date_f)) > 0) {
+                                                        foreach ($LECTURE_ASSESSMENT->getAssessmentByClassId($id, $date_f) as $lecture_assessment) {
                                                             ?>
                                                             <div class="col-md-4 card " style="padding: 10px;margin: 10px;" id="div_3<?php echo $lecture_assessment['id'] ?>">
                                                                 <div class="text-center">
@@ -427,8 +439,11 @@ $PERIOD = new DatePeriod($begin, $interval, $end);
                                                             </div>
                                                             <?php
                                                         }
-                                                    }
-                                                    ?>
+                                                    } else {
+                                                        ?>
+                                                        <h4 class="text-danger text-center"> No Available Assignments..</h4>
+                                                    <?php } ?>
+                                                   
                                                 </div>
                                             </div>  
                                         <?php } ?>
@@ -444,7 +459,7 @@ $PERIOD = new DatePeriod($begin, $interval, $end);
                                                 <div class="card">
                                                     <div class="card-header  ">
                                                         <h5>
-                                                            <?php echo $home_work['title'] ?>- <span class="text-success"><b><?php 
+                                                            <?php echo $home_work['title'] ?>- <span class="text-success"><b><?php
                                                             $STUDENT = new Student($home_work['student_id']);
                                                             echo $STUDENT->full_name;
                                                             ?></b></span>
@@ -473,13 +488,16 @@ $PERIOD = new DatePeriod($begin, $interval, $end);
         <script src="js/application.min.js"></script>
         <script src="js/demo.min.js"></script>
         <script src="js/sweetalert.min.js" type="text/javascript"></script>
+
         <script src="ajax/js/schedule-class.js" type="text/javascript"></script>
+
         <script src="delete/js/lecture-mcq.js" type="text/javascript"></script>
         <script src="delete/js/lecture-tutorial.js" type="text/javascript"></script>
         <script src="delete/js/lecture-assessment.js" type="text/javascript"></script>
+
         <script src="js/jm.spinner.js" type="text/javascript"></script>
         <script src="js/simple-lightbox.min.js" type="text/javascript"></script>
-    
+
         <script>
             $(function () {
                 var $gallery = $('.gallery a').simpleLightbox();

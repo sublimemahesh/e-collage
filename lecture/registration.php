@@ -67,7 +67,9 @@ include '../class/include.php';
                             <div class="col-sm-6">
                                 <div class="form-group">
                                     <label for="phone" >Phone Number</label>
-                                    <input id="phone_number" class="form-control" type="text" name="phone_number"  maxlength="10" class="form-control" data-field="phone_number" placeholder="0777123456" >
+                                    <input id="phone_number" class="form-control" type="text" name="phone_number"  maxlength="10" class="form-control" data-field="phone_number" placeholder="077- xxx xxxx
+                                           
+                                           " >
                                     <div class="valid-message"></div>
                                 </div>
                             </div>

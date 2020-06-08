@@ -2,6 +2,22 @@
 
 include '../../../class/include.php';
 
+//Create VIDEO 
+if (isset($_POST['create_video'])) {
+
+    $LECTURE_VIDEO = new LectureVideo(NULL);
+
+    $LECTURE_VIDEO->url = $_POST['url'];
+    $LECTURE_VIDEO->date = $_POST['date'];
+    $LECTURE_VIDEO->class_id = $_POST['class_id'];
+    $LECTURE_VIDEO->lecture_id = $_POST['lecture_id'];
+
+
+    $LECTURE_VIDEO->create();
+    $result = ["status" => "sucess"];
+    echo json_encode($result);
+    exit();
+}
 //Create MCQ 
 if (isset($_POST['create-mcq'])) {
 
@@ -36,6 +52,7 @@ if (isset($_POST['create-mcq'])) {
         $LECTURE_MCQ->title = ucwords($_POST['title']);
         $LECTURE_MCQ->date = $_POST['date'];
         $LECTURE_MCQ->lecture_id = $_POST['lecture_id'];
+        $LECTURE_MCQ->class_id = $_POST['class_id'];
 
 
         $LECTURE_MCQ->create();
@@ -80,6 +97,7 @@ if (isset($_POST['create-tutorials'])) {
         $LECTURE_TUTORIALS->title = ucwords($_POST['title']);
         $LECTURE_TUTORIALS->date = $_POST['date'];
         $LECTURE_TUTORIALS->lecture_id = $_POST['lecture_id'];
+        $LECTURE_TUTORIALS->class_id = $_POST['class_id'];
 
 
         $LECTURE_TUTORIALS->create();
@@ -125,6 +143,7 @@ if (isset($_POST['create-assessment'])) {
         $LECTURE_ASSESSMENT->title = ucwords($_POST['title']);
         $LECTURE_ASSESSMENT->date = $_POST['date'];
         $LECTURE_ASSESSMENT->lecture_id = $_POST['lecture_id'];
+        $LECTURE_ASSESSMENT->class_id = $_POST['class_id'];
 
 
         $LECTURE_ASSESSMENT->create();

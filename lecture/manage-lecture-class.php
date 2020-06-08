@@ -109,10 +109,10 @@ include './auth.php';
                                                 <td><?php echo number_format($lecture_class['class_fee'], 2) ?></td>
 
                                                 <td> 
-                                                    <a href="schedule-class.php?id=<?php echo $lecture_class['id'] ?>" class="op-link btn btn-sm btn-success"><i class="icon icon-file-archive-o "></i></a>  |
+                                                    <a href="schedule-class.php?id=<?php echo $lecture_class['id'] ?>" class="op-link btn btn-sm btn-success" title="Manage Class Details"><i class="icon icon-file-archive-o "></i></a>  |
 
-                                                    <a href="edit-lecture-class.php?id=<?php echo $lecture_class['id'] ?>" class="op-link btn btn-sm btn-info"><i class="icon icon-pencil"></i></a>  |
-                                                    <a href="#" class="delete-lecture-class btn btn-sm btn-danger" data-id="<?php echo $lecture_class['id'] ?>"><i class="waves-effect icon icon-trash" data-type="cancel"></i></a> 
+                                                    <a href="edit-lecture-class.php?id=<?php echo $lecture_class['id'] ?>" class="op-link btn btn-sm btn-info" title="Edit Class Details"><i class="icon icon-pencil"></i></a>  |
+                                                    <a href="#" class="delete-lecture-class btn btn-sm btn-danger" title="Delete Class" data-id="<?php echo $lecture_class['id'] ?>"><i class="waves-effect icon icon-trash" data-type="cancel"></i></a> 
                                                 </td>
                                             </tr>
                                             <?php
