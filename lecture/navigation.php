@@ -44,13 +44,13 @@
 
                         </ul>
                     </li>
-                    <!--                    <li class="sidenav-item has-subnav" style="margin-top: 20px">
-                                            <a href="#" aria-haspopup="true">
-                                                <span class="sidenav-icon icon icon-works">a</span>
-                                                <span class="sidenav-label">Pages 2</span>
-                                            </a>
-                                             
-                                        </li>-->
+                    <li class="sidenav-item has-subnav" style="margin-top: 20px">
+                        <a href="help-center.php" aria-haspopup="true">
+                            <span class="sidenav-icon icon icon-works">a</span>
+                            <span class="sidenav-label">Help Center</span>
+                        </a>
+
+                    </li> 
                 </ul>
             </nav>
         </div>

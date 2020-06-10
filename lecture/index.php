@@ -3,6 +3,10 @@
 include '../class/include.php';
 include './auth.php';
 $PAGES = new Page(1);
+
+$number_of_student = count(StudentRegistration::getStudentByLectureId($_SESSION['id']));
+$number_of_class = count(LectureClass::getLectureClassesByLecture($_SESSION['id']));
+$number_of_subject = count(LectureSubject::getLectureSubjectsByLecture($_SESSION['id']));
 ?> 
 <html lang="en">
     <head>
@@ -54,7 +58,7 @@ $PAGES = new Page(1);
                                             <div class="media-middle media-body">
                                                 <h6 class="media-heading">Students</h6>
                                                 <h3 class="media-heading">
-                                                    <span class="fw-l">10</span>
+                                                    <span class="fw-l"><?php echo  $number_of_student?></span>
                                                 </h3>
                                             </div>
                                         </div>
@@ -71,9 +75,9 @@ $PAGES = new Page(1);
                                                 </span>
                                             </div>
                                             <div class="media-middle media-body">
-                                                <h6 class="media-heading">Class</h6>
+                                                <h6 class="media-heading">Subjects</h6>
                                                 <h3 class="media-heading">
-                                                    <span class="fw-l">14</span>
+                                                    <span class="fw-l"><?php echo  $number_of_subject?></span>
                                                 </h3>
                                             </div>
                                         </div>
@@ -92,7 +96,7 @@ $PAGES = new Page(1);
                                             <div class="media-middle media-body">
                                                 <h6 class="media-heading">Schedule Class</h6>
                                                 <h3 class="media-heading">
-                                                    <span class="fw-l">13</span>
+                                                    <span class="fw-l"><?php echo  $number_of_class?></span>
                                                 </h3>
                                             </div>
                                         </div>
@@ -109,9 +113,9 @@ $PAGES = new Page(1);
                                                 </span>
                                             </div>
                                             <div class="media-middle media-body">
-                                                <h6 class="media-heading">Manage Profile</h6>
+                                                <h6 class="media-heading">Help Center</h6>
                                                 <h3 class="media-heading">
-                                                    <span class="fw-l">15</span>
+                                                    <small class="fw-l  " style="color: white;">Click here </small>  
                                                 </h3>
                                             </div>
                                         </div>

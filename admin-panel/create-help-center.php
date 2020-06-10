@@ -8,7 +8,7 @@ include './auth.php';
     <head>
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <title>Create Category</title>
+        <title>Create Help Center</title>
 
         <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-iconaa.png">
         <link rel="icon" type="image/png" href="favicon-32x32.png" sizes="32x32">
@@ -35,7 +35,7 @@ include './auth.php';
 
             <div class="layout-content">
                 <div class="layout-content-body">
-                 
+
                     <div class="row gutter-xs">
                         <div class="col-xs-12">
                             <div class="row">  
@@ -54,21 +54,21 @@ include './auth.php';
                                     ?>
                                     <div class="card">
                                         <div class="card-header"> 
-                                            <strong>Create Category</strong>
+                                            <strong>Create Help Center</strong>
                                         </div>
                                     </div>
                                     <form class="demo-form-wrapper card "  method="post" style="padding: 50px"   id="form-data">
                                         <div class="form form-horizontal">
                                             <div class="form-group">
-                                                <label class="col-sm-2 control-label " for="title" style="text-align: left">Category Name: </label>
+                                                <label class="col-sm-2 control-label " for="title" style="text-align: left">Quest Title : </label>
                                                 <div class="col-sm-10">
-                                                    <input id="name" name="name" class="form-control" type="text"   >
+                                                    <input id="name" name="name" class="form-control" type="text">
                                                 </div>
                                             </div>
                                             <div class="form-group">
-                                                <label class="col-sm-2 control-label " for="title" style="text-align: left"> Image: </label>
+                                                <label class="col-sm-2 control-label " for="title" style="text-align: left"> Description: </label>
                                                 <div class="col-sm-10">
-                                                    <input id="image_name" name="image_name" class="form-control" type="file"   >
+                                                    <textarea id="description" name="description" class="form-control" rows="5"></textarea> 
                                                 </div>
                                             </div>
 
@@ -100,5 +100,33 @@ include './auth.php';
         <script src="js/sweetalert.min.js" type="text/javascript"></script>        
         <script src="delete/js/education-category.js" type="text/javascript"></script>
         <script src="ajax/js/education-category.js" type="text/javascript"></script>
+        
+        <script src="js/tinymce.min.js" type="text/javascript"></script>
+        <script>
+            tinymce.init({
+                selector: "#description",
+                // ===========================================
+                // INCLUDE THE PLUGIN
+                // ===========================================
+
+                plugins: [
+                    "advlist autolink lists link image charmap print preview anchor",
+                    "searchreplace visualblocks code fullscreen",
+                    "insertdatetime media table contextmenu paste"
+                ],
+                // ===========================================
+                // PUT PLUGIN'S BUTTON on the toolbar
+                // ===========================================
+
+                toolbar: "insertfile undo redo | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image jbimages",
+                // ===========================================
+                // SET RELATIVE_URLS to FALSE (This is required for images to display properly)
+                // ===========================================
+
+                relative_urls: false
+
+            });
+
+        </script>
     </body>
 </html>
