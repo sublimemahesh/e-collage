@@ -51,35 +51,56 @@ $start_time = $LECTURE_CLASS->start_date . ' ' . $LECTURE_CLASS->start_time;
                                 <div class="tab-content">
                                     <div class="animated"> 
                                         <div class="middle-area" id="count_section">
-
                                             <?php
+                                            $video_id = array();
                                             foreach ($LECTURE_CLASS_VIDEO->getVideoByClass($id, $today) as $lecture_video) {
+                                                array_push($video_id, $lecture_video['id'])
                                                 ?>  
-                                                <iframe width="100%" height="560" src="https://www.youtube.com/embed/<?php echo $lecture_video['url'] ?>" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+                                                <div class="col-md-9">
+                                                    <iframe width="100%" height="520" src="https://www.youtube.com/embed/<?php echo $lecture_video['url'] ?>" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe> 
+
+                                                </div>
+
                                                 <?php
                                             }
                                             ?>
+                                            <div class="col-md-3">
+                                                <div style="height:400px; border:1px solid #ccc; overflow-y: scroll; margin-bottom:24px; padding:16px;" class="chat_history" data-studentid="<?php echo $_SESSION['id'] ?>" video_id="<?php echo $video_id['0'] ?>" id="chat_history_<?php echo $video_id['0'] ?>"  > 
+                                                    <p>Start your Chat session now..!</p>
+                                                </div> 
+                                                <div class="form-group"  > 
+                                                    <textarea   class="form-control"  name="chat_message_<?php echo $video_id['0'] ?>" id="chat_message_<?php echo $video_id['0'] ?>" placeholder="Enter"></textarea> 
+                                                </div>
+                                                <div class="form-group" align="right"> 
+                                                    <button type="button" name="send_chat"   class="btn btn-info send_chat" student_id="<?php echo $_SESSION['id'] ?>"  video_id="<?php echo $video_id['0'] ?>"   >Send</button></div></div> 
+
 
                                         </div>
-                                    </div> 
 
-                                </div>
-                            </div> 
-                        </div>              
-                    </div>            
-                </div>
+                                    </div>
+                                </div> 
+
+                            </div>
+                        </div> 
+                    </div>              
+                </div>            
             </div>
         </div>
-        <input type="hidden" value="<?php echo $_SESSION['id'] ?>" id="student_id">
     </div>
+    <input type="hidden" value="<?php echo $_SESSION['id'] ?>" id="student_id">
+</div>
 
 
-    <script src="js/jquery.min.js" type="text/javascript"></script>
-    <script src="js/vendor.min.js"></script>
-    <script src="js/elephant.min.js"></script>
-    <script src="js/application.min.js"></script>
-    <script src="js/sweetalert.min.js" type="text/javascript"></script> 
-    <script src="ajax/js/check-login.js" type="text/javascript"></script>
+<script src="js/jquery.min.js" type="text/javascript"></script>
+<script src="js/vendor.min.js"></script>
+<script src="js/elephant.min.js"></script>
+<script src="js/application.min.js"></script>
+<script src="js/sweetalert.min.js" type="text/javascript"></script> 
+<script src="ajax/js/check-login.js" type="text/javascript"></script>
+<script src="ajax/js/chat.js" type="text/javascript"></script>
+<script src="https://cdn.rawgit.com/mervick/emojionearea/master/dist/emojionearea.min.js"></script>
+
 
 </body>
 
