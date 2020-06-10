@@ -48,12 +48,9 @@ $start_time = $LECTURE_CLASS->start_date . ' ' . $LECTURE_CLASS->start_time;
                             </div>
 
                             <div class="panel m-b-lg">
-
                                 <div class="tab-content">
-
-
                                     <div class="animated"> 
-                                        <div class="middle-area" id="count_section"  >
+                                        <div class="middle-area" id="count_section">
 
                                             <?php
                                             foreach ($LECTURE_CLASS_VIDEO->getVideoByClass($id, $today) as $lecture_video) {

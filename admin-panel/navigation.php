@@ -13,7 +13,7 @@
                             <span class="sidenav-icon icon icon-dashboard"> </span>
                             <span class="sidenav-label">Dashboard</span>
                         </a>
-                        
+
                     </li>
                     <li class="sidenav-item has-subnav" style="margin-top: 20px">
                         <a href="#" aria-haspopup="true">
@@ -79,16 +79,13 @@
 
                         </ul>
                     </li>
-<!--                    <li class="sidenav-item has-subnav" style="margin-top: 20px">
-                        <a href="#" aria-haspopup="true">
+                    <li class="sidenav-item has-subnav" style="margin-top: 20px">
+                        <a href="create-help-center.php" aria-haspopup="true">
                             <span class="sidenav-icon icon icon-works">a</span>
-                            <span class="sidenav-label">Education Category</span>
+                            <span class="sidenav-label">Help Center</span>
                         </a>
-                        <ul class="sidenav level-2 collapse"> 
-                            <li><a href="create-education-category.php">Create Education Category</a></li>
-
-                        </ul>
-                    </li>-->
+                         
+                    </li>
                 </ul>
             </nav>
         </div>

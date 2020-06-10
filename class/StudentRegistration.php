@@ -163,5 +163,20 @@ class StudentRegistration {
 
         return $array_res;
     }
+    public function getStudentByLectureId($student) {
+
+        $query = "SELECT * FROM `student_class_registration` WHERE `lecture_id` = '" . $student . "'  ";
+
+        $db = new Database();
+
+        $result = $db->readQuery($query);
+        $array_res = array();
+
+        while ($row = mysql_fetch_array($result)) {
+            array_push($array_res, $row);
+        }
+
+        return $array_res;
+    }
 
 }

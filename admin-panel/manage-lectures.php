@@ -33,16 +33,11 @@ include './auth.php';
             include 'navigation.php';
             ?>
             <div class="layout-content">
-                <div class="layout-content-body">
-                    <div class="row gutter-xs">
-                        <div class="col-xs-12"> </div>
-                    </div>
-                    <div class="row gutter-xs">
+                <div class="layout-content-body">                    
+                    <div class="row">
                         <div class="col-xs-12">
-
                             <div class="card">
                                 <div class="card-header">
-
                                     <strong>Manage Lectures</strong>
                                 </div>
                                 <div class="card-body">
