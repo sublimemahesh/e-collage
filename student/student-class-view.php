@@ -2,7 +2,7 @@
 <?php
 include '../class/include.php';
 include_once(dirname(__FILE__) . '/auth.php');
-$id = $_GET['id']; 
+$id = $_GET['id'];
 $LECTURE_CLASS = new LectureClass($id);
 $LECTURE = new Lecture($LECTURE_CLASS->lecture);
 
@@ -136,7 +136,41 @@ $PERIOD = new DatePeriod($begin, $interval, $end);
                                                         if (count($LECTURE_VIDEO->getVideoByClass($id, $date_Start)) > 0) {
                                                             foreach ($LECTURE_VIDEO->getVideoByClass($id, $date_Start) as $lecture_video) {
                                                                 ?>
-                                                                <iframe width="100%" height="500" src="https://www.youtube.com/embed/<?php echo $lecture_video['url'] ?>" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                                                                <div class="col-md-9">
+                                                                    <iframe width="100%" height="500" src="https://www.youtube.com/embed/<?php echo $lecture_video['url'] ?>" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+                                                                </div>
+                                                                <div class="col-md-3">
+                                                                    <div style="height:500px; border:1px solid #ccc; overflow-y: scroll; margin-bottom:24px; padding:16px;" class="chat_history" data-touserid="'+to_user_id+'"    > 
+
+                                                                        <ul class="list-unstyled"> 
+                                                                            <?php
+                                                                            $CHAT = new Chat(NULL);
+                                                                            foreach ($CHAT->getChatByVideo($lecture_video['id']) as $chat) {
+                                                                                $STUDENTS = new Student($chat['student_id']);
+                                                                                $user_name = '';
+                                                                                if ($chat['student_id'] == $_SESSION['id']) {
+
+                                                                                    $user_name = '<b class = "text-success ">You</b>';
+                                                                                } else {
+                                                                                    $user_name = '<b class = "text-danger  ">' . $STUDENTS->full_name . ' </b>';
+                                                                                }
+                                                                                ?>
+
+                                                                                <li style = "border-bottom:1px dotted #ccc">
+                                                                                    <p> <?php echo $user_name . ' - ' . $chat["chat_message"] ?>
+                                                                                    <div align = "right">
+                                                                                        - <small><em><?php echo  $chat['timestamp']?></em></small>
+                                                                                    </div>
+                                                                                    </p>
+                                                                                </li>
+                                                                                <?php
+                                                                            }
+                                                                            ?>
+                                                                        </ul> 
+                                                                    </div> 
+
+                                                                </div> 
                                                                 <?php
                                                             }
                                                         } else {
