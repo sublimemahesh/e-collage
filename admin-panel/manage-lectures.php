@@ -64,7 +64,7 @@ include './auth.php';
 
                                                 <td> 
                                                     <a href="view-lecture.php?id=<?php echo $lecture['id'] ?>" class="op-link btn btn-sm btn-primary"><i class="icon icon-eye"></i></a> | 
-                                                    <a href="#" class="  btn btn-sm btn-danger" data-id="<?php echo $lecture['id'] ?>"><i class="waves-effect icon icon-trash" data-type="cancel"></i></a> 
+                                                    <a href="#" class=" delete-lecture btn btn-sm btn-danger" data-id="<?php echo $lecture['id'] ?>"><i class="waves-effect icon icon-trash" data-type="cancel"></i></a> 
                                                 </td>
                                             </tr>
                                         <?php } ?>
@@ -95,6 +95,6 @@ include './auth.php';
         <script src="js/application.min.js"></script>
         <script src="js/demo.min.js"></script>
         <script src="js/sweetalert.min.js" type="text/javascript"></script>        
-        <script src="delete/js/subject.js" type="text/javascript"></script>
+        <script src="delete/js/lecture.js" type="text/javascript"></script>
     </body>
 </html>

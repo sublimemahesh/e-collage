@@ -676,7 +676,7 @@ class Lecture {
 
 
 
-        $this->deletePost();
+      
 
 
         if ($this->image_name) {
