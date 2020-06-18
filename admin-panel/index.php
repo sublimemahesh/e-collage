@@ -2,6 +2,15 @@
 <?php
 include '../class/include.php';
 include './auth.php';
+$LECTURE = new Lecture(NULL);
+$STUDENT = new Student(NULL);
+$E_CATEGORY = new EducationCategory(NULL);
+$LECTURE_CLASS = new LectureClass(NULL);
+
+$COUNT_LECTURE = count($LECTURE->all());
+$COUNT_STUDENT = count($STUDENT->all());
+$COUNT_CATEGORY = count($E_CATEGORY->all());
+$COUNT_CLASS= count($LECTURE_CLASS->all());
 ?>
 <html lang="en">
 
@@ -50,7 +59,7 @@ include './auth.php';
                                 <div class="card-values">
                                     <div class="p-x">
                                         <small>All Student</small>
-                                        <h3 class="card-title fw-l">30</h3>
+                                        <h3 class="card-title fw-l"><?php echo $COUNT_STUDENT ?></h3>
                                     </div>
                                 </div>
                                 <div class="card-chart">
@@ -63,7 +72,7 @@ include './auth.php';
                                 <div class="card-values">
                                     <div class="p-x">
                                         <small>All Lectures</small>
-                                        <h3 class="card-title fw-l">16</h3>
+                                        <h3 class="card-title fw-l"><?php echo $COUNT_LECTURE ?></h3>
                                     </div>
                                 </div>
                                 <div class="card-chart">
@@ -76,7 +85,7 @@ include './auth.php';
                                 <div class="card-values">
                                     <div class="p-x">
                                         <small>All Category</small>
-                                        <h3 class="card-title fw-l">20</h3>
+                                        <h3 class="card-title fw-l"><?php echo $COUNT_CATEGORY?></h3>
                                     </div>
                                 </div>
                                 <div class="card-chart">
@@ -89,7 +98,7 @@ include './auth.php';
                                 <div class="card-values">
                                     <div class="p-x">
                                         <small>All Classes</small>
-                                        <h3 class="card-title fw-l">12</h3>
+                                        <h3 class="card-title fw-l"><?php echo $COUNT_CLASS ?></h3>
                                     </div>
                                 </div>
                                 <div class="card-chart">
@@ -214,10 +223,7 @@ include './auth.php';
                                         <div class="media-middle media-body">
                                             <h3 class="media-heading">
                                                 <span class="fw-l">1,256 Issues</span>
-                                                <span class="fw-b fz-sm text-danger">
-                                                    <span class="icon icon-caret-up"></span>
-                                                    15%
-                                                </span>
+                                                
                                             </h3>
                                             <small>6 issues are unassigned</small>
                                         </div>
@@ -225,7 +231,7 @@ include './auth.php';
                                 </div>
                             </div>
                         </div>
-                         <div class="col-md-4">
+                        <div class="col-md-4">
                             <div class="card">
                                 <div class="card-body">
                                     <div class="media">
@@ -245,7 +251,7 @@ include './auth.php';
                                 </div>
                             </div>
                         </div>
-                         <div class="col-md-4">
+                        <div class="col-md-4">
                             <div class="card">
                                 <div class="card-body">
                                     <div class="media">
@@ -265,8 +271,8 @@ include './auth.php';
                                 </div>
                             </div>
                         </div>
-                       
-                       
+
+
                     </div>
                 </div>
             </div>
