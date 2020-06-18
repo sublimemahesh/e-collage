@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <?php
-
 include '../class/include.php';
 include './auth.php';
 ?>
@@ -9,7 +8,7 @@ include './auth.php';
     <head>
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <title>Manage Active Student</title>
+        <title> Create Page</title>
 
         <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-iconaa.png">
         <link rel="icon" type="image/png" href="favicon-32x32.png" sizes="32x32">
@@ -63,9 +62,16 @@ include './auth.php';
                                     <form class="demo-form-wrapper card "  method="post" style="padding: 50px"  action="ajax/post-and-get/pages.php">
                                         <div class="form form-horizontal">
                                             <div class="form-group">
-                                                <label class="col-sm-1 control-label" for="title">URL: </label>
+                                                <label class="col-sm-1 control-label" for="title">Title: </label>
                                                 <div class="col-sm-11">
                                                     <input id="title" name="title" class="form-control" type="text"   >
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="col-sm-1 control-label" for="title">Description: </label>
+                                                <div class="col-sm-11">
+                                                    <textarea  name="description" id="description" class="form-control  description" rows="5"></textarea> 
+
                                                 </div>
                                             </div>
 
@@ -139,5 +145,32 @@ include './auth.php';
         <script src="js/demo.min.js"></script>
         <script src="js/sweetalert.min.js" type="text/javascript"></script>        
         <script src="delete/js/student.js" type="text/javascript"></script>
+        <script src="tinymce/js/tinymce/tinymce.min.js" type="text/javascript"></script>
+        <script>
+            tinymce.init({
+                selector: ".description",
+                // ===========================================
+                // INCLUDE THE PLUGIN
+                // ===========================================
+
+                plugins: [
+                    "advlist autolink lists link image charmap print preview anchor",
+                    "searchreplace visualblocks code fullscreen",
+                    "insertdatetime media table contextmenu paste"
+                ],
+                // ===========================================
+                // PUT PLUGIN'S BUTTON on the toolbar
+                // ===========================================
+
+                toolbar: "insertfile undo redo | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image jbimages",
+                // ===========================================
+                // SET RELATIVE_URLS to FALSE (This is required for images to display properly)
+                // ===========================================
+
+                relative_urls: false
+
+            });
+
+        </script>
     </body>
 </html>

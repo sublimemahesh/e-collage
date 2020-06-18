@@ -2,25 +2,13 @@
 <?php
 include '../class/include.php';
 include_once(dirname(__FILE__) . '/auth.php');
-
-$id = '';
-$id = $_GET['id'];
-$LECTURE_CLASS = new LectureClass($id);
-
-$begin = new DateTime($LECTURE_CLASS->start_date);
-$date = new DateTime($LECTURE_CLASS->start_date);
-$days = ($LECTURE_CLASS->modules * 7);
-
-$end = $date->modify('+' . $days . ' day');
-$interval = DateInterval::createFromDateString('7 day');
-$PERIOD = new DatePeriod($begin, $interval, $end);
 ?>
 <html lang="en">
 
     <head>
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <title>Schedule Class - Ecollage.lk</title>
+        <title>Help Center - Ecollage.lk</title>
         <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no">
         <meta property="og:url" content="http://demo.madebytilde.com/elephant">
         <meta property="og:type" content="website">
@@ -40,21 +28,24 @@ $PERIOD = new DatePeriod($begin, $interval, $end);
 
     </head>
     <body class="layout layout-header-fixed">
-      
+
 
         <?php include './top-header.php'; ?>
         <div class="layout-main">
             <?php include './navigation.php'; ?>
             <div class="layout-content">
                 <div class="layout-content-body"> 
-                   
+                    <?php
+                    $HELP_CENTER = new HelpCenter(NULL);
 
+                    foreach ($HELP_CENTER->all() as $help_center) {
+                        ?>
                         <div class="card">
                             <a href="# "class="  card-toggler" title="Collapse">  
                                 <div class="card-header  ">
                                     <div class="col-md-8">
                                         <h5>
-                                            View Previous - <span class="text-success" > </span>
+                                            <?php echo $help_center['title'] ?> <span class="text-success" > </span>
                                             <span class="fas-fa fa-chevron-down">   </span> 
                                         </h5>
                                     </div>
@@ -67,11 +58,11 @@ $PERIOD = new DatePeriod($begin, $interval, $end);
                             <div class="card-body" style="display: none;">
                                 <hr style="margin: 0px 0px 20px 0px;">
 
-                                <iframe width="100%" height="500" src="https://www.youtube.com/embed/<?php echo $lecture_video['url'] ?>" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-
+                                <?php echo $help_center['description'] ?>
                             </div>
-                        </div>   
-                    
+                        </div> 
+                    <?php } ?>
+
                 </div>
             </div>
             <?php include './footer.php'; ?>

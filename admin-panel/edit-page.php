@@ -1,7 +1,8 @@
 <!DOCTYPE html>
 <?php
 include '../class/include.php';
-include './auth.php';$id = '';
+include './auth.php';
+$id = '';
 $id = $_GET['id'];
 $PAGES = new Page($id);
 ?>
@@ -52,7 +53,7 @@ $PAGES = new Page($id);
                                         $MESSAGE = New Message($_GET['message']);
                                         ?>
                                         <div class="alert alert-<?php echo $MESSAGE->status; ?>" role = "alert">
-                                            <?php echo $MESSAGE->description; ?>
+                                        <?php echo $MESSAGE->description; ?>
                                         </div>
                                         <?php
                                     }
@@ -68,6 +69,13 @@ $PAGES = new Page($id);
                                                 <label class="col-sm-1 control-label" for="title">URL: </label>
                                                 <div class="col-sm-11">
                                                     <input id="title" name="title" class="form-control" type="text" value="<?php echo $PAGES->title ?>"  >
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="col-sm-1 control-label" for="title">Description: </label>
+                                                <div class="col-sm-11">
+                                                    <textarea  name="description" id="description" class="form-control  description" rows="5"><?php echo $PAGES->description ?></textarea> 
+
                                                 </div>
                                             </div>
 
@@ -96,6 +104,32 @@ $PAGES = new Page($id);
         <script src="js/application.min.js"></script>
         <script src="js/demo.min.js"></script>
         <script src="js/sweetalert.min.js" type="text/javascript"></script>        
-        <script src="delete/js/student.js" type="text/javascript"></script>
+       <script src="tinymce/js/tinymce/tinymce.min.js" type="text/javascript"></script>
+        <script>
+            tinymce.init({
+                selector: ".description",
+                // ===========================================
+                // INCLUDE THE PLUGIN
+                // ===========================================
+
+                plugins: [
+                    "advlist autolink lists link image charmap print preview anchor",
+                    "searchreplace visualblocks code fullscreen",
+                    "insertdatetime media table contextmenu paste"
+                ],
+                // ===========================================
+                // PUT PLUGIN'S BUTTON on the toolbar
+                // ===========================================
+
+                toolbar: "insertfile undo redo | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image jbimages",
+                // ===========================================
+                // SET RELATIVE_URLS to FALSE (This is required for images to display properly)
+                // ===========================================
+
+                relative_urls: false
+
+            });
+
+        </script>
     </body>
 </html>

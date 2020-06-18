@@ -9,8 +9,10 @@ $LECTURE_CLASS = new LectureClass($id);
 
 $begin = new DateTime($LECTURE_CLASS->start_date);
 $date = new DateTime($LECTURE_CLASS->start_date);
-$days = ($LECTURE_CLASS->modules * 7);
+date_default_timezone_set("Asia/Calcutta");
+$today = date('Y-m-d');
 
+$days = ($LECTURE_CLASS->modules * 7);
 $end = $date->modify('+' . $days . ' day');
 $interval = DateInterval::createFromDateString('7 day');
 $PERIOD = new DatePeriod($begin, $interval, $end);
@@ -82,9 +84,12 @@ $PERIOD = new DatePeriod($begin, $interval, $end);
                                                             <option value="">-- Select schedule date -- </option>
                                                             <?php
                                                             foreach ($PERIOD as $date) {
-                                                                ?>
-                                                                <option value="<?php echo $date->format("Y-m-d"); ?>"><?php echo $date->format("Y-m-d "); ?></option>   
-                                                                <?php
+
+                                                                if ($date->format("Y-m-d") >= $today) {
+                                                                    ?>
+                                                                    <option value="<?php echo $date->format("Y-m-d"); ?>"><?php echo $date->format("Y-m-d "); ?></option>   
+                                                                    <?php
+                                                                }
                                                             }
                                                             ?> 
                                                         </select>
@@ -135,12 +140,15 @@ $PERIOD = new DatePeriod($begin, $interval, $end);
                                                     if (count($LECTURE_VIDEO->getVideoByClass($id, $date_f)) > 0) {
                                                         foreach ($LECTURE_VIDEO->getVideoByClass($id, $date_f) as $lecture_video) {
                                                             ?>
-                                                            <div class="col-md-9">
-                                                                <iframe width="100%" height="500" src="https://www.youtube.com/embed/<?php echo $lecture_video['url'] ?>" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                                                            <div class="col-md-9" >
+                                                                <iframe width="100%" height="500" src="https://www.youtube.com/embed/<?php echo substr($lecture_video['url'], 17) ?>" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                                                                <button class="file-delete-btn delete delete-video btn-danger" data-id=" <?php echo $lecture_video['id'] ?>" title="Delete" type="button" style="background-color: red;margin-right: 9px;">
+                                                                    <span class="icon icon-remove"></span> 
+                                                                </button>
 
                                                             </div>
                                                             <div class="col-md-3">
-                                                                <div style="height:400px; border:1px solid #ccc; overflow-y: scroll; margin-bottom:24px; padding:16px;" class="chat_history" data-lecture_id="<?php echo  $_SESSION['id'] ?>" video_id="<?php echo $lecture_video['id']  ?>" id="chat_history_<?php echo $lecture_video['id'] ?>"  > 
+                                                                <div style="height:400px; border:1px solid #ccc; overflow-y: scroll; margin-bottom:24px; padding:16px;" class="chat_history" data-lecture_id="<?php echo $_SESSION['id'] ?>" video_id="<?php echo $lecture_video['id'] ?>" id="chat_history_<?php echo $lecture_video['id'] ?>"  > 
                                                                     <p>Start your Chat session now..!</p>
                                                                 </div> 
                                                                 <div class="form-group"  > 
@@ -183,9 +191,11 @@ $PERIOD = new DatePeriod($begin, $interval, $end);
                                                             <option value="">-- Select schedule date -- </option>
                                                             <?php
                                                             foreach ($PERIOD as $date) {
-                                                                ?>
-                                                                <option value="<?php echo $date->format("Y-m-d"); ?>"><?php echo $date->format("Y-m-d "); ?></option>   
-                                                                <?php
+                                                                if ($date->format("Y-m-d") >= $today) {
+                                                                    ?>
+                                                                    <option value="<?php echo $date->format("Y-m-d"); ?>"><?php echo $date->format("Y-m-d "); ?></option>   
+                                                                    <?php
+                                                                }
                                                             }
                                                             ?> 
                                                         </select> 
@@ -289,9 +299,11 @@ $PERIOD = new DatePeriod($begin, $interval, $end);
                                                             <option value="">-- Select schedule date -- </option>
                                                             <?php
                                                             foreach ($PERIOD as $date) {
-                                                                ?>
-                                                                <option value="<?php echo $date->format("Y-m-d"); ?>"><?php echo $date->format("Y-m-d"); ?></option>   
-                                                                <?php
+                                                                if ($date->format("Y-m-d") >= $today) {
+                                                                    ?>
+                                                                    <option value="<?php echo $date->format("Y-m-d"); ?>"><?php echo $date->format("Y-m-d"); ?></option>   
+                                                                    <?php
+                                                                }
                                                             }
                                                             ?> 
                                                         </select> 
@@ -390,9 +402,11 @@ $PERIOD = new DatePeriod($begin, $interval, $end);
                                                             <option value="">-- Select schedule date -- </option>
                                                             <?php
                                                             foreach ($PERIOD as $date) {
-                                                                ?>
-                                                                <option value="<?php echo $date->format("Y-m-d"); ?>"><?php echo $date->format("Y-m-d"); ?></option>   
-                                                                <?php
+                                                                if ($date->format("Y-m-d") >= $today) {
+                                                                    ?>
+                                                                    <option value="<?php echo $date->format("Y-m-d"); ?>"><?php echo $date->format("Y-m-d"); ?></option>   
+                                                                    <?php
+                                                                }
                                                             }
                                                             ?> 
                                                         </select> 
@@ -462,29 +476,134 @@ $PERIOD = new DatePeriod($begin, $interval, $end);
                                     </div> 
 
                                     <div class="tab-pane fade" id="home_work">
+                                        <form class="demo-form-wrapper card " style="padding: 50px" id="form-home-work">
+                                            <div class="form form-horizontal"> 
+                                                <div class="form-group">
+                                                    <label class="col-sm-2 control-label " for="name" style="text-align: left"> Title: </label>
+                                                    <div class="col-sm-10">
+                                                        <input id="title_3" name="title" class="form-control  " type="text"  placeholder="Enter Title "   >
+                                                    </div>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label class="col-sm-2 control-label " for="name" style="text-align: left">Home Work Papers: </label>
+                                                    <div class="col-sm-10">
+                                                        <input id="pdf_file_3" name="pdf_file" class="form-control  " type="file"   >
+                                                    </div>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label class="col-sm-2 control-label " for="name" style="text-align: left">Select Date: </label>
+                                                    <div class="col-sm-10">
+
+                                                        <select  class="custom-select" id="date" name="date" required="">
+                                                            <option value="">-- Select schedule date -- </option>
+                                                            <?php
+                                                            foreach ($PERIOD as $date) {
+                                                                if ($date->format("Y-m-d") >= $today) {
+                                                                    ?>
+                                                                    <option value="<?php echo $date->format("Y-m-d"); ?>"><?php echo $date->format("Y-m-d "); ?></option>   
+                                                                    <?php
+                                                                }
+                                                            }
+                                                            ?> 
+                                                        </select> 
+                                                    </div>
+                                                </div>
+                                                <div class="form-group">
+                                                    <div class="col-md-3"></div> 
+                                                    <div class="col-md-3"></div> 
+                                                    <div class="col-md-4"></div> 
+                                                    <div class="col-md-2">  
+                                                        <input type="hidden"  name="create-home-work">
+                                                        <input type="hidden"  name="class_id"  value="<?php echo $id ?>" >
+                                                        <input type="hidden"  name="lecture_id"  value="<?php echo $_SESSION['id'] ?>" >
+                                                        <input type="submit" class="btn btn-primary btn-block"   value="Add" id="create-home-work" >
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                        </form>
+
 
                                         <?php
-                                        $HOME_WORK = new HomeWork(NULL);
-                                        foreach ($HOME_WORK->getHomeWorkByClassId($id) as $home_work) {
+                                        foreach ($PERIOD as $date) {
+                                            $date_f = $date->format("Y-m-d");
                                             ?>
-                                            <div class="col-md-4">
-                                                <div class="card">
+
+                                            <div class="card">
+                                                <a href="# "class="   card-toggler" title="Collapse">  
                                                     <div class="card-header  ">
-                                                        <h5>
-                                                            <?php echo $home_work['title'] ?>- <span class="text-success"><b><?php
-                                                            $STUDENT = new Student($home_work['student_id']);
-                                                            echo $STUDENT->full_name;
-                                                            ?></b></span>
-                                                        </h5>
-                                                        <div class="gallery"> 
-                                                            <a href="../upload/home-work/<?php echo $home_work['image_name'] ?>" class="big">
-                                                                <img src="../upload/home-work/thumb/<?php echo $home_work['image_name'] ?>" alt="<?php echo $home_work['title'] ?>"  />
-                                                            </a>
+                                                        <div class="col-md-8">
+                                                            <h5>
+                                                                Manage Home Work   - <span class="text-success" ><b>( <?php echo $date_f ?> ) </b></span>
+                                                                <span class="fas-fa fa-chevron-down">   </span> 
+                                                            </h5>
                                                         </div>
-                                                    </div> 
-                                                </div> 
+                                                        <div class="col-md-4">
+                                                            <span class=" icon icon-angle-down pull-right f-right"></span>
+                                                        </div> 
+                                                    </div>
+                                                </a> 
+
+                                                <div class="card-body" style="display: none;">
+                                                    <hr style="margin: 0px 0px 20px 0px;">
+
+                                                    <?php
+                                                    $HOME_WORK = new HomeWork(NULL);
+                                                    if (count($HOME_WORK->getHomeWorkByClassId($id, $date_f)) > 0) {
+                                                        foreach ($HOME_WORK->getHomeWorkByClassId($id, $date_f) as $home_work) {
+                                                            ?>
+                                                            <div class="col-md-4 card " style="padding: 10px;margin: 10px;" id="div_3<?php echo $home_work['id'] ?>">
+                                                                <div class="text-center">
+                                                                    <p>
+                                                                        <?php echo $home_work['title'] ?> 
+                                                                    </p> 
+                                                                    <a href="../upload/class/home-work/<?php echo $home_work['file_name'] ?>" target="_blank"  class="btn btn-success  " style="margin-bottom: 10px;">  VIEW ASSIGNMENT </a> | 
+                                                                    <a href="#" class="delete-lecture-assessment btn btn-sm btn-danger"  data-id="<?php echo $home_work['id'] ?>" style="margin-top: -8px;"><i class="waves-effect icon icon-trash" data-type="cancel"></i></a> 
+
+                                                                </div>
+                                                            </div>
+                                                            <?php
+                                                        }
+                                                    } else {
+                                                        ?>
+                                                        <h4 class="text-danger text-center"> No Available Home Work..</h4>
+                                                    <?php } ?>
+
+                                                </div>
                                             </div>  
                                         <?php } ?>
+
+
+
+                                        <div class="row">
+                                            <div class="col-md-12">
+                                                <h3 class="text-center">Manage Student Work</h3>
+                                            </div>
+                                            <?php
+                                            $HOME_WORK = new HomeWork(NULL);
+                                            foreach ($HOME_WORK->getHomeWorkByClassIdAndStudentId($id) as $home_work) {
+                                                ?>
+
+                                                <div class="col-md-4">
+                                                    <div class="card">
+                                                        <div class="card-header  ">
+                                                            <h5>
+                                                                <?php echo $home_work['title'] ?>- <span class="text-success"><b><?php
+                                                                $STUDENT = new Student($home_work['student_id']);
+                                                                echo $STUDENT->full_name;
+                                                                ?></b></span>
+                                                            </h5>
+                                                            <div class="gallery"> 
+                                                                <a href="../upload/home-work/<?php echo $home_work['image_name'] ?>" class="big">
+                                                                    <img src="../upload/home-work/thumb/<?php echo $home_work['image_name'] ?>" alt="<?php echo $home_work['title'] ?>"  />
+                                                                </a>
+                                                            </div>
+                                                        </div> 
+                                                    </div> 
+                                                </div>  
+
+                                            <?php } ?>
+                                        </div> 
                                     </div> 
                                 </div>
                             </div>              
@@ -492,7 +611,7 @@ $PERIOD = new DatePeriod($begin, $interval, $end);
                     </div>
                 </div>
             </div>
-            <?php include './footer.php'; ?>
+
         </div>
         <script src="js/jquery.min.js" type="text/javascript"></script>
         <script src="js/vendor.min.js"></script>
@@ -506,6 +625,7 @@ $PERIOD = new DatePeriod($begin, $interval, $end);
         <script src="delete/js/lecture-mcq.js" type="text/javascript"></script>
         <script src="delete/js/lecture-tutorial.js" type="text/javascript"></script>
         <script src="delete/js/lecture-assessment.js" type="text/javascript"></script>
+        <script src="delete/js/lecture-video.js" type="text/javascript"></script>
 
         <script src="js/jm.spinner.js" type="text/javascript"></script>
         <script src="js/simple-lightbox.min.js" type="text/javascript"></script>

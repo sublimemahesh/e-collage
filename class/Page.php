@@ -15,11 +15,12 @@ class Page {
 
     public $id;
     public $title;
+    public $description;
 
     public function __construct($id) {
         if ($id) {
 
-            $query = "SELECT `id`,`title`  FROM `pages` WHERE `id`=" . $id;
+            $query = "SELECT *  FROM `pages` WHERE `id`=" . $id;
 
             $db = new Database();
 
@@ -27,7 +28,7 @@ class Page {
 
             $this->id = $result['id'];
             $this->title = $result['title'];
-
+            $this->description = $result['description']; 
 
 
             return $this;
@@ -36,7 +37,8 @@ class Page {
 
     public function create() {
 
-        $query = "INSERT INTO `pages` (`title`) VALUES  ('"
+        $query = "INSERT INTO `pages` (`title`,`description`) VALUES  ('"
+                . $this->description . "','" 
                 . $this->title . "')";
 
 
@@ -70,7 +72,8 @@ class Page {
     public function update() {
 
         $query = "UPDATE  `pages` SET "
-                . "`title` ='" . $this->title . "' "
+                . "`title` ='" . $this->title . "', "
+                . "`description` ='" . $this->description . "' "
                 . "WHERE `id` = '" . $this->id . "'";
 
         $db = new Database();

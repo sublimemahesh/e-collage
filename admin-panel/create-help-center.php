@@ -8,9 +8,12 @@ include './auth.php';
     <head>
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <title>Create Help Center</title>
-
-        <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-iconaa.png">
+        <title>Help Center - Ecollage.lk</title>
+        <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no">
+        <meta property="og:url" content="http://demo.madebytilde.com/elephant">
+        <meta property="og:type" content="website">
+        <meta property="og:image" content="../../elephant.html">
+        <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
         <link rel="icon" type="image/png" href="favicon-32x32.png" sizes="32x32">
         <link rel="icon" type="image/png" href="favicon-16x16.png" sizes="16x16">
         <link rel="manifest" href="manifest.json">
@@ -21,7 +24,6 @@ include './auth.php';
         <link rel="stylesheet" href="css/elephant.min.css">
         <link rel="stylesheet" href="css/application.min.css">
         <link rel="stylesheet" href="css/demo.min.css">
-        <link href="css/sweetalert.css" rel="stylesheet" type="text/css"/>
     </head>
     <body class="layout layout-header-fixed">
         <?php
@@ -60,15 +62,15 @@ include './auth.php';
                                     <form class="demo-form-wrapper card "  method="post" style="padding: 50px"   id="form-data">
                                         <div class="form form-horizontal">
                                             <div class="form-group">
-                                                <label class="col-sm-2 control-label " for="title" style="text-align: left">Quest Title : </label>
+                                                <label class="col-sm-2 control-label " for="title" style="text-align: left">  Title : </label>
                                                 <div class="col-sm-10">
-                                                    <input id="name" name="name" class="form-control" type="text">
+                                                    <input id="title" name="title" class="form-control" type="text">
                                                 </div>
                                             </div>
                                             <div class="form-group">
                                                 <label class="col-sm-2 control-label " for="title" style="text-align: left"> Description: </label>
                                                 <div class="col-sm-10">
-                                                    <textarea id="description" name="description" class="form-control" rows="5"></textarea> 
+                                                    <textarea  name="description" id="description" class="form-control  description" rows="5"></textarea> 
                                                 </div>
                                             </div>
 
@@ -84,7 +86,34 @@ include './auth.php';
                                         </div>
                                     </form> 
                                 </div> 
-                            </div> 
+                            </div>
+
+                            <?php
+                            $HELP_CENTER = new HelpCenter(NULL);
+                            foreach ($HELP_CENTER->all() as $help_center) {
+                                ?>
+                                <div class="card">
+                                    <a href="# "class="  card-toggler" title="Collapse">  
+                                        <div class="card-header  ">
+                                            <div class="col-md-8">
+                                                <h5>
+                                                    <?php echo $help_center['title'] ?> <span class="text-success" > </span>
+                                                    <span class="fas-fa fa-chevron-down">   </span> 
+                                                </h5>
+                                            </div>
+                                            <div class="col-md-4">
+                                                <span class=" icon icon-angle-down pull-right f-right"></span>
+                                            </div> 
+                                        </div>
+                                    </a> 
+
+                                    <div class="card-body" style="display: none;">
+                                        <hr style="margin: 0px 0px 20px 0px;">
+                                        <?php echo $help_center['description'] ?>
+                                    </div>
+                                </div> 
+
+                            <?php } ?>
                         </div>
                     </div>
                 </div>
@@ -92,19 +121,15 @@ include './auth.php';
 
         </div>
 
-        <script src="js/jquery.min.js" type="text/javascript"></script> 
+        <script src="js/jquery.min.js" type="text/javascript"></script>
         <script src="js/vendor.min.js"></script>
         <script src="js/elephant.min.js"></script>
         <script src="js/application.min.js"></script>
         <script src="js/demo.min.js"></script>
-        <script src="js/sweetalert.min.js" type="text/javascript"></script>        
-        <script src="delete/js/education-category.js" type="text/javascript"></script>
-        <script src="ajax/js/education-category.js" type="text/javascript"></script>
-        
-        <script src="js/tinymce.min.js" type="text/javascript"></script>
+        <script src="tinymce/js/tinymce/tinymce.min.js" type="text/javascript"></script>
         <script>
             tinymce.init({
-                selector: "#description",
+                selector: ".description",
                 // ===========================================
                 // INCLUDE THE PLUGIN
                 // ===========================================
