@@ -163,9 +163,9 @@ class StudentRegistration {
 
         return $array_res;
     }
-    public function getStudentByLectureId($student) {
+    public function getStudentByLectureId($id) {
 
-        $query = "SELECT * FROM `student_class_registration` WHERE `lecture_id` = '" . $student . "'  ";
+        $query = "SELECT * FROM `student_class_registration` WHERE `lecture_id` = '" . $id . "'  ";
 
         $db = new Database();
 

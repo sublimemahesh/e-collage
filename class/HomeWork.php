@@ -11,6 +11,7 @@ class HomeWork {
     //put your code here
     public $id;
     public $student_id;
+    public $lecture_id;
     public $class_id;
     public $title;
     public $image_name;
@@ -26,7 +27,8 @@ class HomeWork {
 
             $this->id = $result['id'];
             $this->student_id = $result['student_id'];
-            $this->class_id = $result['class_id']; 
+            $this->lecture_id = $result['lecture_id'];
+            $this->class_id = $result['class_id'];
             $this->title = $result['title'];
             $this->image_name = $result['image_name'];
 
@@ -38,9 +40,31 @@ class HomeWork {
 
         $query = "INSERT INTO `home_work` (`student_id`,`class_id`,`title`, `image_name`) VALUES  ('"
                 . $this->student_id . "', '"
-                . $this->class_id . "', '"                
+                . $this->class_id . "', '"
                 . $this->title . "','"
                 . $this->image_name . "')";
+
+        $db = new Database();
+
+        $result = $db->readQuery($query);
+
+        if ($result) {
+            $last_id = mysql_insert_id();
+
+            return $this->__construct($last_id);
+        } else {
+            return FALSE;
+        }
+    }
+
+    public function createLecture() {
+
+        $query = "INSERT INTO `home_work` (`lecture_id`,`class_id`,`title`, `file_name`,`date`) VALUES  ('"
+                . $this->lecture_id . "', '"
+                . $this->class_id . "', '"
+                . $this->title . "','"
+                . $this->file_name . "','"
+                . $this->date . "')";
 
         $db = new Database();
 
@@ -107,9 +131,42 @@ class HomeWork {
 
         return $array_res;
     }
+
     public function getHomeWorkByClassId($id) {
 
         $query = "SELECT * FROM `home_work` WHERE `class_id` = '" . $id . "'  ";
+
+        $db = new Database();
+
+        $result = $db->readQuery($query);
+        $array_res = array();
+
+        while ($row = mysql_fetch_array($result)) {
+            array_push($array_res, $row);
+        }
+
+        return $array_res;
+    }
+
+    public function getHomeWorkByClassIdAndStudentId($id) {
+
+        $query = "SELECT * FROM `home_work` WHERE `class_id` = '" . $id . "' AND `student_id` != '0' ";
+
+        $db = new Database();
+
+        $result = $db->readQuery($query);
+        $array_res = array();
+
+        while ($row = mysql_fetch_array($result)) {
+            array_push($array_res, $row);
+        }
+
+        return $array_res;
+    }
+
+    public function getHomeWorkByClassIdAndDate($id, $date) {
+
+        $query = "SELECT * FROM `home_work` WHERE `lecture_id` = '" . $id . "' && `date` = '" . $date . "'  ";
 
         $db = new Database();
 

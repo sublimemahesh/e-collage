@@ -152,4 +152,49 @@ if (isset($_POST['create-assessment'])) {
         exit();
     }
 }
+
+//Create home work 
+if (isset($_POST['create-home-work'])) {
+
+    $HOME_WORK = new HomeWork(NULL);
+    $dir_dest = '../../../upload/class/home-work/';
+    $filename = $_FILES['pdf_file']['name'];
+
+    $handle = new Upload($_FILES['pdf_file']);
+    $imgName = null;
+
+    if ($handle->uploaded) {
+        $handle->file_dst_name = Helper::randamId();
+        $imgName = $handle->file_dst_name;
+        $handle->file_new_name_body = $imgName;
+        $handle->Process($dir_dest);
+    }
+
+    $extension = pathinfo($filename, PATHINFO_EXTENSION);
+
+    // the physical file on a temporary uploads directory on the server
+    $file = $_FILES['pdf_file']['tmp_name'];
+    $size = $_FILES['pdf_file']['size'];
+
+    if (!in_array($extension, ['zip', 'pdf', 'docx'])) {
+
+        $result = ["status" => "errro-format"];
+        echo json_encode($result);
+        exit();
+    } else {
+
+
+        $HOME_WORK->file_name = $imgName . '.pdf';
+        $HOME_WORK->title = ucwords($_POST['title']);
+        $HOME_WORK->date = $_POST['date'];
+        $HOME_WORK->lecture_id = $_POST['lecture_id'];
+        $HOME_WORK->class_id = $_POST['class_id'];
+
+
+        $HOME_WORK->createLecture();
+        $result = ["status" => "sucess"];
+        echo json_encode($result);
+        exit();
+    }
+}
 ?> 

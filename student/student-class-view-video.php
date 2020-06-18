@@ -58,7 +58,7 @@ $start_time = $LECTURE_CLASS->start_date . ' ' . $LECTURE_CLASS->start_time;
                                                 ?>  
 
                                                 <div class="col-md-9">
-                                                    <iframe width="100%" height="520" src="https://www.youtube.com/embed/<?php echo $lecture_video['url'] ?>" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe> 
+                                                    <iframe width="100%" height="520" src="https://www.youtube.com/embed/<?php echo substr($lecture_video['url'],17) ?>" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe> 
 
                                                 </div>
 

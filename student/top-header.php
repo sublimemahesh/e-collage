@@ -104,7 +104,7 @@ $today = date('Y-m-d');
                     <li class="visible-xs-block">
                         <a href="student-post.php">
                             <span class="icon icon-image icon-lg icon-fw"></span>
-                             My Profile 
+                            My Profile 
                         </a>
                     </li>
                     </li>
@@ -125,26 +125,26 @@ $today = date('Y-m-d');
                             <span class="caret"></span>
                         </button>
                         <ul class="dropdown-menu dropdown-menu-right">  
-<!--                            <li><a href="student-post.php">My Profile</a></li>-->
+                            <li><a href="index.php">Dashboard</a></li> 
                             <li><a href="profile.php">Change Profile</a></li>
                             <li><a href="change-password.php">Change Password</a></li>
                             <li><a href="complete-profile.php">My Subjects</a></li>
-<!--                            <li><a href="education-subject.php">Education Subjects</a></li>-->
+                            <!--                            <li><a href="education-subject.php">Education Subjects</a></li>-->
                             <li><a href="log-out.php">Sign out</a></li>
 
                         </ul>
                     </li>
-                   
+
                     <li class="visible-xs-block">
                         <a href="profile.php">
                             <span class="icon icon-user icon-lg icon-fw"></span>
-                           Change Profile
+                            Change Profile
                         </a>
                     </li>
-                     <li class="visible-xs-block">
+                    <li class="visible-xs-block">
                         <a href="change-password.php">
                             <span class="icon icon-key icon-lg icon-fw"></span>
-                           Change Password
+                            Change Password
                         </a>
                     </li>
                     <li class="visible-xs-block">

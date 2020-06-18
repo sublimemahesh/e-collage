@@ -83,7 +83,7 @@ include './class/include.php';
 
 
             </div>
-            <div class="row text-center " style="margin-top: 20px;">
+<!--            <div class="row text-center " style="margin-top: 20px;">
                 <div class="col-xs-12">
                     <div class="paginations">
                         <a class="prev" href="#"><i class="zmdi zmdi-chevron-left"></i>PREV</a>
@@ -96,7 +96,7 @@ include './class/include.php';
                         <a class="next" href="#">NEXT<i class="zmdi zmdi-chevron-right"></i></a>
                     </div>
                 </div>
-            </div>
+            </div>-->
             <div class="ready">
                 <div class="container">
                     <div class="row">

@@ -3,6 +3,9 @@
 include '../class/include.php';
 include_once(dirname(__FILE__) . '/auth.php');
 $PAGES = new Page(1);
+$VIDEO_1 = new Page(2);
+$VIDEO_2 = new Page(3);
+$VIDEO_3 = new Page(4);
 ?>
 <html lang="en">
     <head>
@@ -72,7 +75,7 @@ $PAGES = new Page(1);
                                         <div class="tab-pane fade home-4"  >
                                             <h3 class="text-center tab-padding"  >
                                                 <u>
-                                                වීඩියෝ නරඹන්න
+                                                    වීඩියෝ නරඹන්න
                                                 </u>
                                             </h3>
                                             <p class="text-justify"> 
@@ -81,12 +84,12 @@ $PAGES = new Page(1);
                                         </div>
                                         <div class="tab-pane fade home-5"  >
                                             <h3 class="text-center tab-padding">
-                                              <u>
-                                            දැනුම ලබා ගන්න.
+                                                <u>
+                                                    දැනුම ලබා ගන්න.
                                                 </u>    
                                             </h3>
                                             <p class="text-justify"> 
-                                            සජීවී ව මෙන් ම වීඩියෝ මඟින් ද පහසුවෙන් නිවසේ සිටම ආරක්ෂාකාරීව ඔබට අවශ්‍ය දැනුම ලබා ගැනීම සඳහා අදම අප හා එක්වන්න.මේ සඳහා ප්‍රවීන දක්ෂ ගුරු මඬුල්ලක් අප හා අත්වැල් බැඳගෙන සිටී.       
+                                                සජීවී ව මෙන් ම වීඩියෝ මඟින් ද පහසුවෙන් නිවසේ සිටම ආරක්ෂාකාරීව ඔබට අවශ්‍ය දැනුම ලබා ගැනීම සඳහා අදම අප හා එක්වන්න.මේ සඳහා ප්‍රවීන දක්ෂ ගුරු මඬුල්ලක් අප හා අත්වැල් බැඳගෙන සිටී.       
                                             </p>
                                         </div> 
                                     </div> 
@@ -138,12 +141,12 @@ $PAGES = new Page(1);
                         <div class="col-md-4 col-md-push-4">
                             <div class="card">
                                 <div class="card-header"> 
-                                    <strong>මතකය දියුණු කරගත හැකි සුපිරි ක්‍රම 07ක්</strong> 
+                                    <strong><?php echo $VIDEO_1->title ?> </strong> 
                                 </div>
                                 <div class="card-body">
                                     <div class="card-body">
                                         <div class="card-body">
-                                            <iframe width="350" height="200" src="https://www.youtube.com/embed/h04Hj6sb1qg" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                                            <iframe width="350" height="200" src="https://www.youtube.com/embed/<?php echo $VIDEO_1->description ?>" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                                         </div>
                                     </div>
                                 </div>
@@ -152,12 +155,12 @@ $PAGES = new Page(1);
                         <div class="col-md-4 col-md-push-4">
                             <div class="card">
                                 <div class="card-header"> 
-                                    <strong>How to study well and pass the EXAM</strong> 
+                                    <strong><?php echo $VIDEO_2->title ?> </strong> 
                                 </div>
                                 <div class="card-body">
                                     <div class="card-body">
                                         <div class="card-body">
-                                            <iframe width="350" height="200" src="https://www.youtube.com/embed/fheL2_Je0Mo" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                                            <iframe width="350" height="200" src="https://www.youtube.com/embed/<?php echo $VIDEO_2->description ?>" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                                         </div>
                                     </div>
                                 </div>
@@ -167,11 +170,11 @@ $PAGES = new Page(1);
                         <div class="col-md-4 col-md-pull-8">
                             <div class="card">
                                 <div class="card-header"> 
-                                    <strong>තත්පර දෙකෙන් ගුණ කරන්න රහස් ක්‍රම 5ක්  </strong> 
+                                    <strong><?php echo $VIDEO_3->title ?>  </strong> 
                                 </div>
                                 <div class="card-body">
                                     <div class="card-body">
-                                        <iframe width="350" height="200" src="https://www.youtube.com/embed/3qZ7ack5Fc8" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                                        <iframe width="350" height="200" src="https://www.youtube.com/embed/<?php echo $VIDEO_3->description ?>" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                                     </div>
                                 </div>
                             </div>

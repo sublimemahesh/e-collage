@@ -139,7 +139,7 @@ class Lecture {
         return $array_res;
     }
 
-    public function getAllByFilter($district,$city, $subject, $pageLimit, $setLimit) {
+    public function getAllByFilter($district, $city, $subject, $pageLimit, $setLimit) {
 
 
         $query = "SELECT * FROM `lecture`  ";
@@ -163,7 +163,7 @@ class Lecture {
         while ($row = mysql_fetch_array($result)) {
 
 
-            $out_put .= ' <div class="col-md-2 col-sm-4 col-xs-6">	
+            $out_put .= ' <div class="col-md-2 col-sm-4 col-xs-6" style="height: 200px;">	
                             <div class="teacher">
                                 <div class="imgcontainer">';
             if (empty($row['image_name'])) {

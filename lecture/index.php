@@ -3,6 +3,7 @@
 include '../class/include.php';
 include './auth.php';
 $PAGES = new Page(1);
+ 
 
 $number_of_student = count(StudentRegistration::getStudentByLectureId($_SESSION['id']));
 $number_of_class = count(LectureClass::getLectureClassesByLecture($_SESSION['id']));

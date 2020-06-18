@@ -8,6 +8,7 @@ if (isset($_POST['create'])) {
 
 
     $PAGES->title = $_POST['title'];
+    $PAGES->description = $_POST['description'];
 
     $PAGES->create();
     $result = ["status" => 'success'];
@@ -20,6 +21,7 @@ if (isset($_POST['update'])) {
     $PAGES = new Page($_POST['id']);
 
     $PAGES->title = $_POST['title'];
+    $PAGES->description = $_POST['description'];
     $PAGES->update();
     header('Location: ../../edit-page.php?message=9&&id='.$_POST['id']);
     exit();
