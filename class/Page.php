@@ -38,8 +38,8 @@ class Page {
     public function create() {
 
         $query = "INSERT INTO `pages` (`title`,`description`) VALUES  ('"
-                . $this->description . "','" 
-                . $this->title . "')";
+                . $this->title . "','" 
+                . $this->description . "')";
 
 
         $db = new Database();
