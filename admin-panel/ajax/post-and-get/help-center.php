@@ -8,7 +8,7 @@ if (isset($_POST['create'])) {
 
     $HELP_CENTER->title = $_POST['title'];
     $HELP_CENTER->description = $_POST['description'];
-
+     
     $HELP_CENTER->create();
     $result = [
         "message" => 'success'

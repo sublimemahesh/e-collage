@@ -36,9 +36,9 @@ class HelpCenter {
 
         $query = "INSERT INTO `help_center` (`title`,`description`,  `queue`) VALUES  ('"
                 . $this->title . "', '"
-                . $this->description . "', '" 
+                . $this->description . "', '"
                 . $this->queue . "')";
-
+      
         $db = new Database();
 
         $result = $db->readQuery($query);
@@ -51,7 +51,6 @@ class HelpCenter {
             return FALSE;
         }
     }
- 
 
     public function all() {
 
@@ -69,9 +68,13 @@ class HelpCenter {
 
     public function update() {
 
-        $query = 'UPDATE `help_center` SET `description`= "' . $this->description . '" WHERE id="' . $this->id . '"';
+        $query = "UPDATE  `help_center` SET "
+                . "`title` ='" . $this->title . "', " 
+                . "`description` ='" . $this->description . "' "
+                . "WHERE `id` = '" . $this->id . "'";
 
         $db = new Database();
+
         $result = $db->readQuery($query);
 
         if ($result) {
@@ -81,6 +84,8 @@ class HelpCenter {
         }
     }
 
+  
+
     public function delete() {
 
         $query = 'DELETE FROM `help_center` WHERE id="' . $this->id . '"';
@@ -89,7 +94,5 @@ class HelpCenter {
 
         return $db->readQuery($query);
     }
-
-   
 
 }

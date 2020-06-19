@@ -10,7 +10,7 @@ $LECTURE_CLASS = new LectureClass(NULL);
 $COUNT_LECTURE = count($LECTURE->all());
 $COUNT_STUDENT = count($STUDENT->all());
 $COUNT_CATEGORY = count($E_CATEGORY->all());
-$COUNT_CLASS= count($LECTURE_CLASS->all());
+$COUNT_CLASS = count($LECTURE_CLASS->all());
 ?>
 <html lang="en">
 
@@ -85,7 +85,7 @@ $COUNT_CLASS= count($LECTURE_CLASS->all());
                                 <div class="card-values">
                                     <div class="p-x">
                                         <small>All Category</small>
-                                        <h3 class="card-title fw-l"><?php echo $COUNT_CATEGORY?></h3>
+                                        <h3 class="card-title fw-l"><?php echo $COUNT_CATEGORY ?></h3>
                                     </div>
                                 </div>
                                 <div class="card-chart">
@@ -185,8 +185,8 @@ $COUNT_CLASS= count($LECTURE_CLASS->all());
                                 </div>
                                 <div class="pricing-card-body">
                                     <div class="list-group">
-                                        <a class="list-group-item " href="#"> Add new  </a>
-                                        <a class="list-group-item" href="#">  Manage</a>  
+                                        <a class="list-group-item " href="create-education-category.php"> Add new  </a>
+                                        <a class="list-group-item" href="manage-education-category.php">  Manage</a>  
                                         <a class="list-group-item" href="#">  Arrange</a> 
 
                                     </div>
@@ -200,7 +200,7 @@ $COUNT_CLASS= count($LECTURE_CLASS->all());
                                 </div>
                                 <div class="pricing-card-body">
                                     <div class="list-group">
-                                        <a class="list-group-item " href="#"> Add new  </a>
+                                        <a class="list-group-item " href="create-class-type.php"> Add new  </a>
                                         <a class="list-group-item" href="#">  Manage</a>  
                                         <a class="list-group-item" href="#">  Arrange</a> 
 
@@ -211,66 +211,36 @@ $COUNT_CLASS= count($LECTURE_CLASS->all());
                     </div>
 
                     <div class="row gutter-xs">
-                        <div class="col-md-4">
+                        <div class="col-md-12">
                             <div class="card">
                                 <div class="card-body">
-                                    <div class="media">
-                                        <div class="media-middle media-left">
-                                            <span class="bg-gray sq-64 circle">
-                                                <span class="icon-works">&#228;</span>
-                                            </span>
-                                        </div>
-                                        <div class="media-middle media-body">
-                                            <h3 class="media-heading">
-                                                <span class="fw-l">1,256 Issues</span>
-                                                
-                                            </h3>
-                                            <small>6 issues are unassigned</small>
-                                        </div>
+                                    <div class="col-md-3">
+                                        <div class="media">
+                                            <div class="media-middle media-left">
+                                                <a href="#" class="op-link btn btn-sm btn-info"><i class="icon icon-pencil"></i></a>  |  Edit Details
+
+                                            </div>
+
+                                        </div>  
+
                                     </div>
+                                    <div class="col-md-3">
+                                        <a href="#" class="delete-student btn btn-sm btn-danger"><i class="waves-effect icon icon-trash" data-type="cancel"></i></a> | Delete Details  
+
+                                    </div>
+                                    <div class="col-md-3">
+                                        <a href="#" class="op-link btn btn-sm btn-primary"><i class="icon icon-eye"></i></a> | View Details
+
+                                    </div>
+                                    <div class="col-md-3">
+                                        <a href="#" class="op-link btn btn-sm btn-success" ><i class="waves-effect icon icon-book" ></i></a>  | Manage Details
+
+                                    </div>
+
                                 </div>
                             </div>
                         </div>
-                        <div class="col-md-4">
-                            <div class="card">
-                                <div class="card-body">
-                                    <div class="media">
-                                        <div class="media-middle media-left">
-                                            <span class="bg-gray sq-64 circle">
-                                                <span class="icon icon-group"></span>
-                                            </span>
-                                        </div>
-                                        <div class="media-middle media-body">
-                                            <h2 class="media-heading">
-                                                <span class="fw-l">879</span>
-                                                <small>Resolved</small>
-                                            </h2>
-                                            <small>More than 70% resolved issues</small>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-4">
-                            <div class="card">
-                                <div class="card-body">
-                                    <div class="media">
-                                        <div class="media-middle media-left">
-                                            <span class="bg-gray sq-64 circle">
-                                                <span class="icon icon-graduation-cap"></span>
-                                            </span>
-                                        </div>
-                                        <div class="media-middle media-body">
-                                            <h2 class="media-heading">
-                                                <span class="fw-l">377</span>
-                                                <small>Unresolved</small>
-                                            </h2>
-                                            <small>Less than 30% unresolved issues</small>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+
 
 
                     </div>

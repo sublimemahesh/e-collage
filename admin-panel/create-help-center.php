@@ -24,6 +24,8 @@ include './auth.php';
         <link rel="stylesheet" href="css/elephant.min.css">
         <link rel="stylesheet" href="css/application.min.css">
         <link rel="stylesheet" href="css/demo.min.css">
+        <link href="css/sweetalert.css" rel="stylesheet" type="text/css"/>
+
     </head>
     <body class="layout layout-header-fixed">
         <?php
@@ -88,32 +90,51 @@ include './auth.php';
                                 </div> 
                             </div>
 
-                            <?php
-                            $HELP_CENTER = new HelpCenter(NULL);
-                            foreach ($HELP_CENTER->all() as $help_center) {
-                                ?>
-                                <div class="card">
-                                    <a href="# "class="  card-toggler" title="Collapse">  
-                                        <div class="card-header  ">
-                                            <div class="col-md-8">
-                                                <h5>
-                                                    <?php echo $help_center['title'] ?> <span class="text-success" > </span>
-                                                    <span class="fas-fa fa-chevron-down">   </span> 
-                                                </h5>
-                                            </div>
-                                            <div class="col-md-4">
-                                                <span class=" icon icon-angle-down pull-right f-right"></span>
-                                            </div> 
+                            <div class="row">  
+
+                                <div class="col-md-12"> 
+                                    <div class="card">
+                                        <div class="card-header"> 
+                                            <strong>Manage Help Center</strong>
                                         </div>
-                                    </a> 
+                                        <div class="card-body">
+                                            <table id="demo-datatables-colreorder-1" class="table table-hover table-striped table-nowrap dataTable" cellspacing="0" width="100%">
+                                                <thead>
+                                                    <tr>
+                                                        <th>ID</th>
+                                                        <th>Title</th>   
+                                                        <th>Option</th>
+                                                    </tr>
+                                                </thead>
+                                                <?php
+                                                $HELP_CENTER = new HelpCenter(NULL);
+                                                foreach ($HELP_CENTER->all() as $key => $help_center) {
+                                                    $key++;
+                                                    ?>
+                                                    <tr id="div<?php echo $help_center['id'] ?>">
+                                                        <td><?php echo $key ?></td>
+                                                        <td><?php echo $help_center['title'] ?></td> 
+                                                        <td> 
+                                                            <a href="edit-help-center.php?id=<?php echo $help_center['id'] ?>" class="op-link btn btn-sm btn-info"><i class="icon icon-pencil"></i></a>  |
+                                                            <a href="#" class="delete-help-center btn btn-sm btn-danger" data-id="<?php echo $help_center['id'] ?>"><i class="waves-effect icon icon-trash" data-type="cancel"></i></a> 
 
-                                    <div class="card-body" style="display: none;">
-                                        <hr style="margin: 0px 0px 20px 0px;">
-                                        <?php echo $help_center['description'] ?>
+                                                        </td>
+                                                    </tr>
+                                                <?php } ?>
+                                                <tfoot>
+                                                    <tr>
+                                                        <th>ID</th>
+                                                        <th>Title</th>     
+                                                        <th>Option</th>
+                                                    </tr>
+                                                </tfoot>
+                                             
+                                            </table>
+                                        </div>
                                     </div>
-                                </div> 
+                                </div>
+                            </div>
 
-                            <?php } ?>
                         </div>
                     </div>
                 </div>
@@ -122,10 +143,14 @@ include './auth.php';
         </div>
 
         <script src="js/jquery.min.js" type="text/javascript"></script>
+        <script src="ajax/js/help-center.js" type="text/javascript"></script>
         <script src="js/vendor.min.js"></script>
         <script src="js/elephant.min.js"></script>
         <script src="js/application.min.js"></script>
         <script src="js/demo.min.js"></script>
+        <script src="js/sweetalert.min.js" type="text/javascript"></script>
+        <script src="delete/js/help_center.js" type="text/javascript"></script>
+
         <script src="tinymce/js/tinymce/tinymce.min.js" type="text/javascript"></script>
         <script>
             tinymce.init({

@@ -9,32 +9,32 @@ $todayis = date("l, F j, Y, g:i a");
 $site_link = "https://" . $_SERVER['HTTP_HOST'];
 
 //----------------------- DISPLAY STRINGS ---------------------
-$comany_name = "Sri Lanka Peter Tours";
-$website_name = "www.srilankapetertours.com";
-$comConNumber = "+94 77 621 6932";
-$comEmail = " ";
-$comOwner = "Peter";
+$comany_name = "Ecollage.lk";
+$website_name = "www.ecollage.lk";
+$comConNumber = "+94 11 3663 500";
+$comEmail = "info@jobhere.lk";
+$comOwner = "Ecollage";
 $customer_msg = 'Hello, and thank you for your interest in ' . $comany_name . '. We have received your enquiry , and we will get back to you as soon as possible.';
 
 //----------------------- LOGO ---------------------------------
 
-$logo = $site_link . '/contact-form/img/logo.png';
+//$logo = $site_link . '/contact-form/img/logo.png';
 // $logo = 'https://ci4.googleusercontent.com/proxy/lz0tSijRTHwJ3I7PQ1iXA67lYFfULG0evRbR_St785VeiABNukQPJl-JGBcLKTkZz1q4pG6g25P1uxTW4dYkOznHHNV3f-zB=s0-d-e1-ft#http://romaya.galle.website/contact-form/img/logo.png';
 
 // ----------------------- POST VARIABLES --------------------------
 
 $visitor_name = $_POST['visitor_name'];
 $visitor_email = $_POST['visitor_email'];
-$visitor_phone = $_POST['visitor_phone'];
-//$visitor_subject = $_POST['subject'];
+//$visitor_phone = $_POST['visitor_phone'];
+$visitor_subject = $_POST['subject'];
 $message = $_POST['message'];
 
 
 //---------------------- SERVER WEBMAIL LOGIN ------------------------
 
 $host = "sg1-ls7.a2hosting.com";
-$username = "info@kabalanavilla.com";
-$password = "h=v80^X-FvWj";
+$username = "info@jobhere.lk";
+$password = "l}VmR(%g?nP4";
 
 // $host = "sg1-ls7.a2hosting.com";
 // $username = "info@srilankapetertours.com";
@@ -43,8 +43,8 @@ $password = "h=v80^X-FvWj";
 
 //------------------------ MAIL ESSENTIALS --------------------------------
 
-$webmail = "info@srilankapetertours.com";
-$visitorSubject = "Thank You " . $visitor_name . " - Sri Lanka Peter Tours";
+$webmail = "info@jobhere.lk";
+$visitorSubject = "Thank You " . $visitor_name . " - Ecollage.lk";
 $companySubject = "Contact Inquiry - " . $visitor_name;
 
 //----------------------CAPTCHACODE---------------------

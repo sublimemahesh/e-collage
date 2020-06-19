@@ -38,10 +38,7 @@ $PAGES = new Page($id);
 
             <div class="layout-content">
                 <div class="layout-content-body">
-                    <div class="row gutter-xs">
-                        <div class="col-xs-12">
-                        </div>
-                    </div>
+                    
                     <div class="row gutter-xs">
                         <div class="col-xs-12">
                             <div class="row">  

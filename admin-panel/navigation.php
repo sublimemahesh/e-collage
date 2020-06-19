@@ -28,14 +28,11 @@
                         </ul>
                     </li>
                     <li class="sidenav-item has-subnav" style="margin-top: 20px">
-                        <a href="#" aria-haspopup="true">
+                        <a href="create-page.php" aria-haspopup="true">
                             <span class="sidenav-icon icon icon-file-video-o"></span>
                             <span class="sidenav-label">Pages</span>
                         </a>
-                        <ul class="sidenav level-2 collapse"> 
-                            <li><a href="create-page.php"> <span class="sidenav-icon icon icon-angle-right"></span>Video URL</a></li>
-
-                        </ul>
+                        
                     </li>
                     <li class="sidenav-item has-subnav hidden" style="margin-top: 20px">
                         <a href="#" aria-haspopup="true">
@@ -69,15 +66,11 @@
                         </ul>
                     </li>
                     <li class="sidenav-item has-subnav" style="margin-top: 20px">
-                        <a href="#" aria-haspopup="true">
+                        <a href="create-class-type.php" aria-haspopup="true">
                             <span class="sidenav-icon icon icon-stack-exchange"></span>
-                            <span class="sidenav-label">Classes</span>
+                            <span class="sidenav-label">Class Types</span>
                         </a>
-                        <ul class="sidenav level-2 collapse"> 
-                            <li><a href="create-class-type.php"> <span class="sidenav-icon icon icon-angle-right"></span>Class Type</a></li>
-                            <li><a href="manage-education-category.php"> <span class="sidenav-icon icon icon-angle-right"></span>Manage Category</a></li>
-
-                        </ul>
+                         
                     </li>
                     <li class="sidenav-item has-subnav" style="margin-top: 20px">
                         <a href="create-help-center.php" aria-haspopup="true">

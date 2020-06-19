@@ -114,7 +114,7 @@ if (!Lecture::authenticate()) {
                                                     </select>
                                                 </div>
                                                 <div class="col-sm-2 "  >
-                                                    <button class="btn btn-outline-success inputDisabled" data-toggle="modal" data-target="#successModalAlert" type="button" style="width: 100%" disabled="">Add your Subject</button>
+                                                    <button class="btn btn-outline-success inputDisabled" data-toggle="modal" data-target="#successModalAlert" type="button" style="width: 100%" disabled="">Add new Subject</button>
                                                 </div>
                                             </div>
                                             <div class="form-group">
