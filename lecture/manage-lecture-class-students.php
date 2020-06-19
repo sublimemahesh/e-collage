@@ -82,9 +82,8 @@ include './auth.php';
                                                 <th>Class Type</th>   
                                                 <th>Subject</th>  
                                                 <th>Start Date</th>  
-                                                <th>Start Time</th>  
-                                                <th>Duration</th>  
-                                                <th>Reg of Students</th>  
+                                                <th>Start Time</th>                                               
+                                                <th>Num of Students</th>  
                                              
                                             </tr>
                                         </thead>
@@ -105,8 +104,8 @@ include './auth.php';
                                                     ?></td>
                                                 <td><?php echo $lecture_class['start_date'] ?></td>
                                                 <td><?php echo $lecture_class['start_time'] ?></td>
-                                                <td><?php echo $lecture_class['duration'] ?></td>
-                                                <td><?php echo count(StudentRegistration::getLectureClassesById($lecture_class['lecture'])) ?></td>
+                                              
+                                                <td><?php echo count(StudentRegistration::getStudentByClassId($lecture_class['id'])) ?></td>
 
                                                 
                                             </tr>
@@ -120,8 +119,8 @@ include './auth.php';
                                                 <th>Subject</th>  
                                                 <th>Start Date</th>  
                                                 <th>Start Time</th>  
-                                                <th>Duration</th>  
-                                                <th>Reg of Students</th>  
+                                              
+                                                <th>Num of Students</th>  
                                                  
                                             </tr>
                                         </tfoot>                                       

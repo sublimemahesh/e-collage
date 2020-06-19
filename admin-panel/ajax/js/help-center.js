@@ -3,6 +3,7 @@ $(document).ready(function () {
 //create subject details
     $("#create").click(function (event) {
         event.preventDefault();
+        tinymce.triggerSave();
 
         if (!$('#title').val() || $('#title').val().length === 0) {
             swal({
@@ -12,14 +13,7 @@ $(document).ready(function () {
                 timer: 1500,
                 showConfirmButton: false
             });
-        } else if (!$('#description').val() || $('#description').val().length === 0) {
-            swal({
-                title: "Error!",
-                text: "Please enter your description..!",
-                type: 'error',
-                timer: 1500,
-                showConfirmButton: false
-            }); 
+
         } else {
             var formData = new FormData($('#form-data')[0]);
 
@@ -56,6 +50,7 @@ $(document).ready(function () {
 //update subject details
     $("#update").click(function (event) {
         event.preventDefault();
+        tinymce.triggerSave();
 
         if (!$('#title').val() || $('#title').val().length === 0) {
             swal({

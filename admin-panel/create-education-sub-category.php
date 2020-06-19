@@ -42,12 +42,7 @@ if (isset($_GET['id'])) {
 
             <div class="layout-content">
                 <div class="layout-content-body">
-                    <div class="row gutter-xs">
-                        <div class="col-xs-12">
-                        </div>
-                    </div>
-                    <div class="row gutter-xs">
-                        <div class="col-xs-12">
+                     
                             <div class="row">  
 
                                 <div class="col-md-12"> 
@@ -160,8 +155,7 @@ if (isset($_GET['id'])) {
                                     </table>
                                 </div>
                             </div>
-                        </div>
-                    </div>
+                         
                 </div>
             </div>
 

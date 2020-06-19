@@ -101,8 +101,7 @@
                                 <img src="upload/category/<?php echo $education_category['image_name'] ?>" alt="Category">
                                 <h5><?php echo $education_category['name'] ?></h5>
                                 <div class="overlay text-center">
-                                    <p class="pull-right"><span>93</span>TRAINERS</p>
-                                    <p class="pull-left"><span>418</span>TUTORIALS</p>
+                                     
                                     <h5><?php echo $education_category['name'] ?></h5>
                                     <a href="#">Click Here</a>
                                 </div>
@@ -113,7 +112,7 @@
                     ?>
                     <div class="row pros">	
                         <div class="col-sm-10 col-sm-offset-1 text-center"> 
-                            <a href="#" class="blueplay" style="color: black; ">CHECK ALL CATEGORY</a>
+                            <a href="category.php" class="blueplay" style="color: black; ">CHECK ALL CATEGORY</a>
                         </div>
                     </div>
                 </div>
@@ -149,10 +148,7 @@
                                         <img src="upload/lecture/profile/<?php echo $lecture['image_name'] ?>" alt="<?php echo $lecture['full_name'] ?>" class="img-responsive">
 
                                     <?php } ?>
-                                     <div class="overlay">
-                                        <img src="assets/images/avatars/profile.png" alt="Profile">
-                                        <p>8 VIDEOS</p>
-                                    </div>
+                                    
                                 </div>
                                 <a href="#"><?php echo $lecture['full_name'] ?></a>
                                 <p><?php echo $lecture['email'] ?></p>

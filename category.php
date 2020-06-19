@@ -36,8 +36,7 @@
                                 <img src="upload/category/<?php echo $category['image_name'] ?>" alt="Category">
                                 <h5><?php echo $category['name'] ?></h5>
                                 <div class="overlay text-center">
-                                    <p class="pull-right"><span>93</span>TRAINERS</p>
-                                    <p class="pull-left"><span>418</span>TUTORIALS</p>
+                                    
                                     <h5><?php echo $category['name'] ?></h5>
                                     <a href="#">Click Here</a>
                                 </div>

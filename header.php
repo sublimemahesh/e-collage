@@ -1,5 +1,4 @@
 <header>
-
     <div class="container">
         <div id="topbar">
             <div class="pull-right">
@@ -11,36 +10,25 @@
                         <ul>
                             <li class="active">
                                 <a href="index.php">Home</a>
-
                             </li>
                             <li>
                                 <a href="about-us.php">About Us</a>
-
                             </li> 
                             <li>	
                                 <a href="category.php">Categories</a>
-
                             </li> 
                             <li>	
                                 <a href="lectures.php">Lectures</a>
-
                             </li> 
-                            <li>
-                                <a href="#">Support</a>
-
-                            </li> 
+                            
                             <li><a href="contact.php">Contact</a></li> 
                         </ul>
                     </nav>
                 </div>
                 <a href="student/login.php" class="blueplay login">Student Login</a> 
                 <a href="lecture/login.php" class="register">Lecture Login</a>
-
-
             </div>
-            <h1 class="logo"><a href="index1.html"><img src="assets/images/logo.png" alt="Logo" width="85%"></a></h1>
+            <h1 class="logo"><a href="index.php"><img src="assets/images/logo.png" alt="Logo" width="85%"></a></h1>
         </div>
-
     </div>
-
 </header>

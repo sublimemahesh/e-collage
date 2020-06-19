@@ -35,10 +35,7 @@ include './auth.php';
 
             <div class="layout-content">
                 <div class="layout-content-body">
-                    <div class="row gutter-xs">
-                        <div class="col-xs-12">
-                        </div>
-                    </div>
+                    
                     <div class="row gutter-xs">
                         <div class="col-xs-12">
                             <div class="row">  
@@ -83,49 +80,58 @@ include './auth.php';
                                 </div> 
                             </div> 
                         </div>
-                    </div>
 
-                    <div class="card">
-                        <div class="card-header">
+                    </div> 
+                    <div class="row gutter-xs">
+                        <div class="col-xs-12">
+                            <div class="row">  
 
-                            <strong>Manage Class Type</strong>
-                        </div>
-                        <div class="card-body">
-                            <table id="demo-datatables-colreorder-1" class="table table-hover table-striped table-nowrap dataTable" cellspacing="0" width="100%">
-                                <thead>
-                                    <tr>
-                                        <th>ID</th>
-                                        <th>Name</th>   
-                                        <th>Option</th>
-                                    </tr>
-                                </thead>
-                                <?php 
-                                $CLASS_TYPE= new ClassType(NULL);
-                                foreach ($CLASS_TYPE->all() as $key => $class_type) {
-                                    $key++;
-                                    ?>
-                                    <tr id="div<?php echo $class_type['id'] ?>">
-                                        <td><?php echo $key ?></td>
-                                        <td><?php echo $class_type['name'] ?></td> 
-                                        <td> 
-                                            <a href="edit-class-type.php?id=<?php echo $class_type['id'] ?>" class="op-link btn btn-sm btn-info"><i class="icon icon-pencil"></i></a>  |
-                                             <a href="#" class="delete-class-type btn btn-sm btn-danger" data-id="<?php echo $class_type['id'] ?>"><i class="waves-effect icon icon-trash" data-type="cancel"></i></a> 
+                                <div class="col-md-12"> 
+                                    <div class="card">
+                                        <div class="card-header">
 
-                                        </td>
-                                    </tr>
-                                <?php } ?>
-                                <tfoot>
-                                    <tr>
-                                        <th>ID</th>
-                                        <th>Name</th>     
-                                        <th>Option</th>
-                                    </tr>
-                                </tfoot>
-                                <tbody>
+                                            <strong>Manage Class Type</strong>
+                                        </div>
+                                        <div class="card-body">
+                                            <table id="demo-datatables-colreorder-1" class="table table-hover table-striped table-nowrap dataTable" cellspacing="0" width="100%">
+                                                <thead>
+                                                    <tr>
+                                                        <th>ID</th>
+                                                        <th>Name</th>   
+                                                        <th>Option</th>
+                                                    </tr>
+                                                </thead>
+                                                <?php
+                                                $CLASS_TYPE = new ClassType(NULL);
+                                                foreach ($CLASS_TYPE->all() as $key => $class_type) {
+                                                    $key++;
+                                                    ?>
+                                                    <tr id="div<?php echo $class_type['id'] ?>">
+                                                        <td><?php echo $key ?></td>
+                                                        <td><?php echo $class_type['name'] ?></td> 
+                                                        <td> 
+                                                            <a href="edit-class-type.php?id=<?php echo $class_type['id'] ?>" class="op-link btn btn-sm btn-info"><i class="icon icon-pencil"></i></a>  |
+                                                            <a href="#" class="delete-class-type btn btn-sm btn-danger" data-id="<?php echo $class_type['id'] ?>"><i class="waves-effect icon icon-trash" data-type="cancel"></i></a> 
+
+                                                        </td>
+                                                    </tr>
+                                                <?php } ?>
+                                                <tfoot>
+                                                    <tr>
+                                                        <th>ID</th>
+                                                        <th>Name</th>     
+                                                        <th>Option</th>
+                                                    </tr>
+                                                </tfoot>
+                                                <tbody>
 
 
-                                </tbody>
-                            </table>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>

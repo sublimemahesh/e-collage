@@ -84,13 +84,15 @@
 
                                     </div>
                                 </div>
-                                <div class="row clearfix">
+                                <div class="  clearfix">
                                     <div class="col-sm-4">
-                                        <div class="pull-center" style="padding-left: 15px;">
+                                        <div class="pull-center"  >
                                             <button type="submit" id="btnSubmit" name="btnSubmit" class="greybutton">SUBMIT</button>
                                         </div>
                                     </div>
                                 </div>
+
+                                <div id="dismessage" style="margin-top: 15px;"></div>
                             </div>
                         </div>
                     </div>

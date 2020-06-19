@@ -35,7 +35,7 @@ $LECTURE = new Lecture($id);
                         <?php
                         if (empty($LECTURE->image_name)) {
                             ?>
-                            <img src="assets/member.jpg" alt="<?php echo $LECTURE->full_name ?>" class="teacher-avatar" style="width: 100%;">
+                            <img src="assets/member.jpg" alt="<?php echo $LECTURE->full_name ?>" class="teacher-avatar" style="width: 80%;">
                         <?php } else { ?>
                             <img src="upload/lecture/profile/<?php echo $LECTURE->image_name ?>" alt="<?php echo $LECTURE->full_name ?>" class="teacher-avatar" style="width: 80%;">
 
@@ -102,22 +102,14 @@ $LECTURE = new Lecture($id);
 
 
                         <p class="class-details">	
-                            <span class="lessons"><i class="zmdi zmdi-assignment"></i><?php
-                                $SUBJECT = new EducationSubject(NULL);
-                                foreach ($SUBJECT->getSubjectsByCategory($LECTURE->ca) as $subject) {
-                                    echo $subject['name'] . ' / ';
-                                }
-                                echo $LECTURE->subject
-                                ?></span>
+                             
                             <span class="views"><i class="zmdi zmdi-eye"></i><?php
                                 $CITY = new City($LECTURE->city);
                                 echo $CITY->name
                                 ?></span>
                             <span class="rating"><i class="zmdi zmdi-star"></i><?php echo $LECTURE->experience ?> Of Experience</span>
                         </p>
-                        <p class="abs">
-                            <?php echo $LECTURE->hear_about_us ?> 
-                        </p>
+                        
 
                     </div>
                 </div>
