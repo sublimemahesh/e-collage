@@ -3,9 +3,9 @@
 include '../class/include.php';
 include_once(dirname(__FILE__) . '/auth.php');
 $PAGES = new Page(1);
-$VIDEO_1 = new Page(2);
-$VIDEO_2 = new Page(3);
-$VIDEO_3 = new Page(4);
+$VIDEO_1 = new Page(3);
+$VIDEO_2 = new Page(4);
+$VIDEO_3 = new Page(5);
 ?>
 <html lang="en">
     <head>
@@ -138,6 +138,7 @@ $VIDEO_3 = new Page(4);
                         </div> 
                     </div>    
                     <div class="row gutter-xs">
+                        
                         <div class="col-md-4 col-md-push-4">
                             <div class="card">
                                 <div class="card-header"> 
@@ -146,7 +147,7 @@ $VIDEO_3 = new Page(4);
                                 <div class="card-body">
                                     <div class="card-body">
                                         <div class="card-body">
-                                            <iframe width="350" height="200" src="https://www.youtube.com/embed/<?php echo $VIDEO_1->description ?>" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                                            <iframe width="350" height="200" src="https://www.youtube.com/embed/<?php echo substr($VIDEO_1->description, 3, -4) ?>/" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                                         </div>
                                     </div>
                                 </div>
@@ -160,7 +161,7 @@ $VIDEO_3 = new Page(4);
                                 <div class="card-body">
                                     <div class="card-body">
                                         <div class="card-body">
-                                            <iframe width="350" height="200" src="https://www.youtube.com/embed/<?php echo $VIDEO_2->description ?>" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                                            <iframe width="350" height="200" src="https://www.youtube.com/embed/<?php echo substr($VIDEO_2->description, 3, -4) ?>/" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                                         </div>
                                     </div>
                                 </div>
@@ -174,7 +175,7 @@ $VIDEO_3 = new Page(4);
                                 </div>
                                 <div class="card-body">
                                     <div class="card-body">
-                                        <iframe width="350" height="200" src="https://www.youtube.com/embed/<?php echo $VIDEO_3->description ?>" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                                            <iframe width="350" height="200" src="https://www.youtube.com/embed/<?php echo substr($VIDEO_3->description, 3, -4) ?>/" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                                     </div>
                                 </div>
                             </div>

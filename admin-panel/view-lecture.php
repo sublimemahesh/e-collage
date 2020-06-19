@@ -491,7 +491,7 @@ $LECTURE = new Lecture($id);
                                                 ?>
                                                 <img src="img/3002121059.jpg" width="128px"class="img-thumbnail">
                                             <?php } else { ?>
-                                                <img src="../lecture/upload/lecture/profile/<?php echo $LECTURE->image_name ?>" class="img-thumbnail">
+                                                <img src="../upload/lecture/profile/<?php echo $LECTURE->image_name ?>" width="128px" class="img-thumbnail">
 
                                             <?php } ?>
                                         </div>
