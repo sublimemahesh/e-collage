@@ -73,7 +73,7 @@ $PERIOD = new DatePeriod($begin, $interval, $end);
                                                 <div class="form-group">
                                                     <label class="col-sm-2 control-label " for="name" style="text-align: left">Video URL Code: </label>
                                                     <div class="col-sm-10">
-                                                        <input id="url" name="url" class="form-control  " type="text"  placeholder="Enter Video URL Code "   >
+                                                        <input id="url" name="url" class="form-control  " type="text"  placeholder="Enter Video URL  "   >
                                                     </div>
                                                 </div>
                                                 <div class="form-group">
