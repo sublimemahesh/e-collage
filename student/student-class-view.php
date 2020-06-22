@@ -102,6 +102,12 @@ $PERIOD = new DatePeriod($begin, $interval, $end);
                                                         }
                                                     }
                                                     ?>
+                                                    <center>
+                                                        <a href="student-class-view-video.php?id=<?php echo $id ?>" class="card-link" style="display: none;" id="enter-class" wid>
+                                                            <p class="btn btn-success btn-block" style="width: 15%">Enter Your Class</p>
+                                                        </a>
+                                                    </center>
+
                                                 </div> 
                                             </div>  
                                         </div>
@@ -137,7 +143,7 @@ $PERIOD = new DatePeriod($begin, $interval, $end);
                                                             foreach ($LECTURE_VIDEO->getVideoByClass($id, $date_Start) as $lecture_video) {
                                                                 ?>
                                                                 <div class="col-md-9">
-                                                                    <iframe width="100%" height="500" src="https://www.youtube.com/embed/<?php echo substr($lecture_video['url'],17) ?>" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                                                                    <iframe width="100%" height="500" src="https://www.youtube.com/embed/<?php echo substr($lecture_video['url'], 17) ?>" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
                                                                 </div>
                                                                 <div class="col-md-3">
@@ -160,7 +166,7 @@ $PERIOD = new DatePeriod($begin, $interval, $end);
                                                                                 <li style = "border-bottom:1px dotted #ccc">
                                                                                     <p> <?php echo $user_name . ' - ' . $chat["chat_message"] ?>
                                                                                     <div align = "right">
-                                                                                        - <small><em><?php echo  $chat['timestamp']?></em></small>
+                                                                                        - <small><em><?php echo $chat['timestamp'] ?></em></small>
                                                                                     </div>
                                                                                     </p>
                                                                                 </li>

@@ -96,41 +96,34 @@ $SUB_CATEGORY = $STUDENT_DETAILS->sub_category;
 
                 <div class="layout">
                     <div class="layout-content-body">
-                        <div class="row gutter-xs">
-                          
-
+                        <div class="row gutter-xs"> 
                             <?php
                             $SUBJECTS = new EducationSubject(null);
                             foreach ($SUBJECTS->getSubjectsByCategory($SUB_CATEGORY) as $subject) {
                                 ?>
-                            <div class = "col-md-6 col-lg-3 col-lg-push-0">
-                            <div class = "card bg-primary">
-                            <div class = "card-body">
-                            <div class = "media">
-                            <div class = "media-middle media-left">
-                            <span class = "bg-primary-inverse circle sq-48">
-                            <span class = "icon icon-book"></span>
-                            </span>
-                            </div>
-                            <div class = "media-middle media-body">
-                            <h6 class = "media-heading"><?php echo $subject['name'] ?> </h6>
-                            </div>
-                            </div>
-                            </div>
-                            </div>
-                            </div>
-                            <?php
+                                <div class = "col-md-6 col-lg-3 col-lg-push-0">
+                                    <div class = "card bg-primary">
+                                        <div class = "card-body">
+                                            <div class = "media">
+                                                <div class = "media-middle media-left">
+                                                    <span class = "bg-primary-inverse circle sq-48">
+                                                        <span class = "icon icon-book"></span>
+                                                    </span>
+                                                </div>
+                                                <div class = "media-middle media-body">
+                                                    <h6 class = "media-heading"><?php echo $subject['name'] ?> </h6>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <?php
                             }
                             ?>
 
                         </div>
-
                     </div>
                 </div>
-
-
-
-
             </div>
 
 

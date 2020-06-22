@@ -109,7 +109,7 @@ class Lecture {
                 . $this->district . "', '"
                 . $this->city . "', '"
                 . $this->password . "')";
-
+        
         $db = new Database();
 
         $result = $db->readQuery($query);
