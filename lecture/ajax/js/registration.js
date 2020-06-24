@@ -158,7 +158,36 @@ $(document).ready(function () {
                     if (result.status == 'error') {
                         $('#message').text(result.message);
                     } else {
-                        window.location.replace("index.php");
+                        $.ajax({
+                            url: "ajax/post-and-get/mobile-verify.php",
+                            type: "POST",
+                            data: {id: result.id,
+                                action: "MOBILECODE"
+                            },
+                            dataType: "JSON",
+                            success: function (result) {
+                                if (result.status == 'success') {
+                                    window.swal({
+                                        title: "Please wait...!",
+                                        text: "it may take few seconds...!",
+                                        imageUrl: "assets/images/tenor.gif",
+                                        showConfirmButton: false,
+                                        allowOutsideClick: false
+                                    });
+                                    setTimeout(function () {
+                                        window.location.href = "mobile-verify.php";
+                                    }, 1000);
+                                } else {
+                                    swal({
+                                        title: "Error!",
+                                        text: "Something Went Wrong",
+                                        type: 'error',
+                                        timer: 2000,
+                                        showConfirmButton: false
+                                    });
+                                }
+                            }
+                        });
                     }
                 }
             });

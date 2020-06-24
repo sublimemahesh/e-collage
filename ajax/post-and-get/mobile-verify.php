@@ -8,7 +8,7 @@ if ($_POST['action'] === 'MOBILECODE') {
 
     if ($STUDENT->GenarateMobileCode()) {
 
-        $status = $STUDENT->sendSMS('E College', $STUDENT->phone_number, "Your account verification code is " . $STUDENT->phone_code);
+        $status = $STUDENT->sendSMS('trades.lk', $STUDENT->phone_number, "Your account verification code is " . $STUDENT->phone_code);
 
         if ($status) {
             header('Content-Type: application/json; charset=UTF8');
