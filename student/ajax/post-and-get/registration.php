@@ -21,8 +21,8 @@ if ($STUDENT->id) {
 
     $STUDENT->login($STUDENT->student_id, $_POST['password']);
     $STUDENT->sendStudentRegistrationEmail();
-    
-    $response['status'] = 'success';
+    $response = ["status" => 'success', "id" => $STUDENT->id];
+
     echo json_encode($response);
     exit();
 } else {
