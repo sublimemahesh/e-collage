@@ -26,8 +26,8 @@ $LECTURE->password = md5($_POST['password']);
 
 $LECTURE->create();
 if ($LECTURE->id) {
-    $LECTURE->login($LECTURE->email, $_POST['password']);
-    $response['status'] = 'success';
+    $LECTURE->login($LECTURE->email, $_POST['password']); 
+    $response = ["status" => 'success', "id" => $LECTURE->id];
     echo json_encode($response);
     exit();
 } else {

@@ -4,11 +4,11 @@ include '../../../class/include.php';
 
 if ($_POST['action'] === 'MOBILECODE') {
 
-    $STUDENT = new Student($_POST['id']);
+    $LECTURE = new Lecture($_POST['id']);
 
-    if ($STUDENT->GenarateMobileCode()) {
+    if ($LECTURE->GenarateMobileCode()) {
 
-        $status = $STUDENT->sendSMS('E College', $STUDENT->phone_number, "Your account verification code is " . $STUDENT->phone_code);
+        $status = $LECTURE->sendSMS('E College', $LECTURE->phone_number, "Your account verification code is " . $LECTURE->phone_code);
 
         if ($status) {
             header('Content-Type: application/json; charset=UTF8');
@@ -21,12 +21,12 @@ if ($_POST['action'] === 'MOBILECODE') {
 
 if ($_POST['action'] === 'MOBILEVERYFY') {
 
-    $STUDENT = new Student($_POST['id']);
-    $CHECK_CODE = $STUDENT->checkMobileVerificationCode($_POST['code']);
+    $LECTURE = new Lecture($_POST['id']);
+    $CHECK_CODE = $LECTURE->checkMobileVerificationCode($_POST['code']);
 
     if ($CHECK_CODE == 'true') {
-        $STUDENT->phone_verification = 1;
-        $STUDENT->updateMobileVerification();
+        $LECTURE->phone_verification = 1;
+        $LECTURE->updateMobileVerification();
 
         $response['status'] = 'success';
         echo json_encode($response);

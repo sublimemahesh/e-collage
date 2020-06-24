@@ -67,9 +67,7 @@ include '../class/include.php';
                             <div class="col-sm-6">
                                 <div class="form-group">
                                     <label for="phone" >Phone Number</label>
-                                    <input id="phone_number" class="form-control" type="text" name="phone_number"  maxlength="10" class="form-control" data-field="phone_number" placeholder="077- xxx xxxx
-                                           
-                                           " >
+                                    <input id="phone_number" class="form-control phone-inputmask" type="text" name="phone_number"  maxlength="10" class="form-control" data-field="phone_number" placeholder="077xxxxxxx" >
                                     <div class="valid-message"></div>
                                 </div>
                             </div>
@@ -575,6 +573,7 @@ include '../class/include.php';
         <script src="js/jquery.formValid.js" type="text/javascript"></script>
         <script src="ajax/js/registration.js" type="text/javascript"></script>
         <script src="ajax/js/city.js" type="text/javascript"></script>
-
+        <script src="js/jquery.inputmask.bundle.min.js" type="text/javascript"></script>
+        <script src="js/mask.init.js" type="text/javascript"></script>
     </body>
 </html>

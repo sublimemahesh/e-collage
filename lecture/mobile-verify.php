@@ -4,14 +4,14 @@ if (!isset($_SESSION)) {
     session_start();
 }
 
-if (!Student::authenticate()) {
+if (!Lecture::authenticate()) {
     redirect('login.php');
 }
 
 $id = '';
 if ($_SESSION['id']) {
     $id = $_SESSION['id'];
-    $STUDENT = new Student($id);
+    $LECTURE = new Lecture($id);
 }
 ?>
 <!DOCTYPE html>
@@ -66,15 +66,17 @@ if ($_SESSION['id']) {
                     </div> 
 
                     <div class="row">
-                        <input class="form-control form-control-lg" type="hidden" id="student" value="<?php echo $STUDENT->id; ?>">
+                        <input class="form-control form-control-lg" type="hidden" id="student" value="<?php echo $LECTURE->id; ?>">
                         <div class="col-md-3"></div>
-                        <div class="col-md-6"><button class="btn btn-primary btn-block" type="submit" id="verify">Verify</button>  </div>
-                        <div class="col-md-3"></div>
+                        <div class="col-md-6"><button class="btn btn-primary btn-block" type="submit" id="verify">Verify</button>   </div>
+
+                        <div class="col-md-3">    </div>
                     </div> 
                     <div class="row"> 
                         <div class="col-md-3"></div>
-                        <div class="col-md-6" style="margin-top: 10px;"> <center>
+                                <div class="col-md-6" style="margin-top: 10px;"> <center>
                                 <button type="button" id="send_phone_verification" class="btn btn-large btn-info" disabled="">  Resend code <span id="countdown_p"></span></button>  </center>  </div>
+
                         <div class="col-md-3">   </div>
                     </div> 
                 </div> 

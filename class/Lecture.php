@@ -42,6 +42,8 @@ class Lecture {
     public $subject;
     public $image_name;
     public $resetcode;
+    public $phone_code;
+    public $phone_verification;
     public $queue;
 
     public function __construct($id) {
@@ -83,6 +85,8 @@ class Lecture {
             $this->district = $result['district'];
             $this->image_name = $result['image_name'];
             $this->resetcode = $result['resetcode'];
+            $this->phone_code = $result['phone_code'];
+            $this->phone_verification = $result['phone_verification'];
             $this->queue = $result['queue'];
 
             return $result;
@@ -109,7 +113,7 @@ class Lecture {
                 . $this->district . "', '"
                 . $this->city . "', '"
                 . $this->password . "')";
-        
+
         $db = new Database();
 
         $result = $db->readQuery($query);
@@ -273,6 +277,88 @@ class Lecture {
             return FALSE;
         } else {
             return TRUE;
+        }
+    }
+
+    public function checkMobileVerificationCode($code) {
+
+
+        $query = "SELECT * FROM `lecture` WHERE `phone_code` = '" . $code . "' AND `id`= '" . $this->id . "'";
+
+        $db = new Database();
+
+        $result = mysql_fetch_array($db->readQuery($query));
+
+        if (!$result) {
+            return FALSE;
+        } else {
+            return TRUE;
+        }
+    }
+
+    public function updateMobileVerification() {
+
+        $query = "UPDATE  `lecture` SET "
+                . "`phone_verification` ='" . $this->phone_verification . "' "
+                . "WHERE `id` = '" . $this->id . "'";
+
+
+        $db = new Database();
+
+        $result = $db->readQuery($query);
+
+        if ($result) {
+
+            return $this->__construct($this->id);
+        } else {
+
+            return FALSE;
+        }
+    }
+
+    public function GenarateMobileCode() {
+
+        $rand = rand(10000, 99999);
+
+        $query = "UPDATE  `lecture` SET "
+                . "`phone_code` ='" . $rand . "' "
+                . "WHERE `id` = '" . $this->id . "'";
+
+        $db = new Database();
+
+        $result = $db->readQuery($query);
+
+        if ($result) {
+            return $this->__construct($this->id);
+        } else {
+            return FALSE;
+        }
+    }
+
+//function
+    function sendSMS($sender_id, $phone_number, $message) {
+
+        $data = array(
+            'user_id' => '101974',
+            'api_key' => 'atauzyrdbcwwaxxyx',
+            'sender_id' => $sender_id,
+            'to' => $phone_number,
+            'message' => $message
+        );
+
+        $url = 'http://send.ozonedesk.com/api/v2/send.php';
+        $ch = curl_init($url);
+        $postString = http_build_query($data, '', '&');
+        curl_setopt($ch, CURLOPT_POST, 1);
+        curl_setopt($ch, CURLOPT_POSTFIELDS, $postString);
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+        $response = curl_exec($ch);
+        curl_close($ch);
+
+        if ($response) {
+            return TRUE;
+        } else {
+            return FALSE;
         }
     }
 
@@ -676,7 +762,7 @@ class Lecture {
 
 
 
-      
+
 
 
         if ($this->image_name) {
