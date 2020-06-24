@@ -77,7 +77,7 @@ $LAST_ID = $LAST_ID + 1;
                             <div class="col-sm-6">
                                 <div class="form-group">
                                     <label for="phone" >Phone Number</label>
-                                    <input id="phone_number" class="form-control" type="text" name="phone_number"   class="form-control" data-field="phone_number"  placeholder="Enter your phone number">
+                                    <input id="phone_number" class="form-control phone-inputmask" type="text" name="phone_number"   class="form-control" data-field="phone_number"  placeholder="Enter your phone number">
                                     <div class="valid-message"></div>
                                 </div>
                             </div>
@@ -237,5 +237,8 @@ $LAST_ID = $LAST_ID + 1;
     <script src="ajax/js/registration.js" type="text/javascript"></script>
     <script src="ajax/js/city.js" type="text/javascript"></script>
     <script src="js/sweetalert.min.js" type="text/javascript"></script>
+    <script src="js/jquery.inputmask.bundle.min.js" type="text/javascript"></script>
+    <script src="js/mask.init.js" type="text/javascript"></script>
+    
 </body>
 </html>

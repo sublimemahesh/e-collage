@@ -31,6 +31,8 @@ class Student {
     public $image_name;
     public $nic_front;
     public $nic_back;
+    public $phone_code;
+    public $phone_verification;
     public $resetcode;
     public $queue;
 
@@ -62,6 +64,8 @@ class Student {
             $this->image_name = $result['image_name'];
             $this->nic_front = $result['nic_front'];
             $this->nic_back = $result['nic_back'];
+            $this->phone_code = $result['phone_code'];
+            $this->phone_verification = $result['phone_verification'];
             $this->resetcode = $result['resetcode'];
             $this->queue = $result['queue'];
 
@@ -270,6 +274,42 @@ class Student {
         }
     }
 
+    public function checkMobileVerificationCode($code) {
+
+
+        $query = "SELECT * FROM `student` WHERE `phone_code` = '" . $code . "' AND `id`= '" . $this->id . "'";
+
+        $db = new Database();
+
+        $result = mysql_fetch_array($db->readQuery($query));
+
+        if (!$result) {
+            return FALSE;
+        } else {
+            return TRUE;
+        }
+    }
+
+    public function updateMobileVerification() {
+
+        $query = "UPDATE  `student` SET "
+                . "`phone_verification` ='" . $this->phone_verification . "' "
+                . "WHERE `id` = '" . $this->id . "'";
+
+
+        $db = new Database();
+
+        $result = $db->readQuery($query);
+
+        if ($result) {
+
+            return $this->__construct($this->id);
+        } else {
+
+            return FALSE;
+        }
+    }
+
     public function authenticate() {
 
         if (!isset($_SESSION)) {
@@ -452,6 +492,52 @@ class Student {
         $result = $db->readQuery($query);
 
         if ($result) {
+            return TRUE;
+        } else {
+            return FALSE;
+        }
+    }
+
+    public function GenarateMobileCode() {
+
+        $rand = rand(10000, 99999);
+
+        $query = "UPDATE  `student` SET "
+                . "`phone_code` ='" . $rand . "' "
+                . "WHERE `id` = '" . $this->id . "'";
+
+        $db = new Database();
+
+        $result = $db->readQuery($query);
+
+        if ($result) {
+            return $this->__construct($this->id);
+        } else {
+            return FALSE;
+        }
+    }
+
+//function
+    function sendSMS($sender_id, $phone_number, $message) {
+
+        $data = array(
+            'user_id' => '100719',
+            'api_key' => '6zjq0vxwve4qegc3v',
+            'sender_id' => $sender_id,
+            'to' => $phone_number,
+            'message' => $message
+        );
+       
+        $url = 'http://send.ozonedesk.com/api/v2/send.php';
+        $ch = curl_init($url);
+        $postString = http_build_query($data, '', '&');
+        curl_setopt($ch, CURLOPT_POST, 1);
+        curl_setopt($ch, CURLOPT_POSTFIELDS, $postString);
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+        $response = curl_exec($ch);
+        curl_close($ch);
+
+        if ($response) {
             return TRUE;
         } else {
             return FALSE;
