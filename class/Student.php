@@ -521,8 +521,8 @@ class Student {
     function sendSMS($sender_id, $phone_number, $message) {
 
         $data = array(
-            'user_id' => '100719',
-            'api_key' => '6zjq0vxwve4qegc3v',
+            'user_id' => '101974',
+            'api_key' => 'atauzyrdbcwwaxxyx',
             'sender_id' => $sender_id,
             'to' => $phone_number,
             'message' => $message
