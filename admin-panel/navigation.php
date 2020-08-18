@@ -32,7 +32,7 @@
                             <span class="sidenav-icon icon icon-file-video-o"></span>
                             <span class="sidenav-label">Pages</span>
                         </a>
-                        
+
                     </li>
                     <li class="sidenav-item has-subnav hidden" style="margin-top: 20px">
                         <a href="#" aria-haspopup="true">
@@ -70,14 +70,21 @@
                             <span class="sidenav-icon icon icon-stack-exchange"></span>
                             <span class="sidenav-label">Class Types</span>
                         </a>
-                         
+
                     </li>
                     <li class="sidenav-item has-subnav" style="margin-top: 20px">
                         <a href="create-help-center.php" aria-haspopup="true">
-                            <span class="sidenav-icon icon icon-works">a</span>
+                            <span class="sidenav-icon icon icon-works">a</span> 
                             <span class="sidenav-label">Help Center</span>
                         </a>
-                         
+
+                    </li>
+                    <li class="sidenav-item has-subnav" style="margin-top: 20px">
+                        <a href="manage-all-payment.php" aria-haspopup="true">
+                            <span class="sidenav-icon icon icon-works">s</span>
+                            <span class="sidenav-label">Payment</span>
+                        </a>
+
                     </li>
                 </ul>
             </nav>

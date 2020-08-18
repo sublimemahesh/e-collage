@@ -2,6 +2,8 @@
 <?php
 include '../class/include.php';
 include './auth.php';
+$id = '';
+$id = $_GET['id'];
 ?>
 <html lang="en">
 
@@ -38,42 +40,52 @@ include './auth.php';
                         <div class="col-xs-12">
                             <div class="card">
                                 <div class="card-header">
-                                    <strong>Manage Lectures</strong>
+                                    <strong>Manage Class Payment</strong>
                                 </div>
                                 <div class="card-body">
                                     <table id="demo-datatables-colreorder-1" class="table table-hover table-striped table-nowrap dataTable" cellspacing="0" width="100%">
                                         <thead>
                                             <tr>
-                                                <th>ID</th>
+                                                <th>Id</th>
                                                 <th>Name</th> 
-                                                <th>Nic Number</th> 
-                                                <th>Mobile Number</th> 
+                                                <th>Class Type</th> 
+                                                <th>Start Date</th> 
+                                                <th>payment Type</th> 
                                                 <th>Option</th>
                                             </tr>
                                         </thead>
                                         <?php
-                                        $LECTURE = new Lecture(NULL);
-                                        foreach ($LECTURE->all() as $key => $lecture) {
+                                        $LECTURE_CLASS = new LectureClass(NULL);
+                                        foreach ($LECTURE_CLASS->getLectureClassesByLecture($id) as $key => $lecture_class) {
+                                            $CLASS_TYPE = new ClassType($lecture_class['class_type']);
                                             $key++;
                                             ?>
-                                            <tr id="div<?php echo $lecture['id'] ?>">
+                                            <tr id="div<?php echo $lecture_class['id'] ?>">
                                                 <td><?php echo $key ?></td>
-                                                <td><?php echo $lecture['full_name'] ?></td>
-                                                <td><?php echo $lecture['nic_number'] ?></td>
-                                                <td><?php echo $lecture['phone_number'] ?></td>
+                                                <td><?php echo $lecture_class['name'] ?></td>
+                                                <td><?php echo $CLASS_TYPE->name ?></td>
+                                                <td><?php echo $lecture_class['start_date'] ?></td>
+                                                <td><?php
+                                                    if ($lecture_class['payment_type'] == 0) {
+                                                        echo 'Fee';
+                                                    } else {
+                                                        echo 'Charge';
+                                                    }
+                                                    ?>
+                                                </td>
 
                                                 <td> 
-                                                    <a href="view-lecture.php?id=<?php echo $lecture['id'] ?>" class="op-link btn btn-sm btn-primary"><i class="icon icon-eye"></i></a> | 
-                                                    <a href="manage-lectures-class.php?id=<?php echo $lecture['id'] ?>" class="op-link btn btn-sm btn-success"><i class="icon icon-table"></i></a> | 
-                                                    <a href="#" class=" delete-lecture btn btn-sm btn-danger" data-id="<?php echo $lecture['id'] ?>"><i class="waves-effect icon icon-trash" data-type="cancel"></i></a> 
+                                                    <a href="manage-lectures-payment.php?id=<?php echo $lecture_class['id'] ?>" class="op-link btn btn-sm btn-primary"><i class="icon icon-dollar"></i></a> 
                                                 </td>
                                             </tr>
                                         <?php } ?>
                                         <tfoot>
                                             <tr>
-                                                <th>ID</th>
-                                                <th>Title</th>
-                                                <th>Orders</th>  
+                                                <th>Id</th>
+                                                <th>Name</th> 
+                                                <th>Class Type</th> 
+                                                <th>Start Date</th> 
+                                                <th>payment Type</th> 
                                                 <th>Option</th>
                                             </tr>
                                         </tfoot>

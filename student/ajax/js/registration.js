@@ -21,6 +21,15 @@ $(document).ready(function () {
                     }
                 ]
             },
+            "phone_number": {
+                "required": true,
+                "tests": [
+                    {
+                        "type": "select",
+                        "message": "Please select the phone number..!"
+                    }
+                ]
+            },
             "email": {
                 "required": true,
                 "tests": [
@@ -122,7 +131,7 @@ $(document).ready(function () {
                     if (result.status == 'error') {
                         $('#message').text(result.message);
                     } else {
-                    
+
                         $.ajax({
                             url: "ajax/post-and-get/mobile-verify.php",
                             type: "POST",

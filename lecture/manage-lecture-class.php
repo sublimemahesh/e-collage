@@ -96,12 +96,11 @@ include './auth.php';
                                             <tr id="div<?php echo $lecture_class['id'] ?>">
                                                 <td><?php echo $key ?></td>
                                                 <td><?php
-                                                    
                                                     echo $lecture_class['name']
                                                     ?></td>
                                                 <td><?php
-                                                    $SUBJECT = new EducationSubject($lecture_class['subject_id']);
-                                                    echo $SUBJECT->name
+                                                $SUBJECT = new EducationSubject($lecture_class['subject_id']);
+                                                echo $SUBJECT->name
                                                     ?></td>
                                                 <td><?php echo $lecture_class['start_date'] ?></td>
                                                 <td><?php echo $lecture_class['start_time'] ?></td>
@@ -110,6 +109,7 @@ include './auth.php';
 
                                                 <td> 
                                                     <a href="schedule-class.php?id=<?php echo $lecture_class['id'] ?>" class="op-link btn btn-sm btn-success" title="Manage Class Details"><i class="icon icon-file-archive-o "></i></a>  |
+                                                    <a href="manage-lectures-payment.php?id=<?php echo $lecture_class['id'] ?>" class="op-link btn btn-sm btn-primary" title="Manage Class Payment"><i class="icon icon-dollar "></i></a>  |
 
                                                     <a href="edit-lecture-class.php?id=<?php echo $lecture_class['id'] ?>" class="op-link btn btn-sm btn-info" title="Edit Class Details"><i class="icon icon-pencil"></i></a>  |
                                                     <a href="#" class="delete-lecture-class btn btn-sm btn-danger" title="Delete Class" data-id="<?php echo $lecture_class['id'] ?>"><i class="waves-effect icon icon-trash" data-type="cancel"></i></a> 
@@ -125,7 +125,7 @@ include './auth.php';
                                                 <th>Subject</th>  
                                                 <th>Start Date</th>  
                                                 <th>Start Time</th>  
-                                                 <th>End Time</th>
+                                                <th>End Time</th>
                                                 <th>Class Fee</th>  
                                                 <th>Option</th>
                                             </tr>

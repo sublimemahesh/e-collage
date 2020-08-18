@@ -173,11 +173,23 @@ include './auth.php';
                                                     <input id="lessons" name="lessons" class="form-control" type="number"  min="1" placeholder="Enter how many lessons ">
                                                 </div>
                                             </div>
-
                                             <div class="form-group">
+                                                <label class="col-sm-2 control-label " for="title" style="text-align: left"> Class Payment or Not: </label>
+
+                                                <div class="col-sm-10">
+                                                    <select  class="custom-select" id="payment_type" name="payment_type" required="">
+                                                        <option value="">-- Select your option -- </option>
+
+                                                        <option value="0">Fee</option>   
+                                                        <option value="1">Payment</option>   
+
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <div class="form-group" style="display: none " id="class_fee_show">
                                                 <label class="col-sm-2 control-label " for="title" style="text-align: left">Class Fee: </label>
                                                 <div class="col-sm-10">
-                                                    <input id="class_fee" name="class_fee" class="form-control" type="number"  min="0" placeholder="Enter your Course Fee">
+                                                    <input id="class_fee" name="class_fee" class="form-control" type="number"  min="0" placeholder="Enter your Class Fee">
                                                 </div>
                                             </div>
 
@@ -219,6 +231,17 @@ include './auth.php';
 
 
     <script>
+
+        $(document).ready(function () {
+            $('#payment_type').change(function () {
+                var type = $(this).val();
+                if (type == 1) {
+                    $('#class_fee_show').show();
+                }else{
+                    $('#class_fee_show').hide();
+                }
+            });
+        });
         $(document).ready(function () {
             $(".hr-time-picker").hrTimePicker({
                 disableColor: "#989c9c", // red, green, #000
@@ -234,7 +257,6 @@ include './auth.php';
         _gaq.push(['_setAccount', 'UA-36251023-1']);
         _gaq.push(['_setDomainName', 'jqueryscript.net']);
         _gaq.push(['_trackPageview']);
-
         (function () {
             var ga = document.createElement('script');
             ga.type = 'text/javascript';
@@ -243,7 +265,6 @@ include './auth.php';
             var s = document.getElementsByTagName('script')[0];
             s.parentNode.insertBefore(ga, s);
         })();
-
     </script>
 
     <script src="js/jquery.timepicker.min.js" type="text/javascript"></script>
@@ -254,7 +275,6 @@ include './auth.php';
                 minDate: 'today',
             });
         });
-
         $(function () {
             $('#start_time').timepicker({'scrollDefault': 'now',
                 'forceRoundTime': true,

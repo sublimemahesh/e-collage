@@ -2,6 +2,9 @@
 <?php
 include '../class/include.php';
 include './auth.php';
+$id = '';
+$id = $_GET['id'];
+$CLASS = new LectureClass($id);
 ?>
 <html lang="en">
 
@@ -38,43 +41,43 @@ include './auth.php';
                         <div class="col-xs-12">
                             <div class="card">
                                 <div class="card-header">
-                                    <strong>Manage Lectures</strong>
+                                    <strong>Manage Class - " <?php echo $CLASS->name ?> "  Payments</strong>
                                 </div>
                                 <div class="card-body">
                                     <table id="demo-datatables-colreorder-1" class="table table-hover table-striped table-nowrap dataTable" cellspacing="0" width="100%">
                                         <thead>
                                             <tr>
-                                                <th>ID</th>
-                                                <th>Name</th> 
+                                                <th>Id</th>
+                                                <th>Student Id</th> 
+                                                <th>Student Name</th> 
                                                 <th>Nic Number</th> 
                                                 <th>Mobile Number</th> 
-                                                <th>Option</th>
+                                               
                                             </tr>
                                         </thead>
                                         <?php
-                                        $LECTURE = new Lecture(NULL);
-                                        foreach ($LECTURE->all() as $key => $lecture) {
+                                        $PAYMENT = new Payment(NULL);
+                                        foreach ($PAYMENT->getPaymnetByClassId($id) as $key => $payment) {
+                                            $STUDENT = new Student($payment['student_id']);
                                             $key++;
                                             ?>
                                             <tr id="div<?php echo $lecture['id'] ?>">
-                                                <td><?php echo $key ?></td>
-                                                <td><?php echo $lecture['full_name'] ?></td>
-                                                <td><?php echo $lecture['nic_number'] ?></td>
-                                                <td><?php echo $lecture['phone_number'] ?></td>
-
-                                                <td> 
-                                                    <a href="view-lecture.php?id=<?php echo $lecture['id'] ?>" class="op-link btn btn-sm btn-primary"><i class="icon icon-eye"></i></a> | 
-                                                    <a href="manage-lectures-class.php?id=<?php echo $lecture['id'] ?>" class="op-link btn btn-sm btn-success"><i class="icon icon-table"></i></a> | 
-                                                    <a href="#" class=" delete-lecture btn btn-sm btn-danger" data-id="<?php echo $lecture['id'] ?>"><i class="waves-effect icon icon-trash" data-type="cancel"></i></a> 
-                                                </td>
+                                                <td><?php echo $key ?></td> 
+                                                <td><?php echo $STUDENT->student_id ?></td>
+                                                <td><?php echo $STUDENT->full_name ?></td>
+                                                <td><?php echo $STUDENT->nic_number ?></td>
+                                                <td><?php echo $STUDENT->phone_number ?></td>
+                                               
                                             </tr>
                                         <?php } ?>
                                         <tfoot>
                                             <tr>
-                                                <th>ID</th>
-                                                <th>Title</th>
-                                                <th>Orders</th>  
-                                                <th>Option</th>
+                                                <th>Id</th>
+                                                <th>Student Id</th> 
+                                                <th>Student Name</th> 
+                                                <th>Nic Number</th> 
+                                                <th>Mobile Number</th> 
+                                                
                                             </tr>
                                         </tfoot>
                                         <tbody>
