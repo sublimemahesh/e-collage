@@ -19,6 +19,7 @@ class LectureClass {
     public $end_time;
     public $modules;
     public $class_fee;
+    public $payment_type;
     public $queue;
 
     public function __construct($id) {
@@ -41,6 +42,7 @@ class LectureClass {
             $this->end_time = $result['end_time'];
             $this->modules = $result['modules'];
             $this->class_fee = $result['class_fee'];
+            $this->payment_type = $result['payment_type'];
             $this->queue = $result['queue'];
 
             return $this;
@@ -49,7 +51,7 @@ class LectureClass {
 
     public function create() {
 
-        $query = "INSERT INTO `lecture_class` (`name`,`city`,`lecture`,`class_type`,`subject_id`,`start_date`,`start_time`,`end_time`,`modules`,`class_fee`,`queue`) VALUES  ('"
+        $query = "INSERT INTO `lecture_class` (`name`,`city`,`lecture`,`class_type`,`subject_id`,`start_date`,`start_time`,`end_time`,`modules`,`payment_type`,`class_fee`,`queue`) VALUES  ('"
                 . $this->name . "', '"
                 . $this->city . "', '"
                 . $this->lecture . "', '"
@@ -59,6 +61,7 @@ class LectureClass {
                 . $this->start_time . "', '"
                 . $this->end_time . "', '"
                 . $this->modules . "', '"
+                . $this->payment_type . "', '"
                 . $this->class_fee . "', '"
                 . $this->queue . "')";
 
@@ -100,6 +103,7 @@ class LectureClass {
                 . "`start_time` ='" . $this->start_time . "', "
                 . "`end_time` ='" . $this->end_time . "', "
                 . "`modules` ='" . $this->modules . "', "
+                . "`payment_type` ='" . $this->payment_type . "', "
                 . "`class_fee` ='" . $this->class_fee . "' "
                 . "WHERE `id` = '" . $this->id . "'";
  

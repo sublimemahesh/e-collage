@@ -16,6 +16,7 @@ if (isset($_POST['create'])) {
     $LECTURE_CLASS->start_time = $_POST['start_time'];
     $LECTURE_CLASS->end_time = $_POST['end_time'];
     $LECTURE_CLASS->modules = $_POST['lessons'];
+    $LECTURE_CLASS->payment_type = $_POST['payment_type'];
     $LECTURE_CLASS->class_fee = $_POST['class_fee'];
     $LECTURE_CLASS->create();
 
@@ -37,6 +38,7 @@ if (isset($_POST['update'])) {
     $LECTURE_CLASS->start_time = $_POST['start_time'];
     $LECTURE_CLASS->end_time = $_POST['end_time'];
     $LECTURE_CLASS->modules = $_POST['lessons'];
+    $LECTURE_CLASS->payment_type = $_POST['payment_type']; 
     $LECTURE_CLASS->class_fee = $_POST['class_fee'];
     $LECTURE_CLASS->update();
 

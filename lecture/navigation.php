@@ -50,7 +50,7 @@
                             <span class="sidenav-label">Help Center</span>
                         </a>
 
-                    </li> 
+                    </li>  
                 </ul>
             </nav>
         </div>

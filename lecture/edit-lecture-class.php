@@ -213,12 +213,48 @@ $LECTURE_CLASS = new LectureClass($id);
                                                     <input id="lessons" name="lessons" class="form-control" type="number"  min="1" placeholder="Enter how many lessons " value="<?php echo $LECTURE_CLASS->modules ?>">
                                                 </div>
                                             </div>
+
                                             <div class="form-group">
-                                                <label class="col-sm-2 control-label " for="title" style="text-align: left">Class Fee: </label>
+                                                <label class="col-sm-2 control-label " for="title" style="text-align: left"> Class Payment or Not: </label>
+
                                                 <div class="col-sm-10">
-                                                    <input id="class_fee" name="class_fee" class="form-control" type="text"   placeholder="Enter your Course Fee" value="<?php echo $LECTURE_CLASS->class_fee ?>">
+                                                    <select  class="custom-select" id="payment_type" name="payment_type" required="">
+                                                        <option value="">-- Select your option -- </option>
+                                                        <?php
+                                                        if ($LECTURE_CLASS->payment_type == 0) {
+                                                            ?>
+                                                            <option value="0" selected="">Fee</option>   
+                                                            <option value="1">Payment</option> 
+                                                            <?php
+                                                        } else if ($LECTURE_CLASS->payment_type == 1) {
+                                                            ?> 
+                                                            <option value="1" selected="">Payment</option> 
+                                                            <option value="0">Fee</option> 
+                                                        <?php } else { ?>
+                                                            <option value="0">Fee</option> 
+                                                            <option value="1">Payment</option>   
+                                                        <?php } ?>
+                                                    </select>
                                                 </div>
                                             </div>
+                                            <?php
+                                            if ($LECTURE_CLASS->payment_type == 1) {
+                                                ?>
+                                                <div class="form-group"    >
+                                                    <label class="col-sm-2 control-label " for="title" style="text-align: left">Class Fee: </label>
+                                                    <div class="col-sm-10">
+                                                        <input id="class_fee" name="class_fee" class="form-control" type="number"  min="0" placeholder="Enter your Class Fee" value="<?php echo $LECTURE_CLASS->class_fee ?>">
+                                                    </div>
+                                                </div>
+                                            <?php } else { ?>
+
+                                            <div class="form-group"  style="display: none" id="class_fee_show">
+                                                    <label class="col-sm-2 control-label " for="title" style="text-align: left">Class Fee: </label>
+                                                    <div class="col-sm-10">
+                                                        <input id="class_fee" name="class_fee" class="form-control" type="number"  min="0" placeholder="Enter your Class Fee" value="<?php echo $LECTURE_CLASS->class_fee ?>">
+                                                    </div>
+                                                </div>
+                                            <?php } ?>
 
                                             <div class="form-group">
                                                 <div class="col-md-3"></div> 
@@ -255,6 +291,17 @@ $LECTURE_CLASS = new LectureClass($id);
         <script src="ajax/js/city.js" type="text/javascript"></script>
 
         <script>
+            $(document).ready(function () {
+                $('#payment_type').change(function () {
+                    var type = $(this).val();
+                    if (type == 1) {
+                        $('#class_fee_show').show();
+                    } else {
+                        $('#class_fee_show').hide();
+                    }
+                });
+            });
+
             $(function () {
                 $(".datepicker").datepicker({dateFormat: 'yy-mm-dd',
                     minDate: 'today',

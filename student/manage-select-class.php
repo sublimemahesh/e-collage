@@ -2,6 +2,16 @@
 <?php
 include '../class/include.php';
 include_once(dirname(__FILE__) . '/auth.php');
+
+$STUDENT = new Student($_SESSION['id']);
+
+date_default_timezone_set("Asia/Calcutta");
+$today_time = date('Y-m-d H:i:A');
+$today = date('Y-m-d');
+
+$PAYMENT = new Payment(NULL);
+$LASTID = $PAYMENT->getLastID();
+$payment_id = $LASTID + 1;
 ?>
 <html lang="en">
 
@@ -42,11 +52,12 @@ include_once(dirname(__FILE__) . '/auth.php');
                         $STUDENT_REGISTRATION = new StudentRegistration(NULL);
                         foreach ($STUDENT_REGISTRATION->getStudentByStudentId($_SESSION['id']) as $student_registration) {
                             $LECTURE = new Lecture($student_registration['lecture_id']);
+                            $LECTURE_CLASS = new LectureClass($student_registration['class_id']);
                             ?> 
                             <div class="col-md-3">
                                 <div class="card ">
                                     <div class="card-image">
-                                        <a class="card-link" href="student-class-view.php?id=<?php echo $student_registration['class_id'] ?>">
+                                        <a class="card-link" href="#">
                                             <?php
                                             if (empty($LECTURE->image_name)) {
                                                 ?>
@@ -61,10 +72,8 @@ include_once(dirname(__FILE__) . '/auth.php');
                                         <div class="overlay-content overlay-top text-center" style="margin-top: -43px;">
                                             <span class="label label-success " style="font-size: 16px;border-radius: 0px;"> 
                                                 <?php
-                                                $LECTURE_CLASS = new LectureClass($student_registration['class_id']);
-
                                                 $EDUCATIN_SUBJECT = new EducationSubject($LECTURE_CLASS->subject_id);
-                                                echo $LECTURE_CLASS->name ;
+                                                echo $LECTURE_CLASS->name;
                                                 ?>
                                             </span>
                                         </div>
@@ -93,7 +102,7 @@ include_once(dirname(__FILE__) . '/auth.php');
                                         <div class="row" style="margin-top: 10px;margin-bottom: 10px;">
                                             <div class="col-md-8" style="padding-right: 0px;">
                                                 <a class="link-muted" href="#">
-                                                    <span class="icon icon-group icon-1x"></span> -  <?php echo $EDUCATIN_SUBJECT->name?>
+                                                    <span class="icon icon-group icon-1x"></span> -  <?php echo $EDUCATIN_SUBJECT->name ?>
                                                 </a>
                                             </div>
 
@@ -104,12 +113,79 @@ include_once(dirname(__FILE__) . '/auth.php');
                                             </div>
                                         </div>
 
-                                        <a class="card-link" href="student-class-view.php?id=<?php echo $student_registration['class_id'] ?>">
-                                            <center>
-                                                <p class="btn btn-success btn-block" style="width: 80%" > Enter Your Class
-                                                </p>
-                                            </center> 
-                                        </a>
+
+
+                                        <?php
+                                        if ($LECTURE_CLASS->payment_type == 0) {
+                                            ?>
+
+                                            <a class="card-link" href="student-class-view.php?id=<?php echo $student_registration['class_id'] ?>">
+                                                <center>
+                                                    <p class="btn btn-success btn-block" style="width: 80%" > Enter Your Class
+                                                    </p>
+                                                </center> 
+                                            </a>
+                                            <?php
+                                        } else {
+                                            //set start time
+                                            $start_time = $LECTURE_CLASS->start_date . ' ' . $LECTURE_CLASS->start_time;
+
+                                            $begin = new DateTime($LECTURE_CLASS->start_date);
+                                            $date = new DateTime($LECTURE_CLASS->start_date);
+                                            $days = ($LECTURE_CLASS->modules * 7);
+
+                                            $end = $date->modify('+' . $days . ' day');
+                                            $interval = DateInterval::createFromDateString('7 day');
+                                            $PERIOD = new DatePeriod($begin, $interval, $end);
+
+                                            $date_array = array();
+                                            foreach ($PERIOD as $date) {
+                                                $date_Start = $date->format("Y-m-d");
+
+                                                array_push($date_array, $date_Start);
+                                            }
+
+                                            if (in_array($today, $date_array)) {
+                                                ?>
+
+                                                <?php
+                                                $PAYMENT = new Payment(NULL);
+
+                                                $res = $PAYMENT->getPaymentSuccessStudents($STUDENT->id, $LECTURE_CLASS->id, $today);
+
+                                                if ($res == 'TRUE') {
+                                                    ?>
+                                                    <a class="card-link" href="student-class-view.php?id=<?php echo $student_registration['class_id'] ?>">
+                                                        <center>
+                                                            <p class="btn btn-success btn-block" style="width: 80%" > Enter Your Class
+                                                            </p>
+                                                        </center> 
+                                                    </a>
+                                                <?php } else { ?>
+                                                    <a class="card-link" href="payment.php?id=<?php echo $student_registration['class_id'] ?>">
+                                                        <center>
+                                                            <p class="btn btn-warning btn-block" style="width: 80%" > Pay Now
+                                                            </p>
+                                                        </center> 
+                                                    </a>
+
+                                                <?php } ?>
+
+
+                                                <?php
+                                            } else {
+                                                ?>
+                                                <a class="card-link" href="student-class-view.php?id=<?php echo $student_registration['class_id'] ?>">
+                                                    <center>
+                                                        <p class="btn btn-success btn-block" style="width: 80%" > Enter Your Class
+                                                        </p>
+                                                    </center> 
+                                                </a>
+                                                <?php
+                                            }
+                                        }
+                                        ?>
+
                                     </div>
                                 </div>
                             </div> 
