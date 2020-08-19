@@ -2,7 +2,7 @@ $(document).ready(function () {
 
     $('#pay').click(function (e) {
         e.preventDefault();
-        
+
         var formData = new FormData($('#form-data')[0]);
 
         $.ajax({
@@ -38,5 +38,12 @@ $(document).ready(function () {
 
     });
 
-
+    $('#modules').change(function () {
+        var modules = $('#modules').val();
+        var class_free = $('#class_free').val();
+        var price = modules * class_free;
+        
+        $('#amount').empty();
+        $('#amount').val(price);
+    });
 });

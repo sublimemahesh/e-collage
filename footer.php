@@ -3,19 +3,26 @@
     <div class="container">
         <div class="row">
             <div class="col-md-4 col-sm-6 col-xs-12">
-                <h1 class="logo"><a href="index.php"><img src="assets/images/logo.png" alt="Logo"></a></h1>
+
+                <h6 style="font-size: 22px;font-weight: 600"> E-COLLAGE.LK</h6>
+
+
                 <ul class="contactinfo">
                     <li class="address"><strong>Address:</strong> No 55, Isipathanarama Rd, Navinna, Maharagama </li>
-                    <li class="phone"><strong>Phone:</strong>  +94 11 3663 500</li>
-                    <li class="email"><strong>E-mail:</strong>    mail@synotec.lk</li>
-                </ul> 
+                    <li class="phone"><strong>Phone:</strong>071 583 3651</li>
+                    <li class="email"><strong>E-mail:</strong>   info@ecollege.lk</li>
+                </ul>
+                <center><b>Payment Options</b><br><a href="https://www.payhere.lk?utm_source=logo" target="_blank"><img src="https://www.payhere.lk/downloads/images/payhere_short_banner.png" alt="PayHere" width="280"/></a></center>     
+
             </div>
+
+
             <div class="col-md-2 col-sm-6 col-xs-12">
                 <h6>GET HELP</h6>
                 <ul class="information">
                     <li><a href="#">Help and FAQ</a></li>
                     <li><a href="#">Video Courses</a></li>
-                    <li><a href="#">Online Booking</a></li>
+                    <li><a href="#">Online Lectures</a></li>
                     <li><a href="#">Online Support</a></li>
                 </ul>
             </div>
@@ -38,7 +45,7 @@
                 </ul>
             </div>
             <div class="col-md-2 col-sm-12 col-xs-12">
-                <h6>QUICKLINKS</h6>
+                <h6>QUICK LINKS</h6>
                 <ul class="information">
                     <li><a href="#">Video Training</a></li>
                     <li><a href="#">Online Courses</a></li>

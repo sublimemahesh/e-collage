@@ -207,7 +207,7 @@ $LECTURE_CLASS = new LectureClass($id);
                                                 </div>
                                             </div>
                                             <div class="form-group">
-                                                <label class="col-sm-2 control-label " for="title" style="text-align: left">No of Class Coverd Dates: : </label>
+                                                <label class="col-sm-2 control-label " for="title" style="text-align: left">Nu of Class Covered Weeks: </label>
 
                                                 <div class="col-sm-10">
                                                     <input id="lessons" name="lessons" class="form-control" type="number"  min="1" placeholder="Enter how many lessons " value="<?php echo $LECTURE_CLASS->modules ?>">
@@ -223,16 +223,17 @@ $LECTURE_CLASS = new LectureClass($id);
                                                         <?php
                                                         if ($LECTURE_CLASS->payment_type == 0) {
                                                             ?>
-                                                            <option value="0" selected="">Fee</option>   
-                                                            <option value="1">Payment</option> 
+                                                            <option value="0" selected="">Free</option>   
+                                                            <option value="1">Weekly Payment</option> 
                                                             <?php
                                                         } else if ($LECTURE_CLASS->payment_type == 1) {
                                                             ?> 
-                                                            <option value="1" selected="">Payment</option> 
-                                                            <option value="0">Fee</option> 
+                                                            <option value="0"> Free</option> 
+                                                            <option value="1" selected="">Weekly Payment</option> 
+
                                                         <?php } else { ?>
-                                                            <option value="0">Fee</option> 
-                                                            <option value="1">Payment</option>   
+                                                            <option value="0">Free</option> 
+                                                            <option value="1">Weekly Payment</option>   
                                                         <?php } ?>
                                                     </select>
                                                 </div>
@@ -241,17 +242,16 @@ $LECTURE_CLASS = new LectureClass($id);
                                             if ($LECTURE_CLASS->payment_type == 1) {
                                                 ?>
                                                 <div class="form-group"    >
-                                                    <label class="col-sm-2 control-label " for="title" style="text-align: left">Class Fee: </label>
+                                                    <label class="col-sm-2 control-label " for="title" style="text-align: left">Weekly day Class Free: </label>
                                                     <div class="col-sm-10">
-                                                        <input id="class_fee" name="class_fee" class="form-control" type="number"  min="0" placeholder="Enter your Class Fee" value="<?php echo $LECTURE_CLASS->class_fee ?>">
+                                                        <input id="class_fee" name="class_fee" class="form-control" type="number"  min="0" placeholder="Enter your Class Free" value="<?php echo $LECTURE_CLASS->class_fee ?>">
                                                     </div>
                                                 </div>
                                             <?php } else { ?>
-
-                                            <div class="form-group"  style="display: none" id="class_fee_show">
-                                                    <label class="col-sm-2 control-label " for="title" style="text-align: left">Class Fee: </label>
+                                                <div class="form-group"  style="display: none" id="class_fee_show">
+                                                    <label class="col-sm-2 control-label " for="title" style="text-align: left">Weekly day Class Free: </label>
                                                     <div class="col-sm-10">
-                                                        <input id="class_fee" name="class_fee" class="form-control" type="number"  min="0" placeholder="Enter your Class Fee" value="<?php echo $LECTURE_CLASS->class_fee ?>">
+                                                        <input id="class_fee" name="class_fee" class="form-control" type="number"  min="0" placeholder="Enter your Class Free" value="<?php echo $LECTURE_CLASS->class_fee ?>">
                                                     </div>
                                                 </div>
                                             <?php } ?>

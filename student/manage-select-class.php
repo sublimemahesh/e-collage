@@ -127,8 +127,7 @@ $payment_id = $LASTID + 1;
                                             </a>
                                             <?php
                                         } else {
-                                            //set start time
-                                            $start_time = $LECTURE_CLASS->start_date . ' ' . $LECTURE_CLASS->start_time;
+                                            //set start time                                          
 
                                             $begin = new DateTime($LECTURE_CLASS->start_date);
                                             $date = new DateTime($LECTURE_CLASS->start_date);
@@ -146,14 +145,32 @@ $payment_id = $LASTID + 1;
                                             }
 
                                             if (in_array($today, $date_array)) {
-                                                ?>
 
-                                                <?php
                                                 $PAYMENT = new Payment(NULL);
+                                                $results = $PAYMENT->getPaymentSuccessStudents($STUDENT->id, $LECTURE_CLASS->id);
 
-                                                $res = $PAYMENT->getPaymentSuccessStudents($STUDENT->id, $LECTURE_CLASS->id, $today);
+                                                $number_0f_dates = 0;
+                                                foreach ($results as $result) {
+                                                    $PAYMENTS = new Payment($result['id']);
+                                                    $number_0f_dates += $PAYMENTS->number_of_date;
+                                                }
+                                                echo $number_0f_dates;
+                                                $begin = new DateTime($LECTURE_CLASS->start_date);
+                                                $date = new DateTime($LECTURE_CLASS->start_date);
+                                                $days = ($number_0f_dates * 7);
 
-                                                if ($res == 'TRUE') {
+                                                $end = $date->modify('+' . $days . ' day');
+                                                $interval = DateInterval::createFromDateString('7 day');
+                                                $PERIOD = new DatePeriod($begin, $interval, $end);
+
+                                                $date_array_2 = array();
+                                                foreach ($PERIOD as $date) {
+                                                    $date_Start = $date->format("Y-m-d");
+                                                    echo $date_Start . '</br>';
+                                                    array_push($date_array_2, $date_Start);
+                                                }
+
+                                                if (in_array($today, $date_array_2)) {
                                                     ?>
                                                     <a class="card-link" href="student-class-view.php?id=<?php echo $student_registration['class_id'] ?>">
                                                         <center>
