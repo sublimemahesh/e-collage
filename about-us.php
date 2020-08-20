@@ -112,7 +112,7 @@
 
 
 
-                        <h6 class="text-center">Vission</h6>
+                        <h6 class="text-center">Vision</h6>
                         <p class="text-center">
                             දැනුමෙන් සන්නද්ධ ශිෂ්‍යයකු වෙනුවට කුසලතාවයෙන් සන්නද්ධ ශිෂ්‍යයකු බිහි කිරීම.
                         </p>

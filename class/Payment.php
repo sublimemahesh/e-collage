@@ -13,6 +13,7 @@ class Payment {
     public $student_id;
     public $class_id;
     public $date;
+    public $number_of_date;
     public $paymentStatusCode;
     public $status;
 
@@ -29,6 +30,7 @@ class Payment {
             $this->student_id = $result['student_id'];
             $this->class_id = $result['class_id'];
             $this->date = $result['date'];
+            $this->number_of_date = $result['number_of_date'];
             $this->paymentStatusCode = $result['paymentStatusCode'];
             $this->status = $result['status'];
 
@@ -94,18 +96,19 @@ class Payment {
         return $result['id'];
     }
 
-    public function getPaymentSuccessStudents($student_id, $class_id, $date) {
+    public function getPaymentSuccessStudents($student_id, $class_id) {
 
-        $query = "SELECT `id` FROM `payment`WHERE `student_id` =" . $student_id . " and  `class_id`=" . $class_id . "  and  `date`='" . $date . "' and `paymentStatusCode` =2 and `status` =1 ";
+        $query = "SELECT DISTINCT id FROM `payment`WHERE `student_id` =" . $student_id . " and  `class_id`=" . $class_id . "  and `paymentStatusCode` =2 and `status` =1 ";
 
         $db = new Database();
-        $result = mysql_fetch_assoc($db->readQuery($query));
+        $result = $db->readQuery($query);
+        $array_res = array();
 
-        if ($result) {
-            return TRUE;
-        } else {
-            return FALSE;
+        while ($row = mysql_fetch_array($result)) {
+            array_push($array_res, $row);
         }
+
+        return $array_res;
     }
 
     function updatePaymentStatusCodeAndStatus() {
@@ -113,6 +116,7 @@ class Payment {
         $query = "UPDATE  `payment` SET "
                 . "`paymentStatusCode` ='" . $this->paymentStatusCode . "', "
                 . "`date` ='" . $this->date . "', "
+                . "`number_of_date` ='" . $this->number_of_date . "', "
                 . "`student_id` ='" . $this->student_id . "', "
                 . "`class_id` ='" . $this->class_id . "', "
                 . "`status` ='" . $this->status . "' "

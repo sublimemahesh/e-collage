@@ -113,12 +113,18 @@ $LECTURE_CLASS = new LectureClass($id);
 
 
                             <form method="post" class="demo-form-wrapper card " action="https://www.payhere.lk/pay/checkout" style="padding: 50px" id="form-data">  
-                                <!--                            <form method="post" class="demo-form-wrapper card " action="https://sandbox.payhere.lk/pay/checkout" style="padding: 50px" id="form-data">  -->
+<!--                          <form method="post" class="demo-form-wrapper card " action="https://sandbox.payhere.lk/pay/checkout" style="padding: 50px" id="form-data">   -->
 
                                 <!--  Sand box-->
-<!--                                <input type="hidden" name="merchant_id" value="1213021">  -->
+<!--                             <input type="hidden" name="merchant_id" value="1213021">   -->
                                 <!--live-->
                                 <input type="hidden" name="merchant_id" value="215525">    
+
+
+                                <!-- Replace your Merchant ID -->
+                                <input type="hidden" name="return_url" value="http://ecollege.lk/student/payment-success.php">
+                                <input type="hidden" name="cancel_url" value="http://ecollege.lk/student/payment-cancel.php">
+                                <input type="hidden" name="notify_url" value="http://ecollege.lk/student/notify.php">
 
                                 <div class="form form-horizontal">
 
@@ -165,36 +171,44 @@ $LECTURE_CLASS = new LectureClass($id);
                                         </div>
                                     </div>
                                     <div class="form-group">
+                                        <label class="col-sm-2 control-label" for="nic_number">How Many days Pay</label>
+                                        <div class="col-sm-10">
+                                            <select class="form-control" required="" id="modules" name="number_of_date"> 
+                                                <?php
+                                                for ($x = 1; $x <= $LECTURE_CLASS->modules; $x++) {
+                                                    if ($x == 1) {
+                                                        ?>
+                                                        <option value="<?php echo $x ?>" selected=""><?php echo $x ?>   </option>
+                                                    <?php } else { ?>
+                                                        <option value="<?php echo $x ?>"><?php echo $x ?>   </option>
+                                                        <?php
+                                                    }
+                                                }
+                                                ?>
+                                            </select>
+                                        </div>
+                                    </div>  
+                                    <div class="form-group">
                                         <label class="col-sm-2 control-label" for="nic_number">Class Fee</label>
                                         <div class="col-sm-10">
-                                            <input type="text"   value="<?php echo $LECTURE_CLASS->class_fee ?>" class="form-control" readonly="">
-
-                                            
+                                            <input type="text"  name="amount" id="amount" value="<?php echo $LECTURE_CLASS->class_fee ?>" class="form-control" readonly="">
                                         </div>
-                                    </div>
-                                    
+                                    </div>  
 
                                     <input type="hidden" name="order_id" value="<?php echo $payment_id ?>">
                                     <input type="hidden" name="items" value="ecollage.lk">  
                                     <input type="hidden" name="currency" value="LKR">
-                                    <input type="hidden" name="recurrence" value="1 Month">
-                                    <input type="hidden" name="duration" value="Forever">
-                                    <input type="hidden" name="amount" value="<?php echo $LECTURE_CLASS->class_fee ?>">
+                                    <input type="hidden"   id="class_free" value="<?php echo $LECTURE_CLASS->class_fee ?>"  >
+
+
                                     <input type="hidden" name="last_name" value="Perera"> 
-
-                                    <!-- Replace your Merchant ID -->
-                                    <input type="hidden" name="return_url" value="http://ecollege.lk/student/payment-success.php">
-                                    <input type="hidden" name="cancel_url" value="http://ecollege.lk/student/payment-cancel.php">
-                                    <input type="hidden" name="notify_url" value="http://ecollege.lk/student/notify.php">
-
-                                    <input type="hidden" name="country" value="Sri Lanka">
+                                    <input type="hidden" name="address" value="No.1, Galle Road">
+                                    <input type="hidden" name="country" value="Sri Lanka"> 
                                     <input type="hidden" name="student_id" value="<?php echo $STUDENT->id ?>">
                                     <input type="hidden" name="class_id" value="<?php echo $LECTURE_CLASS->id ?>">
                                     <input type="hidden" name="date" value="<?php echo $today ?>"> 
 
-                                    <input type="hidden" name="address" value="<?php echo $STUDENT->address ?>"> 
                                     <button type="submit" id="pay" class="btn btn-warning btn-block" style="width: 20%;float: right">Pay Now</button>
-
                                 </div>
                             </form>
                         </div>
@@ -216,6 +230,7 @@ $LECTURE_CLASS = new LectureClass($id);
         <script src="js/jm.spinner.js" type="text/javascript"></script>
 
         <script src="ajax/js/payment.js" type="text/javascript"></script>
+
 
     </body>
 

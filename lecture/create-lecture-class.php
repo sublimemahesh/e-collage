@@ -167,7 +167,7 @@ include './auth.php';
                                                 </div> 
                                             </div>
                                             <div class="form-group">
-                                                <label class="col-sm-2 control-label " for="title" style="text-align: left">No of Class Coverd Dates: </label>
+                                                <label class="col-sm-2 control-label " for="title" style="text-align: left">Nu of Class Covered Weeks: </label>
 
                                                 <div class="col-sm-10">
                                                     <input id="lessons" name="lessons" class="form-control" type="number"  min="1" placeholder="Enter how many lessons ">
@@ -180,14 +180,14 @@ include './auth.php';
                                                     <select  class="custom-select" id="payment_type" name="payment_type" required="">
                                                         <option value="">-- Select your option -- </option>
 
-                                                        <option value="0">Fee</option>   
-                                                        <option value="1">Payment</option>   
+                                                        <option value="0">Free</option>   
+                                                        <option value="1">Weekly Payment</option>   
 
                                                     </select>
                                                 </div>
                                             </div>
                                             <div class="form-group" style="display: none " id="class_fee_show">
-                                                <label class="col-sm-2 control-label " for="title" style="text-align: left">Class Fee: </label>
+                                                <label class="col-sm-2 control-label " for="title" style="text-align: left">Weekly day Class Free: </label>
                                                 <div class="col-sm-10">
                                                     <input id="class_fee" name="class_fee" class="form-control" type="number"  min="0" placeholder="Enter your Class Fee">
                                                 </div>

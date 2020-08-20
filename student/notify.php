@@ -9,6 +9,7 @@ $payhere_amount = $_POST['payhere_amount'];
 $payhere_currency = $_POST['payhere_currency'];
 $status_code = $_POST['status_code'];
 $md5sig = $_POST['md5sig'];
+$number_of_date = $_POST['number_of_date'];
 
 //$merchant_secret = '121302112130211213021'; // Sandbox Merchant Secret
 $merchant_secret = '36328ce7104ad17d4ef157ccc6c9e526'; // live
@@ -21,6 +22,7 @@ if ($status_code == 2) {
 
     $PAYMENT->paymentStatusCode = $status_code;
     $PAYMENT->status = 1;
+    $PAYMENT->number_of_date = $number_of_date;
     $result = $PAYMENT->updatePaymentStatusCodeAndStatus();
 }
 ?>

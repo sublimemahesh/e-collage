@@ -12,7 +12,7 @@ $site_link = "https://" . $_SERVER['HTTP_HOST'];
 $comany_name = "Ecollage.lk";
 $website_name = "www.ecollage.lk";
 $comConNumber = "+94 11 3663 500";
-$comEmail = "info@jobhere.lk";
+$comEmail = "info@ecollege.lk";
 $comOwner = "Ecollage";
 $customer_msg = 'Hello, and thank you for your interest in ' . $comany_name . '. We have received your enquiry , and we will get back to you as soon as possible.';
 

@@ -181,7 +181,7 @@ $today = date('Y-m-d');
                         ?>  
                     </h1>
 
-                    <div class="alert alert-danger" role = "alert" id="message" style=" width: 65%;float: right;margin-top: -25px;color: white;padding: 5px 0px 5px 14px;">   </div>
+<!--                    <div class="alert alert-danger" role = "alert" id="message" style=" width: 65%;float: right;margin-top: -25px;color: white;padding: 5px 0px 5px 14px;">   </div>-->
                 </div>
             </nav>
         </div>
