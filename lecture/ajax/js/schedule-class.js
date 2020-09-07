@@ -1,7 +1,7 @@
 
 $(document).ready(function () {
 
-//Create lecture Video
+    //Create lecture Video
     $('#create-video').click(function (event) {
         event.preventDefault();
 
@@ -52,7 +52,7 @@ $(document).ready(function () {
         }
     });
 
-//Create lecture MCq Papers
+    //Create lecture MCq Papers
     $('#create-mcq').click(function (event) {
         event.preventDefault();
 
@@ -72,14 +72,14 @@ $(document).ready(function () {
                 timer: 1500,
                 showConfirmButton: false
             });
-//        } else if (!$('#date').val() || $('#date').val().length === 0) {
-//            swal({
-//                title: "Error!",
-//                text: "Please select the class schedule day.!",
-//                type: 'error',
-//                timer: 1500,
-//                showConfirmButton: false
-//            });
+            //        } else if (!$('#date').val() || $('#date').val().length === 0) {
+            //            swal({
+            //                title: "Error!",
+            //                text: "Please select the class schedule day.!",
+            //                type: 'error',
+            //                timer: 1500,
+            //                showConfirmButton: false
+            //            });
         } else {
 
             $('.box').jmspinner('large');
@@ -88,6 +88,189 @@ $(document).ready(function () {
 
 
             var formData = new FormData($('#form-mcq')[0]);
+            $.ajax({
+                url: "ajax/post-and-get/schedule-class.php",
+                type: "POST",
+                data: formData,
+                async: false,
+                dataType: 'json',
+                success: function (result) {
+
+                    $('.box').jmspinner(false);
+                    $('.box').removeClass('well');
+                    $('.box').css('z-index', '-1111');
+
+                    swal({
+                        title: "Success!",
+                        text: "Your data was saved successfully!.....",
+                        type: 'success',
+                        timer: 2000,
+                        showConfirmButton: false
+                    }, function () {
+                        setTimeout(function () {
+                            window.location.reload();
+                        }, 1500);
+                    });
+                },
+                cache: false,
+                contentType: false,
+                processData: false
+            });
+        }
+    });
+
+    //Create lecture MCq Papers
+    $('#create-question').click(function (event) {
+        event.preventDefault();
+
+        if (!$('#question').val() || $('#question').val().length === 0) {
+            swal({
+                title: "Error!",
+                text: "Please enter question..!",
+                type: 'error',
+                timer: 1500,
+                showConfirmButton: false
+            });
+        } else if (!$('#option-a').val() || $('#option-a').val().length === 0) {
+            swal({
+                title: "Error!",
+                text: "Please enter option A.!",
+                type: 'error',
+                timer: 1500,
+                showConfirmButton: false
+            });
+        } else if (!$('#option-b').val() || $('#option-b').val().length === 0) {
+            swal({
+                title: "Error!",
+                text: "Please enter option B.!",
+                type: 'error',
+                timer: 1500,
+                showConfirmButton: false
+            });
+        } else if (!$('#option-c').val() || $('#option-c').val().length === 0) {
+            swal({
+                title: "Error!",
+                text: "Please enter option C.!",
+                type: 'error',
+                timer: 1500,
+                showConfirmButton: false
+            });
+        } else if (!$('#option-d').val() || $('#option-d').val().length === 0) {
+            swal({
+                title: "Error!",
+                text: "Please enter option D.!",
+                type: 'error',
+                timer: 1500,
+                showConfirmButton: false
+            });
+        } else if (!$('#correct-answer').val() || $('#correct-answer').val().length === 0) {
+            swal({
+                title: "Error!",
+                text: "Please enter option D.!",
+                type: 'error',
+                timer: 1500,
+                showConfirmButton: false
+            });
+        } else {
+
+            $('.box').jmspinner('large');
+            $('.box').addClass('well');
+            $('.box').css('z-index', '9999');
+
+
+            var formData = new FormData($('#form-question')[0]);
+            $.ajax({
+                url: "ajax/post-and-get/schedule-class.php",
+                type: "POST",
+                data: formData,
+                async: false,
+                dataType: 'json',
+                success: function (result) {
+
+                    $('.box').jmspinner(false);
+                    $('.box').removeClass('well');
+                    $('.box').css('z-index', '-1111');
+
+                    swal({
+                        title: "Success!",
+                        text: "Your data was saved successfully!.....",
+                        type: 'success',
+                        timer: 2000,
+                        showConfirmButton: false
+                    }, function () {
+                        setTimeout(function () {
+                            window.location.reload();
+                        }, 1500);
+                    });
+                },
+                cache: false,
+                contentType: false,
+                processData: false
+            });
+        }
+    });
+
+    //Edit lecture MCq Papers
+    $('#edit-question').click(function (event) {
+
+        event.preventDefault();
+
+        if (!$('#question').val() || $('#question').val().length === 0) {
+            swal({
+                title: "Error!",
+                text: "Please enter question..!",
+                type: 'error',
+                timer: 1500,
+                showConfirmButton: false
+            });
+        } else if (!$('#option-a').val() || $('#option-a').val().length === 0) {
+            swal({
+                title: "Error!",
+                text: "Please enter option A.!",
+                type: 'error',
+                timer: 1500,
+                showConfirmButton: false
+            });
+        } else if (!$('#option-b').val() || $('#option-b').val().length === 0) {
+            swal({
+                title: "Error!",
+                text: "Please enter option B.!",
+                type: 'error',
+                timer: 1500,
+                showConfirmButton: false
+            });
+        } else if (!$('#option-c').val() || $('#option-c').val().length === 0) {
+            swal({
+                title: "Error!",
+                text: "Please enter option C.!",
+                type: 'error',
+                timer: 1500,
+                showConfirmButton: false
+            });
+        } else if (!$('#option-d').val() || $('#option-d').val().length === 0) {
+            swal({
+                title: "Error!",
+                text: "Please enter option D.!",
+                type: 'error',
+                timer: 1500,
+                showConfirmButton: false
+            });
+        } else if (!$('#correct-answer').val() || $('#correct-answer').val().length === 0) {
+            swal({
+                title: "Error!",
+                text: "Please enter option D.!",
+                type: 'error',
+                timer: 1500,
+                showConfirmButton: false
+            });
+        } else {
+           
+            $('.box').jmspinner('large');
+            $('.box').addClass('well');
+            $('.box').css('z-index', '9999');
+
+            var formData = new FormData($('#edit-form-question')[0]);
+            
             $.ajax({
                 url: "ajax/post-and-get/schedule-class.php",
                 type: "POST",
@@ -140,14 +323,14 @@ $(document).ready(function () {
                 timer: 1500,
                 showConfirmButton: false
             });
-//        } else if (!$('#date_1').val() || $('#date_1').val().length === 0) {
-//            swal({
-//                title: "Error!",
-//                text: "Please select the class schedule day.!",
-//                type: 'error',
-//                timer: 1500,
-//                showConfirmButton: false
-//            });
+            //        } else if (!$('#date_1').val() || $('#date_1').val().length === 0) {
+            //            swal({
+            //                title: "Error!",
+            //                text: "Please select the class schedule day.!",
+            //                type: 'error',
+            //                timer: 1500,
+            //                showConfirmButton: false
+            //            });
         } else {
 
             $('.box').jmspinner('large');
@@ -208,14 +391,14 @@ $(document).ready(function () {
                 showConfirmButton: false
             });
 
-//        } else if (!$('#date_2').val() || $('#date_2').val().length === 0) {
-//            swal({
-//                title: "Error!",
-//                text: "Please select the class schedule day.!",
-//                type: 'error',
-//                timer: 1500,
-//                showConfirmButton: false
-//            });
+            //        } else if (!$('#date_2').val() || $('#date_2').val().length === 0) {
+            //            swal({
+            //                title: "Error!",
+            //                text: "Please select the class schedule day.!",
+            //                type: 'error',
+            //                timer: 1500,
+            //                showConfirmButton: false
+            //            });
 
         } else {
 
@@ -256,7 +439,7 @@ $(document).ready(function () {
         }
     });
 
-//home Work 
+    //home Work 
     $('#create-home-work').click(function (event) {
         event.preventDefault();
 
@@ -278,14 +461,14 @@ $(document).ready(function () {
                 showConfirmButton: false
             });
 
-//        } else if (!$('#date_2').val() || $('#date_2').val().length === 0) {
-//            swal({
-//                title: "Error!",
-//                text: "Please select the class schedule day.!",
-//                type: 'error',
-//                timer: 1500,
-//                showConfirmButton: false
-//            });
+            //        } else if (!$('#date_2').val() || $('#date_2').val().length === 0) {
+            //            swal({
+            //                title: "Error!",
+            //                text: "Please select the class schedule day.!",
+            //                type: 'error',
+            //                timer: 1500,
+            //                showConfirmButton: false
+            //            });
 
         } else {
 
