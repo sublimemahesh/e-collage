@@ -218,6 +218,48 @@ $(document).ready(function () {
             });
         }
     });
+
+    //Create lecture MCq Papers
+    $('#create-question').click(function (event) {
+        event.preventDefault();
+        
+alert(111);
+        if (!$('#question').val() || $('#question').val().length === 0) {
+            swal({
+                title: "Error!",
+                text: "Please enter question..!",
+                type: 'error',
+                timer: 1500,
+                showConfirmButton: false
+            });
+        }  else {
+       
+            var formData = new FormData($('#form-question')[0]);
+            $.ajax({
+                url: "ajax/post-and-get/lecture_class.php",
+                type: "POST",
+                data: formData,
+                async: false,
+                dataType: 'json',
+                success: function (result) { 
+                    swal({
+                        title: "Success!",
+                        text: "Your data was saved successfully!.....",
+                        type: 'success',
+                        timer: 2000,
+                        showConfirmButton: false
+                    }, function () {
+                        setTimeout(function () {
+                            window.location.reload();
+                        }, 1500);
+                    });
+                },
+                cache: false,
+                contentType: false,
+                processData: false
+            });
+        }
+    });
     
     //Create lecture Tutorials
     $('#create-tutorial').click(function (event) {

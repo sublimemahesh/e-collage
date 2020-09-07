@@ -19,7 +19,7 @@ class Database {
 //    private $password = '3rTI#)-vDmAKczXQ-J';
 
     private $host = 'localhost';
-     private $name = 'institute';
+     private $name = 'ecollege';
      private $user = 'root';
      private $password = '';
 

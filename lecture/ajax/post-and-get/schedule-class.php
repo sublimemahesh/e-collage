@@ -62,6 +62,57 @@ if (isset($_POST['create-mcq'])) {
     }
 }
 
+//Create Question 
+if (isset($_POST['create-question'])) {
+
+    $QUESTION = new LessonQuestion(NULL);
+    $QUESTION->question = $_POST['question'];
+    $QUESTION->date = $_POST['date'];
+    $QUESTION->class = $_POST['class_id'];
+
+    $res = $QUESTION->create();
+    if($res) {
+        $QUESTION_OPTIONS = new LessonQuestionOption(NULL);
+        $QUESTION_OPTIONS->question = $res->id;
+        $QUESTION_OPTIONS->option_A = $_POST['option_a'];
+        $QUESTION_OPTIONS->option_B = $_POST['option_b'];
+        $QUESTION_OPTIONS->option_C = $_POST['option_c'];
+        $QUESTION_OPTIONS->option_D = $_POST['option_d'];
+        $QUESTION_OPTIONS->option_E = $_POST['option_e'];
+        $QUESTION_OPTIONS->correct_answer = $_POST['correct_answer'];
+        $res1 = $QUESTION_OPTIONS->create();
+    }
+    $result = ["status" => "sucess"];
+    echo json_encode($result);
+    exit();
+}
+//Edit Question 
+if (isset($_POST['edit-question'])) {
+
+    $QUESTION = new LessonQuestion($_POST['id']);
+    $QUESTION->question = $_POST['question'];
+    $QUESTION->date = $_POST['date'];
+    $QUESTION->class = $_POST['class_id'];
+
+    $res = $QUESTION->update();
+    
+    if($res) {
+        $QUESTION_OPTIONS = new LessonQuestionOption($_POST['option_id']);
+        $QUESTION_OPTIONS->question = $_POST['id'];
+        $QUESTION_OPTIONS->option_A = $_POST['option_a'];
+        $QUESTION_OPTIONS->option_B = $_POST['option_b'];
+        $QUESTION_OPTIONS->option_C = $_POST['option_c'];
+        $QUESTION_OPTIONS->option_D = $_POST['option_d'];
+        $QUESTION_OPTIONS->option_E = $_POST['option_e'];
+        $QUESTION_OPTIONS->correct_answer = $_POST['correct_answer'];
+        
+        $res1 = $QUESTION_OPTIONS->update();
+    }
+    $result = ["status" => "sucess"];
+    echo json_encode($result);
+    exit();
+}
+
 //Create Tutorials 
 if (isset($_POST['create-tutorials'])) {
 
@@ -197,4 +248,3 @@ if (isset($_POST['create-home-work'])) {
         exit();
     }
 }
-?> 

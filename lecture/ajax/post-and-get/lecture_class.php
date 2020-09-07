@@ -38,7 +38,7 @@ if (isset($_POST['update'])) {
     $LECTURE_CLASS->start_time = $_POST['start_time'];
     $LECTURE_CLASS->end_time = $_POST['end_time'];
     $LECTURE_CLASS->modules = $_POST['lessons'];
-    $LECTURE_CLASS->payment_type = $_POST['payment_type']; 
+    $LECTURE_CLASS->payment_type = $_POST['payment_type'];
     $LECTURE_CLASS->class_fee = $_POST['class_fee'];
     $LECTURE_CLASS->update();
 
@@ -92,6 +92,22 @@ if (isset($_POST['create-mcq'])) {
     }
 }
 
+//Create MCQ 
+if (isset($_POST['create-question'])) {
+
+    $QUESTION = new LessonQuestion(NULL);
+
+    $QUESTION->question = $_POST['question'];
+    $QUESTION->class = $_POST['class_id'];
+    $QUESTION->date = $_POST['date'];
+
+
+    $QUESTION->create();
+    $result = ["status" => "sucess"];
+    echo json_encode($result);
+    exit();
+}
+
 //Create Tutorials 
 if (isset($_POST['create-tutorials'])) {
 
@@ -134,4 +150,3 @@ if (isset($_POST['create-tutorials'])) {
         exit();
     }
 }
-?> 
