@@ -1,37 +1,38 @@
 <?php
 
 /**
- * Description of LessonQuestion
+ * Description of StudentMarks
  *
  * @author W j K n``
  */
-class LessonQuestion
+class StudentMarks
 {
 
-    //put your code here
     public $id;
+    public $student;
     public $class;
     public $date;
-    public $question;
+    public $marks;
+    public $grade;
     public $created_at;
-    public $sort;
 
     public function __construct($id)
     {
         if ($id) {
 
-            $query = "SELECT * FROM `lesson_question` WHERE `id`=" . $id;
+            $query = "SELECT * FROM `student_marks` WHERE `id`=" . $id;
 
             $db = new Database();
 
             $result = mysql_fetch_array($db->readQuery($query));
 
             $this->id = $result['id'];
+            $this->student = $result['student'];
             $this->class = $result['class'];
             $this->date = $result['date'];
-            $this->question = $result['question'];
+            $this->marks = $result['marks'];
+            $this->grade = $result['grade'];
             $this->created_at = $result['created_at'];
-            $this->sort = $result['sort'];
 
             return $this;
         }
@@ -41,13 +42,13 @@ class LessonQuestion
     {
         date_default_timezone_set('Asia/Colombo');
         $createdAt = date('Y-m-d H:i:s');
-
-        $query = "INSERT INTO `lesson_question` (`class`,`date`,`question`, `created_at`, `sort`) VALUES  ('"
+        $query = "INSERT INTO `student_marks` (`student`,`class`, `date`, `marks`, `grade`, `created_at`) VALUES  ('"
+            . $this->student . "', '"
             . $this->class . "', '"
-            . $this->date . "', '"
-            . $this->question . "', '"
-            . $createdAt . "','"
-            . $this->sort . "')";
+            . $this->date . "','"
+            . $this->marks . "','"
+            . $this->grade . "','"
+            . $createdAt . "')";
 
         $db = new Database();
 
@@ -65,7 +66,7 @@ class LessonQuestion
     public function all()
     {
 
-        $query = "SELECT * FROM `lesson_question` ORDER BY `class` ASC";
+        $query = "SELECT * FROM `student_marks` ORDER BY `student` ASC";
         $db = new Database();
         $result = $db->readQuery($query);
         $array_res = array();
@@ -79,10 +80,12 @@ class LessonQuestion
 
     public function update()
     {
-        $query = "UPDATE  `lesson_question` SET "
+        $query = "UPDATE  `student_marks` SET "
+            . "`student`= '" . $this->student . "', "
             . "`class`= '" . $this->class . "', "
             . "`date`= '" . $this->date . "', "
-            . "`question`= '" . $this->question . "' "
+            . "`marks`= '" . $this->marks . "', "
+            . "`grade`= '" . $this->grade . "' "
             . "WHERE `id` = '" . $this->id . "'";
 
         $db = new Database();
@@ -97,35 +100,20 @@ class LessonQuestion
 
     public function delete()
     {
-        $this->deleteOptions();
-        $query = 'DELETE FROM `lesson_question` WHERE id="' . $this->id . '"';
-
-        $db = new Database();
-
-        return $db->readQuery($query);
-    }
-    public function deleteOptions()
-    {
-
-        $query = "DELETE FROM `lesson_question_option` WHERE `question` = '" . $this->id . "'";
+        $query = 'DELETE FROM `student_marks` WHERE id="' . $this->id . '"';
 
         $db = new Database();
 
         return $db->readQuery($query);
     }
 
-    public function getQuestionsByClassId($id, $date)
+    public function getStudentMarksByClassId($id, $class, $date)
     {
 
-        $query = "SELECT * FROM `lesson_question` WHERE `class` = '" . $id . "' AND `date` = '" . $date . "' ";
+        $query = "SELECT * FROM `student_marks` WHERE `student` = '" . $id . "' AND `class` = '" . $class . "' AND `date` = '" . $date . "' ";
+       
         $db = new Database();
-
-        $result = $db->readQuery($query);
-        $array_res = array();
-
-        while ($row = mysql_fetch_array($result)) {
-            array_push($array_res, $row);
-        }
-        return $array_res;
+        $result = mysql_fetch_array($db->readQuery($query));
+        return $result;
     }
 }
