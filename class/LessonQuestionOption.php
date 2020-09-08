@@ -120,10 +120,7 @@ class LessonQuestionOption
         $query = "SELECT * FROM `lesson_question_option` WHERE `question` = '" . $id . "'";
 
         $db = new Database();
-
         $result = mysql_fetch_array($db->readQuery($query));
-        
-
         return $result;
     }
 }

@@ -29,7 +29,8 @@ include_once(dirname(__FILE__) . '/HelpCenter.php');
 include_once(dirname(__FILE__) . '/Payment.php');
 include_once(dirname(__FILE__) . '/LessonQuestion.php');
 include_once(dirname(__FILE__) . '/LessonQuestionOption.php');
-
+include_once(dirname(__FILE__) . '/StudentAnswers.php');
+include_once(dirname(__FILE__) . '/StudentMarks.php');
 
 include_once(dirname(__FILE__) . '/Upload.php');
 include_once(dirname(__FILE__) . '/Helper.php');
