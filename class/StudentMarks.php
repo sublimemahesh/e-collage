@@ -111,9 +111,24 @@ class StudentMarks
     {
 
         $query = "SELECT * FROM `student_marks` WHERE `student` = '" . $id . "' AND `class` = '" . $class . "' AND `date` = '" . $date . "' ";
-       
+
         $db = new Database();
         $result = mysql_fetch_array($db->readQuery($query));
         return $result;
+    }
+    public function getAllStudentsMarksByClassId($class, $date)
+    {
+
+        $query = "SELECT * FROM `student_marks` WHERE `class` = '" . $class . "' AND `date` = '" . $date . "' ";
+
+        $db = new Database();
+        $result = $db->readQuery($query);
+        $array_res = array();
+
+        while ($row = mysql_fetch_array($result)) {
+            array_push($array_res, $row);
+        }
+
+        return $array_res;
     }
 }

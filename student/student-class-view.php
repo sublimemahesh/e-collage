@@ -9,7 +9,7 @@ $LECTURE = new Lecture($LECTURE_CLASS->lecture);
 date_default_timezone_set("Asia/Calcutta");
 $today_time = date('Y-m-d H:i:A');
 $today = date('Y-m-d');
-
+$todaytime = date('Y-m-d H:i:s');
 
 //set start time
 $start_time = $LECTURE_CLASS->start_date . ' ' . $LECTURE_CLASS->start_time;
@@ -202,7 +202,10 @@ $PERIOD = new DatePeriod($begin, $interval, $end);
                                                     $paper_arr = array();
                                                     foreach ($PERIOD as $date) {
                                                         $date_Start = $date->format("Y-m-d");
-                                                        if ($date_Start < $today) {
+                                                        $end_time = new DateTime($LECTURE_CLASS->end_time);
+                                                        $end_time_f = $end_time->format("H:i:s");
+                                                        $class_end_time = date('Y-m-d H:i:s', strtotime("$date_f $end_time_f"));
+                                                        if ($class_end_time < $todaytime) {
                                                             $is_paper = LessonQuestion::getQuestionsByClassId($id, $date_Start);
                                                             if ($is_paper) {
                                                                 $paper = StudentMarks::getStudentMarksByClassId($_SESSION['id'], $id, $date_Start);
