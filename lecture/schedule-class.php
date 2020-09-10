@@ -11,6 +11,7 @@ $begin = new DateTime($LECTURE_CLASS->start_date);
 $date = new DateTime($LECTURE_CLASS->start_date);
 date_default_timezone_set("Asia/Calcutta");
 $today = date('Y-m-d');
+$todaytime = date('Y-m-d H:i:s');
 
 $days = ($LECTURE_CLASS->modules * 7);
 $end = $date->modify('+' . $days . ' day');
@@ -259,7 +260,13 @@ $PERIOD = new DatePeriod($begin, $interval, $end);
                                         <div class="col-md-12">
                                             <?php
                                             foreach ($PERIOD as $date) {
+
                                                 $date_f = $date->format("Y-m-d");
+                                                $end_time = new DateTime($LECTURE_CLASS->end_time);
+                                                $end_time_f = $end_time->format("H:i:s");
+                                                $class_end_time = date('Y-m-d H:i:s', strtotime("$date_f $end_time_f"));
+
+
                                             ?>
                                                 <div class="card">
 
@@ -296,10 +303,19 @@ $PERIOD = new DatePeriod($begin, $interval, $end);
                                                                     <tr id="row_<?php echo $question['id']; ?>">
                                                                         <td><?php echo $key; ?></td>
                                                                         <td><?php echo $question['question']; ?></td>
+                                                                        <?php
+                                                                        $disabled = '';
+                                                                        if ($class_end_time < $todaytime) {
+                                                                            $disabled = 'disabled';
+                                                                        ?>
+                                                                        <?php
+                                                                        }
+                                                                        ?>
                                                                         <td>
-                                                                            <a href="edit-question.php?id=<?php echo $question['id'] ?>" class="op-link btn btn-sm btn-info"><i class="icon icon-pencil"></i></a> |
-                                                                            <a href="#" class="delete-question btn btn-sm btn-danger" data-id="<?php echo $question['id'] ?>"><i class="waves-effect icon icon-trash" data-type="cancel"></i></a>
+                                                                            <a href="edit-question.php?id=<?php echo $question['id'] ?>" class="op-link btn btn-sm btn-info <?= $disabled; ?>"><i class="icon icon-pencil"></i></a> |
+                                                                            <a href="#" class="delete-question btn btn-sm btn-danger <?= $disabled; ?>" data-id="<?php echo $question['id'] ?>"><i class="waves-effect icon icon-trash" data-type="cancel"></i></a>
                                                                         </td>
+
                                                                     </tr>
                                                                 <?php
                                                                 }
@@ -319,10 +335,23 @@ $PERIOD = new DatePeriod($begin, $interval, $end);
                                                                 </tr>
                                                             </tfoot>
                                                         </table>
+                                                        <?php
+                                                        if ($class_end_time < $todaytime) {
+                                                        ?>
+                                                            <center>
+                                                                <a href="view-student-marks.php?id=<?= $id; ?>&date=<?= $date_f; ?>" class="card-link" style="" id="enter-class" wid="">
+                                                                    <p class="btn btn-success btn-block" style="width: 15%">View Marks</p>
+                                                                </a>
+                                                            </center>
+                                                        <?php
+                                                        }
+                                                        ?>
                                                     </div>
                                                 </div>
                                             <?php
+
                                             }
+
                                             ?>
 
                                         </div>
