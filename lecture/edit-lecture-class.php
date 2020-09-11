@@ -311,13 +311,13 @@ $LECTURE_CLASS = new LectureClass($id);
             $(function () {
                 $('#start_time').timepicker({'scrollDefault': 'now',
                     'forceRoundTime': true,
-                    'timeFormat': 'H:i:A'
+                    'timeFormat': 'h:i A'
                 });
             });
 
             $(function () {
                 $('#end_time').timepicker({'scrollDefault': 'now', 'forceRoundTime': true,
-                    'timeFormat': 'H:i:A'});
+                    'timeFormat': 'h:i A'});
             });
 
 

@@ -94,7 +94,9 @@ $PERIOD = new DatePeriod($begin, $interval, $end);
 
                                                     $date = $date_start . ' ' . substr($LECTURE_CLASS->start_time, 0, 5);
 
+// dd($date_start_2 . $LECTURE_CLASS->start_time);
                                                     if ($date_start_2 . $LECTURE_CLASS->start_time >= $today_time) {
+                                                        // dd($date);
                                                 ?>
 
                                                         <div class="countdown" data-end="<?php echo $date ?>"></div>

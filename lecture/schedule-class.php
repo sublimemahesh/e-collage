@@ -270,11 +270,11 @@ $PERIOD = new DatePeriod($begin, $interval, $end);
                                                                         <td>
                                                                             <a href="edit-mcq-paper.php?id=<?php echo $paper['id'] ?>" class="op-link btn btn-sm btn-info <?= $disabled; ?>" title="Edit Paper"><i class="icon icon-pencil"></i></a> |
                                                                             <a href="#" class="delete-mcq-paper btn btn-sm btn-danger <?= $disabled; ?>" data-id="<?php echo $paper['id'] ?>" title="Delete Paper"><i class="waves-effect icon icon-trash" data-type="cancel"></i></a> |
-                                                                            <a href="manage-questions.php?id=<?php echo $paper['id'] ?>" class="btn btn-sm btn-warning <?= $disabled; ?>" title="Manage Questions"><i class="waves-effect icon icon-question" data-type="cancel"></i></a> | 
+                                                                            <a href="manage-questions.php?id=<?php echo $paper['id'] ?>" class="btn btn-sm btn-warning <?= $disabled; ?>" title="Manage Questions"><i class="waves-effect icon icon-question" data-type="cancel"></i></a>
                                                                             <?php
                                                                             if ($class_end_time < $todaytime) {
                                                                             ?>
-                                                                                <a href="view-student-marks.php?id=<?php echo $paper['id'] ?>" class="btn btn-sm btn-primary" title="View Marks"><i class="waves-effect icon icon-eye" data-type="cancel"></i></a>
+                                                                                 | <a href="view-student-marks.php?id=<?php echo $paper['id'] ?>" class="btn btn-sm btn-primary" title="View Marks"><i class="waves-effect icon icon-eye" data-type="cancel"></i></a>
                                                                             <?php
                                                                             }
                                                                             ?>
