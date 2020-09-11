@@ -27,6 +27,7 @@ include_once(dirname(__FILE__) . '/LectureVideo.php');
 include_once(dirname(__FILE__) . '/Chat.php');
 include_once(dirname(__FILE__) . '/HelpCenter.php');
 include_once(dirname(__FILE__) . '/Payment.php');
+include_once(dirname(__FILE__) . '/LessonMCQPaper.php');
 include_once(dirname(__FILE__) . '/LessonQuestion.php');
 include_once(dirname(__FILE__) . '/LessonQuestionOption.php');
 include_once(dirname(__FILE__) . '/StudentAnswers.php');

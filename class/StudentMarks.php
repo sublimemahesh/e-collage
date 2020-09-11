@@ -5,13 +5,12 @@
  *
  * @author W j K n``
  */
-class StudentMarks
+Class StudentMarks
 {
 
     public $id;
     public $student;
-    public $class;
-    public $date;
+    public $paper;
     public $marks;
     public $grade;
     public $created_at;
@@ -28,8 +27,7 @@ class StudentMarks
 
             $this->id = $result['id'];
             $this->student = $result['student'];
-            $this->class = $result['class'];
-            $this->date = $result['date'];
+            $this->paper = $result['paper'];
             $this->marks = $result['marks'];
             $this->grade = $result['grade'];
             $this->created_at = $result['created_at'];
@@ -42,10 +40,9 @@ class StudentMarks
     {
         date_default_timezone_set('Asia/Colombo');
         $createdAt = date('Y-m-d H:i:s');
-        $query = "INSERT INTO `student_marks` (`student`,`class`, `date`, `marks`, `grade`, `created_at`) VALUES  ('"
+        $query = "INSERT INTO `student_marks` (`student`,`paper`, `marks`, `grade`, `created_at`) VALUES  ('"
             . $this->student . "', '"
-            . $this->class . "', '"
-            . $this->date . "','"
+            . $this->paper . "', '"
             . $this->marks . "','"
             . $this->grade . "','"
             . $createdAt . "')";
@@ -82,8 +79,7 @@ class StudentMarks
     {
         $query = "UPDATE  `student_marks` SET "
             . "`student`= '" . $this->student . "', "
-            . "`class`= '" . $this->class . "', "
-            . "`date`= '" . $this->date . "', "
+            . "`paper`= '" . $this->paper . "', "
             . "`marks`= '" . $this->marks . "', "
             . "`grade`= '" . $this->grade . "' "
             . "WHERE `id` = '" . $this->id . "'";
@@ -107,19 +103,19 @@ class StudentMarks
         return $db->readQuery($query);
     }
 
-    public function getStudentMarksByClassId($id, $class, $date)
+    public function getStudentMarksByPaper($id, $paper)
     {
 
-        $query = "SELECT * FROM `student_marks` WHERE `student` = '" . $id . "' AND `class` = '" . $class . "' AND `date` = '" . $date . "' ";
+        $query = "SELECT * FROM `student_marks` WHERE `student` = '" . $id . "' AND `paper` = '" . $paper . "'";
 
         $db = new Database();
         $result = mysql_fetch_array($db->readQuery($query));
         return $result;
     }
-    public function getAllStudentsMarksByClassId($class, $date)
+    public function getAllStudentsMarksByPaper($paper)
     {
 
-        $query = "SELECT * FROM `student_marks` WHERE `class` = '" . $class . "' AND `date` = '" . $date . "' ";
+        $query = "SELECT * FROM `student_marks` WHERE `paper` = '" . $paper . "' ";
 
         $db = new Database();
         $result = $db->readQuery($query);

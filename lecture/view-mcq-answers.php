@@ -2,10 +2,10 @@
 include '../class/include.php';
 include './auth.php';
 $id = $_GET['id'];
-$date = $_GET['date'];
 $student = $_GET['student'];
-$LECTURE_CLASS = new LectureClass($id);
-$paper = StudentMarks::getStudentMarksByClassId($student, $id, $date);
+$PAPER = new LessonMCQPaper($id);
+$LECTURE_CLASS = new LectureClass($PAPER->class);
+$paper = StudentMarks::getStudentMarksByPaper($student, $id);
 $STUDENT = new Student($student);
 ?>
 <html lang="en">
@@ -111,13 +111,24 @@ $STUDENT = new Student($student);
                                                     <form id="form-mcq">
                                                         <ol>
                                                             <?php
-                                                            foreach (LessonQuestion::getQuestionsByClassId($id, $date) as $key => $question) {
+                                                            foreach (LessonQuestion::getQuestionsByPaper($id) as $key => $question) {
                                                                 $key++;
                                                                 $options = LessonQuestionOption::getOptionsByQuestionId($question['id']);
                                                                 // dd($answer);
                                                             ?>
                                                                 <li>
                                                                     <?= $question['question']; ?>
+                                                                    <?php
+                                                                    if ($question['image_name'] != '') {
+                                                                    ?>
+                                                                        <br />
+                                                                        <br />
+                                                                        <img src="../upload/class/question/<?= $question['image_name']; ?>" class="img-thumbnail" alt="" />
+                                                                        <br />
+                                                                        <br />
+                                                                    <?php
+                                                                    }
+                                                                    ?>
                                                                     <ol class="option_ol" type="A">
                                                                         <input type="radio" name="<?= $question['id']; ?>" id="input-<?= $options['id']; ?>-A" class="qu_options" value="A" disabled />
                                                                         <span id="qu-<?= $options['id']; ?>-A">
@@ -154,8 +165,7 @@ $STUDENT = new Student($student);
                                                         <center>
                                                             <!-- <input type="hidden" name="submit_mcq_paper" /> -->
                                                             <input type="hidden" name="student" id="student" value="<?= $student; ?>" />
-                                                            <input type="hidden" name="class" id="class" value="<?= $id; ?>" />
-                                                            <input type="hidden" name="date" id="date" value="<?= $date; ?>" />
+                                                            <input type="hidden" name="paper" id="paper" value="<?= $id; ?>" />
                                                             <a href="view-student-marks.php?id=<?= $id; ?>&date=<?= $date; ?>" class="btn btn-success btn-block" style="width: 15%">Back</a>
                                                         </center>
                                                     </form>

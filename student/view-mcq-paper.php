@@ -3,20 +3,20 @@
 include '../class/include.php';
 include_once(dirname(__FILE__) . '/auth.php');
 $id = $_GET['id'];
-$LECTURE_CLASS = new LectureClass($id);
+$PAPER = new LessonMCQPaper($id);
+$LECTURE_CLASS = new LectureClass($PAPER->class);
 $LECTURE = new Lecture($LECTURE_CLASS->lecture);
 $QUESTION = new LessonQuestion(NULL);
 date_default_timezone_set("Asia/Calcutta");
 $today_time = date('Y-m-d H:i:A');
 // $today = date('Y-m-d');
-$today1 = $_GET['date'];
 
 
 //set start time
 $start_time = $LECTURE_CLASS->start_date . ' ' . $LECTURE_CLASS->start_time;
-$is_paper = StudentMarks::getStudentMarksByClassId($_SESSION['id'], $id, $today1);
-if($is_paper) {
-    redirect("view-mcq-paper-answers.php?id=$id&date=$today1");
+$is_paper = StudentMarks::getStudentMarksByPaper($_SESSION['id'], $id);
+if ($is_paper) {
+    redirect("view-mcq-paper-answers.php?id=$id");
 }
 
 ?>
@@ -85,13 +85,24 @@ if($is_paper) {
                                                 <ol>
                                                     <?php
                                                     $video_id = array();
-                                                    foreach ($QUESTION->getQuestionsByClassId($id, $today1) as $key => $question) {
+                                                    foreach ($QUESTION->getQuestionsByPaper($id) as $key => $question) {
                                                         $key++;
                                                         $options = LessonQuestionOption::getOptionsByQuestionId($question['id']);
-                                                        
+
                                                     ?>
                                                         <li>
                                                             <?= $question['question']; ?>
+                                                            <?php
+                                                            if ($question['image_name'] != '') {
+                                                            ?>
+                                                                <br />
+                                                                <br />
+                                                                <img src="../upload/class/question/<?= $question['image_name']; ?>" class="img-thumbnail" alt="" />
+                                                                <br />
+                                                                <br />
+                                                            <?php
+                                                            }
+                                                            ?>
                                                             <ol class="option_ol" type="A">
                                                                 <input type="radio" name="<?= $question['id']; ?>" class="qu_options" value="A" />
                                                                 <span id="qu-<?= $options['id']; ?>-A">
@@ -128,8 +139,7 @@ if($is_paper) {
                                                 <center>
                                                     <!-- <input type="hidden" name="submit_mcq_paper" /> -->
                                                     <input type="hidden" name="student" value="<?= $_SESSION['id']; ?>" />
-                                                    <input type="hidden" name="class" value="<?= $id; ?>" />
-                                                    <input type="hidden" name="date" value="<?= $today1; ?>" />
+                                                    <input type="hidden" name="paper" value="<?= $id; ?>" />
                                                     <input type="submit" class="btn btn-success btn-block" id="submit-mcq-paper" style="width: 15%" value="Submit" />
                                                 </center>
                                             </form>

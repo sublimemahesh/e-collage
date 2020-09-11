@@ -204,13 +204,17 @@ $PERIOD = new DatePeriod($begin, $interval, $end);
                                                         $date_Start = $date->format("Y-m-d");
                                                         $end_time = new DateTime($LECTURE_CLASS->end_time);
                                                         $end_time_f = $end_time->format("H:i:s");
-                                                        $class_end_time = date('Y-m-d H:i:s', strtotime("$date_f $end_time_f"));
+                                                        $class_end_time = date('Y-m-d H:i:s', strtotime("$date_Start $end_time_f"));
                                                         if ($class_end_time < $todaytime) {
-                                                            $is_paper = LessonQuestion::getQuestionsByClassId($id, $date_Start);
-                                                            if ($is_paper) {
-                                                                $paper = StudentMarks::getStudentMarksByClassId($_SESSION['id'], $id, $date_Start);
-                                                                $paper['c_date'] = $date_Start;
-                                                                array_push($paper_arr, $paper);
+                                                            $papers = LessonMCQPaper::getMCQPapersByClassId($id, $date_Start);
+                                                            // dd($papers);
+                                                            if ($papers) {
+                                                                foreach ($papers as $paper) {
+                                                                    $marks = StudentMarks::getStudentMarksByPaper($_SESSION['id'], $paper['id']);
+                                                                    $marks['c_date'] = $date_Start;
+                                                                    $marks['paper'] = $paper['id'];
+                                                                    array_push($paper_arr, $marks);
+                                                                }
                                                             }
                                                         }
                                                     }
@@ -223,6 +227,7 @@ $PERIOD = new DatePeriod($begin, $interval, $end);
                                                                     <th>ID</th>
                                                                     <th>Class</th>
                                                                     <th>Class Date</th>
+                                                                    <th>Paper</th>
                                                                     <th>Attended At</th>
                                                                     <th>Marks</th>
                                                                     <th>Grade</th>
@@ -230,36 +235,34 @@ $PERIOD = new DatePeriod($begin, $interval, $end);
                                                                 </tr>
                                                             </thead>
                                                             <?php
-                                                            foreach ($paper_arr as $key => $paper) {
+                                                            foreach ($paper_arr as $key => $marks) {
+                                                                $PAPER = new LessonMCQPaper($marks['paper']);
                                                             ?>
 
                                                                 <tr>
                                                                     <td><?php echo $key + 1; ?></td>
                                                                     <td><?php echo $LECTURE_CLASS->name; ?></td>
-                                                                    <td><?php echo $paper['c_date']; ?></td>
+                                                                    <td><?php echo $marks['c_date']; ?></td>
+                                                                    <td><?php echo $PAPER->title; ?></td>
                                                                     <?php
-                                                                    if (count($paper) > 1) {
+                                                                    if (count($marks) > 2) {
                                                                     ?>
-                                                                        <td><?php echo $paper['created_at']; ?></td>
-                                                                        <td><?php echo $paper['marks'] . '%'; ?></td>
-                                                                        <td><?php echo $paper['grade']; ?></td>
+                                                                        <td><?php echo $marks['created_at']; ?></td>
+                                                                        <td><?php echo $marks['marks'] . '%'; ?></td>
+                                                                        <td><?php echo $marks['grade']; ?></td>
                                                                         <td>
-                                                                            <center>
-                                                                                <a href="view-mcq-paper-answers.php?id=<?= $id; ?>&date=<?= $paper['c_date']; ?>" class="card-link" style="" id="enter-class" wid="">
-                                                                                    <p class="btn btn-warning btn-block" style="width: 60%">View Answers</p>
-                                                                                </a>
-                                                                            </center>
+                                                                            <a href="view-mcq-paper-answers.php?id=<?= $marks['paper']; ?>" class="card-link" style="" id="enter-class" wid="">
+                                                                                <p class="btn btn-warning btn-block" style="width: 70%">View Answers</p>
+                                                                            </a>
                                                                         </td>
                                                                     <?php
                                                                     } else {
                                                                     ?>
                                                                         <td colspan="3">You do not attend this paper yet... </td>
                                                                         <td>
-                                                                            <center>
-                                                                                <a href="view-mcq-paper.php?id=<?= $id; ?>&date=<?= $paper['c_date']; ?>" class="card-link" style="" id="enter-class" wid="">
-                                                                                    <p class="btn btn-success btn-block" style="width: 60%">Attend now</p>
-                                                                                </a>
-                                                                            </center>
+                                                                            <a href="view-mcq-paper.php?id=<?= $marks['paper']; ?>" class="card-link" style="" id="enter-class" wid="">
+                                                                                <p class="btn btn-success btn-block" style="width: 70%">Attend now</p>
+                                                                            </a>
                                                                         </td>
                                                                     <?php
                                                                     }
