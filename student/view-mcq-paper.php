@@ -105,26 +105,26 @@ if ($is_paper) {
                                                             ?>
                                                             <ol class="option_ol" type="A">
                                                                 <input type="radio" name="<?= $question['id']; ?>" class="qu_options" value="A" />
-                                                                <span id="qu-<?= $options['id']; ?>-A">
+                                                                <span id="qu-<?= $question['id']; ?>-A">
                                                                     <li><?= $options['option_A']; ?></li>
                                                                 </span>
                                                                 <input type="radio" name="<?= $question['id']; ?>" class="qu_options" value="B" />
-                                                                <span id="qu-<?= $options['id']; ?>-B">
+                                                                <span id="qu-<?= $question['id']; ?>-B">
                                                                     <li><?= $options['option_B']; ?></li>
                                                                 </span>
                                                                 <input type="radio" name="<?= $question['id']; ?>" class="qu_options" value="C" />
-                                                                <span id="qu-<?= $options['id']; ?>-C">
+                                                                <span id="qu-<?= $question['id']; ?>-C">
                                                                     <li><?= $options['option_C']; ?></li>
                                                                 </span>
                                                                 <input type="radio" name="<?= $question['id']; ?>" class="qu_options" value="D" />
-                                                                <span id="qu-<?= $options['id']; ?>-D">
+                                                                <span id="qu-<?= $question['id']; ?>-D">
                                                                     <li><?= $options['option_D']; ?></li>
                                                                 </span>
                                                                 <?php
                                                                 if ($options['option_E'] != '') {
                                                                 ?>
                                                                     <input type="radio" name="<?= $question['id']; ?>" class="qu_options" value="E" />
-                                                                    <span id="qu-<?= $options['id']; ?>-E">
+                                                                    <span id="qu-<?= $question['id']; ?>-E">
                                                                         <li><?= $options['option_D']; ?></li>
                                                                     </span>
                                                                 <?php

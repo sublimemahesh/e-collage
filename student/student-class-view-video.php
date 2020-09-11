@@ -55,15 +55,35 @@ $start_time = $LECTURE_CLASS->start_date . ' ' . $LECTURE_CLASS->start_time;
                                         <?php
                                         $video_id = array();
                                         foreach ($LECTURE_CLASS_VIDEO->getVideoByClass($id, $today) as $lecture_video) {
-                                            array_push($video_id, $lecture_video['id'])
+                                            array_push($video_id, $lecture_video['id']);
+                                            $papers = LessonMCQPaper::getMCQPapersByClassId($id, $today);
                                         ?>
 
                                             <div class="col-md-9">
                                                 <iframe width="100%" height="520" src="https://www.youtube.com/embed/<?php echo substr($lecture_video['url'], 17) ?>" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                                                 <center>
-                                                    <a href="view-mcq-paper.php?id=<?= $id; ?>&date=<?= $today; ?>" class="card-link" style="" id="enter-class" wid="">
-                                                        <p class="btn btn-success btn-block" style="width: 15%">View MCQ Paper</p>
-                                                    </a>
+                                                    <?php
+                                                    if ($papers) {
+                                                        foreach ($papers as $key => $paper) {
+                                                            $key++;
+                                                            if (count($papers) > 1) {
+                                                    ?>
+                                                                <a href="view-mcq-paper.php?id=<?= $paper['id']; ?>" class="card-link col-sm-3" style="" id="enter-class" wid="">
+                                                                    <p class="btn btn-success btn-block" style="width: 100%">View MCQ Paper <?= $key; ?></p>
+                                                                </a>
+                                                            <?php
+                                                            } else {
+                                                            ?>
+
+                                                                <a href="view-mcq-paper.php?id=<?= $paper['id']; ?>" class="card-link" style="" id="enter-class" wid="">
+                                                                    <p class="btn btn-success btn-block" style="width: 15%">View MCQ Paper</p>
+                                                                </a>
+
+                                                    <?php
+                                                            }
+                                                        }
+                                                    }
+                                                    ?>
                                                 </center>
                                             </div>
 
