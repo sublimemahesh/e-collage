@@ -172,14 +172,8 @@ $PERIOD = new DatePeriod($begin, $interval, $end);
 
                                 </div>
                                 <div class="tab-pane fade" id="mcq_papers">
-                                    <form class="demo-form-wrapper card " style="padding: 50px" id="form-question">
+                                    <form class="demo-form-wrapper card " style="padding: 50px" id="form-mcq">
                                         <div class="form form-horizontal">
-                                            <div class="form-group">
-                                                <label class="col-sm-2 control-label " for="name" style="text-align: left"> Question: </label>
-                                                <div class="col-sm-10">
-                                                    <input id="question" name="question" class="form-control  " type="text" placeholder="Enter Question ">
-                                                </div>
-                                            </div>
                                             <div class="form-group">
                                                 <label class="col-sm-2 control-label " for="name" style="text-align: left">Select Date: </label>
                                                 <div class="col-sm-10">
@@ -199,47 +193,9 @@ $PERIOD = new DatePeriod($begin, $interval, $end);
                                                 </div>
                                             </div>
                                             <div class="form-group">
-                                                <label class="col-sm-2 control-label " for="name" style="text-align: left"> Option A: </label>
+                                                <label class="col-sm-2 control-label " for="name" style="text-align: left"> Title: </label>
                                                 <div class="col-sm-10">
-                                                    <input id="option-a" name="option_a" class="form-control  " type="text" placeholder="Enter Option A ">
-                                                </div>
-                                            </div>
-                                            <div class="form-group">
-                                                <label class="col-sm-2 control-label " for="name" style="text-align: left"> Option B: </label>
-                                                <div class="col-sm-10">
-                                                    <input id="option-b" name="option_b" class="form-control  " type="text" placeholder="Enter Option B ">
-                                                </div>
-                                            </div>
-                                            <div class="form-group">
-                                                <label class="col-sm-2 control-label " for="name" style="text-align: left"> Option C: </label>
-                                                <div class="col-sm-10">
-                                                    <input id="option-c" name="option_c" class="form-control  " type="text" placeholder="Enter Option C ">
-                                                </div>
-                                            </div>
-                                            <div class="form-group">
-                                                <label class="col-sm-2 control-label " for="name" style="text-align: left"> Option D: </label>
-                                                <div class="col-sm-10">
-                                                    <input id="option-d" name="option_d" class="form-control  " type="text" placeholder="Enter Option D ">
-                                                </div>
-                                            </div>
-                                            <div class="form-group">
-                                                <label class="col-sm-2 control-label " for="name" style="text-align: left"> Option E: </label>
-                                                <div class="col-sm-10">
-                                                    <input id="option-e" name="option_e" class="form-control  " type="text" placeholder="Enter Option E ">
-                                                </div>
-                                            </div>
-                                            <div class="form-group">
-                                                <label class="col-sm-2 control-label " for="name" style="text-align: left">Correct Answer: </label>
-                                                <div class="col-sm-10">
-
-                                                    <select class="custom-select" id="correct-answer" name="correct_answer" required="">
-                                                        <option value="">-- Select correct answer -- </option>
-                                                        <option value="A">A</option>
-                                                        <option value="B">B</option>
-                                                        <option value="C">C</option>
-                                                        <option value="D">D</option>
-                                                        <option value="E">E</option>
-                                                    </select>
+                                                    <input id="title" name="title" class="form-control" placeholder="Enter Title " />
                                                 </div>
                                             </div>
                                             <div class="form-group">
@@ -247,10 +203,10 @@ $PERIOD = new DatePeriod($begin, $interval, $end);
                                                 <div class="col-md-3"></div>
                                                 <div class="col-md-4"></div>
                                                 <div class="col-md-2">
-                                                    <input type="hidden" name="create-question">
+                                                    <input type="hidden" name="create-mcq-paper">
                                                     <input type="hidden" name="class_id" value="<?php echo $id ?>">
                                                     <input type="hidden" name="lecture_id" value="<?php echo $_SESSION['id'] ?>">
-                                                    <input type="submit" class="btn btn-primary btn-block" value="Add" id="create-question">
+                                                    <input type="submit" class="btn btn-primary btn-block" value="Add" id="create-mcq-paper">
                                                 </div>
                                             </div>
                                         </div>
@@ -270,11 +226,11 @@ $PERIOD = new DatePeriod($begin, $interval, $end);
                                             ?>
                                                 <div class="card">
 
-                                                    <a href="# " class="   card-toggler" title="Collapse">
+                                                    <a href="# " class="card-toggler" title="Collapse">
                                                         <div class="card-header  ">
                                                             <div class="col-md-8">
                                                                 <h5>
-                                                                    Manage Questions - <span class="text-success"><b>( <?php echo $date_f ?> ) </b></span>
+                                                                    Manage MCQ Papers - <span class="text-success"><b>( <?php echo $date_f ?> ) </b></span>
                                                                     <span class="fas-fa fa-chevron-down"> </span>
                                                                 </h5>
                                                             </div>
@@ -290,19 +246,19 @@ $PERIOD = new DatePeriod($begin, $interval, $end);
                                                             <thead>
                                                                 <tr>
                                                                     <th>ID</th>
-                                                                    <th>Question</th>
+                                                                    <th>Title</th>
                                                                     <th>Option</th>
                                                                 </tr>
                                                             </thead>
                                                             <?php
-                                                            $questions = LessonQuestion::getQuestionsByClassId($id, $date_f);
-                                                            if (count($questions) > 0) {
-                                                                foreach ($questions as $key => $question) {
+                                                            $papers = LessonMCQPaper::getMCQPapersByClassId($id, $date_f);
+                                                            if (count($papers) > 0) {
+                                                                foreach ($papers as $key => $paper) {
                                                                     $key++;
                                                             ?>
-                                                                    <tr id="row_<?php echo $question['id']; ?>">
+                                                                    <tr id="row_<?php echo $paper['id']; ?>">
                                                                         <td><?php echo $key; ?></td>
-                                                                        <td><?php echo $question['question']; ?></td>
+                                                                        <td><?php echo $paper['title']; ?></td>
                                                                         <?php
                                                                         $disabled = '';
                                                                         if ($class_end_time < $todaytime) {
@@ -312,8 +268,16 @@ $PERIOD = new DatePeriod($begin, $interval, $end);
                                                                         }
                                                                         ?>
                                                                         <td>
-                                                                            <a href="edit-question.php?id=<?php echo $question['id'] ?>" class="op-link btn btn-sm btn-info <?= $disabled; ?>"><i class="icon icon-pencil"></i></a> |
-                                                                            <a href="#" class="delete-question btn btn-sm btn-danger <?= $disabled; ?>" data-id="<?php echo $question['id'] ?>"><i class="waves-effect icon icon-trash" data-type="cancel"></i></a>
+                                                                            <a href="edit-mcq-paper.php?id=<?php echo $paper['id'] ?>" class="op-link btn btn-sm btn-info <?= $disabled; ?>" title="Edit Paper"><i class="icon icon-pencil"></i></a> |
+                                                                            <a href="#" class="delete-mcq-paper btn btn-sm btn-danger <?= $disabled; ?>" data-id="<?php echo $paper['id'] ?>" title="Delete Paper"><i class="waves-effect icon icon-trash" data-type="cancel"></i></a> |
+                                                                            <a href="manage-questions.php?id=<?php echo $paper['id'] ?>" class="btn btn-sm btn-warning <?= $disabled; ?>" title="Manage Questions"><i class="waves-effect icon icon-question" data-type="cancel"></i></a> | 
+                                                                            <?php
+                                                                            if ($class_end_time < $todaytime) {
+                                                                            ?>
+                                                                                <a href="view-student-marks.php?id=<?php echo $paper['id'] ?>" class="btn btn-sm btn-primary" title="View Marks"><i class="waves-effect icon icon-eye" data-type="cancel"></i></a>
+                                                                            <?php
+                                                                            }
+                                                                            ?>
                                                                         </td>
 
                                                                     </tr>
@@ -335,17 +299,7 @@ $PERIOD = new DatePeriod($begin, $interval, $end);
                                                                 </tr>
                                                             </tfoot>
                                                         </table>
-                                                        <?php
-                                                        if ($class_end_time < $todaytime) {
-                                                        ?>
-                                                            <center>
-                                                                <a href="view-student-marks.php?id=<?= $id; ?>&date=<?= $date_f; ?>" class="card-link" style="" id="enter-class" wid="">
-                                                                    <p class="btn btn-success btn-block" style="width: 15%">View Marks</p>
-                                                                </a>
-                                                            </center>
-                                                        <?php
-                                                        }
-                                                        ?>
+
                                                     </div>
                                                 </div>
                                             <?php
@@ -703,8 +657,7 @@ $PERIOD = new DatePeriod($begin, $interval, $end);
     <script src="ajax/js/chat.js" type="text/javascript"></script>
     <script src="ajax/js/schedule-class.js" type="text/javascript"></script>
 
-    <script src="delete/js/lecture-mcq.js" type="text/javascript"></script>
-    <script src="delete/js/lesson-question.js" type="text/javascript"></script>
+    <script src="delete/js/lesson-mcq.js" type="text/javascript"></script>
     <script src="delete/js/lecture-tutorial.js" type="text/javascript"></script>
     <script src="delete/js/lecture-assessment.js" type="text/javascript"></script>
     <script src="delete/js/lecture-video.js" type="text/javascript"></script>

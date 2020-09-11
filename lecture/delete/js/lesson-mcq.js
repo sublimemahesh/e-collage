@@ -1,11 +1,11 @@
 $(document).ready(function () {
 
-    $('.delete-mcq').click(function () {
+    $('.delete-mcq-paper').click(function () {
         var id = $(this).attr("data-id");
 
         swal({
             title: "Are you sure?",
-            text: "You will not be able to recover this Stuednt details!",
+            text: "You will not be able to recover this MCQ Paper!",
             type: "warning",
             showCancelButton: true,
             confirmButtonColor: "#DD6B55",
@@ -14,7 +14,7 @@ $(document).ready(function () {
         }, function () {
 
             $.ajax({
-                url: "delete/ajax/lecture-mcq.php",
+                url: "delete/ajax/lesson-mcq.php",
                 type: "POST",
                 data: {id: id, option: 'delete'},
                 dataType: "JSON",
@@ -24,13 +24,13 @@ $(document).ready(function () {
 
                         swal({
                             title: "Deleted!",
-                            text: "Student details has been deleted.",
+                            text: "MCQ paper has been deleted.",
                             type: 'success',
                             timer: 2000,
                             showConfirmButton: false
                         });
                     window.location.reload();      
-//                        $('#div' + id).remove();
+                       $('#row_' + id).remove();
 
                     }
                 }

@@ -2,8 +2,8 @@
 include '../class/include.php';
 include './auth.php';
 $id = $_GET['id'];
-$date = $_GET['date'];
-$LECTURE_CLASS = new LectureClass($id);
+$PAPER = new LessonMCQPaper($id);
+$LECTURE_CLASS = new LectureClass($PAPER->class);
 ?>
 <html lang="en">
 
@@ -75,7 +75,7 @@ $LECTURE_CLASS = new LectureClass($id);
 
                         <div class="card">
                             <div class="card-header">
-                                <strong>View Student's Marks - <?= $LECTURE_CLASS->name; ?> - <?= $_GET['date']; ?></strong>
+                                <strong>View Student's Marks - <?= $LECTURE_CLASS->name; ?> - <?= $PAPER->title; ?></strong>
                             </div>
                             <div class="card-body">
                                 <table id="demo-datatables-colreorder-1" class="table table-hover table-striped table-nowrap dataTable" cellspacing="0" width="100%">
@@ -91,7 +91,7 @@ $LECTURE_CLASS = new LectureClass($id);
                                         </tr>
                                     </thead>
                                     <?php
-                                    $all_marks = StudentMarks::getAllStudentsMarksByClassId($id, $date);
+                                    $all_marks = StudentMarks::getAllStudentsMarksByPaper($id, $date);
 
                                     foreach ($all_marks as $key => $marks) {
                                         $STUDENT = new Student($marks['student']);
@@ -104,7 +104,7 @@ $LECTURE_CLASS = new LectureClass($id);
                                             <td><?= $marks['marks']; ?>%</td>
                                             <td><?= $marks['grade']; ?></td>
                                             <td>
-                                                <a href="view-mcq-answers.php?id=<?= $id; ?>&date=<?= $date; ?>&student=<?= $marks['student']; ?>" class="card-link" style="" id="enter-class" wid="">
+                                                <a href="view-mcq-answers.php?id=<?= $id; ?>&student=<?= $marks['student']; ?>" class="card-link" style="" id="enter-class" wid="">
                                                     <p class="btn btn-success btn-block" style="width: 60%">View Answers</p>
                                                 </a>
                                             </td>

@@ -3,18 +3,18 @@
 include '../class/include.php';
 include_once(dirname(__FILE__) . '/auth.php');
 $id = $_GET['id'];
-$LECTURE_CLASS = new LectureClass($id);
+$PAPER = new LessonMCQPaper($id);
+$LECTURE_CLASS = new LectureClass($PAPER->class);
 $LECTURE = new Lecture($LECTURE_CLASS->lecture);
 $QUESTION = new LessonQuestion(NULL);
 date_default_timezone_set("Asia/Calcutta");
 $today_time = date('Y-m-d H:i:A');
 // $today = date('Y-m-d');
-$today1 = $_GET['date'];
 
 
 //set start time
 $start_time = $LECTURE_CLASS->start_date . ' ' . $LECTURE_CLASS->start_time;
-$paper = StudentMarks::getStudentMarksByClassId($_SESSION['id'], $id, $today1);
+$paper = StudentMarks::getStudentMarksByPaper($_SESSION['id'], $id);
 
 ?>
 <html lang="en">
@@ -82,13 +82,24 @@ $paper = StudentMarks::getStudentMarksByClassId($_SESSION['id'], $id, $today1);
                                                 <ol>
                                                     <?php
                                                     $video_id = array();
-                                                    foreach ($QUESTION->getQuestionsByClassId($id, $today1) as $key => $question) {
+                                                    foreach ($QUESTION->getQuestionsByPaper($id) as $key => $question) {
                                                         $key++;
                                                         $options = LessonQuestionOption::getOptionsByQuestionId($question['id']);
                                                         // dd($answer);
                                                     ?>
                                                         <li>
                                                             <?= $question['question']; ?>
+                                                            <?php
+                                                            if ($question['image_name'] != '') {
+                                                            ?>
+                                                                <br />
+                                                                <br />
+                                                                <img src="../upload/class/question/<?= $question['image_name']; ?>" class="img-thumbnail" alt="" />
+                                                                <br />
+                                                                <br />
+                                                            <?php
+                                                            }
+                                                            ?>
                                                             <ol class="option_ol" type="A">
                                                                 <input type="radio" name="<?= $question['id']; ?>" id="input-<?= $options['id']; ?>-A" class="qu_options" value="A" disabled />
                                                                 <span id="qu-<?= $options['id']; ?>-A">
@@ -125,9 +136,8 @@ $paper = StudentMarks::getStudentMarksByClassId($_SESSION['id'], $id, $today1);
                                                 <center>
                                                     <!-- <input type="hidden" name="submit_mcq_paper" /> -->
                                                     <input type="hidden" name="student" id="student" value="<?= $_SESSION['id']; ?>" />
-                                                    <input type="hidden" name="class" id="class" value="<?= $id; ?>" />
-                                                    <input type="hidden" name="date" id="date" value="<?= $today1; ?>" />
-                                                    <a href="student-class-view.php?id=<?= $id; ?>" class="btn btn-success btn-block" style="width: 15%">Back</a>
+                                                    <input type="hidden" name="paper" id="paper" value="<?= $id; ?>" />
+                                                    <a href="student-class-view.php?id=<?= $LECTURE_CLASS->id; ?>" class="btn btn-success btn-block" style="width: 15%">Back</a>
                                                 </center>
                                             </form>
                                         </div>

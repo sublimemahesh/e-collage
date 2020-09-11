@@ -19,59 +19,84 @@ if (isset($_POST['create_video'])) {
     exit();
 }
 //Create MCQ 
-if (isset($_POST['create-mcq'])) {
+if (isset($_POST['create-mcq-paper'])) {
 
-    $LECTURE_MCQ = new LectureMcq(NULL);
-    $dir_dest = '../../../upload/class/mcq/';
-    $filename = $_FILES['pdf_file']['name'];
+    $MCQ_PAPER = new LessonMCQPaper(NULL);
 
-    $handle = new Upload($_FILES['pdf_file']);
-    $imgName = null;
-
-    if ($handle->uploaded) {
-        $handle->file_dst_name = Helper::randamId();
-        $imgName = $handle->file_dst_name;
-        $handle->file_new_name_body = $imgName;
-        $handle->Process($dir_dest);
-    }
-
-    $extension = pathinfo($filename, PATHINFO_EXTENSION);
-
-    // the physical file on a temporary uploads directory on the server
-    $file = $_FILES['pdf_file']['tmp_name'];
-    $size = $_FILES['pdf_file']['size'];
-
-    if (!in_array($extension, ['zip', 'pdf', 'docx'])) {
-
-        $result = ["status" => "errro-format"];
-        echo json_encode($result);
-        exit();
-    } else {
-
-        $LECTURE_MCQ->file_name = $imgName . '.pdf';
-        $LECTURE_MCQ->title = ucwords($_POST['title']);
-        $LECTURE_MCQ->date = $_POST['date'];
-        $LECTURE_MCQ->lecture_id = $_POST['lecture_id'];
-        $LECTURE_MCQ->class_id = $_POST['class_id'];
+    $MCQ_PAPER->title = ucwords($_POST['title']);
+    $MCQ_PAPER->date = $_POST['date'];
+    $MCQ_PAPER->class = $_POST['class_id'];
 
 
-        $LECTURE_MCQ->create();
-        $result = ["status" => "sucess"];
-        echo json_encode($result);
-        exit();
-    }
+    $MCQ_PAPER->create();
+    $result = ["status" => "sucess"];
+    echo json_encode($result);
+    exit();
+}
+
+//Create MCQ 
+if (isset($_POST['edit-mcq-paper'])) {
+
+    $MCQ_PAPER = new LessonMCQPaper($_POST['id']);
+
+    $MCQ_PAPER->title = ucwords($_POST['title']);
+    $MCQ_PAPER->date = $_POST['date'];
+    $MCQ_PAPER->class = $_POST['class_id'];
+
+
+    $MCQ_PAPER->update();
+    $result = ["status" => "sucess"];
+    echo json_encode($result);
+    exit();
 }
 
 //Create Question 
 if (isset($_POST['create-question'])) {
-
     $QUESTION = new LessonQuestion(NULL);
+    $dir_dest = '../../../upload/class/question/';
+    $imgName = Helper::randamId();
+
+
+    if ($_FILES['image']['name'] != '') {
+        $handle = new Upload($_FILES['image']);
+        if ($handle->uploaded) {
+
+            $handle->image_resize = true;
+            $handle->file_new_name_ext = 'jpg';
+            $handle->image_ratio_crop = 'C';
+            $handle->file_new_name_body = $imgName;
+
+            $image_dst_x = $handle->image_dst_x;
+            $image_dst_y = $handle->image_dst_y;
+
+            if ($image_dst_y > 300) {
+                $newSize = Helper::calImgResize(300, $image_dst_x, $image_dst_y);
+
+                $image_x = (int) $newSize[0];
+                $image_y = (int) $newSize[1];
+
+                $handle->image_x = $image_x;
+                $handle->image_y = $image_y;
+            } else {
+                $handle->image_x = $image_dst_x;
+                $handle->image_y = $image_dst_y;
+            }
+            $handle->process($dir_dest);
+            if ($handle->processed) {
+                $info = getimagesize($handle->file_dst_pathname);
+                $imgName = $handle->file_dst_name;
+            }
+        }
+
+        $QUESTION->image_name = $imgName;
+    } else {
+        $QUESTION->image_name = '';
+    }
     $QUESTION->question = $_POST['question'];
-    $QUESTION->date = $_POST['date'];
-    $QUESTION->class = $_POST['class_id'];
+    $QUESTION->paper = $_POST['paper'];
 
     $res = $QUESTION->create();
-    if($res) {
+    if ($res) {
         $QUESTION_OPTIONS = new LessonQuestionOption(NULL);
         $QUESTION_OPTIONS->question = $res->id;
         $QUESTION_OPTIONS->option_A = $_POST['option_a'];
@@ -91,12 +116,93 @@ if (isset($_POST['edit-question'])) {
 
     $QUESTION = new LessonQuestion($_POST['id']);
     $QUESTION->question = $_POST['question'];
-    $QUESTION->date = $_POST['date'];
-    $QUESTION->class = $_POST['class_id'];
+    $QUESTION->paper = $_POST['paper'];
+
+
+    $dir_dest = '../../../upload/class/question/';
+    if ($_POST['old_image_name'] != '') {
+        $imgName = $_POST['old_image_name'];
+        if ($_FILES['image']['name'] != '') {
+            $handle = new Upload($_FILES['image']);
+            if ($handle->uploaded) {
+
+                $handle->image_resize = true;
+                $handle->file_new_name_body = TRUE;
+                $handle->file_overwrite = TRUE;
+                $handle->file_new_name_ext = FALSE;
+                $handle->image_ratio_crop = 'C';
+                $handle->file_new_name_body = $imgName;
+
+                $image_dst_x = $handle->image_dst_x;
+                $image_dst_y = $handle->image_dst_y;
+
+                if ($image_dst_y > 300) {
+                    $newSize = Helper::calImgResize(300, $image_dst_x, $image_dst_y);
+
+                    $image_x = (int) $newSize[0];
+                    $image_y = (int) $newSize[1];
+
+                    $handle->image_x = $image_x;
+                    $handle->image_y = $image_y;
+                } else {
+                    $handle->image_x = $image_dst_x;
+                    $handle->image_y = $image_dst_y;
+                }
+                $handle->process($dir_dest);
+                if ($handle->processed) {
+                    $info = getimagesize($handle->file_dst_pathname);
+                    $imgName = $handle->file_dst_name;
+                }
+            }
+
+            $QUESTION->image_name = $imgName;
+        } else {
+            $QUESTION->image_name = $imgName;
+        }
+    } else {
+        $imgName = Helper::randamId();
+        if ($_FILES['image']['name'] != '') {
+            $handle = new Upload($_FILES['image']);
+            if ($handle->uploaded) {
+
+                $handle->image_resize = true;
+                $handle->file_new_name_ext = 'jpg';
+                $handle->image_ratio_crop = 'C';
+                $handle->file_new_name_body = $imgName;
+
+                $image_dst_x = $handle->image_dst_x;
+                $image_dst_y = $handle->image_dst_y;
+
+                if ($image_dst_y > 200) {
+                    $newSize = Helper::calImgResize(200, $image_dst_x, $image_dst_y);
+
+                    $image_x = (int) $newSize[0];
+                    $image_y = (int) $newSize[1];
+
+                    $handle->image_x = $image_x;
+                    $handle->image_y = $image_y;
+                } else {
+                    $handle->image_x = $image_dst_x;
+                    $handle->image_y = $image_dst_y;
+                }
+                $handle->process($dir_dest);
+                if ($handle->processed) {
+                    $info = getimagesize($handle->file_dst_pathname);
+                    $imgName = $handle->file_dst_name;
+                }
+            }
+
+            $QUESTION->image_name = $imgName;
+        } else {
+            $QUESTION->image_name = '';
+        }
+    }
+
+
 
     $res = $QUESTION->update();
-    
-    if($res) {
+
+    if ($res) {
         $QUESTION_OPTIONS = new LessonQuestionOption($_POST['option_id']);
         $QUESTION_OPTIONS->question = $_POST['id'];
         $QUESTION_OPTIONS->option_A = $_POST['option_a'];
@@ -105,7 +211,7 @@ if (isset($_POST['edit-question'])) {
         $QUESTION_OPTIONS->option_D = $_POST['option_d'];
         $QUESTION_OPTIONS->option_E = $_POST['option_e'];
         $QUESTION_OPTIONS->correct_answer = $_POST['correct_answer'];
-        
+
         $res1 = $QUESTION_OPTIONS->update();
     }
     $result = ["status" => "sucess"];

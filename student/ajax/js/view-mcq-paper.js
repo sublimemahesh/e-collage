@@ -1,14 +1,12 @@
 $(document).ready(function () {
     var student = $('#student').val();
-    var class_id = $('#class').val();
-    var date = $('#date').val();
+    var paper = $('#paper').val();
     $.ajax({
         url: "ajax/post-and-get/view-mcq-paper.php",
         type: "POST",
         data: {
             student,
-            class_id,
-            date
+            paper
         },
         dataType: 'json',
         success: function (result) {

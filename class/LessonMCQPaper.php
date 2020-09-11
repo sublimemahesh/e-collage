@@ -1,37 +1,35 @@
 <?php
 
 /**
- * Description of LessonQuestion
+ * Description of LessonMCQPaper
  *
  * @author W j K n``
  */
-class LessonQuestion
+class LessonMCQPaper
 {
 
     //put your code here
     public $id;
-    public $paper;
-    public $question;
-    public $image_name;
+    public $class;
+    public $date;
+    public $title;
     public $created_at;
-    public $sort;
 
     public function __construct($id)
     {
         if ($id) {
 
-            $query = "SELECT * FROM `lesson_question` WHERE `id`=" . $id;
+            $query = "SELECT * FROM `lesson_mcq_paper` WHERE `id`=" . $id;
 
             $db = new Database();
 
             $result = mysql_fetch_array($db->readQuery($query));
 
             $this->id = $result['id'];
-            $this->paper = $result['paper'];
-            $this->question = $result['question'];
-            $this->image_name = $result['image_name'];
+            $this->class = $result['class'];
+            $this->date = $result['date'];
+            $this->title = $result['title'];
             $this->created_at = $result['created_at'];
-            $this->sort = $result['sort'];
 
             return $this;
         }
@@ -42,12 +40,11 @@ class LessonQuestion
         date_default_timezone_set('Asia/Colombo');
         $createdAt = date('Y-m-d H:i:s');
 
-        $query = "INSERT INTO `lesson_question` (`paper`,`question`,`image_name`, `created_at`, `sort`) VALUES  ('"
-            . $this->paper . "', '"
-            . $this->question . "', '"
-            . $this->image_name . "', '"
-            . $createdAt . "','"
-            . $this->sort . "')";
+        $query = "INSERT INTO `lesson_mcq_paper` (`class`,`date`,`title`, `created_at`) VALUES  ('"
+            . $this->class . "', '"
+            . $this->date . "', '"
+            . $this->title . "', '"
+            . $createdAt . "')";
 
         $db = new Database();
 
@@ -65,7 +62,7 @@ class LessonQuestion
     public function all()
     {
 
-        $query = "SELECT * FROM `lesson_question` ORDER BY `class` ASC";
+        $query = "SELECT * FROM `lesson_mcq_paper` ORDER BY `class` ASC";
         $db = new Database();
         $result = $db->readQuery($query);
         $array_res = array();
@@ -79,10 +76,10 @@ class LessonQuestion
 
     public function update()
     {
-        $query = "UPDATE  `lesson_question` SET "
-            . "`paper`= '" . $this->paper . "', "
-            . "`question`= '" . $this->question . "', "
-            . "`image_name`= '" . $this->image_name . "' "
+        $query = "UPDATE  `lesson_mcq_paper` SET "
+            . "`class`= '" . $this->class . "', "
+            . "`date`= '" . $this->date . "', "
+            . "`title`= '" . $this->title . "' "
             . "WHERE `id` = '" . $this->id . "'";
 
         $db = new Database();
@@ -97,27 +94,28 @@ class LessonQuestion
 
     public function delete()
     {
-        $this->deleteOptions();
-        $query = 'DELETE FROM `lesson_question` WHERE id="' . $this->id . '"';
+        $this->deleteQuestions();
+        $query = 'DELETE FROM `lesson_mcq_paper` WHERE id="' . $this->id . '"';
 
         $db = new Database();
 
         return $db->readQuery($query);
     }
-    public function deleteOptions()
+    public function deleteQuestions()
     {
 
-        $query = "DELETE FROM `lesson_question_option` WHERE `question` = '" . $this->id . "'";
+        $query = "DELETE FROM `lesson_question` WHERE `paper` = '" . $this->id . "'";
 
         $db = new Database();
 
         return $db->readQuery($query);
     }
 
-    public function getQuestionsByPaper($id)
+    public function getMCQPapersByClassId($id, $date)
     {
 
-        $query = "SELECT * FROM `lesson_question` WHERE `paper` = '" . $id . "' ";
+        $query = "SELECT * FROM `lesson_mcq_paper` WHERE `class` = '" . $id . "' AND `date` = '" . $date . "' ";
+        
         $db = new Database();
 
         $result = $db->readQuery($query);

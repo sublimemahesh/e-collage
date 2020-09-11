@@ -5,8 +5,8 @@ $id = '';
 $id = $_GET['id'];
 $QUESTION = new LessonQuestion($id);
 $options = LessonQuestionOption::getOptionsByQuestionId($id);
-
-$LECTURE_CLASS = new LectureClass($QUESTION->class);
+$PAPER = new LessonMCQPaper($QUESTION->paper);
+$LECTURE_CLASS = new LectureClass($PAPER->class);
 
 $begin = new DateTime($LECTURE_CLASS->start_date);
 $date = new DateTime($LECTURE_CLASS->start_date);
@@ -91,14 +91,15 @@ $PERIOD = new DatePeriod($begin, $interval, $end);
                                                     <option value="">-- Select schedule date -- </option>
                                                     <?php
                                                     foreach ($PERIOD as $date) {
-                                                        $selected = '';
-                                                        if ($date->format("Y-m-d") == $QUESTION->date) {
-                                                            $selected = 'selected';
-                                                        }
+                                                        if ($date->format("Y-m-d") >= $today) {
+                                                            $selected = '';
+                                                            if ($date->format("Y-m-d") == $PAPER->date) {
+                                                                $selected = 'selected';
+                                                            }
                                                     ?>
-                                                        <option value="<?php echo $date->format("Y-m-d"); ?>" <?= $selected; ?>><?php echo $date->format("Y-m-d "); ?></option>
+                                                            <option value="<?= $date->format("Y-m-d"); ?>" <?= $selected; ?>><?= $date->format("Y-m-d "); ?></option>
                                                     <?php
-
+                                                        }
                                                     }
                                                     ?>
                                                 </select>
@@ -107,10 +108,24 @@ $PERIOD = new DatePeriod($begin, $interval, $end);
                                         <div class="form-group">
                                             <label class="col-sm-2 control-label " for="name" style="text-align: left"> Question: </label>
                                             <div class="col-sm-10">
-                                                <input id="question" name="question" class="form-control" type="text" placeholder="Enter Question " value="<?= $QUESTION->question; ?>">
+                                                <textarea id="question" name="question" class="form-control" placeholder="Enter Question "><?= $QUESTION->question; ?></textarea>
                                             </div>
                                         </div>
-
+                                        <div class="form-group">
+                                            <label class="col-sm-2 control-label " for="name" style="text-align: left"> Image Name: </label>
+                                            <div class="col-sm-10">
+                                                <input id="image" name="image" class="form-control" type="file" placeholder="Select Image ">
+                                            </div>
+                                            <?php
+                                            if ($QUESTION->image_name != '') {
+                                            ?>
+                                                <div class="col-sm-10 col-sm-offset-2">
+                                                    <img src="../upload/class/question/<?= $QUESTION->image_name; ?>" class="img-thumbnail" alt="" />
+                                                </div>
+                                            <?php
+                                            }
+                                            ?>
+                                        </div>
                                         <div class="form-group">
                                             <label class="col-sm-2 control-label " for="name" style="text-align: left"> Option A: </label>
                                             <div class="col-sm-10">
@@ -190,7 +205,7 @@ $PERIOD = new DatePeriod($begin, $interval, $end);
                                                     <?php
                                                     }
                                                     ?>
-                                                    
+
                                                 </select>
                                             </div>
                                         </div>
@@ -200,9 +215,10 @@ $PERIOD = new DatePeriod($begin, $interval, $end);
                                             <div class="col-md-4"></div>
                                             <div class="col-md-2">
                                                 <input type="hidden" name="edit-question">
-                                                <input type="hidden" name="class_id" value="<?php echo $QUESTION->class; ?>">
-                                                <input type="hidden" name="id" value="<?php echo $id; ?>">
-                                                <input type="hidden" name="option_id" value="<?php echo $options['id']; ?>">
+                                                <input type="hidden" name="paper" value="<?= $QUESTION->paper; ?>">
+                                                <input type="hidden" name="id" value="<?= $id; ?>">
+                                                <input type="hidden" name="old_image_name" value="<?= $QUESTION->image_name; ?>">
+                                                <input type="hidden" name="option_id" value="<?= $options['id']; ?>">
                                                 <input type="submit" class="btn btn-primary btn-block" value="Edit" id="edit-question">
                                             </div>
                                         </div>

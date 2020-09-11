@@ -10,7 +10,7 @@ $final_arr = array();
 $arr = array();
 
 foreach ($_POST as $key => $qu) {
-    if ($key != 'student' && $key != 'class' && $key != 'date') {
+    if ($key != 'student' && $key != 'paper') {
         $tot_questions++;
         $arr_answers = array();
         $option = LessonQuestionOption::getOptionsByQuestionId($key);
@@ -55,8 +55,7 @@ $MARKS = new StudentMarks(NULL);
 $MARKS->student = $_POST['student'];
 $MARKS->marks = $marks;
 $MARKS->grade = $grade;
-$MARKS->class = $_POST['class'];
-$MARKS->date = $_POST['date'];
+$MARKS->paper = $_POST['paper'];
 $MARKS->create();
 
 $final_arr['answers'] = $arr;
