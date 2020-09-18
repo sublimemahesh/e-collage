@@ -105,33 +105,33 @@ $PERIOD = new DatePeriod($begin, $interval, $end);
                                     </div>
                                 </div>
                                 <div class="form-group">
-                                    <label class="col-sm-2 control-label " for="name" style="text-align: left"> Option A: </label>
+                                    <label class="col-sm-2 control-label " for="name" style="text-align: left"> Option 01: </label>
                                     <div class="col-sm-10">
-                                        <input id="option-a" name="option_a" class="form-control  " type="text" placeholder="Enter Option A ">
+                                        <input id="option-a" name="option_a" class="form-control  " type="text" placeholder="Enter Option 01 ">
                                     </div>
                                 </div>
                                 <div class="form-group">
-                                    <label class="col-sm-2 control-label " for="name" style="text-align: left"> Option B: </label>
+                                    <label class="col-sm-2 control-label " for="name" style="text-align: left"> Option 02: </label>
                                     <div class="col-sm-10">
-                                        <input id="option-b" name="option_b" class="form-control  " type="text" placeholder="Enter Option B ">
+                                        <input id="option-b" name="option_b" class="form-control  " type="text" placeholder="Enter Option 02 ">
                                     </div>
                                 </div>
                                 <div class="form-group">
-                                    <label class="col-sm-2 control-label " for="name" style="text-align: left"> Option C: </label>
+                                    <label class="col-sm-2 control-label " for="name" style="text-align: left"> Option 03: </label>
                                     <div class="col-sm-10">
-                                        <input id="option-c" name="option_c" class="form-control  " type="text" placeholder="Enter Option C ">
+                                        <input id="option-c" name="option_c" class="form-control  " type="text" placeholder="Enter Option 03 ">
                                     </div>
                                 </div>
                                 <div class="form-group">
-                                    <label class="col-sm-2 control-label " for="name" style="text-align: left"> Option D: </label>
+                                    <label class="col-sm-2 control-label " for="name" style="text-align: left"> Option 04: </label>
                                     <div class="col-sm-10">
-                                        <input id="option-d" name="option_d" class="form-control  " type="text" placeholder="Enter Option D ">
+                                        <input id="option-d" name="option_d" class="form-control  " type="text" placeholder="Enter Option 04 ">
                                     </div>
                                 </div>
                                 <div class="form-group">
-                                    <label class="col-sm-2 control-label " for="name" style="text-align: left"> Option E: </label>
+                                    <label class="col-sm-2 control-label " for="name" style="text-align: left"> Option 05: </label>
                                     <div class="col-sm-10">
-                                        <input id="option-e" name="option_e" class="form-control  " type="text" placeholder="Enter Option E ">
+                                        <input id="option-e" name="option_e" class="form-control  " type="text" placeholder="Enter Option 05 ">
                                     </div>
                                 </div>
                                 <div class="form-group">
@@ -140,11 +140,11 @@ $PERIOD = new DatePeriod($begin, $interval, $end);
 
                                         <select class="custom-select" id="correct-answer" name="correct_answer" required="">
                                             <option value="">-- Select correct answer -- </option>
-                                            <option value="A">A</option>
-                                            <option value="B">B</option>
-                                            <option value="C">C</option>
-                                            <option value="D">D</option>
-                                            <option value="E">E</option>
+                                            <option value="A">01</option>
+                                            <option value="B">02</option>
+                                            <option value="C">03</option>
+                                            <option value="D">04</option>
+                                            <option value="E">05</option>
                                         </select>
                                     </div>
                                 </div>
@@ -183,6 +183,7 @@ $PERIOD = new DatePeriod($begin, $interval, $end);
                                                 <tr>
                                                     <th>ID</th>
                                                     <th>Question</th>
+                                                    <th>Image</th>
                                                     <th>Option</th>
                                                 </tr>
                                             </thead>
@@ -195,9 +196,10 @@ $PERIOD = new DatePeriod($begin, $interval, $end);
                                                     <tr id="row_<?php echo $question['id']; ?>">
                                                         <td><?php echo $key; ?></td>
                                                         <td><?php echo $question['question']; ?></td>
+                                                        <td><img src="../upload/class/question/<?php echo $question['image_name']; ?>" class="question-img-table" alt="" /></td>
                                                         <?php
                                                         $disabled = '';
-                                                        if ($class_end_time < $todaytime) {
+                                                        if ($MCQ_PAPER->class == '' & $class_end_time < $todaytime) {
                                                             $disabled = 'disabled';
                                                         ?>
                                                         <?php
@@ -223,12 +225,13 @@ $PERIOD = new DatePeriod($begin, $interval, $end);
                                                 <tr>
                                                     <th>ID</th>
                                                     <th>Question</th>
+                                                    <th>Image</th>
                                                     <th>Option</th>
                                                 </tr>
                                             </tfoot>
                                         </table>
                                         <?php
-                                        if ($class_end_time < $todaytime) {
+                                        if ($MCQ_PAPER->class == '' & $class_end_time < $todaytime) {
                                         ?>
                                             <center>
                                                 <a href="view-student-marks.php?id=<?= $id; ?>" class="card-link" style="" id="enter-class" wid="">

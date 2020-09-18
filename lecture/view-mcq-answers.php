@@ -166,7 +166,7 @@ $STUDENT = new Student($student);
                                                             <!-- <input type="hidden" name="submit_mcq_paper" /> -->
                                                             <input type="hidden" name="student" id="student" value="<?= $student; ?>" />
                                                             <input type="hidden" name="paper" id="paper" value="<?= $id; ?>" />
-                                                            <a href="view-student-marks.php?id=<?= $id; ?>&date=<?= $date; ?>" class="btn btn-success btn-block" style="width: 15%">Back</a>
+                                                            <a href="view-student-marks.php?id=<?= $id; ?>" class="btn btn-success btn-block" style="width: 15%">Back</a>
                                                         </center>
                                                     </form>
                                                 </div>

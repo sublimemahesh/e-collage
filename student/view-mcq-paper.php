@@ -16,7 +16,11 @@ $today_time = date('Y-m-d H:i:A');
 $start_time = $LECTURE_CLASS->start_date . ' ' . $LECTURE_CLASS->start_time;
 $is_paper = StudentMarks::getStudentMarksByPaper($_SESSION['id'], $id);
 if ($is_paper) {
-    redirect("view-mcq-paper-answers.php?id=$id");
+    if (isset($_GET['exam'])) {
+        redirect("view-mcq-paper-answers.php?id=$id&exam");
+    } else {
+        redirect("view-mcq-paper-answers.php?id=$id");
+    }
 }
 
 ?>
@@ -51,8 +55,17 @@ if ($is_paper) {
                 <div class="row">
                     <div class="col-md-12" style="margin-top: 15px;">
                         <div class="col-md-12">
-                            <h3 style="text-align: center"> <span class="text-success">
-                                    <?php echo ucfirst($LECTURE_CLASS->name) ?></span> - <?php echo $LECTURE->full_name ?> </h3>
+                            <?php
+                            if (isset($_GET['exam'])) {
+                            ?>
+                                <h3 style="text-align: center"><span class="text-success"><?php echo $PAPER->title; ?></span></h3>
+                            <?php
+                            } else {
+                            ?>
+                                <h3 style="text-align: center"><span class="text-success"><?php echo ucfirst($LECTURE_CLASS->name) ?></span> - <?php echo $LECTURE->full_name ?> </h3>
+                            <?php
+                            }
+                            ?>
                         </div>
 
                         <div class="panel m-b-lg">

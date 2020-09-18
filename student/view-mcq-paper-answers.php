@@ -48,8 +48,17 @@ $paper = StudentMarks::getStudentMarksByPaper($_SESSION['id'], $id);
                 <div class="row">
                     <div class="col-md-12" style="margin-top: 15px;">
                         <div class="col-md-12">
-                            <h3 style="text-align: center"> <span class="text-success">
-                                    <?php echo ucfirst($LECTURE_CLASS->name) ?></span> - <?php echo $LECTURE->full_name ?> </h3>
+                            <?php
+                            if (isset($_GET['exam'])) {
+                            ?>
+                                <h3 style="text-align: center"><span class="text-success"><?php echo $PAPER->title; ?></span></h3>
+                            <?php
+                            } else {
+                            ?>
+                                <h3 style="text-align: center"><span class="text-success"><?php echo ucfirst($LECTURE_CLASS->name) ?></span> - <?php echo $LECTURE->full_name ?> </h3>
+                            <?php
+                            }
+                            ?>
                         </div>
 
                         <div class="panel m-b-lg">
@@ -137,7 +146,18 @@ $paper = StudentMarks::getStudentMarksByPaper($_SESSION['id'], $id);
                                                     <!-- <input type="hidden" name="submit_mcq_paper" /> -->
                                                     <input type="hidden" name="student" id="student" value="<?= $_SESSION['id']; ?>" />
                                                     <input type="hidden" name="paper" id="paper" value="<?= $id; ?>" />
-                                                    <a href="student-class-view.php?id=<?= $LECTURE_CLASS->id; ?>" class="btn btn-success btn-block" style="width: 15%">Back</a>
+                                                    <?php
+                                                    if (isset($_GET['exam'])) {
+                                                    ?>
+                                                        <a href="exam-papers.php" class="btn btn-success btn-block" style="width: 15%">Back</a>
+                                                    <?php
+                                                    } else {
+                                                    ?>
+                                                        <a href="student-class-view.php?id=<?= $LECTURE_CLASS->id; ?>" class="btn btn-success btn-block" style="width: 15%">Back</a>
+                                                    <?php
+                                                    }
+                                                    ?>
+
                                                 </center>
                                             </form>
                                         </div>
