@@ -288,10 +288,4 @@ include './auth.php';
             });
         });
     </script>
-
-
-
-
-
-
 </html>

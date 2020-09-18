@@ -31,6 +31,12 @@
                             <span class="sidenav-label">My Subjects</span>
                         </a>
                     </li> 
+                    <li class="sidenav-item has-subnav">
+                        <a href="exam-papers.php" aria-haspopup="true">
+                            <span class="sidenav-icon icon icon-file"></span>
+                            <span class="sidenav-label">Exam Papers</span>
+                        </a>
+                    </li> 
                 </ul>
             </nav>
         </div>

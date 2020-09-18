@@ -1,12 +1,11 @@
 <?php
 include '../class/include.php';
-include './auth.php';
-$id = $_GET['id'];
-$PAPER = new LessonMCQPaper($id);
-$LECTURE_CLASS = new LectureClass($PAPER->class);
-$exam = '';
-if (isset($_GET['exam'])) {
-    $exam = 'exam';
+if (!isset($_SESSION)) {
+    session_start();
+}
+
+if (!Student::authenticate()) {
+    redirect('login.php');
 }
 ?>
 <html lang="en">
@@ -14,7 +13,7 @@ if (isset($_GET['exam'])) {
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Ecollege.lk - View Student Marks </title>
+    <title>Ecollege.lk - Exam Papers </title>
     <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no">
     <meta property="og:url" content="http://demo.madebytilde.com/elephant">
     <meta property="og:type" content="website"> >
@@ -32,10 +31,6 @@ if (isset($_GET['exam'])) {
     <link rel="stylesheet" href="css/profile.min.css">
     <link href="css/sweetalert.css" rel="stylesheet" type="text/css" />
     <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="css/demo.min.css">
-    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
-    <link href="css/jquery.timepicker.css" rel="stylesheet" type="text/css" />
-
     <style>
         .profile-pic {
             position: relative;
@@ -76,68 +71,67 @@ if (isset($_GET['exam'])) {
                 </div>
                 <div class="row gutter-xs">
                     <div class="col-xs-12">
-
                         <div class="card">
                             <div class="card-header">
-                                <?php
-                                if (isset($_GET['exam'])) {
-                                ?>
-                                    <strong>View Student's Marks - <?= $PAPER->title; ?></strong>
-                                <?php
-                                } else {
-                                ?>
-                                    <strong>View Student's Marks - <?= $LECTURE_CLASS->name; ?> - <?= $PAPER->title; ?></strong>
-                                <?php
-                                }
-                                ?>
-
+                                <strong>Exam Papers</strong>
                             </div>
                             <div class="card-body">
                                 <table id="demo-datatables-colreorder-1" class="table table-hover table-striped table-nowrap dataTable" cellspacing="0" width="100%">
                                     <thead>
                                         <tr>
                                             <th>ID</th>
-                                            <th>Student</th>
+                                            <th>Paper</th>
                                             <th>Attended At</th>
                                             <th>Marks</th>
                                             <th>Grade</th>
                                             <th>Option</th>
-
                                         </tr>
                                     </thead>
                                     <?php
-                                    $all_marks = StudentMarks::getAllStudentsMarksByPaper($id, $date);
-
-                                    foreach ($all_marks as $key => $marks) {
-                                        $STUDENT = new Student($marks['student']);
-                                        $key++;
+                                     $papers = LessonMCQPaper::getAllExampapers();
+                                    foreach ($papers as $key => $paper) {
+                                        $marks = StudentMarks::getStudentMarksByPaper($_SESSION['id'], $paper['id']);
                                     ?>
-                                        <tr id="div<?php echo $marks['id']; ?>">
-                                            <td><?php echo $key ?></td>
-                                            <td><?= $STUDENT->full_name; ?></td>
-                                            <td><?= $marks['created_at']; ?></td>
-                                            <td><?= $marks['marks']; ?>%</td>
-                                            <td><?= $marks['grade']; ?></td>
-                                            <td>
-                                                <a href="view-mcq-answers.php?id=<?= $id; ?>&student=<?= $marks['student']; ?>" class="card-link" style="" id="enter-class" wid="">
-                                                    <p class="btn btn-success btn-block" style="width: 60%">View Answers</p>
-                                                </a>
-                                            </td>
 
-
+                                        <tr>
+                                            <td><?php echo $key + 1; ?></td>
+                                            <td><?php echo $paper['title']; ?></td>
+                                            <?php
+                                            if (count($marks) > 2) {
+                                            ?>
+                                                <td><?php echo $marks['created_at']; ?></td>
+                                                <td><?php echo $marks['marks'] . '%'; ?></td>
+                                                <td><?php echo $marks['grade']; ?></td>
+                                                <td>
+                                                    <a href="view-mcq-paper-answers.php?id=<?= $paper['id']; ?>&exam" class="card-link" style="" id="enter-class" wid="">
+                                                        <p class="btn btn-warning btn-block" style="width: 70%">View Answers</p>
+                                                    </a>
+                                                </td>
+                                            <?php
+                                            } else {
+                                            ?>
+                                                <td colspan="3">You do not attend this paper yet... </td>
+                                                <td>
+                                                    <a href="view-mcq-paper.php?id=<?= $paper['id']; ?>&exam" class="card-link" style="" id="enter-class" wid="">
+                                                        <p class="btn btn-success btn-block" style="width: 70%">Attend now</p>
+                                                    </a>
+                                                </td>
+                                            <?php
+                                            }
+                                            ?>
                                         </tr>
+
                                     <?php
                                     }
                                     ?>
                                     <tfoot>
                                         <tr>
                                             <th>ID</th>
-                                            <th>Student</th>
+                                            <th>Paper</th>
                                             <th>Attended At</th>
                                             <th>Marks</th>
                                             <th>Grade</th>
                                             <th>Option</th>
-
                                         </tr>
                                     </tfoot>
                                 </table>
@@ -147,35 +141,26 @@ if (isset($_GET['exam'])) {
                 </div>
             </div>
         </div>
-
+        <?php include './footer.php'; ?>
     </div>
+
+
+
+
+    <script src="js/jquery.min.js" type="text/javascript"></script>
+    <script src="js/vendor.min.js"></script>
+    <script src="js/elephant.min.js"></script>
+    <script src="js/application.min.js"></script>
+    <script src="js/profile.min.js"></script>
+    <script src="js/sweetalert.min.js" type="text/javascript"></script>
+
+    <script src="ajax/js/education_category.js" type="text/javascript"></script>
+    <script src="ajax/js/student.js" type="text/javascript"></script>
+    <script src="ajax/js/check-login.js" type="text/javascript"></script>
+    <script src="ajax/js/category.js" type="text/javascript"></script>
+    <script src="delete/js/student-subject.js" type="text/javascript"></script>
+
+
 </body>
-<script src="js/jquery.min.js" type="text/javascript"></script>
-<script src="js/vendor.min.js"></script>
-<script src="js/elephant.min.js"></script>
-<script src="js/application.min.js"></script>
-<script src="js/profile.min.js"></script>
-<script src="js/sweetalert.min.js" type="text/javascript"></script>
-<script src="js/demo.min.js"></script>
-<script src="ajax/js/lecture.js" type="text/javascript"></script>
-<script src="js/jquery.timepicker.min.js" type="text/javascript"></script>
-<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-<script>
-    $(function() {
-        $(".datepicker").datepicker({
-            dateFormat: 'yy-mm-dd',
-            minDate: 'today',
-        });
-    });
-
-    $(function() {
-        $('#start_time').timepicker({
-            'scrollDefault': 'now'
-        });
-    });
-</script>
-<script src="ajax/js/lecture_class.js" type="text/javascript"></script>
-<script src="delete/js/lecture-class.js" type="text/javascript"></script>
-
 
 </html>

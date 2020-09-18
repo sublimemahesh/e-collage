@@ -176,18 +176,10 @@ $(document).ready(function () {
     $('#create-question').click(function (event) {
         event.preventDefault();
 
-        if (!$('#question').val() || $('#question').val().length === 0) {
+        if (!$('#option-a').val() || $('#option-a').val().length === 0) {
             swal({
                 title: "Error!",
-                text: "Please enter question..!",
-                type: 'error',
-                timer: 1500,
-                showConfirmButton: false
-            });
-        } else if (!$('#option-a').val() || $('#option-a').val().length === 0) {
-            swal({
-                title: "Error!",
-                text: "Please enter option A.!",
+                text: "Please enter option 01.!",
                 type: 'error',
                 timer: 1500,
                 showConfirmButton: false
@@ -195,7 +187,7 @@ $(document).ready(function () {
         } else if (!$('#option-b').val() || $('#option-b').val().length === 0) {
             swal({
                 title: "Error!",
-                text: "Please enter option B.!",
+                text: "Please enter option 02.!",
                 type: 'error',
                 timer: 1500,
                 showConfirmButton: false
@@ -203,7 +195,7 @@ $(document).ready(function () {
         } else if (!$('#option-c').val() || $('#option-c').val().length === 0) {
             swal({
                 title: "Error!",
-                text: "Please enter option C.!",
+                text: "Please enter option 03.!",
                 type: 'error',
                 timer: 1500,
                 showConfirmButton: false
@@ -211,7 +203,7 @@ $(document).ready(function () {
         } else if (!$('#option-d').val() || $('#option-d').val().length === 0) {
             swal({
                 title: "Error!",
-                text: "Please enter option D.!",
+                text: "Please enter option 04.!",
                 type: 'error',
                 timer: 1500,
                 showConfirmButton: false
@@ -219,7 +211,7 @@ $(document).ready(function () {
         } else if (!$('#correct-answer').val() || $('#correct-answer').val().length === 0) {
             swal({
                 title: "Error!",
-                text: "Please enter option D.!",
+                text: "Please select correct answer.!",
                 type: 'error',
                 timer: 1500,
                 showConfirmButton: false
@@ -268,18 +260,10 @@ $(document).ready(function () {
 
         event.preventDefault();
 
-        if (!$('#question').val() || $('#question').val().length === 0) {
+        if (!$('#option-a').val() || $('#option-a').val().length === 0) {
             swal({
                 title: "Error!",
-                text: "Please enter question..!",
-                type: 'error',
-                timer: 1500,
-                showConfirmButton: false
-            });
-        } else if (!$('#option-a').val() || $('#option-a').val().length === 0) {
-            swal({
-                title: "Error!",
-                text: "Please enter option A.!",
+                text: "Please enter option 01.!",
                 type: 'error',
                 timer: 1500,
                 showConfirmButton: false
@@ -287,7 +271,7 @@ $(document).ready(function () {
         } else if (!$('#option-b').val() || $('#option-b').val().length === 0) {
             swal({
                 title: "Error!",
-                text: "Please enter option B.!",
+                text: "Please enter option 02.!",
                 type: 'error',
                 timer: 1500,
                 showConfirmButton: false
@@ -295,7 +279,7 @@ $(document).ready(function () {
         } else if (!$('#option-c').val() || $('#option-c').val().length === 0) {
             swal({
                 title: "Error!",
-                text: "Please enter option C.!",
+                text: "Please enter option 03.!",
                 type: 'error',
                 timer: 1500,
                 showConfirmButton: false
@@ -303,7 +287,7 @@ $(document).ready(function () {
         } else if (!$('#option-d').val() || $('#option-d').val().length === 0) {
             swal({
                 title: "Error!",
-                text: "Please enter option D.!",
+                text: "Please enter option 04.!",
                 type: 'error',
                 timer: 1500,
                 showConfirmButton: false
@@ -311,7 +295,7 @@ $(document).ready(function () {
         } else if (!$('#correct-answer').val() || $('#correct-answer').val().length === 0) {
             swal({
                 title: "Error!",
-                text: "Please enter option D.!",
+                text: "Please select correct answer.!",
                 type: 'error',
                 timer: 1500,
                 showConfirmButton: false

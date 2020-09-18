@@ -83,7 +83,7 @@ $PERIOD = new DatePeriod($begin, $interval, $end);
                                 </div>
                                 <form class="demo-form-wrapper card " style="padding: 50px" id="edit-form-question">
                                     <div class="form form-horizontal">
-                                        <div class="form-group">
+                                        <!-- <div class="form-group">
                                             <label class="col-sm-2 control-label " for="name" style="text-align: left">Select Date: </label>
                                             <div class="col-sm-10">
 
@@ -104,7 +104,7 @@ $PERIOD = new DatePeriod($begin, $interval, $end);
                                                     ?>
                                                 </select>
                                             </div>
-                                        </div>
+                                        </div> -->
                                         <div class="form-group">
                                             <label class="col-sm-2 control-label " for="name" style="text-align: left"> Question: </label>
                                             <div class="col-sm-10">
@@ -127,33 +127,33 @@ $PERIOD = new DatePeriod($begin, $interval, $end);
                                             ?>
                                         </div>
                                         <div class="form-group">
-                                            <label class="col-sm-2 control-label " for="name" style="text-align: left"> Option A: </label>
+                                            <label class="col-sm-2 control-label " for="name" style="text-align: left"> Option 01: </label>
                                             <div class="col-sm-10">
-                                                <input id="option-a" name="option_a" class="form-control" type="text" placeholder="Enter Option A " value="<?= $options['option_A']; ?>">
+                                                <input id="option-a" name="option_a" class="form-control" type="text" placeholder="Enter Option 01 " value="<?= $options['option_A']; ?>">
                                             </div>
                                         </div>
                                         <div class="form-group">
-                                            <label class="col-sm-2 control-label " for="name" style="text-align: left"> Option B: </label>
+                                            <label class="col-sm-2 control-label " for="name" style="text-align: left"> Option 02: </label>
                                             <div class="col-sm-10">
-                                                <input id="option-b" name="option_b" class="form-control  " type="text" placeholder="Enter Option B " value="<?= $options['option_B']; ?>">
+                                                <input id="option-b" name="option_b" class="form-control  " type="text" placeholder="Enter Option 02 " value="<?= $options['option_B']; ?>">
                                             </div>
                                         </div>
                                         <div class="form-group">
-                                            <label class="col-sm-2 control-label " for="name" style="text-align: left"> Option C: </label>
+                                            <label class="col-sm-2 control-label " for="name" style="text-align: left"> Option 03: </label>
                                             <div class="col-sm-10">
-                                                <input id="option-c" name="option_c" class="form-control  " type="text" placeholder="Enter Option C " value="<?= $options['option_C']; ?>">
+                                                <input id="option-c" name="option_c" class="form-control  " type="text" placeholder="Enter Option 03 " value="<?= $options['option_C']; ?>">
                                             </div>
                                         </div>
                                         <div class="form-group">
-                                            <label class="col-sm-2 control-label " for="name" style="text-align: left"> Option D: </label>
+                                            <label class="col-sm-2 control-label " for="name" style="text-align: left"> Option 04: </label>
                                             <div class="col-sm-10">
-                                                <input id="option-d" name="option_d" class="form-control  " type="text" placeholder="Enter Option D " value="<?= $options['option_D']; ?>">
+                                                <input id="option-d" name="option_d" class="form-control  " type="text" placeholder="Enter Option 04 " value="<?= $options['option_D']; ?>">
                                             </div>
                                         </div>
                                         <div class="form-group">
-                                            <label class="col-sm-2 control-label " for="name" style="text-align: left"> Option E: </label>
+                                            <label class="col-sm-2 control-label " for="name" style="text-align: left"> Option 05: </label>
                                             <div class="col-sm-10">
-                                                <input id="option-e" name="option_e" class="form-control  " type="text" placeholder="Enter Option E " value="<?= $options['option_E']; ?>">
+                                                <input id="option-e" name="option_e" class="form-control  " type="text" placeholder="Enter Option 05 " value="<?= $options['option_E']; ?>">
                                             </div>
                                         </div>
                                         <div class="form-group">
@@ -165,43 +165,43 @@ $PERIOD = new DatePeriod($begin, $interval, $end);
                                                     <?php
                                                     if ($options['correct_answer'] == 'A') {
                                                     ?>
-                                                        <option value="A" selected>A</option>
-                                                        <option value="B">B</option>
-                                                        <option value="C">C</option>
-                                                        <option value="D">D</option>
-                                                        <option value="E">E</option>
+                                                        <option value="A" selected>01</option>
+                                                        <option value="B">02</option>
+                                                        <option value="C">03</option>
+                                                        <option value="D">04</option>
+                                                        <option value="E">05</option>
                                                     <?php
                                                     } elseif ($options['correct_answer'] == 'B') {
                                                     ?>
-                                                        <option value="A">A</option>
-                                                        <option value="B" selected>B</option>
-                                                        <option value="C">C</option>
-                                                        <option value="D">D</option>
-                                                        <option value="E">E</option>
+                                                        <option value="A">01</option>
+                                                        <option value="B" selected>02</option>
+                                                        <option value="C">03</option>
+                                                        <option value="D">04</option>
+                                                        <option value="E">05</option>
                                                     <?php
                                                     } elseif ($options['correct_answer'] == 'C') {
                                                     ?>
-                                                        <option value="A">A</option>
-                                                        <option value="B">B</option>
-                                                        <option value="C" selected>C</option>
-                                                        <option value="D">D</option>
-                                                        <option value="E">E</option>
+                                                        <option value="A">01</option>
+                                                        <option value="B">02</option>
+                                                        <option value="C" selected>03</option>
+                                                        <option value="D">04</option>
+                                                        <option value="E">05</option>
                                                     <?php
                                                     } elseif ($options['correct_answer'] == 'D') {
                                                     ?>
-                                                        <option value="A">A</option>
-                                                        <option value="B">B</option>
-                                                        <option value="C">C</option>
-                                                        <option value="D" selected>D</option>
-                                                        <option value="E">E</option>
+                                                        <option value="A">01</option>
+                                                        <option value="B">02</option>
+                                                        <option value="C">03</option>
+                                                        <option value="D" selected>04</option>
+                                                        <option value="E">05</option>
                                                     <?php
                                                     } elseif ($options['correct_answer'] == 'E') {
                                                     ?>
-                                                        <option value="A">A</option>
-                                                        <option value="B">B</option>
-                                                        <option value="C">C</option>
-                                                        <option value="D">D</option>
-                                                        <option value="E" selected>E</option>
+                                                        <option value="A">01</option>
+                                                        <option value="B">02</option>
+                                                        <option value="C">03</option>
+                                                        <option value="D">04</option>
+                                                        <option value="E" selected>05</option>
                                                     <?php
                                                     }
                                                     ?>

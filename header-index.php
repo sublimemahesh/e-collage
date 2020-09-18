@@ -45,9 +45,12 @@
         </div>
     </div>
     <ul class="rslides-header" style="list-style:none; ">	
-        <li><img src="assets/images/header-slider/slide-1.jpg" class="resp-img" alt="Slide"></li>
+        <li>
+            <img src="assets/images/header-slider/slide-1.jpg" class="resp-img" alt="Slide">
+        </li>
         <li><img src="assets/images/header-slider/slide-2.jpg" class="resp-img" alt="Slide"></li>
         <li><img src="assets/images/header-slider/slide-3.jpg" class="resp-img" alt="Slide"></li>
+        <!-- <li><img src="assets/images/header-slider/slide-4.png" class="resp-img" alt="Slide"></li> -->
     </ul>
     <a href="#" class="scrolldown"><span></span></a>	
 </header>
