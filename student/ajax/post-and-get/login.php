@@ -10,6 +10,8 @@ $password = $_POST['password'];
 
 if ($STUDENT->login($student_id, $password)) {
     $response['status'] = 'success';
+    $response['url'] = $_POST['back_url'];
+    // dd($response['url']);
     echo json_encode($response);
     exit();
 } else {

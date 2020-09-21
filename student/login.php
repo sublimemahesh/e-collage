@@ -1,3 +1,8 @@
+<?php
+if (!isset($_SESSION)) {
+    session_start();
+}
+?>
 <!DOCTYPE html>
 
 <html lang="en">
@@ -42,6 +47,8 @@
                         <div class="form-group">
                             <div class="text-center text-danger btn-padding font-size-new" id="message"></div>
                         </div>
+                        
+                        <input type="hidden" name="back_url" value="<?= $_SESSION['back_url']; ?>" />
                         <button class="btn btn-primary btn-block" type="submit"  >Sign in</button>
                     </form>
                 </div>

@@ -40,8 +40,12 @@ $(document).ready(function () {
                 dataType: "JSON",
                 success: function (result) { 
                     if (result.status == 'success') {
-                        window.location.replace("index.php");
-                    } else   {
+                        if(result.url == '') {
+                            window.location.replace("index.php");
+                        } else {
+                            window.location.replace(result.url);
+                        }
+                    } else {
                         $('#message').text(result.message);
                     } 
                 }

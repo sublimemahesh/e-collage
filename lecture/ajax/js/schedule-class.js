@@ -200,14 +200,6 @@ $(document).ready(function () {
                 timer: 1500,
                 showConfirmButton: false
             });
-        } else if (!$('#option-d').val() || $('#option-d').val().length === 0) {
-            swal({
-                title: "Error!",
-                text: "Please enter option 04.!",
-                type: 'error',
-                timer: 1500,
-                showConfirmButton: false
-            });
         } else if (!$('#correct-answer').val() || $('#correct-answer').val().length === 0) {
             swal({
                 title: "Error!",
@@ -280,14 +272,6 @@ $(document).ready(function () {
             swal({
                 title: "Error!",
                 text: "Please enter option 03.!",
-                type: 'error',
-                timer: 1500,
-                showConfirmButton: false
-            });
-        } else if (!$('#option-d').val() || $('#option-d').val().length === 0) {
-            swal({
-                title: "Error!",
-                text: "Please enter option 04.!",
                 type: 'error',
                 timer: 1500,
                 showConfirmButton: false

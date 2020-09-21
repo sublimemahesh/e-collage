@@ -137,7 +137,8 @@ include './auth.php';
                                                             ?> 
                                                             <option value="<?php echo $lecture_subject['subject_id']; ?>"><?php
                                                                 $EDUCATIN_SUBJECT = new EducationSubject($lecture_subject['subject_id']);
-                                                                echo $EDUCATIN_SUBJECT->name;
+                                                                $EDUCATIN_SUB_CATEGORY = new EducationSubCategory($EDUCATIN_SUBJECT->sub_category);
+                                                                echo $EDUCATIN_SUBJECT->name . ' - ' . $EDUCATIN_SUB_CATEGORY->name;
                                                                 ?></option>   
                                                             <?php
                                                         }

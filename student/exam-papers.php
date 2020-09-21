@@ -3,10 +3,11 @@ include '../class/include.php';
 if (!isset($_SESSION)) {
     session_start();
 }
-
+$_SESSION['back_url'] = '';
 if (!Student::authenticate()) {
+    $_SESSION['back_url'] = 'exam-papers.php';
     redirect('login.php');
-}
+} 
 ?>
 <html lang="en">
 
