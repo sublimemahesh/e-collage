@@ -28,6 +28,7 @@
                         </ul>
                     </nav>
                 </div>
+                <a href="student/exam-papers.php" class="blueplay login">Exam Papers</a> 
                 <a href="student/login.php" class="blueplay login">Student Login</a> 
                 <a href="lecture/login.php" class="register">Lecture Login</a>
 
