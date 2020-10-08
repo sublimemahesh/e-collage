@@ -80,6 +80,18 @@ class LectureSubject {
     public function checkLectureSubjects($id) {
 
         $query = 'SELECT `id` FROM `lecture_subject`  WHERE `lecture` ="' . $id . '"';
+        $db = new Database();
+        $result = mysql_fetch_array($db->readQuery($query));
+
+        if (!$result) {
+            return FALSE;
+        } else {
+            return TRUE;
+        }
+    }
+    public function checkLectureSubjectsIsExist($id, $lecturer) {
+
+        $query = 'SELECT `id` FROM `lecture_subject`  WHERE `lecture` ="' . $lecturer . '" AND `subject_id` = "' . $id . '"';
 
         $db = new Database();
         $result = mysql_fetch_array($db->readQuery($query));
