@@ -12,7 +12,7 @@ if (isset($_POST['create'])) {
     $LECTURE_SUBJECT->lecture = $_POST['lecture'];
 
 
-    if ($LECTURE_SUBJECT->checkLectureSubjects($_POST['subject'], $_POST['lecture'])) {
+    if ($LECTURE_SUBJECT->checkLectureSubjectsIsExist($_POST['subject'], $_POST['lecture'])) {
         $result = ["status" => 'error'];
         echo json_encode($result);
         exit();
