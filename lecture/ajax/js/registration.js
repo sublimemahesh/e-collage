@@ -135,6 +135,7 @@ $(document).ready(function () {
 
     $('#register').click(function (event) {
         event.preventDefault();
+        $('#register').attr('disabled', 'disabled');
         if ($('#agreement').prop("checked") == false) {
             swal({
                 title: "Error!",
