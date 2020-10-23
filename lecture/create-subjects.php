@@ -250,7 +250,7 @@ if (!Lecture::authenticate()) {
         <script src="js/demo.min.js"></script>
         <script src="ajax/js/lecture.js" type="text/javascript"></script>
         <script src="ajax/js/check-login.js" type="text/javascript"></script>
-
+        <script src="js/jm.spinner.js" type="text/javascript"></script>
         <script src="ajax/js/category.js" type="text/javascript"></script>
         <script src="ajax/js/lecture_subject.js" type="text/javascript"></script>
         <script src="delete/js/lecture-subject.js" type="text/javascript"></script>

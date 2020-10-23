@@ -1,5 +1,6 @@
 $(document).ready(function () {
 
+
     var form = $('#form').formValid({
         fields: {
             "full_name": {
@@ -107,6 +108,7 @@ $(document).ready(function () {
 
 
     $('#register').click(function (events) {
+        $('#register').attr('disabled', 'disabled');
         events.preventDefault();
         if ($('#agreement').prop("checked") == false) {
             swal({
@@ -135,11 +137,13 @@ $(document).ready(function () {
                         $.ajax({
                             url: "ajax/post-and-get/mobile-verify.php",
                             type: "POST",
-                            data: {id: result.id,
+                            data: {
+                                id: result.id,
                                 action: "MOBILECODE"
                             },
                             dataType: "JSON",
                             success: function (result) {
+                                
                                 if (result.status == 'success') {
                                     window.swal({
                                         title: "Please wait...!",
