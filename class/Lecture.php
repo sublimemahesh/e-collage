@@ -242,7 +242,7 @@ class Lecture {
 
         $enPass = md5($password);
 
-        $query = "SELECT `id`,`full_name`, `email`, `nic_number`  FROM `lecture` WHERE `email`= '" . $email . "' AND `password`= '" . $enPass . "'";
+        $query = "SELECT `id`,`full_name`, `email`, `nic_number`  FROM `lecture` WHERE (`email`= '" . $email . "' OR `phone_number`= '" . $email . "') AND `password`= '" . $enPass . "'";
 
         $db = new Database();
 
@@ -594,7 +594,7 @@ class Lecture {
 
     public function checkEmail($email) {
 
-        $query = "SELECT `email`,`full_name` FROM `lecture` WHERE `email`= '" . $email . "'";
+        $query = "SELECT `email`,`full_name`,`phone_number` FROM `lecture` WHERE (`email`= '" . $email . "' OR `phone_number`= '" . $email . "')";
 
         $db = new Database();
 
@@ -640,7 +640,7 @@ class Lecture {
 
         if ($email) {
 
-            $query = "SELECT `email`,`full_name`,`resetcode` FROM `lecture` WHERE `email`= '" . $email . "'";
+            $query = "SELECT `email`,`phone_number`,`full_name`,`resetcode` FROM `lecture` WHERE `email`= '" . $email . "'";
 
             $db = new Database();
 
@@ -648,6 +648,7 @@ class Lecture {
 
             $this->full_name = $result['full_name'];
             $this->email = $result['email'];
+            $this->phone_number = $result['phone_number'];
             $this->restCode = $result['resetcode'];
             return $result;
         }

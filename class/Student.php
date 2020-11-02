@@ -164,7 +164,7 @@ class Student {
 
         $enPass = md5($password);
 
-        $query = "SELECT `id`,`full_name`,`student_id`,`email`, `nic_number`,`age` FROM `student` WHERE `student_id`= '" . $student_id . "' AND `password`= '" . $enPass . "'";
+        $query = "SELECT `id`,`full_name`,`student_id`,`email`, `nic_number`,`age` FROM `student` WHERE (`student_id`= '" . $student_id . "' OR `phone_number` = '" . $student_id . "' OR `email` = '" . $student_id . "') AND `password`= '" . $enPass . "'";
 
         $db = new Database();
 
@@ -456,7 +456,7 @@ class Student {
 
     public function checkEmail($email) {
 
-        $query = "SELECT `email`,`student_id` FROM `student` WHERE `email`= '" . $email . "'";
+        $query = "SELECT `email`,`student_id`,`phone_number` FROM `student` WHERE (`email`= '" . $email . "' OR `phone_number` = '" . $email . "')";
 
         $db = new Database();
 
@@ -548,7 +548,7 @@ class Student {
 
         if ($email) {
 
-            $query = "SELECT `email`,`full_name`,`student_id`,`resetcode` FROM `student` WHERE `email`= '" . $email . "'";
+            $query = "SELECT `email`,`phone_number`,`full_name`,`student_id`,`resetcode` FROM `student` WHERE `email`= '" . $email . "'";
 
             $db = new Database();
 
@@ -557,6 +557,7 @@ class Student {
             $this->full_name = $result['full_name'];
             $this->student_id = $result['student_id'];
             $this->email = $result['email'];
+            $this->phone_number = $result['phone_number'];
             $this->restCode = $result['resetcode'];
             return $result;
         }
