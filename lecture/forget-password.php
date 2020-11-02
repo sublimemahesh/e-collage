@@ -43,8 +43,8 @@ include '../class/include.php';
                     ?>
                     <form id="sign_in" method="POST" action="ajax/post-and-get/reset-password.php">
                         <div class="form-group">
-                            <label for="your_email">Your Email </label>
-                            <input id="email" class="form-control" type="email" name="email"   >
+                            <label for="your_email">Your Email or Phone Number </label>
+                            <input id="email" class="form-control" type="text" name="email"   >
 
                         </div>                        
 

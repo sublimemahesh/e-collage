@@ -28,8 +28,8 @@
                 <div class="login-form">
                     <form   id="form">
                         <div class="form-group">
-                            <label for="email">Email</label>
-                            <input id="email" class="form-control" type="email" name="email"  data-field="email"  >
+                            <label for="email">Email / Phone Number</label>
+                            <input id="email" class="form-control" type="text" name="email"  data-field="email"  >
                             <div class="valid-message"></div>
                         </div>
                         <div class="form-group">

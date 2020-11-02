@@ -11,15 +11,17 @@ if (empty($email)) {
     header('Location: ../../forget-password.php?message=11');
     exit();
 }
-
-if ($STUDENT->checkEmail($email)) {
-
+$details = $STUDENT->checkEmail($email);
+if ($details) {
+    $email = $details['email'];
     if ($STUDENT->GenarateCode($email)) {
         $res = $STUDENT->SelectForgetUser($email);
 
         $username = $STUDENT->full_name;
         $email = $STUDENT->email;
         $resetcode = $STUDENT->restCode;
+       
+        $status = $STUDENT->sendSMS('E College', $STUDENT->phone_number, 'Your account reset code is ' . $resetcode);
 
         date_default_timezone_set('Asia/Colombo');
 

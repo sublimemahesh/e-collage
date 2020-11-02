@@ -3,9 +3,9 @@
 include '../class/include.php';
 include_once(dirname(__FILE__) . '/auth.php');
 $PAGES = new Page(1);
-$VIDEO_1 = new Page(3);
-$VIDEO_2 = new Page(4);
-$VIDEO_3 = new Page(5);
+$VIDEO_1 = new Page(4);
+$VIDEO_2 = new Page(5);
+$VIDEO_3 = new Page(6);
 ?>
 <html lang="en">
 

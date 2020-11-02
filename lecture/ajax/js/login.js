@@ -8,11 +8,11 @@ $(document).ready(function () {
                     {
                         "type": "null",
                         "message": "Please enter the email..!"
-                    },
-                    {
-                        "type": "email",
-                        "message": "Please enter the valid email..!"
                     }
+                    // {
+                    //     "type": "email",
+                    //     "message": "Please enter the valid email..!"
+                    // }
                 ]
             },
             "password": {

@@ -11,22 +11,27 @@ if (empty($email)) {
     header('Location: ../../forget-password.php?message=11');
     exit();
 }
+$details = $LECTURE->checkEmail($email);
 
-if ($LECTURE->checkEmail($email)) {
-
+if ($details) {
+    $email = $details['email'];
+    
     if ($LECTURE->GenarateCode($email)) {
+        
         $res = $LECTURE->SelectForgetUser($email);
 
         $username = $LECTURE->full_name;
         $email = $LECTURE->email;
         $resetcode = $LECTURE->restCode;
 
+        $status = $LECTURE->sendSMS('E College', $LECTURE->phone_number, 'Your account reset code is ' . $resetcode);
+
         date_default_timezone_set('Asia/Colombo');
 
         $todayis = date("l, F j, Y, g:i a");
 
         $subject = 'Dashboard - Password Reset';
-        $from = 'chalanadulaj99@gmail.com'; // give from email address
+        $from = 'info@ecollege.lk'; // give from email address
 
 
         $headers = "From: " . $from . "\r\n";

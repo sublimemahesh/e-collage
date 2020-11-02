@@ -35,7 +35,7 @@ if (!isset($_SESSION)) {
                     <form   id="form">
                          <div class="msg text-center">Sign in to start your session</div>
                         <div class="form-group">
-                            <label for="student_id">Student ID</label>
+                            <label for="student_id">Student ID / Email / Phone Number</label>
                             <input id="student_id" class="form-control" type="text" name="student_id"  data-field="student_id"  >
                             <div class="valid-message"></div>
                         </div>
