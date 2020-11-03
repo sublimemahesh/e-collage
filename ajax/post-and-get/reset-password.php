@@ -26,7 +26,7 @@ if ($STUDENT->checkEmail($email)) {
         $todayis = date("l, F j, Y, g:i a");
 
         $subject = 'Dashboard - Password Reset';
-        $from = 'chalanadulaj99@gmail.com'; // give from email address
+        $from = 'info@ecollege.lk'; // give from email address
 
 
         $headers = "From: " . $from . "\r\n";

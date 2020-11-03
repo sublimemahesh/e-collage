@@ -73,6 +73,13 @@
 
                     </li>
                     <li class="sidenav-item has-subnav" style="margin-top: 20px">
+                        <a href="manage-all-classes.php" aria-haspopup="true">
+                            <span class="sidenav-icon icon icon-slack"></span>
+                            <span class="sidenav-label">All Classes</span>
+                        </a>
+
+                    </li>
+                    <li class="sidenav-item has-subnav" style="margin-top: 20px">
                         <a href="create-help-center.php" aria-haspopup="true">
                             <span class="sidenav-icon icon icon-works">a</span> 
                             <span class="sidenav-label">Help Center</span>

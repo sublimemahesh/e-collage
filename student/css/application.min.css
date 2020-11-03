@@ -891,6 +891,9 @@ html {
     text-align: center;
     width: 100%
 }
+.exam-paper-all-page table {
+    font-size: 12px;
+}
 
 @-o-keyframes icon-spin {
     0% {

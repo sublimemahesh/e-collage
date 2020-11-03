@@ -11,6 +11,7 @@ Class StudentAnswers
     public $id;
     public $student;
     public $question;
+    public $attempt;
     public $answer;
     public $is_correct;
 
@@ -27,6 +28,7 @@ Class StudentAnswers
             $this->id = $result['id'];
             $this->student = $result['student'];
             $this->question = $result['question'];
+            $this->attempt = $result['attempt'];
             $this->answer = $result['answer'];
             $this->is_correct = $result['is_correct'];
 
@@ -37,9 +39,10 @@ Class StudentAnswers
     public function create()
     {
 
-        $query = "INSERT INTO `student_answer` (`student`,`question`, `answer`, `is_correct`) VALUES  ('"
+        $query = "INSERT INTO `student_answer` (`student`,`question`,`attempt`, `answer`, `is_correct`) VALUES  ('"
             . $this->student . "', '"
             . $this->question . "', '"
+            . $this->attempt . "', '"
             . $this->answer . "','"
             . $this->is_correct . "')";
 
@@ -102,7 +105,8 @@ Class StudentAnswers
     public function getStudentAnswersByQuestionId($id, $question)
     {
 
-        $query = "SELECT * FROM `student_answer` WHERE `student` = '" . $id . "' AND `question` = '" . $question . "' ";
+        $query = "SELECT * FROM `student_answer` WHERE `student` = '" . $id . "' AND `question` = '" . $question . "' ORDER BY `id` DESC LIMIT 1";
+
         $db = new Database();
         $result = mysql_fetch_array($db->readQuery($query));
         return $result;

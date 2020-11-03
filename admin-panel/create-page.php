@@ -37,7 +37,7 @@ include './auth.php';
                      
                     <div class="row gutter-xs">
                         <div class="col-xs-12">
-                            <div class="row">  
+                            <div class="row hidden">  
 
                                 <div class="col-md-12"> 
                                     <?php
@@ -109,8 +109,8 @@ include './auth.php';
                                                 <td><?php echo $pages['title'] ?></td>
 
                                                 <td> 
-                                                    <a href="edit-page.php?id=<?php echo $pages['id'] ?>" class="op-link btn btn-sm btn-info"><i class="icon icon-pencil"></i></a>  |  
-                                                    <a href="#" class="delete-student btn btn-sm btn-danger" data-id="<?php echo $pages['id'] ?>"><i class="waves-effect icon icon-trash" data-type="cancel"></i></a> 
+                                                    <a href="edit-page.php?id=<?php echo $pages['id'] ?>" class="op-link btn btn-sm btn-info"><i class="icon icon-pencil"></i></a>  
+                                                    <a href="#" class="delete-student btn btn-sm btn-danger hidden" data-id="<?php echo $pages['id'] ?>"><i class="waves-effect icon icon-trash" data-type="cancel"></i></a> 
 
                                                 </td>
                                             </tr>

@@ -38,7 +38,7 @@ include_once(dirname(__FILE__) . '/auth.php');
                     <?php
                     $HELP_CENTER = new HelpCenter(NULL);
 
-                    foreach ($HELP_CENTER->getQuestionsByPosition(1) as $help_center) {
+                    foreach ($HELP_CENTER->getQuestionsByPosition(0) as $help_center) {
                         ?>
                         <div class="card">
                             <a href="# "class="  card-toggler" title="Collapse">  
