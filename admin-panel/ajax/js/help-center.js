@@ -1,6 +1,6 @@
 $(document).ready(function () {
 
-//create subject details
+    //create subject details
     $("#create").click(function (event) {
         event.preventDefault();
         tinymce.triggerSave();
@@ -9,6 +9,15 @@ $(document).ready(function () {
             swal({
                 title: "Error!",
                 text: "Please enter your title..!",
+                type: 'error',
+                timer: 1500,
+                showConfirmButton: false
+            });
+
+        } else if (!$('#to_whom').val() || $('#to_whom').val().length === 0) {
+            swal({
+                title: "Error!",
+                text: "Please select to whom..!",
                 type: 'error',
                 timer: 1500,
                 showConfirmButton: false
@@ -47,7 +56,7 @@ $(document).ready(function () {
         }
     });
 
-//update subject details
+    //update subject details
     $("#update").click(function (event) {
         event.preventDefault();
         tinymce.triggerSave();
@@ -60,6 +69,15 @@ $(document).ready(function () {
                 timer: 1500,
                 showConfirmButton: false
             });
+        } else if (!$('#to_whom').val() || $('#to_whom').val().length === 0) {
+            swal({
+                title: "Error!",
+                text: "Please select to whom..!",
+                type: 'error',
+                timer: 1500,
+                showConfirmButton: false
+            });
+
         } else {
             var formData = new FormData($('#form-data')[0]);
 

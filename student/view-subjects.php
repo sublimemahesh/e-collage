@@ -43,6 +43,7 @@ include_once(dirname(__FILE__) . '/auth.php');
                         $STUDENT_SUBJECT = new StudentSubject(NULL);
                         foreach ($STUDENT_SUBJECT->getSubjectsByStudent($_SESSION['id']) as $student_subject) {
                             $EDUCATIN_SUBJECT = new EducationSubject($student_subject['subject']);
+                            $EDUCATIN_SUB_CAT = new EducationSubCategory($EDUCATIN_SUBJECT->sub_category);
                             ?>
 
                             <div class="col-md-3">
@@ -67,6 +68,7 @@ include_once(dirname(__FILE__) . '/auth.php');
                                             </div>
                                         </a>
                                         <h3 class="card-title text-center" style="margin-top: 10px"><?php echo $EDUCATIN_SUBJECT->name ?></h3>
+                                        <h5 class="card-title text-center"><?php echo $EDUCATIN_SUB_CAT->name ?></h5>
                                         <h6 class="card-subtitle text-center"> <span class="icon icon-users icon-1x"></span> -  <b class="text-danger"> <?php
                                             $count = count(LectureClass::getLectureClassesBySubjectId($student_subject['subject']));
                                             echo $count;

@@ -7,7 +7,7 @@ $_SESSION['back_url'] = '';
 if (!Student::authenticate()) {
     $_SESSION['back_url'] = 'exam-papers.php';
     redirect('login.php');
-} 
+}
 ?>
 <html lang="en">
 
@@ -46,7 +46,7 @@ if (!Student::authenticate()) {
     </style>
 </head>
 
-<body class="layout layout-header-fixed">
+<body class="layout layout-header-fixed exam-paper-all-page">
     <!--Top header -->
     <?php include './top-header.php'; ?>
     <!--End Top header -->
@@ -82,6 +82,7 @@ if (!Student::authenticate()) {
                                         <tr>
                                             <th>ID</th>
                                             <th>Paper</th>
+                                            <th>Attempt</th>
                                             <th>Attended At</th>
                                             <th>Marks</th>
                                             <th>Grade</th>
@@ -89,9 +90,10 @@ if (!Student::authenticate()) {
                                         </tr>
                                     </thead>
                                     <?php
-                                     $papers = LessonMCQPaper::getAllExampapers();
+                                    $papers = LessonMCQPaper::getAllExampapers();
                                     foreach ($papers as $key => $paper) {
                                         $marks = StudentMarks::getStudentMarksByPaper($_SESSION['id'], $paper['id']);
+
                                     ?>
 
                                         <tr>
@@ -100,21 +102,35 @@ if (!Student::authenticate()) {
                                             <?php
                                             if (count($marks) > 2) {
                                             ?>
+                                                <td><?php echo $marks['attempt']; ?></td>
                                                 <td><?php echo $marks['created_at']; ?></td>
                                                 <td><?php echo $marks['marks'] . '%'; ?></td>
                                                 <td><?php echo $marks['grade']; ?></td>
                                                 <td>
-                                                    <a href="view-mcq-paper-answers.php?id=<?= $paper['id']; ?>&exam" class="card-link" style="" id="enter-class" wid="">
-                                                        <p class="btn btn-warning btn-block" style="width: 70%">View Answers</p>
-                                                    </a>
+                                                    <?php
+                                                    if ($marks['attempt'] == 3) {
+                                                    ?>
+                                                        <a href="view-mcq-paper-answers.php?id=<?= $paper['id']; ?>&exam" class="card-link" style="" id="enter-class" wid="">
+                                                            <p class="btn btn-warning btn-block">View Answers</p>
+                                                        </a>
+                                                    <?php
+                                                    } else {
+                                                    ?>
+                                                        <a href="view-mcq-paper.php?id=<?= $paper['id']; ?>&exam" class="card-link" style="" id="enter-class" wid="">
+                                                            <p class="btn btn-success btn-block">Attend now</p>
+                                                        </a>
+                                                    <?php
+                                                    }
+                                                    ?>
+
                                                 </td>
                                             <?php
                                             } else {
                                             ?>
-                                                <td colspan="3">You do not attend this paper yet... </td>
+                                                <td colspan="4">You do not attend this paper yet... </td>
                                                 <td>
                                                     <a href="view-mcq-paper.php?id=<?= $paper['id']; ?>&exam" class="card-link" style="" id="enter-class" wid="">
-                                                        <p class="btn btn-success btn-block" style="width: 70%">Attend now</p>
+                                                        <p class="btn btn-success btn-block">Attend now</p>
                                                     </a>
                                                 </td>
                                             <?php
@@ -129,6 +145,7 @@ if (!Student::authenticate()) {
                                         <tr>
                                             <th>ID</th>
                                             <th>Paper</th>
+                                            <th>Attempt</th>
                                             <th>Attended At</th>
                                             <th>Marks</th>
                                             <th>Grade</th>

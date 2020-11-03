@@ -5,7 +5,7 @@ $(document).ready(function () {
 
         swal({
             title: "Are you sure?",
-            text: "You will not be able to recover this Stuednt details!",
+            text: "You will not be able to recover this video!",
             type: "warning",
             showCancelButton: true,
             confirmButtonColor: "#DD6B55",
@@ -24,7 +24,7 @@ $(document).ready(function () {
 
                         swal({
                             title: "Deleted!",
-                            text: "Student details has been deleted.",
+                            text: "Video has been deleted.",
                             type: 'success',
                             timer: 2000,
                             showConfirmButton: false

@@ -99,6 +99,7 @@ if (isset($_GET['exam'])) {
                                             <th>ID</th>
                                             <th>Student</th>
                                             <th>Attended At</th>
+                                            <th>Attempt</th>
                                             <th>Marks</th>
                                             <th>Grade</th>
                                             <th>Option</th>
@@ -116,6 +117,7 @@ if (isset($_GET['exam'])) {
                                             <td><?php echo $key ?></td>
                                             <td><?= $STUDENT->full_name; ?></td>
                                             <td><?= $marks['created_at']; ?></td>
+                                            <td><?= $marks['attempt']; ?></td>
                                             <td><?= $marks['marks']; ?>%</td>
                                             <td><?= $marks['grade']; ?></td>
                                             <td>
@@ -134,6 +136,7 @@ if (isset($_GET['exam'])) {
                                             <th>ID</th>
                                             <th>Student</th>
                                             <th>Attended At</th>
+                                            <th>Attempt</th>
                                             <th>Marks</th>
                                             <th>Grade</th>
                                             <th>Option</th>

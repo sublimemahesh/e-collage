@@ -10,19 +10,23 @@ $QUESTION = new LessonQuestion(NULL);
 date_default_timezone_set("Asia/Calcutta");
 $today_time = date('Y-m-d H:i:A');
 // $today = date('Y-m-d');
-
+$attempt = '';
 
 //set start time
 $start_time = $LECTURE_CLASS->start_date . ' ' . $LECTURE_CLASS->start_time;
 $is_paper = StudentMarks::getStudentMarksByPaper($_SESSION['id'], $id);
 if ($is_paper) {
-    if (isset($_GET['exam'])) {
-        redirect("view-mcq-paper-answers.php?id=$id&exam");
-    } else {
-        redirect("view-mcq-paper-answers.php?id=$id");
+    $attempt = $is_paper['attempt'] + 1;
+    if ($attempt > 3) {
+        if (isset($_GET['exam'])) {
+            redirect("view-mcq-paper-answers.php?id=$id&exam");
+        } else {
+            redirect("view-mcq-paper-answers.php?id=$id");
+        }
     }
+} else {
+    $attempt = 1;
 }
-
 ?>
 <html lang="en">
 
@@ -66,6 +70,7 @@ if ($is_paper) {
                             <?php
                             }
                             ?>
+                            <h5 style="text-align: center"> Attempt - <span class="attempt-span"><?= $attempt; ?></span></h5>
                         </div>
 
                         <div class="panel m-b-lg">
@@ -153,6 +158,7 @@ if ($is_paper) {
                                                     <!-- <input type="hidden" name="submit_mcq_paper" /> -->
                                                     <input type="hidden" name="student" value="<?= $_SESSION['id']; ?>" />
                                                     <input type="hidden" name="paper" value="<?= $id; ?>" />
+                                                    <input type="hidden" name="attempt" id="attempt" value="<?= $attempt; ?>" />
                                                     <input type="submit" class="btn btn-success btn-block" id="submit-mcq-paper" style="width: 15%" value="Submit" />
                                                 </center>
                                             </form>

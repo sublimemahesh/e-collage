@@ -33,17 +33,12 @@ $message = $_POST['message'];
 //---------------------- SERVER WEBMAIL LOGIN ------------------------
 
 $host = "sg1-ls7.a2hosting.com";
-$username = "info@jobhere.lk";
-$password = "l}VmR(%g?nP4";
-
-// $host = "sg1-ls7.a2hosting.com";
-// $username = "info@srilankapetertours.com";
-// $password = "Peter@7027";
-// $password = "(yq5,xL*HVoV";
+$username = "info@ecollege.lk";
+$password = "Jayantha@8476";
 
 //------------------------ MAIL ESSENTIALS --------------------------------
 
-$webmail = "info@jobhere.lk";
+$webmail = "info@ecollege.lk";
 $visitorSubject = "Thank You " . $visitor_name . " - Ecollage.lk";
 $companySubject = "Contact Inquiry - " . $visitor_name;
 

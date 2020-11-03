@@ -12,6 +12,7 @@ class HelpCenter {
     public $id;
     public $title;
     public $description;
+    public $for_lecturer;
     public $queue;
 
     public function __construct($id) {
@@ -26,6 +27,7 @@ class HelpCenter {
             $this->id = $result['id'];
             $this->title = $result['title'];
             $this->description = $result['description'];
+            $this->for_lecturer = $result['for_lecturer'];
             $this->queue = $result['queue'];
 
             return $this;
@@ -34,9 +36,10 @@ class HelpCenter {
 
     public function create() {
 
-        $query = "INSERT INTO `help_center` (`title`,`description`,  `queue`) VALUES  ('"
+        $query = "INSERT INTO `help_center` (`title`,`description`,`for_lecturer`,  `queue`) VALUES  ('"
                 . $this->title . "', '"
                 . $this->description . "', '"
+                . $this->for_lecturer . "', '"
                 . $this->queue . "')";
       
         $db = new Database();
@@ -54,7 +57,20 @@ class HelpCenter {
 
     public function all() {
 
-        $query = "SELECT * FROM `help_center` ORDER BY `description` ASC";
+        $query = "SELECT * FROM `help_center` ORDER BY `id` DESC";
+        $db = new Database();
+        $result = $db->readQuery($query);
+        $array_res = array();
+
+        while ($row = mysql_fetch_array($result)) {
+            array_push($array_res, $row);
+        }
+
+        return $array_res;
+    }
+    public function getQuestionsByPosition($position) {
+
+        $query = "SELECT * FROM `help_center` WHERE `for_lecturer` = $position ORDER BY `id` ASC";
         $db = new Database();
         $result = $db->readQuery($query);
         $array_res = array();
@@ -70,7 +86,8 @@ class HelpCenter {
 
         $query = "UPDATE  `help_center` SET "
                 . "`title` ='" . $this->title . "', " 
-                . "`description` ='" . $this->description . "' "
+                . "`description` ='" . $this->description . "', "
+                . "`for_lecturer` ='" . $this->for_lecturer . "' "
                 . "WHERE `id` = '" . $this->id . "'";
 
         $db = new Database();

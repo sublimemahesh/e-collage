@@ -10,7 +10,7 @@ $final_arr = array();
 $arr = array();
 
 foreach ($_POST as $key => $qu) {
-    if ($key != 'student' && $key != 'paper') {
+    if ($key != 'student' && $key != 'paper'&& $key != 'attempt') {
         $tot_questions++;
         $arr_answers = array();
         $option = LessonQuestionOption::getOptionsByQuestionId($key);
@@ -22,6 +22,7 @@ foreach ($_POST as $key => $qu) {
         $STUDENT_ANSWERS = new StudentAnswers(NULL);
         $STUDENT_ANSWERS->student = $_POST['student'];
         $STUDENT_ANSWERS->question = $key;
+        $STUDENT_ANSWERS->attempt = $_POST['attempt'];
         $STUDENT_ANSWERS->answer = $qu;
         if ($option['correct_answer'] == $qu) {
             $correct_answers++;
@@ -56,6 +57,7 @@ $MARKS->student = $_POST['student'];
 $MARKS->marks = $marks;
 $MARKS->grade = $grade;
 $MARKS->paper = $_POST['paper'];
+$MARKS->attempt = $_POST['attempt'];
 $MARKS->create();
 
 $final_arr['answers'] = $arr;

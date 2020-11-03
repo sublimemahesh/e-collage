@@ -117,6 +117,7 @@ $PERIOD = new DatePeriod($begin, $interval, $end);
                                     <?php
                                     foreach ($PERIOD as $date) {
                                         $date_f = $date->format("Y-m-d");
+                                        $today = date("Y-m-d");
                                     ?>
 
                                         <div class="card">
@@ -133,39 +134,130 @@ $PERIOD = new DatePeriod($begin, $interval, $end);
                                                     </div>
                                                 </div>
                                             </a>
+                                            <?php
+                                            if ($date_f == $today) {
+                                            ?>
+                                                <div class="card-body" style="display: none;">
+                                                    <hr style="margin: 0px 0px 20px 0px;">
+                                                    <div class="col-md-9">
+                                                        <?php
+                                                        $LECTURE_VIDEO = new LectureVideo(NULL);
 
-                                            <div class="card-body" style="display: none;">
-                                                <hr style="margin: 0px 0px 20px 0px;">
+                                                        if (count($LECTURE_VIDEO->getVideoByClass($id, $date_f)) > 0) {
+                                                            foreach ($LECTURE_VIDEO->getVideoByClass($id, $date_f) as $lecture_video) {
+                                                        ?>
+                                                                <div class="col-md-9">
+                                                                    <iframe width="100%" height="500" src="https://www.youtube.com/embed/<?php echo substr($lecture_video['url'], 17) ?>" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                                                                    <button class="file-delete-btn delete delete-video btn-danger" data-id=" <?php echo $lecture_video['id'] ?>" title="Delete" type="button" style="background-color: red;margin-right: 9px;">
+                                                                        <span class="icon icon-remove"></span>
+                                                                    </button>
+
+                                                                </div>
+                                                                <div class="col-md-3 chat-box">
+                                                                    <div style="height:400px; border:1px solid #ccc; overflow-y: scroll; margin-bottom:24px; padding:16px;" class="chat_history" data-lecture_id="<?php echo $_SESSION['id'] ?>" video_id="<?php echo $lecture_video['id'] ?>" id="chat_history_<?php echo $lecture_video['id'] ?>">
+                                                                        <p>Start your Chat session now..!</p>
+                                                                    </div>
+                                                                    <div class="form-group">
+                                                                        <textarea class="form-control" name="chat_message_<?php echo $lecture_video['id'] ?>" id="chat_message_<?php echo $lecture_video['id'] ?>" placeholder="Enter"></textarea>
+                                                                    </div>
+                                                                    <div class="form-group" align="right">
+                                                                        <button type="button" name="send_chat" class="btn btn-info send_chat" lecture_id="<?php echo $_SESSION['id'] ?>" video_id="<?php echo $lecture_video['id'] ?>">Send</button></div>
+                                                                </div>
+
+                                                            <?php
+                                                            }
+                                                            ?>
+                                                    </div>
+                                                    <div class="col-md-3 active-students">
+                                                        <div style="height:auto; border:1px solid #ccc;  margin-bottom:24px; padding:16px;" class="chat_history" data-lecture_id="<?php echo $_SESSION['id'] ?>" video_id="<?php echo $lecture_video['id'] ?>" id="chat_history_<?php echo $lecture_video['id'] ?>">
+                                                            <h3>Active Students</h3>
+                                                            <ul>
+                                                                <?php
+                                                                $students = StudentRegistration::getStudentByClassId($id);
+                                                                $count = 0;
+                                                                foreach ($students as $student) {
+                                                                    $STU = new Student($student['student_id']);
+                                                                    if ($STU->is_online == 1) {
+                                                                        $count++;
+                                                                ?>
+                                                                        <li>
+                                                                            <div class="row">
+                                                                                <?php
+                                                                                if (empty($STU->image_name)) {
+                                                                                ?>
+                                                                                    <img src="img/member.jpg" />
+                                                                                <?php
+                                                                                } else {
+                                                                                ?>
+                                                                                    <img src="upload/student/<?= $STU->image_name; ?>" />
+                                                                                <?php
+                                                                                }
+                                                                                ?>
+
+                                                                                <h5><?= $STU->full_name; ?></h5>
+
+                                                                            </div>
+                                                                        </li>
+
+                                                                    <?php
+
+                                                                    }
+                                                                }
+                                                                if ($count == 0) {
+                                                                    ?>
+                                                                    <h5>No any active students.</h5>
+                                                                <?php
+                                                                }
+                                                                ?>
+                                                            </ul>
+                                                        </div>
+
+                                                    </div>
                                                 <?php
-                                                $LECTURE_VIDEO = new LectureVideo(NULL);
-
-                                                if (count($LECTURE_VIDEO->getVideoByClass($id, $date_f)) > 0) {
-                                                    foreach ($LECTURE_VIDEO->getVideoByClass($id, $date_f) as $lecture_video) {
+                                                        } else {
                                                 ?>
-                                                        <div class="col-md-9">
-                                                            <iframe width="100%" height="500" src="https://www.youtube.com/embed/<?php echo substr($lecture_video['url'], 17) ?>" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-                                                            <button class="file-delete-btn delete delete-video btn-danger" data-id=" <?php echo $lecture_video['id'] ?>" title="Delete" type="button" style="background-color: red;margin-right: 9px;">
-                                                                <span class="icon icon-remove"></span>
-                                                            </button>
-
-                                                        </div>
-                                                        <div class="col-md-3">
-                                                            <div style="height:400px; border:1px solid #ccc; overflow-y: scroll; margin-bottom:24px; padding:16px;" class="chat_history" data-lecture_id="<?php echo $_SESSION['id'] ?>" video_id="<?php echo $lecture_video['id'] ?>" id="chat_history_<?php echo $lecture_video['id'] ?>">
-                                                                <p>Start your Chat session now..!</p>
-                                                            </div>
-                                                            <div class="form-group">
-                                                                <textarea class="form-control" name="chat_message_<?php echo $lecture_video['id'] ?>" id="chat_message_<?php echo $lecture_video['id'] ?>" placeholder="Enter"></textarea>
-                                                            </div>
-                                                            <div class="form-group" align="right">
-                                                                <button type="button" name="send_chat" class="btn btn-info send_chat" lecture_id="<?php echo $_SESSION['id'] ?>" video_id="<?php echo $lecture_video['id'] ?>">Send</button></div>
-                                                        </div>
-                                                    <?php
-                                                    }
-                                                } else {
-                                                    ?>
                                                     <h4 class="text-danger text-center"> No Video Available</h4>
                                                 <?php } ?>
-                                            </div>
+                                                </div>
+                                            <?php
+                                            } else {
+                                            ?>
+                                                <div class="card-body" style="display: none;">
+                                                    <hr style="margin: 0px 0px 20px 0px;">
+                                                    <?php
+                                                    $LECTURE_VIDEO = new LectureVideo(NULL);
+
+                                                    if (count($LECTURE_VIDEO->getVideoByClass($id, $date_f)) > 0) {
+                                                        foreach ($LECTURE_VIDEO->getVideoByClass($id, $date_f) as $lecture_video) {
+                                                    ?>
+                                                            <div class="col-md-9">
+                                                                <iframe width="100%" height="500" src="https://www.youtube.com/embed/<?php echo substr($lecture_video['url'], 17) ?>" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                                                                <button class="file-delete-btn delete delete-video btn-danger" data-id=" <?php echo $lecture_video['id'] ?>" title="Delete" type="button" style="background-color: red;margin-right: 9px;">
+                                                                    <span class="icon icon-remove"></span>
+                                                                </button>
+
+                                                            </div>
+                                                            <div class="col-md-3">
+                                                                <div style="height:400px; border:1px solid #ccc; overflow-y: scroll; margin-bottom:24px; padding:16px;" class="chat_history" data-lecture_id="<?php echo $_SESSION['id'] ?>" video_id="<?php echo $lecture_video['id'] ?>" id="chat_history_<?php echo $lecture_video['id'] ?>">
+                                                                    <p>Start your Chat session now..!</p>
+                                                                </div>
+                                                                <div class="form-group">
+                                                                    <textarea class="form-control" name="chat_message_<?php echo $lecture_video['id'] ?>" id="chat_message_<?php echo $lecture_video['id'] ?>" placeholder="Enter"></textarea>
+                                                                </div>
+                                                                <div class="form-group" align="right">
+                                                                    <button type="button" name="send_chat" class="btn btn-info send_chat" lecture_id="<?php echo $_SESSION['id'] ?>" video_id="<?php echo $lecture_video['id'] ?>">Send</button></div>
+                                                            </div>
+                                                        <?php
+                                                        }
+                                                    } else {
+                                                        ?>
+                                                        <h4 class="text-danger text-center"> No Video Available</h4>
+                                                    <?php } ?>
+                                                </div>
+                                            <?php
+                                            }
+                                            ?>
+
                                         </div>
                                     <?php } ?>
 
@@ -274,7 +366,7 @@ $PERIOD = new DatePeriod($begin, $interval, $end);
                                                                             <?php
                                                                             if ($class_end_time < $todaytime) {
                                                                             ?>
-                                                                                 | <a href="view-student-marks.php?id=<?php echo $paper['id'] ?>" class="btn btn-sm btn-primary" title="View Marks"><i class="waves-effect icon icon-eye" data-type="cancel"></i></a>
+                                                                                | <a href="view-student-marks.php?id=<?php echo $paper['id'] ?>" class="btn btn-sm btn-primary" title="View Marks"><i class="waves-effect icon icon-eye" data-type="cancel"></i></a>
                                                                             <?php
                                                                             }
                                                                             ?>

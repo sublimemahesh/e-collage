@@ -94,7 +94,7 @@ $PERIOD = new DatePeriod($begin, $interval, $end);
 
                                                     $date = $date_start . ' ' . substr($LECTURE_CLASS->start_time, 0, 5);
 
-// dd($date_start_2 . $LECTURE_CLASS->start_time);
+                                                    // dd($date_start_2 . $LECTURE_CLASS->start_time);
                                                     if ($date_start_2 . $LECTURE_CLASS->start_time >= $today_time) {
                                                         // dd($date);
                                                 ?>
@@ -230,6 +230,7 @@ $PERIOD = new DatePeriod($begin, $interval, $end);
                                                                     <th>Class</th>
                                                                     <th>Class Date</th>
                                                                     <th>Paper</th>
+                                                                    <th>Attempt</th>
                                                                     <th>Attended At</th>
                                                                     <th>Marks</th>
                                                                     <th>Grade</th>
@@ -249,18 +250,32 @@ $PERIOD = new DatePeriod($begin, $interval, $end);
                                                                     <?php
                                                                     if (count($marks) > 2) {
                                                                     ?>
+                                                                        <td><?php echo $marks['attempt']; ?></td>
                                                                         <td><?php echo $marks['created_at']; ?></td>
                                                                         <td><?php echo $marks['marks'] . '%'; ?></td>
                                                                         <td><?php echo $marks['grade']; ?></td>
                                                                         <td>
-                                                                            <a href="view-mcq-paper-answers.php?id=<?= $marks['paper']; ?>" class="card-link" style="" id="enter-class" wid="">
-                                                                                <p class="btn btn-warning btn-block" style="width: 70%">View Answers</p>
-                                                                            </a>
+                                                                            <?php
+                                                                            if ($marks['attempt'] == 3) {
+                                                                            ?>
+                                                                                <a href="view-mcq-paper-answers.php?id=<?= $marks['paper']; ?>" class="card-link" style="" id="enter-class" wid="">
+                                                                                    <p class="btn btn-warning btn-block">View Answers</p>
+                                                                                </a>
+                                                                            <?php
+                                                                            } else {
+                                                                            ?>
+                                                                                <a href="view-mcq-paper.php?id=<?= $marks['paper']; ?>" class="card-link" style="" id="enter-class" wid="">
+                                                                                    <p class="btn btn-success btn-block">Attend now</p>
+                                                                                </a>
+                                                                            <?php
+                                                                            }
+                                                                            ?>
+
                                                                         </td>
                                                                     <?php
                                                                     } else {
                                                                     ?>
-                                                                        <td colspan="3">You do not attend this paper yet... </td>
+                                                                        <td colspan="4">You do not attend this paper yet... </td>
                                                                         <td>
                                                                             <a href="view-mcq-paper.php?id=<?= $marks['paper']; ?>" class="card-link" style="" id="enter-class" wid="">
                                                                                 <p class="btn btn-success btn-block" style="width: 70%">Attend now</p>
@@ -279,6 +294,8 @@ $PERIOD = new DatePeriod($begin, $interval, $end);
                                                                     <th>ID</th>
                                                                     <th>Class</th>
                                                                     <th>Class Date</th>
+                                                                    <th>Paper</th>
+                                                                    <th>Attempt</th>
                                                                     <th>Attended At</th>
                                                                     <th>Marks</th>
                                                                     <th>Grade</th>

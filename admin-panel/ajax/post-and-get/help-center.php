@@ -8,6 +8,7 @@ if (isset($_POST['create'])) {
 
     $HELP_CENTER->title = $_POST['title'];
     $HELP_CENTER->description = $_POST['description'];
+    $HELP_CENTER->for_lecturer = $_POST['to_whom'];
      
     $HELP_CENTER->create();
     $result = [
@@ -23,6 +24,7 @@ if (isset($_POST['update'])) {
 
     $HELP_CENTER->title = $_POST['title'];
     $HELP_CENTER->description = $_POST['description'];
+    $HELP_CENTER->for_lecturer = $_POST['to_whom'];
     $HELP_CENTER->update();
     
     $result = [

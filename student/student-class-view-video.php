@@ -52,15 +52,25 @@ $start_time = $LECTURE_CLASS->start_date . ' ' . $LECTURE_CLASS->start_time;
                             <div class="tab-content">
                                 <div class="animated">
                                     <div class="middle-area" id="count_section">
-                                        <?php
-                                        $video_id = array();
-                                        foreach ($LECTURE_CLASS_VIDEO->getVideoByClass($id, $today) as $lecture_video) {
-                                            array_push($video_id, $lecture_video['id']);
+                                        <div class="col-md-9">
+                                            <?php
+                                            $video_id = array();
                                             $papers = LessonMCQPaper::getMCQPapersByClassId($id, $today);
-                                        ?>
+                                            foreach ($LECTURE_CLASS_VIDEO->getVideoByClass($id, $today) as $lecture_video) {
+                                                array_push($video_id, $lecture_video['id']);
 
-                                            <div class="col-md-9">
-                                                <iframe width="100%" height="520" src="https://www.youtube.com/embed/<?php echo substr($lecture_video['url'], 17) ?>" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                                            ?>
+
+                                                <div class="col-md-12">
+                                                    <iframe width="100%" height="520" src="https://www.youtube.com/embed/<?php echo substr($lecture_video['url'], 17) ?>" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                                                    
+                                                </div>
+
+                                            <?php
+                                            }
+                                            ?>
+
+                                            <div class="col-md-12">
                                                 <center>
                                                     <?php
                                                     if ($papers) {
@@ -86,10 +96,7 @@ $start_time = $LECTURE_CLASS->start_date . ' ' . $LECTURE_CLASS->start_time;
                                                     ?>
                                                 </center>
                                             </div>
-
-                                        <?php
-                                        }
-                                        ?>
+                                        </div>
                                         <div class="col-md-3">
                                             <div style="height:400px; border:1px solid #ccc; overflow-y: scroll; margin-bottom:24px; padding:16px;" class="chat_history" data-studentid="<?php echo $_SESSION['id'] ?>" video_id="<?php echo $video_id['0'] ?>" id="chat_history_<?php echo $video_id['0'] ?>">
                                                 <p>Start your Chat session now..!</p>

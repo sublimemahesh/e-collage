@@ -34,6 +34,7 @@ class Student {
     public $phone_code;
     public $phone_verification;
     public $resetcode;
+    public $is_online;
     public $queue;
 
     public function __construct($id) {
@@ -67,6 +68,7 @@ class Student {
             $this->phone_code = $result['phone_code'];
             $this->phone_verification = $result['phone_verification'];
             $this->resetcode = $result['resetcode'];
+            $this->is_online = $result['is_online'];
             $this->queue = $result['queue'];
 
             return $result;
@@ -178,6 +180,7 @@ class Student {
             $this->id = $result['id'];
             $this->setAuthToken($result['id']);
             $this->setLastLogin($this->id);
+            $this->updateOnlineStatus($this->id, 1);
             $student = $this->__construct($this->id);
             $this->setUserSession($student);
 
@@ -202,6 +205,22 @@ class Student {
         }
     }
 
+    public function updateOnlineStatus($id, $status) {
+
+        $query = "UPDATE  `student` SET "
+                . "`is_online` ='" . $status . "' "
+                . "WHERE `id` = '" . $id . "'";
+
+        $db = new Database();
+
+        $result = $db->readQuery($query);
+
+        if ($result) {
+            return TRUE;
+        } else {
+            return FALSE;
+        }
+    }
     public function changePassword($id, $password) {
 
         $enPass = md5($password);
@@ -344,11 +363,12 @@ class Student {
     }
 
     public function logOut() {
-
         if (!isset($_SESSION)) {
 
             session_start();
         }
+       Student::updateOnlineStatus($_SESSION["id"], 0);
+             
 
         unset($_SESSION["id"]);
         unset($_SESSION["full_name"]);
@@ -442,7 +462,7 @@ class Student {
 
         $now = date('Y-m-d H:i:s');
 
-        $query = "UPDATE `student` SET `lastLogin` ='" . $now . "' WHERE `id`='" . $id . "'";
+        $query = "UPDATE `student` SET `lastLogin` ='" . $now . "' AND `is_online` = 1 WHERE `id`='" . $id . "'";
 
         $db = new Database();
 
@@ -629,7 +649,7 @@ class Student {
 
         $to = '<' . $this->email . '>';
         $subject = 'Your Registration is Successful!. - Ecollage.lk';
-        $from = 'SYNOTEC.LK NOREPLY <noreply@airportcars.lk>';
+        $from = 'ECOLLEGE.LK NOREPLY <info@ecollege.lk>';
 
 // To send HTML mail, the Content-type header must be set
         $headers = 'MIME-Version: 1.0' . "\r\n";

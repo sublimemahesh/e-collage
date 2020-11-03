@@ -11,6 +11,7 @@ Class StudentMarks
     public $id;
     public $student;
     public $paper;
+    public $attempt;
     public $marks;
     public $grade;
     public $created_at;
@@ -28,6 +29,7 @@ Class StudentMarks
             $this->id = $result['id'];
             $this->student = $result['student'];
             $this->paper = $result['paper'];
+            $this->attempt = $result['attempt'];
             $this->marks = $result['marks'];
             $this->grade = $result['grade'];
             $this->created_at = $result['created_at'];
@@ -40,9 +42,10 @@ Class StudentMarks
     {
         date_default_timezone_set('Asia/Colombo');
         $createdAt = date('Y-m-d H:i:s');
-        $query = "INSERT INTO `student_marks` (`student`,`paper`, `marks`, `grade`, `created_at`) VALUES  ('"
+        $query = "INSERT INTO `student_marks` (`student`,`paper`,`attempt`, `marks`, `grade`, `created_at`) VALUES  ('"
             . $this->student . "', '"
             . $this->paper . "', '"
+            . $this->attempt . "', '"
             . $this->marks . "','"
             . $this->grade . "','"
             . $createdAt . "')";
@@ -106,7 +109,7 @@ Class StudentMarks
     public function getStudentMarksByPaper($id, $paper)
     {
 
-        $query = "SELECT * FROM `student_marks` WHERE `student` = '" . $id . "' AND `paper` = '" . $paper . "'";
+        $query = "SELECT * FROM `student_marks` WHERE `student` = '" . $id . "' AND `paper` = '" . $paper . "' ORDER BY `id` DESC LIMIT 1";
 
         $db = new Database();
         $result = mysql_fetch_array($db->readQuery($query));
