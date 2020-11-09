@@ -13,6 +13,7 @@ class LectureVideo {
     public $lecture_id;
     public $class_id;
     public $url;
+    public $is_youtube;
     public $date;
 
     public function __construct($id) {
@@ -29,6 +30,7 @@ class LectureVideo {
             $this->lecture_id = $result['lecture_id'];
             $this->date = $result['date'];
             $this->url = $result['url'];
+            $this->is_youtube = $result['is_youtube'];
 
             return $this;
         }
@@ -36,11 +38,12 @@ class LectureVideo {
 
     public function create() {
 
-        $query = "INSERT INTO `lecture_class_video` (`lecture_id`,`class_id`, `date`, `url`) VALUES  ('"
+        $query = "INSERT INTO `lecture_class_video` (`lecture_id`,`class_id`, `date`, `url`, `is_youtube`) VALUES  ('"
                 . $this->lecture_id . "', '"
                 . $this->class_id . "', '"
                 . $this->date . "','"
-                . $this->url . "')";
+                . $this->url . "','"
+                . $this->is_youtube . "')";
 
         $db = new Database();
 
@@ -94,7 +97,7 @@ class LectureVideo {
 
     public function getVideoByClass($id, $date) {
 
-        $query = "SELECT * FROM `lecture_class_video` WHERE `class_id` = '" . $id . "' AND `date` = '" . $date . "' ";
+        $query = "SELECT * FROM `lecture_class_video` WHERE `class_id` = '" . $id . "' AND `date` = '" . $date . "' ORDER BY `id` ASC";
 
         $db = new Database();
 

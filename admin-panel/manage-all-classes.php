@@ -47,7 +47,7 @@ include './auth.php';
 
                                         <strong>Manage All Classes</strong>
                                     </div>
-                                    <div class="card-body">
+                                    <div class="card-body table-card-body">
                                         <table id="demo-datatables-colreorder-1" class="table table-hover table-striped table-nowrap dataTable" cellspacing="0" width="100%">
                                             <thead>
                                                 <tr>
@@ -101,6 +101,7 @@ echo 'Free';
                                                     <th>Class Type</th>
                                                     <th>Subject</th>
                                                     <th>Start Date</th>
+                                                    <th>Time</th>
                                                     <th>Modules</th>
                                                     <th>Fee</th>
                                                     <th>Payment Type</th>

@@ -159,7 +159,7 @@ if ($is_paper) {
                                                     <input type="hidden" name="student" value="<?= $_SESSION['id']; ?>" />
                                                     <input type="hidden" name="paper" value="<?= $id; ?>" />
                                                     <input type="hidden" name="attempt" id="attempt" value="<?= $attempt; ?>" />
-                                                    <input type="submit" class="btn btn-success btn-block" id="submit-mcq-paper" style="width: 15%" value="Submit" />
+                                                    <input type="submit" class="btn btn-success btn-block" id="submit-mcq-paper" value="Submit" />
                                                 </center>
                                             </form>
                                         </div>

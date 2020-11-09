@@ -8,6 +8,7 @@ if (isset($_POST['create_video'])) {
     $LECTURE_VIDEO = new LectureVideo(NULL);
 
     $LECTURE_VIDEO->url = $_POST['url'];
+    $LECTURE_VIDEO->is_youtube = $_POST['is_youtube'];
     $LECTURE_VIDEO->date = $_POST['date'];
     $LECTURE_VIDEO->class_id = $_POST['class_id'];
     $LECTURE_VIDEO->lecture_id = $_POST['lecture_id'];
