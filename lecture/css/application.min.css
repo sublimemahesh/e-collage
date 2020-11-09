@@ -917,8 +917,14 @@ html {
     margin-top   : 0px;
     margin-bottom: 20px;
 }
+
 .col-md-3.chat-box {
     padding-right: 0;
+}
+
+img.media-icon {
+    margin: auto;
+    margin-bottom: 30px;
 }
 
 @-o-keyframes icon-spin {

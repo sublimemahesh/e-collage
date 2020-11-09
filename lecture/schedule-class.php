@@ -42,7 +42,12 @@ $PERIOD = new DatePeriod($begin, $interval, $end);
     <link href="css/sweetalert.css" rel="stylesheet" type="text/css" />
     <link href="css/jm.spinner.css" rel="stylesheet" type="text/css" />
     <link href="css/simplelightbox.min.css" rel="stylesheet" type="text/css" />
-
+    <style>
+        .modal-backdrop.in {
+            opacity: 0;
+            z-index: -111;
+        }
+    </style>
 </head>
 
 <body class="layout layout-header-fixed">
@@ -94,7 +99,67 @@ $PERIOD = new DatePeriod($begin, $interval, $end);
                                             <div class="form-group">
                                                 <label class="col-sm-2 control-label " for="name" style="text-align: left">Video URL Code: </label>
                                                 <div class="col-sm-10">
-                                                    <input id="url" name="url" class="form-control  " type="text" placeholder="Enter Video URL  ">
+                                                    <!-- <input id="url" name="url" class="form-control  " type="text" placeholder="Enter Video URL  "> -->
+                                                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#select-media" id="add-url-btn">
+                                                        Add Url
+                                                    </button>
+
+                                                </div>
+                                            </div>
+                                            <div class="modal fade" id="select-media" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                                <div class="modal-dialog" role="document">
+                                                    <div class="modal-content">
+                                                        <div class="modal-header">
+                                                            <h5 class="modal-title" id="exampleModalLabel">Please select media</h5>
+
+                                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                                <span aria-hidden="true">&times;</span>
+                                                            </button>
+                                                        </div>
+                                                        <div class="modal-body">
+                                                            <div class="col-md-12">
+                                                                <div class="col-md-6">
+                                                                    <a data-toggle="modal" data-target="#add-url" class="media-btn" media="1">
+                                                                        <img src="img/youtube.png" class="img-responsive media-icon" alt="">
+                                                                    </a>
+                                                                </div>
+                                                                <div class="col-md-6">
+                                                                    <a data-toggle="modal" data-target="#add-url" class="media-btn" media="0">
+                                                                        <img src="img/jitsimeet.jpg" width="100" class="img-responsive media-icon" alt="">
+                                                                    </a>
+                                                                </div>
+
+                                                            </div>
+                                                        </div>
+                                                        <div class="modal-footer">
+
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="modal fade" id="add-url" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                                <div class="modal-dialog" role="document">
+                                                    <div class="modal-content">
+                                                        <div class="modal-header">
+                                                            <h5 class="modal-title" id="exampleModalLabel">Add Url</h5>
+
+                                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                                <span aria-hidden="true">&times;</span>
+                                                            </button>
+                                                        </div>
+                                                        <div class="modal-body">
+                                                            <div class="col-md-12">
+                                                                <label class="col-sm-2 control-label " for="name" style="text-align: left">Video URL Code: </label>
+                                                                <div class="col-sm-10">
+                                                                    <input id="video_url" class="form-control  " type="text" placeholder="Enter Video URL  ">
+
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="modal-footer">
+                                                            <button type="button" id="apply-btn" class="btn btn-primary">Apply</button>
+                                                        </div>
+                                                    </div>
                                                 </div>
                                             </div>
 
@@ -106,6 +171,8 @@ $PERIOD = new DatePeriod($begin, $interval, $end);
                                                     <input type="hidden" name="create_video">
                                                     <input type="hidden" name="lecture_id" value="<?php echo $_SESSION['id'] ?>">
                                                     <input type="hidden" name="class_id" value="<?php echo $id ?>">
+                                                    <input type="hidden" name="is_youtube" id="is_youtube" value="">
+                                                    <input type="hidden" name="url" id="url" value="">
                                                     <input type="submit" class="btn btn-primary btn-block" value="Create" id="create-video">
                                                 </div>
                                             </div>
@@ -147,10 +214,25 @@ $PERIOD = new DatePeriod($begin, $interval, $end);
                                                             foreach ($LECTURE_VIDEO->getVideoByClass($id, $date_f) as $lecture_video) {
                                                         ?>
                                                                 <div class="col-md-9">
-                                                                    <iframe width="100%" height="500" src="https://www.youtube.com/embed/<?php echo substr($lecture_video['url'], 17) ?>" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-                                                                    <button class="file-delete-btn delete delete-video btn-danger" data-id=" <?php echo $lecture_video['id'] ?>" title="Delete" type="button" style="background-color: red;margin-right: 9px;">
-                                                                        <span class="icon icon-remove"></span>
-                                                                    </button>
+                                                                    <?php
+                                                                    if ($lecture_video['is_youtube'] == 1) {
+                                                                    ?>
+                                                                        <iframe width="100%" height="500" src="https://www.youtube.com/embed/<?php echo substr($lecture_video['url'], 17) ?>" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                                                                        <button class="file-delete-btn delete delete-video btn-danger" data-id=" <?php echo $lecture_video['id'] ?>" title="Delete" type="button" style="background-color: red;margin-right: 9px;">
+                                                                            <span class="icon icon-remove"></span>
+                                                                        </button>
+                                                                    <?php
+                                                                    } else {
+                                                                    ?>
+                                                                        <!-- jitsi meet -->
+                                                                        <iframe width="100%" height="500" allow="camera; microphone; fullscreen; display-capture" src="<?= $lecture_video['url']; ?>" style="height: 500px; width: 100%; border: 0px;"></iframe>
+                                                                        <button class="file-delete-btn delete delete-video btn-danger" data-id=" <?php echo $lecture_video['id'] ?>" title="Delete" type="button" style="background-color: red;margin-right: 9px;">
+                                                                            <span class="icon icon-remove"></span>
+                                                                        </button>
+                                                                    <?php
+                                                                    }
+                                                                    ?>
+
 
                                                                 </div>
                                                                 <div class="col-md-3 chat-box">
@@ -748,6 +830,7 @@ $PERIOD = new DatePeriod($begin, $interval, $end);
     <script src="js/sweetalert.min.js" type="text/javascript"></script>
     <script src="ajax/js/chat.js" type="text/javascript"></script>
     <script src="ajax/js/schedule-class.js" type="text/javascript"></script>
+    <script src="ajax/js/video-url.js" type="text/javascript"></script>
 
     <script src="delete/js/lesson-mcq.js" type="text/javascript"></script>
     <script src="delete/js/lecture-tutorial.js" type="text/javascript"></script>

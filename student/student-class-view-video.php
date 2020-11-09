@@ -62,8 +62,21 @@ $start_time = $LECTURE_CLASS->start_date . ' ' . $LECTURE_CLASS->start_time;
                                             ?>
 
                                                 <div class="col-md-12">
-                                                    <iframe width="100%" height="520" src="https://www.youtube.com/embed/<?php echo substr($lecture_video['url'], 17) ?>" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                                                     
+                                                    <?php
+                                                    if ($lecture_video['is_youtube'] == 1) {
+                                                    ?>
+                                                        <iframe width="100%" height="520" src="https://www.youtube.com/embed/<?php echo substr($lecture_video['url'], 17) ?>" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+                                                    <?php
+                                                    } else {
+                                                    ?>
+                                                        <!-- jitsi meet -->
+                                                        <iframe width="100%" height="520" allow="camera; microphone; fullscreen; display-capture" src="<?= $lecture_video['url']; ?>" style="height: 520px; width: 100%; border: 0px;"></iframe>
+
+                                                    <?php
+                                                    }
+                                                    ?>
                                                 </div>
 
                                             <?php

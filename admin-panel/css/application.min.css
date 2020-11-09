@@ -878,7 +878,9 @@ html {
     text-align: center;
     width: 100%
 }
-
+.table-card-body {
+    overflow-x: scroll;
+}
 @-o-keyframes icon-spin {
     0% {
         -o-transform: rotate(0);
@@ -941,6 +943,7 @@ html {
 }
 
 @media (max-width:767px) {
+    
     .navbar-nav {
         margin: 10px
     }
