@@ -922,8 +922,21 @@ html {
     padding-right: 0;
 }
 
-img.media-icon {
+#go-live {
+    width : 100px;
     margin: auto;
+}
+
+.devider {
+    width     : 50px;
+    margin    : auto;
+    margin-top: -28px;
+    background: #fff;
+    margin-bottom: 20px;
+}
+
+img.media-icon {
+    margin       : auto;
     margin-bottom: 30px;
 }
 

@@ -74,111 +74,234 @@ $PERIOD = new DatePeriod($begin, $interval, $end);
                             </ul>
                             <div class="tab-content">
                                 <div class="tab-pane fade active in" id="home">
-                                    <form class="demo-form-wrapper card " style="padding: 50px" id="form-video">
-                                        <div class="form form-horizontal">
+                                    <?php
+                                    if ($LECTURE_CLASS->payment_type == 0) {
+                                    ?>
+                                        <form class="demo-form-wrapper card " style="padding: 50px" id="form-video">
+                                            <div class="form form-horizontal">
 
-                                            <div class="form-group">
-                                                <label class="col-sm-2 control-label " for="name" style="text-align: left">Select Date: </label>
-                                                <div class="col-sm-10">
+                                                <div class="form-group">
+                                                    <label class="col-sm-2 control-label " for="name" style="text-align: left">Select Date: </label>
+                                                    <div class="col-sm-10">
 
-                                                    <select class="custom-select" id="date" name="date" required="">
-                                                        <option value="">-- Select schedule date -- </option>
-                                                        <?php
-                                                        foreach ($PERIOD as $date) {
+                                                        <select class="custom-select" id="date" name="date" required="">
+                                                            <option value="">-- Select schedule date -- </option>
+                                                            <?php
+                                                            foreach ($PERIOD as $date) {
 
-                                                            if ($date->format("Y-m-d") >= $today) {
-                                                        ?>
-                                                                <option value="<?php echo $date->format("Y-m-d"); ?>"><?php echo $date->format("Y-m-d "); ?></option>
-                                                        <?php
+                                                                if ($date->format("Y-m-d") >= $today) {
+                                                            ?>
+                                                                    <option value="<?php echo $date->format("Y-m-d"); ?>"><?php echo $date->format("Y-m-d "); ?></option>
+                                                            <?php
+                                                                }
                                                             }
-                                                        }
-                                                        ?>
-                                                    </select>
-                                                </div>
-                                            </div>
-                                            <div class="form-group">
-                                                <label class="col-sm-2 control-label " for="name" style="text-align: left">Video URL Code: </label>
-                                                <div class="col-sm-10">
-                                                    <!-- <input id="url" name="url" class="form-control  " type="text" placeholder="Enter Video URL  "> -->
-                                                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#select-media" id="add-url-btn">
-                                                        Add Url
-                                                    </button>
-
-                                                </div>
-                                            </div>
-                                            <div class="modal fade" id="select-media" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                                <div class="modal-dialog" role="document">
-                                                    <div class="modal-content">
-                                                        <div class="modal-header">
-                                                            <h5 class="modal-title" id="exampleModalLabel">Please select media</h5>
-
-                                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                                                <span aria-hidden="true">&times;</span>
-                                                            </button>
-                                                        </div>
-                                                        <div class="modal-body">
-                                                            <div class="col-md-12">
-                                                                <div class="col-md-6">
-                                                                    <a data-toggle="modal" data-target="#add-url" class="media-btn" media="1">
-                                                                        <img src="img/youtube.png" class="img-responsive media-icon" alt="">
-                                                                    </a>
-                                                                </div>
-                                                                <div class="col-md-6">
-                                                                    <a data-toggle="modal" data-target="#add-url" class="media-btn" media="0">
-                                                                        <img src="img/jitsimeet.jpg" width="100" class="img-responsive media-icon" alt="">
-                                                                    </a>
-                                                                </div>
-
-                                                            </div>
-                                                        </div>
-                                                        <div class="modal-footer">
-
-                                                        </div>
+                                                            ?>
+                                                        </select>
                                                     </div>
                                                 </div>
-                                            </div>
-                                            <div class="modal fade" id="add-url" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                                <div class="modal-dialog" role="document">
-                                                    <div class="modal-content">
-                                                        <div class="modal-header">
-                                                            <h5 class="modal-title" id="exampleModalLabel">Add Url</h5>
+                                                <div class="form-group">
+                                                    <label class="col-sm-2 control-label " for="name" style="text-align: left">Video URL Code: </label>
+                                                    <div class="col-sm-10">
+                                                        <!-- <input id="url" name="url" class="form-control  " type="text" placeholder="Enter Video URL  "> -->
+                                                        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#select-media" id="add-url-btn">
+                                                            Add Url
+                                                        </button>
 
-                                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                                                <span aria-hidden="true">&times;</span>
-                                                            </button>
-                                                        </div>
-                                                        <div class="modal-body">
-                                                            <div class="col-md-12">
-                                                                <label class="col-sm-2 control-label " for="name" style="text-align: left">Video URL Code: </label>
-                                                                <div class="col-sm-10">
-                                                                    <input id="video_url" class="form-control  " type="text" placeholder="Enter Video URL  ">
+                                                    </div>
+                                                </div>
+                                                <div class="modal fade" id="select-media" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                                    <div class="modal-dialog" role="document">
+                                                        <div class="modal-content">
+                                                            <div class="modal-header">
+                                                                <h5 class="modal-title" id="exampleModalLabel">Please select media</h5>
+
+                                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                                    <span aria-hidden="true">&times;</span>
+                                                                </button>
+                                                            </div>
+                                                            <div class="modal-body">
+                                                                <div class="col-md-12">
+                                                                    <div class="col-md-6">
+                                                                        <a data-toggle="modal" data-target="#add-url" class="media-btn" media="1">
+                                                                            <img src="img/youtube.png" class="img-responsive media-icon" alt="">
+                                                                        </a>
+                                                                    </div>
+                                                                    <div class="col-md-6">
+                                                                        <a data-toggle="modal" data-target="#add-url" class="media-btn" media="0">
+                                                                            <img src="img/jitsimeet.jpg" width="100" class="img-responsive media-icon" alt="">
+                                                                        </a>
+                                                                    </div>
 
                                                                 </div>
                                                             </div>
-                                                        </div>
-                                                        <div class="modal-footer">
-                                                            <button type="button" id="apply-btn" class="btn btn-primary">Apply</button>
+                                                            <div class="modal-footer">
+
+                                                            </div>
                                                         </div>
                                                     </div>
                                                 </div>
-                                            </div>
+                                                <div class="modal fade" id="add-url" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                                    <div class="modal-dialog" role="document">
+                                                        <div class="modal-content">
+                                                            <div class="modal-header">
+                                                                <h5 class="modal-title" id="exampleModalLabel">Add Url</h5>
 
-                                            <div class="form-group">
-                                                <div class="col-md-3"></div>
-                                                <div class="col-md-3"></div>
-                                                <div class="col-md-4"></div>
-                                                <div class="col-md-2">
-                                                    <input type="hidden" name="create_video">
-                                                    <input type="hidden" name="lecture_id" value="<?php echo $_SESSION['id'] ?>">
-                                                    <input type="hidden" name="class_id" value="<?php echo $id ?>">
-                                                    <input type="hidden" name="is_youtube" id="is_youtube" value="">
-                                                    <input type="hidden" name="url" id="url" value="">
-                                                    <input type="submit" class="btn btn-primary btn-block" value="Create" id="create-video">
+                                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                                    <span aria-hidden="true">&times;</span>
+                                                                </button>
+                                                            </div>
+                                                            <div class="modal-body">
+                                                                <div class="col-md-12">
+                                                                    <label class="col-sm-2 control-label " for="name" style="text-align: left">Video URL Code: </label>
+                                                                    <div class="col-sm-10">
+                                                                        <input id="video_url" class="form-control  " type="text" placeholder="Enter Video URL  ">
+
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="modal-footer">
+                                                                <button type="button" id="apply-btn" class="btn btn-primary">Apply</button>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                                <div class="form-group">
+                                                    <div class="col-md-3"></div>
+                                                    <div class="col-md-3"></div>
+                                                    <div class="col-md-4"></div>
+                                                    <div class="col-md-2">
+                                                        <input type="hidden" name="create_video">
+                                                        <input type="hidden" id="lecture_id" name="lecture_id" value="<?php echo $_SESSION['id'] ?>">
+                                                        <input type="hidden" id="class_id" name="class_id" value="<?php echo $id ?>">
+                                                        <input type="hidden" name="is_youtube" id="is_youtube" value="">
+                                                        <input type="hidden" name="url" id="url" value="">
+                                                        <input type="submit" class="btn btn-primary btn-block" value="Create" id="create-video">
+                                                    </div>
                                                 </div>
                                             </div>
+                                        </form>
+                                        <div class="row">
+                                            <div id="meeting"></div>
                                         </div>
-                                    </form>
+                                    <?php
+                                    } else {
+                                    ?>
+                                        <div class="row">
+                                            <a href="#" id="go-live" class="btn btn-primary btn-block " media="0">Go Live</a>
+                                        </div>
+                                        <hr />
+                                        <h5 class="text-center devider">OR</h5>
+                                        <form class="demo-form-wrapper card " style="padding: 50px" id="form-video">
+                                            <div class="form form-horizontal">
 
+                                                <div class="form-group">
+                                                    <label class="col-sm-2 control-label " for="name" style="text-align: left">Select Date: </label>
+                                                    <div class="col-sm-10">
+
+                                                        <select class="custom-select" id="date" name="date" required="">
+                                                            <option value="">-- Select schedule date -- </option>
+                                                            <?php
+                                                            foreach ($PERIOD as $date) {
+
+                                                                if ($date->format("Y-m-d") >= $today) {
+                                                            ?>
+                                                                    <option value="<?php echo $date->format("Y-m-d"); ?>"><?php echo $date->format("Y-m-d "); ?></option>
+                                                            <?php
+                                                                }
+                                                            }
+                                                            ?>
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label class="col-sm-2 control-label " for="name" style="text-align: left">Video URL Code: </label>
+                                                    <div class="col-sm-10">
+                                                        <input id="url" name="url" class="form-control  " type="text" placeholder="Enter Video URL  ">
+                                                        <!-- <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#select-media" id="add-url-btn">
+                                                        Add Url
+                                                    </button> -->
+
+                                                    </div>
+                                                </div>
+                                                <div class="modal fade" id="select-media" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                                    <div class="modal-dialog" role="document">
+                                                        <div class="modal-content">
+                                                            <div class="modal-header">
+                                                                <h5 class="modal-title" id="exampleModalLabel">Please select media</h5>
+
+                                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                                    <span aria-hidden="true">&times;</span>
+                                                                </button>
+                                                            </div>
+                                                            <div class="modal-body">
+                                                                <div class="col-md-12">
+                                                                    <div class="col-md-6">
+                                                                        <a data-toggle="modal" data-target="#add-url" class="media-btn" media="1">
+                                                                            <img src="img/youtube.png" class="img-responsive media-icon" alt="">
+                                                                        </a>
+                                                                    </div>
+                                                                    <div class="col-md-6">
+                                                                        <a id="go-live12" class="media-btn" media="0">
+                                                                            <img src="img/jitsimeet.jpg" width="100" class="img-responsive media-icon" alt="">
+                                                                        </a>
+                                                                    </div>
+
+                                                                </div>
+                                                            </div>
+                                                            <div class="modal-footer">
+
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="modal fade" id="add-url" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                                    <div class="modal-dialog" role="document">
+                                                        <div class="modal-content">
+                                                            <div class="modal-header">
+                                                                <h5 class="modal-title" id="exampleModalLabel">Add Url</h5>
+
+                                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                                    <span aria-hidden="true">&times;</span>
+                                                                </button>
+                                                            </div>
+                                                            <div class="modal-body">
+                                                                <div class="col-md-12">
+                                                                    <label class="col-sm-2 control-label " for="name" style="text-align: left">Video URL Code: </label>
+                                                                    <div class="col-sm-10">
+                                                                        <input id="video_url" class="form-control  " type="text" placeholder="Enter Video URL  ">
+
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="modal-footer">
+                                                                <button type="button" id="apply-btn" class="btn btn-primary">Apply</button>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                                <div class="form-group">
+                                                    <div class="col-md-3"></div>
+                                                    <div class="col-md-3"></div>
+                                                    <div class="col-md-4"></div>
+                                                    <div class="col-md-2">
+                                                        <input type="hidden" name="create_video">
+                                                        <input type="hidden" id="lecture_id" name="lecture_id" value="<?php echo $_SESSION['id'] ?>">
+                                                        <input type="hidden" id="class_id" name="class_id" value="<?php echo $id ?>">
+                                                        <input type="hidden" name="is_youtube" id="is_youtube" value="1">
+                                                        <!-- <input type="hidden" name="url" id="url" value=""> -->
+                                                        <input type="submit" class="btn btn-primary btn-block" value="Create" id="create-video">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </form>
+                                        <div class="row">
+                                            <div id="meeting"></div>
+                                        </div>
+                                    <?php
+                                    }
+                                    ?>
                                 </div>
                                 <div class="tab-pane fade" id="past_lesson">
                                     <?php
@@ -188,7 +311,7 @@ $PERIOD = new DatePeriod($begin, $interval, $end);
                                     ?>
 
                                         <div class="card">
-                                            <a href="# " class="   card-toggler" title="Collapse">
+                                            <a href="# " class="card-toggler" title="Collapse">
                                                 <div class="card-header  ">
                                                     <div class="col-md-8">
                                                         <h5>
@@ -209,12 +332,13 @@ $PERIOD = new DatePeriod($begin, $interval, $end);
                                                     <div class="col-md-9">
                                                         <?php
                                                         $LECTURE_VIDEO = new LectureVideo(NULL);
-
                                                         if (count($LECTURE_VIDEO->getVideoByClass($id, $date_f)) > 0) {
                                                             foreach ($LECTURE_VIDEO->getVideoByClass($id, $date_f) as $lecture_video) {
+
                                                         ?>
                                                                 <div class="col-md-9">
                                                                     <?php
+
                                                                     if ($lecture_video['is_youtube'] == 1) {
                                                                     ?>
                                                                         <iframe width="100%" height="500" src="https://www.youtube.com/embed/<?php echo substr($lecture_video['url'], 17) ?>" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
@@ -313,11 +437,24 @@ $PERIOD = new DatePeriod($begin, $interval, $end);
                                                         foreach ($LECTURE_VIDEO->getVideoByClass($id, $date_f) as $lecture_video) {
                                                     ?>
                                                             <div class="col-md-9">
-                                                                <iframe width="100%" height="500" src="https://www.youtube.com/embed/<?php echo substr($lecture_video['url'], 17) ?>" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-                                                                <button class="file-delete-btn delete delete-video btn-danger" data-id=" <?php echo $lecture_video['id'] ?>" title="Delete" type="button" style="background-color: red;margin-right: 9px;">
-                                                                    <span class="icon icon-remove"></span>
-                                                                </button>
-
+                                                                <?php
+                                                                if ($lecture_video['is_youtube'] == 1) {
+                                                                ?>
+                                                                    <iframe width="100%" height="500" src="https://www.youtube.com/embed/<?php echo substr($lecture_video['url'], 17) ?>" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                                                                    <button class="file-delete-btn delete delete-video btn-danger" data-id=" <?php echo $lecture_video['id'] ?>" title="Delete" type="button" style="background-color: red;margin-right: 9px;">
+                                                                        <span class="icon icon-remove"></span>
+                                                                    </button>
+                                                                <?php
+                                                                } else {
+                                                                ?>
+                                                                    <!-- jitsi meet -->
+                                                                    <iframe width="100%" height="500" allow="camera; microphone; fullscreen; display-capture" src="<?= $lecture_video['url']; ?>" style="height: 500px; width: 100%; border: 0px;"></iframe>
+                                                                    <button class="file-delete-btn delete delete-video btn-danger" data-id=" <?php echo $lecture_video['id'] ?>" title="Delete" type="button" style="background-color: red;margin-right: 9px;">
+                                                                        <span class="icon icon-remove"></span>
+                                                                    </button>
+                                                                <?php
+                                                                }
+                                                                ?>
                                                             </div>
                                                             <div class="col-md-3">
                                                                 <div style="height:400px; border:1px solid #ccc; overflow-y: scroll; margin-bottom:24px; padding:16px;" class="chat_history" data-lecture_id="<?php echo $_SESSION['id'] ?>" video_id="<?php echo $lecture_video['id'] ?>" id="chat_history_<?php echo $lecture_video['id'] ?>">
@@ -828,6 +965,8 @@ $PERIOD = new DatePeriod($begin, $interval, $end);
     <script src="js/application.min.js"></script>
     <script src="js/demo.min.js"></script>
     <script src="js/sweetalert.min.js" type="text/javascript"></script>
+    <script src='https://meet.jit.si/external_api.js'></script>
+    <script src="ajax/js/go-live.js" type="text/javascript"></script>
     <script src="ajax/js/chat.js" type="text/javascript"></script>
     <script src="ajax/js/schedule-class.js" type="text/javascript"></script>
     <script src="ajax/js/video-url.js" type="text/javascript"></script>
