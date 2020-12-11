@@ -146,8 +146,18 @@ $PERIOD = new DatePeriod($begin, $interval, $end);
                                                         foreach ($LECTURE_VIDEO->getVideoByClass($id, $date_Start) as $lecture_video) {
                                                     ?>
                                                             <div class="col-md-9">
-                                                                <iframe width="100%" height="500" src="https://www.youtube.com/embed/<?php echo substr($lecture_video['url'], 17) ?>" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-
+                                                                <?php
+                                                                if ($lecture_video['is_youtube'] == 1) {
+                                                                ?>
+                                                                    <iframe width="100%" height="500" src="https://www.youtube.com/embed/<?php echo substr($lecture_video['url'], 17) ?>" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                                                                <?php
+                                                                } else {
+                                                                ?>
+                                                                    <!-- jitsi meet -->
+                                                                    <iframe width="100%" height="500" allow="camera; microphone; fullscreen; display-capture" src="<?= $lecture_video['url']; ?>" style="height: 500px; width: 100%; border: 0px;"></iframe>
+                                                                <?php
+                                                                }
+                                                                ?>
                                                             </div>
                                                             <div class="col-md-3">
                                                                 <div style="height:500px; border:1px solid #ccc; overflow-y: scroll; margin-bottom:24px; padding:16px;" class="chat_history" data-touserid="'+to_user_id+'">

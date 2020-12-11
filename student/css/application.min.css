@@ -1068,8 +1068,14 @@ html {
     .mcq-section .count-section {
         height: auto !important;
     }
+
     .sidenav.level-1.sidenav-collapsed {
         z-index: 9999999;
+    }
+
+    .layout-sidebar {
+        z-index : 9999;
+        position: relative;
     }
 }
 
