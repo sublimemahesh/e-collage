@@ -100,11 +100,11 @@ $PERIOD = new DatePeriod($begin, $interval, $end);
                                                     </div>
                                                 </div>
                                                 <div class="form-group">
-                                                    <label class="col-sm-2 control-label " for="name" style="text-align: left">Video URL Code: </label>
+                                                    <label class="col-sm-2 control-label " for="name" style="text-align: left">Video URL / Meeting Link : </label>
                                                     <div class="col-sm-10">
                                                         <!-- <input id="url" name="url" class="form-control  " type="text" placeholder="Enter Video URL  "> -->
                                                         <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#select-media" id="add-url-btn">
-                                                            Add Url
+                                                            Add Url / Meeting Link
                                                         </button>
 
                                                     </div>
@@ -144,18 +144,20 @@ $PERIOD = new DatePeriod($begin, $interval, $end);
                                                     <div class="modal-dialog" role="document">
                                                         <div class="modal-content">
                                                             <div class="modal-header">
-                                                                <h5 class="modal-title" id="exampleModalLabel">Add Url</h5>
+                                                                <h5 class="modal-title" id="exampleModalLabel">Add Url / Meeting Link</h5>
 
                                                                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                                                     <span aria-hidden="true">&times;</span>
                                                                 </button>
                                                             </div>
                                                             <div class="modal-body">
+                                                            <h6 class="modal-title jitsi-p" id="exampleModalLabel">First go to the <a href="https://meet.jit.si/" target="_blank">Jitsi Website</a> and start a meeting. Then copy and paste the meeting link here.</h6>
+                                                                    <h6 class="modal-title youtube-p" id="exampleModalLabel">First go to the <a href="https://www.youtube.com/" target="_blank">Youtube Website</a>. Then copy and paste the video url link here.</h6>
                                                                 <div class="col-md-12">
-                                                                    <label class="col-sm-2 control-label " for="name" style="text-align: left">Video URL Code: </label>
+                                                                    
+                                                                    <label class="col-sm-2 control-label video-label" for="name" style="text-align: left">Video URL: </label>
                                                                     <div class="col-sm-10">
-                                                                        <input id="video_url" class="form-control  " type="text" placeholder="Enter Video URL  ">
-
+                                                                        <input id="video_url" class="form-control video-input " type="text" placeholder="Enter Video URL  ">
                                                                     </div>
                                                                 </div>
                                                             </div>

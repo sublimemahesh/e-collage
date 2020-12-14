@@ -934,6 +934,9 @@ html {
     background: #fff;
     margin-bottom: 20px;
 }
+.jitsi-p, .youtube-p {
+    margin-bottom: 10px;
+}
 
 img.media-icon {
     margin       : auto;
