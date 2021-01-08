@@ -121,14 +121,19 @@ $PERIOD = new DatePeriod($begin, $interval, $end);
                                                             </div>
                                                             <div class="modal-body">
                                                                 <div class="col-md-12">
-                                                                    <div class="col-md-6">
+                                                                    <div class="col-md-4">
                                                                         <a data-toggle="modal" data-target="#add-url" class="media-btn" media="1">
                                                                             <img src="img/youtube.png" class="img-responsive media-icon" alt="">
                                                                         </a>
                                                                     </div>
-                                                                    <div class="col-md-6">
+                                                                    <div class="col-md-4">
                                                                         <a data-toggle="modal" data-target="#add-url" class="media-btn" media="0">
                                                                             <img src="img/jitsimeet.jpg" width="100" class="img-responsive media-icon" alt="">
+                                                                        </a>
+                                                                    </div>
+                                                                    <div class="col-md-4">
+                                                                        <a data-toggle="modal" data-target="#add-url" class="media-btn" media="2">
+                                                                            <img src="img/zoom.jpg" width="100" class="img-responsive media-icon" alt="">
                                                                         </a>
                                                                     </div>
 
@@ -151,10 +156,11 @@ $PERIOD = new DatePeriod($begin, $interval, $end);
                                                                 </button>
                                                             </div>
                                                             <div class="modal-body">
-                                                            <h6 class="modal-title jitsi-p" id="exampleModalLabel">First go to the <a href="https://meet.jit.si/" target="_blank">Jitsi Website</a> and start a meeting. Then copy and paste the meeting link here.</h6>
-                                                                    <h6 class="modal-title youtube-p" id="exampleModalLabel">First go to the <a href="https://www.youtube.com/" target="_blank">Youtube Website</a>. Then copy and paste the video url link here.</h6>
+                                                                <h6 class="modal-title jitsi-p" id="exampleModalLabel">First go to the <a href="https://meet.jit.si/" target="_blank">Jitsi Website</a> and start a meeting. Then copy and paste the meeting link here.</h6>
+                                                                <h6 class="modal-title youtube-p" id="exampleModalLabel">First go to the <a href="https://www.youtube.com/" target="_blank">Youtube Website</a>. Then copy and paste the video url link here.</h6>
+                                                                <h6 class="modal-title zoom-p" id="exampleModalLabel">First go to the <a href="https://zoom.us/" target="_blank">Zoom Website</a>  or App and host a meeting. Then copy and paste the invitation link here.</h6>
                                                                 <div class="col-md-12">
-                                                                    
+
                                                                     <label class="col-sm-2 control-label video-label" for="name" style="text-align: left">Video URL: </label>
                                                                     <div class="col-sm-10">
                                                                         <input id="video_url" class="form-control video-input " type="text" placeholder="Enter Video URL  ">
@@ -213,6 +219,18 @@ $PERIOD = new DatePeriod($begin, $interval, $end);
                                                                 }
                                                             }
                                                             ?>
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label class="col-sm-2 control-label " for="name" style="text-align: left">Select Type: </label>
+                                                    <div class="col-sm-10">
+
+                                                        <select class="custom-select" id="is_youtube" name="is_youtube" required="">
+                                                            <option value="">-- Select type -- </option>
+                                                            <option value="1">Youtube </option>
+                                                            <option value="2">Zoom</option>
+
                                                         </select>
                                                     </div>
                                                 </div>
@@ -291,7 +309,7 @@ $PERIOD = new DatePeriod($begin, $interval, $end);
                                                         <input type="hidden" name="create_video">
                                                         <input type="hidden" id="lecture_id" name="lecture_id" value="<?php echo $_SESSION['id'] ?>">
                                                         <input type="hidden" id="class_id" name="class_id" value="<?php echo $id ?>">
-                                                        <input type="hidden" name="is_youtube" id="is_youtube" value="1">
+                                                        <!-- <input type="hidden" name="is_youtube" id="is_youtube" value="1"> -->
                                                         <!-- <input type="hidden" name="url" id="url" value=""> -->
                                                         <input type="submit" class="btn btn-primary btn-block" value="Create" id="create-video">
                                                     </div>
@@ -369,7 +387,8 @@ $PERIOD = new DatePeriod($begin, $interval, $end);
                                                                         <textarea class="form-control" name="chat_message_<?php echo $lecture_video['id'] ?>" id="chat_message_<?php echo $lecture_video['id'] ?>" placeholder="Enter"></textarea>
                                                                     </div>
                                                                     <div class="form-group" align="right">
-                                                                        <button type="button" name="send_chat" class="btn btn-info send_chat" lecture_id="<?php echo $_SESSION['id'] ?>" video_id="<?php echo $lecture_video['id'] ?>">Send</button></div>
+                                                                        <button type="button" name="send_chat" class="btn btn-info send_chat" lecture_id="<?php echo $_SESSION['id'] ?>" video_id="<?php echo $lecture_video['id'] ?>">Send</button>
+                                                                    </div>
                                                                 </div>
 
                                                             <?php
@@ -466,7 +485,8 @@ $PERIOD = new DatePeriod($begin, $interval, $end);
                                                                     <textarea class="form-control" name="chat_message_<?php echo $lecture_video['id'] ?>" id="chat_message_<?php echo $lecture_video['id'] ?>" placeholder="Enter"></textarea>
                                                                 </div>
                                                                 <div class="form-group" align="right">
-                                                                    <button type="button" name="send_chat" class="btn btn-info send_chat" lecture_id="<?php echo $_SESSION['id'] ?>" video_id="<?php echo $lecture_video['id'] ?>">Send</button></div>
+                                                                    <button type="button" name="send_chat" class="btn btn-info send_chat" lecture_id="<?php echo $_SESSION['id'] ?>" video_id="<?php echo $lecture_video['id'] ?>">Send</button>
+                                                                </div>
                                                             </div>
                                                         <?php
                                                         }
