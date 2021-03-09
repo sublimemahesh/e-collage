@@ -2,7 +2,16 @@
 
 <?php
 include '../class/include.php';
-include './auth.php'; ?>
+include './auth.php';
+$id = $_GET['id'];
+$registartions = CourseRegistration::getAllregistrationsByCourse($id);
+$course_name = '';
+foreach (DefaultData::getCourses() as $key => $crs) {
+    if ($key == $id) {
+        $course_name = $crs;
+    }
+}
+?>
 <html lang="en">
 
 <head>
@@ -45,7 +54,7 @@ include './auth.php'; ?>
                         <div class="card">
                             <div class="card-header">
 
-                                <strong>Manage Registrations </strong>
+                                <strong>Manage Registrations - <?= $course_name; ?> </strong>
                             </div>
                             <div class="card-body">
 
@@ -74,8 +83,7 @@ include './auth.php'; ?>
                                     </tfoot>
                                     <tbody>
                                         <?php
-                                        $REG = new CourseRegistration(NULL);
-                                        foreach ($REG->all() as $key => $registration) {
+                                        foreach ($registartions as $key => $registration) {
                                             $key++;
                                         ?>
                                             <tr id="div<?php echo $registration['id'] ?>">
@@ -87,7 +95,7 @@ include './auth.php'; ?>
                                                 <td><?php echo $registration['grade'] ?></td>
                                                 <td>
                                                     <a href="view-course-registration-details.php?id=<?php echo $registration['id'] ?>" class="op-link btn btn-sm btn-primary"><i class="icon icon-eye"></i></a>
-                                                    
+
                                                 </td>
                                             </tr>
                                         <?php } ?>

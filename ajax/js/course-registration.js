@@ -1,6 +1,5 @@
 $(document).ready(function () {
 
-
     $('button[type="submit"]').click(function () {
         if (!$('#txtFullName').val() || $('#txtFullName').val().length === 0) {
             swal({
@@ -122,6 +121,8 @@ $(document).ready(function () {
                             showConfirmButton: false
                         });
                     } else {
+                        $('#txtGrade option:eq(0)').attr('selected', 'selected');
+                        $('input').val('');
                         swal({
                             title: "Success!",
                             text: "You have been registered successfully...!",
@@ -129,11 +130,6 @@ $(document).ready(function () {
                             timer: 2000,
                             showConfirmButton: false
                         });
-                        setTimeout(() => {
-                            $('input').val('');
-                            // $("#chbCourse").attr("checked", false);
-                            $('select option:eq(0)').attr('selected', 'selected');
-                        }, 2000);
                     }
                 }
             });
