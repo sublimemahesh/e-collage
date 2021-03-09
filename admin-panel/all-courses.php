@@ -8,7 +8,7 @@ include './auth.php'; ?>
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Ecollege.lk - Course Registration</title>
+    <title>Ecollege.lk - Courses</title>
 
     <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-iconaa.png">
     <link rel="icon" type="image/png" href="favicon-32x32.png" sizes="32x32">
@@ -45,54 +45,23 @@ include './auth.php'; ?>
                         <div class="card">
                             <div class="card-header">
 
-                                <strong>Manage Registrations </strong>
+                                <strong>All Courses </strong>
                             </div>
                             <div class="card-body">
 
                                 <table id="demo-datatables-colreorder-1" class="table table-hover table-striped table-nowrap dataTable" cellspacing="0" width="100%">
-                                    <thead>
-                                        <tr>
-                                            <th>Id.</th>
-                                            <th>Registered At</th>
-                                            <th>Student Name</th>
-                                            <th>Email</th>
-                                            <th>School</th>
-                                            <th>Grade</th>
-                                            <th>Option</th>
-                                        </tr>
-                                    </thead>
-                                    <tfoot>
-                                        <tr>
-                                            <th>Id.</th>
-                                            <th>Registered At</th>
-                                            <th>Student Name</th>
-                                            <th>Email</th>
-                                            <th>School</th>
-                                            <th>Grade</th>
-                                            <th>Option</th>
-                                        </tr>
-                                    </tfoot>
+
                                     <tbody>
                                         <?php
-                                        $REG = new CourseRegistration(NULL);
-                                        foreach ($REG->all() as $key => $registration) {
-                                            $key++;
+                                        foreach (DefaultData::getCourses() as $key => $course) {
                                         ?>
-                                            <tr id="div<?php echo $registration['id'] ?>">
-                                                <td><?php echo $key ?></td>
-                                                <td><?php echo $registration['created_at'] ?></td>
-                                                <td><?php echo $registration['full_name'] ?></td>
-                                                <td><?php echo $registration['email'] ?></td>
-                                                <td><?php echo $registration['school'] ?></td>
-                                                <td><?php echo $registration['grade'] ?></td>
-                                                <td>
-                                                    <a href="view-course-registration-details.php?id=<?php echo $registration['id'] ?>" class="op-link btn btn-sm btn-primary"><i class="icon icon-eye"></i></a>
-                                                    
-                                                </td>
-                                            </tr>
-                                        <?php } ?>
-
-
+                                                <tr id="div1">
+                                                    <td><?= $key; ?></td>
+                                                    <td><a href="registered-students-by-course.php?id=<?= $key; ?>"><?= $course; ?></a></td>
+                                                </tr>
+                                        <?php
+                                        }
+                                        ?>
                                     </tbody>
                                 </table>
 

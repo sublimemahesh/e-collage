@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+<?php include './class/include.php'; ?>
 <html>
 
 <head>
@@ -112,22 +113,26 @@
                                 <div class="col-md-12">
                                     <label>SELECT COURSE/S</label>
                                     <div class="col-md-6">
-                                        <input id="chbCourse" type="checkbox" name="chbCourse[]" value="Kids Stage I (Pre School)">Kids Stage I (Pre School)<br />
-                                        <input id="chbCourse" type="checkbox" name="chbCourse[]" value="Kids Stage II (Grade 01)">Kids Stage II (Grade 01)<br />
-                                        <input id="chbCourse" type="checkbox" name="chbCourse[]" value="Kids Stage III (Grade 02 - 05)">Kids Stage III (Grade 02 - 05)<br />
-                                        <input id="chbCourse" type="checkbox" name="chbCourse[]" value="School IT Syllabus (Grade 06 - 09)">School IT Syllabus (Grade 06 - 09)<br />
-                                        <input id="chbCourse" type="checkbox" name="chbCourse[]" value="O/L ICT (Grade 09 - 11)">O/L ICT (Grade 09 - 11)<br />
-                                        <input id="chbCourse" type="checkbox" name="chbCourse[]" value="A/L IT">A/L IT<br />
-                                        <input id="chbCourse" type="checkbox" name="chbCourse[]" value="A/L GIT">A/L GIT<br />
+                                        <?php
+                                        foreach (DefaultData::getCourses() as $key => $course) {
+                                            if ($key <= 7) {
+                                        ?>
+                                                <input id="chbCourse" type="checkbox" name="chbCourse[]" value="<?= $key; ?>"><?= $course; ?><br />
+                                        <?php
+                                            }
+                                        }
+                                        ?>
                                     </div>
                                     <div class="col-md-6">
-
-                                        <input id="chbCourse" type="checkbox" name="chbCourse[]" value="MS Office">MS Office<br />
-                                        <input id="chbCourse" type="checkbox" name="chbCourse[]" value="Graphic Designer">Graphic Designer<br />
-                                        <input id="chbCourse" type="checkbox" name="chbCourse[]" value="Hardware & Networking">Hardware & Networking<br />
-                                        <input id="chbCourse" type="checkbox" name="chbCourse[]" value="Software Engineering">Software Engineering<br />
-                                        <input id="chbCourse" type="checkbox" name="chbCourse[]" value="Web Designing">Web Designing<br />
-                                        <input id="chbCourse" type="checkbox" name="chbCourse[]" value="Type Setting">Type Setting
+                                    <?php
+                                        foreach (DefaultData::getCourses() as $key => $course) {
+                                            if ($key > 7) {
+                                        ?>
+                                                <input id="chbCourse" type="checkbox" name="chbCourse[]" value="<?= $key; ?>"><?= $course; ?><br />
+                                        <?php
+                                            }
+                                        }
+                                        ?>
                                     </div>
                                 </div>
                             </div>

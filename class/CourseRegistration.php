@@ -104,6 +104,22 @@ class CourseRegistration
 
         return $array_res;
     }
+    public function getAllregistrationsByCourse($id)
+    {
+
+        $query = "SELECT * FROM `course_registration` WHERE `id` IN (SELECT `registration_id` FROM `student_course` WHERE `course` = $id)  ORDER BY `id` DESC";
+
+        $db = new Database();
+
+        $result = $db->readQuery($query);
+        $array_res = array();
+
+        while ($row = mysql_fetch_array($result)) {
+            array_push($array_res, $row);
+        }
+
+        return $array_res;
+    }
 
     //function
     function sendSMS($sender_id, $phone_number, $message)
