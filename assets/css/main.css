@@ -3401,6 +3401,9 @@ footer .botbar{
     .page.course-registration-page .page-heading h2 {
         line-height: 45px;
     }
+    .blueplay {
+        background: #18c967;
+    }
 }
 
 @media (max-width: 380px) {
