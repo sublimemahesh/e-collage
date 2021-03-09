@@ -171,7 +171,7 @@ nav > ul > li > a{
     font-weight: 500;
     color: #fff;
     padding: 0;
-    margin-right: 40px;
+    margin-right: 23px;
     transition: color 0.3s;
 }
 
@@ -363,7 +363,10 @@ nav > ul > li:hover .submenu{
 .blueplay.login,
 .register,
 .cart{
-    margin-right: 24px;
+    margin-right: 20px;
+}
+header .blueplay.login {
+    margin-right: 20px;
 }
 
 .cart{
@@ -2356,6 +2359,8 @@ aside.categories ul li:not(:last-child),
 }
 
 .contact input,
+.contact select,
+.contact select,
 .contact textarea{
     width: 100%;
     border: none;
@@ -2368,6 +2373,11 @@ aside.categories ul li:not(:last-child),
     padding-left: 15px;
 }
 
+.contact input[type="checkbox"] {
+    width: auto;
+    height: auto;
+    margin-right: 10px;
+}
 .contact textarea{
     line-height: 40px;
     overflow: hidden;
@@ -3213,7 +3223,7 @@ footer .botbar{
 
 
     nav > ul > li > a{
-        margin-right: 30px;
+        margin-right: 16px;
     }
 
 }
@@ -3381,6 +3391,15 @@ footer .botbar{
 
     .bluebutton{
         margin-bottom: 20px;
+    }
+    #myNavbar ul li {
+        line-height: 38px;
+    }
+    #myNavbar ul li a {
+        height: 35px;
+    }
+    .page.course-registration-page .page-heading h2 {
+        line-height: 45px;
     }
 }
 

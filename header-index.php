@@ -25,10 +25,13 @@
 
                             </li>  
                             <li><a href="contact.php">Contact</a></li> 
+                            <li><a href="course-registration.php" class="visible-xs">Course Registration</a></li> 
+                            <li><a href="student/exam-papers.php" class="visible-xs">Exam Papers</a></li> 
                         </ul>
                     </nav>
                 </div>
-                <a href="student/exam-papers.php" class="blueplay login">Exam Papers</a> 
+                <a href="course-registration.php" class="blueplay login hidden-xs">Course Registration</a> 
+                <a href="student/exam-papers.php" class="blueplay login hidden-xs">Exam Papers</a> 
                 <a href="student/login.php" class="blueplay login">Student Login</a> 
                 <a href="lecture/login.php" class="register">Lecture Login</a>
 
