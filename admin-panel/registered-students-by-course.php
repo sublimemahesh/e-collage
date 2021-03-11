@@ -4,13 +4,9 @@
 include '../class/include.php';
 include './auth.php';
 $id = $_GET['id'];
+$COURSE = new Course($id);
 $registartions = CourseRegistration::getAllregistrationsByCourse($id);
-$course_name = '';
-foreach (DefaultData::getCourses() as $key => $crs) {
-    if ($key == $id) {
-        $course_name = $crs;
-    }
-}
+
 ?>
 <html lang="en">
 
@@ -54,14 +50,14 @@ foreach (DefaultData::getCourses() as $key => $crs) {
                         <div class="card">
                             <div class="card-header">
 
-                                <strong>Manage Registrations - <?= $course_name; ?> </strong>
+                                <strong>View Registrations - <?= $COURSE->name; ?> </strong>
                             </div>
                             <div class="card-body">
 
                                 <table id="demo-datatables-colreorder-1" class="table table-hover table-striped table-nowrap dataTable" cellspacing="0" width="100%">
                                     <thead>
                                         <tr>
-                                            <th>Id.</th>
+                                            <th>ID</th>
                                             <th>Registered At</th>
                                             <th>Student Name</th>
                                             <th>Email</th>
@@ -72,7 +68,7 @@ foreach (DefaultData::getCourses() as $key => $crs) {
                                     </thead>
                                     <tfoot>
                                         <tr>
-                                            <th>Id.</th>
+                                            <th>ID</th>
                                             <th>Registered At</th>
                                             <th>Student Name</th>
                                             <th>Email</th>

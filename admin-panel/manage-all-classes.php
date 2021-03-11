@@ -82,15 +82,15 @@ include './auth.php';
                                                     <td><?php echo $class['modules']; ?></td>
                                                     <td>Rs. <?php echo $class['class_fee']; ?></td>
                                                     <td>
-                                                        <?php 
-                                                        if($class['payment_type'] == 0) {
-echo 'Free';
-                                                        } elseif($class['payment_type'] == 1) {
-                                                            echo 'Weekly';    
+                                                        <?php
+                                                        if ($class['payment_type'] == 0) {
+                                                            echo 'Free';
+                                                        } elseif ($class['payment_type'] == 1) {
+                                                            echo 'Weekly';
                                                         }
                                                         ?>
                                                     </td>
-                                                    
+
                                                 </tr>
                                             <?php } ?>
                                             <tfoot>

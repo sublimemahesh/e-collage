@@ -35,6 +35,7 @@ include_once(dirname(__FILE__) . '/StudentMarks.php');
 include_once(dirname(__FILE__) . '/CourseRegistration.php');
 include_once(dirname(__FILE__) . '/StudentCourse.php');
 include_once(dirname(__FILE__) . '/DefaultData.php');
+include_once(dirname(__FILE__) . '/Course.php');
 
 include_once(dirname(__FILE__) . '/Upload.php');
 include_once(dirname(__FILE__) . '/Helper.php');
