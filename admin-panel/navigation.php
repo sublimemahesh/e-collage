@@ -83,7 +83,7 @@
                              <span class="sidenav-label">Courses</span>
                          </a>
                          <ul class="sidenav level-2 collapse">
-                             <li><a href="all-courses.php"> <span class="sidenav-icon icon icon-angle-right"></span>All Courses</a></li>
+                             <li><a href="manage-courses.php"> <span class="sidenav-icon icon icon-angle-right"></span>All Courses</a></li>
                              <li><a href="manage-course-registration.php"> <span class="sidenav-icon icon icon-angle-right"></span>All Registrations</a></li>
 
                          </ul>

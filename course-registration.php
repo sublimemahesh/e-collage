@@ -1,5 +1,8 @@
 <!DOCTYPE html>
-<?php include './class/include.php'; ?>
+<?php
+include './class/include.php';
+$courses = Course::all();
+?>
 <html>
 
 <head>
@@ -114,21 +117,21 @@
                                     <label>SELECT COURSE/S</label>
                                     <div class="col-md-6">
                                         <?php
-                                        foreach (DefaultData::getCourses() as $key => $course) {
-                                            if ($key <= 7) {
+                                        foreach ($courses as $key => $course) {
+                                            if ($key % 2 == 0) {
                                         ?>
-                                                <input id="chbCourse" type="checkbox" name="chbCourse[]" value="<?= $key; ?>"><?= $course; ?><br />
+                                                <input id="chbCourse" type="checkbox" name="chbCourse[]" value="<?= $course['id']; ?>"><?= $course['name']; ?><br />
                                         <?php
                                             }
                                         }
                                         ?>
                                     </div>
                                     <div class="col-md-6">
-                                    <?php
-                                        foreach (DefaultData::getCourses() as $key => $course) {
-                                            if ($key > 7) {
+                                        <?php
+                                        foreach ($courses as $key => $course) {
+                                            if ($key % 2 == 1) {
                                         ?>
-                                                <input id="chbCourse" type="checkbox" name="chbCourse[]" value="<?= $key; ?>"><?= $course; ?><br />
+                                                <input id="chbCourse" type="checkbox" name="chbCourse[]" value="<?= $course['id']; ?>"><?= $course['name']; ?><br />
                                         <?php
                                             }
                                         }

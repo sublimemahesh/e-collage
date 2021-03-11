@@ -1,6 +1,8 @@
 $(document).ready(function () {
 
-    $('button[type="submit"]').click(function () {
+    $('button[type="submit"]').click(function (e) {
+        e.preventDefault();
+        var emailReg = /^([\w-\.]+@([\w-]+\.)+[\w-]{2,4})?$/;
         if (!$('#txtFullName').val() || $('#txtFullName').val().length === 0) {
             swal({
                 title: "Error!",
@@ -14,6 +16,15 @@ $(document).ready(function () {
             swal({
                 title: "Error!",
                 text: "Please enter email address..!",
+                type: 'error',
+                timer: 1500,
+                showConfirmButton: false
+            });
+            return false;
+        } else if (!emailReg.test($('#txtEmail').val())) {
+            swal({
+                title: "Error!",
+                text: "Please enter a valid email",
                 type: 'error',
                 timer: 1500,
                 showConfirmButton: false

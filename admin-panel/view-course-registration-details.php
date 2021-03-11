@@ -132,14 +132,9 @@ $courses = StudentCourse::getRegisteredCoursesByID($id);
                                     <div class="col-sm-10">
                                         <?php
                                         foreach ($courses as $course) {
-                                            $course_name = '';
-                                            foreach (DefaultData::getCourses() as $key => $crs) {
-                                                if ($key == $course['course']) {
-                                                    $course_name = $crs;
-                                                }
-                                            }
+                                           $COURSE = new Course($course['course']);
                                         ?>
-                                            <input id="form-control-4" class="form-control" type="text" value="<?php echo $course_name ?>" disabled=""><br />
+                                            <input id="form-control-4" class="form-control" type="text" value="<?= $COURSE->name; ?>" disabled=""><br />
                                         <?php
                                         }
                                         ?>
