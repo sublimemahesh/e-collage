@@ -1,5 +1,20 @@
 $(document).ready(function () {
+    var id = $('#id').val();
+    $.ajax({
+        url: "ajax/post-and-get/all-courses.php",
+        type: 'POST',
+        data: {
+            id,
+            option: 'GETALLCOURSES'
+        },
+        dataType: "JSON",
+        success: function (result) {
+            $.each(result, function (key, course) {
+                $('.course_' + course.course).attr('checked', 'checked');
+            });
 
+        }
+    });
     $('button[type="submit"]').click(function (e) {
         e.preventDefault();
         var emailReg = /^([\w-\.]+@([\w-]+\.)+[\w-]{2,4})?$/;
@@ -132,15 +147,17 @@ $(document).ready(function () {
                             showConfirmButton: false
                         });
                     } else {
-                        $('#txtGrade option:eq(0)').attr('selected', 'selected');
-                        $('input').val('');
                         swal({
                             title: "Success!",
-                            text: "You have been registered successfully...!",
+                            text: "Your data has been updated successfully...!",
                             type: 'success',
                             timer: 2000,
                             showConfirmButton: false
                         });
+                        
+                        setTimeout(() => {
+                            location.reload();
+                        }, 2000);
                     }
                 }
             });

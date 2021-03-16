@@ -87,6 +87,7 @@ include './auth.php'; ?>
                                                 <td><?php echo $registration['grade'] ?></td>
                                                 <td>
                                                     <a href="view-course-registration-details.php?id=<?php echo $registration['id'] ?>" class="op-link btn btn-sm btn-primary"><i class="icon icon-eye"></i></a>
+                                                    <a href="edit-course-registration-details.php?id=<?php echo $registration['id'] ?>" class="op-link btn btn-sm btn-info"><i class="icon icon-pencil"></i></a>
                                                     
                                                 </td>
                                             </tr>

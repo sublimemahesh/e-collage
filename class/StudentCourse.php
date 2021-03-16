@@ -102,4 +102,12 @@ class StudentCourse
 
         return $db->readQuery($query);
     }
+    public function DeleteCoursesByRegId($id)
+    {
+
+        $query = 'DELETE FROM `student_course` WHERE `registration_id`="' . $id . '"';
+        $db = new Database();
+
+        return $db->readQuery($query);
+    }
 }

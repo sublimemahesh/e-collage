@@ -154,12 +154,16 @@ class CourseRegistration
 
         $query = "UPDATE  `course_registration` SET "
             . "`full_name` ='" . $this->full_name . "', "
-            . "`nic_number` ='" . $this->nic_number . "', "
-            . "`gender` ='" . $this->gender . "', "
-            . "`age` ='" . $this->age . "', "
-            . "`phone_number` ='" . $this->phone_number . "', "
+            . "`email` ='" . $this->email . "', "
             . "`address` ='" . $this->address . "', "
-            . "`email` ='" . $this->email . "' "
+            . "`district` ='" . $this->district . "', "
+            . "`city` ='" . $this->city . "', "
+            . "`phone_number` ='" . $this->phone_number . "', "
+            . "`mobile_number` ='" . $this->mobile_number . "', "
+            . "`school` ='" . $this->school . "', "
+            . "`grade` ='" . $this->grade . "', "
+            . "`dob` ='" . $this->dob . "', "
+            . "`age` ='" . $this->age . "' "
             . "WHERE `id` = '" . $this->id . "'";
 
 
