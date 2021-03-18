@@ -11,13 +11,14 @@ class StudentCourse
 
     public $id;
     public $registration_id;
+    public $ref_no;
     public $course;
 
     public function __construct($id)
     {
         if ($id) {
 
-            $query = "SELECT `id`,`registration_id`,`course` FROM `student_course` WHERE `id`=" . $id;
+            $query = "SELECT `id`,`registration_id`,`ref_no`,`course` FROM `student_course` WHERE `id`=" . $id;
 
             $db = new Database();
 
@@ -25,6 +26,7 @@ class StudentCourse
 
             $this->id = $result['id'];
             $this->registration_id = $result['registration_id'];
+            $this->ref_no = $result['ref_no'];
             $this->course = $result['course'];
 
             return $this;
@@ -34,7 +36,7 @@ class StudentCourse
     public function create()
     {
 
-        $query = "INSERT INTO `student_course` (`registration_id`, `course`) VALUES  ('" . $this->registration_id . "', '" . $this->course . "')";
+        $query = "INSERT INTO `student_course` (`registration_id`,`ref_no`, `course`) VALUES  ('" . $this->registration_id . "','" . $this->ref_no . "', '" . $this->course . "')";
 
         $db = new Database();
 
@@ -76,6 +78,15 @@ class StudentCourse
         }
 
         return $array_res;
+    }
+    public function getDetailsByCourseAndRegId($course, $reg_id)
+    {
+
+        $query = "SELECT * FROM `student_course` WHERE `registration_id` = $reg_id AND `course` = $course ORDER BY `registration_id` ASC";
+        $db = new Database();
+        $result = mysql_fetch_array($db->readQuery($query));
+
+        return $result;
     }
 
     public function update()

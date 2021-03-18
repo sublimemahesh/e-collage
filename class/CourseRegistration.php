@@ -61,6 +61,7 @@ class CourseRegistration
     {
         date_default_timezone_set('Asia/Colombo');
         $createdAt = date('Y-m-d H:i:s');
+        $db = new Database();
         $query = "INSERT INTO `course_registration` (`created_at`, `full_name`, `email`,`address`,`district`,`city`, `phone_number`,`mobile_number`,`school`,`grade`, `dob`, `age`) VALUES  ('"
             . $createdAt . "','"
             . $this->full_name . "','"
@@ -70,12 +71,11 @@ class CourseRegistration
             . $this->city . "', '"
             . $this->phone_number . "', '"
             . $this->mobile_number . "', '"
-            . $this->school . "', '"
+            . mysql_real_escape_string($this->school) . "', '"
             . $this->grade . "', '"
             . $this->dob . "', '"
             . $this->age . "')";
 
-        $db = new Database();
 
         $result = $db->readQuery($query);
 
@@ -91,7 +91,7 @@ class CourseRegistration
     public function all()
     {
 
-        $query = "SELECT * FROM `course_registration`  ORDER BY `id` DESC";
+        $query = "SELECT * FROM `course_registration`  ORDER BY `id` ASC";
 
         $db = new Database();
 
@@ -107,7 +107,7 @@ class CourseRegistration
     public function getAllregistrationsByCourse($id)
     {
 
-        $query = "SELECT * FROM `course_registration` WHERE `id` IN (SELECT `registration_id` FROM `student_course` WHERE `course` = $id)  ORDER BY `id` DESC";
+        $query = "SELECT * FROM `course_registration` WHERE `id` IN (SELECT `registration_id` FROM `student_course` WHERE `course` = $id)  ORDER BY `id` ASC";
 
         $db = new Database();
 
@@ -152,6 +152,7 @@ class CourseRegistration
     public function update()
     {
 
+        $db = new Database();
         $query = "UPDATE  `course_registration` SET "
             . "`full_name` ='" . $this->full_name . "', "
             . "`email` ='" . $this->email . "', "
@@ -160,14 +161,11 @@ class CourseRegistration
             . "`city` ='" . $this->city . "', "
             . "`phone_number` ='" . $this->phone_number . "', "
             . "`mobile_number` ='" . $this->mobile_number . "', "
-            . "`school` ='" . $this->school . "', "
+            . "`school` ='" . mysql_real_escape_string($this->school) . "', "
             . "`grade` ='" . $this->grade . "', "
             . "`dob` ='" . $this->dob . "', "
             . "`age` ='" . $this->age . "' "
             . "WHERE `id` = '" . $this->id . "'";
-
-
-        $db = new Database();
 
         $result = $db->readQuery($query);
 

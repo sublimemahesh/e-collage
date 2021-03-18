@@ -21,11 +21,19 @@ $COURSE_REG->age = $_POST['txtAge'];
 $COURSE_REG->create();
 if ($COURSE_REG->id) {
 
-    foreach($_POST['chbCourse'] as $course) {
-        $COURSE = new StudentCourse(NULL);
-        $COURSE->registration_id = $COURSE_REG->id;
-        $COURSE->course = $course;
-        $COURSE->create();
+    foreach ($_POST['chbCourse'] as $course) {
+        $SCOURSE = new StudentCourse(NULL);
+        $COURSE = new Course($course);
+        $number = $COURSE->current_id + 1;
+
+        $SCOURSE->registration_id = $COURSE_REG->id;
+        $SCOURSE->course = $course;
+        $SCOURSE->ref_no = 'ecoll/' . date('Y') . '/' . $COURSE->ref_code . '/' . $COURSE->batch . '/' . sprintf("%03s", $number);
+        $res = $SCOURSE->create();
+        if ($res) {
+            $COURSE->current_id = $number;
+            $COURSE->updateCurrentID();
+        }
     }
 
     $response['status'] = 'success';

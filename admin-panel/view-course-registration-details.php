@@ -132,9 +132,9 @@ $courses = StudentCourse::getRegisteredCoursesByID($id);
                                     <div class="col-sm-10">
                                         <?php
                                         foreach ($courses as $course) {
-                                           $COURSE = new Course($course['course']);
+                                            $COURSE = new Course($course['course']);
                                         ?>
-                                            <input id="form-control-4" class="form-control" type="text" value="<?= $COURSE->name; ?>" disabled=""><br />
+                                            <input id="form-control-4" class="form-control" type="text" value="<?= $course['ref_no'] . ' - ' . $COURSE->name; ?>" disabled=""><br />
                                         <?php
                                         }
                                         ?>

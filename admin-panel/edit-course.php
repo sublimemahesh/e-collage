@@ -76,6 +76,18 @@ $COURSE = new Course($id);
                                                         <input id="name" name="name" class="form-control" type="text" value="<?= $COURSE->name; ?>">
                                                     </div>
                                                 </div>
+                                                <div class="form-group">
+                                                    <label class="col-sm-2 control-label " for="title" style="text-align: left">Reference Code : </label>
+                                                    <div class="col-sm-10">
+                                                        <input id="ref_code" name="ref_code" class="form-control" type="text" value="<?= $COURSE->ref_code; ?>">
+                                                    </div>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label class="col-sm-2 control-label " for="title" style="text-align: left">Batch : </label>
+                                                    <div class="col-sm-10">
+                                                        <input id="batch" name="batch" class="form-control" type="text" value="<?= $COURSE->batch; ?>">
+                                                    </div>
+                                                </div>
 
                                                 <div class="form-group">
                                                     <div class="col-md-3"></div>

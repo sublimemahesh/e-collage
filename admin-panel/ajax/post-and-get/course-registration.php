@@ -20,12 +20,30 @@ $COURSE_REG->age = $_POST['txtAge'];
 
 $result = $COURSE_REG->update();
 if ($result) {
-    $res = StudentCourse::DeleteCoursesByRegId($_POST['id']);
+    $arr = array();
+    $old_courses = StudentCourse::getRegisteredCoursesByID($_POST['id']);
+    foreach ($old_courses as $old_course) {
+        array_push($arr, $old_course['course']);
+        if (!in_array($old_course['course'], $_POST['chbCourse'])) {
+            $STU_COU = new StudentCourse($old_course['id']);
+            $res = $STU_COU->delete();
+        }
+    }
     foreach ($_POST['chbCourse'] as $course) {
-        $COURSE = new StudentCourse(NULL);
-        $COURSE->registration_id = $COURSE_REG->id;
-        $COURSE->course = $course;
-        $COURSE->create();
+        if (!in_array($course, $arr)) {
+            $SCOURSE = new StudentCourse(NULL);
+            $COURSE = new Course($course);
+            $number = $COURSE->current_id + 1;
+
+            $SCOURSE->registration_id = $COURSE_REG->id;
+            $SCOURSE->course = $course;
+            $SCOURSE->ref_no = 'ecoll/' . date('Y') . '/' . $COURSE->ref_code . '/' . $COURSE->batch . '/' . sprintf("%03s", $number);
+            $res = $SCOURSE->create();
+            if ($res) {
+                $COURSE->current_id = $number;
+                $COURSE->updateCurrentID();
+            }
+        }
     }
 
     $response['status'] = 'success';
