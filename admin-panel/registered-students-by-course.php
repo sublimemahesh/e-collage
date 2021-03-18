@@ -59,6 +59,7 @@ $registartions = CourseRegistration::getAllregistrationsByCourse($id);
                                         <tr>
                                             <th>ID</th>
                                             <th>Registered At</th>
+                                            <th>Ref. Code</th>
                                             <th>Student Name</th>
                                             <th>Email</th>
                                             <th>School</th>
@@ -70,6 +71,7 @@ $registartions = CourseRegistration::getAllregistrationsByCourse($id);
                                         <tr>
                                             <th>ID</th>
                                             <th>Registered At</th>
+                                            <th>Ref. Code</th>
                                             <th>Student Name</th>
                                             <th>Email</th>
                                             <th>School</th>
@@ -80,11 +82,13 @@ $registartions = CourseRegistration::getAllregistrationsByCourse($id);
                                     <tbody>
                                         <?php
                                         foreach ($registartions as $key => $registration) {
+                                            $course = StudentCourse::getDetailsByCourseAndRegId($id, $registration['id']);
                                             $key++;
                                         ?>
                                             <tr id="div<?php echo $registration['id'] ?>">
                                                 <td><?php echo $key ?></td>
                                                 <td><?php echo $registration['created_at'] ?></td>
+                                                <td><?php echo $course['ref_no'] ?></td>
                                                 <td><?php echo $registration['full_name'] ?></td>
                                                 <td><?php echo $registration['email'] ?></td>
                                                 <td><?php echo $registration['school'] ?></td>

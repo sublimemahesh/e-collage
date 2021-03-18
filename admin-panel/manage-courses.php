@@ -69,7 +69,18 @@ include './auth.php'; ?>
                                                         <input id="name" name="name" class="form-control" type="text">
                                                     </div>
                                                 </div>
-
+                                                <div class="form-group">
+                                                    <label class="col-sm-2 control-label " for="title" style="text-align: left">Reference Code : </label>
+                                                    <div class="col-sm-10">
+                                                        <input id="ref_code" name="ref_code" class="form-control" type="text" >
+                                                    </div>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label class="col-sm-2 control-label " for="title" style="text-align: left">Batch : </label>
+                                                    <div class="col-sm-10">
+                                                        <input id="batch" name="batch" class="form-control" type="text" placeholder="I, II, ...">
+                                                    </div>
+                                                </div>
                                                 <div class="form-group">
                                                     <div class="col-md-3"></div>
                                                     <div class="col-md-3"></div>
@@ -102,6 +113,8 @@ include './auth.php'; ?>
                                         <tr>
                                             <th>ID</th>
                                             <th>Name</th>
+                                            <th>Reference Code</th>
+                                            <th>Batch</th>
                                             <th>Option</th>
                                         </tr>
                                     </thead>
@@ -113,6 +126,8 @@ include './auth.php'; ?>
                                             <tr id="row<?= $course['id']; ?>">
                                                 <td><?= $key; ?></td>
                                                 <td><?= $course['name']; ?></td>
+                                                <td><?= $course['ref_code']; ?></td>
+                                                <td><?= $course['batch']; ?></td>
                                                 <td>
                                                     <a href="edit-course.php?id=<?= $course['id']; ?>" class="op-link btn btn-sm btn-info"><i class="icon icon-pencil"></i></a>
                                                     <a href="#" class="op-link btn btn-sm btn-danger delete-course" data-id="<?= $course['id']; ?>"><i class="icon icon-trash"></i></a>
