@@ -79,14 +79,15 @@ $(document).ready(function () {
                     showCancelButton: false,
                     confirmButtonColor: "#00b0e4",
                     confirmButtonText: "Enter Again.!",
-                    closeOnConfirm: false},
-                        function () {
-                            swal.close();
-                            $('html, body').animate({
-                                scrollTop: $("#full_name").offset().top
-                            }, 1000);
-                            $('#nic_number').focus();
-                        });
+                    closeOnConfirm: false
+                },
+                    function () {
+                        swal.close();
+                        $('html, body').animate({
+                            scrollTop: $("#full_name").offset().top
+                        }, 1000);
+                        $('#nic_number').focus();
+                    });
             } else if (mobileNumber.match(/^.*[^\s{1,}]\s.*/) || mobileNumber == '') {
                 $('#errors').val(1);
                 swal({
@@ -121,8 +122,56 @@ $(document).ready(function () {
                         if (result.status == 'error') {
                             $('#message').text(result.message);
                         } else {
-                            $('#agreement_form').show();
-                            $('#register_form').hide();
+                            // $('#agreement_form').show();
+                            // $('#register_form').hide();
+
+                            $.ajax({
+                                url: "ajax/post-and-get/registration.php",
+                                type: 'POST',
+                                data: formData,
+                                async: false,
+                                cache: false,
+                                contentType: false,
+                                processData: false,
+                                dataType: "JSON",
+                                success: function (result) {
+                                    if (result.status == 'error') {
+                                        $('#message').text(result.message);
+                                    } else {
+                                        $.ajax({
+                                            url: "ajax/post-and-get/mobile-verify.php",
+                                            type: "POST",
+                                            data: {
+                                                id: result.id,
+                                                action: "MOBILECODE"
+                                            },
+                                            dataType: "JSON",
+                                            success: function (result) {
+                                                if (result.status == 'success') {
+                                                    window.swal({
+                                                        title: "Please wait...!",
+                                                        text: "it may take few seconds...!",
+                                                        imageUrl: "assets/images/tenor.gif",
+                                                        showConfirmButton: false,
+                                                        allowOutsideClick: false
+                                                    });
+                                                    setTimeout(function () {
+                                                        window.location.href = "mobile-verify.php";
+                                                    }, 1000);
+                                                } else {
+                                                    swal({
+                                                        title: "Error!",
+                                                        text: "Something Went Wrong",
+                                                        type: 'error',
+                                                        timer: 2000,
+                                                        showConfirmButton: false
+                                                    });
+                                                }
+                                            }
+                                        });
+                                    }
+                                }
+                            });
                         }
                     }
 
@@ -162,7 +211,8 @@ $(document).ready(function () {
                         $.ajax({
                             url: "ajax/post-and-get/mobile-verify.php",
                             type: "POST",
-                            data: {id: result.id,
+                            data: {
+                                id: result.id,
                                 action: "MOBILECODE"
                             },
                             dataType: "JSON",
